@@ -65,9 +65,9 @@
 | Day | 키워드 | 이론 ① | 실습 ① | 이론 ② | 실습 ② |
 |---|---|---|---|---|---|
 | **1 만남** | 첫 실행 | AI 코딩 60년 + CC 정체성 + 단독 라이브 시연 | Windows 셋업 · 첫 실행 | 터미널(Windows) · VS Code 통합 · 프롬프팅 첫걸음 | 자기소개 대본 → HTML 페이지 |
-| **2 문법** | 4 Core Syntax | 4대 문법 `/ @ ! #` 깊게 | 4문법 손풀이 | 모드 4종 · 권한 모델 · 비용 감각 | 미션 분할 빌드 |
-| **3 협업** | 길들이기 | Plan Mode 깊게 | 텍스트 게임 분석 + 체력 시스템 | CLAUDE.md · CoT · 컨텍스트 관리 | 복구 훈련 · 내 CLAUDE.md · 미니프로젝트 주제 결정 |
-| **4 확장** | 도우미 군단 | Sub-agents + MCP | Sub-agent 정의 + MCP 연결 | Hooks · 커스텀 슬래시 · Skills (헤드리스 짧게) | Hook · 슬래시 · Skill로 PPTX · 미니에 녹이기 |
+| **2 문법** | Git + 4 Core Syntax | Git 기본 + 4대 문법 `/ @ ! #` | Git/4문법 손풀이 | 모드 · 권한 · 비용 · 컨텍스트 관리 | 미션 분할 빌드 |
+| **3 협업** | Plan + Hooks + 길들이기 | Plan Mode + Hooks | Plan 미션 + 텔레그램 알림 Hook | CLAUDE.md · CoT · .claude 폴더 · Karpathy | 복구 훈련 · 내 CLAUDE.md · 미니프로젝트 주제 결정 |
+| **4 확장** | 도우미 군단 | Sub-agents + MCP | Sub-agent 정의 + MCP 연결 | 커스텀 슬래시 · Skills · design.md · 발표자 노트 (헤드리스 + Telegram 양방향) | 슬래시 · Skill+design.md로 PPTX · 미니에 녹이기 |
 | **5 완성** | Build · Demo | 워크플로우 정리 + 장애 복구 | 미니프로젝트 빌드 1차 | 실전 패턴(TDD·리팩터·문서화) · VS Code 깊게 · FAQ | 빌드 마무리 + 발표 + 회고 |
 
 ---
@@ -108,24 +108,37 @@
 
 ## 7. Day 2 · 문법 (화)
 
-### 이론 ① — Claude Code 4대 문법 깊게 (90′)
+### 이론 ① — Git 기본 + Claude Code 4대 문법 (90′)
+
+**Part A. Git 기본 (25′)**
+- 왜 Git인가 — AI가 파일을 마음대로 고치는 시대일수록 **버전 관리가 안전벨트**
+- Git vs GitHub 개념 구분
+- 핵심 흐름 5개: `init` → `status` → `add` → `commit` → `log`
+- 되돌리기 한 줄: `git restore <file>` / `git checkout` 맛보기 (Day 5 복구 훈련 예고)
+- `clone` — 스킬·예제 다운받을 때 쓰는 명령
+- GitHub 계정 만들기 / `anthropic/skills` 둘러보기
+
+**Part B. Claude Code 4대 문법 (65′)**
 - `/` 슬래시 커맨드 카탈로그 (`/init` `/clear` `/cost` `/model` `/agents` `/help`)
 - `@` 파일 · 폴더 · 심볼 멘션
-- `!` Bash 실행 (세션 안에서)
+- `!` Bash 실행 (세션 안에서) — `!git status` 같은 즉석 호출
 - `#` CLAUDE.md 즉시 메모
 
-### 실습 ① — 4문법 손풀이 (75′)
+### 실습 ① — Git + 4문법 손풀이 (75′)
+- 어제 폴더에 `git init` → 상태 변화 관찰 → 첫 커밋
 - `/`로 모델 바꿔보기
 - `@`로 어제 만든 HTML 멘션해 분석 시키기
-- `!`로 git 상태 보기
+- `!git status` / `!git log` 로 Bash 실행 체험
 - `#`로 "한국어로 응답" 메모 추가
+- Claude에게 "지금까지 작업 커밋해줘" 시켜 보기
 
-### 이론 ② — 모드 · 권한 · 비용 감각 (90′)
+### 이론 ② — 모드 · 권한 · 비용 · 컨텍스트 관리 (90′)
 - 4 모드: Interactive / Auto / Plan / Bypass
 - `Shift + Tab` 모드 전환 / `--dangerously-skip-permissions` 경고
 - 권한 모델: "always allow 무지성 금지" 1줄 규칙
 - 컨텍스트 윈도우 · 토큰 · `/cost` 습관
 - "한 입 거리로 잘라 시키기" 원칙
+- **세션·컨텍스트 관리**: `/clear` `/compact` `/resume` `--continue` — 비용 절약과 직결
 
 ### 실습 ② — 미션 분할 빌드 (105′)
 - 미션 ① 가위바위보 CLI (뼈대→입력→기록 분할)
@@ -137,21 +150,33 @@
 
 ## 8. Day 3 · 협업 (수)
 
-### 이론 ① — Plan Mode 깊게 (90′)
+### 이론 ① — Plan Mode + Hooks (90′)
+
+**Part A · Plan Mode 깊게 (45′)**
 - 안전벨트로서의 Plan Mode (`Shift + Tab`)
 - 계획 읽기 → 승인 · 수정 · 거절
 - 써야 할 때 vs 굳이 안 써도 될 때
 
-### 실습 ① — Plan Mode 손에 익히기 (75′)
+**Part B · Hooks (45′)**
+- 이벤트 6종: PreToolUse / PostToolUse / Stop / UserPromptSubmit / Notification / SubagentStop
+- 활용 패턴: 저장 시 lint, 커밋 전 테스트, **응답 끝 → 텔레그램 알림 (대표 시연)**
+- "처음엔 2~3개만" 원칙
+
+### 실습 ① — Plan + 텔레그램 Hook 만들기 (75′)
 - 오픈 텍스트 게임 다운로드 → Plan Mode로 **분석만** 시키기
 - 체력 시스템 추가 (Plan 승인 후 실행)
+- **텔레그램 봇 알림 Hook 직접 만들기**
+  - BotFather로 봇 생성 → chat_id 확보
+  - `.claude/settings.json`의 Stop 훅에 curl 한 줄 등록
+  - 짧은 명령 실행 → 휴대폰 알림 확인
 
-### 이론 ② — CLAUDE.md + CoT + 컨텍스트 관리 (90′)
+### 이론 ② — CLAUDE.md + CoT + .claude 폴더 + Karpathy (90′)
 - CLAUDE.md 좋은 예 vs 나쁜 예 (200줄 룰)
 - 계층: 프로젝트 / 유저(`~/.claude`) / 엔터프라이즈
 - CoT 유도: `think` < `think hard` < `think harder` < `ultrathink`
 - 메타 프롬프트 / 자기 검증 요구
-- 세션 관리: `/clear` `/compact` `/resume` `--continue`
+- **`.claude` 폴더 구조 한눈에**: `commands/` `agents/` `hooks/` `skills/` `settings.json` `CLAUDE.md`
+- **Karpathy의 CLAUDE.md 철학 인용** — 길이가 아니라 신호대잡음비
 
 ### 실습 ② — 내 CLAUDE.md + 복구 + 주제 결정 (105′)
 - 일부러 망가뜨린 코드 복구 (에러 메시지를 그대로 전달)
@@ -162,7 +187,7 @@
 
 ## 9. Day 4 · 확장 (목)
 
-> 5일 중 가장 빡빡한 날. 모든 핵심 확장 기능을 한 번씩 다 만져본다.
+> 모든 핵심 확장 기능을 한 번씩 다 만져본다.
 
 ### 이론 ① — Sub-agents + MCP (90′)
 - Sub-agents (`/agents`): 컨텍스트 분리, 역할별 위임, 모델 선택 (Haiku / Sonnet / Opus)
@@ -174,17 +199,20 @@
 - Sub-agent 1개 정의 (예: 테스트 작성 전담)
 - MCP 1개 설치 · 연결 (Filesystem 또는 GitHub)
 
-### 이론 ② — Hooks · 커스텀 슬래시 · Skills (90′)
-- Hooks 이벤트 6종: PreToolUse / PostToolUse / Stop / UserPromptSubmit / Notification / SubagentStop
-- 활용: 저장 시 lint, 커밋 전 테스트, 응답 끝 알림
+### 이론 ② — 커스텀 슬래시 · Skills · design.md · 발표자 노트 (90′)
 - 커스텀 슬래시 `.claude/commands/*.md` (반복 프롬프트 템플릿화)
 - 공식 Skills: PPTX · DOCX · XLSX · PDF (`anthropic/skills`)
-- 헤드리스 `claude -p` — **자료에만 포함, 짧게 언급** ("있다는 것만 알아두세요")
+- **design.md / designmd.ai** — PPT 디자인 통일 가이드라인
+- **발표자 노트 자동 생성** — 5일차 본인 발표 준비에 직결
+- 헤드리스 `claude -p` 짧게 — "있다는 것만 알아두세요"
+- **양방향 텔레그램 봇 응용 사례 1슬라이드**
+  - 흐름도: 텔레그램 메시지 → 봇이 `claude -p` 호출 → 결과 응답
+  - 직접 구현 X · 코드 스니펫 + 흐름도만
 
 ### 실습 ② — 자동화 한 줄씩 (105′)
-- Hook 1개 (저장 시 lint)
 - 커스텀 슬래시 1개 (본인 반복 작업 템플릿)
 - 공식 Skill로 PPTX 생성 (Day 1 자기소개 → 발표 슬라이드 변환)
+- **design.md 적용해서 디자인 통일**
 - 미니프로젝트에 도구 1~2개 녹이기 시작
 
 ---
