@@ -24,20 +24,30 @@
     .day-card__num-big { font-family: var(--font-mono); font-size: 1.5rem; line-height: 1; font-weight: 700; color: var(--color-on-surface); letter-spacing: -0.02em; }
     .day-card__num-date { font-family: var(--font-mono); font-size: 0.56rem; color: var(--color-on-surface-muted); letter-spacing: 0.02em; white-space: nowrap; }
 
-    /* body — keyword는 카드 상단 라벨로 절대 배치. title + desc 모두 항상 표시 */
-    .day-card__body { position: relative; min-width: 0; height: 100%; padding-top: 0.9rem; display: flex; flex-direction: column; justify-content: center; gap: 0.15rem; }
+    /* body — keyword는 카드 상단 라벨로 절대 배치. 기본은 title만, hover 시 desc로 교차 */
+    .day-card__body { position: relative; min-width: 0; height: 100%; padding-top: 0.9rem; display: flex; flex-direction: column; justify-content: center; }
     .day-card__keyword { position: absolute; top: 0; left: 0; font-size: 0.58rem; letter-spacing: 0.08em; font-weight: 700; color: var(--color-primary-strong); text-transform: uppercase; line-height: 1; margin: 0; }
-    .day-card__title { margin: 0; font-size: 0.92rem; font-weight: 700; letter-spacing: -0.025em; line-height: 1.2; }
-    .day-card__desc {
+    .day-card__title, .day-card__desc {
       margin: 0;
-      font-size: 0.66rem;
+      transition: opacity 0.18s ease;
+    }
+    .day-card__title { font-size: 1rem; font-weight: 700; letter-spacing: -0.025em; line-height: 1.2; }
+    .day-card__desc {
+      position: absolute;
+      left: 0; right: 0;
+      top: 0.9rem;
+      bottom: 0;
+      font-size: 0.72rem;
       line-height: 1.4;
       color: var(--color-on-surface-muted);
-      display: -webkit-box;
-      -webkit-line-clamp: 2;
-      -webkit-box-orient: vertical;
+      opacity: 0;
+      pointer-events: none;
+      display: flex;
+      align-items: center;
       overflow: hidden;
     }
+    .day-card:hover .day-card__title { opacity: 0; }
+    .day-card:hover .day-card__desc { opacity: 1; }
     .day-card__meta { display: flex; flex-direction: column; align-items: flex-end; gap: 0.15rem; font-family: var(--font-mono); white-space: nowrap; }
     .day-card__meta-count { font-size: 0.95rem; font-weight: 700; color: var(--color-primary-strong); }
     .day-card__meta-label { font-size: 0.6rem; color: var(--color-on-surface-muted); letter-spacing: 0.05em; }
