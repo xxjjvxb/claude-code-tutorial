@@ -1,0 +1,93 @@
+/* Design tokens — derived from DESIGN.md (Evreghen Command Center) */
+
+:root {
+  /* ==== Colors ==== */
+  --color-background: #fcfaf7;
+  --color-on-background: #423d38;
+  --color-surface: #f3f4f6;
+  --color-surface-soft: #edebe9;
+  --color-surface-elevated: #ffffff;
+  --color-on-surface: #423d38;
+  --color-on-surface-muted: #797067;
+  --color-outline: #e3e0dd;
+  --color-outline-strong: #d1d5dc;
+
+  --color-primary: #fe6e00;
+  --color-primary-strong: #ff6b00;
+  --color-primary-warm: #ffb74d;
+  --color-primary-focus: #f97015;
+  --color-primary-fill: #cc5a14;        /* 큰 면적 카드 배경용 — 명도 낮춰 시각 피로 완화 */
+  --color-on-primary: #ffffff;
+
+  --color-shell-base: #000000;
+  --color-on-shell: #ffffff;
+
+  --color-success: #00c758;
+  --color-warning: #edb200;
+  --color-danger: #fb2c36;
+  --color-info: #3080ff;
+
+  --status-mock-bg: #fef9c2;
+  --status-mock-fg: #874b00;
+  --status-planned-bg: #f3f4f6;
+  --status-planned-fg: #364153;
+  --status-development-bg: #dbeafe;
+  --status-development-fg: #1447e6;
+  --status-integrated-bg: #f3e8ff;
+  --status-integrated-fg: #8200da;
+  --status-production-bg: #dcfce7;
+  --status-production-fg: #016630;
+
+  /* ==== Typography ==== */
+  /* --font-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif; */
+  --font-sans: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+
+  --type-display-hero-size: 6rem;
+  --type-headline-xl-size: 2rem;
+  --type-headline-xl-lh: 2.5rem;
+  --type-headline-lg-size: 1.5rem;
+  --type-headline-lg-lh: 2rem;
+  --type-title-md-size: 1.125rem;
+  --type-title-md-lh: 1.75rem;
+  --type-body-lg-size: 1rem;
+  --type-body-lg-lh: 1.5rem;
+  --type-body-md-size: 0.875rem;
+  --type-body-md-lh: 1.25rem;
+  --type-label-sm-size: 0.75rem;
+  --type-label-sm-weight: 600;
+  --type-label-sm-tracking: 0.05em;
+
+  /* ==== Rounded ==== */
+  --rounded-xs: 4px;
+  --rounded-sm: 6px;
+  --rounded-md: 8px;
+  --rounded-lg: 12px;
+  --rounded-pill: 9999px;
+
+  /* ==== Spacing ==== */
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 12px;
+  --space-lg: 16px;
+  --space-xl: 24px;
+  --space-2xl: 32px;
+  --space-3xl: 40px;
+  --space-4xl: 64px;
+
+  /* ==== Shadows ==== */
+  --shadow-subtle: 0 1px 3px rgba(0, 0, 0, 0.10), 0 1px 2px rgba(0, 0, 0, 0.06);
+  --shadow-raised: 0 4px 12px rgba(0, 0, 0, 0.12);
+  --shadow-dialog: 0 20px 25px rgba(0, 0, 0, 0.10), 0 8px 10px rgba(0, 0, 0, 0.04);
+
+  /* ==== Motion ==== */
+  --motion-fast: 150ms;
+  --motion-normal: 200ms;
+  --motion-slow: 300ms;
+  --motion-panel: 500ms;
+  --easing-standard: cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* ==== Slide-specific ==== */
+  --slide-padding: 64px;
+  --chrome-height: 48px;
+}

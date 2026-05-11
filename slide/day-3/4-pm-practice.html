@@ -1,0 +1,326 @@
+﻿<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Day 3 · 오후 실습 · 복구 + CLAUDE.md + 미니 첫 손</title>
+  <link rel="stylesheet" href="../styles/tokens.css">
+  <link rel="stylesheet" href="../styles/deck.css">
+</head>
+<body>
+
+<header class="deck-chrome">
+  <span class="deck-chrome__brand">CLAUDE CODE · 5D</span>
+  <span class="deck-chrome__divider">·</span>
+  <span class="deck-chrome__day">DAY 03 · 오후 실습</span>
+  <span class="deck-chrome__spacer"></span>
+  <span class="deck-chrome__counter">— / —</span>
+</header>
+
+<main class="deck">
+
+  <!-- 1 · Section cover -->
+  <section class="slide is-section is-standard">
+    <div class="section-eyebrow">PART 04 · 14:45 — 16:30</div>
+    <h2 class="section-title">복구 + CLAUDE.md + <span class="accent">미니 첫 손</span></h2>
+    <p class="section-caption">디버깅 패턴 익히고, 본인 미니프로젝트 폴더에 CLAUDE.md 작성하고, 첫 커밋까지. 오늘 끝나면 미니프로젝트가 시작 상태가 됩니다.</p>
+    <div class="section-meta">
+      <div class="section-meta__item"><span class="section-meta__num">3</span><span>활동</span></div>
+      <div class="section-meta__item"><span class="section-meta__num">16:30</span><span>결과물 공유</span></div>
+    </div>
+  </section>
+
+  <!-- 2 · 흐름 -->
+  <section class="slide is-standard">
+    <div class="slide__eyebrow">OVERVIEW · 흐름</div>
+    <h2 class="slide__title">오후 실습 — <span class="accent">3 활동</span></h2>
+    <div class="slide__body">
+      <div class="setup-grid">
+        <div class="setup-step"><div class="setup-step__num">A</div><h3 class="setup-step__title">복구 훈련</h3><p class="setup-step__desc">망가뜨린 코드 복구 — 에러 메시지 → Claude → 가설 분리</p></div>
+        <div class="setup-step"><div class="setup-step__num">B</div><h3 class="setup-step__title">내 CLAUDE.md</h3><p class="setup-step__desc">미니프로젝트 폴더에 30줄 이내 룰북 작성</p></div>
+        <div class="setup-step"><div class="setup-step__num">C</div><h3 class="setup-step__title">첫 커밋</h3><p class="setup-step__desc">README + CLAUDE.md → git init → commit</p></div>
+      </div>
+      <p class="slide__note">A는 디버깅 감각, B는 길들이기 시작, C는 5일 끝까지 이어질 폴더 준비. <strong>모두 미니프로젝트로 직결</strong>.</p>
+    </div>
+  </section>
+
+  <!-- 3 · 복구 훈련 개요 -->
+  <section class="slide is-standard">
+    <div class="slide__eyebrow">A · 복구 훈련 — 디버깅 패턴</div>
+    <h2 class="slide__title">에러를 <span class="accent">에러 메시지 그대로</span> 던지기</h2>
+    <div class="slide__body">
+      <div class="bg-compare">
+        <div class="bg-compare__side bg-compare__side--bad">
+          <div class="bg-compare__label">× 가공해서 던지기</div>
+          <div class="bg-compare__quote">
+            <div>"뭔가 안 돼"</div>
+            <div>"None 어쩌고 떴는데"</div>
+            <div>"...아 그게..."</div>
+            <div>Claude가 정확히 모름</div>
+          </div>
+          <p class="bg-compare__note">사람의 요약이 정보 손실.</p>
+        </div>
+        <div class="bg-compare__side bg-compare__side--good">
+          <div class="bg-compare__label">✓ 그대로 던지기</div>
+          <div class="bg-compare__quote">
+            <div>"이 에러 디버깅해줘:"</div>
+            <div>Traceback (most recent call last):</div>
+            <div>  File "game.py", line 42, in &lt;module&gt;</div>
+            <div>    player.health -= 10</div>
+            <div>AttributeError: 'NoneType' has no...</div>
+          </div>
+          <p class="bg-compare__note">전체 traceback이 가장 좋은 입력.</p>
+        </div>
+      </div>
+      <p class="slide__note">VS Code 터미널에서 에러 부분 드래그 선택 → Ctrl+C → claude에 Ctrl+V. <strong>가공 X · 통째로</strong>.</p>
+    </div>
+  </section>
+
+  <!-- 4 · 복구 단계별 -->
+  <section class="slide is-standard">
+    <div class="slide__eyebrow">A · 디버깅 흐름</div>
+    <h2 class="slide__title">막힐 때 <span class="accent">3단계</span></h2>
+    <div class="slide__body">
+      <div class="cycle">
+        <div class="cycle__step"><div class="cycle__num">01</div><div class="cycle__title">에러 그대로</div><div class="cycle__desc">통째로 복사해 던지기</div><div class="cycle__example">traceback 5–10줄</div></div>
+        <div class="cycle__step"><div class="cycle__num">02</div><div class="cycle__title">로그 확인</div><div class="cycle__desc">"print 추가해서 어디서 None인지 추적"</div><div class="cycle__example">print 5개 박기</div></div>
+        <div class="cycle__step"><div class="cycle__num">03</div><div class="cycle__title">가설 분리</div><div class="cycle__desc">"3개 원인 후보 + 각각 어떻게 검증"</div><div class="cycle__example">A · B · C 분리</div></div>
+      </div>
+      <p class="slide__note">3단계까지 가면 거의 모든 버그 풀림. 안 풀리면 → <strong>think hard</strong> 한 번 추가 → 그래도 막히면 손들기.</p>
+    </div>
+  </section>
+
+  <!-- 5 · 복구 실전 예시 -->
+  <section class="slide is-standard">
+    <div class="slide__eyebrow">A · 실전 — 망가진 game.py</div>
+    <h2 class="slide__title">강사가 <span class="accent">일부러 망가뜨린 코드</span>로 연습</h2>
+    <div class="slide__body">
+      <div class="code-block">
+        <div class="code-block__header">
+          <span class="code-block__dot" style="background:#fb2c36"></span><span class="code-block__dot" style="background:#edb200"></span><span class="code-block__dot" style="background:#00c758"></span>
+          <span class="code-block__title">claude · 복구 한 사이클</span>
+        </div>
+        <div class="code-block__body"><span class="code-block__line"><span class="code-block__cmt"># 1) 강사 제공 망가진 코드 받기 (단톡방)</span></span><span class="code-block__line"><span class="code-block__cmd">&gt; <span class="code-block__hi">@broken_game.py</span> 이 에러 디버깅해줘:</span></span><span class="code-block__line"><span class="code-block__out">  Traceback (most recent call last):</span></span><span class="code-block__line"><span class="code-block__out">    File "broken_game.py", line 23, in move</span></span><span class="code-block__line"><span class="code-block__out">      self.rooms[direction].enter()</span></span><span class="code-block__line"><span class="code-block__out">  KeyError: 'north'</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__out">  코드 검토 결과:</span></span><span class="code-block__line"><span class="code-block__out">  · rooms.json엔 "n"으로 저장됨 (한 글자)</span></span><span class="code-block__line"><span class="code-block__out">  · 사용자 입력은 "north" (전체 단어)</span></span><span class="code-block__line"><span class="code-block__out">  · 매칭 안 돼서 KeyError</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__out">  수정안: input을 단축어로 변환</span></span><span class="code-block__line"><span class="code-block__out">  ALIAS = {"north": "n", "south": "s", ...}</span></span><span class="code-block__line"><span class="code-block__out">  → 적용할까요?</span></span></div>
+      </div>
+      <p class="slide__note">3개 정도 다른 버그가 있는 코드를 받습니다. <strong>한 개 풀고 commit · 다음 풀고 commit</strong> 패턴.</p>
+    </div>
+  </section>
+
+  <!-- 6 · 복구 마무리 + 검증 -->
+  <section class="slide is-standard">
+    <div class="slide__eyebrow">A · 검증은 사람</div>
+    <h2 class="slide__title">"고쳤다"는 말 — <span class="accent">실제로 돌려서</span> 확인</h2>
+    <div class="slide__body">
+      <div class="grid-4">
+        <div class="promise-card">
+          <div class="promise-card__num">1</div>
+          <h3 class="promise-card__title">코드 적용</h3>
+          <p class="promise-card__body">Claude가 제안한 수정 → Approve 또는 직접 적용.</p>
+        </div>
+        <div class="promise-card">
+          <div class="promise-card__num">2</div>
+          <h3 class="promise-card__title">실행</h3>
+          <p class="promise-card__body"><code>python broken_game.py</code> — 정말 동작하는지 본인 손으로.</p>
+        </div>
+        <div class="promise-card">
+          <div class="promise-card__num">3</div>
+          <h3 class="promise-card__title">commit</h3>
+          <p class="promise-card__body"><code>git commit -m "north 방향 KeyError 수정"</code> — 어떻게 고쳤는지 메시지에.</p>
+        </div>
+        <div class="promise-card">
+          <div class="promise-card__num">4</div>
+          <h3 class="promise-card__title">다음 버그</h3>
+          <p class="promise-card__body">다음 에러로 → 같은 사이클 반복.</p>
+        </div>
+      </div>
+      <p class="slide__note"><strong>"검증은 사람의 몫"</strong> — Day 1에서 본 한 줄. Claude가 "고쳤다" 해도 직접 돌려보기.</p>
+    </div>
+  </section>
+
+  <!-- 7 · CLAUDE.md 작성 시작 -->
+  <section class="slide is-standard">
+    <div class="slide__eyebrow">B · CLAUDE.md 작성 시작</div>
+    <h2 class="slide__title">미니프로젝트 폴더 만들기 — <span class="accent">5 단계</span></h2>
+    <div class="slide__body">
+      <div class="step-list step-list--compact">
+        <div class="step-list__item">
+          <div class="step-list__num">1</div>
+          <div class="step-list__content">
+            <p class="step-list__title">바탕화면에 새 폴더 — 이름은 본인 미니 (예: <code>my-budget</code>)</p>
+          </div>
+        </div>
+        <div class="step-list__item">
+          <div class="step-list__num">2</div>
+          <div class="step-list__content">
+            <p class="step-list__title">폴더 우클릭 → "터미널에서 열기" → <code>code .</code></p>
+          </div>
+        </div>
+        <div class="step-list__item">
+          <div class="step-list__num">3</div>
+          <div class="step-list__content">
+            <p class="step-list__title">VS Code 통합 터미널에서 <code>claude</code> → <code>/init</code> 실행</p>
+          </div>
+        </div>
+        <div class="step-list__item">
+          <div class="step-list__num">4</div>
+          <div class="step-list__content">
+            <p class="step-list__title">자동 생성된 CLAUDE.md 열기 — VS Code 사이드바에 보임</p>
+          </div>
+        </div>
+        <div class="step-list__item">
+          <div class="step-list__num">5</div>
+          <div class="step-list__content">
+            <p class="step-list__title">초안을 30줄 이내로 다이어트 — 5 카테고리 채우기</p>
+          </div>
+        </div>
+      </div>
+      <p class="slide__note">빈 폴더에서 /init하면 "프로젝트 의도"를 묻기도 함 — "가계부 한 페이지" 한 줄로 답.</p>
+    </div>
+  </section>
+
+  <!-- 8 · CLAUDE.md 5 카테고리 -->
+  <section class="slide is-standard">
+    <div class="slide__eyebrow">B · 5 카테고리 채우기</div>
+    <h2 class="slide__title">본인 미니에 맞춰 — <span class="accent">5 카테고리</span> 30줄</h2>
+    <div class="slide__body">
+      <div class="code-block">
+        <div class="code-block__header">
+          <span class="code-block__dot" style="background:#fb2c36"></span><span class="code-block__dot" style="background:#edb200"></span><span class="code-block__dot" style="background:#00c758"></span>
+          <span class="code-block__title">my-budget/CLAUDE.md — 예시</span>
+        </div>
+        <div class="code-block__body"><span class="code-block__line"><span class="code-block__hi"># my-budget — 가계부 한 페이지</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__cmt">## 1. 답변</span></span><span class="code-block__line"><span class="code-block__out">- 한국어로 답해줘</span></span><span class="code-block__line"><span class="code-block__out">- 코드 블록은 마크다운으로</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__cmt">## 2. 스택</span></span><span class="code-block__line"><span class="code-block__out">- Python 3.11 · Flask 3.0</span></span><span class="code-block__line"><span class="code-block__out">- SQLite (단일 파일)</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__cmt">## 3. 폴더 룰</span></span><span class="code-block__line"><span class="code-block__out">- 새 라우트는 routes/에 분리</span></span><span class="code-block__line"><span class="code-block__out">- DB 접근은 db.py 한 파일에 모음</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__cmt">## 4. 코드 스타일</span></span><span class="code-block__line"><span class="code-block__out">- 들여쓰기 4칸 · snake_case</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__cmt">## 5. 도구·명령</span></span><span class="code-block__line"><span class="code-block__out">- 실행: python app.py</span></span><span class="code-block__line"><span class="code-block__out">- 테스트: pytest tests/</span></span></div>
+      </div>
+      <p class="slide__note">총 22줄. 본인 스택·룰에 맞게 수정하세요. <strong>코드 보면 알 수 있는 것은 적지 마세요</strong>.</p>
+    </div>
+  </section>
+
+  <!-- 9 · CLAUDE.md 검증 -->
+  <section class="slide is-standard">
+    <div class="slide__eyebrow">B · 검증 — 작동하나</div>
+    <h2 class="slide__title">CLAUDE.md를 <span class="accent">진짜 적용</span>되는지 확인</h2>
+    <div class="slide__body">
+      <div class="two-col">
+        <div>
+          <div class="content-card content-card--compact">
+            <h3 class="content-card__title">검증 방법</h3>
+            <ol class="content-card__list content-card__list--ol">
+              <li>CLAUDE.md 저장 후 <code>/exit</code> → claude 재시작</li>
+              <li><code>/memory</code>로 현재 적용 룰 확인</li>
+              <li>"먼저 너 자기소개 해봐" — 한국어로 오는지</li>
+              <li>"라우트 추가해줘" — routes/에 자동 분리하는지</li>
+            </ol>
+          </div>
+        </div>
+        <div>
+          <div class="content-card content-card--compact">
+            <h3 class="content-card__title">예상 동작</h3>
+            <ul class="content-card__list">
+              <li>모든 답변이 자동으로 한국어</li>
+              <li>새 라우트 → routes/ 폴더 안에 생성</li>
+              <li>들여쓰기 4칸 · snake_case 변수명</li>
+              <li>"먼저 plan부터" 같은 룰도 자동 따름</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <p class="slide__note">검증 후 commit — <code>git commit -m "CLAUDE.md 초안 작성"</code>. 미니프로젝트의 <strong>첫 커밋</strong>입니다.</p>
+    </div>
+  </section>
+
+  <!-- 10 · 미니 첫 커밋 -->
+  <section class="slide is-standard">
+    <div class="slide__eyebrow">C · 미니 첫 커밋</div>
+    <h2 class="slide__title">README + CLAUDE.md → <span class="accent">git init</span> → commit</h2>
+    <div class="slide__body">
+      <div class="code-block">
+        <div class="code-block__header">
+          <span class="code-block__dot" style="background:#fb2c36"></span><span class="code-block__dot" style="background:#edb200"></span><span class="code-block__dot" style="background:#00c758"></span>
+          <span class="code-block__title">my-budget/ — 첫 커밋 한 사이클</span>
+        </div>
+        <div class="code-block__body"><span class="code-block__line"><span class="code-block__cmt"># 1) Claude에게 README 한 줄 부탁</span></span><span class="code-block__line"><span class="code-block__cmd">&gt; README.md 작성해줘 — 한 줄 의도만 있는 짧은 거</span></span><span class="code-block__line"><span class="code-block__out">  ✓ README.md 생성: "가계부 한 페이지 + 카테고리 합계"</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__cmt"># 2) git 초기화 + 첫 커밋</span></span><span class="code-block__line"><span class="code-block__prompt">PS&gt;</span> <span class="code-block__cmd">git init</span></span><span class="code-block__line"><span class="code-block__prompt">PS&gt;</span> <span class="code-block__cmd">git add .</span></span><span class="code-block__line"><span class="code-block__prompt">PS&gt;</span> <span class="code-block__cmd">git commit -m "<span class="code-block__hi">미니프로젝트 시작 — README + CLAUDE.md</span>"</span></span><span class="code-block__line"><span class="code-block__out">  [main (root-commit) 5e2a1f3] 미니프로젝트 시작</span></span><span class="code-block__line"><span class="code-block__out">   2 files changed, 28 insertions(+)</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__cmt"># 3) git log + /usage 한 번 확인</span></span></div>
+      </div>
+      <p class="slide__note">미니프로젝트 폴더에 <strong>첫 커밋이 들어간 순간</strong>. 5일째까지 이 폴더가 자라납니다.</p>
+    </div>
+  </section>
+
+  <!-- 11 · 결과물 공유 발표 가이드 -->
+  <section class="slide is-standard">
+    <div class="slide__eyebrow">SHARE TIME · 발표 가이드</div>
+    <h2 class="slide__title">1분 안에 <span class="accent">3가지</span></h2>
+    <div class="slide__body">
+      <div class="grid-3">
+        <div class="diff-card">
+          <div class="diff-card__rank">20초</div>
+          <h3 class="diff-card__title">미니프로젝트 소개</h3>
+          <p class="diff-card__body">폴더 이름 + 한 줄 의도. CLAUDE.md를 화면에 한 번 띄우기.</p>
+        </div>
+        <div class="diff-card">
+          <div class="diff-card__rank">30초</div>
+          <h3 class="diff-card__title">오늘 가장 잘 된 것</h3>
+          <p class="diff-card__body">Plan / Hook / 복구 / CLAUDE.md 중 어떤 게 가장 인상 깊었나?</p>
+        </div>
+        <div class="diff-card">
+          <div class="diff-card__rank">10초</div>
+          <h3 class="diff-card__title">/usage 결과</h3>
+          <p class="diff-card__body">오늘 합계 한 번 확인. Day 3는 가장 비싼 날 — 평소보다 ↑.</p>
+        </div>
+      </div>
+      <p class="slide__note">막힌 부분 — 솔직히 말해도 OK. 알림 안 떴으면 어디서 막혔는지가 강사·다른 수강생에게 도움.</p>
+    </div>
+  </section>
+
+  <!-- 12 · 결과물 공유 -->
+  <section class="slide is-statement">
+    <div class="statement-grid">
+      <div class="statement-text">
+        <div class="slide__eyebrow">SHARE TIME · 16:30 — 17:00</div>
+        <h2 class="statement__lead">1인 1분, <span class="accent">미니프로젝트 시작</span> 결과물 공유</h2>
+        <p class="statement__caption">오늘 처음으로 본인 미니프로젝트 폴더가 생겼습니다. 간단해도 공유할 거리 — CLAUDE.md 한 번 보여주기.</p>
+        <div class="statement__points">
+          <div class="statement__point"><span class="statement__point-num">차례</span><span>본인 차례 — 화면 띄우고 한 줄 설명</span></div>
+          <div class="statement__point"><span class="statement__point-num">+</span><span>강사 코멘트 1줄</span></div>
+          <div class="statement__point"><span class="statement__point-num">/usage</span><span>본인 사용량 한 번 확인</span></div>
+        </div>
+      </div>
+      <div class="statement-visual">
+        <svg viewBox="0 0 460 320" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <rect x="0" y="0" width="460" height="320" rx="16" fill="#fff5ec"/>
+          <text x="230" y="50" font-family="ui-sans-serif, system-ui" font-size="13" fill="#797067" letter-spacing="0.1em" font-weight="700" text-anchor="middle">오늘 손에 들어온 것</text>
+          <rect x="155" y="80" width="150" height="220" rx="16" fill="#1e1e1e" stroke="#797067" stroke-width="2"/>
+          <rect x="165" y="100" width="130" height="180" rx="6" fill="rgba(255,255,255,0.05)"/>
+          <text x="230" y="125" font-family="ui-sans-serif, system-ui" font-size="10" fill="rgba(255,255,255,0.5)" text-anchor="middle" letter-spacing="0.05em">TELEGRAM</text>
+          <line x1="175" y1="135" x2="285" y2="135" stroke="rgba(255,255,255,0.1)"/>
+          <rect x="175" y="148" width="110" height="58" rx="8" fill="white"/>
+          <text x="185" y="167" font-family="ui-sans-serif, system-ui" font-size="9" fill="#cc5a14" font-weight="700">CLAUDE BOT</text>
+          <text x="185" y="184" font-family="ui-sans-serif, system-ui" font-size="9" fill="#423d38">✓ 응답 끝났어요</text>
+          <text x="185" y="198" font-family="ui-sans-serif, system-ui" font-size="9" fill="#797067">my-budget · 16:25</text>
+          <rect x="175" y="216" width="110" height="40" rx="8" fill="white"/>
+          <text x="185" y="234" font-family="ui-sans-serif, system-ui" font-size="9" fill="#cc5a14" font-weight="700">CLAUDE BOT</text>
+          <text x="185" y="248" font-family="ui-sans-serif, system-ui" font-size="9" fill="#423d38">✓ commit 완료</text>
+          <text x="230" y="280" font-family="ui-sans-serif, system-ui" font-size="11" fill="rgba(255,255,255,0.7)" text-anchor="middle">알림 +</text>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- 13 · 마무리 + Day 4 예고 -->
+  <section class="slide is-standard">
+    <div class="slide__eyebrow">RECAP · Day 3 마무리 + 내일</div>
+    <h2 class="slide__title">내일은 <span class="accent">확장</span> — Sub-agents · MCP · Skills</h2>
+    <div class="slide__body">
+      <div class="preview-grid">
+        <div class="preview-item"><div class="preview-item__symbol">👥</div><div class="preview-item__name">Sub-agents</div><div class="preview-item__desc">역할별 분리 — 테스트 작성 전담 에이전트 등</div></div>
+        <div class="preview-item"><div class="preview-item__symbol">🔌</div><div class="preview-item__name">MCP</div><div class="preview-item__desc">"Claude의 USB 포트" — Filesystem · GitHub 연결</div></div>
+        <div class="preview-item"><div class="preview-item__symbol">/</div><div class="preview-item__name">커스텀 슬래시</div><div class="preview-item__desc">.claude/commands/*.md 로 본인 명령어</div></div>
+        <div class="preview-item"><div class="preview-item__symbol">🛠</div><div class="preview-item__name">공식 Skills</div><div class="preview-item__desc">PPTX · DOCX · XLSX · PDF 자동 생성</div></div>
+      </div>
+      <p class="slide__note">숙제 X — Day 4는 도구가 많지만 "직접 만드는 것 4개" + "시연만 2개"로 명확히 분리. 푹 쉬세요.</p>
+    </div>
+  </section>
+
+</main>
+
+<div class="deck-progress"><div class="deck-progress__bar"></div></div>
+<script src="../scripts/deck.js"></script>
+</body>
+</html>

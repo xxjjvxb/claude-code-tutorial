@@ -1,0 +1,70 @@
+﻿<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Day 1 · 만남 · Claude Code 5일 완주</title>
+  <link rel="stylesheet" href="../styles/tokens.css">
+  <link rel="stylesheet" href="../styles/deck.css">
+  <style>
+    .day-header { display: flex; flex-direction: column; gap: 0.15rem; flex-shrink: 0; }
+    .day-header__brand { font-size: 0.62rem; letter-spacing: 0.15em; text-transform: uppercase; font-weight: 700; color: var(--color-primary-strong); }
+    .day-header__title { font-size: 1.5rem; font-weight: 700; line-height: 1.1; letter-spacing: -0.025em; margin: 0.05rem 0 0.2rem 0; color: var(--color-on-surface); }
+    .day-header__caption { font-size: 0.68rem; line-height: 1.45; color: var(--color-on-surface-muted); margin: 0; max-width: 38rem; }
+
+    .block-grid { display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr; gap: 0.55rem; flex: 1; min-height: 0; }
+    .block-card { background: var(--color-surface-elevated); border: 2px solid var(--color-outline-strong); border-radius: var(--rounded-md); padding: 0.65rem 0.85rem; text-decoration: none; color: var(--color-on-surface); display: flex; flex-direction: column; gap: 0.2rem; transition: transform var(--motion-fast) var(--easing-standard), border-color var(--motion-fast), box-shadow var(--motion-fast); min-height: 0; overflow: hidden; }
+    .block-card:hover { transform: translateY(-2px); border-color: var(--color-primary); box-shadow: var(--shadow-raised); }
+    .block-card__time { font-family: var(--font-mono); font-size: 0.6rem; color: var(--color-primary-strong); font-weight: 700; letter-spacing: 0.05em; }
+    .block-card__title { font-size: 0.95rem; font-weight: 700; line-height: 1.2; letter-spacing: -0.02em; margin: 0; }
+    .block-card__desc { font-size: 0.66rem; line-height: 1.4; color: var(--color-on-surface-muted); margin: 0; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; }
+    .block-card__count { margin-top: auto; font-family: var(--font-mono); font-size: 0.64rem; color: var(--color-primary-strong); font-weight: 700; }
+  </style>
+</head>
+<body>
+
+<main class="index-stage">
+  <header class="deck-chrome">
+    <span class="deck-chrome__brand">CLAUDE CODE · 5D</span>
+    <span class="deck-chrome__divider">·</span>
+    <span class="deck-chrome__day">DAY 01 · 인덱스</span>
+    <span class="deck-chrome__spacer"></span>
+  </header>
+
+  <header class="day-header">
+    <div class="day-header__brand">CLAUDE CODE · 5일 완주 · DAY 01</div>
+    <h1 class="day-header__title">만남 — AI 코딩의 흐름과<br>Claude Code의 자리</h1>
+    <p class="day-header__caption">2026.05.18 · 월요일 · 09:00 — 17:00. 머리로 이해하고, 내 컴퓨터에서 한 번 돌려본다.</p>
+  </header>
+
+  <div class="block-grid">
+    <a class="block-card" href="1-am-theory.html">
+      <div class="block-card__time">09:00 — 10:30 · 오전 이론</div>
+      <h2 class="block-card__title">AI 코딩 + Claude Code 정체성</h2>
+      <p class="block-card__desc">강사 소개 · 60년 압축사 · 3세대 deep · 임팩트 데이터 · 3가지 차별점 · 모델 family · 한계 · 5일 미리보기.</p>
+      <div class="block-card__count">23 슬라이드 →</div>
+    </a>
+    <a class="block-card" href="2-am-practice.html">
+      <div class="block-card__time">10:45 — 12:00 · 오전 실습</div>
+      <h2 class="block-card__title">0부터 셋업</h2>
+      <p class="block-card__desc">VS Code · 환경변수 · Claude Code 설치 → 가입·결제 또는 강의 키 → 첫 실행 → VS Code 통합.</p>
+      <div class="block-card__count">13 슬라이드 →</div>
+    </a>
+    <a class="block-card" href="3-pm-theory.html">
+      <div class="block-card__time">13:00 — 14:30 · 오후 이론</div>
+      <h2 class="block-card__title">터미널 + 프롬프팅</h2>
+      <p class="block-card__desc">터미널 역사 · PowerShell · 파일 경로 · TUI · 응답 패턴 · 점진적 구체화 · 메타 프롬프트 · 슬래시.</p>
+      <div class="block-card__count">19 슬라이드 →</div>
+    </a>
+    <a class="block-card" href="4-pm-practice.html">
+      <div class="block-card__time">14:45 — 17:00 · 오후 실습</div>
+      <h2 class="block-card__title">자기소개 워밍업</h2>
+      <p class="block-card__desc">미션 1 인터뷰 → 톤 변형 · 미션 2 HTML 디자인 변형 · 결과물 공유.</p>
+      <div class="block-card__count">13 슬라이드 →</div>
+    </a>
+  </div>
+</main>
+
+<script src="../scripts/index-nav.js"></script>
+</body>
+</html>

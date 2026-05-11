@@ -1,0 +1,641 @@
+﻿<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Day 3 · 오전 이론 · Plan Mode + Hooks</title>
+  <link rel="stylesheet" href="../styles/tokens.css">
+  <link rel="stylesheet" href="../styles/deck.css">
+</head>
+<body>
+
+<header class="deck-chrome">
+  <span class="deck-chrome__brand">CLAUDE CODE · 5D</span>
+  <span class="deck-chrome__divider">·</span>
+  <span class="deck-chrome__day">DAY 03 · 오전 이론</span>
+  <span class="deck-chrome__spacer"></span>
+  <span class="deck-chrome__counter">— / —</span>
+</header>
+
+<main class="deck">
+
+  <!-- 1 · Cover -->
+  <section class="slide is-cover">
+    <div class="cover-grid">
+      <div class="cover-left">
+        <div class="cover-brand">CLAUDE CODE · 5일 완주</div>
+        <div class="cover-illustration">
+          <svg class="cover-terminal" viewBox="0 0 460 280" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <rect x="0" y="0" width="460" height="280" rx="14" fill="rgba(0,0,0,0.92)"/>
+            <rect x="0" y="0" width="460" height="36" fill="rgba(255,255,255,0.04)"/>
+            <circle cx="22" cy="18" r="5" fill="#fb2c36"/>
+            <circle cx="42" cy="18" r="5" fill="#edb200"/>
+            <circle cx="62" cy="18" r="5" fill="#00c758"/>
+            <text x="230" y="22" fill="rgba(255,255,255,0.4)" font-family="ui-monospace, monospace" font-size="11" text-anchor="middle">claude · plan</text>
+            <text x="22" y="74" fill="#fe6e00" font-family="ui-monospace, monospace" font-size="13">&gt; 큰 작업 시키기 전</text>
+            <text x="22" y="100" fill="rgba(255,255,255,0.85)" font-family="ui-monospace, monospace" font-size="12">  계획서 먼저 보여줘</text>
+            <text x="22" y="138" fill="white" font-family="ui-monospace, monospace" font-size="13">  1. auth.py 생성</text>
+            <text x="22" y="156" fill="white" font-family="ui-monospace, monospace" font-size="13">  2. routes.py 수정</text>
+            <text x="22" y="174" fill="white" font-family="ui-monospace, monospace" font-size="13">  3. login.html 추가</text>
+            <text x="22" y="218" fill="#fe6e00" font-family="ui-monospace, monospace" font-size="13">  [Approve / Edit / Reject]</text>
+          </svg>
+        </div>
+        <div class="cover-foot">
+          <div class="cover-foot-num">03</div>
+          <div class="cover-foot-meta">2026.05.20 · WED · 오전 이론 09:00–10:30</div>
+        </div>
+      </div>
+      <div class="cover-right">
+        <div class="cover-card">
+          <div class="cover-card__day">DAY 03 / 05 · 협업</div>
+          <h2 class="cover-card__title">Plan Mode +<br>Hooks 시작</h2>
+          <p class="cover-card__subtitle">큰 변경 전엔 계획부터.<br>응답 끝나면 휴대폰에 알림 — 자동화의 첫 경험.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2 · 어제 → 오늘 -->
+  <section class="slide is-standard">
+    <div class="slide__eyebrow">어제 → 오늘</div>
+    <h2 class="slide__title">어제 손에 익혔다면, 오늘은 <span class="accent">길들이기</span></h2>
+    <div class="slide__body">
+      <div class="bg-compare">
+        <div class="bg-compare__side bg-compare__side--soft">
+          <div class="bg-compare__label">DAY 02 · 어제까지</div>
+          <div class="bg-compare__quote">
+            <div>Git 4명령 + / @ ! # 4문법 손에</div>
+            <div>모드·권한·비용·컨텍스트 운영 감각</div>
+            <div>가위바위보 + 변환기 분할 빌드 경험</div>
+            <div>점심에 미니프로젝트 결정 끝</div>
+          </div>
+          <p class="bg-compare__note">Claude를 부릴 줄은 안다.</p>
+        </div>
+        <div class="bg-compare__side bg-compare__side--good">
+          <div class="bg-compare__label">DAY 03 · 오늘</div>
+          <div class="bg-compare__quote">
+            <div>Plan Mode — 큰 변경 전에 계획부터</div>
+            <div>Hooks — 자동화 첫 경험 (휴대폰 알림)</div>
+            <div>CLAUDE.md 깊게 — 내 프로젝트 룰북</div>
+            <div>미니프로젝트에 첫 커밋</div>
+          </div>
+          <p class="bg-compare__note">Claude를 <strong>길들이기</strong> 시작합니다.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3 · 오늘의 목표 -->
+  <section class="slide is-feature">
+    <div class="feature-head">
+      <div class="slide__eyebrow">오늘의 목표</div>
+      <h2 class="feature-head__title">큰 변경 전 <span class="accent">계획부터</span> 보고, 작업 끝나면 <span class="accent">휴대폰에 알림</span>.</h2>
+    </div>
+    <div class="feature-body">
+      <div class="feature-text">
+        <p class="statement__caption">한 번이라도 Plan Mode를 거쳐서 큰 변경을 해보고, 본인 휴대폰에 Claude의 알림이 오면 합격선.</p>
+        <div class="statement__points">
+          <div class="statement__point"><span class="statement__point-num">오전 이론</span><span>Plan Mode 깊게 + Hooks 카탈로그</span></div>
+          <div class="statement__point"><span class="statement__point-num">오전 실습</span><span>Plan으로 게임 분석 → 체력 추가 + Telegram 알림 Hook</span></div>
+          <div class="statement__point"><span class="statement__point-num">오후 이론</span><span>CLAUDE.md 좋은 예 · CoT · .claude 폴더 · Karpathy</span></div>
+          <div class="statement__point"><span class="statement__point-num">오후 실습</span><span>망친 코드 복구 · 내 CLAUDE.md 작성 · 미니 첫 커밋</span></div>
+        </div>
+      </div>
+      <div class="feature-visual">
+        <svg viewBox="0 0 460 320" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <defs><linearGradient id="goalGrad3" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#fff5ec"/><stop offset="100%" stop-color="#ffe0c2"/></linearGradient></defs>
+          <rect x="0" y="0" width="460" height="320" rx="16" fill="url(#goalGrad3)"/>
+          <rect x="40" y="50" width="380" height="100" rx="10" fill="white" stroke="#cc5a14" stroke-width="2"/>
+          <text x="55" y="78" font-family="ui-sans-serif, system-ui" font-size="13" font-weight="700" fill="#cc5a14">PLAN MODE</text>
+          <text x="55" y="105" font-family="ui-monospace, monospace" font-size="13" fill="#423d38">"계획부터 보여줘" → 승인 → 실행</text>
+          <text x="55" y="128" font-family="ui-sans-serif, system-ui" font-size="11" fill="#797067">큰 변경 앞에서 안전벨트</text>
+          <rect x="40" y="170" width="380" height="100" rx="10" fill="#cc5a14"/>
+          <text x="55" y="198" font-family="ui-sans-serif, system-ui" font-size="13" font-weight="700" fill="white">HOOKS</text>
+          <text x="55" y="225" font-family="ui-monospace, monospace" font-size="13" fill="white">응답 끝 → curl → Telegram 알림</text>
+          <text x="55" y="248" font-family="ui-sans-serif, system-ui" font-size="11" fill="rgba(255,255,255,0.85)">자동화 첫 경험 — 한 줄로 끝</text>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4 · 오전 90분 로드맵 -->
+  <section class="slide is-standard">
+    <div class="slide__eyebrow">오전 이론 · 90분 로드맵</div>
+    <h2 class="slide__title">두 파트로 — <span class="accent">Plan + Hooks</span></h2>
+    <div class="slide__body">
+      <div class="grid-3">
+        <div class="diff-card">
+          <div class="diff-card__rank">PART A</div>
+          <h3 class="diff-card__title">Plan Mode 깊게</h3>
+          <p class="diff-card__body">큰 변경 전 계획서 → 사람이 읽고 승인. <code>Shift+Tab</code> 두 번이면 진입.</p>
+        </div>
+        <div class="diff-card">
+          <div class="diff-card__rank">PART B</div>
+          <h3 class="diff-card__title">Hooks 카탈로그</h3>
+          <p class="diff-card__body">6 이벤트 — 외울 필요 X. <strong>Stop 하나</strong>로 시작 — 응답 끝나면 휴대폰 알림.</p>
+        </div>
+        <div class="diff-card">
+          <div class="diff-card__rank">→ 실습</div>
+          <h3 class="diff-card__title">손풀이</h3>
+          <p class="diff-card__body">텍스트 게임 받아서 Plan으로 분석 → 체력 시스템 추가 + 본인 봇으로 알림 받기.</p>
+        </div>
+      </div>
+      <p class="slide__note">Plan은 안전벨트, Hook은 첫 자동화. 둘 다 <strong>처음엔 단순하게</strong> 시작합니다.</p>
+    </div>
+  </section>
+
+  <!-- 5 · Part A intro -->
+  <section class="slide is-section is-standard">
+    <div class="section-eyebrow">PART A · PLAN MODE 깊게</div>
+    <h2 class="section-title">Plan Mode — <span class="accent">큰 변경의 안전벨트</span></h2>
+    <p class="section-caption">실행 전 계획서를 보고, 사람이 한 번 승인. 큰 작업 앞에서는 거의 무조건 켜야 하는 모드.</p>
+    <div class="section-meta">
+      <div class="section-meta__item"><span class="section-meta__num">Shift+Tab</span><span>진입 단축키</span></div>
+      <div class="section-meta__item"><span class="section-meta__num">3</span><span>승인 옵션</span></div>
+    </div>
+  </section>
+
+  <!-- 6 · 왜 Plan Mode -->
+  <section class="slide is-statement">
+    <div class="statement-grid statement-grid--visual-wide">
+      <div class="statement-text">
+        <div class="slide__eyebrow">WHY · Plan을 켜는 이유</div>
+        <h2 class="statement__lead">"5개 파일 동시 수정"이 <span class="accent">계획서 없이</span> 진행되면 위험.</h2>
+        <p class="statement__caption">큰 변경은 한 번 시작되면 멈추기 어려움. 미리 의도가 맞는지 사람이 한 번 봐야 사고가 안 남.</p>
+        <div class="statement__points">
+          <div class="statement__point"><span class="statement__point-num">미리</span><span>무엇을 어떤 순서로 할지 보임</span></div>
+          <div class="statement__point"><span class="statement__point-num">선택</span><span>승인 · 수정 요청 · 거절 — 사람의 판단 개입</span></div>
+          <div class="statement__point"><span class="statement__point-num">결과</span><span>의도와 다른 수정이 시작되기 전에 멈춤</span></div>
+        </div>
+      </div>
+      <div class="statement-visual">
+        <svg viewBox="0 0 460 320" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <rect x="0" y="0" width="460" height="320" rx="16" fill="#fff5ec"/>
+          <text x="230" y="40" font-family="ui-sans-serif, system-ui" font-size="13" fill="#797067" letter-spacing="0.1em" font-weight="700" text-anchor="middle">Plan 켜고 vs 끄고</text>
+          <rect x="40" y="60" width="380" height="100" rx="10" fill="#fef2f2" stroke="#fb2c36" stroke-width="2"/>
+          <text x="55" y="88" font-family="ui-sans-serif, system-ui" font-size="12" font-weight="700" fill="#fb2c36">× Plan OFF — 바로 실행</text>
+          <text x="55" y="115" font-family="ui-monospace, monospace" font-size="11" fill="#797067">"5개 파일 수정해줘" → 즉시 작업 시작</text>
+          <text x="55" y="135" font-family="ui-monospace, monospace" font-size="11" fill="#fb2c36">의도 어긋나도 멈출 타이밍 X</text>
+          <rect x="40" y="180" width="380" height="120" rx="10" fill="#dcfce7" stroke="#016630" stroke-width="2"/>
+          <text x="55" y="208" font-family="ui-sans-serif, system-ui" font-size="12" font-weight="700" fill="#016630">✓ Plan ON — 계획 → 승인</text>
+          <text x="55" y="235" font-family="ui-monospace, monospace" font-size="11" fill="#797067">"5개 파일 수정해줘"</text>
+          <text x="55" y="255" font-family="ui-monospace, monospace" font-size="11" fill="#016630">→ 4단계 계획서 표시</text>
+          <text x="55" y="275" font-family="ui-monospace, monospace" font-size="11" fill="#016630">→ "2번 단계 빼줘" 수정 요청 가능</text>
+          <text x="55" y="293" font-family="ui-monospace, monospace" font-size="11" fill="#016630">→ 승인 → 실행</text>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7 · Plan 흐름 -->
+  <section class="slide is-standard">
+    <div class="slide__eyebrow">FLOW · Plan 한 사이클</div>
+    <h2 class="slide__title">계획 → 검토 → <span class="accent">승인 → 실행</span></h2>
+    <div class="slide__body">
+      <div class="cycle">
+        <div class="cycle__step"><div class="cycle__num">01</div><div class="cycle__title">진입</div><div class="cycle__desc">Shift+Tab 두 번 → mode: plan</div><div class="cycle__example">→ plan 모드</div></div>
+        <div class="cycle__step"><div class="cycle__num">02</div><div class="cycle__title">요청</div><div class="cycle__desc">"인증 시스템 추가해줘" 평소처럼</div><div class="cycle__example">&gt; 인증 추가</div></div>
+        <div class="cycle__step"><div class="cycle__num">03</div><div class="cycle__title">계획</div><div class="cycle__desc">Claude가 단계별 계획서 표시</div><div class="cycle__example">1. auth.py · 2. ...</div></div>
+        <div class="cycle__step"><div class="cycle__num">04</div><div class="cycle__title">검토</div><div class="cycle__desc">사람이 읽고 의도와 일치하는지 확인</div><div class="cycle__example">읽고 판단</div></div>
+        <div class="cycle__step"><div class="cycle__num">05</div><div class="cycle__title">실행</div><div class="cycle__desc">Approve / Edit / Reject 중 선택</div><div class="cycle__example">→ Approve</div></div>
+      </div>
+      <p class="slide__note">04에서 의도 어긋난 부분 발견하면 <strong>"Edit"</strong> → 메시지로 수정 요청 → 새 계획 → 다시 검토.</p>
+    </div>
+  </section>
+
+  <!-- 8 · 3선택 -->
+  <section class="slide is-standard">
+    <div class="slide__eyebrow">DECISION · 계획서 앞에서 3선택</div>
+    <h2 class="slide__title">읽고 나서 <span class="accent">3개 중 하나</span></h2>
+    <div class="slide__body">
+      <div class="grid-3">
+        <div class="diff-card">
+          <div class="diff-card__rank">Approve</div>
+          <h3 class="diff-card__title">계획대로 실행</h3>
+          <p class="diff-card__body">의도와 맞으면 그대로 진행. Claude가 단계별로 작업 시작 — 중간 권한 prompt는 여전히 동작.</p>
+        </div>
+        <div class="diff-card">
+          <div class="diff-card__rank">Edit</div>
+          <h3 class="diff-card__title">수정 요청</h3>
+          <p class="diff-card__body">"3번 단계는 빼고" "auth는 다른 폴더에" — 메시지로 의도 전달 → 새 계획서.</p>
+        </div>
+        <div class="diff-card">
+          <div class="diff-card__rank">Reject</div>
+          <h3 class="diff-card__title">거절</h3>
+          <p class="diff-card__body">방향이 완전히 틀렸을 때. 거절 후 더 작은 단위로 다시 시키거나 다른 접근.</p>
+        </div>
+      </div>
+      <p class="slide__note">처음 며칠은 <strong>Edit를 자주</strong> 쓰게 됩니다 — 의도 정밀도가 올라가는 과정.</p>
+    </div>
+  </section>
+
+  <!-- 9 · 써야 할 때 vs 안 써도 될 때 -->
+  <section class="slide is-standard">
+    <div class="slide__eyebrow">WHEN · Plan을 켜야 하는 순간</div>
+    <h2 class="slide__title">매번 X — <span class="accent">큰 변경</span> 앞에서만</h2>
+    <div class="slide__body">
+      <div class="compare-2">
+        <div class="compare-side compare-side--accent">
+          <div class="compare-side__label">✓ Plan ON</div>
+          <h3 class="compare-side__title">의도 어긋나면 손해 큰 일</h3>
+          <ul class="compare-side__list">
+            <li>여러 파일 동시 수정 (5개 이상)</li>
+            <li>의존성 추가 · package.json 변경</li>
+            <li>리팩터링 · 구조 변경</li>
+            <li>잘 모르는 라이브러리 도입</li>
+            <li>처음 해보는 작업</li>
+          </ul>
+        </div>
+        <div class="compare-side compare-side--soft">
+          <div class="compare-side__label">/ Plan OFF (interactive)</div>
+          <h3 class="compare-side__title">작은 단위 · 자주 하는 일</h3>
+          <ul class="compare-side__list">
+            <li>한 파일 안에서 함수 1개 추가</li>
+            <li>오타 수정 · 스타일 미세 조정</li>
+            <li>여러 번 해본 동일 패턴</li>
+            <li>Q&A 성격의 질문</li>
+          </ul>
+        </div>
+      </div>
+      <p class="slide__note">감이 안 오면 <strong>Plan ON</strong>이 정답. 잘못 켰을 때의 손해는 거의 없음 — 시간 1~2분만 더 들 뿐.</p>
+    </div>
+  </section>
+
+  <!-- 10 · 진입 단축키 -->
+  <section class="slide is-statement">
+    <div class="statement-grid">
+      <div class="statement-text">
+        <div class="slide__eyebrow">ENTRY · 진입은 단축키로</div>
+        <h2 class="statement__lead">손가락에 <span class="accent">Shift+Tab</span> 두 번.</h2>
+        <p class="statement__caption">Day 2에서 본 모드 순환 단축키. Interactive → Auto → Plan 순서이므로, 기본 상태에서 <strong>두 번</strong> 누르면 Plan.</p>
+        <div class="statement__points">
+          <div class="statement__point"><span class="statement__point-num">한 번</span><span>Interactive → Auto (accept-edits)</span></div>
+          <div class="statement__point"><span class="statement__point-num">두 번</span><span>Auto → <strong>Plan</strong></span></div>
+          <div class="statement__point"><span class="statement__point-num">세 번</span><span>Plan → Interactive (복귀)</span></div>
+        </div>
+      </div>
+      <div class="statement-visual">
+        <svg viewBox="0 0 460 320" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <rect x="0" y="0" width="460" height="320" rx="14" fill="rgba(0,0,0,0.92)"/>
+          <rect x="0" y="0" width="460" height="32" fill="rgba(255,255,255,0.06)"/>
+          <text x="14" y="20" font-family="ui-monospace, monospace" font-size="11" fill="rgba(255,255,255,0.5)">claude · 모드 표시</text>
+          <text x="20" y="60" fill="rgba(255,255,255,0.5)" font-family="ui-monospace, monospace" font-size="13">[interactive]</text>
+          <text x="20" y="84" fill="rgba(255,255,255,0.5)" font-family="ui-monospace, monospace" font-size="11">  ↓ Shift+Tab</text>
+          <text x="20" y="120" fill="rgba(255,255,255,0.7)" font-family="ui-monospace, monospace" font-size="13">[auto]</text>
+          <text x="20" y="144" fill="rgba(255,255,255,0.5)" font-family="ui-monospace, monospace" font-size="11">  ↓ Shift+Tab</text>
+          <rect x="14" y="170" width="430" height="50" rx="8" fill="rgba(254,110,0,0.15)" stroke="#fe6e00" stroke-width="2"/>
+          <text x="20" y="200" fill="#fe6e00" font-family="ui-monospace, monospace" font-size="16" font-weight="700">[plan] ← 큰 변경 시 여기</text>
+          <text x="20" y="244" fill="rgba(255,255,255,0.5)" font-family="ui-monospace, monospace" font-size="11">  ↓ Shift+Tab (한 번 더)</text>
+          <text x="20" y="278" fill="rgba(255,255,255,0.5)" font-family="ui-monospace, monospace" font-size="13">[interactive] (순환 복귀)</text>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- 11 · 계획 수정 요청 패턴 -->
+  <section class="slide is-standard">
+    <div class="slide__eyebrow">EDIT · 계획 수정 요청</div>
+    <h2 class="slide__title">Edit는 <span class="accent">메타 프롬프트</span>처럼</h2>
+    <div class="slide__body">
+      <div class="bg-compare">
+        <div class="bg-compare__side bg-compare__side--bad">
+          <div class="bg-compare__label">× 모호한 수정 요청</div>
+          <div class="bg-compare__quote">
+            <div>"좀 더 잘 해줘"</div>
+            <div>"다르게 해줘"</div>
+            <div>...</div>
+            <div>Claude가 뭘 바꿔야 할지 모름</div>
+          </div>
+          <p class="bg-compare__note">결과: 비슷한 계획이 다시 나옴.</p>
+        </div>
+        <div class="bg-compare__side bg-compare__side--good">
+          <div class="bg-compare__label">✓ 구체적 수정 요청</div>
+          <div class="bg-compare__quote">
+            <div>"3번 단계(template 추가)는 빼고"</div>
+            <div>"auth.py 대신 user/ 폴더에 분리"</div>
+            <div>"flask-login 의존성 추가는 X — 직접 구현"</div>
+          </div>
+          <p class="bg-compare__note">결과: 의도대로 새 계획서.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 12 · Plan 라이브 데모 -->
+  <section class="slide is-standard">
+    <div class="slide__eyebrow">DEMO · 강사 라이브 시연</div>
+    <h2 class="slide__title">실제 흐름 — <span class="accent">한 번에</span> 보여드립니다</h2>
+    <div class="slide__body">
+      <div class="code-block">
+        <div class="code-block__header">
+          <span class="code-block__dot" style="background:#fb2c36"></span><span class="code-block__dot" style="background:#edb200"></span><span class="code-block__dot" style="background:#00c758"></span>
+          <span class="code-block__title">claude · plan · 강사 시연</span>
+        </div>
+        <div class="code-block__body"><span class="code-block__line"><span class="code-block__cmt"># 1) Shift+Tab 두 번 → plan 모드</span></span><span class="code-block__line"><span class="code-block__hi">  [plan]</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__cmd">&gt; 가위바위보 게임에 GUI 추가해줘 (Tkinter)</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__out">  계획서:</span></span><span class="code-block__line"><span class="code-block__out">  1. game_gui.py 새 파일 (Tkinter 기반)</span></span><span class="code-block__line"><span class="code-block__out">  2. 가위/바위/보 버튼 3개 + 결과 라벨</span></span><span class="code-block__line"><span class="code-block__out">  3. 기존 game.py의 로직 함수만 재사용 (import)</span></span><span class="code-block__line"><span class="code-block__out">  4. 5판 통계 표시 영역 추가</span></span><span class="code-block__line"><span class="code-block__out">  → 1개 파일 추가 · 0개 파일 수정</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__hi">  [Approve / Edit / Reject]</span></span><span class="code-block__line"><span class="code-block__cmt"># 2) "기존 game.py 안 건드리는 게 좋다" → 좋음 → Approve</span></span><span class="code-block__line"><span class="code-block__cmd">&gt; <span class="code-block__hi">approve</span></span></span><span class="code-block__line"><span class="code-block__out">  ✓ game_gui.py 생성</span></span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 13 · Part B intro -->
+  <section class="slide is-section is-standard">
+    <div class="section-eyebrow">PART B · HOOKS</div>
+    <h2 class="section-title">Hooks — <span class="accent">자동화의 첫 경험</span></h2>
+    <p class="section-caption">"이런 일이 일어나면, 자동으로 이걸 실행" — 이벤트 기반 자동화. 6개 이벤트가 있지만 오늘은 Stop 한 개만.</p>
+    <div class="section-meta">
+      <div class="section-meta__item"><span class="section-meta__num">6</span><span>이벤트</span></div>
+      <div class="section-meta__item"><span class="section-meta__num">1</span><span>오늘 시작할 것</span></div>
+    </div>
+  </section>
+
+  <!-- 14 · Hook 정의 -->
+  <section class="slide is-statement">
+    <div class="statement-grid statement-grid--visual-wide">
+      <div class="statement-text">
+        <div class="slide__eyebrow">DEFINITION · Hook이 뭔가</div>
+        <h2 class="statement__lead">Claude의 <span class="accent">사이클 안</span>에 끼어 넣는 자동 실행.</h2>
+        <p class="statement__caption">Day 1에 본 에이전트 5단계 사이클(요청·분석·계획·실행·검증)의 각 지점에 본인 셸 명령을 끼워 넣을 수 있습니다.</p>
+        <div class="statement__points">
+          <div class="statement__point"><span class="statement__point-num">언제</span><span>특정 이벤트가 일어날 때마다</span></div>
+          <div class="statement__point"><span class="statement__point-num">무엇을</span><span>본인이 정한 셸 명령 (curl · git · python 등)</span></div>
+          <div class="statement__point"><span class="statement__point-num">결과</span><span>알림 · 자동 lint · 자동 백업 등</span></div>
+        </div>
+      </div>
+      <div class="statement-visual">
+        <svg viewBox="0 0 460 320" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <rect x="0" y="0" width="460" height="320" rx="16" fill="#fff5ec"/>
+          <text x="230" y="40" font-family="ui-sans-serif, system-ui" font-size="13" fill="#797067" letter-spacing="0.1em" font-weight="700" text-anchor="middle">Claude 사이클 + Hook</text>
+          <g transform="translate(60, 80)">
+            <rect x="0" y="0" width="100" height="40" rx="8" fill="white" stroke="#cc5a14" stroke-width="2"/>
+            <text x="50" y="25" font-family="ui-sans-serif, system-ui" font-size="13" fill="#423d38" text-anchor="middle">요청</text>
+            <text x="116" y="25" font-family="ui-monospace, monospace" font-size="14" fill="#cc5a14" text-anchor="middle">→</text>
+            <rect x="135" y="0" width="100" height="40" rx="8" fill="white" stroke="#cc5a14" stroke-width="2"/>
+            <text x="185" y="25" font-family="ui-sans-serif, system-ui" font-size="13" fill="#423d38" text-anchor="middle">실행</text>
+            <text x="251" y="25" font-family="ui-monospace, monospace" font-size="14" fill="#cc5a14" text-anchor="middle">→</text>
+            <rect x="270" y="0" width="100" height="40" rx="8" fill="#cc5a14"/>
+            <text x="320" y="25" font-family="ui-sans-serif, system-ui" font-size="13" fill="white" text-anchor="middle" font-weight="700">응답 끝</text>
+          </g>
+          <line x1="380" y1="120" x2="380" y2="170" stroke="#cc5a14" stroke-width="2" stroke-dasharray="4 4"/>
+          <text x="380" y="195" font-family="ui-sans-serif, system-ui" font-size="11" fill="#cc5a14" font-weight="700" text-anchor="middle">Stop Hook 발동</text>
+          <rect x="280" y="210" width="160" height="60" rx="10" fill="#dcfce7" stroke="#016630" stroke-width="2"/>
+          <text x="360" y="235" font-family="ui-monospace, monospace" font-size="12" fill="#016630" text-anchor="middle" font-weight="700">curl Telegram</text>
+          <text x="360" y="255" font-family="ui-sans-serif, system-ui" font-size="11" fill="#016630" text-anchor="middle">→ 휴대폰 알림</text>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- 15 · 6 이벤트 카탈로그 -->
+  <section class="slide is-standard">
+    <div class="slide__eyebrow">CATALOG · 6 이벤트</div>
+    <h2 class="slide__title">Hook 이벤트 — <span class="accent">6가지가 있다</span> (외울 필요 X)</h2>
+    <div class="slide__body">
+      <div class="grid-3">
+        <div class="content-card content-card--compact">
+          <h3 class="content-card__title">PreToolUse</h3>
+          <p class="content-card__body">도구 사용 <strong>전</strong> — 차단·검증.<br><code style="font-size:0.7rem">예) git commit 전 pytest 자동 실행</code></p>
+        </div>
+        <div class="content-card content-card--compact">
+          <h3 class="content-card__title">PostToolUse</h3>
+          <p class="content-card__body">도구 사용 <strong>직후</strong> — 후속 작업.<br><code style="font-size:0.7rem">예) 파일 저장 후 prettier 자동</code></p>
+        </div>
+        <div class="content-card content-card--compact" style="border-color:var(--color-primary)">
+          <h3 class="content-card__title">Stop ★</h3>
+          <p class="content-card__body">응답 <strong>끝났을 때</strong> — 오늘 만들 알림.<br><code style="font-size:0.7rem">예) curl Telegram 한 줄 알림</code></p>
+        </div>
+        <div class="content-card content-card--compact">
+          <h3 class="content-card__title">UserPromptSubmit</h3>
+          <p class="content-card__body">사용자 메시지 보낼 때 — 검증·로깅.<br><code style="font-size:0.7rem">예) 입력 길이 200자 제한</code></p>
+        </div>
+        <div class="content-card content-card--compact">
+          <h3 class="content-card__title">Notification</h3>
+          <p class="content-card__body">Claude가 알림 띄울 때 — UI 통합.<br><code style="font-size:0.7rem">예) 권한 prompt를 데스크톱 알림으로</code></p>
+        </div>
+        <div class="content-card content-card--compact">
+          <h3 class="content-card__title">SubagentStop</h3>
+          <p class="content-card__body">서브 에이전트(Day 4) 작업 끝.<br><code style="font-size:0.7rem">예) test-writer 끝 → 결과 요약 출력</code></p>
+        </div>
+      </div>
+      <p class="slide__note">6개 다 외울 필요 X — <strong>Stop 하나로</strong> 시작하면 충분. 나머지는 필요할 때.</p>
+    </div>
+  </section>
+
+  <!-- 16 · Stop 하나만 -->
+  <section class="slide is-statement">
+    <div class="statement-grid statement-grid--visual-wide">
+      <div class="statement-text">
+        <div class="slide__eyebrow">START · Stop 하나만</div>
+        <h2 class="statement__lead">Claude 응답 끝나면<br><span class="accent">휴대폰에 알림</span>.</h2>
+        <p class="statement__caption">긴 작업 시키고 다른 일 하다가, 응답이 왔는지 확인하러 노트북 보러 가는 일 → 사라집니다. 휴대폰이 알려줌.</p>
+        <div class="statement__points">
+          <div class="statement__point"><span class="statement__point-num">전</span><span>큰 작업 시키고 5분마다 노트북 확인</span></div>
+          <div class="statement__point"><span class="statement__point-num">후</span><span>휴대폰 알림 오면 그때 노트북 봄</span></div>
+          <div class="statement__point"><span class="statement__point-num">효과</span><span>몰입 시간 ↑ · 집중 끊김 ↓</span></div>
+        </div>
+      </div>
+      <div class="statement-visual">
+        <svg viewBox="0 0 460 320" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <rect x="0" y="0" width="460" height="320" rx="16" fill="#fff5ec"/>
+          <rect x="160" y="60" width="140" height="220" rx="16" fill="#1e1e1e" stroke="#797067" stroke-width="2"/>
+          <rect x="170" y="80" width="120" height="180" rx="6" fill="rgba(255,255,255,0.05)"/>
+          <text x="230" y="110" font-family="ui-sans-serif, system-ui" font-size="10" fill="rgba(255,255,255,0.5)" text-anchor="middle" letter-spacing="0.05em">TELEGRAM</text>
+          <line x1="180" y1="120" x2="280" y2="120" stroke="rgba(255,255,255,0.1)"/>
+          <rect x="180" y="135" width="100" height="55" rx="8" fill="white"/>
+          <text x="190" y="153" font-family="ui-sans-serif, system-ui" font-size="9" fill="#cc5a14" font-weight="700">CLAUDE BOT</text>
+          <text x="190" y="170" font-family="ui-sans-serif, system-ui" font-size="9" fill="#423d38">✓ 응답 끝났어요</text>
+          <text x="190" y="184" font-family="ui-sans-serif, system-ui" font-size="9" fill="#797067">/Day3 · 14:32</text>
+          <text x="230" y="240" font-family="ui-sans-serif, system-ui" font-size="11" fill="rgba(255,255,255,0.7)" text-anchor="middle">noti</text>
+          <circle cx="230" cy="270" r="6" fill="white"/>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- 17 · 활용 패턴 3가지 -->
+  <section class="slide is-standard">
+    <div class="slide__eyebrow">PATTERNS · 자주 보는 3가지</div>
+    <h2 class="slide__title">실무에서 자주 쓰는 <span class="accent">3가지 패턴</span></h2>
+    <div class="slide__body">
+      <div class="grid-3">
+        <div class="diff-card">
+          <div class="diff-card__rank">A</div>
+          <h3 class="diff-card__title">저장 시 lint</h3>
+          <p class="diff-card__body"><strong>PostToolUse</strong> + 파일 저장 후 자동 lint. 코드 스타일 일관성. Day 4 도구 익숙해진 후 추가.</p>
+        </div>
+        <div class="diff-card">
+          <div class="diff-card__rank">B</div>
+          <h3 class="diff-card__title">커밋 전 테스트</h3>
+          <p class="diff-card__body"><strong>PreToolUse</strong> + git commit 전 pytest 자동. 테스트 깨지면 커밋 막음.</p>
+        </div>
+        <div class="diff-card">
+          <div class="diff-card__rank">C ★</div>
+          <h3 class="diff-card__title">응답 끝 → 알림</h3>
+          <p class="diff-card__body"><strong>Stop</strong> + curl Telegram. 오늘 직접 만듭니다 — 가장 단순하고 가장 유용.</p>
+        </div>
+      </div>
+      <p class="slide__note">A·B는 "있다"만 알아두기. <strong>C 하나로</strong> Hook의 본질을 익힙니다.</p>
+    </div>
+  </section>
+
+  <!-- 18 · settings.json 구조 -->
+  <section class="slide is-standard">
+    <div class="slide__eyebrow">CONFIG · .claude/settings.json</div>
+    <h2 class="slide__title">Hook은 <span class="accent">JSON 한 파일</span>로 정의</h2>
+    <div class="slide__body">
+      <div class="code-block">
+        <div class="code-block__header">
+          <span class="code-block__dot" style="background:#fb2c36"></span><span class="code-block__dot" style="background:#edb200"></span><span class="code-block__dot" style="background:#00c758"></span>
+          <span class="code-block__title">.claude/settings.json — Stop 훅 한 개</span>
+        </div>
+        <div class="code-block__body"><span class="code-block__line"><span class="code-block__out">{</span></span><span class="code-block__line"><span class="code-block__out">  "hooks": {</span></span><span class="code-block__line"><span class="code-block__hi">    "Stop": [</span></span><span class="code-block__line"><span class="code-block__out">      {</span></span><span class="code-block__line"><span class="code-block__out">        "matcher": "",</span></span><span class="code-block__line"><span class="code-block__out">        "hooks": [</span></span><span class="code-block__line"><span class="code-block__out">          {</span></span><span class="code-block__line"><span class="code-block__out">            "type": "command",</span></span><span class="code-block__line"><span class="code-block__out">            "command": "<span class="code-block__hi">curl.exe -s -X POST ...</span>"</span></span><span class="code-block__line"><span class="code-block__out">          }</span></span><span class="code-block__line"><span class="code-block__out">        ]</span></span><span class="code-block__line"><span class="code-block__out">      }</span></span><span class="code-block__line"><span class="code-block__out">    ]</span></span><span class="code-block__line"><span class="code-block__out">  }</span></span><span class="code-block__line"><span class="code-block__out">}</span></span></div>
+      </div>
+      <p class="slide__note">파일 위치: 프로젝트 루트의 <code>.claude/settings.json</code>. 실습에서 이 파일을 직접 만듭니다 — 외우지 않아도 OK, 따라 적기만.</p>
+    </div>
+  </section>
+
+  <!-- 19 · Hook 예시 3개 -->
+  <section class="slide is-standard">
+    <div class="slide__eyebrow">EXAMPLES · 손에 익혀둘 3개</div>
+    <h2 class="slide__title">실무에서 가장 자주 보는 <span class="accent">Hook 3가지</span></h2>
+    <div class="slide__body">
+      <div class="grid-3">
+        <div class="content-card content-card--compact" style="border-color:var(--color-primary)">
+          <h3 class="content-card__title">① Stop · 응답 끝 알림 ★</h3>
+          <p class="content-card__body" style="font-size:0.78rem">긴 작업 시키고 다른 일 → 휴대폰 알림 → 복귀.</p>
+          <div class="code-block code-block--inline-xs"><div class="code-block__body"><span class="code-block__line"><span class="code-block__out">"Stop": [{</span></span><span class="code-block__line"><span class="code-block__out">  "hooks": [{</span></span><span class="code-block__line"><span class="code-block__hi">    "command": "curl.exe ...</span></span><span class="code-block__line"><span class="code-block__hi">      api.telegram.org/bot.../</span></span><span class="code-block__line"><span class="code-block__hi">      sendMessage"</span></span><span class="code-block__line"><span class="code-block__out">  }]</span></span><span class="code-block__line"><span class="code-block__out">}]</span></span></div></div>
+        </div>
+        <div class="content-card content-card--compact">
+          <h3 class="content-card__title">② PostToolUse · 저장 후 포맷</h3>
+          <p class="content-card__body" style="font-size:0.78rem">파일 저장될 때마다 자동 포맷 → 일관성 ↑.</p>
+          <div class="code-block code-block--inline-xs"><div class="code-block__body"><span class="code-block__line"><span class="code-block__out">"PostToolUse": [{</span></span><span class="code-block__line"><span class="code-block__hi">  "matcher": "Write|Edit",</span></span><span class="code-block__line"><span class="code-block__out">  "hooks": [{</span></span><span class="code-block__line"><span class="code-block__hi">    "command": "prettier</span></span><span class="code-block__line"><span class="code-block__hi">      --write $FILE"</span></span><span class="code-block__line"><span class="code-block__out">  }]</span></span><span class="code-block__line"><span class="code-block__out">}]</span></span></div></div>
+        </div>
+        <div class="content-card content-card--compact">
+          <h3 class="content-card__title">③ PreToolUse · 커밋 전 테스트</h3>
+          <p class="content-card__body" style="font-size:0.78rem">git commit 직전 pytest — 깨지면 커밋 차단.</p>
+          <div class="code-block code-block--inline-xs"><div class="code-block__body"><span class="code-block__line"><span class="code-block__out">"PreToolUse": [{</span></span><span class="code-block__line"><span class="code-block__hi">  "matcher": "Bash",</span></span><span class="code-block__line"><span class="code-block__out">  "hooks": [{</span></span><span class="code-block__line"><span class="code-block__hi">    "command": "pytest",</span></span><span class="code-block__line"><span class="code-block__hi">    "blocking": true</span></span><span class="code-block__line"><span class="code-block__out">  }]</span></span><span class="code-block__line"><span class="code-block__out">}]</span></span></div></div>
+        </div>
+      </div>
+      <p class="slide__note">오늘은 ① <strong>Stop 알림 한 개</strong>만 실습. ②·③은 익숙해진 후 본인 워크플로우에 맞춰 추가.</p>
+    </div>
+  </section>
+
+  <!-- 20 · PowerShell curl 주의 -->
+  <section class="slide is-standard">
+    <div class="slide__eyebrow">GOTCHA · PowerShell의 curl</div>
+    <h2 class="slide__title">PowerShell의 <span class="accent">curl은 가짜</span> — Invoke-WebRequest의 alias</h2>
+    <div class="slide__body">
+      <div class="bg-compare">
+        <div class="bg-compare__side bg-compare__side--bad">
+          <div class="bg-compare__label">× 그냥 curl</div>
+          <div class="bg-compare__quote">
+            <div>command: "curl -X POST ..."</div>
+            <div>↓</div>
+            <div>PowerShell에선 Invoke-WebRequest 호출됨</div>
+            <div>인자 형식이 달라서 → 에러</div>
+          </div>
+          <p class="bg-compare__note">Linux/Mac 예제를 그대로 복사하면 동작 X.</p>
+        </div>
+        <div class="bg-compare__side bg-compare__side--good">
+          <div class="bg-compare__label">✓ curl.exe 또는 Invoke-RestMethod</div>
+          <div class="bg-compare__quote">
+            <div>command: "<strong>curl.exe</strong> -X POST ..."</div>
+            <div>또는</div>
+            <div>command: "Invoke-RestMethod ..."</div>
+          </div>
+          <p class="bg-compare__note"><code>curl.exe</code>는 진짜 curl 실행 파일을 명시적으로 호출.</p>
+        </div>
+      </div>
+      <p class="slide__note">Windows에선 <strong>curl.exe</strong>로 시작 — 5일 내내 이 패턴 반복됩니다.</p>
+    </div>
+  </section>
+
+  <!-- 21 · 처음엔 2-3개만 -->
+  <section class="slide is-statement">
+    <div class="statement-grid">
+      <div class="statement-text">
+        <div class="slide__eyebrow">PRINCIPLE · 처음엔 단순하게</div>
+        <h2 class="statement__lead">"처음엔 <span class="accent">2~3개만</span>" — 이 원칙 지키기.</h2>
+        <p class="statement__caption">Hook은 자동화의 시작이지만 너무 많이 깔면 디버깅 불가. 어떤 Hook이 어떤 결과를 낸 건지 못 추적.</p>
+        <div class="statement__points">
+          <div class="statement__point"><span class="statement__point-num">오늘</span><span>Stop 1개 — 텔레그램 알림</span></div>
+          <div class="statement__point"><span class="statement__point-num">Day 4</span><span>+1개 — PreToolUse 또는 PostToolUse</span></div>
+          <div class="statement__point"><span class="statement__point-num">이후</span><span>본인 워크플로우에 정말 필요한 것만 추가</span></div>
+        </div>
+      </div>
+      <div class="statement-visual">
+        <svg viewBox="0 0 460 320" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <rect x="0" y="0" width="460" height="320" rx="16" fill="#fff5ec"/>
+          <rect x="40" y="60" width="380" height="60" rx="8" fill="#dcfce7" stroke="#016630" stroke-width="2"/>
+          <text x="55" y="86" font-family="ui-sans-serif, system-ui" font-size="13" font-weight="700" fill="#016630">초보자 · 1~2개</text>
+          <text x="55" y="106" font-family="ui-sans-serif, system-ui" font-size="11" fill="#016630">Stop 알림만 — 디버깅 쉬움</text>
+          <rect x="40" y="135" width="380" height="60" rx="8" fill="#fef9c2" stroke="#874b00" stroke-width="2"/>
+          <text x="55" y="161" font-family="ui-sans-serif, system-ui" font-size="13" font-weight="700" fill="#874b00">중급 · 3~5개</text>
+          <text x="55" y="181" font-family="ui-sans-serif, system-ui" font-size="11" fill="#874b00">+ lint · 백업 · 로그 — 추적 가능 한계</text>
+          <rect x="40" y="210" width="380" height="60" rx="8" fill="#fef2f2" stroke="#fb2c36" stroke-width="2"/>
+          <text x="55" y="236" font-family="ui-sans-serif, system-ui" font-size="13" font-weight="700" fill="#fb2c36">위험 · 10개+</text>
+          <text x="55" y="256" font-family="ui-sans-serif, system-ui" font-size="11" fill="#fb2c36">디버깅 불가 — 어떤 Hook이 영향 줬나 X</text>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- 22 · Plan + Hook 종합 -->
+  <section class="slide is-standard">
+    <div class="slide__eyebrow">SYNTHESIS · 둘이 함께</div>
+    <h2 class="slide__title">Plan + Hook = <span class="accent">안전 + 자동화</span></h2>
+    <div class="slide__body">
+      <div class="bg-compare">
+        <div class="bg-compare__side bg-compare__side--soft">
+          <div class="bg-compare__label">PLAN · 안전</div>
+          <div class="bg-compare__quote">
+            <div>큰 변경 → 계획서 → 사람 승인</div>
+            <div>의도 어긋난 작업 시작 X</div>
+            <div>"이 작업 정말 할까?" 한 번 멈춤</div>
+          </div>
+          <p class="bg-compare__note">실행 전 안전벨트.</p>
+        </div>
+        <div class="bg-compare__side bg-compare__side--good">
+          <div class="bg-compare__label">HOOK · 자동화</div>
+          <div class="bg-compare__quote">
+            <div>응답 끝 → curl → 휴대폰 알림</div>
+            <div>"기다리는 시간"이 사라짐</div>
+            <div>다른 일 하다 알림 보고 복귀</div>
+          </div>
+          <p class="bg-compare__note">실행 후 자동 알림.</p>
+        </div>
+      </div>
+      <p class="slide__note">두 도구의 공통점: <strong>사람의 주의를 아낀다</strong>. Plan은 사고 막아 주의 ↓, Hook은 대기 시간 없애 주의 ↓.</p>
+    </div>
+  </section>
+
+  <!-- 23 · 실습 미리보기 -->
+  <section class="slide is-standard">
+    <div class="slide__eyebrow">NEXT · 오전 실습 미리보기</div>
+    <h2 class="slide__title">75분 — <span class="accent">Plan 분석 + Telegram 알림</span></h2>
+    <div class="slide__body">
+      <div class="grid-3">
+        <div class="diff-card">
+          <div class="diff-card__rank">STEP 1</div>
+          <h3 class="diff-card__title">Plan으로 분석만</h3>
+          <p class="diff-card__body">오픈 텍스트 게임 git clone → Plan 모드로 "분석만" → 코드 구조 파악.</p>
+        </div>
+        <div class="diff-card">
+          <div class="diff-card__rank">STEP 2</div>
+          <h3 class="diff-card__title">체력 시스템 추가</h3>
+          <p class="diff-card__body">Plan 계획서 검토 → 승인 → 실제 추가 → 동작 확인 → commit.</p>
+        </div>
+        <div class="diff-card">
+          <div class="diff-card__rank">STEP 3</div>
+          <h3 class="diff-card__title">Telegram Hook</h3>
+          <p class="diff-card__body">앱 가입 → BotFather 봇 생성 → settings.json에 Stop 훅 → 휴대폰 알림 확인.</p>
+        </div>
+      </div>
+      <p class="slide__note">15분 휴식 → 10:45 시작. <strong>휴대폰 챙겨오세요</strong> — 알림 확인용.</p>
+    </div>
+  </section>
+
+</main>
+
+<div class="deck-progress"><div class="deck-progress__bar"></div></div>
+<script src="../scripts/deck.js"></script>
+</body>
+</html>

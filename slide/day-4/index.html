@@ -1,0 +1,70 @@
+﻿<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Day 4 · 확장 · Claude Code 5일 완주</title>
+  <link rel="stylesheet" href="../styles/tokens.css">
+  <link rel="stylesheet" href="../styles/deck.css">
+  <style>
+    .day-header { display: flex; flex-direction: column; gap: 0.15rem; flex-shrink: 0; }
+    .day-header__brand { font-size: 0.62rem; letter-spacing: 0.15em; text-transform: uppercase; font-weight: 700; color: var(--color-primary-strong); }
+    .day-header__title { font-size: 1.5rem; font-weight: 700; line-height: 1.1; letter-spacing: -0.025em; margin: 0.05rem 0 0.2rem 0; color: var(--color-on-surface); }
+    .day-header__caption { font-size: 0.68rem; line-height: 1.45; color: var(--color-on-surface-muted); margin: 0; max-width: 38rem; }
+
+    .block-grid { display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr; gap: 0.55rem; flex: 1; min-height: 0; }
+    .block-card { background: var(--color-surface-elevated); border: 2px solid var(--color-outline-strong); border-radius: var(--rounded-md); padding: 0.65rem 0.85rem; text-decoration: none; color: var(--color-on-surface); display: flex; flex-direction: column; gap: 0.2rem; transition: transform var(--motion-fast) var(--easing-standard), border-color var(--motion-fast), box-shadow var(--motion-fast); min-height: 0; overflow: hidden; }
+    .block-card:hover { transform: translateY(-2px); border-color: var(--color-primary); box-shadow: var(--shadow-raised); }
+    .block-card__time { font-family: var(--font-mono); font-size: 0.6rem; color: var(--color-primary-strong); font-weight: 700; letter-spacing: 0.05em; }
+    .block-card__title { font-size: 0.95rem; font-weight: 700; line-height: 1.2; letter-spacing: -0.02em; margin: 0; }
+    .block-card__desc { font-size: 0.66rem; line-height: 1.4; color: var(--color-on-surface-muted); margin: 0; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; }
+    .block-card__count { margin-top: auto; font-family: var(--font-mono); font-size: 0.64rem; color: var(--color-primary-strong); font-weight: 700; }
+  </style>
+</head>
+<body>
+
+<main class="index-stage">
+  <header class="deck-chrome">
+    <span class="deck-chrome__brand">CLAUDE CODE · 5D</span>
+    <span class="deck-chrome__divider">·</span>
+    <span class="deck-chrome__day">DAY 04 · 인덱스</span>
+    <span class="deck-chrome__spacer"></span>
+  </header>
+
+  <header class="day-header">
+    <div class="day-header__brand">CLAUDE CODE · 5일 완주 · DAY 04</div>
+    <h1 class="day-header__title">확장 — 도우미 군단 +<br>본인 손에 맞춘 도구</h1>
+    <p class="day-header__caption">2026.05.21 · 목요일 · 09:00 — 17:00. 직접 만드는 4개 + 시연 1개. Claude의 USB 포트가 열린다.</p>
+  </header>
+
+  <div class="block-grid">
+    <a class="block-card" href="1-am-theory.html">
+      <div class="block-card__time">09:00 — 10:30 · 오전 이론</div>
+      <h2 class="block-card__title">Sub-agents + MCP</h2>
+      <p class="block-card__desc">Sub-agent 컨텍스트 분리 · 역할별 위임 · MCP USB 포트 · Filesystem · GitHub.</p>
+      <div class="block-card__count">20 슬라이드 →</div>
+    </a>
+    <a class="block-card" href="2-am-practice.html">
+      <div class="block-card__time">10:45 — 12:00 · 오전 실습</div>
+      <h2 class="block-card__title">Sub-agent + MCP 연결</h2>
+      <p class="block-card__desc">.claude/agents/test-writer.md 정의 · MCP Filesystem 한 줄 연결 · 동작 확인.</p>
+      <div class="block-card__count">11 슬라이드 →</div>
+    </a>
+    <a class="block-card" href="3-pm-theory.html">
+      <div class="block-card__time">13:00 — 14:30 · 오후 이론</div>
+      <h2 class="block-card__title">슬래시 · Skills + 시연</h2>
+      <p class="block-card__desc">커스텀 슬래시 · 공식 Skills (PPTX·DOCX·XLSX·PDF) · 헤드리스 시연.</p>
+      <div class="block-card__count">18 슬라이드 →</div>
+    </a>
+    <a class="block-card" href="4-pm-practice.html">
+      <div class="block-card__time">14:45 — 17:00 · 오후 실습</div>
+      <h2 class="block-card__title">자동화 한 줄씩</h2>
+      <p class="block-card__desc">슬래시 1개 · PPTX Skill로 Day 1 자기소개 → 슬라이드 · 미니에 도구 녹이기.</p>
+      <div class="block-card__count">13 슬라이드 →</div>
+    </a>
+  </div>
+</main>
+
+<script src="../scripts/index-nav.js"></script>
+</body>
+</html>

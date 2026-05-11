@@ -1,0 +1,298 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Day 3 · 오전 실습 · Plan + Telegram Hook</title>
+  <link rel="stylesheet" href="../styles/tokens.css">
+  <link rel="stylesheet" href="../styles/deck.css">
+</head>
+<body>
+
+<header class="deck-chrome">
+  <span class="deck-chrome__brand">CLAUDE CODE · 5D</span>
+  <span class="deck-chrome__divider">·</span>
+  <span class="deck-chrome__day">DAY 03 · 오전 실습</span>
+  <span class="deck-chrome__spacer"></span>
+  <span class="deck-chrome__counter">— / —</span>
+</header>
+
+<main class="deck">
+
+  <!-- 1 · Section cover -->
+  <section class="slide is-section is-standard">
+    <div class="section-eyebrow">PART 02 · HANDS-ON</div>
+    <h2 class="section-title">Plan + <span class="accent">Telegram Hook</span></h2>
+    <p class="section-caption">텍스트 게임을 받아서 Plan으로 분석 → 체력 시스템 추가 → 본인 휴대폰에 응답 알림 받기. 자동화의 첫 경험.</p>
+    <div class="section-meta">
+      <div class="section-meta__item"><span class="section-meta__num">3</span><span>큰 단계</span></div>
+      <div class="section-meta__item"><span class="section-meta__num">10:45</span><span>시작</span></div>
+    </div>
+  </section>
+
+  <!-- 2 · 75분 흐름 -->
+  <section class="slide is-standard">
+    <div class="slide__eyebrow">OVERVIEW · 흐름</div>
+    <h2 class="slide__title">실습 흐름 — <span class="accent">3 단계</span></h2>
+    <div class="slide__body">
+      <div class="setup-grid">
+        <div class="setup-step"><div class="setup-step__num">01</div><h3 class="setup-step__title">텍스트 게임 clone</h3><p class="setup-step__desc">git clone으로 오픈 게임 받기 + Plan 모드로 분석</p></div>
+        <div class="setup-step"><div class="setup-step__num">02</div><h3 class="setup-step__title">체력 시스템 추가</h3><p class="setup-step__desc">Plan 계획 → 승인 → 실행 → 동작 확인 → commit</p></div>
+        <div class="setup-step"><div class="setup-step__num">03</div><h3 class="setup-step__title">Telegram Hook</h3><p class="setup-step__desc">앱 가입 → BotFather → chat_id → Stop 훅 등록</p></div>
+      </div>
+      <p class="slide__note">3단계가 막히면 즉시 손드세요 — TA 1:1. 휴대폰을 옆에 둔 채로 작업하세요.</p>
+    </div>
+  </section>
+
+  <!-- 3 · 게임 clone -->
+  <section class="slide is-standard">
+    <div class="slide__eyebrow">STEP 01 · git clone</div>
+    <h2 class="slide__title">오픈 텍스트 게임 <span class="accent">받아오기</span></h2>
+    <div class="slide__body">
+      <div class="two-col">
+        <div>
+          <div class="content-card content-card--compact">
+            <h3 class="content-card__title">단계</h3>
+            <ol class="content-card__list content-card__list--ol">
+              <li>바탕화면에 새 폴더 <code>Day3</code> 생성</li>
+              <li>해당 폴더 우클릭 → "터미널에서 열기"</li>
+              <li><code>git clone &lt;강사 제공 URL&gt;</code></li>
+              <li><code>cd</code>로 받은 폴더로 진입</li>
+              <li>VS Code에서 폴더 열고 <code>claude</code></li>
+            </ol>
+          </div>
+        </div>
+        <div>
+          <div class="code-block">
+            <div class="code-block__header">
+              <span class="code-block__dot" style="background:#fb2c36"></span><span class="code-block__dot" style="background:#edb200"></span><span class="code-block__dot" style="background:#00c758"></span>
+              <span class="code-block__title">PowerShell — Day3/</span>
+            </div>
+            <div class="code-block__body"><span class="code-block__line"><span class="code-block__prompt">PS&gt;</span> <span class="code-block__cmd">git clone https://github.com/.../text-adventure</span></span><span class="code-block__line"><span class="code-block__out">  Cloning into 'text-adventure'...</span></span><span class="code-block__line"><span class="code-block__out">  ✓ 12 files received</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__prompt">PS&gt;</span> <span class="code-block__cmd">cd text-adventure</span></span><span class="code-block__line"><span class="code-block__prompt">PS&gt;</span> <span class="code-block__cmd">ls</span></span><span class="code-block__line"><span class="code-block__out">  game.py · rooms.json · README.md ...</span></span></div>
+          </div>
+        </div>
+      </div>
+      <p class="slide__note">URL은 <strong>단톡방에 공유</strong>. clone 끝나면 일단 <code>python game.py</code>로 한 번 돌려보세요 — 동작 확인.</p>
+    </div>
+  </section>
+
+  <!-- 4 · Plan으로 분석만 -->
+  <section class="slide is-standard">
+    <div class="slide__eyebrow">STEP 01b · Plan 모드 분석</div>
+    <h2 class="slide__title">Plan으로 <span class="accent">분석만</span> 시키기</h2>
+    <div class="slide__body">
+      <div class="code-block">
+        <div class="code-block__header">
+          <span class="code-block__dot" style="background:#fb2c36"></span><span class="code-block__dot" style="background:#edb200"></span><span class="code-block__dot" style="background:#00c758"></span>
+          <span class="code-block__title">claude · plan · text-adventure/</span>
+        </div>
+        <div class="code-block__body"><span class="code-block__line"><span class="code-block__cmt"># Shift+Tab 두 번 → plan 모드</span></span><span class="code-block__line"><span class="code-block__hi">  [plan]</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__cmd">&gt; <span class="code-block__hi">@.</span> 이 게임의 구조 분석해줘. 코드는 아직 수정 X.</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__out">  분석 결과:</span></span><span class="code-block__line"><span class="code-block__out">  · game.py — 메인 루프 (방 이동 + 명령 파싱)</span></span><span class="code-block__line"><span class="code-block__out">  · rooms.json — 방 데이터 (이름·설명·연결)</span></span><span class="code-block__line"><span class="code-block__out">  · player.py — 플레이어 상태 (위치·인벤토리)</span></span><span class="code-block__line"><span class="code-block__out">  · 체력 시스템 X · 전투 X · 시간 제한 X</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__out">  → 확장 가능 포인트: 체력·전투·시간·레벨 등</span></span></div>
+      </div>
+      <p class="slide__note">Plan 모드 + "수정 X"라고 명시해서 <strong>읽기만</strong> 하게 만듭니다 — 실수로 파일 변경되는 일 방지.</p>
+    </div>
+  </section>
+
+  <!-- 5 · 체력 시스템 추가 -->
+  <section class="slide is-standard">
+    <div class="slide__eyebrow">STEP 02 · 체력 시스템 추가</div>
+    <h2 class="slide__title">Plan으로 <span class="accent">계획 → 승인 → 실행</span></h2>
+    <div class="slide__body">
+      <div class="code-block">
+        <div class="code-block__header">
+          <span class="code-block__dot" style="background:#fb2c36"></span><span class="code-block__dot" style="background:#edb200"></span><span class="code-block__dot" style="background:#00c758"></span>
+          <span class="code-block__title">claude · plan · 체력 시스템</span>
+        </div>
+        <div class="code-block__body"><span class="code-block__line"><span class="code-block__cmd">&gt; player에 <span class="code-block__hi">체력 시스템</span> 추가. 시작 100 · 위험 방 진입 시 -10 · 0이면 게임오버</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__out">  계획서:</span></span><span class="code-block__line"><span class="code-block__out">  1. player.py — health 속성 추가 (default 100)</span></span><span class="code-block__line"><span class="code-block__out">  2. rooms.json — danger 필드 추가 (true/false)</span></span><span class="code-block__line"><span class="code-block__out">  3. game.py — 방 진입 시 danger면 health -= 10</span></span><span class="code-block__line"><span class="code-block__out">  4. game.py — health 0이면 game over 메시지 + exit</span></span><span class="code-block__line"><span class="code-block__out">  → 3개 파일 수정 (기존 흐름 유지)</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__hi">  [Approve / Edit / Reject]</span></span><span class="code-block__line"><span class="code-block__cmd">&gt; <span class="code-block__hi">approve</span></span></span><span class="code-block__line"><span class="code-block__out">  ✓ player.py 수정 ✓ rooms.json 수정 ✓ game.py 수정</span></span></div>
+      </div>
+      <p class="slide__note">실행 후 <code>python game.py</code>로 한 번 돌려보고 → <code>git commit -am "체력 시스템 추가"</code>. <strong>commit 빠뜨리지 않기</strong>.</p>
+    </div>
+  </section>
+
+  <!-- 6 · Telegram 가입 -->
+  <section class="slide is-standard">
+    <div class="slide__eyebrow">STEP 03a · Telegram 가입</div>
+    <h2 class="slide__title">휴대폰에 <span class="accent">Telegram 앱</span> 설치</h2>
+    <div class="slide__body">
+      <div class="step-list step-list--compact">
+        <div class="step-list__item">
+          <div class="step-list__num">1</div>
+          <div class="step-list__content">
+            <p class="step-list__title">App Store / Play Store에서 <strong>Telegram</strong> 검색 → 설치</p>
+          </div>
+        </div>
+        <div class="step-list__item">
+          <div class="step-list__num">2</div>
+          <div class="step-list__content">
+            <p class="step-list__title">앱 실행 → 본인 휴대폰 번호로 가입 (SMS 인증)</p>
+          </div>
+        </div>
+        <div class="step-list__item">
+          <div class="step-list__num">3</div>
+          <div class="step-list__content">
+            <p class="step-list__title">이름·아이디 설정 → 가입 완료</p>
+          </div>
+        </div>
+        <div class="step-list__item">
+          <div class="step-list__num">4</div>
+          <div class="step-list__content">
+            <p class="step-list__title">앱 안에서 검색 (돋보기) → <code>BotFather</code> 검색 → "+ Start" 누르기</p>
+          </div>
+        </div>
+      </div>
+      <p class="slide__note">계정 만들기 한 번만 — 5분 안에 끝납니다. 이미 Telegram 쓰던 분은 4번부터.</p>
+    </div>
+  </section>
+
+  <!-- 7 · 봇 생성 -->
+  <section class="slide is-standard">
+    <div class="slide__eyebrow">STEP 03b · BotFather로 봇 생성</div>
+    <h2 class="slide__title">/newbot — <span class="accent">토큰 발급</span></h2>
+    <div class="slide__body">
+      <div class="two-col">
+        <div>
+          <div class="content-card content-card--compact">
+            <h3 class="content-card__title">BotFather 대화</h3>
+            <ol class="content-card__list content-card__list--ol">
+              <li><code>/newbot</code> 입력</li>
+              <li>봇 이름 (예: <code>Claude Notify</code>)</li>
+              <li>봇 username (영문, 끝이 <code>bot</code>)</li>
+              <li>토큰 받음 → <strong>복사해서 메모장에</strong></li>
+            </ol>
+          </div>
+        </div>
+        <div>
+          <div class="code-block">
+            <div class="code-block__header">
+              <span class="code-block__dot" style="background:#fb2c36"></span><span class="code-block__dot" style="background:#edb200"></span><span class="code-block__dot" style="background:#00c758"></span>
+              <span class="code-block__title">Telegram · BotFather</span>
+            </div>
+            <div class="code-block__body"><span class="code-block__line"><span class="code-block__cmd">/newbot</span></span><span class="code-block__line"><span class="code-block__out">  Choose a name for your bot.</span></span><span class="code-block__line"><span class="code-block__cmd">Claude Notify</span></span><span class="code-block__line"><span class="code-block__out">  Now choose a username...</span></span><span class="code-block__line"><span class="code-block__cmd">claude_notify_2026_bot</span></span><span class="code-block__line"><span class="code-block__out">  Done! Use this token:</span></span><span class="code-block__line"><span class="code-block__hi">  7891234567:AAH...xyz</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__cmt"># ↑ 토큰 — 절대 공유 X</span></span></div>
+          </div>
+        </div>
+      </div>
+      <p class="slide__note">토큰 = <strong>비밀번호와 같음</strong>. 단톡방·코드에 직접 적지 마세요. 메모장에 임시 저장 → 환경변수로 사용.</p>
+    </div>
+  </section>
+
+  <!-- 8 · chat_id 확보 -->
+  <section class="slide is-standard">
+    <div class="slide__eyebrow">STEP 03c · chat_id 확보</div>
+    <h2 class="slide__title">본인 봇과 첫 대화 → <span class="accent">chat_id</span> 받기</h2>
+    <div class="slide__body">
+      <div class="two-col">
+        <div>
+          <div class="content-card content-card--compact">
+            <h3 class="content-card__title">단계</h3>
+            <ol class="content-card__list content-card__list--ol">
+              <li>BotFather 메시지에서 봇 링크 클릭 → 본인 봇 화면</li>
+              <li>"+ Start" 버튼 → "안녕" 한 번 보내기</li>
+              <li>브라우저로 <code>api.telegram.org/bot&lt;TOKEN&gt;/getUpdates</code></li>
+              <li>JSON에서 <code>"chat":{"id":...}</code> 숫자 복사</li>
+            </ol>
+          </div>
+        </div>
+        <div>
+          <div class="code-block">
+            <div class="code-block__header">
+              <span class="code-block__dot" style="background:#fb2c36"></span><span class="code-block__dot" style="background:#edb200"></span><span class="code-block__dot" style="background:#00c758"></span>
+              <span class="code-block__title">getUpdates JSON</span>
+            </div>
+            <div class="code-block__body"><span class="code-block__line"><span class="code-block__out">{</span></span><span class="code-block__line"><span class="code-block__out">  "ok": true,</span></span><span class="code-block__line"><span class="code-block__out">  "result": [{</span></span><span class="code-block__line"><span class="code-block__out">    "message": {</span></span><span class="code-block__line"><span class="code-block__hi">      "chat": { "id": 123456789, ... },</span></span><span class="code-block__line"><span class="code-block__out">      "text": "안녕"</span></span><span class="code-block__line"><span class="code-block__out">    }</span></span><span class="code-block__line"><span class="code-block__out">  }]</span></span><span class="code-block__line"><span class="code-block__out">}</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__cmt"># 이 숫자 (123456789) = chat_id</span></span></div>
+          </div>
+        </div>
+      </div>
+      <p class="slide__note">봇과 한 번이라도 대화해야 getUpdates에 chat이 나타납니다 — "안녕" 안 보내면 빈 결과.</p>
+    </div>
+  </section>
+
+  <!-- 9 · settings.json 작성 -->
+  <section class="slide is-standard">
+    <div class="slide__eyebrow">STEP 03d · settings.json 작성</div>
+    <h2 class="slide__title">.claude/settings.json — <span class="accent">Stop 훅</span> 추가</h2>
+    <div class="slide__body">
+      <div class="code-block">
+        <div class="code-block__header">
+          <span class="code-block__dot" style="background:#fb2c36"></span><span class="code-block__dot" style="background:#edb200"></span><span class="code-block__dot" style="background:#00c758"></span>
+          <span class="code-block__title">.claude/settings.json</span>
+        </div>
+        <div class="code-block__body"><span class="code-block__line"><span class="code-block__out">{</span></span><span class="code-block__line"><span class="code-block__out">  "hooks": {</span></span><span class="code-block__line"><span class="code-block__out">    "Stop": [{</span></span><span class="code-block__line"><span class="code-block__out">      "matcher": "",</span></span><span class="code-block__line"><span class="code-block__out">      "hooks": [{</span></span><span class="code-block__line"><span class="code-block__out">        "type": "command",</span></span><span class="code-block__line"><span class="code-block__hi">        "command": "curl.exe -s -X POST https://api.telegram.org/bot&lt;TOKEN&gt;/sendMessage -d chat_id=&lt;CHAT_ID&gt; -d text='✓ Claude 응답 끝'"</span></span><span class="code-block__line"><span class="code-block__out">      }]</span></span><span class="code-block__line"><span class="code-block__out">    }]</span></span><span class="code-block__line"><span class="code-block__out">  }</span></span><span class="code-block__line"><span class="code-block__out">}</span></span></div>
+      </div>
+      <p class="slide__note"><code>&lt;TOKEN&gt;</code>과 <code>&lt;CHAT_ID&gt;</code>를 <strong>본인 값</strong>으로 교체. <code>curl.exe</code>(점exe 필수) — PowerShell의 가짜 curl 피하기.</p>
+    </div>
+  </section>
+
+  <!-- 10 · 동작 확인 -->
+  <section class="slide is-standard">
+    <div class="slide__eyebrow">STEP 03e · 동작 확인</div>
+    <h2 class="slide__title">짧은 명령 → <span class="accent">휴대폰 알림</span> 확인</h2>
+    <div class="slide__body">
+      <div class="code-block">
+        <div class="code-block__header">
+          <span class="code-block__dot" style="background:#fb2c36"></span><span class="code-block__dot" style="background:#edb200"></span><span class="code-block__dot" style="background:#00c758"></span>
+          <span class="code-block__title">claude · 알림 테스트</span>
+        </div>
+        <div class="code-block__body"><span class="code-block__line"><span class="code-block__cmt"># 1) Claude 재시작 (settings.json 갱신을 위해)</span></span><span class="code-block__line"><span class="code-block__cmd">&gt; /exit</span></span><span class="code-block__line"><span class="code-block__prompt">PS&gt;</span> <span class="code-block__cmd">claude</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__cmt"># 2) 짧은 응답 시키기</span></span><span class="code-block__line"><span class="code-block__cmd">&gt; "안녕" 이라고 한 번 답해줘</span></span><span class="code-block__line"><span class="code-block__out">  안녕!</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__hi">  [Stop hook fired]</span></span><span class="code-block__line"><span class="code-block__out">  ✓ Telegram에 메시지 전송</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__cmt"># 3) 휴대폰 → Telegram → 본인 봇 채팅</span></span><span class="code-block__line"><span class="code-block__cmt">#    "✓ Claude 응답 끝" 표시 보임</span></span></div>
+      </div>
+      <p class="slide__note">알림 안 오면: <strong>① TOKEN 오타 ② chat_id 오타 ③ curl이 아닌 curl.exe ④ Claude 재시작 안 함</strong> — 이 4가지 우선 점검.</p>
+    </div>
+  </section>
+
+  <!-- 11 · 점심 안내 -->
+  <section class="slide is-statement">
+    <div class="statement-grid">
+      <div class="statement-text">
+        <div class="slide__eyebrow">12:00 — 13:00 · 점심</div>
+        <h2 class="statement__lead">잘 풀렸어도 <span class="accent">한 번 더</span> 시도해보세요</h2>
+        <p class="statement__caption">알림이 한 번 떴다면, 다른 폴더에서도 같은 settings.json 복사해서 작동시켜보기. 알림이 손에 익는 시간.</p>
+        <div class="statement__points">
+          <div class="statement__point"><span class="statement__point-num">통과</span><span>알림 떴으면 점심 — TA에게 화면 캡처 한 번 보여주기</span></div>
+          <div class="statement__point"><span class="statement__point-num">막힘</span><span>점심 시간에 TA가 1:1로 끝까지 — 오후 시작 전에 다 같이</span></div>
+          <div class="statement__point"><span class="statement__point-num">선택</span><span>여유 있으면 메시지 본문에 시간·디렉터리도 포함시켜보기</span></div>
+        </div>
+      </div>
+      <div class="statement-visual">
+        <svg viewBox="0 0 460 320" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <rect x="0" y="0" width="460" height="320" rx="16" fill="#fff5ec"/>
+          <text x="230" y="60" font-family="ui-sans-serif, system-ui" font-size="13" fill="#797067" letter-spacing="0.1em" font-weight="700" text-anchor="middle">12:00 — 13:00</text>
+          <rect x="100" y="100" width="260" height="80" rx="12" fill="white" stroke="#cc5a14" stroke-width="2"/>
+          <text x="230" y="135" font-family="ui-sans-serif, system-ui" font-size="14" font-weight="700" fill="#cc5a14" text-anchor="middle">알림 안 떴으면 → TA</text>
+          <text x="230" y="158" font-family="ui-sans-serif, system-ui" font-size="12" fill="#797067" text-anchor="middle">1:1 디버깅</text>
+          <text x="230" y="240" font-family="ui-sans-serif, system-ui" font-size="14" fill="#797067" text-anchor="middle">13:00 오후 이론 시작 시</text>
+          <text x="230" y="268" font-family="ui-sans-serif, system-ui" font-size="18" fill="#cc5a14" font-weight="700" text-anchor="middle">전원 알림 받음</text>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- 12 · 마무리 -->
+  <section class="slide is-standard">
+    <div class="slide__eyebrow">RECAP · 오전 마무리</div>
+    <h2 class="slide__title">오전 끝 — <span class="accent">Plan + Hook</span> 둘 다 직접</h2>
+    <div class="slide__body">
+      <div class="grid-3">
+        <div class="promise-card">
+          <div class="promise-card__num">Plan</div>
+          <h3 class="promise-card__title">실행 전 검토</h3>
+          <p class="promise-card__body">텍스트 게임 분석 + 체력 시스템 — Plan 한 사이클 완주.</p>
+        </div>
+        <div class="promise-card">
+          <div class="promise-card__num">Hook</div>
+          <h3 class="promise-card__title">자동화 첫 경험</h3>
+          <p class="promise-card__body">본인 휴대폰에 알림 — 노트북 안 봐도 되는 흐름.</p>
+        </div>
+        <div class="promise-card">
+          <div class="promise-card__num">Telegram</div>
+          <h3 class="promise-card__title">봇 1개 보유</h3>
+          <p class="promise-card__body">본인 알림용 봇 1개 — 강의 후에도 본인 작업 알림으로 활용 가능.</p>
+        </div>
+      </div>
+      <p class="slide__note">오후엔 <strong>CLAUDE.md 깊게</strong>로 들어갑니다 — 본인 미니프로젝트 폴더에 룰북 작성.</p>
+    </div>
+  </section>
+
+</main>
+
+<div class="deck-progress"><div class="deck-progress__bar"></div></div>
+<script src="../scripts/deck.js"></script>
+</body>
+</html>
