@@ -496,16 +496,6 @@ body.deck-no-chrome .deck-progress { opacity: 0; pointer-events: none; }
 }
 .timeline__bar-fill { height: 100%; background: rgba(254,110,0,0.60); border-radius: inherit; }
 .timeline__gen { display: flex; flex-direction: column; gap: 0.4rem; }
-.timeline__photo {
-  width: 100%;
-  aspect-ratio: 16 / 9;
-  border-radius: var(--rounded-md);
-  overflow: hidden;
-  margin-bottom: 0.4rem;
-  background: var(--color-surface-soft);
-  border: 2px solid var(--color-outline-strong);
-}
-.timeline__photo img { width: 100%; height: 100%; object-fit: cover; display: block; filter: contrast(1.05) saturate(0.85); }
 .timeline__gen-num { font-size: 0.72rem; letter-spacing: 0.06em; text-transform: uppercase; font-weight: 700; color: var(--color-primary-strong); }
 .timeline__gen-years { font-family: var(--font-mono); font-size: 0.78rem; color: var(--color-on-surface-muted); letter-spacing: 0.05em; }
 .timeline__gen-title { font-size: 1.15rem; font-weight: 700; line-height: 1.3; letter-spacing: -0.015em; }
@@ -575,15 +565,6 @@ body.deck-no-chrome .deck-progress { opacity: 0; pointer-events: none; }
   flex-direction: column;
   gap: 0.5rem;
 }
-.gen-deep__sidebar-photo {
-  width: 100%;
-  aspect-ratio: 16 / 10;        /* % 기반 — height 자동 */
-  border-radius: var(--rounded-md);
-  overflow: hidden;
-  margin-bottom: 0.6rem;
-  background: var(--color-surface);
-}
-.gen-deep__sidebar-photo img { width: 100%; height: 100%; object-fit: cover; display: block; filter: contrast(1.05) saturate(0.85); }
 .gen-deep__num { font-size: 0.72rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--color-primary-strong); font-weight: 700; }
 .gen-deep__years { font-family: var(--font-mono); font-size: 0.8rem; color: var(--color-on-surface-muted); letter-spacing: 0.05em; }
 .gen-deep__insight-title { font-size: 1.2rem; font-weight: 700; line-height: 1.2; letter-spacing: -0.02em; margin: 0.3rem 0; }
@@ -642,24 +623,6 @@ body.deck-no-chrome .deck-progress { opacity: 0; pointer-events: none; }
   border-radius: var(--rounded-md);
   border: 2px solid var(--color-outline-strong);
 }
-.founder__portrait {
-  width: 3.4rem;
-  height: 3.4rem;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: white;
-  font-weight: 700;
-  font-family: var(--font-mono);
-  font-size: 0.95rem;
-  flex-shrink: 0;
-  letter-spacing: 0.02em;
-  overflow: hidden;
-}
-.founder__portrait--dario { background: linear-gradient(135deg, var(--color-primary-warm), var(--color-primary-strong)); }
-.founder__portrait--daniela { background: linear-gradient(135deg, #6e7e8e, #3d4a57); }
-.founder__portrait img { width: 100%; height: 100%; object-fit: cover; display: block; }
 .founder__info { display: flex; flex-direction: column; gap: 0.1rem; min-width: 0; }
 .founder__name { font-weight: 700; font-size: 0.95rem; line-height: 1.3; }
 .founder__role { font-size: 0.75rem; color: var(--color-on-surface-muted); line-height: 1.45; }
@@ -1565,57 +1528,6 @@ body.deck-no-chrome .deck-progress { opacity: 0; pointer-events: none; }
 }
 
 /* =============================
-   Photo slot (placeholder)
-   ============================= */
-.photo-slot {
-  width: 100%;
-  background: repeating-linear-gradient(
-    135deg,
-    var(--color-surface-soft) 0,
-    var(--color-surface-soft) 10px,
-    var(--color-surface-elevated) 10px,
-    var(--color-surface-elevated) 20px
-  );
-  border: 2px dashed var(--color-outline-strong);
-  border-radius: var(--rounded-lg);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 0.4rem;
-  color: var(--color-on-surface-muted);
-  text-align: center;
-  padding: 0.8rem;
-}
-.photo-slot--portrait {
-  max-width: 70%;
-  aspect-ratio: 1 / 1;
-}
-.photo-slot--landscape {
-  aspect-ratio: 16 / 10;
-}
-.photo-slot--square {
-  aspect-ratio: 1 / 1;
-}
-.photo-slot__icon {
-  font-size: 1.6rem;
-  opacity: 0.5;
-  line-height: 1;
-}
-.photo-slot__label {
-  font-size: 0.78rem;
-  font-weight: 700;
-  letter-spacing: 0.04em;
-  color: var(--color-on-surface);
-}
-.photo-slot__hint {
-  font-size: 0.68rem;
-  font-family: var(--font-mono);
-  opacity: 0.7;
-  line-height: 1.4;
-}
-
-/* =============================
    Stage grid
    ============================= */
 .stage-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 0.7rem; }
@@ -1726,3 +1638,118 @@ body.deck-no-chrome .deck-progress { opacity: 0; pointer-events: none; }
   font-size: 0.8rem;
 }
 .install-side__verify .accent-cmd { color: var(--color-primary); font-weight: 700; }
+
+/* =============================
+   시작 전 준비 (온보딩)
+   ============================= */
+.onboarding-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.1rem;
+  flex: 1;
+  min-height: 0;
+}
+.onboarding-card {
+  background: var(--color-surface-elevated);
+  border: 2px solid var(--color-outline-strong);
+  border-radius: var(--rounded-lg);
+  padding: 1rem 1.3rem 1.1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 0.5rem;
+}
+.onboarding-card--accent { border-color: var(--color-primary); }
+.onboarding-card__label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--color-primary-strong);
+}
+.onboarding-qr {
+  width: 8.6rem;
+  height: 8.6rem;
+  border-radius: var(--rounded-md);
+  border: 2px solid var(--color-outline-strong);
+  background: #fff;
+  padding: 0.35rem;
+  object-fit: contain;
+}
+.onboarding-mail {
+  width: 8.6rem;
+  height: 8.6rem;
+  border-radius: var(--rounded-md);
+  border: 2px dashed var(--color-outline-strong);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-primary-strong);
+}
+.onboarding-mail svg { width: 46%; height: 46%; }
+.onboarding-card__title {
+  font-size: 1.12rem;
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+  margin: 0;
+}
+.onboarding-card__desc {
+  font-size: 0.8rem;
+  line-height: 1.5;
+  color: var(--color-on-surface-muted);
+  margin: 0;
+}
+.onboarding-card__link {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--color-primary-strong);
+  margin-top: auto;
+}
+.onboarding-card__steps {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  text-align: left;
+  width: 100%;
+}
+.onboarding-card__steps li {
+  font-size: 0.8rem;
+  line-height: 1.45;
+  padding-left: 1.05rem;
+  position: relative;
+  color: var(--color-on-surface);
+}
+.onboarding-card__steps li::before {
+  content: "→";
+  position: absolute;
+  left: 0;
+  color: var(--color-primary-strong);
+  font-weight: 700;
+}
+
+/* =============================
+   설치 안내 (링크 + 스크린샷)
+   ============================= */
+.install-link {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--color-primary-strong);
+  text-decoration: underline;
+  margin: 0.15rem 0 0.55rem;
+}
+.install-shot {
+  width: 100%;
+  border-radius: var(--rounded-md);
+  border: 2px solid var(--color-outline-strong);
+  display: block;
+  margin-bottom: 0.55rem;
+}

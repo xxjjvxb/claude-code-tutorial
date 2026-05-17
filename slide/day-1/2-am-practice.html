@@ -24,7 +24,7 @@
   <section class="slide is-section is-standard">
     <div class="section-eyebrow">PART 02 · HANDS-ON</div>
     <h2 class="section-title">0부터 Claude Code <span class="accent">셋업</span></h2>
-    <p class="section-caption">VS Code 설치 → Claude Code 설치(PowerShell 한 줄) → 가입·결제 또는 강의 제공 키 → 첫 실행. Node.js는 나중에 프론트엔드 만들 때만.</p>
+    <p class="section-caption">VS Code 설치 → Claude Code 설치(PowerShell 한 줄) → 교육 팀 계정 초대 → 첫 실행. Node.js는 나중에 프론트엔드 만들 때만.</p>
     <div class="section-meta">
       <div class="section-meta__item"><span class="section-meta__num">7</span><span>핵심 단계</span></div>
       <div class="section-meta__item"><span class="section-meta__num">10:45</span><span>시작</span></div>
@@ -41,7 +41,7 @@
         <div class="setup-step"><div class="setup-step__num">02</div><h3 class="setup-step__title">환경변수 · PATH</h3><p class="setup-step__desc">왜 PowerShell 새로 열어야 하나</p></div>
         <div class="setup-step"><div class="setup-step__num">03</div><h3 class="setup-step__title">Claude Code 설치</h3><p class="setup-step__desc">irm https://claude.ai/install.ps1 | iex</p></div>
         <div class="setup-step"><div class="setup-step__num">04</div><h3 class="setup-step__title">PATH 확인</h3><p class="setup-step__desc">claude --version 통과</p></div>
-        <div class="setup-step"><div class="setup-step__num">05</div><h3 class="setup-step__title">API key</h3><p class="setup-step__desc">강의 제공 또는 Anthropic</p></div>
+        <div class="setup-step"><div class="setup-step__num">05</div><h3 class="setup-step__title">강의 계정</h3><p class="setup-step__desc">팀 초대 또는 본인 가입</p></div>
         <div class="setup-step"><div class="setup-step__num">06</div><h3 class="setup-step__title">claude → "안녕"</h3><p class="setup-step__desc">첫 응답 확인</p></div>
         <div class="setup-step"><div class="setup-step__num">07</div><h3 class="setup-step__title">VS Code 통합</h3><p class="setup-step__desc">통합 터미널에서 claude</p></div>
       </div>
@@ -60,7 +60,7 @@
           <div class="install-detail__where"><div class="install-detail__where-label">받는 곳</div><div class="install-detail__where-value">Microsoft Store → "Visual Studio Code"</div></div>
         </div>
         <ol class="install-detail__steps">
-          <li><strong>Windows 키</strong> → <code>store</code> 입력 → "Microsoft Store" 실행</li>
+          <li><strong>Windows 키</strong>를 눌러 시작 메뉴 검색 → <code>store</code> 입력 → 결과에 뜨는 <strong>"Microsoft Store"</strong> 앱 실행</li>
           <li>검색창에 <code>Visual Studio Code</code> → 첫 번째 결과 (<strong>Microsoft Corporation</strong>) 클릭</li>
           <li><strong>"받기"</strong>(Get/Install) 클릭 → 자동 다운로드 + 설치 (약 30초~1분)</li>
           <li>완료 후 <strong>"열기"</strong> 또는 시작 메뉴에서 "Visual Studio Code" 실행</li>
@@ -188,17 +188,17 @@
 
   <!-- 8 · 강의 내 제공 (메인) + 본인 계정 (참고) -->
   <section class="slide is-standard">
-    <div class="slide__eyebrow">STEP 05 · API key</div>
-    <h2 class="slide__title">API key — <span class="accent">강의에서 받는다</span></h2>
+    <div class="slide__eyebrow">STEP 05 · 강의 계정</div>
+    <h2 class="slide__title">강의 계정 — <span class="accent">팀으로 초대받습니다</span></h2>
     <div class="slide__body">
       <div class="centered-block">
         <div class="primary-callout">
-          <div class="primary-callout__label">이번 강의 · 강의 내 제공</div>
-          <h3 class="primary-callout__title">본인 결제 X — 강의에서 access key 배포</h3>
-          <p class="primary-callout__body">강사가 <strong>AWS Bedrock + IAM access key</strong>를 강의 시작 시 단톡방으로 배포합니다. 학생은 받은 키를 <strong>환경변수에 설정 → 즉시 다음 단계</strong>로 진행. Anthropic 계정 가입·결제는 필요 없습니다.</p>
+          <div class="primary-callout__label">이번 강의 · 교육 팀 계정</div>
+          <h3 class="primary-callout__title">본인 결제 X — 교육 팀 계정으로 초대</h3>
+          <p class="primary-callout__body">이 과정에서는 <strong>교육 팀 계정으로 초대</strong>해 진행합니다. 등록하신 메일 주소로 초대장이 발송되니, <strong>메일 주소 등록이 안 되신 분은 강사에게 말씀</strong>해 주세요. Anthropic 계정 가입·결제는 따로 필요 없습니다.</p>
         </div>
       </div>
-      <p class="slide__note">강의 이후 본인 계정으로 쓰려면 → <strong>console.anthropic.com</strong>에서 가입 → Plans &amp; Billing에서 결제 수단 등록 + $5 이상 충전. 부록 슬라이드 참고.</p>
+      <p class="slide__note">강의 이후 본인 계정으로 쓰려면 → <strong>Claude Pro 구독</strong>이 가장 간단(카드 등록 한 번). 헤비 사용자는 API 종량제. 자세한 비교는 Day 5에서 다룹니다.</p>
     </div>
   </section>
 
@@ -216,6 +216,7 @@
               <li>폴더 이름 <code>Day1</code> 입력</li>
               <li>Day1 폴더 안 빈 공간 우클릭 → <strong>"터미널에서 열기"</strong></li>
               <li>열린 PowerShell에 <code>claude</code> 입력</li>
+              <li>처음이면 <strong>브라우저 로그인</strong> 창 → 교육 팀 계정 메일로 로그인</li>
             </ol>
           </div>
         </div>
@@ -314,7 +315,7 @@
         <div class="trouble-item">
           <div class="trouble-item__num">03</div>
           <div class="trouble-item__problem">claude 실행 시 결제·인증 에러</div>
-          <div class="trouble-item__solution">강의 제공 access key 받았는지 확인(단톡방). 또는 console.anthropic.com Billing.</div>
+          <div class="trouble-item__solution">팀 초대 메일을 받아 <strong>수락</strong>했는지 확인. 안 왔으면 강사에게 메일 주소 등록 요청.</div>
         </div>
         <div class="trouble-item">
           <div class="trouble-item__num">04</div>
