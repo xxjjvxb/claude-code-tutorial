@@ -14,13 +14,16 @@
       border:2px solid var(--color-primary); border-radius:8px; padding:0.4rem 0.75rem; }
     .dl-link:hover { background:#fff5ec; }
     .mini-shape { display:block; width:100%; height:auto; margin:0.35rem 0 0.1rem; }
-    .reveal-box { display:flex; flex-direction:column; align-items:center; justify-content:center;
-      gap:0.7rem; height:100%; text-align:center; }
-    .reveal-lock { font-size:2.6rem; line-height:1; }
-    .reveal-btn { font-family:var(--font-sans); font-size:1rem; font-weight:700; color:#fff;
-      background:var(--color-primary); border:none; border-radius:10px; padding:0.7rem 1.6rem; cursor:pointer; }
+    .reveal-locked { display:flex; flex-direction:column; align-items:center; justify-content:center;
+      gap:1rem; height:100%; text-align:center; }
+    .reveal-lock { font-size:3.6rem; line-height:1; }
+    .reveal-btn { font-family:var(--font-sans); font-size:1.2rem; font-weight:700; color:#fff;
+      background:var(--color-primary); border:none; border-radius:12px; padding:0.85rem 2.2rem; cursor:pointer; }
     .reveal-btn:hover { background:var(--color-primary-strong); }
-    .reveal-hint { font-size:0.72rem; color:var(--color-on-surface-muted); }
+    .reveal-hint { font-size:0.82rem; color:var(--color-on-surface-muted); }
+    #revealAnswer { display:none; }
+    .reveal-answer { height:100%; align-items:center; justify-content:center; }
+    .reveal-answer svg { display:block; width:100%; height:auto; }
   </style>
 </head>
 <body>
@@ -868,42 +871,34 @@
   </section>
 
   <!-- 27 · 정답 공개 -->
-  <section class="slide is-statement">
-    <div class="statement-grid statement-grid--visual-wide">
-      <div class="statement-text">
-        <div class="slide__eyebrow">REVEAL · 정답 공개</div>
-        <h2 class="statement__lead">이제 — 강사가 <span class="accent">진짜 함수</span>를 공개한다.</h2>
-        <p class="statement__caption">점수도 순위도 없습니다. 버튼을 누르면 강사가 비밀번호를 입력하고, 숨겨둔 두 진짜 함수 — 수식과 곡선이 나타납니다. 각자 추정한 곡선과 겹쳐 — 눈으로 비교하세요.</p>
-        <div class="statement__points">
-          <div class="statement__point"><span class="statement__point-num">강사</span><span>버튼 → 비밀번호 입력</span></div>
-          <div class="statement__point"><span class="statement__point-num">비교</span><span>내 추정 곡선과 겹쳐 보기</span></div>
-          <div class="statement__point"><span class="statement__point-num">볼 것</span><span>데이터 밖에서 갈라지는가</span></div>
-        </div>
+  <section class="slide is-standard">
+    <div class="slide__eyebrow">REVEAL · 정답 공개</div>
+    <h2 class="slide__title">정답 공개 — 진짜 함수 <span class="accent">2개</span></h2>
+    <div class="slide__body">
+      <div class="reveal-locked" id="revealLocked">
+        <div class="reveal-lock">🔒</div>
+        <button class="reveal-btn" id="revealBtn" type="button">정답 보기</button>
+        <div class="reveal-hint">강사가 비밀번호를 입력하면 — 두 진짜 함수의 수식과 곡선이 나타납니다</div>
       </div>
-      <div class="statement-visual">
-        <div class="reveal-box" id="revealLocked">
-          <div class="reveal-lock">🔒</div>
-          <button class="reveal-btn" id="revealBtn" type="button">정답 보기</button>
-          <div class="reveal-hint">강사가 비밀번호를 입력합니다</div>
-        </div>
-        <div id="revealAnswer" hidden>
-          <svg viewBox="0 0 460 320" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <rect x="0" y="0" width="460" height="320" rx="16" fill="#fff5ec"/>
-            <rect x="40" y="30" width="285.7" height="115" fill="#ffe7d1"/>
-            <rect x="40" y="185" width="285.7" height="115" fill="#ffe7d1"/>
-            <rect x="34" y="7" width="396" height="23" rx="6" fill="#ffffff" stroke="#fe6e00" stroke-width="1.5"/>
-            <text x="46" y="23" font-family="ui-monospace, monospace" font-size="11" font-weight="700" fill="#cc5a14">data_1  ·  f(x) = 6·exp(-(x-4)²/4) + 0.4x + 1</text>
-            <polyline points="40,130.8 68.6,119.1 97.1,93.8 125.7,57.2 154.3,35.1 182.9,47 211.4,73.3 240,88.4 268.6,89.9 297.1,86.1 325.7,81.1 354.3,76 382.9,70.9 411.4,65.8 440,60.7" fill="none" stroke="#fe6e00" stroke-width="3"/>
-            <line x1="325.7" y1="30" x2="325.7" y2="145" stroke="#fb2c36" stroke-width="1.5" stroke-dasharray="4 3"/>
-            <rect x="34" y="162" width="396" height="23" rx="6" fill="#ffffff" stroke="#fe6e00" stroke-width="1.5"/>
-            <text x="46" y="178" font-family="ui-monospace, monospace" font-size="11" font-weight="700" fill="#cc5a14">data_2  ·  f(x) = 3·exp(-0.25x)·sin(1.5x) + 2</text>
-            <polyline points="40,254 54.3,212.6 68.6,200.4 97.1,248 125.7,283.9 154.3,261.1 182.9,235.4 211.4,247.6 240,263.2 268.6,259.1 297.1,249.4 325.7,250.3 382.9,256.5 440,252.2" fill="none" stroke="#fe6e00" stroke-width="3"/>
-            <line x1="325.7" y1="185" x2="325.7" y2="300" stroke="#fb2c36" stroke-width="1.5" stroke-dasharray="4 3"/>
-            <text x="333" y="312" font-family="ui-sans-serif, system-ui" font-size="9" fill="#fb2c36">← 데이터 / 외삽 →</text>
-          </svg>
-        </div>
+      <div class="reveal-answer" id="revealAnswer">
+        <svg viewBox="0 0 900 450" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <rect x="0" y="0" width="900" height="450" rx="16" fill="#fff5ec"/>
+          <rect x="50" y="52" width="585.7" height="160" fill="#ffe7d1"/>
+          <rect x="24" y="10" width="556" height="32" rx="8" fill="#ffffff" stroke="#fe6e00" stroke-width="2"/>
+          <text x="42" y="32" font-family="ui-monospace, monospace" font-size="17" font-weight="700" fill="#cc5a14">data_1  ·  f(x) = 6·exp(-(x-4)²/4) + 0.4x + 1</text>
+          <polyline points="50,192.3 108.6,175.9 167.1,140.7 225.7,89.9 284.3,59.1 342.9,75.6 401.4,112.3 460,133.2 518.6,135.4 577.1,130 635.7,123.1 694.3,116 752.9,108.9 811.4,101.8 870,94.7" fill="none" stroke="#fe6e00" stroke-width="4"/>
+          <line x1="635.7" y1="52" x2="635.7" y2="212" stroke="#fb2c36" stroke-width="2" stroke-dasharray="6 4"/>
+          <rect x="50" y="276" width="585.7" height="160" fill="#ffe7d1"/>
+          <rect x="24" y="234" width="556" height="32" rx="8" fill="#ffffff" stroke="#fe6e00" stroke-width="2"/>
+          <text x="42" y="256" font-family="ui-monospace, monospace" font-size="17" font-weight="700" fill="#cc5a14">data_2  ·  f(x) = 3·exp(-0.25x)·sin(1.5x) + 2</text>
+          <polyline points="50,372 79.3,314.4 108.6,297.4 167.1,363.7 225.7,413.6 284.3,381.9 342.9,346.1 401.4,363 460,384.8 518.6,379 577.1,365.6 635.7,366.9 752.9,375.5 870,369.4" fill="none" stroke="#fe6e00" stroke-width="4"/>
+          <line x1="635.7" y1="276" x2="635.7" y2="436" stroke="#fb2c36" stroke-width="2" stroke-dasharray="6 4"/>
+          <text x="626" y="449" text-anchor="end" font-family="ui-sans-serif, system-ui" font-size="14" font-weight="700" fill="#cc5a14">데이터 구간 (x ≤ 10)</text>
+          <text x="648" y="449" font-family="ui-sans-serif, system-ui" font-size="14" font-weight="700" fill="#fb2c36">외삽 (x &gt; 10) →</text>
+        </svg>
       </div>
     </div>
+    <p class="slide__note">각자 추정한 곡선(<code>my_estimate</code>)과 겹쳐 비교하세요 — 데이터 구간(x ≤ 10)은 잘 맞아도, 데이터 밖에서는 추정이 갈라집니다.</p>
   </section>
 
   <!-- 28 · 함께 보기 -->
@@ -1059,8 +1054,8 @@
       var pw = window.prompt('정답 공개 — 비밀번호를 입력하세요');
       if (pw === null) return;
       if (pw.trim().toLowerCase() === 'unicorn') {
-        document.getElementById('revealLocked').hidden = true;
-        document.getElementById('revealAnswer').hidden = false;
+        document.getElementById('revealLocked').style.display = 'none';
+        document.getElementById('revealAnswer').style.display = 'flex';
       } else {
         window.alert('비밀번호가 맞지 않습니다.');
       }
