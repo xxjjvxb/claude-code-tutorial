@@ -52,6 +52,13 @@
     .day-card__meta-count { font-size: 0.95rem; font-weight: 700; color: var(--color-primary-strong); }
     .day-card__meta-label { font-size: 0.6rem; color: var(--color-on-surface-muted); letter-spacing: 0.05em; }
     .day-card__meta-arrow { font-size: 1.2rem; color: var(--color-primary-strong); }
+
+    /* 수정 중 — 클릭 불가 카드 */
+    .day-card--wip { opacity: 0.5; cursor: not-allowed; }
+    .day-card--wip:hover { transform: none; border-color: var(--color-outline-strong); box-shadow: none; }
+    .day-card--wip:hover .day-card__title { opacity: 1; }
+    .day-card--wip:hover .day-card__desc { opacity: 0; }
+    .day-card__meta-wip { font-family: var(--font-mono); font-size: 0.72rem; font-weight: 700; color: var(--color-on-surface-muted); letter-spacing: 0.04em; }
   </style>
 </head>
 <body data-index-root="true">
@@ -74,36 +81,36 @@
       <div class="hero__meta-row"><span class="hero__meta-label">기간</span><span class="hero__meta-value">5일 (월–금)</span></div>
       <div class="hero__meta-row"><span class="hero__meta-label">시간</span><span class="hero__meta-value">09:00 — 17:00</span></div>
       <div class="hero__meta-row"><span class="hero__meta-label">인원</span><span class="hero__meta-value">10명 + TA 1명</span></div>
-      <div class="hero__meta-row"><span class="hero__meta-label">전체</span><span class="hero__meta-value">320 슬라이드</span></div>
+      <div class="hero__meta-row"><span class="hero__meta-label">1·2일차</span><span class="hero__meta-value">229 슬라이드</span></div>
     </div>
   </section>
 
   <div class="day-list">
     <a class="day-card" href="day-1/index.html">
       <div class="day-card__num"><span class="day-card__num-label">DAY 01 · MON</span><span class="day-card__num-big">01</span><span class="day-card__num-date">2026.05.18</span></div>
-      <div class="day-card__body"><span class="day-card__keyword">만남</span><h2 class="day-card__title">AI 코딩의 흐름과 Claude Code의 자리</h2><p class="day-card__desc">VS Code · Claude Code 설치부터 첫 응답까지. 60년 AI 코딩사 · 3가지 차별점 · 강사 라이브 시연 · 자기소개 HTML.</p></div>
-      <div class="day-card__meta"><span class="day-card__meta-count">68</span><span class="day-card__meta-label">슬라이드</span><span class="day-card__meta-arrow">→</span></div>
+      <div class="day-card__body"><span class="day-card__keyword">입문</span><h2 class="day-card__title">Claude Code 시작부터 배포까지</h2><p class="day-card__desc">7챕터 — 이해 · 셋업 · 터미널·프롬프팅 · 자기소개 페이지 · Git+4대 문법 · 운영 감각·미션 · Vercel 배포.</p></div>
+      <div class="day-card__meta"><span class="day-card__meta-count">142</span><span class="day-card__meta-label">슬라이드</span><span class="day-card__meta-arrow">→</span></div>
     </a>
     <a class="day-card" href="day-2/index.html">
       <div class="day-card__num"><span class="day-card__num-label">DAY 02 · TUE</span><span class="day-card__num-big">02</span><span class="day-card__num-date">2026.05.19</span></div>
-      <div class="day-card__body"><span class="day-card__keyword">문법</span><h2 class="day-card__title">Git 안전벨트와 Claude Code 4대 문법</h2><p class="day-card__desc">Git init/status/add/commit/restore · / @ ! # 4대 문법 · 모드·권한·비용·컨텍스트 · 가위바위보 + 변환기 빌드.</p></div>
-      <div class="day-card__meta"><span class="day-card__meta-count">65</span><span class="day-card__meta-label">슬라이드</span><span class="day-card__meta-arrow">→</span></div>
+      <div class="day-card__body"><span class="day-card__keyword">협업</span><h2 class="day-card__title">Plan · Hooks · CLAUDE.md · 데이터와 AI</h2><p class="day-card__desc">4챕터 — 공개 API 데이터 페이지+Plan Mode · Hooks 휴대폰 알림+텔레그램 원격 · CLAUDE.md 길들이기 · 데이터와 AI: 회귀로 숨은 함수 찾기.</p></div>
+      <div class="day-card__meta"><span class="day-card__meta-count">87</span><span class="day-card__meta-label">슬라이드</span><span class="day-card__meta-arrow">→</span></div>
     </a>
-    <a class="day-card" href="day-3/index.html">
+    <div class="day-card day-card--wip">
       <div class="day-card__num"><span class="day-card__num-label">DAY 03 · WED</span><span class="day-card__num-big">03</span><span class="day-card__num-date">2026.05.20</span></div>
-      <div class="day-card__body"><span class="day-card__keyword">협업</span><h2 class="day-card__title">Plan + Hooks와 CLAUDE.md 길들이기</h2><p class="day-card__desc">Plan Mode · Telegram Hook + 6 이벤트 + 예시 3 · CLAUDE.md 200줄 룰 · CoT · .claude 폴더 · 미니 첫 커밋.</p></div>
-      <div class="day-card__meta"><span class="day-card__meta-count">66</span><span class="day-card__meta-label">슬라이드</span><span class="day-card__meta-arrow">→</span></div>
-    </a>
-    <a class="day-card" href="day-4/index.html">
+      <div class="day-card__body"><span class="day-card__keyword">수정 중</span><h2 class="day-card__title">Plan + Hooks와 CLAUDE.md 길들이기</h2><p class="day-card__desc">Plan Mode · Telegram Hook + 6 이벤트 + 예시 3 · CLAUDE.md 200줄 룰 · CoT · .claude 폴더 · 미니 첫 커밋.</p></div>
+      <div class="day-card__meta"><span class="day-card__meta-wip">준비 중</span></div>
+    </div>
+    <div class="day-card day-card--wip">
       <div class="day-card__num"><span class="day-card__num-label">DAY 04 · THU</span><span class="day-card__num-big">04</span><span class="day-card__num-date">2026.05.21</span></div>
-      <div class="day-card__body"><span class="day-card__keyword">확장</span><h2 class="day-card__title">도우미 군단과 본인 손에 맞춘 도구</h2><p class="day-card__desc">Sub-agent + MCP · 커스텀 슬래시 + PPTX Skill — 직접 만드는 4개. 헤드리스(claude -p) 시연.</p></div>
-      <div class="day-card__meta"><span class="day-card__meta-count">62</span><span class="day-card__meta-label">슬라이드</span><span class="day-card__meta-arrow">→</span></div>
-    </a>
-    <a class="day-card" href="day-5/index.html">
+      <div class="day-card__body"><span class="day-card__keyword">수정 중</span><h2 class="day-card__title">도우미 군단과 본인 손에 맞춘 도구</h2><p class="day-card__desc">Sub-agent + MCP · 커스텀 슬래시 + PPTX Skill — 직접 만드는 4개. 헤드리스(claude -p) 시연.</p></div>
+      <div class="day-card__meta"><span class="day-card__meta-wip">준비 중</span></div>
+    </div>
+    <div class="day-card day-card--wip">
       <div class="day-card__num"><span class="day-card__num-label">DAY 05 · FRI</span><span class="day-card__num-big">05</span><span class="day-card__num-date">2026.05.22</span></div>
-      <div class="day-card__body"><span class="day-card__keyword">완성</span><h2 class="day-card__title">미니프로젝트 빌드 + 시연 + 회고</h2><p class="day-card__desc">4단계 복습 · design.md · 발표자 노트 · 1인 4분 발표 × 10명 + 5일 회고 → 다음 주 월요일 첫 명령.</p></div>
-      <div class="day-card__meta"><span class="day-card__meta-count">59</span><span class="day-card__meta-label">슬라이드</span><span class="day-card__meta-arrow">→</span></div>
-    </a>
+      <div class="day-card__body"><span class="day-card__keyword">수정 중</span><h2 class="day-card__title">미니프로젝트 빌드 + 시연 + 회고</h2><p class="day-card__desc">4단계 복습 · design.md · 발표자 노트 · 1인 4분 발표 × 10명 + 5일 회고 → 다음 주 월요일 첫 명령.</p></div>
+      <div class="day-card__meta"><span class="day-card__meta-wip">준비 중</span></div>
+    </div>
   </div>
 </main>
 

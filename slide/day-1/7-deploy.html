@@ -1,0 +1,267 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>1일차 · 7. Vercel 배포</title>
+  <link rel="stylesheet" href="../styles/tokens.css">
+  <link rel="stylesheet" href="../styles/deck.css">
+</head>
+<body>
+
+<main class="deck">
+
+  <header class="deck-chrome">
+  <span class="deck-chrome__brand">CLAUDE CODE · 5D</span>
+  <span class="deck-chrome__divider">·</span>
+  <span class="deck-chrome__day">1일차 · 7 배포</span>
+  <span class="deck-chrome__spacer"></span>
+  <span class="deck-chrome__counter">— / —</span>
+</header>
+
+  <!-- 1 · 섹션 인트로 -->
+  <section class="slide is-section is-standard">
+    <div class="section-eyebrow">CHAPTER 7 · 배포</div>
+    <h2 class="section-title">자기소개 페이지를 <span class="accent">세상에 공개</span></h2>
+    <p class="section-caption">챕터 4에서 만든 자기소개 페이지는 아직 내 컴퓨터 안에만 있습니다. GitHub와 Vercel로 인터넷에 올려, 링크 하나로 누구에게나 공유합니다 — 전부 무료.</p>
+    <div class="section-meta">
+      <div class="section-meta__item"><span class="section-meta__num">5</span><span>단계</span></div>
+      <div class="section-meta__item"><span class="section-meta__num">0원</span><span>비용</span></div>
+      <div class="section-meta__item"><span class="section-meta__num">1</span><span>링크로 공유</span></div>
+    </div>
+  </section>
+
+  <!-- 2 · 왜 배포하나 -->
+  <section class="slide is-standard">
+    <div class="slide__eyebrow">WHY · 왜 배포하나</div>
+    <h2 class="slide__title">내 컴퓨터 속 파일 → <span class="accent">전 세계 누구나</span></h2>
+    <div class="slide__body">
+      <div class="two-col">
+        <div>
+          <div class="content-card content-card--compact">
+            <h3 class="content-card__title">지금까지는</h3>
+            <ul class="content-card__list">
+              <li><code>about.html</code>은 <strong>내 컴퓨터에만</strong> 존재</li>
+              <li>남에게 보여주려면 파일을 직접 전달해야 함</li>
+              <li>휴대폰·다른 PC에서는 열 수 없음</li>
+            </ul>
+          </div>
+        </div>
+        <div>
+          <div class="content-card content-card--compact">
+            <h3 class="content-card__title">배포하면</h3>
+            <ul class="content-card__list">
+              <li><strong>인터넷 주소</strong>가 생김 — <code>내이름.vercel.app</code></li>
+              <li>링크만 보내면 누구나 접속</li>
+              <li>휴대폰에서도 똑같이 열림</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <p class="slide__note">Vercel은 HTML·CSS 같은 정적 사이트를 <strong>무료로</strong> 호스팅합니다. GitHub에 코드를 올려두면 Vercel이 자동으로 가져가 배포합니다.</p>
+    </div>
+  </section>
+
+  <!-- 3 · 배포 흐름 한눈에 -->
+  <section class="slide is-standard">
+    <div class="slide__eyebrow">OVERVIEW · 흐름 한눈에</div>
+    <h2 class="slide__title">GitHub에 올리면 — <span class="accent">나머지는 자동</span></h2>
+    <div class="slide__body">
+      <div class="setup-grid">
+        <div class="setup-step"><div class="setup-step__num">01</div><h3 class="setup-step__title">GitHub 저장소 만들기</h3><p class="setup-step__desc">자기소개 폴더를 담을 저장소</p></div>
+        <div class="setup-step"><div class="setup-step__num">02</div><h3 class="setup-step__title">GitHub에 push</h3><p class="setup-step__desc">내 컴퓨터 코드를 원격으로 올리기</p></div>
+        <div class="setup-step"><div class="setup-step__num">03</div><h3 class="setup-step__title">Vercel 가입</h3><p class="setup-step__desc">GitHub 계정으로 로그인</p></div>
+        <div class="setup-step"><div class="setup-step__num">04</div><h3 class="setup-step__title">저장소 Import</h3><p class="setup-step__desc">선택 → Deploy → 자동 배포</p></div>
+        <div class="setup-step"><div class="setup-step__num">05</div><h3 class="setup-step__title">링크 공유</h3><p class="setup-step__desc">*.vercel.app 주소를 카톡방에</p></div>
+      </div>
+      <p class="slide__note">한 번 연결해두면 — 이후엔 <code>git push</code>만 하면 Vercel이 알아서 다시 배포합니다.</p>
+    </div>
+  </section>
+
+  <!-- 4 · STEP 1 · GitHub 저장소 -->
+  <section class="slide is-standard">
+    <div class="slide__eyebrow">STEP 1 · GitHub 저장소</div>
+    <h2 class="slide__title">자기소개 폴더를 <span class="accent">저장소로</span></h2>
+    <div class="slide__body">
+      <div class="two-col">
+        <div>
+          <div class="content-card content-card--compact">
+            <h3 class="content-card__title">GitHub에서 — 새 저장소</h3>
+            <ol class="content-card__list content-card__list--ol">
+              <li><code>github.com</code> 우측 상단 <strong>+</strong> → New repository</li>
+              <li>이름 입력 (예: <code>my-intro</code>) — 영문·하이픈</li>
+              <li><strong>Public</strong> 선택 → Create repository</li>
+              <li>다음 화면의 주소(<code>...git</code>)를 복사해 둠</li>
+            </ol>
+          </div>
+        </div>
+        <div>
+          <div class="code-block">
+            <div class="code-block__header">
+              <span class="code-block__dot" style="background:#fb2c36"></span><span class="code-block__dot" style="background:#edb200"></span><span class="code-block__dot" style="background:#00c758"></span>
+              <span class="code-block__title">PowerShell — 자기소개 폴더</span>
+            </div>
+            <div class="code-block__body"><span class="code-block__line"><span class="code-block__cmt"># 챕터 5에서 이미 했으면 생략</span></span><span class="code-block__line"><span class="code-block__prompt">PS&gt;</span> <span class="code-block__cmd">git init</span></span><span class="code-block__line"><span class="code-block__prompt">PS&gt;</span> <span class="code-block__cmd">git add .</span></span><span class="code-block__line"><span class="code-block__prompt">PS&gt;</span> <span class="code-block__cmd">git commit -m "<span class="code-block__hi">자기소개 페이지</span>"</span></span></div>
+          </div>
+        </div>
+      </div>
+      <p class="slide__note">저장소(repository) = GitHub에 올린 프로젝트 폴더 한 칸. 자기소개 페이지 전용으로 하나 만듭니다.</p>
+    </div>
+  </section>
+
+  <!-- 5 · STEP 2 · push -->
+  <section class="slide is-standard">
+    <div class="slide__eyebrow">STEP 2 · push</div>
+    <h2 class="slide__title">내 코드를 <span class="accent">GitHub로</span> 올리기</h2>
+    <div class="slide__body">
+      <div class="two-col">
+        <div>
+          <div class="content-card content-card--compact">
+            <h3 class="content-card__title">push가 하는 일</h3>
+            <ul class="content-card__list">
+              <li>지금까지 <code>commit</code>은 <strong>내 컴퓨터 안</strong> 저장</li>
+              <li><code>push</code> = 그 커밋을 <strong>GitHub(원격)</strong>으로</li>
+              <li>한 번 연결하면 다음부턴 <code>git push</code>만</li>
+            </ul>
+          </div>
+        </div>
+        <div>
+          <div class="code-block">
+            <div class="code-block__header">
+              <span class="code-block__dot" style="background:#fb2c36"></span><span class="code-block__dot" style="background:#edb200"></span><span class="code-block__dot" style="background:#00c758"></span>
+              <span class="code-block__title">PowerShell — 원격 연결 + push</span>
+            </div>
+            <div class="code-block__body"><span class="code-block__line"><span class="code-block__cmt"># 복사해둔 저장소 주소를 연결</span></span><span class="code-block__line"><span class="code-block__prompt">PS&gt;</span> <span class="code-block__cmd">git remote add origin <span class="code-block__hi">https://github.com/...git</span></span></span><span class="code-block__line"><span class="code-block__prompt">PS&gt;</span> <span class="code-block__cmd">git branch -M main</span></span><span class="code-block__line"><span class="code-block__prompt">PS&gt;</span> <span class="code-block__cmd">git push -u origin main</span></span><span class="code-block__line"><span class="code-block__out">  ✓ GitHub에 업로드 완료</span></span></div>
+          </div>
+        </div>
+      </div>
+      <p class="slide__note">처음 push할 때 GitHub 로그인 창이 뜰 수 있습니다 — 브라우저에서 승인하면 끝. 막히면 Claude에게 에러를 그대로 붙여넣어 물어보세요.</p>
+    </div>
+  </section>
+
+  <!-- 6 · STEP 3 · Vercel 가입 + Import -->
+  <section class="slide is-standard">
+    <div class="slide__eyebrow">STEP 3 · Vercel</div>
+    <h2 class="slide__title">Vercel — <span class="accent">GitHub 계정으로</span> 시작</h2>
+    <div class="slide__body">
+      <div class="step-list step-list--compact">
+        <div class="step-list__item">
+          <div class="step-list__num">1</div>
+          <div class="step-list__content">
+            <p class="step-list__title"><code>vercel.com</code> → <strong>Sign Up</strong> → "Continue with GitHub"</p>
+          </div>
+        </div>
+        <div class="step-list__item">
+          <div class="step-list__num">2</div>
+          <div class="step-list__content">
+            <p class="step-list__title">GitHub 권한 승인 (최초 1회)</p>
+          </div>
+        </div>
+        <div class="step-list__item">
+          <div class="step-list__num">3</div>
+          <div class="step-list__content">
+            <p class="step-list__title"><strong>Add New → Project</strong> → 방금 만든 <code>my-intro</code> 저장소 선택</p>
+          </div>
+        </div>
+        <div class="step-list__item">
+          <div class="step-list__num">4</div>
+          <div class="step-list__content">
+            <p class="step-list__title">설정은 건드리지 않고 <strong>Deploy</strong> 클릭</p>
+          </div>
+        </div>
+        <div class="step-list__item">
+          <div class="step-list__num">5</div>
+          <div class="step-list__content">
+            <p class="step-list__title">30초~1분 빌드 → 배포 완료 화면</p>
+          </div>
+        </div>
+      </div>
+      <p class="slide__note">자기소개 페이지는 HTML 한 장이라 별도 설정이 필요 없습니다 — <strong>Deploy</strong>만 누르면 됩니다.</p>
+    </div>
+  </section>
+
+  <!-- 7 · STEP 4 · 도메인 공유 -->
+  <section class="slide is-statement">
+    <div class="statement-grid">
+      <div class="statement-text">
+        <div class="slide__eyebrow">STEP 4 · 도메인 공유</div>
+        <h2 class="statement__lead"><span class="accent">내이름.vercel.app</span><br>— 내 페이지 주소</h2>
+        <p class="statement__caption">배포가 끝나면 Vercel이 인터넷 주소를 발급합니다. 이 링크를 가진 사람은 누구나, 어디서나 내 자기소개 페이지를 볼 수 있습니다.</p>
+        <div class="statement__points">
+          <div class="statement__point"><span class="statement__point-num">확인</span><span>Vercel 화면의 <strong>Visit</strong> 버튼 → 내 페이지 열림</span></div>
+          <div class="statement__point"><span class="statement__point-num">공유</span><span>주소를 복사해 <strong>카카오톡 오픈채팅방</strong>에</span></div>
+          <div class="statement__point"><span class="statement__point-num">테스트</span><span>휴대폰으로 열어보기 — PC와 똑같이 보임</span></div>
+        </div>
+      </div>
+      <div class="statement-visual">
+        <svg viewBox="0 0 460 320" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <rect x="0" y="0" width="460" height="320" rx="16" fill="#fff5ec"/>
+          <rect x="60" y="64" width="340" height="208" rx="12" fill="white" stroke="#cc5a14" stroke-width="2"/>
+          <rect x="60" y="64" width="340" height="36" rx="12" fill="#f3ede4"/>
+          <circle cx="82" cy="82" r="5" fill="#fb2c36"/>
+          <circle cx="100" cy="82" r="5" fill="#edb200"/>
+          <circle cx="118" cy="82" r="5" fill="#00c758"/>
+          <rect x="142" y="72" width="238" height="20" rx="10" fill="white"/>
+          <text x="156" y="86" font-family="ui-monospace, monospace" font-size="11" fill="#cc5a14">내이름.vercel.app</text>
+          <circle cx="230" cy="156" r="28" fill="#ffe0c2"/>
+          <rect x="180" y="198" width="100" height="14" rx="7" fill="#423d38"/>
+          <rect x="158" y="224" width="144" height="9" rx="4.5" fill="#cbb9a8"/>
+          <rect x="170" y="242" width="120" height="9" rx="4.5" fill="#cbb9a8"/>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8 · STEP 5 · 수정과 재배포 -->
+  <section class="slide is-standard">
+    <div class="slide__eyebrow">STEP 5 · 수정과 재배포</div>
+    <h2 class="slide__title">고치고 <span class="accent">git push</span> — 자동으로 갱신</h2>
+    <div class="slide__body">
+      <div class="code-block">
+        <div class="code-block__header">
+          <span class="code-block__dot" style="background:#fb2c36"></span><span class="code-block__dot" style="background:#edb200"></span><span class="code-block__dot" style="background:#00c758"></span>
+          <span class="code-block__title">PowerShell — 페이지 수정 후</span>
+        </div>
+        <div class="code-block__body"><span class="code-block__line"><span class="code-block__cmt"># 자기소개 페이지를 고쳤다면</span></span><span class="code-block__line"><span class="code-block__prompt">PS&gt;</span> <span class="code-block__cmd">git add .</span></span><span class="code-block__line"><span class="code-block__prompt">PS&gt;</span> <span class="code-block__cmd">git commit -m "<span class="code-block__hi">사진 추가</span>"</span></span><span class="code-block__line"><span class="code-block__prompt">PS&gt;</span> <span class="code-block__cmd">git push</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__out">  Vercel이 push를 자동 감지 → 재배포</span></span><span class="code-block__line"><span class="code-block__hi">  ✓ 같은 주소에 최신 내용 반영</span></span></div>
+      </div>
+      <p class="slide__note">한 번 연결해두면 — 같은 주소가 항상 최신입니다. <code>git push</code> 한 줄이면 몇 초 뒤 반영, 별도 업로드 작업이 없습니다.</p>
+    </div>
+  </section>
+
+  <!-- 9 · 마무리 -->
+  <section class="slide is-statement">
+    <div class="statement-grid">
+      <div class="statement-text">
+        <div class="slide__eyebrow">RECAP · 챕터 7 마무리</div>
+        <h2 class="statement__lead">이제 내 자기소개는 <span class="accent">인터넷에</span> 있습니다</h2>
+        <p class="statement__caption">내 컴퓨터 안 파일이 링크 하나로 세상과 연결됐습니다. 5일 동안 만들 미니프로젝트도 똑같은 방법으로 배포할 수 있습니다.</p>
+        <div class="statement__points">
+          <div class="statement__point"><span class="statement__point-num">오늘</span><span>GitHub → Vercel 연결, 자기소개 페이지 공개</span></div>
+          <div class="statement__point"><span class="statement__point-num">앞으로</span><span><code>git push</code> 한 줄이면 어떤 변경도 자동 반영</span></div>
+          <div class="statement__point"><span class="statement__point-num">다음</span><span>Plan · Hooks · CLAUDE.md — AI를 길들이는 협업</span></div>
+        </div>
+      </div>
+      <div class="statement-visual">
+        <svg viewBox="0 0 460 320" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <rect x="0" y="0" width="460" height="320" rx="16" fill="#fff5ec"/>
+          <rect x="170" y="80" width="120" height="84" rx="10" fill="white" stroke="#cc5a14" stroke-width="2"/>
+          <circle cx="230" cy="112" r="14" fill="#ffe0c2"/>
+          <rect x="200" y="134" width="60" height="8" rx="4" fill="#423d38"/>
+          <text x="230" y="60" font-family="ui-sans-serif, system-ui" font-size="13" font-weight="700" fill="#cc5a14" text-anchor="middle">내 자기소개 페이지</text>
+          <line x1="160" y1="200" x2="100" y2="248" stroke="#cc5a14" stroke-width="2" stroke-dasharray="4 4"/>
+          <line x1="230" y1="206" x2="230" y2="252" stroke="#cc5a14" stroke-width="2" stroke-dasharray="4 4"/>
+          <line x1="300" y1="200" x2="360" y2="248" stroke="#cc5a14" stroke-width="2" stroke-dasharray="4 4"/>
+          <circle cx="100" cy="262" r="16" fill="#cc5a14"/>
+          <circle cx="230" cy="266" r="16" fill="#cc5a14"/>
+          <circle cx="360" cy="262" r="16" fill="#cc5a14"/>
+          <text x="230" y="304" font-family="ui-sans-serif, system-ui" font-size="12" fill="#797067" text-anchor="middle">링크 하나로 — 누구나, 어디서나</text>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <div class="deck-progress"><div class="deck-progress__bar"></div></div>
+</main>
+<script src="../scripts/deck.js"></script>
+</body>
+</html>

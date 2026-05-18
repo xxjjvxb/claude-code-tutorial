@@ -1,0 +1,981 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>1일차 · 6. 운영 감각 + 미션</title>
+  <link rel="stylesheet" href="../styles/tokens.css">
+  <link rel="stylesheet" href="../styles/deck.css">
+</head>
+<body>
+
+<main class="deck">
+
+  <header class="deck-chrome">
+  <span class="deck-chrome__brand">CLAUDE CODE · 5D</span>
+  <span class="deck-chrome__divider">·</span>
+  <span class="deck-chrome__day">1일차 · 6 운영·미션</span>
+  <span class="deck-chrome__spacer"></span>
+  <span class="deck-chrome__counter">— / —</span>
+</header>
+
+
+  <!-- 1 · Section cover -->
+  <section class="slide is-section is-standard">
+    <div class="section-eyebrow">CHAPTER 6 · 운영 감각</div>
+    <h2 class="section-title">모드 · 권한 · 비용 · <span class="accent">컨텍스트 관리</span></h2>
+    <p class="section-caption">앞에서 4가지 핵심 도구를 익혔다면, 이번엔 운영 감각. AI에게 일을 시키되 안전하고 효율적으로 — 4가지 축을 한 번씩 짚습니다.</p>
+    <div class="section-meta">
+      <div class="section-meta__item"><span class="section-meta__num">4</span><span>토픽</span></div>
+    </div>
+  </section>
+
+  <!-- 2 · 4 토픽 한눈에 -->
+  <section class="slide is-standard">
+    <div class="slide__eyebrow">OVERVIEW · 운영 4축</div>
+    <h2 class="slide__title">운영자가 늘 신경 쓰는 <span class="accent">4가지</span></h2>
+    <div class="slide__body">
+      <div class="grid-4">
+        <div class="diff-card">
+          <div class="diff-card__rank">01</div>
+          <h3 class="diff-card__title">모드 4종</h3>
+          <p class="diff-card__body">Interactive · Auto · Plan · Bypass — 일감마다 모드를 바꿔 끼우는 감각.</p>
+        </div>
+        <div class="diff-card">
+          <div class="diff-card__rank">02</div>
+          <h3 class="diff-card__title">권한 확인</h3>
+          <p class="diff-card__body">prompt 한 번 읽고 승인. "always allow"는 무지성 금지.</p>
+        </div>
+        <div class="diff-card">
+          <div class="diff-card__rank">03</div>
+          <h3 class="diff-card__title">비용 감각</h3>
+          <p class="diff-card__body">/usage 자주. 모델별 단가 차이 + 작은 단위 분할.</p>
+        </div>
+        <div class="diff-card">
+          <div class="diff-card__rank">04</div>
+          <h3 class="diff-card__title">컨텍스트 관리</h3>
+          <p class="diff-card__body">/clear · /compact · /resume · --continue 네 도구로 세션 다루기.</p>
+        </div>
+      </div>
+      <p class="slide__note">실습에서 <strong>매 미션 끝 <code>/usage</code> 의무</strong>화. 비용 감각은 손에 익혀야 진짜.</p>
+    </div>
+  </section>
+
+  <!-- 3 · 4 모드 한눈에 -->
+  <section class="slide is-standard">
+    <div class="slide__eyebrow">TOPIC 01 · MODES · 4종</div>
+    <h2 class="slide__title">상황에 맞춰 <span class="accent">모드를 바꿔 낀다</span></h2>
+    <div class="slide__body">
+      <div class="grid-4">
+        <div class="model-card">
+          <h3 class="model-card__name">Interactive</h3>
+          <p class="model-card__tagline">기본 — 매 위험 작업마다 물어봄</p>
+          <ul class="model-card__list">
+            <li>안전 1순위 · 학습용</li>
+            <li>매 prompt 읽고 승인</li>
+            <li>강의 기본</li>
+          </ul>
+        </div>
+        <div class="model-card">
+          <h3 class="model-card__name">Auto<br><span style="font-size:0.7rem;font-weight:400;opacity:0.7">(accept-edits)</span></h3>
+          <p class="model-card__tagline">파일 편집은 자동 승인 · 셸은 물어봄</p>
+          <ul class="model-card__list">
+            <li>흐름 안 끊김</li>
+            <li>익숙해진 후 사용</li>
+            <li>git 안전망 필수</li>
+          </ul>
+        </div>
+        <div class="model-card model-card--accent">
+          <h3 class="model-card__name">Plan</h3>
+          <p class="model-card__tagline">실행 전 계획부터 — 안전벨트</p>
+          <ul class="model-card__list">
+            <li>큰 변경 전 필수</li>
+            <li>계획 읽고 승인</li>
+            <li>Day 3 본격</li>
+          </ul>
+        </div>
+        <div class="model-card">
+          <h3 class="model-card__name">Bypass<br><span style="font-size:0.7rem;font-weight:400;opacity:0.7">(yolo)</span></h3>
+          <p class="model-card__tagline">모든 권한 자동 — <strong style="color:#fb2c36">위험</strong></p>
+          <ul class="model-card__list">
+            <li>샌드박스에서만</li>
+            <li>본인 PC에서 X</li>
+            <li>강의 중 사용 X</li>
+          </ul>
+        </div>
+      </div>
+      <p class="slide__note">기본 = <strong>Interactive</strong>. 익숙해지면 Auto, 큰 변경 앞에선 Plan. Bypass는 <strong>이번 강의 동안 쓸 일 없습니다</strong>.</p>
+    </div>
+  </section>
+
+  <!-- 4 · Interactive 자세히 -->
+  <section class="slide is-statement">
+    <div class="statement-grid">
+      <div class="statement-text">
+        <div class="slide__eyebrow">MODE · Interactive (기본)</div>
+        <h2 class="statement__lead">매 위험 작업마다 <span class="accent">물어보는</span> 모드</h2>
+        <p class="statement__caption">파일 쓰기·삭제·셸 실행·네트워크 호출 — 위험한 일은 모두 권한 prompt로 멈춤. 사람이 한 번 읽고 승인해야 진행.</p>
+        <div class="statement__points">
+          <div class="statement__point"><span class="statement__point-num">강의</span><span>5일 내내 이 모드가 기본</span></div>
+          <div class="statement__point"><span class="statement__point-num">장점</span><span>실수가 일어나기 전에 멈춤</span></div>
+          <div class="statement__point"><span class="statement__point-num">단점</span><span>흐름이 자주 끊김 → 익숙해지면 답답해짐</span></div>
+        </div>
+      </div>
+      <div class="statement-visual">
+        <svg viewBox="0 0 460 320" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <rect x="0" y="0" width="460" height="320" rx="14" fill="rgba(0,0,0,0.92)"/>
+          <rect x="0" y="0" width="460" height="32" fill="rgba(255,255,255,0.06)"/>
+          <text x="14" y="20" font-family="ui-monospace, monospace" font-size="11" fill="rgba(255,255,255,0.5)">claude · interactive</text>
+          <text x="20" y="68" fill="white" font-family="ui-monospace, monospace" font-size="13">&gt; package.json 수정해줘</text>
+          <line x1="20" y1="88" x2="440" y2="88" stroke="rgba(255,255,255,0.15)"/>
+          <text x="20" y="118" fill="#edb200" font-family="ui-monospace, monospace" font-size="13">⚠ Claude wants to edit:</text>
+          <text x="20" y="142" fill="rgba(255,255,255,0.85)" font-family="ui-monospace, monospace" font-size="12">  package.json</text>
+          <text x="20" y="162" fill="rgba(255,255,255,0.65)" font-family="ui-monospace, monospace" font-size="11">  + "scripts": { "test": "..." }</text>
+          <line x1="20" y1="190" x2="440" y2="190" stroke="rgba(255,255,255,0.15)"/>
+          <rect x="20" y="210" width="120" height="32" rx="6" fill="#fe6e00"/>
+          <text x="80" y="231" font-family="ui-sans-serif, system-ui" font-size="12" font-weight="700" fill="white" text-anchor="middle">Allow once</text>
+          <rect x="150" y="210" width="120" height="32" rx="6" fill="rgba(255,255,255,0.1)"/>
+          <text x="210" y="231" font-family="ui-sans-serif, system-ui" font-size="12" fill="rgba(255,255,255,0.85)" text-anchor="middle">Always allow</text>
+          <rect x="280" y="210" width="80" height="32" rx="6" fill="rgba(255,255,255,0.05)"/>
+          <text x="320" y="231" font-family="ui-sans-serif, system-ui" font-size="12" fill="rgba(255,255,255,0.65)" text-anchor="middle">Deny</text>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5 · Auto 자세히 -->
+  <section class="slide is-statement">
+    <div class="statement-grid">
+      <div class="statement-text">
+        <div class="slide__eyebrow">MODE · Auto (accept-edits)</div>
+        <h2 class="statement__lead">파일 편집은 <span class="accent">자동 승인</span></h2>
+        <p class="statement__caption">파일 쓰기·수정 prompt를 매번 묻지 않음 — 흐름이 끊기지 않음. 단, 셸 명령·네트워크는 여전히 물어봄.</p>
+        <div class="statement__points">
+          <div class="statement__point"><span class="statement__point-num">언제</span><span>한 번 패턴이 익숙해진 후 — 단순 반복 작업</span></div>
+          <div class="statement__point"><span class="statement__point-num">필수</span><span><strong>git 커밋 직후</strong>에만 켜기 — 망쳐도 복구 가능해야 함</span></div>
+          <div class="statement__point"><span class="statement__point-num">셸·네트워크</span><span>여전히 prompt — Bypass와 결정적 차이</span></div>
+        </div>
+      </div>
+      <div class="statement-visual">
+        <svg viewBox="0 0 460 320" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <rect x="0" y="0" width="460" height="320" rx="14" fill="rgba(0,0,0,0.92)"/>
+          <rect x="0" y="0" width="460" height="32" fill="rgba(255,255,255,0.06)"/>
+          <text x="14" y="20" font-family="ui-monospace, monospace" font-size="11" fill="rgba(255,255,255,0.5)">claude · auto (accept-edits)</text>
+          <text x="20" y="68" fill="white" font-family="ui-monospace, monospace" font-size="13">&gt; 5개 파일에 console.log 추가</text>
+          <text x="20" y="100" fill="#00c758" font-family="ui-monospace, monospace" font-size="11">  ✓ src/a.js 수정</text>
+          <text x="20" y="120" fill="#00c758" font-family="ui-monospace, monospace" font-size="11">  ✓ src/b.js 수정</text>
+          <text x="20" y="140" fill="#00c758" font-family="ui-monospace, monospace" font-size="11">  ✓ src/c.js 수정</text>
+          <text x="20" y="160" fill="#00c758" font-family="ui-monospace, monospace" font-size="11">  ✓ src/d.js 수정</text>
+          <text x="20" y="180" fill="#00c758" font-family="ui-monospace, monospace" font-size="11">  ✓ src/e.js 수정</text>
+          <line x1="20" y1="210" x2="440" y2="210" stroke="rgba(255,255,255,0.15)"/>
+          <text x="20" y="244" fill="rgba(255,255,255,0.7)" font-family="ui-monospace, monospace" font-size="11">  파일 5개 수정 완료 — prompt 0번</text>
+          <text x="20" y="266" fill="#edb200" font-family="ui-monospace, monospace" font-size="11">  ⚠ git 커밋 안 해뒀으면 복구 어려움</text>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6 · Plan 모드 (Day 3 예고) -->
+  <section class="slide is-statement">
+    <div class="statement-grid">
+      <div class="statement-text">
+        <div class="slide__eyebrow">MODE · Plan (Day 3 본격)</div>
+        <h2 class="statement__lead">실행 전에 <span class="accent">계획</span>부터 본다</h2>
+        <p class="statement__caption">큰 작업에 들어가기 전 — 무엇을 어떻게 할지 Claude가 먼저 계획서를 제시. 사람이 읽고 승인해야 실행.</p>
+        <div class="statement__points">
+          <div class="statement__point"><span class="statement__point-num">언제</span><span>여러 파일 동시 수정 · 의존성 추가 · 큰 리팩터링</span></div>
+          <div class="statement__point"><span class="statement__point-num">진입</span><span><code>Shift + Tab</code> 두 번 — 모드 순환</span></div>
+          <div class="statement__point"><span class="statement__point-num">선택</span><span>승인 · 수정 요청 · 거절 — 사람의 판단 개입</span></div>
+        </div>
+      </div>
+      <div class="statement-visual">
+        <svg viewBox="0 0 460 320" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <rect x="0" y="0" width="460" height="320" rx="14" fill="rgba(0,0,0,0.92)"/>
+          <rect x="0" y="0" width="460" height="32" fill="rgba(255,255,255,0.06)"/>
+          <text x="14" y="20" font-family="ui-monospace, monospace" font-size="11" fill="rgba(255,255,255,0.5)">claude · plan</text>
+          <text x="20" y="60" fill="white" font-family="ui-monospace, monospace" font-size="13">&gt; 인증 시스템 추가해줘</text>
+          <text x="20" y="92" fill="rgba(255,255,255,0.85)" font-family="ui-monospace, monospace" font-size="11">  계획서:</text>
+          <rect x="20" y="102" width="420" height="170" rx="6" fill="rgba(255,255,255,0.05)"/>
+          <text x="32" y="124" fill="rgba(255,255,255,0.85)" font-family="ui-monospace, monospace" font-size="11">1. auth.py 생성 (login/logout/session)</text>
+          <text x="32" y="148" fill="rgba(255,255,255,0.85)" font-family="ui-monospace, monospace" font-size="11">2. routes.py — /login /logout 추가</text>
+          <text x="32" y="172" fill="rgba(255,255,255,0.85)" font-family="ui-monospace, monospace" font-size="11">3. templates/login.html 추가</text>
+          <text x="32" y="196" fill="rgba(255,255,255,0.85)" font-family="ui-monospace, monospace" font-size="11">4. requirements.txt — flask-login 추가</text>
+          <text x="32" y="220" fill="rgba(255,255,255,0.65)" font-family="ui-monospace, monospace" font-size="11">→ 4개 파일 수정 + 1개 의존성 추가</text>
+          <text x="32" y="252" fill="#fe6e00" font-family="ui-monospace, monospace" font-size="12" font-weight="700">[ Approve / Edit / Reject ]</text>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7 · Shift+Tab 모드 전환 -->
+  <section class="slide is-standard">
+    <div class="slide__eyebrow">MODE SWITCH · Shift+Tab</div>
+    <h2 class="slide__title">모드 사이를 <span class="accent">Shift+Tab</span>으로 순환</h2>
+    <div class="slide__body">
+      <div class="two-col">
+        <div>
+          <div class="content-card content-card--compact">
+            <h3 class="content-card__title">단축키 한 가지</h3>
+            <p class="content-card__body">claude 입력란에서 <code>Shift + Tab</code> 누를 때마다 모드 순환:</p>
+            <ul class="content-card__list">
+              <li>Interactive → Auto → Plan → 다시 Interactive</li>
+              <li>현재 모드는 <strong>입력란 상단에 표시</strong></li>
+              <li>Bypass는 별도로 <code>--dangerously-skip-permissions</code></li>
+            </ul>
+          </div>
+        </div>
+        <div>
+          <div class="code-block">
+            <div class="code-block__header">
+              <span class="code-block__dot" style="background:#fb2c36"></span><span class="code-block__dot" style="background:#edb200"></span><span class="code-block__dot" style="background:#00c758"></span>
+              <span class="code-block__title">claude · 모드 순환</span>
+            </div>
+            <div class="code-block__body"><span class="code-block__line"><span class="code-block__cmt"># 현재: interactive (기본)</span></span><span class="code-block__line"><span class="code-block__out">  [Shift + Tab]</span></span><span class="code-block__line"><span class="code-block__hi">  → mode: auto (accept-edits)</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__out">  [Shift + Tab]</span></span><span class="code-block__line"><span class="code-block__hi">  → mode: plan</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__out">  [Shift + Tab]</span></span><span class="code-block__line"><span class="code-block__hi">  → mode: interactive (복귀)</span></span></div>
+          </div>
+        </div>
+      </div>
+      <p class="slide__note"><code>--dangerously-skip-permissions</code>는 강의 중 <strong>한 번도 쓸 일 없음</strong>. 호기심에라도 X.</p>
+    </div>
+  </section>
+
+  <!-- 8 · 권한 확인 -->
+  <section class="slide is-standard">
+    <div class="slide__eyebrow">TOPIC 02 · PERMISSIONS</div>
+    <h2 class="slide__title">권한 prompt — <span class="accent">한 줄은 읽고</span> 승인</h2>
+    <div class="slide__body">
+      <div class="two-col">
+        <div>
+          <div class="content-card content-card--compact">
+            <h3 class="content-card__title">언제 prompt가 뜨나</h3>
+            <ul class="content-card__list">
+              <li><strong>파일 쓰기·삭제</strong> — 내용 변경</li>
+              <li><strong>셸 명령</strong> — git, npm, curl 등</li>
+              <li><strong>네트워크</strong> — 외부 API · 다운로드</li>
+              <li><strong>새 의존성</strong> — npm install 등</li>
+            </ul>
+          </div>
+        </div>
+        <div>
+          <div class="content-card content-card--compact">
+            <h3 class="content-card__title">3가지 옵션</h3>
+            <ul class="content-card__list">
+              <li><strong>Allow once</strong> — 이번 한 번만 (권장 default)</li>
+              <li><strong>Always allow</strong> — 이 명령은 앞으로 자동</li>
+              <li><strong>Deny</strong> — 거절</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <p class="slide__note">새 명령은 <strong>Allow once</strong>로 시작 — 신뢰 쌓이면 always로. 처음부터 always는 사고의 시작.</p>
+    </div>
+  </section>
+
+  <!-- 9 · always allow 무지성 금지 -->
+  <section class="slide is-statement">
+    <div class="statement-grid">
+      <div class="statement-text">
+        <div class="slide__eyebrow">RULE · 1줄로 끝</div>
+        <h2 class="statement__lead">"<span class="accent">always allow 무지성 금지</span>"</h2>
+        <p class="statement__caption">이 한 줄이 5일 내내 사고를 막는다. always allow는 그 명령을 다음부턴 묻지 않겠다는 약속 — 어떤 명령에 약속할지 신중히.</p>
+        <div class="statement__points">
+          <div class="statement__point"><span class="statement__point-num">OK</span><span><code>git status</code> · <code>ls</code> · <code>cat</code> — 읽기만 하는 명령</span></div>
+          <div class="statement__point"><span class="statement__point-num">주의</span><span><code>git add</code> · <code>git commit</code> — 변경은 가능</span></div>
+          <div class="statement__point"><span class="statement__point-num">절대 X</span><span><code>rm -rf</code> · <code>git push --force</code> · <code>npm publish</code></span></div>
+        </div>
+      </div>
+      <div class="statement-visual">
+        <svg viewBox="0 0 460 320" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <rect x="0" y="0" width="460" height="320" rx="16" fill="#fff5ec"/>
+          <rect x="40" y="40" width="380" height="80" rx="10" fill="#dcfce7" stroke="#016630" stroke-width="2"/>
+          <text x="55" y="68" font-family="ui-sans-serif, system-ui" font-size="12" font-weight="700" fill="#016630">✓ always allow OK</text>
+          <text x="55" y="92" font-family="ui-monospace, monospace" font-size="13" fill="#016630">git status · ls · cat · pwd</text>
+          <text x="55" y="110" font-family="ui-sans-serif, system-ui" font-size="11" fill="#016630">읽기만 하는 명령들</text>
+          <rect x="40" y="135" width="380" height="80" rx="10" fill="#fef9c2" stroke="#874b00" stroke-width="2"/>
+          <text x="55" y="163" font-family="ui-sans-serif, system-ui" font-size="12" font-weight="700" fill="#874b00">⚠ Allow once 정도만</text>
+          <text x="55" y="187" font-family="ui-monospace, monospace" font-size="13" fill="#874b00">git add · git commit · npm install</text>
+          <text x="55" y="205" font-family="ui-sans-serif, system-ui" font-size="11" fill="#874b00">변경 있는 명령 — 매번 한 번 읽기</text>
+          <rect x="40" y="230" width="380" height="70" rx="10" fill="#fef2f2" stroke="#fb2c36" stroke-width="2"/>
+          <text x="55" y="258" font-family="ui-sans-serif, system-ui" font-size="12" font-weight="700" fill="#fb2c36">✗ 절대 always 금지</text>
+          <text x="55" y="282" font-family="ui-monospace, monospace" font-size="13" fill="#fb2c36">rm -rf · push --force · DROP TABLE</text>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- 10 · 토큰 = 비용 -->
+  <section class="slide is-standard">
+    <div class="slide__eyebrow">TOPIC 03 · COST · 비용 감각</div>
+    <h2 class="slide__title">토큰이 곧 <span class="accent">비용</span> — Day 1 복습 + 모델별 단가</h2>
+    <div class="slide__body">
+      <div class="impact-grid">
+        <div class="impact-card">
+          <div class="impact-card__num">Haiku</div>
+          <div class="impact-card__label">짧은 응답 · 분류 · 자동화</div>
+          <p class="impact-card__desc">입력 $0.80 / 출력 $4 (1M 토큰당). <strong>Sonnet의 1/4 가격</strong>. 단순 작업 반복엔 이게 정답.</p>
+        </div>
+        <div class="impact-card">
+          <div class="impact-card__num">Sonnet</div>
+          <div class="impact-card__label">강의 기본 · 일상 코딩</div>
+          <p class="impact-card__desc">입력 $3 / 출력 $15. 거의 모든 작업에 충분. 하루 평균 <strong>$1~5</strong>.</p>
+        </div>
+        <div class="impact-card">
+          <div class="impact-card__num">Opus</div>
+          <div class="impact-card__label">복잡한 추론 · Plan Mode</div>
+          <p class="impact-card__desc">입력 $15 / 출력 $75. <strong>Sonnet의 5배</strong>. 어려운 디버깅·설계에만.</p>
+        </div>
+      </div>
+      <p class="slide__note">강의에선 모두 <strong>Sonnet</strong> 기본. 단순 반복엔 <code>/model haiku</code>로 절약, 막힌 디버깅엔 <code>/model opus</code>로 잠깐.</p>
+    </div>
+  </section>
+
+  <!-- 11 · /usage 자주 보기 -->
+  <section class="slide is-statement">
+    <div class="statement-grid">
+      <div class="statement-text">
+        <div class="slide__eyebrow">/USAGE — 매 미션 끝마다</div>
+        <h2 class="statement__lead">사용량이 <span class="accent">손에 익을</span> 때까지 자주.</h2>
+        <p class="statement__caption">실습 중 매 미션이 끝날 때마다 <code>/usage</code>를 한 번씩. 본인 누적이 어느 정도인지 한 번씩 확인하는 습관.</p>
+        <div class="statement__points">
+          <div class="statement__point"><span class="statement__point-num">표시</span><span>입력 / 출력 토큰 + 달러 환산 + 현재 모델</span></div>
+          <div class="statement__point"><span class="statement__point-num">습관</span><span>매 미션 끝 → /usage 한 번씩 확인</span></div>
+          <div class="statement__point"><span class="statement__point-num">감각</span><span>"이 정도면 ${가격}"이 머리에 들어옴 = 운영 시작</span></div>
+        </div>
+      </div>
+      <div class="statement-visual">
+        <svg viewBox="0 0 460 320" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <rect x="0" y="0" width="460" height="320" rx="14" fill="rgba(0,0,0,0.92)"/>
+          <rect x="0" y="0" width="460" height="32" fill="rgba(255,255,255,0.06)"/>
+          <text x="14" y="20" font-family="ui-monospace, monospace" font-size="11" fill="rgba(255,255,255,0.5)">claude · /usage</text>
+          <text x="20" y="68" fill="#fe6e00" font-family="ui-monospace, monospace" font-size="13">&gt; /usage</text>
+          <text x="20" y="100" fill="rgba(255,255,255,0.85)" font-family="ui-monospace, monospace" font-size="12">  Session usage:</text>
+          <text x="20" y="128" fill="rgba(255,255,255,0.65)" font-family="ui-monospace, monospace" font-size="11">  Model       sonnet</text>
+          <text x="20" y="148" fill="rgba(255,255,255,0.65)" font-family="ui-monospace, monospace" font-size="11">  Input       42,180 tokens</text>
+          <text x="20" y="168" fill="rgba(255,255,255,0.65)" font-family="ui-monospace, monospace" font-size="11">  Output       8,420 tokens</text>
+          <line x1="20" y1="188" x2="440" y2="188" stroke="rgba(255,255,255,0.15)"/>
+          <text x="20" y="216" fill="#fe6e00" font-family="ui-monospace, monospace" font-size="14" font-weight="700">  Total cost  $0.252</text>
+          <text x="20" y="248" fill="rgba(255,255,255,0.5)" font-family="ui-monospace, monospace" font-size="10">  Today total: $1.34 · This week: $4.20</text>
+          <text x="20" y="280" fill="#00c758" font-family="ui-monospace, monospace" font-size="11">  → 본인 사용량 확인</text>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- 12 · 작은 단위 원칙 -->
+  <section class="slide is-standard">
+    <div class="slide__eyebrow">PRINCIPLE · 작은 단위 분할</div>
+    <h2 class="slide__title">"한 번에 다" 시키지 말고 <span class="accent">작게 잘라서</span></h2>
+    <div class="slide__body">
+      <div class="bg-compare">
+        <div class="bg-compare__side bg-compare__side--bad">
+          <div class="bg-compare__label">× 한 번에 다</div>
+          <div class="bg-compare__quote">
+            <div>"쇼핑몰 만들어줘"</div>
+            <div>...</div>
+            <div>토큰 100K 사용 · 결과는 어색</div>
+            <div>어디서 잘못됐는지 모름</div>
+          </div>
+          <p class="bg-compare__note">큰 prompt = 비용 폭증 + 결과 검증 불가.</p>
+        </div>
+        <div class="bg-compare__side bg-compare__side--good">
+          <div class="bg-compare__label">✓ 작게 잘라서</div>
+          <div class="bg-compare__quote">
+            <div>"먼저 상품 목록 페이지만"</div>
+            <div>"이제 장바구니 추가"</div>
+            <div>"마지막으로 결제 화면"</div>
+            <div>각 단계별 검증 → 비용 ↓</div>
+          </div>
+          <p class="bg-compare__note">작은 단위 = 검증 쉬움 + 토큰 효율 ↑.</p>
+        </div>
+      </div>
+      <p class="slide__note">이 원칙이 <strong>실습의 핵심</strong> — 가위바위보를 뼈대 → 입력 → 기록 3단계로 분할하는 이유입니다.</p>
+    </div>
+  </section>
+
+  <!-- 13 · 컨텍스트 윈도우 -->
+  <section class="slide is-statement">
+    <div class="statement-grid statement-grid--visual-wide">
+      <div class="statement-text">
+        <div class="slide__eyebrow">TOPIC 04 · CONTEXT · 컨텍스트 관리</div>
+        <h2 class="statement__lead">대화가 길어지면 <span class="accent">매 응답이 비싸진다</span>.</h2>
+        <p class="statement__caption">컨텍스트 = 지금까지의 대화 + 첨부된 파일 + CLAUDE.md. 매 요청마다 이 모두가 다시 입력 토큰으로 계산됩니다 — 길수록 비용 ↑.</p>
+        <div class="statement__points">
+          <div class="statement__point"><span class="statement__point-num">시작</span><span>10K 토큰 — 한 요청 $0.03</span></div>
+          <div class="statement__point"><span class="statement__point-num">1시간 후</span><span>80K 토큰 — 한 요청 $0.24</span></div>
+          <div class="statement__point"><span class="statement__point-num">대응</span><span>주제 끝나면 <code>/clear</code> 또는 <code>/compact</code></span></div>
+        </div>
+      </div>
+      <div class="statement-visual">
+        <svg viewBox="0 0 460 320" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <rect x="0" y="0" width="460" height="320" rx="16" fill="#fff5ec"/>
+          <text x="230" y="40" font-family="ui-sans-serif, system-ui" font-size="13" fill="#797067" letter-spacing="0.1em" font-weight="700" text-anchor="middle">시간에 따른 토큰 누적</text>
+          <line x1="50" y1="240" x2="430" y2="240" stroke="#797067" stroke-width="2"/>
+          <line x1="50" y1="80" x2="50" y2="240" stroke="#797067" stroke-width="2"/>
+          <text x="30" y="245" font-family="ui-monospace, monospace" font-size="9" fill="#797067" text-anchor="end">0</text>
+          <text x="30" y="160" font-family="ui-monospace, monospace" font-size="9" fill="#797067" text-anchor="end">50K</text>
+          <text x="30" y="85" font-family="ui-monospace, monospace" font-size="9" fill="#797067" text-anchor="end">100K</text>
+          <path d="M 50 235 L 130 220 L 210 180 L 290 130 L 370 90 L 425 80" stroke="#cc5a14" stroke-width="3" fill="none"/>
+          <circle cx="130" cy="220" r="4" fill="#cc5a14"/>
+          <text x="130" y="265" font-family="ui-monospace, monospace" font-size="10" fill="#797067" text-anchor="middle">15분</text>
+          <circle cx="290" cy="130" r="4" fill="#cc5a14"/>
+          <text x="290" y="265" font-family="ui-monospace, monospace" font-size="10" fill="#797067" text-anchor="middle">45분</text>
+          <circle cx="425" cy="80" r="6" fill="#fb2c36"/>
+          <text x="425" y="65" font-family="ui-monospace, monospace" font-size="10" fill="#fb2c36" text-anchor="end" font-weight="700">$0.24/req</text>
+          <text x="240" y="295" font-family="ui-sans-serif, system-ui" font-size="13" fill="#cc5a14" font-weight="700" text-anchor="middle">→ /clear 또는 /compact</text>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- 14 · /clear vs /compact -->
+  <section class="slide is-standard">
+    <div class="slide__eyebrow">CONTEXT TOOLS · /clear vs /compact</div>
+    <h2 class="slide__title">컨텍스트 줄이기 <span class="accent">두 가지</span> 방식</h2>
+    <div class="slide__body">
+      <div class="compare-2">
+        <div class="compare-side compare-side--soft">
+          <div class="compare-side__label">/clear · 통째로 비우기</div>
+          <h3 class="compare-side__title">새 세션처럼 — 가장 가벼움</h3>
+          <ul class="compare-side__list">
+            <li>이전 대화를 전부 컨텍스트에서 빼냄</li>
+            <li>다음 요청부터 토큰 0부터</li>
+            <li>주의: Claude가 이전 대화를 더 이상 기억 못 함</li>
+            <li>CLAUDE.md는 자동 다시 주입</li>
+          </ul>
+        </div>
+        <div class="compare-side compare-side--accent">
+          <div class="compare-side__label">/compact · 요약해서 유지</div>
+          <h3 class="compare-side__title">대화 흐름은 살리고 토큰만 ↓</h3>
+          <ul class="compare-side__list">
+            <li>지금까지 대화를 Claude가 자동 요약</li>
+            <li>요약된 형태로 컨텍스트에 유지</li>
+            <li>주제 이어서 작업 가능</li>
+            <li>"방금 본 것"은 잊을 수 있음</li>
+          </ul>
+        </div>
+      </div>
+      <p class="slide__note">주제가 완전히 바뀌면 <strong>/clear</strong>, 같은 주제로 더 가야 하면 <strong>/compact</strong>.</p>
+    </div>
+  </section>
+
+  <!-- 15 · /resume vs --continue -->
+  <section class="slide is-standard">
+    <div class="slide__eyebrow">CONTEXT TOOLS · /resume vs --continue</div>
+    <h2 class="slide__title">세션 종료 후 <span class="accent">이어가기</span> 두 가지</h2>
+    <div class="slide__body">
+      <div class="compare-2">
+        <div class="compare-side compare-side--soft">
+          <div class="compare-side__label">/resume · 세션 안에서 선택</div>
+          <h3 class="compare-side__title">claude를 이미 켰을 때</h3>
+          <ul class="compare-side__list">
+            <li>같은 폴더에서 <code>claude</code> 실행</li>
+            <li>세션 안에서 <code>/resume</code> 입력</li>
+            <li>이전 세션 목록 → 선택해서 복원</li>
+            <li>여러 세션 중 선택 가능</li>
+          </ul>
+        </div>
+        <div class="compare-side compare-side--accent">
+          <div class="compare-side__label">--continue · 셸 옵션으로 바로</div>
+          <h3 class="compare-side__title">claude 실행 시 즉시 복귀</h3>
+          <ul class="compare-side__list">
+            <li>PowerShell에서 <code>claude --continue</code></li>
+            <li>직전 세션 자동 복원 — 가장 빠름</li>
+            <li>가장 흔한 사용 — 끄고 다시 켰을 때</li>
+            <li>여러 세션 중 선택은 X (직전만)</li>
+          </ul>
+        </div>
+      </div>
+      <p class="slide__note">하루 종일 작업하다 노트북 잠겼을 때 — <code>claude --continue</code> 한 줄로 어제 멈춘 자리 그대로.</p>
+    </div>
+  </section>
+
+  <!-- 16 · 컨텍스트 4 도구 한눈에 -->
+  <section class="slide is-standard">
+    <div class="slide__eyebrow">RECAP · 컨텍스트 4 도구</div>
+    <h2 class="slide__title">상황별 <span class="accent">선택 가이드</span></h2>
+    <div class="slide__body">
+      <div class="grid-4">
+        <div class="promise-card">
+          <div class="promise-card__num">/clear</div>
+          <h3 class="promise-card__title">주제 바뀜</h3>
+          <p class="promise-card__body">아예 다른 작업으로 넘어갈 때. 컨텍스트 0부터.</p>
+        </div>
+        <div class="promise-card">
+          <div class="promise-card__num">/compact</div>
+          <h3 class="promise-card__title">길어졌지만 이어가야</h3>
+          <p class="promise-card__body">같은 주제로 더 가야 하는데 토큰 부담될 때.</p>
+        </div>
+        <div class="promise-card">
+          <div class="promise-card__num">/resume</div>
+          <h3 class="promise-card__title">세션 선택 복원</h3>
+          <p class="promise-card__body">claude 켜놓고 여러 이전 세션 중 골라서 복원.</p>
+        </div>
+        <div class="promise-card">
+          <div class="promise-card__num">--continue</div>
+          <h3 class="promise-card__title">직전 이어가기</h3>
+          <p class="promise-card__body">claude 실행 옵션. 직전 세션 즉시 복원 — 가장 흔함.</p>
+        </div>
+      </div>
+      <p class="slide__note">처음엔 <strong>/clear와 --continue 두 개만</strong> 손에 익히면 충분 — /compact, /resume은 필요할 때 추가.</p>
+    </div>
+  </section>
+
+  <!-- 17 · 운영 감각 종합 -->
+  <section class="slide is-feature">
+    <div class="feature-head">
+      <div class="slide__eyebrow">SYNTHESIS · 운영자의 한 줄</div>
+      <h2 class="feature-head__title">"<span class="accent">commit 자주 · 권한 한 번 읽고 · /usage 자주 · 작은 단위로</span>"</h2>
+    </div>
+    <div class="feature-body">
+      <div class="feature-text">
+        <p class="statement__caption">운영 감각을 한 줄로 압축. 이 4가지가 손에 박히면 사고 없이 5일을 갑니다.</p>
+        <div class="statement__points">
+          <div class="statement__point"><span class="statement__point-num">commit</span><span>큰 작업 전후로 무조건 — 안전벨트</span></div>
+          <div class="statement__point"><span class="statement__point-num">권한</span><span>prompt 한 줄 읽고 승인 — 무지성 X</span></div>
+          <div class="statement__point"><span class="statement__point-num">/usage</span><span>매 미션 끝 → 한 번씩 확인</span></div>
+          <div class="statement__point"><span class="statement__point-num">한 입</span><span>큰 일을 작게 잘라서 — 검증 + 비용 ↓</span></div>
+        </div>
+      </div>
+      <div class="feature-visual">
+        <svg viewBox="0 0 460 320" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <defs><linearGradient id="opGrad" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#fff5ec"/><stop offset="100%" stop-color="#ffe0c2"/></linearGradient></defs>
+          <rect x="0" y="0" width="460" height="320" rx="16" fill="url(#opGrad)"/>
+          <g transform="translate(80, 80)">
+            <circle cx="0" cy="0" r="36" fill="white" stroke="#cc5a14" stroke-width="2"/>
+            <text x="0" y="6" font-family="ui-sans-serif, system-ui" font-size="14" font-weight="700" fill="#cc5a14" text-anchor="middle">commit</text>
+            <circle cx="150" cy="0" r="36" fill="white" stroke="#cc5a14" stroke-width="2"/>
+            <text x="150" y="6" font-family="ui-sans-serif, system-ui" font-size="14" font-weight="700" fill="#cc5a14" text-anchor="middle">권한</text>
+            <circle cx="300" cy="0" r="36" fill="white" stroke="#cc5a14" stroke-width="2"/>
+            <text x="300" y="6" font-family="ui-sans-serif, system-ui" font-size="13" font-weight="700" fill="#cc5a14" text-anchor="middle">/usage</text>
+            <circle cx="150" cy="120" r="44" fill="#cc5a14"/>
+            <text x="150" y="116" font-family="ui-sans-serif, system-ui" font-size="14" font-weight="700" fill="white" text-anchor="middle">한 입</text>
+            <text x="150" y="135" font-family="ui-sans-serif, system-ui" font-size="11" fill="rgba(255,255,255,0.85)" text-anchor="middle">거리</text>
+          </g>
+          <text x="230" y="265" font-family="ui-sans-serif, system-ui" font-size="13" fill="#797067" text-anchor="middle">이 4가지가 손에 박히면 = 운영자</text>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- 18 · 미션 미리보기 -->
+  <section class="slide is-standard">
+    <div class="slide__eyebrow">NEXT · 미션 미리보기</div>
+    <h2 class="slide__title">이제 <span class="accent">미션 2개</span>로 손에 익힙니다</h2>
+    <div class="slide__body">
+      <div class="grid-3">
+        <div class="diff-card">
+          <div class="diff-card__rank">미션 1</div>
+          <h3 class="diff-card__title">가위바위보 CLI</h3>
+          <p class="diff-card__body">뼈대 → 입력 → 기록 — 3단계로 분할 빌드. 작은 단위 분할 첫 적용.</p>
+        </div>
+        <div class="diff-card">
+          <div class="diff-card__rank">미션 2</div>
+          <h3 class="diff-card__title">단위 변환기</h3>
+          <p class="diff-card__body">cm↔inch · kg↔lb. 본인 손으로 명세 → Claude에게 시키기.</p>
+        </div>
+        <div class="diff-card">
+          <div class="diff-card__rank">보너스</div>
+          <h3 class="diff-card__title">먼저 끝낸 사람</h3>
+          <p class="diff-card__body">5판 통계+그래프 또는 변환기 GUI — 시간 남으면 도전.</p>
+        </div>
+      </div>
+      <p class="slide__note">매 미션 끝마다 <strong>git commit + /usage 캡처</strong>. 잠깐 휴식 후 시작.</p>
+    </div>
+  </section>
+
+
+
+
+  <!-- 19 · Section cover -->
+  <section class="slide is-section is-standard">
+    <div class="section-eyebrow">CHAPTER 6 · 미션</div>
+    <h2 class="section-title">미션 분할 빌드 — <span class="accent">작은 단위 분할</span> 첫 실전</h2>
+    <p class="section-caption">앞에서 익힌 4문법과 운영 감각을 실제 미션에 적용. 큰 일을 작게 잘라서 시키는 것이 오늘 핵심.</p>
+    <div class="section-meta">
+      <div class="section-meta__item"><span class="section-meta__num">2</span><span>미션</span></div>
+    </div>
+  </section>
+
+  <!-- 20 · 미션 흐름 -->
+  <section class="slide is-standard">
+    <div class="slide__eyebrow">OVERVIEW · 흐름 한눈에</div>
+    <h2 class="slide__title">실습 — <span class="accent">2 미션 + 보너스 + 결과물 공유</span></h2>
+    <div class="slide__body">
+      <div class="setup-grid">
+        <div class="setup-step"><div class="setup-step__num">셋업</div><h3 class="setup-step__title">Python 설치</h3><p class="setup-step__desc">Microsoft Store에서 설치 — 미션 진입 전</p></div>
+        <div class="setup-step"><div class="setup-step__num">미션 1</div><h3 class="setup-step__title">가위바위보 CLI</h3><p class="setup-step__desc">뼈대 → 입력 → 기록 — 3단계 분할</p></div>
+        <div class="setup-step"><div class="setup-step__num">미션 2</div><h3 class="setup-step__title">단위 변환기</h3><p class="setup-step__desc">cm↔inch · kg↔lb · 본인 명세</p></div>
+        <div class="setup-step"><div class="setup-step__num">보너스</div><h3 class="setup-step__title">먼저 끝낸 사람</h3><p class="setup-step__desc">통계+그래프 또는 GUI</p></div>
+        <div class="setup-step"><div class="setup-step__num">결과물 공유</div><h3 class="setup-step__title">1인 1분 발표</h3><p class="setup-step__desc">화면 보여주고 한 줄 + /usage 한 번 확인</p></div>
+      </div>
+      <p class="slide__note">매 미션 끝마다 <strong>git commit + /usage 한 번 확인</strong> — 운영 습관 손에 박는 시간.</p>
+    </div>
+  </section>
+
+  <!-- 21 · Python 설치 -->
+  <section class="slide is-standard">
+    <div class="slide__eyebrow">SETUP · Python 설치</div>
+    <h2 class="slide__title">미션 진입 전 — <span class="accent">Microsoft Store</span>에서 Python</h2>
+    <div class="slide__body">
+      <div class="two-col">
+        <div>
+          <div class="content-card content-card--compact">
+            <h3 class="content-card__title">3가지만 하면 됨</h3>
+            <ol class="content-card__list content-card__list--ol">
+              <li><strong>Microsoft Store</strong> 앱 열기</li>
+              <li><code>Python 3.12</code> 검색 → <strong>"받기"</strong> 클릭</li>
+              <li>설치 완료 — PATH 자동 등록</li>
+            </ol>
+          </div>
+        </div>
+        <div>
+          <div class="code-block">
+            <div class="code-block__header">
+              <span class="code-block__dot" style="background:#fb2c36"></span><span class="code-block__dot" style="background:#edb200"></span><span class="code-block__dot" style="background:#00c758"></span>
+              <span class="code-block__title">PowerShell — 검증</span>
+            </div>
+            <div class="code-block__body"><span class="code-block__line"><span class="code-block__prompt">PS&gt;</span> <span class="code-block__cmd">python --version</span></span><span class="code-block__line"><span class="code-block__hi">  Python 3.12.x</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__cmt"># 버전이 출력되면 OK</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__cmt"># 안 잡히면: 새 PowerShell 창 열기</span></span></div>
+          </div>
+        </div>
+      </div>
+      <p class="slide__note">강의는 <strong>Python 3.12</strong> 기준 — 검색 시 최신(3.13)이 먼저 떠도 3.12를 고르세요. MS Store는 PATH 자동 등록 · 이미 설치된 분은 건너뛰기.</p>
+    </div>
+  </section>
+
+  <!-- 22 · 미션 1 개요 -->
+  <section class="slide is-standard">
+    <div class="slide__eyebrow">MISSION 1 · 가위바위보 CLI</div>
+    <h2 class="slide__title">왜 <span class="accent">3단계로 쪼개는가</span></h2>
+    <div class="slide__body">
+      <div class="bg-compare">
+        <div class="bg-compare__side bg-compare__side--bad">
+          <div class="bg-compare__label">× 한 번에 시키기</div>
+          <div class="bg-compare__quote">
+            <div>"가위바위보 CLI 만들어줘 · 5판 기록 + 통계도"</div>
+            <div>...</div>
+            <div>토큰 30K · 코드 200줄 통째로</div>
+            <div>어디 잘못됐는지 검증 어려움</div>
+          </div>
+          <p class="bg-compare__note">큰 prompt = 검증 불가 + 디버깅 막힘.</p>
+        </div>
+        <div class="bg-compare__side bg-compare__side--good">
+          <div class="bg-compare__label">✓ 3단계로 — 오늘의 방식</div>
+          <div class="bg-compare__quote">
+            <div>1) 뼈대만 — 15분 + 검증 + commit</div>
+            <div>2) 사용자 입력 추가 — 15분 + 검증</div>
+            <div>3) 기록 5판 추가 — 15분 + 검증</div>
+            <div>각 단계 끝마다 동작 확인 가능</div>
+          </div>
+          <p class="bg-compare__note">단계마다 git commit — <strong>망쳐도 직전 단계로</strong> 복귀 가능.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 23 · 미션 1 단계 1: 뼈대 -->
+  <section class="slide is-standard">
+    <div class="slide__eyebrow">MISSION 1 · STEP 1 · 뼈대</div>
+    <h2 class="slide__title">먼저 <span class="accent">동작하는 골격</span>만</h2>
+    <div class="slide__body">
+      <div class="two-col">
+        <div>
+          <div class="content-card content-card--compact">
+            <h3 class="content-card__title">시키는 말</h3>
+            <ul class="content-card__list">
+              <li>"가위바위보 CLI를 Python으로"</li>
+              <li>"<strong>뼈대만</strong> 먼저 — 컴퓨터 손이 랜덤 + 결과 출력"</li>
+              <li>"한 판만 — 사용자 입력은 다음에"</li>
+              <li>"<strong>game.py</strong> 한 파일"</li>
+            </ul>
+          </div>
+        </div>
+        <div>
+          <div class="code-block">
+            <div class="code-block__header">
+              <span class="code-block__dot" style="background:#fb2c36"></span><span class="code-block__dot" style="background:#edb200"></span><span class="code-block__dot" style="background:#00c758"></span>
+              <span class="code-block__title">PowerShell — 검증</span>
+            </div>
+            <div class="code-block__body"><span class="code-block__line"><span class="code-block__prompt">PS&gt;</span> <span class="code-block__cmd">python game.py</span></span><span class="code-block__line"><span class="code-block__out">  컴퓨터: 바위</span></span><span class="code-block__line"><span class="code-block__out">  결과: (테스트용 출력)</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__cmt"># 동작하면 → 커밋</span></span><span class="code-block__line"><span class="code-block__prompt">PS&gt;</span> <span class="code-block__cmd">git add .</span></span><span class="code-block__line"><span class="code-block__prompt">PS&gt;</span> <span class="code-block__cmd">git commit -m "<span class="code-block__hi">가위바위보 뼈대</span>"</span></span></div>
+          </div>
+        </div>
+      </div>
+      <p class="slide__note">한 단계 끝 = <strong>검증 + commit</strong>. 동작 확인 안 되면 다음 단계로 가지 마세요.</p>
+    </div>
+  </section>
+
+  <!-- 24 · 미션 1 단계 2: 사용자 입력 -->
+  <section class="slide is-standard">
+    <div class="slide__eyebrow">MISSION 1 · STEP 2 · 사용자 입력</div>
+    <h2 class="slide__title">이제 <span class="accent">사용자가 한 손</span>을 넣는다</h2>
+    <div class="slide__body">
+      <div class="two-col">
+        <div>
+          <div class="content-card content-card--compact">
+            <h3 class="content-card__title">시키는 말</h3>
+            <ul class="content-card__list">
+              <li>"<code>@game.py</code>에 사용자 입력 추가"</li>
+              <li>"가위/바위/보 중 하나 입력받기"</li>
+              <li>"이상한 입력은 다시 묻기"</li>
+              <li>"승/무/패 메시지 한국어로"</li>
+            </ul>
+          </div>
+        </div>
+        <div>
+          <div class="code-block">
+            <div class="code-block__header">
+              <span class="code-block__dot" style="background:#fb2c36"></span><span class="code-block__dot" style="background:#edb200"></span><span class="code-block__dot" style="background:#00c758"></span>
+              <span class="code-block__title">실행 — 한 판</span>
+            </div>
+            <div class="code-block__body"><span class="code-block__line"><span class="code-block__prompt">PS&gt;</span> <span class="code-block__cmd">python game.py</span></span><span class="code-block__line"><span class="code-block__out">  가위/바위/보 중 하나 입력: <span class="code-block__hi">바위</span></span><span class="code-block__line"><span class="code-block__out">  컴퓨터: 가위</span></span><span class="code-block__line"><span class="code-block__out">  결과: 이김 🎉</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__cmt"># 정상 동작 → 커밋</span></span><span class="code-block__line"><span class="code-block__prompt">PS&gt;</span> <span class="code-block__cmd">git commit -am "사용자 입력 추가"</span></span></div>
+          </div>
+        </div>
+      </div>
+      <p class="slide__note"><code>@game.py</code> 멘션을 쓰면 Claude가 <strong>현재 코드를 보고</strong> 추가합니다 — 처음부터 다시 짜는 게 아님.</p>
+    </div>
+  </section>
+
+  <!-- 25 · 미션 1 단계 3: 5판 기록 -->
+  <section class="slide is-standard">
+    <div class="slide__eyebrow">MISSION 1 · STEP 3 · 5판 + 기록</div>
+    <h2 class="slide__title">마지막 — <span class="accent">5판 + 결과 누적</span></h2>
+    <div class="slide__body">
+      <div class="two-col">
+        <div>
+          <div class="content-card content-card--compact">
+            <h3 class="content-card__title">시키는 말</h3>
+            <ul class="content-card__list">
+              <li>"<code>@game.py</code>에 5판 반복"</li>
+              <li>"각 판 결과를 list에 저장"</li>
+              <li>"끝나면 승/무/패 횟수 출력"</li>
+              <li>"5판 끝나도 한 번 더? 재시작 옵션"</li>
+            </ul>
+          </div>
+        </div>
+        <div>
+          <div class="code-block">
+            <div class="code-block__header">
+              <span class="code-block__dot" style="background:#fb2c36"></span><span class="code-block__dot" style="background:#edb200"></span><span class="code-block__dot" style="background:#00c758"></span>
+              <span class="code-block__title">실행 — 5판 + 통계</span>
+            </div>
+            <div class="code-block__body"><span class="code-block__line"><span class="code-block__cmt"># [1/5] [2/5] ... [5/5] 진행</span></span><span class="code-block__line"><span class="code-block__out">  ─── 결과 ───</span></span><span class="code-block__line"><span class="code-block__out">  승: 2 · 무: 1 · 패: 2</span></span><span class="code-block__line"><span class="code-block__out">  더 하시겠어요? (y/n): n</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__prompt">PS&gt;</span> <span class="code-block__cmd">git commit -am "<span class="code-block__hi">5판 + 통계 추가</span>"</span></span><span class="code-block__line"><span class="code-block__prompt">PS&gt;</span> <span class="code-block__cmd">claude</span></span><span class="code-block__line"><span class="code-block__cmd">&gt; /usage</span></span></div>
+          </div>
+        </div>
+      </div>
+      <p class="slide__note">미션 1 끝 → <code>/usage</code> 한 번 확인. <strong>작은 단위 분할의 첫 완주</strong>입니다.</p>
+    </div>
+  </section>
+
+  <!-- 26 · 미션 1 검증 + 커밋 -->
+  <section class="slide is-standard">
+    <div class="slide__eyebrow">MISSION 1 · 검증 + 운영</div>
+    <h2 class="slide__title">미션 1 끝났으면 <span class="accent">5가지 체크</span></h2>
+    <div class="slide__body">
+      <div class="grid-4">
+        <div class="promise-card">
+          <div class="promise-card__num">✓</div>
+          <h3 class="promise-card__title">5판 동작</h3>
+          <p class="promise-card__body">실제 5판 돌려보고, 입력·승패·통계 모두 정상.</p>
+        </div>
+        <div class="promise-card">
+          <div class="promise-card__num">git</div>
+          <h3 class="promise-card__title">3개 커밋</h3>
+          <p class="promise-card__body">뼈대 · 입력 · 5판 — 단계별 커밋이 git log에 보임.</p>
+        </div>
+        <div class="promise-card">
+          <div class="promise-card__num">/usage</div>
+          <h3 class="promise-card__title">캡처 + 공유</h3>
+          <p class="promise-card__body">/usage 한 번 확인 — 매일의 약속 04.</p>
+        </div>
+        <div class="promise-card">
+          <div class="promise-card__num">→</div>
+          <h3 class="promise-card__title">미션 2 진입</h3>
+          <p class="promise-card__body">15분 정도 걸렸으면 페이스 정상. 더 빨랐으면 보너스도 가능.</p>
+        </div>
+      </div>
+      <p class="slide__note">막혔으면 손드세요 — TA가 1:1로 풀어드립니다. 빨리 끝났으면 보너스로 도전.</p>
+    </div>
+  </section>
+
+  <!-- 27 · 미션 2 개요 -->
+  <section class="slide is-standard">
+    <div class="slide__eyebrow">MISSION 2 · 단위 변환기</div>
+    <h2 class="slide__title">이번엔 <span class="accent">본인 명세</span>로</h2>
+    <div class="slide__body">
+      <div class="two-col">
+        <div>
+          <div class="content-card content-card--compact">
+            <h3 class="content-card__title">기본 명세</h3>
+            <ul class="content-card__list">
+              <li>cm ↔ inch 변환</li>
+              <li>kg ↔ lb 변환</li>
+              <li>방향 묻기 (어느 → 어느)</li>
+              <li>숫자 입력 → 결과 출력</li>
+            </ul>
+          </div>
+        </div>
+        <div>
+          <div class="content-card content-card--compact">
+            <h3 class="content-card__title">본인 추가</h3>
+            <ul class="content-card__list">
+              <li>℃ ↔ ℉ (요리·날씨)</li>
+              <li>L ↔ gallon</li>
+              <li>km/h ↔ mph</li>
+              <li><strong>3분간</strong> 본인 명세 정리 후 시작</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <p class="slide__note">미션 1처럼 단계 분할 강제 X — 본인이 알아서 잘라서 시킵니다. <strong>작은 단위 분할 두 번째 적용</strong>.</p>
+    </div>
+  </section>
+
+  <!-- 28 · 미션 2 진행 가이드 -->
+  <section class="slide is-standard">
+    <div class="slide__eyebrow">MISSION 2 · 진행 가이드</div>
+    <h2 class="slide__title">진행은 <span class="accent">본인 페이스</span>로</h2>
+    <div class="slide__body">
+      <div class="step-list step-list--compact">
+        <div class="step-list__item">
+          <div class="step-list__num">1</div>
+          <div class="step-list__content">
+            <p class="step-list__title">명세를 메모장(spec.md)에 정리 — <code>convert.py</code> 한 파일, 변환 종류 N개</p>
+          </div>
+        </div>
+        <div class="step-list__item">
+          <div class="step-list__num">2</div>
+          <div class="step-list__content">
+            <p class="step-list__title">"먼저 cm↔inch만" → 동작 확인 → commit</p>
+          </div>
+        </div>
+        <div class="step-list__item">
+          <div class="step-list__num">3</div>
+          <div class="step-list__content">
+            <p class="step-list__title">"이제 kg↔lb 추가" → @convert.py 멘션 → commit</p>
+          </div>
+        </div>
+        <div class="step-list__item">
+          <div class="step-list__num">4</div>
+          <div class="step-list__content">
+            <p class="step-list__title">본인 추가분(℃·L·km/h 중 1개) — 같은 패턴</p>
+          </div>
+        </div>
+        <div class="step-list__item">
+          <div class="step-list__num">5</div>
+          <div class="step-list__content">
+            <p class="step-list__title">/usage 한 번 확인 → 보너스 또는 결과물 공유 준비</p>
+          </div>
+        </div>
+      </div>
+      <p class="slide__note">막힘 표시 = 손 들기 / TA 호출. <strong>30분</strong> 안에 못 끝낼 것 같으면 일찍 도움 요청.</p>
+    </div>
+  </section>
+
+  <!-- 29 · 보너스 메뉴 -->
+  <section class="slide is-standard">
+    <div class="slide__eyebrow">BONUS · 먼저 끝낸 사람용</div>
+    <h2 class="slide__title">시간 남았으면 <span class="accent">보너스</span> 1개</h2>
+    <div class="slide__body">
+      <div class="grid-3">
+        <div class="diff-card">
+          <div class="diff-card__rank">A</div>
+          <h3 class="diff-card__title">가위바위보 통계+그래프</h3>
+          <p class="diff-card__body">5판 결과를 막대 그래프로 텍스트 출력. matplotlib 안 써도 됨 — <code>"#"</code> 문자로 그리기.</p>
+        </div>
+        <div class="diff-card">
+          <div class="diff-card__rank">B</div>
+          <h3 class="diff-card__title">변환기 GUI</h3>
+          <p class="diff-card__body">Tkinter로 간단한 입력창 + 결과창. "GUI로 만들어줘" 한 줄 명세로 충분.</p>
+        </div>
+        <div class="diff-card">
+          <div class="diff-card__rank">C</div>
+          <h3 class="diff-card__title">자유 추가</h3>
+          <p class="diff-card__body">미션 1·2 어느 쪽이든 본인 아이디어로. 단, 30분 안에 끝나는 분량으로.</p>
+        </div>
+      </div>
+      <p class="slide__note">보너스도 끝났으면 <strong>발표 준비</strong>로 — 4문법 중 어떤 걸 가장 많이 썼는지, /usage 합계 등.</p>
+    </div>
+  </section>
+
+  <!-- 30 · 결과물 공유 발표 가이드 -->
+  <section class="slide is-standard">
+    <div class="slide__eyebrow">SHARE TIME · 발표 가이드</div>
+    <h2 class="slide__title">1분 안에 <span class="accent">3가지</span>만</h2>
+    <div class="slide__body">
+      <div class="grid-3">
+        <div class="diff-card">
+          <div class="diff-card__rank">20초</div>
+          <h3 class="diff-card__title">뭘 만들었나</h3>
+          <p class="diff-card__body">가위바위보 5판 + 변환기. 화면 한 번 돌리거나 git log 한 번 보여주기.</p>
+        </div>
+        <div class="diff-card">
+          <div class="diff-card__rank">30초</div>
+          <h3 class="diff-card__title">제일 좋았던 4문법</h3>
+          <p class="diff-card__body">/ @ ! # 중에 어떤 게 손에 잘 박혔나? 어떤 상황에 썼나?</p>
+        </div>
+        <div class="diff-card">
+          <div class="diff-card__rank">10초</div>
+          <h3 class="diff-card__title">/usage 결과</h3>
+          <p class="diff-card__body">오늘 합계 얼마? 한 번 확인 — 비용 감각 시작.</p>
+        </div>
+      </div>
+      <p class="slide__note">완성도 X · <strong>오늘 시도한 것</strong>이 평가 기준. 막혀서 포기한 부분도 솔직히 말하면 가장 좋은 발표.</p>
+    </div>
+  </section>
+
+  <!-- 31 · 결과물 공유 -->
+  <section class="slide is-statement">
+    <div class="statement-grid">
+      <div class="statement-text">
+        <div class="slide__eyebrow">SHARE TIME · 결과물 공유</div>
+        <h2 class="statement__lead">1인 1분, <span class="accent">git log + 4문법</span> 결과물 공유</h2>
+        <p class="statement__caption">화면 + git log 한 번 + 한 줄 코멘트. 막혔어도 OK — 어디서 막혔는지가 가장 좋은 데이터.</p>
+        <div class="statement__points">
+          <div class="statement__point"><span class="statement__point-num">화면</span><span>가위바위보 또는 변환기 한 판 시연</span></div>
+          <div class="statement__point"><span class="statement__point-num">log</span><span><code>git log --oneline</code> — 단계별 commit 보여주기</span></div>
+          <div class="statement__point"><span class="statement__point-num">/usage</span><span>본인 사용량 한 번 확인</span></div>
+        </div>
+      </div>
+      <div class="statement-visual">
+        <svg viewBox="0 0 460 320" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <rect x="0" y="0" width="460" height="320" rx="14" fill="rgba(0,0,0,0.92)"/>
+          <rect x="0" y="0" width="460" height="32" fill="rgba(255,255,255,0.06)"/>
+          <text x="14" y="20" font-family="ui-monospace, monospace" font-size="11" fill="rgba(255,255,255,0.5)">PowerShell · git log --oneline</text>
+          <text x="20" y="68" fill="#fe6e00" font-family="ui-monospace, monospace" font-size="13">PS&gt; git log --oneline</text>
+          <text x="20" y="105" fill="#cc5a14" font-family="ui-monospace, monospace" font-size="11">a3f1b2c</text>
+          <text x="100" y="105" fill="rgba(255,255,255,0.85)" font-family="ui-monospace, monospace" font-size="11">5판 + 통계 추가</text>
+          <text x="20" y="128" fill="#cc5a14" font-family="ui-monospace, monospace" font-size="11">5e2a8c1</text>
+          <text x="100" y="128" fill="rgba(255,255,255,0.85)" font-family="ui-monospace, monospace" font-size="11">사용자 입력 추가</text>
+          <text x="20" y="151" fill="#cc5a14" font-family="ui-monospace, monospace" font-size="11">b8c9d4e</text>
+          <text x="100" y="151" fill="rgba(255,255,255,0.85)" font-family="ui-monospace, monospace" font-size="11">가위바위보 뼈대</text>
+          <text x="20" y="174" fill="#cc5a14" font-family="ui-monospace, monospace" font-size="11">a3c2f8b</text>
+          <text x="100" y="174" fill="rgba(255,255,255,0.85)" font-family="ui-monospace, monospace" font-size="11">CLAUDE.md 답변 규칙</text>
+          <text x="20" y="197" fill="#cc5a14" font-family="ui-monospace, monospace" font-size="11">e1d5f3a</text>
+          <text x="100" y="197" fill="rgba(255,255,255,0.85)" font-family="ui-monospace, monospace" font-size="11">자기소개 페이지 첫 버전</text>
+          <line x1="20" y1="220" x2="440" y2="220" stroke="rgba(255,255,255,0.15)"/>
+          <text x="20" y="248" fill="rgba(255,255,255,0.7)" font-family="ui-monospace, monospace" font-size="11">5 commits · 작은 단위 분할의 자취</text>
+          <text x="20" y="278" fill="white" font-family="ui-monospace, monospace" font-size="14">&gt; YOUR TURN</text>
+          <rect x="135" y="266" width="10" height="15" fill="white"><animate attributeName="opacity" values="1;0;1" dur="1.1s" repeatCount="indefinite"/></rect>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- 32 · 마무리 + Day 3 예고 -->
+  <section class="slide is-standard">
+    <div class="slide__eyebrow">RECAP · Day 2 마무리 + 내일</div>
+    <h2 class="slide__title">내일은 <span class="accent">길들이기</span> — Plan + Hooks</h2>
+    <div class="slide__body">
+      <div class="preview-grid">
+        <div class="preview-item"><div class="preview-item__symbol">⌨</div><div class="preview-item__name">Plan Mode</div><div class="preview-item__desc">큰 변경 전에 계획부터 — 안전벨트</div></div>
+        <div class="preview-item"><div class="preview-item__symbol">🪝</div><div class="preview-item__name">Hooks</div><div class="preview-item__desc">이벤트 자동화 — 응답 끝 → 텔레그램 알림</div></div>
+        <div class="preview-item"><div class="preview-item__symbol">📋</div><div class="preview-item__name">CLAUDE.md 깊게</div><div class="preview-item__desc">좋은 예 vs 나쁜 예 — 200줄 룰</div></div>
+        <div class="preview-item"><div class="preview-item__symbol">📁</div><div class="preview-item__name">.claude 폴더</div><div class="preview-item__desc">commands · agents · hooks · skills</div></div>
+      </div>
+      <p class="slide__note">숙제 X — Telegram 앱은 내일 가입까지 함께. <strong>오늘 푹 쉬세요.</strong> 내일 같은 자리.</p>
+    </div>
+  </section>
+
+  <div class="deck-progress"><div class="deck-progress__bar"></div></div>
+</main>
+<script src="../scripts/deck.js"></script>
+</body>
+</html>
