@@ -256,72 +256,248 @@
           <p class="diff-card__body">구조 설계, 까다로운 디버깅 — 판단이 중요한 역할.</p>
         </div>
       </div>
-      <p class="slide__note">잘 모르겠으면 <strong>Sonnet</strong>으로 두세요 — 쓰다 보면 "이건 Haiku로 충분", "이건 Opus가 낫다"가 보입니다.</p>
+      <p class="slide__note">잘 모르겠으면 <strong>Sonnet</strong>으로 두세요 — 우리 메모장 도우미 셋도 모두 Sonnet이면 충분합니다.</p>
     </div>
   </section>
 
-  <!-- 10 · /agents 명령 -->
+  <!-- 10 · /agents 만드는 흐름 -->
   <section class="slide is-standard">
-    <div class="slide__eyebrow">HOW · /agents 로 만든다</div>
-    <h2 class="slide__title">도우미는 — <span class="accent">/agents</span>로 만들고 관리</h2>
+    <div class="slide__eyebrow">HOW · /agents 흐름</div>
+    <h2 class="slide__title">/agents — 에이전트 만드는 <span class="accent">다섯 걸음</span></h2>
+    <div class="slide__body">
+      <div class="step-list step-list--compact">
+        <div class="step-list__item">
+          <div class="step-list__num">1</div>
+          <div class="step-list__content"><p class="step-list__title"><code>/agents</code> 입력 <span class="step-list__desc" style="display:inline">— 에이전트 관리 화면이 열린다</span></p></div>
+        </div>
+        <div class="step-list__item">
+          <div class="step-list__num">2</div>
+          <div class="step-list__content"><p class="step-list__title">좌우 화살표(← →)로 이동 <span class="step-list__desc" style="display:inline">— 에이전트 라이브러리(만들기) 화면으로</span></p></div>
+        </div>
+        <div class="step-list__item">
+          <div class="step-list__num">3</div>
+          <div class="step-list__content"><p class="step-list__title">새 에이전트 만들기 + 이름 <span class="step-list__desc" style="display:inline">— "Create new agent" 선택, 이름 입력 (예: ui-helper)</span></p></div>
+        </div>
+        <div class="step-list__item">
+          <div class="step-list__num">4</div>
+          <div class="step-list__content"><p class="step-list__title">describe — 할 일을 설명 <span class="step-list__desc" style="display:inline">— 이 도우미가 무슨 일을 하는지 사람 말로 (가장 중요)</span></p></div>
+        </div>
+        <div class="step-list__item">
+          <div class="step-list__num">5</div>
+          <div class="step-list__content"><p class="step-list__title">쓸 도구(권한) 고르고 → 저장 <span class="step-list__desc" style="display:inline">— 모델은 Sonnet으로</span></p></div>
+        </div>
+      </div>
+      <p class="slide__note">핵심은 4번 <strong>describe</strong>와 5번 <strong>권한</strong> — describe는 도우미별로 뒤 세 장에서, 권한은 바로 다음 장에서 자세히 봅니다.</p>
+    </div>
+  </section>
+
+  <!-- 11 · 도구 권한 고르기 -->
+  <section class="slide is-standard">
+    <div class="slide__eyebrow">PERMISSION · 도구 권한</div>
+    <h2 class="slide__title">이 도우미가 — <span class="accent">쓸 도구</span>를 고른다</h2>
+    <div class="slide__body">
+      <div class="two-col">
+        <div>
+          <div class="code-block">
+            <div class="code-block__header">
+              <span class="code-block__dot" style="background:#fb2c36"></span><span class="code-block__dot" style="background:#edb200"></span><span class="code-block__dot" style="background:#00c758"></span>
+              <span class="code-block__title">에이전트 만들기 · 쓸 도구</span>
+            </div>
+            <div class="code-block__body"><span class="code-block__line"><span class="code-block__out">[✓] All tools        전체</span></span><span class="code-block__line"><span class="code-block__out">[✓] Read-only tools  읽기</span></span><span class="code-block__line"><span class="code-block__out">[✓] Edit tools       편집</span></span><span class="code-block__line"><span class="code-block__out">[✓] Execution tools  실행</span></span><span class="code-block__line"><span class="code-block__out">[✓] MCP tools        외부 도구</span></span><span class="code-block__line"><span class="code-block__out">[✓] Other tools      기타</span></span><span class="code-block__line"><span class="code-block__cmt">  [ Show advanced options ]</span></span></div>
+          </div>
+        </div>
+        <div>
+          <div class="content-card content-card--compact">
+            <h3 class="content-card__title">어떻게 대응할까</h3>
+            <p class="content-card__body">에이전트를 만들면 — 이 도우미가 쓸 수 있는 도구를 고르는 화면이 나옵니다.</p>
+            <ul class="content-card__list">
+              <li>메모장 도우미는 화면을 만들고(편집)·실행하고·읽어야 함</li>
+              <li>그러니 <strong>All tools(전체)</strong>를 켜 두면 막힘없이 일함</li>
+              <li>익숙해지면 — 도우미별로 필요한 것만 좁히기</li>
+            </ul>
+            <p class="content-card__body"><code>Show advanced options</code>는 더 세밀한 설정 — 지금은 건너뜁니다.</p>
+          </div>
+        </div>
+      </div>
+      <p class="slide__note">권한은 "도우미가 일하다 막히지 않게" — <strong>처음엔 넉넉히(All tools), 나중에 줄이는</strong> 게 편합니다.</p>
+    </div>
+  </section>
+
+  <!-- 12 · 도우미 ① ui-helper -->
+  <section class="slide is-standard">
+    <div class="slide__eyebrow">AGENT ① · 화면 담당</div>
+    <h2 class="slide__title">도우미 ① — 화면 담당 <span class="accent">ui-helper</span></h2>
     <div class="slide__body">
       <div class="two-col">
         <div>
           <div class="content-card content-card--compact">
-            <h3 class="content-card__title">/agents 가 하는 일</h3>
+            <h3 class="content-card__title">이 도우미는</h3>
+            <p class="content-card__body">메모장의 <strong>화면(UI)만</strong> 만드는 도우미입니다.</p>
             <ul class="content-card__list">
-              <li>새 도우미 만들기 — 이름·역할·모델</li>
-              <li>지금 있는 도우미 목록 보기</li>
-              <li>역할 수정·삭제</li>
+              <li>모델 — Sonnet</li>
+              <li>맡는 것 — 입력칸 · 메모 목록 · 수정·삭제 버튼</li>
+              <li>안 맡는 것 — 데이터 저장 · 로그인</li>
             </ul>
-            <p class="content-card__body">.md 파일을 직접 안 건드려도 — 안내를 따라가면 됩니다.</p>
           </div>
         </div>
         <div>
           <div class="code-block">
             <div class="code-block__header">
               <span class="code-block__dot" style="background:#fb2c36"></span><span class="code-block__dot" style="background:#edb200"></span><span class="code-block__dot" style="background:#00c758"></span>
-              <span class="code-block__title">claude · /agents</span>
+              <span class="code-block__title">ui-helper · describe</span>
             </div>
-            <div class="code-block__body"><span class="code-block__line"><span class="code-block__prompt">&gt;</span> <span class="code-block__cmd">/agents</span></span><span class="code-block__line"><span class="code-block__out">  1. 새 에이전트 만들기</span></span><span class="code-block__line"><span class="code-block__out">  2. 에이전트 목록</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__cmt"># 안내대로 이름·역할 입력하면</span></span><span class="code-block__line"><span class="code-block__cmt"># .claude/agents/ 에 파일 생성</span></span></div>
+            <div class="code-block__body"><span class="code-block__line"><span class="code-block__cmd">너는 메모장 앱의 화면만 담당한다.</span></span><span class="code-block__line"><span class="code-block__cmd">메모 입력칸, 저장된 메모 목록,</span></span><span class="code-block__line"><span class="code-block__cmd">수정·삭제 버튼을 만든다.</span></span><span class="code-block__line"><span class="code-block__cmd">화면은 단순하고 깔끔하게 —</span></span><span class="code-block__line"><span class="code-block__cmd">한눈에 보이게.</span></span><span class="code-block__line"><span class="code-block__cmd">데이터 저장·로그인은 다른 도우미</span></span><span class="code-block__line"><span class="code-block__cmd">몫 — 건드리지 않는다.</span></span></div>
           </div>
         </div>
       </div>
-      <p class="slide__note">만든 도우미는 <code>.claude/agents/</code> 폴더에 파일로 남습니다 — Git에 커밋하면 그대로 보관·공유됩니다.</p>
+      <p class="slide__note">describe는 사람 말로 — 위 문장을 그대로 적으면 됩니다. <strong>맡는 것과 안 맡는 것</strong>을 분명히 적을수록 도우미가 정확해집니다.</p>
     </div>
   </section>
 
-  <!-- 11 · 멀티에이전트 -->
+  <!-- 13 · 도우미 ② data-helper -->
   <section class="slide is-standard">
-    <div class="slide__eyebrow">MULTI-AGENT · 한 명 → 한 팀</div>
-    <h2 class="slide__title">도우미 한 명 — 또는 <span class="accent">한 팀</span></h2>
+    <div class="slide__eyebrow">AGENT ② · 데이터 담당</div>
+    <h2 class="slide__title">도우미 ② — 데이터 담당 <span class="accent">data-helper</span></h2>
     <div class="slide__body">
-      <div class="compare-2">
-        <div class="compare-side compare-side--soft">
-          <div class="compare-side__label">서브에이전트</div>
-          <h3 class="compare-side__title">직원 한 명에게 일 시키기</h3>
-          <ul class="compare-side__list">
-            <li>격리된 자리에서 혼자 — 메인 대화는 안 어지럽힘</li>
-            <li>보통 한 번 실행하고</li>
-            <li>끝나면 결론 하나만 돌려주고 종료</li>
-          </ul>
+      <div class="two-col">
+        <div>
+          <div class="content-card content-card--compact">
+            <h3 class="content-card__title">이 도우미는</h3>
+            <p class="content-card__body">메모를 <strong>Supabase에 저장</strong>하는 일을 맡습니다.</p>
+            <ul class="content-card__list">
+              <li>모델 — Sonnet</li>
+              <li>맡는 것 — Supabase 연결 · 메모 CRUD(추가·조회·수정·삭제)</li>
+              <li>안 맡는 것 — 화면 디자인 · 로그인</li>
+            </ul>
+          </div>
         </div>
-        <div class="compare-side compare-side--accent">
-          <div class="compare-side__label">멀티에이전트</div>
-          <h3 class="compare-side__title">팀을 꾸려 분업·협업</h3>
-          <ul class="compare-side__list">
-            <li>여러 도우미가 동시에 — 병렬로</li>
-            <li>오래 걸리는 일은 뒤로 돌리고 — 백그라운드</li>
-            <li>도우미끼리 메시지를 주고받으며</li>
-            <li>공유 작업목록으로 일을 나눠 맡음</li>
-          </ul>
+        <div>
+          <div class="code-block">
+            <div class="code-block__header">
+              <span class="code-block__dot" style="background:#fb2c36"></span><span class="code-block__dot" style="background:#edb200"></span><span class="code-block__dot" style="background:#00c758"></span>
+              <span class="code-block__title">data-helper · describe</span>
+            </div>
+            <div class="code-block__body"><span class="code-block__line"><span class="code-block__cmd">너는 메모장의 데이터 저장을</span></span><span class="code-block__line"><span class="code-block__cmd">담당한다. Supabase에 메모를</span></span><span class="code-block__line"><span class="code-block__cmd">저장·조회·수정·삭제(CRUD)한다.</span></span><span class="code-block__line"><span class="code-block__cmd">메모를 쓰면 Supabase에 저장하고,</span></span><span class="code-block__line"><span class="code-block__cmd">앱을 열면 저장된 메모를 불러온다.</span></span><span class="code-block__line"><span class="code-block__cmd">Supabase 키는 환경변수로 —</span></span><span class="code-block__line"><span class="code-block__cmd">코드에 직접 적지 않는다.</span></span></div>
+          </div>
         </div>
       </div>
-      <p class="slide__note">멀티에이전트도 결국 구성원은 <strong>서브에이전트</strong> — 도우미 하나(부품)를 여러 개, 한 팀으로 쓰는 패턴입니다. 곧 만들 메모장도 도우미 셋 = 작은 멀티에이전트.</p>
+      <p class="slide__note">데이터 도우미는 — "어디에(Supabase), 무엇을(메모 CRUD), 어떻게(키는 환경변수)"를 분명히. 화면 이야기는 빼고 데이터에만 집중하게.</p>
     </div>
   </section>
 
-  <!-- 12 · 프로젝트 소개 -->
+  <!-- 14 · 도우미 ③ login-helper -->
+  <section class="slide is-standard">
+    <div class="slide__eyebrow">AGENT ③ · 로그인 담당</div>
+    <h2 class="slide__title">도우미 ③ — 로그인 담당 <span class="accent">login-helper</span></h2>
+    <div class="slide__body">
+      <div class="two-col">
+        <div>
+          <div class="content-card content-card--compact">
+            <h3 class="content-card__title">이 도우미는</h3>
+            <p class="content-card__body"><strong>구글 로그인</strong>을 붙이고, 로그인 안 하면 막는 일을 맡습니다.</p>
+            <ul class="content-card__list">
+              <li>모델 — Sonnet</li>
+              <li>맡는 것 — 구글 로그인 버튼 · 로그인 전 접근 차단</li>
+              <li>안 맡는 것 — 화면 디자인 · 데이터 저장</li>
+            </ul>
+          </div>
+        </div>
+        <div>
+          <div class="code-block">
+            <div class="code-block__header">
+              <span class="code-block__dot" style="background:#fb2c36"></span><span class="code-block__dot" style="background:#edb200"></span><span class="code-block__dot" style="background:#00c758"></span>
+              <span class="code-block__title">login-helper · describe</span>
+            </div>
+            <div class="code-block__body"><span class="code-block__line"><span class="code-block__cmd">너는 메모장의 구글 로그인을</span></span><span class="code-block__line"><span class="code-block__cmd">담당한다.</span></span><span class="code-block__line"><span class="code-block__cmd">"구글로 로그인" 버튼을 만들고,</span></span><span class="code-block__line"><span class="code-block__cmd">로그인 안 하면 메모를 못 보게</span></span><span class="code-block__line"><span class="code-block__cmd">막는다. 로그인한 사람은 자기</span></span><span class="code-block__line"><span class="code-block__cmd">메모만 보이게 한다.</span></span><span class="code-block__line"><span class="code-block__cmd">로그인은 Supabase 기능을 쓴다.</span></span></div>
+          </div>
+        </div>
+      </div>
+      <p class="slide__note">로그인 도우미는 — "구글로, Supabase 기능으로, 로그인 전엔 차단"을 분명히. 2일차 챕터 6의 구글 로그인과 같은 개념입니다.</p>
+    </div>
+  </section>
+
+  <!-- 15 · 협업 지휘 프롬프트 -->
+  <section class="slide is-standard">
+    <div class="slide__eyebrow">PROMPT · 협업 지휘</div>
+    <h2 class="slide__title">도우미 셋에게 — <span class="accent">이 프롬프트 하나</span>로 맡긴다</h2>
+    <div class="slide__body">
+      <div class="two-col">
+        <div>
+          <div class="content-card content-card--compact">
+            <h3 class="content-card__title">감독에게 — 통째로 맡긴다</h3>
+            <p class="content-card__body"><code>@</code>로 도우미를 하나씩 부를 수도 있지만 — 프로젝트 전체는 메인 Claude에게 통째로 맡기는 게 편합니다. 메인 Claude가 <strong>감독</strong>이 되어 — 목표·규칙을 읽고, 무엇을 동시에·무엇을 차례로 할지 판단해 셋에게 나눠 줍니다.</p>
+            <ul class="content-card__list">
+              <li>한 프롬프트 = <strong>목표 · 진행 방식 · 규칙</strong></li>
+              <li>순서를 일일이 지정하지 말고 — 감독에게 맡긴다</li>
+              <li>동시에 될 일은 병렬로 — 감독이 판단</li>
+            </ul>
+          </div>
+        </div>
+        <div>
+          <div class="code-block">
+            <div class="code-block__header">
+              <span class="code-block__dot" style="background:#fb2c36"></span><span class="code-block__dot" style="background:#edb200"></span><span class="code-block__dot" style="background:#00c758"></span>
+              <span class="code-block__title">claude · my-notes</span>
+            </div>
+            <div class="code-block__body"><span class="code-block__line"><span class="code-block__prompt">&gt;</span> <span class="code-block__cmd">ui-helper · data-helper · login-helper —</span></span><span class="code-block__line"><span class="code-block__cmd">  세 도우미와 "나만의 메모장" 앱을 만들어줘.</span></span><span class="code-block__line"><span class="code-block__cmd">  네가 감독이 되어 — 일을 나눠 맡겨줘.</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__hi">  [목표]</span><span class="code-block__cmd"> 로그인하면 — 내 메모를</span></span><span class="code-block__line"><span class="code-block__cmd">         쓰고·보고·고치고·지우는 앱</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__hi">  [진행]</span><span class="code-block__cmd"> 순서는 네가 정해 — 동시에 되는</span></span><span class="code-block__line"><span class="code-block__cmd">         건 병렬로, 합치는 건 차례로</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__hi">  [규칙]</span><span class="code-block__cmd"> · 큰 결정은 나에게 먼저 물어봐</span></span><span class="code-block__line"><span class="code-block__cmd">         · 키는 환경변수로 — 코드에 쓰지 마</span></span><span class="code-block__line"><span class="code-block__cmd">         · 단계마다 한 일을 3줄로 알려줘</span></span></div>
+          </div>
+        </div>
+      </div>
+      <p class="slide__note">순서를 하나하나 지정하기보다 — <strong>감독에게 맡기는</strong> 게 낫습니다. 동시에 될 일은 병렬로, 합쳐야 할 일만 차례로 — 그 판단을 감독이 합니다. 중간에 큰 결정을 물어오면 답하며 같이 가세요.</p>
+    </div>
+  </section>
+
+  <!-- 16 · 멀티에이전트란 -->
+  <section class="slide is-statement">
+    <div class="statement-grid statement-grid--visual-wide">
+      <div class="statement-text">
+        <div class="slide__eyebrow">MULTI-AGENT · 한 명에서 한 팀으로</div>
+        <h2 class="statement__lead">도우미 한 명이 아니라 — <span class="accent">한 팀</span>으로.</h2>
+        <p class="statement__caption">서브에이전트 하나는 "직원 한 명". 여러 도우미를 동시에·협업시키는 것이 멀티에이전트입니다. 새로운 부품이 아니라 — 서브에이전트를 여러 개 쓰는 "운용 방식"이죠.</p>
+        <div class="statement__points">
+          <div class="statement__point"><span class="statement__point-num">정체</span><span>서브에이전트=부품, 멀티에이전트=여러 개 쓰는 패턴</span></div>
+          <div class="statement__point"><span class="statement__point-num">비유</span><span>직원 한 명 vs — 팀을 꾸려 분업·협업</span></div>
+          <div class="statement__point"><span class="statement__point-num">구성원</span><span>팀원도 결국 하나하나는 — 서브에이전트</span></div>
+        </div>
+      </div>
+      <div class="statement-visual">
+        <svg viewBox="0 0 460 320" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <rect x="0" y="0" width="460" height="320" rx="16" fill="#fff5ec"/>
+          <text x="116" y="56" font-family="ui-sans-serif, system-ui" font-size="12" font-weight="700" fill="#797067" text-anchor="middle">서브에이전트</text>
+          <circle cx="116" cy="118" r="22" fill="none" stroke="#cc5a14" stroke-width="2.5"/>
+          <rect x="92" y="146" width="48" height="44" rx="10" fill="none" stroke="#cc5a14" stroke-width="2.5"/>
+          <text x="116" y="222" font-family="ui-sans-serif, system-ui" font-size="11" fill="#797067" text-anchor="middle">한 명</text>
+          <text x="230" y="160" font-family="ui-monospace, monospace" font-size="22" fill="#cc5a14" text-anchor="middle">→</text>
+          <text x="338" y="56" font-family="ui-sans-serif, system-ui" font-size="12" font-weight="700" fill="#cc5a14" text-anchor="middle">멀티에이전트</text>
+          <g stroke="#cc5a14" stroke-width="2.5">
+            <circle cx="296" cy="110" r="16" fill="none"/><rect x="280" y="130" width="32" height="30" rx="7" fill="none"/>
+            <circle cx="338" cy="98" r="16" fill="#fe6e00" stroke="none"/><rect x="322" y="118" width="32" height="30" rx="7" fill="#fe6e00" stroke="none"/>
+            <circle cx="380" cy="110" r="16" fill="none"/><rect x="364" y="130" width="32" height="30" rx="7" fill="none"/>
+          </g>
+          <path d="M296 170 q42 28 84 0" fill="none" stroke="#cc5a14" stroke-width="2" stroke-dasharray="4 4"/>
+          <text x="338" y="222" font-family="ui-sans-serif, system-ui" font-size="11" fill="#cc5a14" text-anchor="middle">한 팀 — 분업·협업</text>
+          <text x="230" y="282" font-family="ui-sans-serif, system-ui" font-size="13" fill="#797067" text-anchor="middle">부품 하나 → 여러 개를 한 팀으로</text>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- 17 · 멀티에이전트가 해주는 4가지 -->
+  <section class="slide is-standard">
+    <div class="slide__eyebrow">HOW · 팀이라서 가능한 것</div>
+    <h2 class="slide__title">여럿이 모이면 — <span class="accent">네 가지</span>가 가능해진다</h2>
+    <div class="slide__body">
+      <div class="grid-4">
+        <div class="diff-card"><div class="diff-card__rank">병렬</div><h3 class="diff-card__title">동시에</h3><p class="diff-card__body">독립적인 일이면 — 도우미 여럿이 한 번에. 차례로 기다리지 않음.</p></div>
+        <div class="diff-card"><div class="diff-card__rank">백그라운드</div><h3 class="diff-card__title">뒤로 돌리고</h3><p class="diff-card__body">오래 걸리는 일은 뒤에서 — 나는 다른 일을 계속 진행.</p></div>
+        <div class="diff-card"><div class="diff-card__rank">통신</div><h3 class="diff-card__title">주고받기</h3><p class="diff-card__body">도우미끼리 이름을 불러 메시지를 — 한 번 결과만이 아니라 대화.</p></div>
+        <div class="diff-card"><div class="diff-card__rank">작업목록</div><h3 class="diff-card__title">함께 나눠</h3><p class="diff-card__body">여러 도우미가 할 일 목록을 공유하며 — 분담하고 조율.</p></div>
+      </div>
+      <p class="slide__note">오늘 만들 메모장도 도우미 셋 = <strong>작은 멀티에이전트</strong>. 일이 커질수록 — 한 명보다 팀이 빛납니다. (지금은 "이런 게 있다"까지)</p>
+    </div>
+  </section>
+
+  <!-- 18 · 프로젝트 소개 -->
   <section class="slide is-statement">
     <div class="statement-grid">
       <div class="statement-text">
@@ -354,49 +530,48 @@
     </div>
   </section>
 
-  <!-- 13 · 에이전트 3개 -->
-  <section class="slide is-standard">
-    <div class="slide__eyebrow">TEAM · 도우미 셋</div>
-    <h2 class="slide__title">메모장을 — <span class="accent">셋으로 나눠</span> 맡긴다</h2>
-    <div class="slide__body">
-      <div class="grid-3">
-        <div class="diff-card">
-          <div class="diff-card__rank">도우미 1</div>
-          <h3 class="diff-card__title">화면 담당</h3>
-          <p class="diff-card__body">메모 입력칸과 목록 — 보기 쉬운 메모장 화면을 만든다.</p>
-        </div>
-        <div class="diff-card">
-          <div class="diff-card__rank">도우미 2</div>
-          <h3 class="diff-card__title">데이터 담당</h3>
-          <p class="diff-card__body">Supabase에 메모를 저장·조회·수정·삭제 — CRUD를 연결한다.</p>
-        </div>
-        <div class="diff-card">
-          <div class="diff-card__rank">도우미 3</div>
-          <h3 class="diff-card__title">로그인 담당</h3>
-          <p class="diff-card__body">구글 로그인을 붙여 — 로그인한 사람만, 자기 메모만 보이게.</p>
-        </div>
-      </div>
-      <p class="slide__note">셋 다 <code>/agents</code>로 만듭니다. 역할 설명이 막막하면 — Claude에게 "메모장 만들 도우미 3개 역할 정해줘"라고 먼저 물어보세요.</p>
-    </div>
-  </section>
-
-  <!-- 14 · 만드는 흐름 -->
+  <!-- 19 · 만드는 흐름 -->
   <section class="slide is-standard">
     <div class="slide__eyebrow">FLOW · 만드는 흐름</div>
-    <h2 class="slide__title">도우미 → 화면 → 저장 → 로그인 → <span class="accent">GitHub·Vercel 배포</span></h2>
+    <h2 class="slide__title">준비 → <span class="accent">셋이 동시에</span> → 합쳐 배포</h2>
     <div class="slide__body">
-      <div class="cycle">
-        <div class="cycle__step"><div class="cycle__num">01</div><div class="cycle__title">도우미 셋</div><div class="cycle__desc">/agents로 화면·데이터·로그인 도우미 생성</div><div class="cycle__example">/agents</div></div>
-        <div class="cycle__step"><div class="cycle__num">02</div><div class="cycle__title">화면</div><div class="cycle__desc">@화면 도우미 — 메모 입력칸·목록</div><div class="cycle__example">@ui-helper</div></div>
-        <div class="cycle__step"><div class="cycle__num">03</div><div class="cycle__title">저장</div><div class="cycle__desc">@데이터 도우미 — Supabase 연결, CRUD</div><div class="cycle__example">Supabase</div></div>
-        <div class="cycle__step"><div class="cycle__num">04</div><div class="cycle__title">로그인</div><div class="cycle__desc">@로그인 도우미 — 구글 로그인</div><div class="cycle__example">구글</div></div>
-        <div class="cycle__step"><div class="cycle__num">05</div><div class="cycle__title">배포</div><div class="cycle__desc">GitHub에 올리고 → Vercel 배포</div><div class="cycle__example">*.vercel.app</div></div>
-      </div>
-      <p class="slide__note">네 가지 도구가 한 앱에 — <strong>GitHub</strong>(코드 보관) · <strong>Supabase</strong>(저장) · <strong>구글</strong>(로그인) · <strong>Vercel</strong>(배포). 1·2일차에 써본 것에 Supabase만 더해졌습니다. 키는 비밀로(환경변수).</p>
+      <svg viewBox="0 0 720 372" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" style="display:block;margin:0 auto;width:100%;max-width:740px;height:auto;">
+        <rect x="14" y="96" width="692" height="156" rx="12" fill="none" stroke="#cc5a14" stroke-width="1.5" stroke-dasharray="6 4"/>
+        <g stroke="#cc5a14" stroke-width="2">
+          <line x1="360" y1="80" x2="125" y2="128"/>
+          <line x1="360" y1="80" x2="360" y2="128"/>
+          <line x1="360" y1="80" x2="595" y2="128"/>
+          <line x1="125" y1="238" x2="360" y2="300"/>
+          <line x1="360" y1="238" x2="360" y2="300"/>
+          <line x1="595" y1="238" x2="360" y2="300"/>
+        </g>
+        <rect x="258" y="22" width="204" height="58" rx="12" fill="#fe6e00"/>
+        <text x="360" y="46" font-family="ui-sans-serif, system-ui" font-size="13" font-weight="700" fill="#fff" text-anchor="middle">준비</text>
+        <text x="360" y="66" font-family="ui-monospace, monospace" font-size="10" fill="rgba(255,255,255,0.85)" text-anchor="middle">/agents — 도우미 셋 만들기</text>
+        <text x="360" y="116" font-family="ui-sans-serif, system-ui" font-size="12" font-weight="700" fill="#cc5a14" text-anchor="middle">셋이 동시에 — 병렬로</text>
+        <g font-family="ui-sans-serif, system-ui" text-anchor="middle">
+          <rect x="22" y="128" width="206" height="110" rx="10" fill="#fff" stroke="#cc5a14" stroke-width="2"/>
+          <text x="125" y="164" font-size="13" font-weight="700" fill="#cc5a14">화면 도우미</text>
+          <text x="125" y="188" font-size="10.5" fill="#797067">메모 입력칸 · 목록</text>
+          <text x="125" y="216" font-family="ui-monospace, monospace" font-size="10" fill="#cc5a14">@ui-helper</text>
+          <rect x="257" y="128" width="206" height="110" rx="10" fill="#fff" stroke="#cc5a14" stroke-width="2"/>
+          <text x="360" y="164" font-size="13" font-weight="700" fill="#cc5a14">데이터 도우미</text>
+          <text x="360" y="188" font-size="10.5" fill="#797067">Supabase 저장 · CRUD</text>
+          <text x="360" y="216" font-family="ui-monospace, monospace" font-size="10" fill="#cc5a14">@data-helper</text>
+          <rect x="492" y="128" width="206" height="110" rx="10" fill="#fff" stroke="#cc5a14" stroke-width="2"/>
+          <text x="595" y="164" font-size="13" font-weight="700" fill="#cc5a14">로그인 도우미</text>
+          <text x="595" y="188" font-size="10.5" fill="#797067">구글 로그인</text>
+          <text x="595" y="216" font-family="ui-monospace, monospace" font-size="10" fill="#cc5a14">@login-helper</text>
+        </g>
+        <rect x="258" y="300" width="204" height="58" rx="12" fill="#fff" stroke="#fe6e00" stroke-width="2.5"/>
+        <text x="360" y="324" font-family="ui-sans-serif, system-ui" font-size="13" font-weight="700" fill="#cc5a14" text-anchor="middle">배포</text>
+        <text x="360" y="344" font-family="ui-sans-serif, system-ui" font-size="10" fill="#797067" text-anchor="middle">GitHub → Vercel</text>
+      </svg>
+      <p class="slide__note">화면·데이터·로그인은 서로 크게 안 엮인 부분 — 감독이 셋을 <strong>동시에(병렬)</strong> 진행시킵니다. 다 되면 GitHub에 올려 Vercel로 배포 — 합치는 단계만 맨 끝에. (GitHub·Supabase·구글·Vercel 네 도구가 한 앱에)</p>
     </div>
   </section>
 
-  <!-- 15 · 확장 기능 4가지 -->
+  <!-- 20 · 확장 기능 4가지 -->
   <section class="slide is-standard">
     <div class="slide__eyebrow">EXTEND · 빠르게 끝났다면</div>
     <h2 class="slide__title">메모장이 됐다면 — <span class="accent">확장 기능 4가지</span></h2>
@@ -411,7 +586,7 @@
     </div>
   </section>
 
-  <!-- 16 · 실습 진행 -->
+  <!-- 21 · 실습 진행 -->
   <section class="slide is-standard">
     <div class="slide__eyebrow">실습 · 진행</div>
     <h2 class="slide__title">도우미 셋과 — <span class="accent">메모장 한 바퀴</span></h2>
@@ -442,7 +617,7 @@
     </div>
   </section>
 
-  <!-- 17 · Wrap -->
+  <!-- 22 · Wrap -->
   <section class="slide is-feature">
     <div class="feature-head">
       <div class="slide__eyebrow">WRAP · 챕터 2 끝</div>

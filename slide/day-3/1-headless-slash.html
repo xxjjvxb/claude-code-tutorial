@@ -236,7 +236,7 @@
         </div>
       </div>
     </div>
-    <p class="slide__note">claude가 안 잡히면 — claude 설치 위치 <code>%USERPROFILE%\.local\bin</code> 를 확인해 그 전체 경로로. 막히면 Claude에게 화면을 보여주며 물어보세요.</p>
+    <p class="slide__note">세 칸을 다 채웠으면 — "확인"으로 저장. 막히는 부분이 있으면 화면을 캡처해 Claude에게 보여주며 물어보세요.</p>
   </section>
 
   <!-- 8 · 5분마다 — 창 + 기록 -->
@@ -314,12 +314,12 @@
       <div class="two-col">
         <div>
           <div class="content-card content-card--compact">
-            <h3 class="content-card__title">왜 + 무엇</h3>
+            <h3 class="content-card__title">왜 + 어디에</h3>
             <p class="content-card__body">"방금 뭘 한 거야? 쉽게 정리해줘" — 같은 부탁을 매번 다시 칩니다. 한 번 적어 명령으로 굳히면 됩니다.</p>
             <ul class="content-card__list">
-              <li><code>.claude/commands/</code>의 <strong>.md 파일 이름</strong> = 명령</li>
-              <li><code>asdf.md</code> → <code>/asdf</code> 로 호출</li>
-              <li>CLAUDE.md와 같은 .md 방식 — 새 문법 아님</li>
+              <li><strong>.md 파일 이름</strong>이 곧 명령 — <code>asdf.md</code> → <code>/asdf</code></li>
+              <li>개인 폴더 <code>%USERPROFILE%\.claude\commands</code> 에 두면 — 어떤 프로젝트에서나</li>
+              <li>프로젝트 폴더의 <code>.claude\commands</code> 는 — 그 프로젝트 안에서만</li>
             </ul>
           </div>
         </div>
@@ -327,13 +327,13 @@
           <div class="code-block">
             <div class="code-block__header">
               <span class="code-block__dot" style="background:#fb2c36"></span><span class="code-block__dot" style="background:#edb200"></span><span class="code-block__dot" style="background:#00c758"></span>
-              <span class="code-block__title">.claude/commands/asdf.md</span>
+              <span class="code-block__title">%USERPROFILE%\.claude\commands\asdf.md</span>
             </div>
             <div class="code-block__body"><span class="code-block__line"><span class="code-block__cmd">나는 비개발자라 잘 모르겠어.</span></span><span class="code-block__line"><span class="code-block__cmd">방금 한 대답을 — 딱 3줄로 요약.</span></span><span class="code-block__line"><span class="code-block__cmd">1줄: 방금 네가 뭘 했는지</span></span><span class="code-block__line"><span class="code-block__cmd">2줄: 지금 어떤 상태인지</span></span><span class="code-block__line"><span class="code-block__cmd">3줄: 내가 이제 뭘 하면 되는지</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__cmt"># 이 파일이 곧 /asdf 명령</span></span></div>
           </div>
         </div>
       </div>
-      <p class="slide__note">헤드리스가 "사람 없이 자동"이라면 — 슬래시는 "내가 자주 칠 부탁을 한 단어로". 둘 다 Claude를 <strong>내 방식대로</strong> 시키는 도구.</p>
+      <p class="slide__note"><code>/asdf</code>처럼 어디서나 쓸 명령은 — <strong>개인 폴더</strong>에 한 번만 만들어 두면, 프로젝트에 상관없이 모든 곳에서 그대로 불러 씁니다.</p>
     </div>
   </section>
 
@@ -419,7 +419,7 @@
       <div class="step-list step-list--compact">
         <div class="step-list__item">
           <div class="step-list__num">1</div>
-          <div class="step-list__content"><p class="step-list__title">Claude에게 만들게 하기 <span class="step-list__desc" style="display:inline">— "방금 한 일과 내가 할 일을 3줄로 요약하는 /asdf 슬래시 만들어줘"</span></p></div>
+          <div class="step-list__content"><p class="step-list__title">Claude에게 만들게 하기 <span class="step-list__desc" style="display:inline">— "방금 한 일과 내가 할 일을 3줄로 요약하는 /asdf 슬래시를, 어떤 프로젝트에서나 쓰게 만들어줘"</span></p></div>
         </div>
         <div class="step-list__item">
           <div class="step-list__num">2</div>
