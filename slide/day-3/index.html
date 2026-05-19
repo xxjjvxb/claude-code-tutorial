@@ -12,14 +12,13 @@
     .day-header__title { font-size: 1.5rem; font-weight: 700; line-height: 1.1; letter-spacing: -0.025em; margin: 0.05rem 0 0.2rem 0; color: var(--color-on-surface); }
     .day-header__caption { font-size: 0.68rem; line-height: 1.45; color: var(--color-on-surface-muted); margin: 0; max-width: 42rem; }
 
-    .block-grid { display: grid; grid-template-columns: repeat(2, 1fr); grid-auto-rows: 1fr; gap: 0.55rem; flex: 1; min-height: 0; }
-    .block-card { background: var(--color-surface-elevated); border: 2px solid var(--color-outline-strong); border-radius: var(--rounded-md); padding: 0.7rem 0.9rem; text-decoration: none; color: var(--color-on-surface); display: flex; flex-direction: column; gap: 0.25rem; transition: transform var(--motion-fast) var(--easing-standard), border-color var(--motion-fast), box-shadow var(--motion-fast); min-height: 0; overflow: hidden; }
+    .block-grid { display: grid; grid-template-columns: repeat(2, 1fr); grid-template-rows: 1fr 1fr; gap: 0.6rem; flex: 1; min-height: 0; }
+    .block-card { background: var(--color-surface-elevated); border: 2px solid var(--color-outline-strong); border-radius: var(--rounded-md); padding: 0.85rem 0.95rem; text-decoration: none; color: var(--color-on-surface); display: flex; flex-direction: column; gap: 0.3rem; transition: transform var(--motion-fast) var(--easing-standard), border-color var(--motion-fast), box-shadow var(--motion-fast); min-height: 0; overflow: hidden; }
     .block-card:hover { transform: translateY(-2px); border-color: var(--color-primary); box-shadow: var(--shadow-raised); }
-    .block-card--wide { grid-column: 1 / -1; }
     .block-card__time { font-family: var(--font-mono); font-size: 0.62rem; color: var(--color-primary-strong); font-weight: 700; letter-spacing: 0.06em; }
-    .block-card__title { font-size: 0.98rem; font-weight: 700; line-height: 1.22; letter-spacing: -0.02em; margin: 0; }
-    .block-card__desc { font-size: 0.66rem; line-height: 1.45; color: var(--color-on-surface-muted); margin: 0.05rem 0 0; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 5; -webkit-box-orient: vertical; }
-    .block-card__count { margin-top: auto; font-family: var(--font-mono); font-size: 0.63rem; color: var(--color-primary-strong); font-weight: 700; }
+    .block-card__title { font-size: 1rem; font-weight: 700; line-height: 1.25; letter-spacing: -0.02em; margin: 0; }
+    .block-card__desc { font-size: 0.68rem; line-height: 1.5; color: var(--color-on-surface-muted); margin: 0.1rem 0 0; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 6; -webkit-box-orient: vertical; }
+    .block-card__count { margin-top: auto; font-family: var(--font-mono); font-size: 0.64rem; color: var(--color-primary-strong); font-weight: 700; }
   </style>
 </head>
 <body>
@@ -35,39 +34,33 @@
   <header class="day-header">
     <div class="day-header__brand">CLAUDE CODE · 5일 완주 · 3일차</div>
     <h1 class="day-header__title">3일차 — 확장: 도구로 넓히고, 진짜 앱을 만든다</h1>
-    <p class="day-header__caption">하나의 Claude를 잘 다뤘다면, 오늘은 도구를 늘리고 직접 만듭니다. 내 명령(슬래시)을 만들고, 데이터베이스를 다루고, 도우미 셋으로 "나만의 메모장"을 완성하고, MCP로 웹을 긁고, 헤드리스·스킬로 자동화와 문서 제작까지 — 5챕터.</p>
+    <p class="day-header__caption">하나의 Claude를 잘 다뤘다면, 오늘은 도구를 늘리고 직접 만듭니다. 자동 실행과 내 명령, 데이터베이스와 도우미로 만드는 "나만의 메모장", MCP 브라우저 크롤링, 스킬 문서 제작 — 4챕터.</p>
   </header>
 
   <div class="block-grid">
-    <a class="block-card" href="1-slash.html">
+    <a class="block-card" href="1-headless-slash.html">
       <div class="block-card__time">CHAPTER 1</div>
-      <h2 class="block-card__title">커스텀 슬래시</h2>
-      <p class="block-card__desc">같은 부탁을 매번 다시 치는 낭비 — 한 번 적어 /명령 한 단어로. .claude/commands의 .md가 명령, 비개발자에게 쓸모 있는 후보 6가지. "방금 한 거 딱 3줄로 정리" /asdf 명령을 직접 만들어 다듬습니다.</p>
-      <div class="block-card__count">12 슬라이드 →</div>
+      <h2 class="block-card__title">헤드리스 + 커스텀 슬래시</h2>
+      <p class="block-card__desc">Claude를 "내 방식대로" 시키는 두 가지. 대화창 없이 명령 한 줄로 도는 헤드리스(claude -p)를 작업 스케줄러에 걸어 5분마다 자동 실행 — 결과는 파일로. 그리고 자주 하는 부탁을 한 단어로 굳히는 커스텀 슬래시, "방금 한 거 3줄로" /asdf를 직접 제작.</p>
+      <div class="block-card__count">15 슬라이드 →</div>
     </a>
-    <a class="block-card" href="2-database.html">
+    <a class="block-card" href="2-database-subagent.html">
       <div class="block-card__time">CHAPTER 2</div>
-      <h2 class="block-card__title">데이터베이스 &amp; CRUD</h2>
-      <p class="block-card__desc">껐다 켜면 사라지는 데이터를 어딘가 담아둬야 — 데이터베이스란 무엇이고 CRUD(추가·조회·수정·삭제)란 무엇인가. SQL과 NoSQL의 차이를 짚고, 무료 SQL 서비스 Supabase로 표를 만들어 CRUD를 손으로 돌려봅니다.</p>
-      <div class="block-card__count">11 슬라이드 →</div>
+      <h2 class="block-card__title">데이터베이스 · 서브에이전트 · 나만의 메모장</h2>
+      <p class="block-card__desc">데이터를 담는 법(데이터베이스·CRUD·SQL/NoSQL·Supabase)과 나눠 맡기는 법(서브에이전트·멀티에이전트)을 익혀 — 도우미 셋으로 "나만의 메모장" 앱을 제작. GitHub·Supabase·구글 로그인·Vercel을 모두 써서 배포하고, 검색·태그·즐겨찾기·폴더 확장까지.</p>
+      <div class="block-card__count">17 슬라이드 →</div>
     </a>
-    <a class="block-card" href="3-subagents.html">
+    <a class="block-card" href="3-mcp.html">
       <div class="block-card__time">CHAPTER 3</div>
-      <h2 class="block-card__title">서브에이전트 + 나만의 메모장</h2>
-      <p class="block-card__desc">반복 역할을 떼어 맡기는 도우미가 서브에이전트. 화면·데이터·로그인 도우미 셋을 만들어 — 구글 로그인되고 Supabase에 저장되는 "나만의 메모장" 앱을 Vercel까지 배포. 빠른 완주자용 확장 2가지.</p>
-      <div class="block-card__count">12 슬라이드 →</div>
-    </a>
-    <a class="block-card" href="4-mcp.html">
-      <div class="block-card__time">CHAPTER 4</div>
       <h2 class="block-card__title">MCP + 브라우저 크롤링</h2>
-      <p class="block-card__desc">Claude는 담장 안만 본다 — MCP는 외부 도구를 꽂는 USB 포트. claude mcp add 한 줄로 연결, 6개 카탈로그. 그리고 브라우저 MCP로 Claude가 진짜 웹을 돌아다니며 정보를 모아오는 "와 이게 되네" 크롤링 프로젝트.</p>
+      <p class="block-card__desc">Claude는 담장 안만 본다 — MCP는 외부 도구를 꽂는 USB 포트. claude mcp add 한 줄로 연결, 6개 카탈로그, 권한 감각. 그리고 브라우저 MCP로 Claude가 진짜 웹을 돌아다니며 정보를 모아오는 크롤링 프로젝트.</p>
       <div class="block-card__count">12 슬라이드 →</div>
     </a>
-    <a class="block-card block-card--wide" href="5-headless-skills.html">
-      <div class="block-card__time">CHAPTER 5</div>
-      <h2 class="block-card__title">헤드리스 · 스킬</h2>
-      <p class="block-card__desc">대화창 없이 명령 한 줄로 도는 헤드리스(claude -p)를 각자 직접 써 보고, 작업 스케줄러로 "자고 일어나면 결과가 와 있는" 자동 비서까지. 그리고 포장된 능력 — 스킬로 코드 한 줄 없이 진짜 PPT·엑셀 문서를 만듭니다. 끝으로 도구 다이어트 원칙.</p>
-      <div class="block-card__count">12 슬라이드 →</div>
+    <a class="block-card" href="4-skills.html">
+      <div class="block-card__time">CHAPTER 4</div>
+      <h2 class="block-card__title">스킬</h2>
+      <p class="block-card__desc">슬래시가 내 부탁이라면 스킬은 포장된 능력 한 묶음 — PPTX·DOCX·XLSX·PDF 공식 스킬로 코드 한 줄 없이 진짜 PPT·엑셀 문서를 만듭니다. 끝으로 3일차에 모은 도구 다이어트 원칙.</p>
+      <div class="block-card__count">8 슬라이드 →</div>
     </a>
   </div>
 </main>
