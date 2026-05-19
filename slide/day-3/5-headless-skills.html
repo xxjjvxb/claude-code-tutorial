@@ -1,0 +1,379 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>3일차 · 5. 헤드리스 + 스킬</title>
+  <link rel="stylesheet" href="../styles/tokens.css">
+  <link rel="stylesheet" href="../styles/deck.css">
+</head>
+<body>
+
+<main class="deck">
+
+  <header class="deck-chrome">
+  <span class="deck-chrome__brand">CLAUDE CODE · 5D</span>
+  <span class="deck-chrome__divider">·</span>
+  <span class="deck-chrome__day">3일차 · 5 헤드리스·스킬</span>
+  <span class="deck-chrome__spacer"></span>
+  <span class="deck-chrome__counter">— / —</span>
+</header>
+
+  <!-- 1 · Chapter intro -->
+  <section class="slide is-section is-standard">
+    <div class="section-eyebrow">CHAPTER 5 · HEADLESS &amp; SKILL</div>
+    <h2 class="section-title">헤드리스 — 사람 없이, 스킬 — <span class="accent">포장된 능력</span></h2>
+    <p class="section-caption">대화창 없이 명령 한 줄로 도는 헤드리스를 각자 직접 써 보고, 작업 스케줄러로 자동화까지. 그리고 누군가 만들어 둔 능력 한 묶음 — 스킬로 진짜 문서를 만들어 봅니다.</p>
+    <div class="section-meta">
+      <div class="section-meta__item"><span class="section-meta__num">claude -p</span><span>헤드리스 — 직접 실습</span></div>
+      <div class="section-meta__item"><span class="section-meta__num">4</span><span>공식 문서 스킬</span></div>
+      <div class="section-meta__item"><span class="section-meta__num">5</span><span>3일차 챕터 마무리</span></div>
+    </div>
+  </section>
+
+  <!-- 2 · 헤드리스란 -->
+  <section class="slide is-statement">
+    <div class="statement-grid">
+      <div class="statement-text">
+        <div class="slide__eyebrow">WHAT · 헤드리스</div>
+        <h2 class="statement__lead">헤드리스 — 대화 없이 <span class="accent">명령 한 줄</span>로.</h2>
+        <p class="statement__caption">평소엔 Claude와 대화하지만, <code>claude -p "..."</code>는 대화창을 열지 않고 한 번의 요청을 즉시 처리하고 끝냅니다. 시연이 아니라 — 오늘은 각자 직접 써 봅니다.</p>
+        <div class="statement__points">
+          <div class="statement__point"><span class="statement__point-num">한 줄</span><span>요청 → 결과 → 종료. 대화 없음</span></div>
+          <div class="statement__point"><span class="statement__point-num">자동화</span><span>예약 작업 안에 끼워 — 사람 없이 실행</span></div>
+          <div class="statement__point"><span class="statement__point-num">오늘</span><span>직접 쳐 보고 — 자동 실행까지 건다</span></div>
+        </div>
+      </div>
+      <div class="statement-visual">
+        <svg viewBox="0 0 460 320" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <rect x="0" y="0" width="460" height="320" rx="16" fill="#fff5ec"/>
+          <rect x="50" y="100" width="120" height="120" rx="12" fill="#fff" stroke="#cc5a14" stroke-width="2"/>
+          <text x="110" y="150" font-family="ui-sans-serif, system-ui" font-size="11" fill="#797067" text-anchor="middle">평소 — 대화</text>
+          <g stroke="#d9cfc1" stroke-width="5" stroke-linecap="round">
+            <line x1="72" y1="172" x2="148" y2="172"/><line x1="72" y1="190" x2="128" y2="190"/>
+          </g>
+          <text x="200" y="166" font-family="ui-monospace, monospace" font-size="18" fill="#cc5a14">vs</text>
+          <rect x="244" y="100" width="170" height="120" rx="12" fill="#fe6e00"/>
+          <text x="329" y="142" font-family="ui-sans-serif, system-ui" font-size="11" fill="rgba(255,255,255,0.85)" text-anchor="middle">헤드리스</text>
+          <text x="329" y="170" font-family="ui-monospace, monospace" font-size="12" fill="#fff" text-anchor="middle">claude -p "..."</text>
+          <text x="329" y="196" font-family="ui-sans-serif, system-ui" font-size="11" fill="rgba(255,255,255,0.85)" text-anchor="middle">한 번 실행 → 끝</text>
+          <text x="230" y="262" font-family="ui-sans-serif, system-ui" font-size="13" fill="#797067" text-anchor="middle">대화창이 필요 없는 — 한 방 명령</text>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3 · 헤드리스 직접 써보기 -->
+  <section class="slide is-standard">
+    <div class="slide__eyebrow">실습 · STEP 1 — 각자 직접</div>
+    <h2 class="slide__title">지금 바로 — <span class="accent">claude -p 한 줄</span> 쳐 보기</h2>
+    <div class="slide__body">
+      <div class="two-col">
+        <div>
+          <div class="content-card content-card--compact">
+            <h3 class="content-card__title">다 같이 한 번</h3>
+            <ol class="content-card__list content-card__list--ol">
+              <li>PowerShell을 연다</li>
+              <li><code>claude -p</code> 뒤에 따옴표로 부탁을 적는다</li>
+              <li>엔터 — 대화창 없이 결과만 바로 나온다</li>
+            </ol>
+            <p class="content-card__body">부탁만 바꿔 두세 번 더 — 손맛을 느껴 보세요.</p>
+          </div>
+        </div>
+        <div>
+          <div class="code-block">
+            <div class="code-block__header">
+              <span class="code-block__dot" style="background:#fb2c36"></span><span class="code-block__dot" style="background:#edb200"></span><span class="code-block__dot" style="background:#00c758"></span>
+              <span class="code-block__title">PowerShell · headless</span>
+            </div>
+            <div class="code-block__body"><span class="code-block__line"><span class="code-block__prompt">PS&gt;</span> <span class="code-block__cmd">claude -p "오늘 요일 알려주고</span></span><span class="code-block__line"><span class="code-block__cmd">  기분 좋아지는 한마디 해줘"</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__out">  오늘은 수요일이에요. 절반을</span></span><span class="code-block__line"><span class="code-block__out">  넘었으니 — 잘 가고 있어요!</span></span><span class="code-block__line"><span class="code-block__cmt"># 대화창 없이 바로 끝</span></span></div>
+          </div>
+        </div>
+      </div>
+      <p class="slide__note">이게 헤드리스입니다 — <strong>대화 없이 한 줄로</strong>. 다음은 이걸 "사람 없이 알아서 돌게" 만들어 봅니다.</p>
+    </div>
+  </section>
+
+  <!-- 4 · 자동으로 — 작업 스케줄러 -->
+  <section class="slide is-standard">
+    <div class="slide__eyebrow">AUTO · 작업 스케줄러</div>
+    <h2 class="slide__title">정해둔 시각에 — <span class="accent">알아서 실행</span></h2>
+    <div class="slide__body">
+      <div class="two-col">
+        <div>
+          <div class="content-card content-card--compact">
+            <h3 class="content-card__title">윈도우 작업 스케줄러</h3>
+            <p class="content-card__body">윈도우에 기본으로 있는 <strong>예약 실행 도구</strong>. "매일 아침 9시에 이 명령을 실행" 같은 약속을 걸어둡니다.</p>
+            <ul class="content-card__list">
+              <li>실행할 것 — 내 <code>claude -p</code> 명령</li>
+              <li>언제 — 매일·매시간 등 원하는 주기</li>
+              <li>등록해 두면 — 컴퓨터가 알아서</li>
+            </ul>
+          </div>
+        </div>
+        <div>
+          <div class="content-card content-card--compact">
+            <h3 class="content-card__title">무엇을 자동으로?</h3>
+            <p class="content-card__body">매번 손으로 하던 작은 일을 — 한 줄 명령으로 만들어 예약.</p>
+            <ul class="content-card__list">
+              <li>관심 주제 소식을 정리해 파일로 저장</li>
+              <li>오늘 일정·할 일을 아침에 정리</li>
+              <li>환율·날씨 등 매일 챙기던 정보</li>
+            </ul>
+            <p class="content-card__body">등록이 헷갈리면 — Claude에게 "작업 스케줄러 등록 도와줘".</p>
+          </div>
+        </div>
+      </div>
+      <p class="slide__note">2일차 Hooks가 "이벤트가 일어나면" 자동이었다면 — 작업 스케줄러는 <strong>"정해둔 시각이 되면"</strong> 자동입니다.</p>
+    </div>
+  </section>
+
+  <!-- 5 · 자동 비서 — wow -->
+  <section class="slide is-statement">
+    <div class="statement-grid statement-grid--visual-wide">
+      <div class="statement-text">
+        <div class="slide__eyebrow">WOW · 자동 아침 비서</div>
+        <h2 class="statement__lead">자고 일어나면 — <span class="accent">결과가 와 있다</span>.</h2>
+        <p class="statement__caption">"매일 아침 7시, 내 관심 주제를 요약해 파일로 저장." 한 번 걸어두면 — 내가 아무것도 안 해도 매일 아침 정리된 파일이 기다립니다. 이게 헤드리스의 진짜 맛입니다.</p>
+        <div class="statement__points">
+          <div class="statement__point"><span class="statement__point-num">한 번</span><span>claude -p 명령 + 스케줄러 등록</span></div>
+          <div class="statement__point"><span class="statement__point-num">매일</span><span>사람 없이 — 알아서 실행된다</span></div>
+          <div class="statement__point"><span class="statement__point-num">느낌</span><span>"내가 안 시켰는데 Claude가 일했네"</span></div>
+        </div>
+      </div>
+      <div class="statement-visual">
+        <svg viewBox="0 0 460 320" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <rect x="0" y="0" width="460" height="320" rx="16" fill="#fff5ec"/>
+          <circle cx="110" cy="110" r="40" fill="none" stroke="#cc5a14" stroke-width="3"/>
+          <line x1="110" y1="110" x2="110" y2="84" stroke="#cc5a14" stroke-width="3" stroke-linecap="round"/>
+          <line x1="110" y1="110" x2="130" y2="122" stroke="#cc5a14" stroke-width="3" stroke-linecap="round"/>
+          <text x="110" y="178" font-family="ui-sans-serif, system-ui" font-size="11" fill="#797067" text-anchor="middle">매일 아침 7:00</text>
+          <text x="180" y="116" font-family="ui-monospace, monospace" font-size="20" fill="#cc5a14">→</text>
+          <rect x="214" y="76" width="96" height="68" rx="10" fill="#fe6e00"/>
+          <text x="262" y="106" font-family="ui-monospace, monospace" font-size="10" fill="#fff" text-anchor="middle">claude -p</text>
+          <text x="262" y="124" font-family="ui-sans-serif, system-ui" font-size="9" fill="rgba(255,255,255,0.85)" text-anchor="middle">자동 실행</text>
+          <text x="330" y="116" font-family="ui-monospace, monospace" font-size="20" fill="#cc5a14">→</text>
+          <rect x="356" y="72" width="76" height="92" rx="8" fill="white" stroke="#cc5a14" stroke-width="2"/>
+          <g stroke="#ffd2ab" stroke-width="6" stroke-linecap="round">
+            <line x1="370" y1="92" x2="418" y2="92"/><line x1="370" y1="110" x2="418" y2="110"/>
+            <line x1="370" y1="128" x2="404" y2="128"/>
+          </g>
+          <text x="394" y="156" font-family="ui-sans-serif, system-ui" font-size="9" fill="#cc5a14" text-anchor="middle">today.md</text>
+          <text x="230" y="222" font-family="ui-sans-serif, system-ui" font-size="14" fill="#797067" text-anchor="middle">나는 자고 있었는데 —</text>
+          <text x="230" y="256" font-family="ui-sans-serif, system-ui" font-size="16" fill="#cc5a14" font-weight="700" text-anchor="middle">결과 파일이 와 있다</text>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6 · 실습 — 헤드리스 자동화 -->
+  <section class="slide is-standard">
+    <div class="slide__eyebrow">실습 · 헤드리스</div>
+    <h2 class="slide__title">직접 → 자동 → <span class="accent">메모장까지</span></h2>
+    <div class="slide__body">
+      <div class="step-list step-list--compact">
+        <div class="step-list__item">
+          <div class="step-list__num">1</div>
+          <div class="step-list__content"><p class="step-list__title">claude -p 직접 쳐 보기 <span class="step-list__desc" style="display:inline">— 부탁을 바꿔 두세 번 (전원 한 번씩)</span></p></div>
+        </div>
+        <div class="step-list__item">
+          <div class="step-list__num">2</div>
+          <div class="step-list__content"><p class="step-list__title">자동 실행할 명령 정하기 <span class="step-list__desc" style="display:inline">— "관심 주제 요약을 파일로 저장"</span></p></div>
+        </div>
+        <div class="step-list__item">
+          <div class="step-list__num">3</div>
+          <div class="step-list__content"><p class="step-list__title">작업 스케줄러에 등록 <span class="step-list__desc" style="display:inline">— Claude 안내대로, 매일/매시간 자동 실행</span></p></div>
+        </div>
+        <div class="step-list__item">
+          <div class="step-list__num">★</div>
+          <div class="step-list__content"><p class="step-list__title">확장 — 메모장에 넣기 <span class="step-list__desc" style="display:inline">— 파일 대신 챕터 3 메모장(Supabase)에 자동 입력</span></p></div>
+        </div>
+      </div>
+      <p class="slide__note">먼저 1~3으로 "파일에 저장"을 끝내면 전원 성공. ★는 빠른 분의 확장 — 내 메모장이 알아서 채워집니다.</p>
+    </div>
+  </section>
+
+  <!-- 7 · 스킬이란 -->
+  <section class="slide is-statement">
+    <div class="statement-grid statement-grid--visual-wide">
+      <div class="statement-text">
+        <div class="slide__eyebrow">WHAT · 스킬</div>
+        <h2 class="statement__lead">스킬 — 누군가 만들어 둔 <span class="accent">능력 한 묶음</span>.</h2>
+        <p class="statement__caption">"PowerPoint 문서를 제대로 만드는 법" 같은 절차·요령·도구를 한 폴더에 묶어 둔 것. 가져다 두기만 하면 — Claude가 그 능력을 갖춥니다.</p>
+        <div class="statement__points">
+          <div class="statement__point"><span class="statement__point-num">묶음</span><span>설명·절차·도구가 한 폴더에</span></div>
+          <div class="statement__point"><span class="statement__point-num">공식</span><span>Anthropic이 만든 검증된 스킬을 그대로</span></div>
+          <div class="statement__point"><span class="statement__point-num">대표</span><span>PPTX · DOCX · XLSX · PDF 문서 만들기</span></div>
+        </div>
+      </div>
+      <div class="statement-visual">
+        <svg viewBox="0 0 460 320" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <rect x="0" y="0" width="460" height="320" rx="16" fill="#fff5ec"/>
+          <rect x="130" y="64" width="200" height="120" rx="12" fill="#fff" stroke="#cc5a14" stroke-width="2.5"/>
+          <text x="230" y="92" font-family="ui-sans-serif, system-ui" font-size="12" font-weight="700" fill="#cc5a14" text-anchor="middle">pptx 스킬</text>
+          <g font-family="ui-sans-serif, system-ui" font-size="10" fill="#797067" text-anchor="middle">
+            <text x="230" y="118">설명서 · 절차</text>
+            <text x="230" y="138">예제 · 템플릿</text>
+            <text x="230" y="158">필요한 도구</text>
+          </g>
+          <text x="230" y="210" font-family="ui-monospace, monospace" font-size="18" fill="#cc5a14" text-anchor="middle">↓ 가져다 두면</text>
+          <rect x="150" y="226" width="160" height="50" rx="10" fill="#fe6e00"/>
+          <text x="230" y="256" font-family="ui-sans-serif, system-ui" font-size="13" fill="#fff" font-weight="700" text-anchor="middle">Claude가 능력 획득</text>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8 · 공식 문서 스킬 4 -->
+  <section class="slide is-standard">
+    <div class="slide__eyebrow">CATALOG · 공식 문서 스킬 4</div>
+    <h2 class="slide__title">바로 쓸 수 있는 — <span class="accent">문서 만들기 스킬 4</span></h2>
+    <div class="slide__body">
+      <div class="grid-4">
+        <div class="diff-card"><div class="diff-card__rank">PPTX</div><h3 class="diff-card__title">발표 자료</h3><p class="diff-card__body">내용을 PowerPoint 슬라이드로.</p></div>
+        <div class="diff-card"><div class="diff-card__rank">DOCX</div><h3 class="diff-card__title">워드 문서</h3><p class="diff-card__body">보고서·문서를 Word 형식으로.</p></div>
+        <div class="diff-card"><div class="diff-card__rank">XLSX</div><h3 class="diff-card__title">엑셀 표</h3><p class="diff-card__body">데이터를 수식·표가 든 엑셀로.</p></div>
+        <div class="diff-card"><div class="diff-card__rank">PDF</div><h3 class="diff-card__title">PDF 문서</h3><p class="diff-card__body">완성된 결과물을 PDF로.</p></div>
+      </div>
+      <p class="slide__note">스킬은 — 가져오기(내려받기) → <code>.claude/skills</code>에 두기 → "이걸 PPT로 만들어줘"라고 부르기. 사이클은 슬래시·게임과 똑같습니다.</p>
+    </div>
+  </section>
+
+  <!-- 9 · 스킬 wow -->
+  <section class="slide is-statement">
+    <div class="statement-grid statement-grid--visual-wide">
+      <div class="statement-text">
+        <div class="slide__eyebrow">WOW · 진짜 파일이 나온다</div>
+        <h2 class="statement__lead">코드 한 줄 없이 — <span class="accent">진짜 PPT·엑셀</span>이 툭.</h2>
+        <p class="statement__caption">한 줄 요청 → 더블클릭하면 PowerPoint·Excel에서 그대로 열리는 진짜 파일. 특히 수식·표가 들어간 엑셀은 — "이거 그냥 회사에서 쓰는 파일이잖아" 소리가 나옵니다.</p>
+        <div class="statement__points">
+          <div class="statement__point"><span class="statement__point-num">입력</span><span>"이 내용을 발표 자료로" 한 줄</span></div>
+          <div class="statement__point"><span class="statement__point-num">출력</span><span>.pptx · .xlsx — 진짜 열리는 파일</span></div>
+          <div class="statement__point"><span class="statement__point-num">느낌</span><span>"내가 코드를 안 썼는데 — 됐다"</span></div>
+        </div>
+      </div>
+      <div class="statement-visual">
+        <svg viewBox="0 0 460 320" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <rect x="0" y="0" width="460" height="320" rx="16" fill="#fff5ec"/>
+          <rect x="44" y="128" width="150" height="44" rx="8" fill="white" stroke="#cc5a14" stroke-width="2"/>
+          <text x="119" y="155" font-family="ui-monospace, monospace" font-size="11" fill="#423d38" text-anchor="middle">&gt; PPT로 만들어줘</text>
+          <text x="210" y="156" font-family="ui-monospace, monospace" font-size="20" fill="#cc5a14">→</text>
+          <rect x="248" y="74" width="84" height="64" rx="6" fill="#fff" stroke="#cc5a14" stroke-width="2"/>
+          <rect x="248" y="74" width="84" height="16" rx="6" fill="#fe6e00"/>
+          <text x="290" y="115" font-family="ui-sans-serif, system-ui" font-size="11" fill="#cc5a14" font-weight="700" text-anchor="middle">.pptx</text>
+          <rect x="346" y="74" width="84" height="64" rx="6" fill="#fff" stroke="#016630" stroke-width="2"/>
+          <rect x="346" y="74" width="84" height="16" rx="6" fill="#016630"/>
+          <text x="388" y="115" font-family="ui-sans-serif, system-ui" font-size="11" fill="#016630" font-weight="700" text-anchor="middle">.xlsx</text>
+          <text x="338" y="178" font-family="ui-sans-serif, system-ui" font-size="11" fill="#797067" text-anchor="middle">진짜 열리는 파일</text>
+          <text x="230" y="232" font-family="ui-sans-serif, system-ui" font-size="14" fill="#797067" text-anchor="middle">한 줄 요청 →</text>
+          <text x="230" y="266" font-family="ui-sans-serif, system-ui" font-size="16" fill="#cc5a14" font-weight="700" text-anchor="middle">진짜 업무 문서</text>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- 10 · 실습 — 스킬로 문서 -->
+  <section class="slide is-standard">
+    <div class="slide__eyebrow">실습 · 스킬</div>
+    <h2 class="slide__title">스킬로 — <span class="accent">진짜 문서 하나</span> 만들기</h2>
+    <div class="slide__body">
+      <div class="step-list step-list--compact">
+        <div class="step-list__item">
+          <div class="step-list__num">1</div>
+          <div class="step-list__content"><p class="step-list__title">공식 문서 스킬 가져오기 <span class="step-list__desc" style="display:inline">— Claude 안내대로 내려받아 .claude/skills 에</span></p></div>
+        </div>
+        <div class="step-list__item">
+          <div class="step-list__num">2</div>
+          <div class="step-list__content"><p class="step-list__title">소재 정하기 <span class="step-list__desc" style="display:inline">— 1일차 자기소개 페이지 / 오늘 만든 메모장 소개</span></p></div>
+        </div>
+        <div class="step-list__item">
+          <div class="step-list__num">3</div>
+          <div class="step-list__content"><p class="step-list__title">PPT·엑셀로 만들기 <span class="step-list__desc" style="display:inline">— "이걸 발표용 PPT로 만들어줘"</span></p></div>
+        </div>
+        <div class="step-list__item">
+          <div class="step-list__num">4</div>
+          <div class="step-list__content"><p class="step-list__title">진짜로 열어 보기 <span class="step-list__desc" style="display:inline">— 만들어진 파일을 PowerPoint·Excel로 더블클릭</span></p></div>
+        </div>
+      </div>
+      <p class="slide__note">결과가 어색하면 — "글자가 너무 작아", "표지 추가해줘"처럼 그대로 말해 다듬습니다. 다듬기 한 바퀴는 어디서나 똑같습니다.</p>
+    </div>
+  </section>
+
+  <!-- 11 · 도구 다이어트 -->
+  <section class="slide is-statement">
+    <div class="statement-grid statement-grid--visual-wide">
+      <div class="statement-text">
+        <div class="slide__eyebrow">PRINCIPLE · 도구 다이어트</div>
+        <h2 class="statement__lead">도구는 많을수록 좋은 게 — <span class="accent">아니다</span>.</h2>
+        <p class="statement__caption">슬래시·에이전트·MCP·스킬을 잔뜩 만들어 두면, 정작 뭐가 있는지 잊고 관리만 늘어납니다. 기준은 하나 — "이번 주에 쓰는가".</p>
+        <div class="statement__points">
+          <div class="statement__point"><span class="statement__point-num">기준</span><span>주에 몇 번은 쓰는 도구만 남긴다</span></div>
+          <div class="statement__point"><span class="statement__point-num">정리</span><span>안 쓰는 건 — 미루지 말고 지운다</span></div>
+          <div class="statement__point"><span class="statement__point-num">시작</span><span>필요해질 때 만든다 — 미리 X</span></div>
+        </div>
+      </div>
+      <div class="statement-visual">
+        <svg viewBox="0 0 460 320" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <rect x="0" y="0" width="460" height="320" rx="16" fill="#fff5ec"/>
+          <text x="230" y="48" font-family="ui-sans-serif, system-ui" font-size="13" fill="#797067" font-weight="700" text-anchor="middle">"이번 주에 쓰는가"</text>
+          <g font-family="ui-sans-serif, system-ui" font-size="11" font-weight="700" text-anchor="middle">
+            <rect x="60" y="78" width="150" height="46" rx="9" fill="#dcfce7" stroke="#016630" stroke-width="2"/>
+            <text x="135" y="106" fill="#016630">자주 쓰는 도구 ✓</text>
+            <rect x="60" y="134" width="150" height="46" rx="9" fill="#dcfce7" stroke="#016630" stroke-width="2"/>
+            <text x="135" y="162" fill="#016630">손에 익은 도구 ✓</text>
+            <rect x="250" y="78" width="150" height="46" rx="9" fill="#fef2f2" stroke="#fb2c36" stroke-width="2" stroke-dasharray="5 4"/>
+            <text x="325" y="106" fill="#fb2c36">안 쓰는 도구 ✗</text>
+            <rect x="250" y="134" width="150" height="46" rx="9" fill="#fef2f2" stroke="#fb2c36" stroke-width="2" stroke-dasharray="5 4"/>
+            <text x="325" y="162" fill="#fb2c36">"언젠가" 도구 ✗</text>
+          </g>
+          <text x="230" y="232" font-family="ui-sans-serif, system-ui" font-size="13" fill="#797067" text-anchor="middle">남길 것만 남긴다 — 가볍게</text>
+          <text x="230" y="266" font-family="ui-sans-serif, system-ui" font-size="15" fill="#cc5a14" font-weight="700" text-anchor="middle">적게, 손에 익은 것으로</text>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- 12 · Wrap · 3일차 끝 -->
+  <section class="slide is-feature">
+    <div class="feature-head">
+      <div class="slide__eyebrow">WRAP · 3일차 끝</div>
+      <h2 class="feature-head__title">3일차 — <span class="accent">도구로 넓히고, 진짜 앱을 만들었다</span></h2>
+    </div>
+    <div class="feature-body">
+      <div class="feature-text">
+        <p class="statement__caption">내 명령을 만들고, 데이터베이스를 다루고, 도우미 셋으로 메모장을 만들고, MCP로 웹을 긁고, 헤드리스·스킬까지 — 5챕터를 돌았습니다.</p>
+        <div class="statement__points">
+          <div class="statement__point"><span class="statement__point-num">5챕터</span><span>슬래시 · DB · 서브에이전트 · MCP · 헤드리스/스킬</span></div>
+          <div class="statement__point"><span class="statement__point-num">결과물</span><span>나만의 메모장 — 로그인·저장·배포까지</span></div>
+          <div class="statement__point"><span class="statement__point-num">다음</span><span>4일차 — 모은 도구로 본격 프로젝트를 시작한다</span></div>
+        </div>
+      </div>
+      <div class="feature-visual">
+        <svg viewBox="0 0 460 320" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <rect x="0" y="0" width="460" height="320" rx="16" fill="#fff5ec"/>
+          <text x="230" y="46" font-family="ui-sans-serif, system-ui" font-size="13" fill="#797067" font-weight="700" text-anchor="middle">3일차 — 5챕터</text>
+          <g font-family="ui-sans-serif, system-ui" font-size="11" font-weight="700" text-anchor="middle">
+            <rect x="46" y="68" width="118" height="46" rx="8" fill="white" stroke="#cc5a14" stroke-width="2"/>
+            <text x="105" y="96" fill="#423d38">슬래시</text>
+            <rect x="172" y="68" width="118" height="46" rx="8" fill="white" stroke="#cc5a14" stroke-width="2"/>
+            <text x="231" y="96" fill="#423d38">데이터베이스</text>
+            <rect x="298" y="68" width="118" height="46" rx="8" fill="white" stroke="#cc5a14" stroke-width="2"/>
+            <text x="357" y="96" fill="#423d38">서브에이전트</text>
+            <rect x="108" y="124" width="118" height="46" rx="8" fill="white" stroke="#cc5a14" stroke-width="2"/>
+            <text x="167" y="152" fill="#423d38">MCP</text>
+            <rect x="234" y="124" width="118" height="46" rx="8" fill="#fe6e00" stroke="#cc5a14" stroke-width="2"/>
+            <text x="293" y="152" fill="#fff">헤드리스·스킬</text>
+          </g>
+          <rect x="150" y="196" width="160" height="44" rx="9" fill="#fff" stroke="#fe6e00" stroke-width="2.5"/>
+          <text x="230" y="223" font-family="ui-sans-serif, system-ui" font-size="12" fill="#cc5a14" font-weight="700" text-anchor="middle">나만의 메모장 완성</text>
+          <text x="230" y="276" font-family="ui-sans-serif, system-ui" font-size="15" fill="#cc5a14" font-weight="700" text-anchor="middle">도구는 갖췄다 — 4일차, 본격 제작</text>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <div class="deck-progress"><div class="deck-progress__bar"></div></div>
+</main>
+<script src="../scripts/deck.js"></script>
+</body>
+</html>

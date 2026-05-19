@@ -1,0 +1,370 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>3일차 · 1. 커스텀 슬래시</title>
+  <link rel="stylesheet" href="../styles/tokens.css">
+  <link rel="stylesheet" href="../styles/deck.css">
+</head>
+<body>
+
+<main class="deck">
+
+  <header class="deck-chrome">
+  <span class="deck-chrome__brand">CLAUDE CODE · 5D</span>
+  <span class="deck-chrome__divider">·</span>
+  <span class="deck-chrome__day">3일차 · 1 커스텀 슬래시</span>
+  <span class="deck-chrome__spacer"></span>
+  <span class="deck-chrome__counter">— / —</span>
+</header>
+
+  <!-- 1 · Cover -->
+  <section class="slide is-cover">
+    <div class="cover-grid">
+      <div class="cover-left">
+        <div class="cover-brand">CLAUDE CODE · 5일 완주</div>
+        <div class="cover-illustration">
+          <svg class="cover-terminal" viewBox="0 0 460 280" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <rect x="0" y="0" width="460" height="280" rx="14" fill="rgba(0,0,0,0.92)"/>
+            <rect x="0" y="0" width="460" height="36" fill="rgba(255,255,255,0.04)"/>
+            <circle cx="22" cy="18" r="5" fill="#fb2c36"/>
+            <circle cx="42" cy="18" r="5" fill="#edb200"/>
+            <circle cx="62" cy="18" r="5" fill="#00c758"/>
+            <text x="230" y="22" fill="rgba(255,255,255,0.4)" font-family="ui-monospace, monospace" font-size="11" text-anchor="middle">claude · day3</text>
+            <text x="22" y="74" fill="#fe6e00" font-family="ui-monospace, monospace" font-size="13">&gt; /asdf</text>
+            <text x="22" y="100" fill="rgba(255,255,255,0.55)" font-family="ui-monospace, monospace" font-size="11">  방금 한 일을 3줄로 정리…</text>
+            <text x="22" y="134" fill="white" font-family="ui-monospace, monospace" font-size="12">  내 명령 · 데이터베이스</text>
+            <text x="22" y="152" fill="white" font-family="ui-monospace, monospace" font-size="12">  도우미 · MCP · 스킬</text>
+            <text x="22" y="170" fill="white" font-family="ui-monospace, monospace" font-size="12">  나만의 메모장까지 만든다</text>
+            <text x="22" y="212" fill="#fe6e00" font-family="ui-monospace, monospace" font-size="13">  [도구로 넓히고 — 만들어본다]</text>
+          </svg>
+        </div>
+        <div class="cover-foot">
+          <div class="cover-foot-num">03</div>
+          <div class="cover-foot-meta">3일차 · 확장</div>
+        </div>
+      </div>
+      <div class="cover-right">
+        <div class="cover-card">
+          <div class="cover-card__day">3일차 · 확장</div>
+          <h2 class="cover-card__title">도구로 넓히고 —<br>직접 만들어본다</h2>
+          <p class="cover-card__subtitle">내 명령을 만들고, 데이터베이스를 다루고,<br>도우미·MCP로 진짜 앱 하나를 만든다.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2 · 어제 → 오늘 -->
+  <section class="slide is-standard">
+    <div class="slide__eyebrow">2일차 → 3일차</div>
+    <h2 class="slide__title">길들였다면, 오늘은 <span class="accent">넓히고 만든다</span></h2>
+    <div class="slide__body">
+      <div class="bg-compare">
+        <div class="bg-compare__side bg-compare__side--soft">
+          <div class="bg-compare__label">2일차 · 어제까지</div>
+          <div class="bg-compare__quote">
+            <div>Plan Mode — 큰 변경 전 계획부터</div>
+            <div>Hooks — 응답 끝나면 휴대폰 알림</div>
+            <div>CLAUDE.md — 내 프로젝트 룰북</div>
+            <div>데이터·게임·구글 로그인</div>
+          </div>
+          <p class="bg-compare__note">하나의 Claude를 잘 다루는 법을 익혔습니다.</p>
+        </div>
+        <div class="bg-compare__side bg-compare__side--good">
+          <div class="bg-compare__label">3일차 · 오늘</div>
+          <div class="bg-compare__quote">
+            <div>커스텀 슬래시 — 내 단축 명령</div>
+            <div>데이터베이스 — 데이터를 다룬다</div>
+            <div>서브에이전트로 나만의 메모장 제작</div>
+            <div>MCP · 스킬 · 헤드리스</div>
+          </div>
+          <p class="bg-compare__note">Claude를 <strong>넓히고 — 진짜 앱을 만듭니다</strong>.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3 · 3일차 흐름 -->
+  <section class="slide is-standard">
+    <div class="slide__eyebrow">OVERVIEW · 오늘의 흐름</div>
+    <h2 class="slide__title">3일차는 <span class="accent">5개 챕터</span> — 도구, 그리고 제작</h2>
+    <div class="slide__body">
+      <div class="cycle">
+        <div class="cycle__step"><div class="cycle__num">CH1</div><div class="cycle__title">커스텀 슬래시</div><div class="cycle__desc">자주 하는 부탁을 한 단어 명령으로</div><div class="cycle__example">/asdf</div></div>
+        <div class="cycle__step"><div class="cycle__num">CH2</div><div class="cycle__title">데이터베이스</div><div class="cycle__desc">데이터를 담고 다루는 CRUD</div><div class="cycle__example">Supabase</div></div>
+        <div class="cycle__step"><div class="cycle__num">CH3</div><div class="cycle__title">서브에이전트</div><div class="cycle__desc">도우미 3개로 나만의 메모장 제작</div><div class="cycle__example">메모장 앱</div></div>
+        <div class="cycle__step"><div class="cycle__num">CH4</div><div class="cycle__title">MCP</div><div class="cycle__desc">외부 도구 연결 + 브라우저 크롤링</div><div class="cycle__example">웹 수집</div></div>
+        <div class="cycle__step"><div class="cycle__num">CH5</div><div class="cycle__title">헤드리스·스킬</div><div class="cycle__desc">자동 실행 + 포장된 능력</div><div class="cycle__example">claude -p</div></div>
+      </div>
+      <p class="slide__note">먼저 — 매일 쓰게 될 <strong>내 명령 하나</strong>를 만듭니다. 가장 작고, 가장 자주 쓰는 도구부터.</p>
+    </div>
+  </section>
+
+  <!-- 4 · WHY 슬래시 -->
+  <section class="slide is-statement">
+    <div class="statement-grid statement-grid--visual-wide">
+      <div class="statement-text">
+        <div class="slide__eyebrow">WHY · 왜 만드나</div>
+        <h2 class="statement__lead">같은 부탁을 — <span class="accent">매번 다시 치고</span> 있다.</h2>
+        <p class="statement__caption">Claude가 뭔가 길게 답하거나 작업을 마칠 때마다 — "그래서 방금 뭘 한 거야? 쉽게 설명해줘, 이제 내가 뭘 하면 돼?"를 반복해 칩니다. 자주 치는 부탁일수록, 한 번 적어 명령으로 굳히면 됩니다.</p>
+        <div class="statement__points">
+          <div class="statement__point"><span class="statement__point-num">반복</span><span>같은 부탁을 — 하루에도 몇 번씩 다시 친다</span></div>
+          <div class="statement__point"><span class="statement__point-num">편차</span><span>칠 때마다 말이 조금씩 달라져 답도 들쭉날쭉</span></div>
+          <div class="statement__point"><span class="statement__point-num">슬래시</span><span>한 번 적어두면 — 늘 같은 한 단어</span></div>
+        </div>
+      </div>
+      <div class="statement-visual">
+        <svg viewBox="0 0 460 320" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <rect x="0" y="0" width="460" height="320" rx="16" fill="#fff5ec"/>
+          <rect x="40" y="58" width="180" height="200" rx="10" fill="#fef2f2" stroke="#fb2c36" stroke-width="2"/>
+          <text x="130" y="86" font-family="ui-sans-serif, system-ui" font-size="12" font-weight="700" fill="#fb2c36" text-anchor="middle">매번 길게</text>
+          <g stroke="#f3b0b0" stroke-width="6" stroke-linecap="round">
+            <line x1="62" y1="112" x2="198" y2="112"/><line x1="62" y1="130" x2="180" y2="130"/>
+            <line x1="62" y1="148" x2="198" y2="148"/><line x1="62" y1="166" x2="160" y2="166"/>
+          </g>
+          <text x="130" y="210" font-family="ui-sans-serif, system-ui" font-size="11" fill="#797067" text-anchor="middle">"쉽게 설명해줘…" × 50</text>
+          <text x="130" y="234" font-family="ui-sans-serif, system-ui" font-size="11" fill="#fb2c36" text-anchor="middle">칠 때마다 조금씩 다름</text>
+          <text x="234" y="164" font-family="ui-monospace, monospace" font-size="22" fill="#cc5a14">→</text>
+          <rect x="262" y="58" width="158" height="200" rx="10" fill="#dcfce7" stroke="#016630" stroke-width="2"/>
+          <text x="341" y="86" font-family="ui-sans-serif, system-ui" font-size="12" font-weight="700" fill="#016630" text-anchor="middle">한 단어로</text>
+          <rect x="290" y="128" width="102" height="40" rx="8" fill="#fff" stroke="#016630" stroke-width="2"/>
+          <text x="341" y="153" font-family="ui-monospace, monospace" font-size="15" fill="#016630" font-weight="700" text-anchor="middle">/asdf</text>
+          <text x="341" y="210" font-family="ui-sans-serif, system-ui" font-size="11" fill="#016630" text-anchor="middle">늘 똑같이</text>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5 · 슬래시란 -->
+  <section class="slide is-standard">
+    <div class="slide__eyebrow">WHAT · 커스텀 슬래시</div>
+    <h2 class="slide__title">슬래시 명령 — <span class="accent">.md 파일 하나</span>가 명령 하나</h2>
+    <div class="slide__body">
+      <div class="two-col">
+        <div>
+          <div class="content-card content-card--compact">
+            <h3 class="content-card__title">또 그 패턴</h3>
+            <p class="content-card__body"><code>.claude/commands/</code> 폴더의 <strong>.md 파일 이름</strong>이 곧 명령 이름이 됩니다.</p>
+            <ul class="content-card__list">
+              <li><code>asdf.md</code> → <code>/asdf</code></li>
+              <li>1·2일차에 쓴 <code>/</code> 슬래시와 똑같이 호출</li>
+              <li>CLAUDE.md·에이전트와 같은 .md 방식</li>
+            </ul>
+          </div>
+        </div>
+        <div>
+          <div class="code-block">
+            <div class="code-block__header">
+              <span class="code-block__dot" style="background:#fb2c36"></span><span class="code-block__dot" style="background:#edb200"></span><span class="code-block__dot" style="background:#00c758"></span>
+              <span class="code-block__title">.claude/commands/asdf.md</span>
+            </div>
+            <div class="code-block__body"><span class="code-block__line"><span class="code-block__cmd">나는 비개발자라 잘 모르겠어.</span></span><span class="code-block__line"><span class="code-block__cmd">방금 한 대답을 — 딱 3줄로 요약.</span></span><span class="code-block__line"><span class="code-block__cmd">1줄: 방금 네가 뭘 했는지</span></span><span class="code-block__line"><span class="code-block__cmd">2줄: 지금 어떤 상태인지</span></span><span class="code-block__line"><span class="code-block__cmd">3줄: 내가 이제 뭘 하면 되는지</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__cmt"># 이 파일이 곧 /asdf 명령</span></span></div>
+          </div>
+        </div>
+      </div>
+      <p class="slide__note">새 문법이 아닙니다 — <strong>평소 치던 부탁을 파일에 적어두는 것</strong>뿐. 직접 안 만들고 Claude에게 시켜도 됩니다.</p>
+    </div>
+  </section>
+
+  <!-- 6 · 슬래시에 뭘 적나 -->
+  <section class="slide is-standard">
+    <div class="slide__eyebrow">INSIDE · 안에 적는 것</div>
+    <h2 class="slide__title">파일 안에는 — <span class="accent">평소 치던 부탁</span> 그대로</h2>
+    <div class="slide__body">
+      <div class="grid-3">
+        <div class="diff-card">
+          <div class="diff-card__rank">본문</div>
+          <h3 class="diff-card__title">시킬 일을 사람 말로</h3>
+          <p class="diff-card__body">평소 Claude에게 치던 그 문장 그대로. 어려운 용어 필요 없음 — "쉽게 정리해줘"면 충분.</p>
+        </div>
+        <div class="diff-card">
+          <div class="diff-card__rank">또렷이</div>
+          <h3 class="diff-card__title">원하는 모습을 콕 집어</h3>
+          <p class="diff-card__body">"딱 3줄로", "번호로", "내가 할 일만" — 답이 어떻게 나오면 좋을지 적어두면 매번 그렇게.</p>
+        </div>
+        <div class="diff-card">
+          <div class="diff-card__rank">하나만</div>
+          <h3 class="diff-card__title">한 가지 일에 집중</h3>
+          <p class="diff-card__body">슬래시 하나는 한 가지 일만 — 너무 많이 시키면 결과가 흐려짐.</p>
+        </div>
+      </div>
+      <p class="slide__note">형식이 헷갈리면 — "방금 한 일을 3줄로 정리해주는 슬래시 명령 만들어줘"라고 Claude에게 시키면 파일까지 만들어 줍니다.</p>
+    </div>
+  </section>
+
+  <!-- 7 · 좋은 후보 6 -->
+  <section class="slide is-standard">
+    <div class="slide__eyebrow">CANDIDATES · 쓸모 있는 후보 6</div>
+    <h2 class="slide__title">비개발자가 만들면 좋은 — <span class="accent">슬래시 6가지</span></h2>
+    <div class="slide__body">
+      <div class="grid-3">
+        <div class="content-card content-card--compact"><h3 class="content-card__title">/asdf ★</h3><p class="content-card__body">방금 한 거, 내가 뭘 하면 되는지 딱 3줄로.</p></div>
+        <div class="content-card content-card--compact"><h3 class="content-card__title">/easy</h3><p class="content-card__body">방금 설명을 — 더 쉬운 말로 다시.</p></div>
+        <div class="content-card content-card--compact"><h3 class="content-card__title">/next</h3><p class="content-card__body">"그래서 지금 내가 뭘 하면 돼?"</p></div>
+        <div class="content-card content-card--compact"><h3 class="content-card__title">/check</h3><p class="content-card__body">지금까지 한 거, 문제 없는지 점검.</p></div>
+        <div class="content-card content-card--compact"><h3 class="content-card__title">/oops</h3><p class="content-card__body">에러가 났어 — 무슨 일이고 어떻게 풀지.</p></div>
+        <div class="content-card content-card--compact"><h3 class="content-card__title">/save</h3><p class="content-card__body">지금까지 한 일을 깔끔하게 저장(커밋).</p></div>
+      </div>
+      <p class="slide__note">정답은 없습니다 — <strong>"내가 이번 주에 3번 이상 친 부탁"</strong>이 가장 좋은 후보. <code>/asdf</code>는 오늘 함께 만들어 봅니다.</p>
+    </div>
+  </section>
+
+  <!-- 8 · 부르는 법 -->
+  <section class="slide is-standard">
+    <div class="slide__eyebrow">CALL · 부르는 법</div>
+    <h2 class="slide__title">호출은 — <span class="accent">/ 치면 자동완성</span></h2>
+    <div class="slide__body">
+      <div class="two-col">
+        <div>
+          <div class="content-card content-card--compact">
+            <h3 class="content-card__title">쓰는 법</h3>
+            <ol class="content-card__list content-card__list--ol">
+              <li><code>/</code> 를 치면 — 만든 명령이 목록에 뜸</li>
+              <li><code>/asdf</code> 선택 — 적어둔 부탁이 그대로 실행</li>
+              <li>Claude가 길게 답한 직후에 치면 가장 유용</li>
+            </ol>
+            <p class="content-card__body">기본 슬래시(/model·/agents)와 같은 자리에 나란히.</p>
+          </div>
+        </div>
+        <div>
+          <div class="code-block">
+            <div class="code-block__header">
+              <span class="code-block__dot" style="background:#fb2c36"></span><span class="code-block__dot" style="background:#edb200"></span><span class="code-block__dot" style="background:#00c758"></span>
+              <span class="code-block__title">claude · 슬래시 호출</span>
+            </div>
+            <div class="code-block__body"><span class="code-block__line"><span class="code-block__prompt">&gt;</span> <span class="code-block__cmd">/asdf</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__out">  1. 로그인 화면을 새로 만들었음</span></span><span class="code-block__line"><span class="code-block__out">  2. 아직 구글 연결은 안 됨</span></span><span class="code-block__line"><span class="code-block__out">  3. 브라우저에서 한 번 열어보세요</span></span></div>
+          </div>
+        </div>
+      </div>
+      <p class="slide__note">파일을 만들면 — 다음부터 <code>/</code> 목록에 자동으로 나타납니다. 따로 등록할 필요 없음.</p>
+    </div>
+  </section>
+
+  <!-- 9 · 셋의 자리 -->
+  <section class="slide is-standard">
+    <div class="slide__eyebrow">MAP · .md 삼형제 정리</div>
+    <h2 class="slide__title">CLAUDE.md · 에이전트 · 슬래시 — <span class="accent">자리가 다르다</span></h2>
+    <div class="slide__body">
+      <div class="grid-3">
+        <div class="diff-card">
+          <div class="diff-card__rank">CLAUDE.md</div>
+          <h3 class="diff-card__title">항상 적용되는 룰북</h3>
+          <p class="diff-card__body">매 세션 자동 주입. "늘 이렇게 일해라"는 배경 규칙.</p>
+        </div>
+        <div class="diff-card">
+          <div class="diff-card__rank">서브에이전트</div>
+          <h3 class="diff-card__title">역할 맡는 도우미</h3>
+          <p class="diff-card__body">호출될 때 동작. "이 일은 전담 도우미가" 할 때. (CH3)</p>
+        </div>
+        <div class="diff-card">
+          <div class="diff-card__rank">슬래시</div>
+          <h3 class="diff-card__title">내가 부르는 명령</h3>
+          <p class="diff-card__body">내가 <code>/</code>를 칠 때 실행. "이 부탁을 지금 한 번".</p>
+        </div>
+      </div>
+      <p class="slide__note">셋 다 <code>.claude</code> 폴더의 <strong>.md 파일</strong> — 차이는 "언제 동작하나"입니다. 자동 / 위임 시 / 내가 부를 때.</p>
+    </div>
+  </section>
+
+  <!-- 10 · 실습 — /asdf 만들기 -->
+  <section class="slide is-standard">
+    <div class="slide__eyebrow">실습 · STEP 1</div>
+    <h2 class="slide__title">내 첫 슬래시 — <span class="accent">/asdf 만들기</span></h2>
+    <div class="slide__body">
+      <div class="step-list step-list--compact">
+        <div class="step-list__item">
+          <div class="step-list__num">1</div>
+          <div class="step-list__content"><p class="step-list__title">만들 명령 정하기 <span class="step-list__desc" style="display:inline">— /asdf : "방금 한 거, 내가 할 일을 딱 3줄로"</span></p></div>
+        </div>
+        <div class="step-list__item">
+          <div class="step-list__num">2</div>
+          <div class="step-list__content"><p class="step-list__title">Claude에게 만들게 하기 <span class="step-list__desc" style="display:inline">— "방금 한 일과 내가 할 일을 3줄로 요약하는 /asdf 슬래시 만들어줘"</span></p></div>
+        </div>
+        <div class="step-list__item">
+          <div class="step-list__num">3</div>
+          <div class="step-list__content"><p class="step-list__title">파일 확인 <span class="step-list__desc" style="display:inline">— .claude/commands/asdf.md 내용 읽어보기</span></p></div>
+        </div>
+        <div class="step-list__item">
+          <div class="step-list__num">4</div>
+          <div class="step-list__content"><p class="step-list__title">호출해 보기 <span class="step-list__desc" style="display:inline">— 아무 작업이나 시킨 뒤 /asdf 를 쳐본다</span></p></div>
+        </div>
+      </div>
+      <p class="slide__note">이름은 마음대로 — 외우기보다 <strong>빨리 치기</strong>가 중요합니다. 그래서 <code>asdf</code>처럼 막 쳐도 됩니다. 본문은 평소 치던 말 그대로.</p>
+    </div>
+  </section>
+
+  <!-- 11 · 실습 — 써보며 다듬기 -->
+  <section class="slide is-standard">
+    <div class="slide__eyebrow">실습 · STEP 2</div>
+    <h2 class="slide__title">여러 번 써보며 — <span class="accent">3줄에 더 가깝게</span></h2>
+    <div class="slide__body">
+      <div class="two-col">
+        <div>
+          <div class="content-card content-card--compact">
+            <h3 class="content-card__title">진행</h3>
+            <ol class="content-card__list content-card__list--ol">
+              <li>작업을 시킬 때마다 <code>/asdf</code>를 5번쯤 써본다</li>
+              <li>답이 길거나 아쉬우면 — asdf.md 본문을 손본다</li>
+              <li>원하는 모습을 한 줄로 추가한다</li>
+              <li>늘 딱 3줄로 깔끔하면 — 완성</li>
+            </ol>
+          </div>
+        </div>
+        <div>
+          <div class="content-card content-card--compact">
+            <h3 class="content-card__title">다듬기 한 줄 예시</h3>
+            <ul class="content-card__list">
+              <li>"무조건 3줄 — 더도 덜도 말고"</li>
+              <li>"어려운 단어가 나오면 풀어서"</li>
+              <li>"내가 할 일은 명령처럼 짧게"</li>
+            </ul>
+            <p class="content-card__body">슬래시는 — 쓸수록 내 손에 맞게 자라는 도구입니다.</p>
+          </div>
+        </div>
+      </div>
+      <p class="slide__note">한 번 만들고 끝이 아닙니다 — <strong>써보며 다듬는 한 바퀴</strong>가 핵심. 오늘 만든 <code>/asdf</code>는 남은 3일 내내 쓰게 됩니다.</p>
+    </div>
+  </section>
+
+  <!-- 12 · Wrap -->
+  <section class="slide is-feature">
+    <div class="feature-head">
+      <div class="slide__eyebrow">WRAP · 슬래시 끝</div>
+      <h2 class="feature-head__title">자주 하는 부탁은 — <span class="accent">한 단어 명령</span>으로</h2>
+    </div>
+    <div class="feature-body">
+      <div class="feature-text">
+        <p class="statement__caption">커스텀 슬래시는 자주 치는 부탁을 파일에 굳혀, 늘 같은 답을 한 단어로 부르는 방법입니다. 개발 지식은 필요 없습니다.</p>
+        <div class="statement__points">
+          <div class="statement__point"><span class="statement__point-num">정의</span><span>.claude/commands 의 .md = 명령</span></div>
+          <div class="statement__point"><span class="statement__point-num">/asdf</span><span>방금 한 일을 — 딱 3줄로</span></div>
+          <div class="statement__point"><span class="statement__point-num">다음</span><span>데이터를 담는 그릇 — 데이터베이스</span></div>
+        </div>
+      </div>
+      <div class="feature-visual">
+        <svg viewBox="0 0 460 320" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <rect x="0" y="0" width="460" height="320" rx="16" fill="#fff5ec"/>
+          <text x="230" y="58" font-family="ui-sans-serif, system-ui" font-size="13" fill="#797067" font-weight="700" text-anchor="middle">한 번 적어두면 — 늘 한 단어</text>
+          <g font-family="ui-monospace, monospace" font-size="14" font-weight="700" fill="#cc5a14" text-anchor="middle">
+            <rect x="56" y="92" width="160" height="44" rx="8" fill="#fe6e00" stroke="#cc5a14" stroke-width="2"/>
+            <text x="136" y="120" fill="#fff">/asdf</text>
+            <rect x="244" y="92" width="160" height="44" rx="8" fill="#fff" stroke="#cc5a14" stroke-width="2"/>
+            <text x="324" y="120">/easy</text>
+            <rect x="56" y="150" width="160" height="44" rx="8" fill="#fff" stroke="#cc5a14" stroke-width="2"/>
+            <text x="136" y="178">/next</text>
+            <rect x="244" y="150" width="160" height="44" rx="8" fill="#fff" stroke="#cc5a14" stroke-width="2"/>
+            <text x="324" y="178">/save</text>
+          </g>
+          <text x="230" y="248" font-family="ui-sans-serif, system-ui" font-size="14" fill="#797067" text-anchor="middle">긴 부탁 → 짧은 명령</text>
+          <text x="230" y="278" font-family="ui-sans-serif, system-ui" font-size="15" fill="#cc5a14" font-weight="700" text-anchor="middle">내 작업이 빨라진다</text>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <div class="deck-progress"><div class="deck-progress__bar"></div></div>
+</main>
+<script src="../scripts/deck.js"></script>
+</body>
+</html>

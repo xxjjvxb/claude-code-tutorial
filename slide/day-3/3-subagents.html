@@ -1,0 +1,372 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>3일차 · 3. 서브에이전트 + 메모장</title>
+  <link rel="stylesheet" href="../styles/tokens.css">
+  <link rel="stylesheet" href="../styles/deck.css">
+</head>
+<body>
+
+<main class="deck">
+
+  <header class="deck-chrome">
+  <span class="deck-chrome__brand">CLAUDE CODE · 5D</span>
+  <span class="deck-chrome__divider">·</span>
+  <span class="deck-chrome__day">3일차 · 3 서브에이전트</span>
+  <span class="deck-chrome__spacer"></span>
+  <span class="deck-chrome__counter">— / —</span>
+</header>
+
+  <!-- 1 · Chapter intro -->
+  <section class="slide is-section is-standard">
+    <div class="section-eyebrow">CHAPTER 3 · SUBAGENT</div>
+    <h2 class="section-title">서브에이전트 — <span class="accent">도우미 셋</span>으로 메모장을 만든다</h2>
+    <p class="section-caption">반복되는 역할을 떼어 전담시키는 도우미가 서브에이전트입니다. 오늘은 도우미 셋(화면·데이터·로그인)을 만들어 — 구글 로그인되는 "나만의 메모장" 앱을 직접 완성합니다. 데이터는 챕터 2의 Supabase에.</p>
+    <div class="section-meta">
+      <div class="section-meta__item"><span class="section-meta__num">3</span><span>도우미 에이전트</span></div>
+      <div class="section-meta__item"><span class="section-meta__num">1</span><span>나만의 메모장 앱</span></div>
+      <div class="section-meta__item"><span class="section-meta__num">2</span><span>빠른 완주자용 확장</span></div>
+    </div>
+  </section>
+
+  <!-- 2 · WHY 서브에이전트 -->
+  <section class="slide is-statement">
+    <div class="statement-grid statement-grid--visual-wide">
+      <div class="statement-text">
+        <div class="slide__eyebrow">WHY · 왜 나누나</div>
+        <h2 class="statement__lead">한 대화에 <span class="accent">모든 일</span>을 시키면 — 점점 흐려진다.</h2>
+        <p class="statement__caption">메모장 하나를 만들어도 화면·데이터·로그인이 섞입니다. 한 대화에 다 시키면 맥락이 엉키죠. 역할을 떼어 전담 도우미에게 맡기는 게 서브에이전트입니다.</p>
+        <div class="statement__points">
+          <div class="statement__point"><span class="statement__point-num">분리</span><span>메인 대화는 깨끗하게 — 위임 작업은 따로</span></div>
+          <div class="statement__point"><span class="statement__point-num">전문화</span><span>역할마다 규칙을 따로 정한다</span></div>
+          <div class="statement__point"><span class="statement__point-num">선택</span><span>역할 난이도에 맞는 모델을 고른다</span></div>
+        </div>
+      </div>
+      <div class="statement-visual">
+        <svg viewBox="0 0 460 320" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <rect x="0" y="0" width="460" height="320" rx="16" fill="#fff5ec"/>
+          <rect x="170" y="48" width="120" height="48" rx="10" fill="#fe6e00"/>
+          <text x="230" y="78" font-family="ui-sans-serif, system-ui" font-size="13" fill="#fff" font-weight="700" text-anchor="middle">나 (감독)</text>
+          <line x1="230" y1="96" x2="100" y2="150" stroke="#cc5a14" stroke-width="2"/>
+          <line x1="230" y1="96" x2="230" y2="150" stroke="#cc5a14" stroke-width="2"/>
+          <line x1="230" y1="96" x2="360" y2="150" stroke="#cc5a14" stroke-width="2"/>
+          <g font-family="ui-sans-serif, system-ui" font-size="11" font-weight="700">
+            <rect x="46" y="150" width="108" height="60" rx="9" fill="white" stroke="#cc5a14" stroke-width="2"/>
+            <text x="100" y="176" fill="#cc5a14" text-anchor="middle">화면 도우미</text>
+            <text x="100" y="194" fill="#797067" font-weight="400" font-size="10" text-anchor="middle">메모장 화면</text>
+            <rect x="176" y="150" width="108" height="60" rx="9" fill="white" stroke="#cc5a14" stroke-width="2"/>
+            <text x="230" y="176" fill="#cc5a14" text-anchor="middle">데이터 도우미</text>
+            <text x="230" y="194" fill="#797067" font-weight="400" font-size="10" text-anchor="middle">메모 저장</text>
+            <rect x="306" y="150" width="108" height="60" rx="9" fill="white" stroke="#cc5a14" stroke-width="2"/>
+            <text x="360" y="176" fill="#cc5a14" text-anchor="middle">로그인 도우미</text>
+            <text x="360" y="194" fill="#797067" font-weight="400" font-size="10" text-anchor="middle">구글 로그인</text>
+          </g>
+          <text x="230" y="262" font-family="ui-sans-serif, system-ui" font-size="13" fill="#797067" text-anchor="middle">역할을 셋으로 나눠 — 전담 도우미에게</text>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3 · 서브에이전트란 -->
+  <section class="slide is-standard">
+    <div class="slide__eyebrow">WHAT · 서브에이전트</div>
+    <h2 class="slide__title">서브에이전트 — <span class="accent">파일 하나</span>가 도우미 하나</h2>
+    <div class="slide__body">
+      <div class="two-col">
+        <div>
+          <div class="content-card content-card--compact">
+            <h3 class="content-card__title">한 줄로</h3>
+            <p class="content-card__body"><code>.claude/agents/</code> 폴더의 <strong>.md 파일 하나</strong> = 도우미 하나. 그 안에 역할과 규칙을 적습니다.</p>
+            <ul class="content-card__list">
+              <li>이 도우미가 무슨 일을 하는지</li>
+              <li>지킬 규칙 — 어떻게 일해야 하는지</li>
+              <li>어떤 모델을 쓸지 (선택)</li>
+            </ul>
+          </div>
+        </div>
+        <div>
+          <div class="code-block">
+            <div class="code-block__header">
+              <span class="code-block__dot" style="background:#fb2c36"></span><span class="code-block__dot" style="background:#edb200"></span><span class="code-block__dot" style="background:#00c758"></span>
+              <span class="code-block__title">.claude/agents/ui-helper.md</span>
+            </div>
+            <div class="code-block__body"><span class="code-block__line"><span class="code-block__cmt">--- name: ui-helper</span></span><span class="code-block__line"><span class="code-block__cmt">--- model: sonnet</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__cmd">너는 화면 담당이다. 단순하고</span></span><span class="code-block__line"><span class="code-block__cmd">깔끔한 메모장 화면을 만든다.</span></span><span class="code-block__line"><span class="code-block__cmd">기능은 적게, 보기 쉽게.</span></span></div>
+          </div>
+        </div>
+      </div>
+      <p class="slide__note">CLAUDE.md·슬래시를 써본 그 감각 그대로 — <strong>사람 말로 역할을 적으면</strong> 도우미가 됩니다. <code>/agents</code>로 만듭니다.</p>
+    </div>
+  </section>
+
+  <!-- 4 · 어떻게 부르나 -->
+  <section class="slide is-standard">
+    <div class="slide__eyebrow">CALL · 부르는 두 가지 방법</div>
+    <h2 class="slide__title">알아서 위임 — 또는 <span class="accent">@로 지목</span></h2>
+    <div class="slide__body">
+      <div class="compare-2">
+        <div class="compare-side compare-side--soft">
+          <div class="compare-side__label">자동 위임</div>
+          <h3 class="compare-side__title">Claude가 알아서 부른다</h3>
+          <ul class="compare-side__list">
+            <li>요청 내용이 어떤 도우미와 맞으면 — 알아서 위임</li>
+            <li>"메모장 화면 만들어줘" → 화면 도우미가 호출</li>
+            <li>도우미 설명을 잘 적어둘수록 정확</li>
+          </ul>
+        </div>
+        <div class="compare-side compare-side--accent">
+          <div class="compare-side__label">@멘션 — 명시 호출</div>
+          <h3 class="compare-side__title">내가 직접 지목한다</h3>
+          <ul class="compare-side__list">
+            <li><code>@ui-helper 메모 입력칸 만들어줘</code></li>
+            <li>어떤 도우미에게 맡길지 확실할 때</li>
+            <li>1일차에 배운 <code>@</code> 문법 그대로</li>
+          </ul>
+        </div>
+      </div>
+      <p class="slide__note">처음엔 <strong>@멘션으로 명시 호출</strong>이 편합니다 — 누가 일했는지 눈에 보여서 감을 잡기 좋습니다.</p>
+    </div>
+  </section>
+
+  <!-- 5 · 모델 선택 -->
+  <section class="slide is-standard">
+    <div class="slide__eyebrow">MODEL · 역할에 맞는 모델</div>
+    <h2 class="slide__title">도우미마다 — <span class="accent">난이도에 맞는 모델</span></h2>
+    <div class="slide__body">
+      <div class="grid-3">
+        <div class="diff-card">
+          <div class="diff-card__rank">Haiku</div>
+          <h3 class="diff-card__title">가볍고 반복적인 일</h3>
+          <p class="diff-card__body">정해진 형식의 정리·변환 — 빠르고 저렴.</p>
+        </div>
+        <div class="diff-card">
+          <div class="diff-card__rank">Sonnet</div>
+          <h3 class="diff-card__title">일반적인 작업</h3>
+          <p class="diff-card__body">화면 만들기·데이터 연결 — 대부분의 도우미에 무난한 기본값.</p>
+        </div>
+        <div class="diff-card">
+          <div class="diff-card__rank">Opus</div>
+          <h3 class="diff-card__title">어렵고 깊은 일</h3>
+          <p class="diff-card__body">구조 설계, 까다로운 디버깅 — 판단이 중요한 역할.</p>
+        </div>
+      </div>
+      <p class="slide__note">잘 모르겠으면 <strong>Sonnet</strong>으로 두세요 — 쓰다 보면 "이건 Haiku로 충분", "이건 Opus가 낫다"가 보입니다.</p>
+    </div>
+  </section>
+
+  <!-- 6 · /agents 명령 -->
+  <section class="slide is-standard">
+    <div class="slide__eyebrow">HOW · /agents 로 만든다</div>
+    <h2 class="slide__title">도우미는 — <span class="accent">/agents</span>로 만들고 관리</h2>
+    <div class="slide__body">
+      <div class="two-col">
+        <div>
+          <div class="content-card content-card--compact">
+            <h3 class="content-card__title">/agents 가 하는 일</h3>
+            <ul class="content-card__list">
+              <li>새 도우미 만들기 — 이름·역할·모델</li>
+              <li>지금 있는 도우미 목록 보기</li>
+              <li>역할 수정·삭제</li>
+            </ul>
+            <p class="content-card__body">.md 파일을 직접 안 건드려도 — 안내를 따라가면 됩니다.</p>
+          </div>
+        </div>
+        <div>
+          <div class="code-block">
+            <div class="code-block__header">
+              <span class="code-block__dot" style="background:#fb2c36"></span><span class="code-block__dot" style="background:#edb200"></span><span class="code-block__dot" style="background:#00c758"></span>
+              <span class="code-block__title">claude · /agents</span>
+            </div>
+            <div class="code-block__body"><span class="code-block__line"><span class="code-block__prompt">&gt;</span> <span class="code-block__cmd">/agents</span></span><span class="code-block__line"><span class="code-block__out">  1. 새 에이전트 만들기</span></span><span class="code-block__line"><span class="code-block__out">  2. 에이전트 목록</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__cmt"># 안내대로 이름·역할 입력하면</span></span><span class="code-block__line"><span class="code-block__cmt"># .claude/agents/ 에 파일 생성</span></span></div>
+          </div>
+        </div>
+      </div>
+      <p class="slide__note">만든 도우미는 <code>.claude/agents/</code> 폴더에 파일로 남습니다 — Git에 커밋하면 그대로 보관·공유됩니다.</p>
+    </div>
+  </section>
+
+  <!-- 7 · 프로젝트 소개 -->
+  <section class="slide is-statement">
+    <div class="statement-grid">
+      <div class="statement-text">
+        <div class="slide__eyebrow">PROJECT · 오늘 만들 것</div>
+        <h2 class="statement__lead">도우미 셋으로 — <span class="accent">나만의 메모장</span></h2>
+        <p class="statement__caption">로그인하면 내 메모를 쓰고·보고·고치고·지울 수 있는 진짜 앱. 구글 로그인은 2일차에, 데이터베이스는 챕터 2에서 익혔습니다. 오늘은 도우미 셋에게 나눠 맡겨 완성합니다.</p>
+        <div class="statement__points">
+          <div class="statement__point"><span class="statement__point-num">로그인</span><span>구글 로그인 — 내 메모는 나만</span></div>
+          <div class="statement__point"><span class="statement__point-num">저장</span><span>메모를 Supabase에 — CRUD</span></div>
+          <div class="statement__point"><span class="statement__point-num">배포</span><span>Vercel에 올려 — 휴대폰에서도</span></div>
+        </div>
+      </div>
+      <div class="statement-visual">
+        <svg viewBox="0 0 460 320" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <rect x="0" y="0" width="460" height="320" rx="16" fill="#fff5ec"/>
+          <rect x="146" y="44" width="168" height="232" rx="16" fill="white" stroke="#cc5a14" stroke-width="2.5"/>
+          <text x="230" y="76" font-family="ui-sans-serif, system-ui" font-size="13" fill="#cc5a14" font-weight="700" text-anchor="middle">나만의 메모장</text>
+          <rect x="166" y="92" width="128" height="30" rx="6" fill="#fff5ec" stroke="#e7ddd0" stroke-width="1.5"/>
+          <text x="178" y="112" font-family="ui-sans-serif, system-ui" font-size="10" fill="#a99e90">+ 새 메모 입력…</text>
+          <rect x="166" y="132" width="128" height="34" rx="6" fill="#ffe0c2"/>
+          <text x="178" y="153" font-family="ui-sans-serif, system-ui" font-size="10" fill="#423d38">우유 사기</text>
+          <rect x="166" y="172" width="128" height="34" rx="6" fill="#f3ede4"/>
+          <text x="178" y="193" font-family="ui-sans-serif, system-ui" font-size="10" fill="#423d38">강의 자료 검토</text>
+          <rect x="166" y="212" width="128" height="34" rx="6" fill="#f3ede4"/>
+          <text x="178" y="233" font-family="ui-sans-serif, system-ui" font-size="10" fill="#423d38">운동 30분</text>
+          <text x="230" y="266" font-family="ui-sans-serif, system-ui" font-size="9" fill="#a99e90" text-anchor="middle">로그인 · 저장 · 어디서나</text>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8 · 에이전트 3개 -->
+  <section class="slide is-standard">
+    <div class="slide__eyebrow">TEAM · 도우미 셋</div>
+    <h2 class="slide__title">메모장을 — <span class="accent">셋으로 나눠</span> 맡긴다</h2>
+    <div class="slide__body">
+      <div class="grid-3">
+        <div class="diff-card">
+          <div class="diff-card__rank">도우미 1</div>
+          <h3 class="diff-card__title">화면 담당</h3>
+          <p class="diff-card__body">메모 입력칸과 목록 — 보기 쉬운 메모장 화면을 만든다.</p>
+        </div>
+        <div class="diff-card">
+          <div class="diff-card__rank">도우미 2</div>
+          <h3 class="diff-card__title">데이터 담당</h3>
+          <p class="diff-card__body">Supabase에 메모를 저장·조회·수정·삭제 — CRUD를 연결한다.</p>
+        </div>
+        <div class="diff-card">
+          <div class="diff-card__rank">도우미 3</div>
+          <h3 class="diff-card__title">로그인 담당</h3>
+          <p class="diff-card__body">구글 로그인을 붙여 — 로그인한 사람만, 자기 메모만 보이게.</p>
+        </div>
+      </div>
+      <p class="slide__note">셋 다 <code>/agents</code>로 만듭니다. 역할 설명이 막막하면 — Claude에게 "메모장 만들 도우미 3개 역할 정해줘"라고 먼저 물어보세요.</p>
+    </div>
+  </section>
+
+  <!-- 9 · 만드는 흐름 -->
+  <section class="slide is-standard">
+    <div class="slide__eyebrow">FLOW · 만드는 흐름</div>
+    <h2 class="slide__title">도우미 만들기 → 화면 → 저장 → 로그인 → <span class="accent">배포</span></h2>
+    <div class="slide__body">
+      <div class="cycle">
+        <div class="cycle__step"><div class="cycle__num">01</div><div class="cycle__title">도우미 셋</div><div class="cycle__desc">/agents로 화면·데이터·로그인 도우미 생성</div><div class="cycle__example">/agents</div></div>
+        <div class="cycle__step"><div class="cycle__num">02</div><div class="cycle__title">화면</div><div class="cycle__desc">@화면 도우미 — 메모 입력칸·목록</div><div class="cycle__example">@ui-helper</div></div>
+        <div class="cycle__step"><div class="cycle__num">03</div><div class="cycle__title">저장</div><div class="cycle__desc">@데이터 도우미 — Supabase 연결, CRUD</div><div class="cycle__example">@data-helper</div></div>
+        <div class="cycle__step"><div class="cycle__num">04</div><div class="cycle__title">로그인</div><div class="cycle__desc">@로그인 도우미 — 구글 로그인</div><div class="cycle__example">@login-helper</div></div>
+        <div class="cycle__step"><div class="cycle__num">05</div><div class="cycle__title">배포</div><div class="cycle__desc">Vercel에 올려 휴대폰에서 확인</div><div class="cycle__example">*.vercel.app</div></div>
+      </div>
+      <p class="slide__note">구글 로그인과 메모 저장은 — 둘 다 <strong>Supabase 하나</strong>로 됩니다. 키는 비밀로(환경변수), 막히면 에러를 그대로 Claude에게.</p>
+    </div>
+  </section>
+
+  <!-- 10 · 확장 2가지 -->
+  <section class="slide is-standard">
+    <div class="slide__eyebrow">EXTEND · 빠르게 끝났다면</div>
+    <h2 class="slide__title">메모장이 됐다면 — <span class="accent">두 걸음 더</span></h2>
+    <div class="slide__body">
+      <div class="two-col">
+        <div>
+          <div class="content-card content-card--compact">
+            <h3 class="content-card__title">STEP 1 · 찾기 좋게</h3>
+            <p class="content-card__body">메모가 쌓이면 — 찾는 게 일이 됩니다.</p>
+            <ul class="content-card__list">
+              <li>검색칸 추가 — 단어로 메모 찾기</li>
+              <li>태그·카테고리 — 메모를 분류</li>
+              <li>"오늘 쓴 메모만" 같은 필터</li>
+            </ul>
+          </div>
+        </div>
+        <div>
+          <div class="content-card content-card--compact">
+            <h3 class="content-card__title">STEP 2 · 손에 익게</h3>
+            <p class="content-card__body">매일 쓰고 싶어지는 메모장으로.</p>
+            <ul class="content-card__list">
+              <li>다크모드 · 색 테마 — 내 취향대로</li>
+              <li>중요 메모 고정(pin) · 정렬</li>
+              <li>완료한 메모에 체크 표시</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <p class="slide__note">정답 없음 — "내가 진짜 쓰고 싶은 기능"을 골라 도우미에게 시키세요. 더 떠오르면 그것도 좋습니다.</p>
+    </div>
+  </section>
+
+  <!-- 11 · 실습 진행 -->
+  <section class="slide is-standard">
+    <div class="slide__eyebrow">실습 · 진행</div>
+    <h2 class="slide__title">도우미 셋과 — <span class="accent">메모장 한 바퀴</span></h2>
+    <div class="slide__body">
+      <div class="step-list step-list--compact">
+        <div class="step-list__item">
+          <div class="step-list__num">1</div>
+          <div class="step-list__content"><p class="step-list__title">도우미 3개 만들기 <span class="step-list__desc" style="display:inline">— /agents로 화면·데이터·로그인 담당</span></p></div>
+        </div>
+        <div class="step-list__item">
+          <div class="step-list__num">2</div>
+          <div class="step-list__content"><p class="step-list__title">화면부터 — @화면 도우미 <span class="step-list__desc" style="display:inline">— 메모 입력칸·목록이 보이게</span></p></div>
+        </div>
+        <div class="step-list__item">
+          <div class="step-list__num">3</div>
+          <div class="step-list__content"><p class="step-list__title">저장·로그인 연결 <span class="step-list__desc" style="display:inline">— @데이터·@로그인 도우미 + 챕터 2의 Supabase</span></p></div>
+        </div>
+        <div class="step-list__item">
+          <div class="step-list__num">4</div>
+          <div class="step-list__content"><p class="step-list__title">Vercel 배포 + 확인 <span class="step-list__desc" style="display:inline">— 휴대폰으로 로그인해 메모 써보기</span></p></div>
+        </div>
+        <div class="step-list__item">
+          <div class="step-list__num">5</div>
+          <div class="step-list__content"><p class="step-list__title">남으면 확장 <span class="step-list__desc" style="display:inline">— 검색·태그 / 다크모드 중 하나</span></p></div>
+        </div>
+      </div>
+      <p class="slide__note">한 번에 안 되는 게 정상 — 막히면 에러를 그대로 Claude에게, 그래도 안 되면 TA 호출. 이 메모장은 3일차 안에 끝냅니다.</p>
+    </div>
+  </section>
+
+  <!-- 12 · Wrap -->
+  <section class="slide is-feature">
+    <div class="feature-head">
+      <div class="slide__eyebrow">WRAP · 서브에이전트 끝</div>
+      <h2 class="feature-head__title">도우미 셋이 만든 — <span class="accent">진짜 내 앱</span></h2>
+    </div>
+    <div class="feature-body">
+      <div class="feature-text">
+        <p class="statement__caption">역할을 셋으로 나눠 도우미에게 맡기니, 비개발자도 로그인·저장·배포가 다 되는 진짜 앱을 만들었습니다.</p>
+        <div class="statement__points">
+          <div class="statement__point"><span class="statement__point-num">정의</span><span>.md 파일 하나 = 도우미 하나</span></div>
+          <div class="statement__point"><span class="statement__point-num">호출</span><span>자동 위임 또는 @멘션</span></div>
+          <div class="statement__point"><span class="statement__point-num">다음</span><span>외부 세계와 연결한다 — MCP</span></div>
+        </div>
+      </div>
+      <div class="feature-visual">
+        <svg viewBox="0 0 460 320" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <rect x="0" y="0" width="460" height="320" rx="16" fill="#fff5ec"/>
+          <rect x="170" y="56" width="120" height="46" rx="10" fill="#fe6e00"/>
+          <text x="230" y="85" font-family="ui-sans-serif, system-ui" font-size="13" fill="#fff" font-weight="700" text-anchor="middle">나 (감독)</text>
+          <line x1="230" y1="102" x2="110" y2="158" stroke="#cc5a14" stroke-width="2"/>
+          <line x1="230" y1="102" x2="230" y2="158" stroke="#cc5a14" stroke-width="2"/>
+          <line x1="230" y1="102" x2="350" y2="158" stroke="#cc5a14" stroke-width="2"/>
+          <g font-family="ui-sans-serif, system-ui" font-size="10" font-weight="700" fill="#cc5a14" text-anchor="middle">
+            <rect x="62" y="158" width="96" height="44" rx="9" fill="white" stroke="#cc5a14" stroke-width="2"/>
+            <text x="110" y="185">화면</text>
+            <rect x="182" y="158" width="96" height="44" rx="9" fill="white" stroke="#cc5a14" stroke-width="2"/>
+            <text x="230" y="185">데이터</text>
+            <rect x="302" y="158" width="96" height="44" rx="9" fill="white" stroke="#cc5a14" stroke-width="2"/>
+            <text x="350" y="185">로그인</text>
+          </g>
+          <rect x="170" y="232" width="120" height="40" rx="9" fill="#fff" stroke="#fe6e00" stroke-width="2.5"/>
+          <text x="230" y="257" font-family="ui-sans-serif, system-ui" font-size="12" fill="#cc5a14" font-weight="700" text-anchor="middle">나만의 메모장</text>
+          <g stroke="#cc5a14" stroke-width="2">
+            <line x1="110" y1="202" x2="200" y2="232"/><line x1="230" y1="202" x2="230" y2="232"/><line x1="350" y1="202" x2="260" y2="232"/>
+          </g>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <div class="deck-progress"><div class="deck-progress__bar"></div></div>
+</main>
+<script src="../scripts/deck.js"></script>
+</body>
+</html>
