@@ -86,9 +86,9 @@
         <div>
           <div class="content-card content-card--compact">
             <h3 class="content-card__title">왜 그 폴더에서?</h3>
-            <p class="content-card__body">스킬은 — 지금 Claude가 켜진 폴더의 파일을 가지고 일합니다. 1일차 자기소개 <code>about.html</code>이 있는 폴더에서 시작해야 그 파일을 PPT로 바꿀 수 있습니다.</p>
+            <p class="content-card__body">스킬은 — 지금 Claude가 켜진 폴더의 파일을 가지고 일합니다. 1일차 자기소개 <code>index.html</code>이 있는 폴더에서 시작해야 그 파일을 PPT로 바꿀 수 있습니다.</p>
             <ul class="content-card__list">
-              <li>1일차에 <code>about.html</code>을 만든 폴더를 연다</li>
+              <li>1일차에 <code>index.html</code>을 만든 폴더를 연다</li>
               <li>그 폴더 안에서 <code>claude</code> 실행</li>
               <li>새 폴더 말고 — <strong>꼭 그 폴더</strong>에서</li>
             </ul>
@@ -100,7 +100,7 @@
               <span class="code-block__dot" style="background:#fb2c36"></span><span class="code-block__dot" style="background:#edb200"></span><span class="code-block__dot" style="background:#00c758"></span>
               <span class="code-block__title">PowerShell · 1일차 폴더</span>
             </div>
-            <div class="code-block__body"><span class="code-block__line"><span class="code-block__cmt"># 1일차 자기소개를 만든 폴더로 이동</span></span><span class="code-block__line"><span class="code-block__prompt">PS&gt;</span> <span class="code-block__cmd">cd c:\lecture\day1</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__cmt"># about.html 이 보이면 — 제대로 왔다</span></span><span class="code-block__line"><span class="code-block__prompt">PS&gt;</span> <span class="code-block__cmd">dir</span></span><span class="code-block__line"><span class="code-block__out">  about.html   style.css</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__prompt">PS&gt;</span> <span class="code-block__cmd">claude</span></span></div>
+            <div class="code-block__body"><span class="code-block__line"><span class="code-block__cmt"># 1일차 자기소개를 만든 폴더로 이동</span></span><span class="code-block__line"><span class="code-block__prompt">PS&gt;</span> <span class="code-block__cmd">cd c:\lecture\day1</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__cmt"># index.html 이 보이면 — 제대로 왔다</span></span><span class="code-block__line"><span class="code-block__prompt">PS&gt;</span> <span class="code-block__cmd">dir</span></span><span class="code-block__line"><span class="code-block__out">  index.html   style.css</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__prompt">PS&gt;</span> <span class="code-block__cmd">claude</span></span></div>
           </div>
         </div>
       </div>
@@ -150,7 +150,7 @@
             <h3 class="content-card__title">이렇게 시킵니다</h3>
             <p class="content-card__body">스킬을 따로 부르지 않아도 됩니다 — "발표 자료로 만들어줘"라고만 하면 Claude가 알아서 pptx 스킬을 켭니다.</p>
             <ul class="content-card__list">
-              <li><strong>about.html</strong>을 가리키며 — "발표용 PPT로"</li>
+              <li><strong>index.html</strong>을 가리키며 — "발표용 PPT로"</li>
               <li>표지·본문이 갖춰진 <code>.pptx</code>가 생성</li>
               <li>아쉬우면 — "글자 크게"처럼 한 줄로 다듬기</li>
             </ul>
@@ -162,7 +162,7 @@
               <span class="code-block__dot" style="background:#fb2c36"></span><span class="code-block__dot" style="background:#edb200"></span><span class="code-block__dot" style="background:#00c758"></span>
               <span class="code-block__title">claude · day1</span>
             </div>
-            <div class="code-block__body"><span class="code-block__line"><span class="code-block__prompt">&gt;</span> <span class="code-block__cmd">about.html 내용으로 발표용 PPT를</span></span><span class="code-block__line"><span class="code-block__cmd">  만들어줘. 표지 1장 + 본문으로.</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__out">  ✓ pptx 스킬 실행</span></span><span class="code-block__line"><span class="code-block__out">  ✓ 자기소개.pptx 생성</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__prompt">&gt;</span> <span class="code-block__cmd">제목 글자를 <span class="code-block__hi">더 크게</span> 해줘</span></span><span class="code-block__line"><span class="code-block__out">  ✓ 자기소개.pptx 수정</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__prompt">&gt;</span> <span class="code-block__cmd">이 자기소개를 <span class="code-block__hi">PDF로도</span> 만들어줘</span></span></div>
+            <div class="code-block__body"><span class="code-block__line"><span class="code-block__prompt">&gt;</span> <span class="code-block__cmd">index.html 내용으로 발표용 PPT를</span></span><span class="code-block__line"><span class="code-block__cmd">  만들어줘. 표지 1장 + 본문으로.</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__out">  ✓ pptx 스킬 실행</span></span><span class="code-block__line"><span class="code-block__out">  ✓ 자기소개.pptx 생성</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__prompt">&gt;</span> <span class="code-block__cmd">제목 글자를 <span class="code-block__hi">더 크게</span> 해줘</span></span><span class="code-block__line"><span class="code-block__out">  ✓ 자기소개.pptx 수정</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__prompt">&gt;</span> <span class="code-block__cmd">이 자기소개를 <span class="code-block__hi">PDF로도</span> 만들어줘</span></span></div>
           </div>
         </div>
       </div>
@@ -291,7 +291,7 @@
       <div class="step-list step-list--compact">
         <div class="step-list__item">
           <div class="step-list__num">1</div>
-          <div class="step-list__content"><p class="step-list__title">1일차 폴더에서 claude 실행 <span class="step-list__desc" style="display:inline">— about.html이 있는 그 폴더에서</span></p></div>
+          <div class="step-list__content"><p class="step-list__title">1일차 폴더에서 claude 실행 <span class="step-list__desc" style="display:inline">— index.html이 있는 그 폴더에서</span></p></div>
         </div>
         <div class="step-list__item">
           <div class="step-list__num">2</div>

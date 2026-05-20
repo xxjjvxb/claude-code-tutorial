@@ -90,7 +90,7 @@
     <p class="section-caption">AI가 파일을 마음대로 고치는 시대일수록 버전 관리는 옵션이 아니라 필수. 명령 4개만 있으면 충분합니다.</p>
     <div class="section-meta">
       <div class="section-meta__item"><span class="section-meta__num">4</span><span>핵심 명령</span></div>
-      <div class="section-meta__item"><span class="section-meta__num">1</span><span>되돌리기 명령</span></div>
+      <div class="section-meta__item"><span class="section-meta__num">1</span><span>되돌리기 명령</span></div>
     </div>
   </section>
 
@@ -266,7 +266,7 @@
               <span class="code-block__dot" style="background:#fb2c36"></span><span class="code-block__dot" style="background:#edb200"></span><span class="code-block__dot" style="background:#00c758"></span>
               <span class="code-block__title">PowerShell — Day1/</span>
             </div>
-            <div class="code-block__body"><span class="code-block__line"><span class="code-block__prompt">PS&gt;</span> <span class="code-block__cmd">git init</span></span><span class="code-block__line"><span class="code-block__out">  Initialized empty Git repository in</span></span><span class="code-block__line"><span class="code-block__out">  C:\Users\you\Desktop\Day1\.git\</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__prompt">PS&gt;</span> <span class="code-block__cmd">git status</span></span><span class="code-block__line"><span class="code-block__out">  On branch main</span></span><span class="code-block__line"><span class="code-block__out">  No commits yet</span></span><span class="code-block__line"><span class="code-block__hi">  Untracked files:</span></span><span class="code-block__line"><span class="code-block__out">    about.html</span></span><span class="code-block__line"><span class="code-block__out">    style.css</span></span></div>
+            <div class="code-block__body"><span class="code-block__line"><span class="code-block__prompt">PS&gt;</span> <span class="code-block__cmd">git init</span></span><span class="code-block__line"><span class="code-block__out">  Initialized empty Git repository in</span></span><span class="code-block__line"><span class="code-block__out">  C:\Users\you\Desktop\Day1\.git\</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__prompt">PS&gt;</span> <span class="code-block__cmd">git status</span></span><span class="code-block__line"><span class="code-block__out">  On branch main</span></span><span class="code-block__line"><span class="code-block__out">  No commits yet</span></span><span class="code-block__line"><span class="code-block__hi">  Untracked files:</span></span><span class="code-block__line"><span class="code-block__out">    index.html</span></span><span class="code-block__line"><span class="code-block__out">    style.css</span></span></div>
           </div>
         </div>
       </div>
@@ -286,7 +286,7 @@
             <p class="content-card__body">변경된 파일 중 <strong>커밋에 포함시킬 것</strong>들을 선별해서 staged 영역에 올린다.</p>
             <ul class="content-card__list">
               <li><code>git add .</code> — 모든 변경 다 포함</li>
-              <li><code>git add about.html</code> — 특정 파일만</li>
+              <li><code>git add index.html</code> — 특정 파일만</li>
             </ul>
           </div>
         </div>
@@ -319,7 +319,7 @@
         <h2 class="statement__lead">망친 파일 한 줄로 <span class="accent">원복</span>.</h2>
         <p class="statement__caption">commit 이후의 변경을 직전 commit 상태로 되돌리는 명령. AI가 잘못 고친 직후 가장 자주 씁니다.</p>
         <div class="statement__points">
-          <div class="statement__point"><span class="statement__point-num">파일</span><span><code>git restore about.html</code> — 그 파일만</span></div>
+          <div class="statement__point"><span class="statement__point-num">파일</span><span><code>git restore index.html</code> — 그 파일만</span></div>
           <div class="statement__point"><span class="statement__point-num">전부</span><span><code>git restore .</code> — 모든 변경 통째 취소</span></div>
           <div class="statement__point"><span class="statement__point-num">규칙</span><span>commit하지 않은 변경은 <strong>한 번에 사라짐</strong> — 신중히</span></div>
         </div>
@@ -407,7 +407,7 @@
           <text x="14" y="20" font-family="ui-monospace, monospace" font-size="11" fill="rgba(255,255,255,0.5)">claude — Day1/</text>
           <text x="20" y="68" fill="#fe6e00" font-family="ui-monospace, monospace" font-size="13">&gt; /init</text>
           <text x="20" y="96" fill="rgba(255,255,255,0.55)" font-family="ui-monospace, monospace" font-size="11">  현재 폴더 분석 중...</text>
-          <text x="20" y="116" fill="rgba(255,255,255,0.55)" font-family="ui-monospace, monospace" font-size="11">  ✓ about.html · style.css 발견</text>
+          <text x="20" y="116" fill="rgba(255,255,255,0.55)" font-family="ui-monospace, monospace" font-size="11">  ✓ index.html · style.css 발견</text>
           <text x="20" y="148" fill="rgba(255,255,255,0.85)" font-family="ui-monospace, monospace" font-size="11">  CLAUDE.md 초안:</text>
           <rect x="20" y="158" width="420" height="120" rx="6" fill="rgba(255,255,255,0.06)"/>
           <text x="32" y="180" fill="rgba(255,255,255,0.85)" font-family="ui-monospace, monospace" font-size="10"># Day1 자기소개</text>
@@ -428,7 +428,7 @@
         <h2 class="statement__lead">"이 파일 좀 봐줘"의 <span class="accent">정식 표현</span>.</h2>
         <p class="statement__caption">파일 내용을 매번 복사·붙여넣기 할 필요 없음. <code>@</code>로 가리키기만 하면 Claude가 그 파일을 직접 읽어서 답변에 반영합니다.</p>
         <div class="statement__points">
-          <div class="statement__point"><span class="statement__point-num">파일</span><span><code>@about.html</code> — 그 파일 한 개</span></div>
+          <div class="statement__point"><span class="statement__point-num">파일</span><span><code>@index.html</code> — 그 파일 한 개</span></div>
           <div class="statement__point"><span class="statement__point-num">폴더</span><span><code>@tests/</code> — 폴더 안 모든 파일</span></div>
           <div class="statement__point"><span class="statement__point-num">자동완성</span><span><code>@</code> 친 뒤 <strong>Tab</strong> — 폴더 트리에서 선택</span></div>
         </div>
@@ -438,8 +438,8 @@
           <rect x="0" y="0" width="460" height="320" rx="14" fill="rgba(0,0,0,0.92)"/>
           <rect x="0" y="0" width="460" height="32" fill="rgba(255,255,255,0.06)"/>
           <text x="14" y="20" font-family="ui-monospace, monospace" font-size="11" fill="rgba(255,255,255,0.5)">claude — Day1/</text>
-          <text x="20" y="68" fill="white" font-family="ui-monospace, monospace" font-size="13">&gt; <tspan fill="#fe6e00">@about.html</tspan> 의 디자인 분석해줘</text>
-          <text x="20" y="100" fill="rgba(255,255,255,0.55)" font-family="ui-monospace, monospace" font-size="11">  ✓ about.html 읽음 (124줄)</text>
+          <text x="20" y="68" fill="white" font-family="ui-monospace, monospace" font-size="13">&gt; <tspan fill="#fe6e00">@index.html</tspan> 의 디자인 분석해줘</text>
+          <text x="20" y="100" fill="rgba(255,255,255,0.55)" font-family="ui-monospace, monospace" font-size="11">  ✓ index.html 읽음 (124줄)</text>
           <text x="20" y="120" fill="rgba(255,255,255,0.55)" font-family="ui-monospace, monospace" font-size="11">  ✓ style.css 읽음 (95줄)</text>
           <text x="20" y="156" fill="rgba(255,255,255,0.85)" font-family="ui-monospace, monospace" font-size="11">  분석 결과:</text>
           <text x="20" y="176" fill="rgba(255,255,255,0.7)" font-family="ui-monospace, monospace" font-size="10">  - 컬러: 따뜻한 베이지 + 오렌지</text>
@@ -476,12 +476,12 @@
           <text x="20" y="118" fill="rgba(255,255,255,0.7)" font-family="ui-monospace, monospace" font-size="10">  On branch main</text>
           <text x="20" y="136" fill="rgba(255,255,255,0.7)" font-family="ui-monospace, monospace" font-size="10">  Changes not staged for commit:</text>
           <text x="20" y="152" fill="#fb2c36" font-family="ui-monospace, monospace" font-size="10">    modified:   style.css</text>
-          <text x="20" y="170" fill="#fb2c36" font-family="ui-monospace, monospace" font-size="10">    modified:   about.html</text>
+          <text x="20" y="170" fill="#fb2c36" font-family="ui-monospace, monospace" font-size="10">    modified:   index.html</text>
           <line x1="20" y1="190" x2="440" y2="190" stroke="rgba(255,255,255,0.15)"/>
           <text x="20" y="220" fill="white" font-family="ui-monospace, monospace" font-size="13">&gt; 두 파일 변경 내용 요약해줘</text>
           <text x="20" y="252" fill="rgba(255,255,255,0.7)" font-family="ui-monospace, monospace" font-size="10">  방금 git status 결과 기준으로 →</text>
           <text x="20" y="270" fill="rgba(255,255,255,0.7)" font-family="ui-monospace, monospace" font-size="10">  · style.css에 hover 효과 추가</text>
-          <text x="20" y="288" fill="rgba(255,255,255,0.7)" font-family="ui-monospace, monospace" font-size="10">  · about.html에 사진 자리 추가</text>
+          <text x="20" y="288" fill="rgba(255,255,255,0.7)" font-family="ui-monospace, monospace" font-size="10">  · index.html에 사진 자리 추가</text>
         </svg>
       </div>
     </div>
@@ -531,7 +531,7 @@
           <span class="code-block__dot" style="background:#fb2c36"></span><span class="code-block__dot" style="background:#edb200"></span><span class="code-block__dot" style="background:#00c758"></span>
           <span class="code-block__title">claude — Day1/ — 강사 라이브 시연</span>
         </div>
-        <div class="code-block__body"><span class="code-block__line"><span class="code-block__cmt"># 1) 폴더 분석부터</span></span><span class="code-block__line"><span class="code-block__cmd">&gt; <span class="code-block__hi">/init</span></span></span><span class="code-block__line"><span class="code-block__out">  ✓ CLAUDE.md 자동 생성</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__cmt"># 2) 답변 규칙 추가</span></span><span class="code-block__line"><span class="code-block__cmd">&gt; <span class="code-block__hi"># 항상 한국어로</span> 답해줘</span></span><span class="code-block__line"><span class="code-block__out">  ✓ CLAUDE.md에 추가</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__cmt"># 3) 어제 만든 파일 분석 시키기</span></span><span class="code-block__line"><span class="code-block__cmd">&gt; <span class="code-block__hi">@about.html</span> 의 디자인 분석해줘</span></span><span class="code-block__line"><span class="code-block__out">  ✓ about.html 읽고 분석 보고</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__cmt"># 4) 셸 명령 즉석 호출</span></span><span class="code-block__line"><span class="code-block__cmd">&gt; <span class="code-block__hi">!git status</span></span></span><span class="code-block__line"><span class="code-block__out">  $ git status → 변경 없음</span></span></div>
+        <div class="code-block__body"><span class="code-block__line"><span class="code-block__cmt"># 1) 폴더 분석부터</span></span><span class="code-block__line"><span class="code-block__cmd">&gt; <span class="code-block__hi">/init</span></span></span><span class="code-block__line"><span class="code-block__out">  ✓ CLAUDE.md 자동 생성</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__cmt"># 2) 답변 규칙 추가</span></span><span class="code-block__line"><span class="code-block__cmd">&gt; <span class="code-block__hi"># 항상 한국어로</span> 답해줘</span></span><span class="code-block__line"><span class="code-block__out">  ✓ CLAUDE.md에 추가</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__cmt"># 3) 어제 만든 파일 분석 시키기</span></span><span class="code-block__line"><span class="code-block__cmd">&gt; <span class="code-block__hi">@index.html</span> 의 디자인 분석해줘</span></span><span class="code-block__line"><span class="code-block__out">  ✓ index.html 읽고 분석 보고</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__cmt"># 4) 셸 명령 즉석 호출</span></span><span class="code-block__line"><span class="code-block__cmd">&gt; <span class="code-block__hi">!git status</span></span></span><span class="code-block__line"><span class="code-block__out">  $ git status → 변경 없음</span></span></div>
       </div>
     </div>
   </section>
@@ -550,7 +550,7 @@
         <div class="diff-card">
           <div class="diff-card__rank">STEP 2</div>
           <h3 class="diff-card__title">/ @ ! # 한 번씩</h3>
-          <p class="diff-card__body">/model로 모델 바꿔보고, @about.html로 어제 파일 분석, !git log로 셸 호출, # 메모 추가까지.</p>
+          <p class="diff-card__body">/model로 모델 바꿔보고, @index.html로 어제 파일 분석, !git log로 셸 호출, # 메모 추가까지.</p>
         </div>
         <div class="diff-card">
           <div class="diff-card__rank">STEP 3</div>
@@ -571,7 +571,7 @@
     <h2 class="section-title">Git + 4문법 — <span class="accent">손풀이</span></h2>
     <p class="section-caption">어제 만든 Day1 폴더에 그대로 적용. git 설치부터 4가지 문법까지 한 번씩 다 써봅니다.</p>
     <div class="section-meta">
-      <div class="section-meta__item"><span class="section-meta__num">8</span><span>핵심 단계</span></div>
+      <div class="section-meta__item"><span class="section-meta__num">8</span><span>핵심 단계</span></div>
     </div>
   </section>
 
@@ -585,7 +585,7 @@
         <div class="setup-step"><div class="setup-step__num">01</div><h3 class="setup-step__title">git init</h3><p class="setup-step__desc">어제 Day1 폴더를 Git 저장소로</p></div>
         <div class="setup-step"><div class="setup-step__num">02</div><h3 class="setup-step__title">첫 커밋</h3><p class="setup-step__desc">status → add → commit 한 사이클</p></div>
         <div class="setup-step"><div class="setup-step__num">03</div><h3 class="setup-step__title">/model</h3><p class="setup-step__desc">슬래시로 모델 바꿔보기</p></div>
-        <div class="setup-step"><div class="setup-step__num">04</div><h3 class="setup-step__title">@ 멘션</h3><p class="setup-step__desc">@about.html 분석 시키기</p></div>
+        <div class="setup-step"><div class="setup-step__num">04</div><h3 class="setup-step__title">@ 멘션</h3><p class="setup-step__desc">@index.html 분석 시키기</p></div>
         <div class="setup-step"><div class="setup-step__num">05</div><h3 class="setup-step__title">! 셸 실행</h3><p class="setup-step__desc">!git log · !git status</p></div>
         <div class="setup-step"><div class="setup-step__num">06</div><h3 class="setup-step__title"># 메모</h3><p class="setup-step__desc">CLAUDE.md에 한국어 규칙</p></div>
         <div class="setup-step"><div class="setup-step__num">07</div><h3 class="setup-step__title">AI에게 커밋 시키기</h3><p class="setup-step__desc">"지금까지 작업 커밋해줘"</p></div>
@@ -662,7 +662,7 @@
           <span class="code-block__dot" style="background:#fb2c36"></span><span class="code-block__dot" style="background:#edb200"></span><span class="code-block__dot" style="background:#00c758"></span>
           <span class="code-block__title">PowerShell — Day1/ — 첫 커밋 한 사이클</span>
         </div>
-        <div class="code-block__body"><span class="code-block__line"><span class="code-block__cmt"># 1) 지금 어떤 상태인지</span></span><span class="code-block__line"><span class="code-block__prompt">PS&gt;</span> <span class="code-block__cmd">git status</span></span><span class="code-block__line"><span class="code-block__out">  Untracked files: about.html, style.css, CLAUDE.md</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__cmt"># 2) 모든 변경 staged 영역에 올림</span></span><span class="code-block__line"><span class="code-block__prompt">PS&gt;</span> <span class="code-block__cmd">git add .</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__cmt"># 3) 다시 status — staged 확인</span></span><span class="code-block__line"><span class="code-block__prompt">PS&gt;</span> <span class="code-block__cmd">git status</span></span><span class="code-block__line"><span class="code-block__hi">  Changes to be committed:</span></span><span class="code-block__line"><span class="code-block__out">    new file:   about.html, style.css, CLAUDE.md</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__cmt"># 4) 커밋 — 메시지 한 줄</span></span><span class="code-block__line"><span class="code-block__prompt">PS&gt;</span> <span class="code-block__cmd">git commit -m "<span class="code-block__hi">자기소개 페이지 첫 버전</span>"</span><span class="code-block__line"><span class="code-block__out">  [main (root-commit) a3f1b2c] 자기소개 페이지 첫 버전</span></span><span class="code-block__line"><span class="code-block__out">   3 files changed, 219 insertions(+)</span></span></div>
+        <div class="code-block__body"><span class="code-block__line"><span class="code-block__cmt"># 1) 지금 어떤 상태인지</span></span><span class="code-block__line"><span class="code-block__prompt">PS&gt;</span> <span class="code-block__cmd">git status</span></span><span class="code-block__line"><span class="code-block__out">  Untracked files: index.html, style.css, CLAUDE.md</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__cmt"># 2) 모든 변경 staged 영역에 올림</span></span><span class="code-block__line"><span class="code-block__prompt">PS&gt;</span> <span class="code-block__cmd">git add .</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__cmt"># 3) 다시 status — staged 확인</span></span><span class="code-block__line"><span class="code-block__prompt">PS&gt;</span> <span class="code-block__cmd">git status</span></span><span class="code-block__line"><span class="code-block__hi">  Changes to be committed:</span></span><span class="code-block__line"><span class="code-block__out">    new file:   index.html, style.css, CLAUDE.md</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__cmt"># 4) 커밋 — 메시지 한 줄</span></span><span class="code-block__line"><span class="code-block__prompt">PS&gt;</span> <span class="code-block__cmd">git commit -m "<span class="code-block__hi">자기소개 페이지 첫 버전</span>"</span><span class="code-block__line"><span class="code-block__out">  [main (root-commit) a3f1b2c] 자기소개 페이지 첫 버전</span></span><span class="code-block__line"><span class="code-block__out">   3 files changed, 219 insertions(+)</span></span></div>
       </div>
       <p class="slide__note"><strong>커밋 메시지</strong>는 한국어 OK. "오늘 한 일을 한 줄로" 정도면 충분.</p>
     </div>
@@ -703,7 +703,7 @@
   <!-- 27 · STEP 4: @ 멘션 -->
   <section class="slide is-standard">
     <div class="slide__eyebrow">STEP 04 · @ 멘션</div>
-    <h2 class="slide__title"><span class="accent">@about.html</span> 분석 시키기</h2>
+    <h2 class="slide__title"><span class="accent">@index.html</span> 분석 시키기</h2>
     <div class="slide__body">
       <div class="two-col">
         <div>
@@ -712,7 +712,7 @@
             <ol class="content-card__list content-card__list--ol">
               <li>claude 입력란에 <code>@</code> 입력</li>
               <li><strong>Tab</strong> 누르면 폴더 트리 자동완성</li>
-              <li><code>about.html</code> 선택 → 한 칸 띄고 "분석해줘"</li>
+              <li><code>index.html</code> 선택 → 한 칸 띄고 "분석해줘"</li>
               <li>결과: 디자인 톤·구조 분석 응답</li>
             </ol>
           </div>
@@ -722,7 +722,7 @@
             <h3 class="content-card__title">변형 시도</h3>
             <ul class="content-card__list">
               <li><code>@style.css 색상 팔레트 정리해줘</code></li>
-              <li><code>@about.html 글자 좀 키워줘</code></li>
+              <li><code>@index.html 글자 좀 키워줘</code></li>
               <li><code>@.</code> — 현재 폴더 전체 컨텍스트</li>
             </ul>
           </div>
