@@ -121,6 +121,7 @@
             <ol class="content-card__list content-card__list--ol">
               <li>보관소 등록 — <code>/plugin marketplace add</code></li>
               <li>설치 — <code>/plugin install document-skills</code></li>
+              <li>적용 — <code>/reload-plugins</code> (또는 claude 재시작)</li>
               <li>메뉴가 뜨면 — 화살표로 골라 "Install" 해도 OK</li>
             </ol>
           </div>
@@ -131,11 +132,11 @@
               <span class="code-block__dot" style="background:#fb2c36"></span><span class="code-block__dot" style="background:#edb200"></span><span class="code-block__dot" style="background:#00c758"></span>
               <span class="code-block__title">claude · /plugin</span>
             </div>
-            <div class="code-block__body"><span class="code-block__line"><span class="code-block__prompt">&gt;</span> <span class="code-block__cmd">/plugin marketplace add anthropics/skills</span></span><span class="code-block__line"><span class="code-block__out">  ✓ anthropic-agent-skills 등록</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__prompt">&gt;</span> <span class="code-block__cmd">/plugin install</span></span><span class="code-block__line"><span class="code-block__cmd">  document-skills@anthropic-agent-skills</span></span><span class="code-block__line"><span class="code-block__out">  ✓ pptx · pdf · docx · xlsx 설치 완료</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__cmt"># 스킬은 필요할 때 Claude가 알아서 켠다</span></span></div>
+            <div class="code-block__body"><span class="code-block__line"><span class="code-block__prompt">&gt;</span> <span class="code-block__cmd">/plugin marketplace add anthropics/skills</span></span><span class="code-block__line"><span class="code-block__out">  ✓ anthropic-agent-skills 등록</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__prompt">&gt;</span> <span class="code-block__cmd">/plugin install</span></span><span class="code-block__line"><span class="code-block__cmd">  document-skills@anthropic-agent-skills</span></span><span class="code-block__line"><span class="code-block__out">  ✓ pptx · pdf · docx · xlsx 설치 완료</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__prompt">&gt;</span> <span class="code-block__cmd">/reload-plugins</span></span><span class="code-block__line"><span class="code-block__out">  ✓ 플러그인 다시 불러옴 — 즉시 사용 가능</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__cmt"># 이후엔 — 필요할 때 Claude가 알아서 켠다</span></span></div>
           </div>
         </div>
       </div>
-      <p class="slide__note"><code>document-skills</code> 한 번 설치로 <strong>PPTX·PDF 둘 다</strong> 준비 끝. 명령이 헷갈리면 — Claude에게 "공식 문서 스킬 설치를 도와줘"라고 하면 이 과정을 대신 안내합니다.</p>
+      <p class="slide__note"><code>document-skills</code> 한 번 설치로 <strong>PPTX·PDF 둘 다</strong> 준비 끝. 설치 직후엔 <code>/reload-plugins</code>를 한 번 — 안 그러면 다음 claude 재시작까지 활성화가 안 됩니다. 명령이 헷갈리면 — Claude에게 "공식 문서 스킬 설치를 도와줘"라고 하면 이 과정을 대신 안내합니다.</p>
     </div>
   </section>
 
