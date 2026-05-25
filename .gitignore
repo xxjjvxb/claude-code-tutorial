@@ -1,2 +1,5 @@
 materials/
-dist/
+dist/*
+!dist/course.pdf
+tools/build-pdf/node_modules/
+tools/build-pdf/package-lock.json
