@@ -1,0 +1,331 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>2일차 · 5. 디자인 프로토타입</title>
+  <link rel="stylesheet" href="../../styles/tokens.css">
+  <link rel="stylesheet" href="../../styles/deck.css">
+</head>
+<body>
+
+<main class="deck">
+
+  <header class="deck-chrome">
+  <span class="deck-chrome__brand">CLAUDE CODE · 5D</span>
+  <span class="deck-chrome__divider">·</span>
+  <span class="deck-chrome__day">2일차 · 5 디자인 프로토타입</span>
+  <span class="deck-chrome__spacer"></span>
+  <span class="deck-chrome__counter">— / —</span>
+</header>
+
+  <!-- 1 · Chapter intro -->
+  <section class="slide is-section is-standard">
+    <div class="section-eyebrow">CHAPTER 5 · PROTOTYPE</div>
+    <h2 class="section-title">프로토타입 — 머릿속 그림을 <span class="accent">화면으로</span></h2>
+    <p class="section-caption">완벽한 설계 대신, 되는지 빠르게 만들어 눈으로 보고 손으로 굴려보는 게 프로토타입입니다. 오늘은 Claude Design으로 — 디자인 지식 없이 말 몇 마디만으로 진짜처럼 보이는 화면을 만들어 봅니다.</p>
+    <div class="section-meta">
+      <div class="section-meta__item"><span class="section-meta__num">9</span><span>실습 소재</span></div>
+      <div class="section-meta__item"><span class="section-meta__num">1</span><span>내가 만들 화면</span></div>
+      <div class="section-meta__item"><span class="section-meta__num">2~3</span><span>다듬기 반복</span></div>
+    </div>
+  </section>
+
+  <!-- 2 · 프로토타입이란 -->
+  <section class="slide is-statement">
+    <div class="statement-grid statement-grid--visual-wide">
+      <div class="statement-text">
+        <div class="slide__eyebrow">WHAT · 프로토타입</div>
+        <h2 class="statement__lead">프로토타입 — <span class="accent">"빨리 만들어 본다"</span>가 전부</h2>
+        <p class="statement__caption">완벽히 설계하고 만드는 대신, 되는지 확인할 만큼만 빠르게 만들어 보는 것. 말로 설명하면 열 번 헤맬 것을, 눈에 보이는 화면 하나가 단번에 정리해 줍니다.</p>
+        <div class="statement__points">
+          <div class="statement__point"><span class="statement__point-num">먼저</span><span>설명보다 — 보이는 화면이 먼저</span></div>
+          <div class="statement__point"><span class="statement__point-num">가볍게</span><span>틀리면 버리고 다시 만들면 됨</span></div>
+          <div class="statement__point"><span class="statement__point-num">핵심</span><span>빠른 피드백 — 완성도는 나중</span></div>
+        </div>
+      </div>
+      <div class="statement-visual">
+        <svg viewBox="0 0 460 320" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <rect x="0" y="0" width="460" height="320" rx="16" fill="#fff5ec"/>
+          <rect x="56" y="38" width="312" height="48" rx="12" fill="white" stroke="#cc5a14" stroke-width="2"/>
+          <text x="76" y="67" font-family="ui-monospace, monospace" font-size="12.5" fill="#423d38">"투두 앱 화면 만들어줘"</text>
+          <text x="230" y="116" font-family="ui-monospace, monospace" font-size="20" fill="#cc5a14" text-anchor="middle">↓</text>
+          <rect x="140" y="130" width="180" height="148" rx="12" fill="white" stroke="#fe6e00" stroke-width="2.5"/>
+          <rect x="154" y="144" width="78" height="13" rx="6" fill="#423d38"/>
+          <rect x="154" y="172" width="152" height="22" rx="6" fill="#fff1e3"/>
+          <circle cx="167" cy="183" r="5" fill="#fe6e00"/>
+          <rect x="154" y="202" width="152" height="22" rx="6" fill="#fff1e3"/>
+          <circle cx="167" cy="213" r="5" fill="#fe6e00"/>
+          <rect x="154" y="232" width="152" height="22" rx="6" fill="#fff1e3"/>
+          <circle cx="167" cy="243" r="5" fill="#e7ddd0"/>
+          <text x="230" y="304" font-family="ui-sans-serif, system-ui" font-size="13" fill="#cc5a14" font-weight="700" text-anchor="middle">말 한마디 → 보이는 화면</text>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3 · Claude Design 소개 -->
+  <section class="slide is-standard">
+    <div class="slide__eyebrow">TOOL · Claude Design</div>
+    <h2 class="slide__title">Claude Design — <span class="accent">말로 그리는</span> 디자인 도구</h2>
+    <div class="slide__body">
+      <div class="two-col">
+        <div>
+          <div class="content-card content-card--compact">
+            <h3 class="content-card__title">한 줄로</h3>
+            <p class="content-card__body">claude.ai의 디자인 도구. 만들고 싶은 화면을 <strong>말로 설명하면</strong> — 진짜처럼 보이는 프로토타입이 바로 나옵니다.</p>
+            <ul class="content-card__list">
+              <li>claude.ai/design 에서 바로 시작</li>
+              <li>디자인 지식·전문 툴 몰라도 됨</li>
+              <li>UI 화면·클릭되는 프로토타입·슬라이드까지</li>
+            </ul>
+          </div>
+        </div>
+        <div>
+          <div class="content-card content-card--compact">
+            <h3 class="content-card__title">왜 프로토타입에 잘 맞나</h3>
+            <p class="content-card__body">손으로 그리거나 코드를 짤 필요 없이 — <strong>몇 초 만에</strong> 눈에 보이는 화면이 나옵니다.</p>
+            <ul class="content-card__list">
+              <li>머릿속 아이디어를 즉시 화면으로</li>
+              <li>마음에 안 들면 — 말로 바로 고침</li>
+              <li>여러 번 다듬어도 부담 없음</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <p class="slide__note">Claude Design은 "완성된 디자인"을 뽑는 도구가 아니라 — 아이디어를 빠르게 <strong>눈으로 확인</strong>하는 도구입니다.</p>
+    </div>
+  </section>
+
+  <!-- 4 · Claude Code vs Claude Design -->
+  <section class="slide is-statement">
+    <div class="statement-grid">
+      <div class="statement-text">
+        <div class="slide__eyebrow">VS · Code & Design</div>
+        <h2 class="statement__lead">Claude Code와 — <span class="accent">경쟁이 아니라 짝</span></h2>
+        <p class="statement__caption">둘 다 Claude지만 쓰임이 다릅니다. Design으로 화면의 모양을 빠르게 잡고, 진짜 서비스로 키울 땐 Claude Code로 넘깁니다.</p>
+        <div class="statement__points">
+          <div class="statement__point"><span class="statement__point-num">Design</span><span>웹에서 — 화면 모양을 빠르게 시각화</span></div>
+          <div class="statement__point"><span class="statement__point-num">Code</span><span>내 폴더에 — 진짜 파일·서비스로 제작</span></div>
+          <div class="statement__point"><span class="statement__point-num">흐름</span><span>모양은 Design → 완성은 Code</span></div>
+        </div>
+      </div>
+      <div class="statement-visual">
+        <svg viewBox="0 0 460 320" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <rect x="0" y="0" width="460" height="320" rx="16" fill="#fff5ec"/>
+          <rect x="70" y="40" width="320" height="92" rx="12" fill="white" stroke="#fe6e00" stroke-width="2.5"/>
+          <text x="90" y="70" font-family="ui-sans-serif, system-ui" font-size="14" fill="#fe6e00" font-weight="700">Claude Design</text>
+          <text x="90" y="94" font-family="ui-sans-serif, system-ui" font-size="12" fill="#423d38">웹에서 — 화면 모양을 빠르게</text>
+          <text x="90" y="116" font-family="ui-monospace, monospace" font-size="11" fill="#797067">claude.ai/design</text>
+          <text x="230" y="166" font-family="ui-monospace, monospace" font-size="22" fill="#cc5a14" text-anchor="middle">↓</text>
+          <text x="230" y="186" font-family="ui-sans-serif, system-ui" font-size="11" fill="#797067" text-anchor="middle">마음에 들면 — 이어받기</text>
+          <rect x="70" y="200" width="320" height="92" rx="12" fill="rgba(0,0,0,0.92)"/>
+          <text x="90" y="230" font-family="ui-sans-serif, system-ui" font-size="14" fill="#fe6e00" font-weight="700">Claude Code</text>
+          <text x="90" y="254" font-family="ui-sans-serif, system-ui" font-size="12" fill="rgba(255,255,255,0.85)">내 폴더에 — 진짜 파일·서비스로</text>
+          <text x="90" y="276" font-family="ui-monospace, monospace" font-size="11" fill="rgba(255,255,255,0.5)">&gt; claude</text>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5 · 무엇을 만들 수 있나 -->
+  <section class="slide is-standard">
+    <div class="slide__eyebrow">OUTPUT · 무엇을 만드나</div>
+    <h2 class="slide__title">화면 한 장부터 — <span class="accent">클릭되는 흐름</span>까지</h2>
+    <div class="slide__body">
+      <div class="grid-3">
+        <div class="content-card content-card--compact"><h3 class="content-card__title">UI 화면 목업</h3><p class="content-card__body">앱·웹사이트 화면을 진짜처럼 한 장.</p></div>
+        <div class="content-card content-card--compact"><h3 class="content-card__title">클릭되는 프로토타입</h3><p class="content-card__body">버튼을 누르면 화면이 넘어가게.</p></div>
+        <div class="content-card content-card--compact"><h3 class="content-card__title">랜딩 페이지</h3><p class="content-card__body">서비스의 첫인상을 보여주는 화면.</p></div>
+        <div class="content-card content-card--compact"><h3 class="content-card__title">슬라이드 덱</h3><p class="content-card__body">발표 자료도 말 몇 마디로 한 번에.</p></div>
+        <div class="content-card content-card--compact"><h3 class="content-card__title">원페이저</h3><p class="content-card__body">한 장짜리 소개·기획 문서.</p></div>
+        <div class="content-card content-card--compact"><h3 class="content-card__title">화면 흐름</h3><p class="content-card__body">여러 화면을 이어 흐름까지 보여주기.</p></div>
+      </div>
+      <p class="slide__note">오늘 만드는 건 "작품"이 아닙니다 — 프로토타입 감각을 손에 익히는 <strong>연습</strong>입니다.</p>
+    </div>
+  </section>
+
+  <!-- 6 · 첫 요청 -->
+  <section class="slide is-standard">
+    <div class="slide__eyebrow">HOW · 첫 요청</div>
+    <h2 class="slide__title">첫 한 줄 — <span class="accent">무엇을·어떻게·느낌</span>만 담아서</h2>
+    <div class="slide__body">
+      <div class="two-col">
+        <div>
+          <div class="content-card content-card--compact">
+            <h3 class="content-card__title">이렇게 설명합니다</h3>
+            <ol class="content-card__list content-card__list--ol">
+              <li><strong>무엇을</strong> — 어떤 화면인지 (앱·페이지 이름)</li>
+              <li><strong>어떻게</strong> — 화면에 무엇이 있는지 한두 가지</li>
+              <li><strong>느낌</strong> — "밝게", "깔끔하게" 같은 분위기 한마디</li>
+            </ol>
+            <p class="content-card__body">막히면 메타프롬프트 — "이런 화면 만들려면 어떻게 설명하면 좋아?"</p>
+          </div>
+        </div>
+        <div>
+          <div class="code-block">
+            <div class="code-block__header">
+              <span class="code-block__dot" style="background:#fb2c36"></span><span class="code-block__dot" style="background:#edb200"></span><span class="code-block__dot" style="background:#00c758"></span>
+              <span class="code-block__title">Claude Design · 대화</span>
+            </div>
+            <div class="code-block__body"><span class="code-block__line"><span class="code-block__prompt">&gt;</span> <span class="code-block__cmd">할 일 목록(투두) 앱 화면 만들어줘.</span></span><span class="code-block__line"><span class="code-block__cmd">  할 일을 추가하고, 끝나면 체크하는 화면으로.</span></span><span class="code-block__line"><span class="code-block__cmd">  색은 깔끔하고 밝게.</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__out">  화면을 만들었어요. 오른쪽 미리보기에서</span></span><span class="code-block__line"><span class="code-block__out">  바로 확인하고 — 고칠 곳을 말해주세요.</span></span></div>
+          </div>
+        </div>
+      </div>
+      <p class="slide__note">글로 설명하는 게 기본 — <strong>참고 이미지를 올리거나</strong>, 마음에 드는 웹사이트 화면을 그대로 가져올 수도 있습니다.</p>
+    </div>
+  </section>
+
+  <!-- 7 · 다듬기 반복 -->
+  <section class="slide is-standard">
+    <div class="slide__eyebrow">LOOP · 프로토타입 한 바퀴</div>
+    <h2 class="slide__title">만들기 → 보기 → 고칠 점 → <span class="accent">다시</span></h2>
+    <div class="slide__body">
+      <div class="cycle">
+        <div class="cycle__step"><div class="cycle__num">01</div><div class="cycle__title">만들기</div><div class="cycle__desc">한 줄 요청 → Claude Design이 화면 생성</div><div class="cycle__example">화면 1</div></div>
+        <div class="cycle__step"><div class="cycle__num">02</div><div class="cycle__title">보기</div><div class="cycle__desc">미리보기에서 눈으로 확인한다</div><div class="cycle__example">→ 눈으로 확인</div></div>
+        <div class="cycle__step"><div class="cycle__num">03</div><div class="cycle__title">고칠 점</div><div class="cycle__desc">어색하거나 아쉬운 곳을 찾는다</div><div class="cycle__example">"버튼이 작아"</div></div>
+        <div class="cycle__step"><div class="cycle__num">04</div><div class="cycle__title">다시</div><div class="cycle__desc">그 점을 그대로 말해 다시 요청</div><div class="cycle__example">→ 01로</div></div>
+      </div>
+      <p class="slide__note">프로토타입은 한 번에 끝나지 않습니다 — <strong>2~3바퀴</strong> 돌리면서 점점 마음에 들게 만듭니다.</p>
+    </div>
+  </section>
+
+  <!-- 8 · 다듬기 요청 예시 -->
+  <section class="slide is-standard">
+    <div class="slide__eyebrow">EXAMPLE · 이렇게 다듬습니다</div>
+    <h2 class="slide__title">화면을 보다 <span class="accent">아쉬운 곳</span>을 그대로 말하기</h2>
+    <div class="slide__body">
+      <div class="grid-3">
+        <div class="diff-card"><div class="diff-card__rank">색</div><h3 class="diff-card__title">"더 밝고 따뜻하게"</h3><p class="diff-card__body">색·분위기를 말로 — 색상 코드 몰라도 됨.</p></div>
+        <div class="diff-card"><div class="diff-card__rank">배치</div><h3 class="diff-card__title">"버튼을 가운데로"</h3><p class="diff-card__body">위치·정렬을 일상어로 바꾸기.</p></div>
+        <div class="diff-card"><div class="diff-card__rank">글자</div><h3 class="diff-card__title">"제목을 더 크게"</h3><p class="diff-card__body">크기·강조를 보이는 대로 조정.</p></div>
+        <div class="diff-card"><div class="diff-card__rank">추가</div><h3 class="diff-card__title">"로그인 버튼 넣어줘"</h3><p class="diff-card__body">필요한 요소를 한마디로 추가.</p></div>
+        <div class="diff-card"><div class="diff-card__rank">흐름</div><h3 class="diff-card__title">"다음 화면도 만들어줘"</h3><p class="diff-card__body">화면을 이어 클릭되는 흐름으로.</p></div>
+        <div class="diff-card"><div class="diff-card__rank">느낌</div><h3 class="diff-card__title">"좀 더 고급스럽게"</h3><p class="diff-card__body">전체 인상을 분위기 한마디로.</p></div>
+      </div>
+      <p class="slide__note">어려운 용어는 필요 없습니다 — <strong>보다가 어색한 곳을 일상어로</strong> 말하면 Claude Design이 화면으로 바꿔줍니다.</p>
+    </div>
+  </section>
+
+  <!-- 9 · 실습 소재 9개 -->
+  <section class="slide is-standard">
+    <div class="slide__eyebrow">MENU · 실습 소재 9개</div>
+    <h2 class="slide__title">9개 중 <span class="accent">끌리는 것</span> 하나 — 게임도, 앱도 좋습니다</h2>
+    <div class="slide__body">
+      <div class="grid-3">
+        <div class="content-card content-card--compact"><h3 class="content-card__title">틱택토 게임</h3><p class="content-card__body">3×3 보드에 번갈아 두는 게임 화면.</p></div>
+        <div class="content-card content-card--compact"><h3 class="content-card__title">메모리 카드 게임</h3><p class="content-card__body">카드를 뒤집어 짝을 맞추는 화면.</p></div>
+        <div class="content-card content-card--compact"><h3 class="content-card__title">반응속도 테스트</h3><p class="content-card__body">초록으로 바뀌면 누르는 한 화면.</p></div>
+        <div class="content-card content-card--compact"><h3 class="content-card__title">할 일 목록 앱</h3><p class="content-card__body">할 일을 추가하고 체크하는 화면.</p></div>
+        <div class="content-card content-card--compact"><h3 class="content-card__title">날씨 앱</h3><p class="content-card__body">오늘·주간 날씨를 보여주는 화면.</p></div>
+        <div class="content-card content-card--compact"><h3 class="content-card__title">타이머·뽀모도로</h3><p class="content-card__body">집중 시간을 재는 깔끔한 화면.</p></div>
+        <div class="content-card content-card--compact"><h3 class="content-card__title">가계부</h3><p class="content-card__body">수입·지출을 기록하는 화면.</p></div>
+        <div class="content-card content-card--compact"><h3 class="content-card__title">음식 주문 화면</h3><p class="content-card__body">메뉴를 고르고 장바구니에 담는 화면.</p></div>
+        <div class="content-card content-card--compact"><h3 class="content-card__title">프로필·명함 카드</h3><p class="content-card__body">나를 소개하는 한 장짜리 화면.</p></div>
+      </div>
+      <p class="slide__note">정답 없음 — 만만해 보이는 것부터. 잘 모르겠으면 <strong>"간단히 만들 만한 화면 추천해줘"</strong>라고 먼저 물어보세요.</p>
+    </div>
+  </section>
+
+  <!-- 10 · 실습 진행 -->
+  <section class="slide is-standard">
+    <div class="slide__eyebrow">실습 · 진행</div>
+    <h2 class="slide__title">Claude Design 열고 — <span class="accent">화면 한 바퀴</span></h2>
+    <div class="slide__body">
+      <div class="step-list step-list--compact">
+        <div class="step-list__item">
+          <div class="step-list__num">1</div>
+          <div class="step-list__content"><p class="step-list__title">claude.ai/design 접속 <span class="step-list__desc" style="display:inline">— 로그인. 안 열리면 TA에게 (유료 플랜에서 이용)</span></p></div>
+        </div>
+        <div class="step-list__item">
+          <div class="step-list__num">2</div>
+          <div class="step-list__content"><p class="step-list__title">소재 하나 골라 첫 한 줄 <span class="step-list__desc" style="display:inline">— 9개 중 하나, "무엇을·어떻게·느낌"</span></p></div>
+        </div>
+        <div class="step-list__item">
+          <div class="step-list__num">3</div>
+          <div class="step-list__content"><p class="step-list__title">미리보기 보고 고칠 점 찾기 <span class="step-list__desc" style="display:inline">— 모르겠으면 "어디를 바꾸면 좋을까?"</span></p></div>
+        </div>
+        <div class="step-list__item">
+          <div class="step-list__num">4</div>
+          <div class="step-list__content"><p class="step-list__title">2~3번 다듬기 <span class="step-list__desc" style="display:inline">— 어색한 곳을 그대로 말해 다시 요청</span></p></div>
+        </div>
+        <div class="step-list__item">
+          <div class="step-list__num">5</div>
+          <div class="step-list__content"><p class="step-list__title">완성하면 — 채팅방에 자랑 <span class="step-list__desc" style="display:inline">— 링크나 내보낸 파일로, 무엇을 다듬었는지 한마디</span></p></div>
+        </div>
+      </div>
+      <p class="slide__note">막히면 Claude Design에게 직접 "이 화면 어떻게 고치지?"라고 물어보세요 — 옆 사람과 "뭐라고 시켰어?"를 나눠보는 것도 좋습니다.</p>
+    </div>
+  </section>
+
+  <!-- 11 · 공유·내보내기 -->
+  <section class="slide is-standard">
+    <div class="slide__eyebrow">SHARE · 공유와 내보내기</div>
+    <h2 class="slide__title">마음에 들면 — <span class="accent">링크로 공유</span>하거나 내보내기</h2>
+    <div class="slide__body">
+      <div class="two-col">
+        <div>
+          <div class="content-card content-card--compact">
+            <h3 class="content-card__title">공유 — 링크 하나로</h3>
+            <ul class="content-card__list">
+              <li>만든 화면을 링크로 공유</li>
+              <li>휴대폰으로 열어 직접 클릭</li>
+              <li>설치 없이 바로 — 친구도 체험</li>
+            </ul>
+            <p class="content-card__body">손에 잡히는 결과 — "이게 내가 만든 화면"이라고 보여줄 수 있음.</p>
+          </div>
+        </div>
+        <div>
+          <div class="content-card content-card--compact">
+            <h3 class="content-card__title">내보내기 — 다른 곳으로</h3>
+            <ul class="content-card__list">
+              <li>Canva·PDF·PPTX로 내보내기</li>
+              <li>발표 자료·문서로 그대로 활용</li>
+              <li>HTML 파일로도 저장</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <p class="slide__note">진짜 서비스로 키우고 싶으면 — <strong>Claude Code로 이어받아</strong> 개발할 수 있습니다. 모양은 Design, 완성은 Code.</p>
+    </div>
+  </section>
+
+  <!-- 12 · Wrap -->
+  <section class="slide is-feature">
+    <div class="feature-head">
+      <div class="slide__eyebrow">WRAP · 디자인 챕터 끝</div>
+      <h2 class="feature-head__title">말 몇 마디에서 — <span class="accent">보이는 화면</span>까지</h2>
+    </div>
+    <div class="feature-body">
+      <div class="feature-text">
+        <p class="statement__caption">이번 챕터는 "완성된 디자인"보다 — 머릿속 그림을 빠르게 화면으로 꺼내보는 프로토타입 감각을 손에 익히는 시간이었습니다.</p>
+        <div class="statement__points">
+          <div class="statement__point"><span class="statement__point-num">프로토타입</span><span>완벽함보다 — 빠르게 보여준다</span></div>
+          <div class="statement__point"><span class="statement__point-num">Claude Design</span><span>디자인 지식 없이 — 말로 화면을</span></div>
+          <div class="statement__point"><span class="statement__point-num">다음</span><span>이번엔 진짜 서비스에 — 로그인을 붙인다</span></div>
+        </div>
+      </div>
+      <div class="feature-visual">
+        <svg viewBox="0 0 460 320" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <rect x="0" y="0" width="460" height="320" rx="16" fill="#fff5ec"/>
+          <rect x="56" y="72" width="166" height="46" rx="8" fill="white" stroke="#cc5a14" stroke-width="2"/>
+          <text x="139" y="100" font-family="ui-monospace, monospace" font-size="11" fill="#423d38" text-anchor="middle">&gt; 화면 만들어줘</text>
+          <text x="244" y="101" font-family="ui-monospace, monospace" font-size="20" fill="#cc5a14">→</text>
+          <rect x="284" y="58" width="118" height="74" rx="10" fill="white" stroke="#fe6e00" stroke-width="2.5"/>
+          <rect x="297" y="71" width="42" height="9" rx="4" fill="#423d38"/>
+          <rect x="297" y="89" width="92" height="10" rx="5" fill="#fff1e3"/>
+          <rect x="297" y="105" width="92" height="10" rx="5" fill="#fff1e3"/>
+          <path d="M70 175 h320" stroke="#e7ddd0" stroke-width="2" stroke-dasharray="5 5"/>
+          <text x="230" y="220" font-family="ui-sans-serif, system-ui" font-size="14" fill="#797067" text-anchor="middle">만들고 → 보고 → 다듬고 → 다시</text>
+          <text x="230" y="262" font-family="ui-sans-serif, system-ui" font-size="15" fill="#cc5a14" font-weight="700" text-anchor="middle">그게 — 프로토타입</text>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <div class="deck-progress"><div class="deck-progress__bar"></div></div>
+</main>
+<script src="../../scripts/deck.js"></script>
+</body>
+</html>

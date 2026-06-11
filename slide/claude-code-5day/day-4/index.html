@@ -1,0 +1,62 @@
+﻿<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Day 4 · 응용 · Claude Code 5일 완주</title>
+  <link rel="stylesheet" href="../../styles/tokens.css">
+  <link rel="stylesheet" href="../../styles/deck.css">
+  <style>
+    .day-header { display: flex; flex-direction: column; gap: 0.15rem; flex-shrink: 0; }
+    .day-header__brand { font-size: 0.62rem; letter-spacing: 0.15em; text-transform: uppercase; font-weight: 700; color: var(--color-primary-strong); }
+    .day-header__title { font-size: 1.5rem; font-weight: 700; line-height: 1.1; letter-spacing: -0.025em; margin: 0.05rem 0 0.2rem 0; color: var(--color-on-surface); }
+    .day-header__caption { font-size: 0.68rem; line-height: 1.45; color: var(--color-on-surface-muted); margin: 0; max-width: 38rem; }
+
+    .block-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.6rem; flex: 1; min-height: 0; }
+    .block-card { background: var(--color-surface-elevated); border: 2px solid var(--color-outline-strong); border-radius: var(--rounded-md); padding: 0.9rem 1rem; text-decoration: none; color: var(--color-on-surface); display: flex; flex-direction: column; gap: 0.3rem; transition: transform var(--motion-fast) var(--easing-standard), border-color var(--motion-fast), box-shadow var(--motion-fast); min-height: 0; overflow: hidden; }
+    .block-card:hover { transform: translateY(-2px); border-color: var(--color-primary); box-shadow: var(--shadow-raised); }
+    .block-card__time { font-family: var(--font-mono); font-size: 0.62rem; color: var(--color-primary-strong); font-weight: 700; letter-spacing: 0.05em; }
+    .block-card__title { font-size: 1rem; font-weight: 700; line-height: 1.25; letter-spacing: -0.02em; margin: 0; }
+    .block-card__desc { font-size: 0.68rem; line-height: 1.5; color: var(--color-on-surface-muted); margin: 0.1rem 0 0; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 6; -webkit-box-orient: vertical; }
+    .block-card__count { margin-top: auto; font-family: var(--font-mono); font-size: 0.64rem; color: var(--color-primary-strong); font-weight: 700; }
+
+    .block-card--wip { opacity: 0.55; cursor: not-allowed; }
+    .block-card--wip:hover { transform: none; border-color: var(--color-outline-strong); box-shadow: none; }
+    .block-card__count--wip { color: var(--color-on-surface-muted); }
+  </style>
+</head>
+<body>
+
+<main class="index-stage">
+  <header class="deck-chrome">
+    <span class="deck-chrome__brand">CLAUDE CODE · 5D</span>
+    <span class="deck-chrome__divider">·</span>
+    <span class="deck-chrome__day">DAY 04 · 인덱스</span>
+    <span class="deck-chrome__spacer"></span>
+  </header>
+
+  <header class="day-header">
+    <div class="day-header__brand">CLAUDE CODE · 5일 완주 · DAY 04</div>
+    <h1 class="day-header__title">응용 — 내 PC 도구 +<br>미니프로젝트</h1>
+    <p class="day-header__caption">2026.05.21 · 목요일 · 09:00 — 17:00. 오전 — PySide + PyInstaller로 내 PC에서 도는 진짜 프로그램(.exe). 오후 — 4일간 익힌 모든 도구로 미니프로젝트 시작.</p>
+  </header>
+
+  <div class="block-grid">
+    <a class="block-card" href="1-windows-program.html">
+      <div class="block-card__time">오전 · 09:00 — 12:00</div>
+      <h2 class="block-card__title">윈도우 프로그램 — PySide + PyInstaller</h2>
+      <p class="block-card__desc">Day 1~3은 전부 웹 — 오늘은 내 PC에서 도는 .exe. PySide로 창을 그리고 PyInstaller로 한 덩어리로 굳혀, 더블클릭하면 열리는 진짜 프로그램을 만든다. 8개 메뉴(파일정리·이름변경·이미지·PDF / 뽀모도로·메모·D-day·액자) 중 하나.</p>
+      <div class="block-card__count">17 슬라이드 →</div>
+    </a>
+    <div class="block-card block-card--wip">
+      <div class="block-card__time">오후 · 13:00 — 17:00</div>
+      <h2 class="block-card__title">미니프로젝트 시작</h2>
+      <p class="block-card__desc">4일간 익힌 모든 도구를 꺼내 — 본인 주제로 작은 프로젝트를 시작합니다. Plan Mode · CLAUDE.md · 서브에이전트 · MCP · 슬래시 · PySide까지 자유롭게 섞어 쓰는 시간.</p>
+      <div class="block-card__count block-card__count--wip">준비 중</div>
+    </div>
+  </div>
+</main>
+
+<script src="../../scripts/index-nav.js"></script>
+</body>
+</html>

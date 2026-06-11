@@ -1,0 +1,1066 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>2일차 · 4. 데이터와 AI</title>
+  <link rel="stylesheet" href="../../styles/tokens.css">
+  <link rel="stylesheet" href="../../styles/deck.css">
+  <style>
+    /* 챕터 4 — 데이터 다운로드 링크 + 정답 공개 게이트 */
+    .dl-links { display:flex; flex-wrap:wrap; gap:0.4rem; margin-top:0.55rem; }
+    .dl-link { display:inline-flex; align-items:center; gap:0.35rem; font-family:var(--font-mono);
+      font-size:0.8rem; font-weight:700; color:var(--color-primary-strong); text-decoration:none;
+      border:2px solid var(--color-primary); border-radius:8px; padding:0.4rem 0.75rem; }
+    .dl-link:hover { background:#fff5ec; }
+    .mini-shape { display:block; width:100%; height:auto; margin:0.35rem 0 0.1rem; }
+    .reveal-locked { display:flex; flex-direction:column; align-items:center; justify-content:center;
+      gap:1rem; height:100%; text-align:center; }
+    .reveal-lock { font-size:3.6rem; line-height:1; }
+    .reveal-btn { font-family:var(--font-sans); font-size:1.2rem; font-weight:700; color:#fff;
+      background:var(--color-primary); border:none; border-radius:12px; padding:0.85rem 2.2rem; cursor:pointer; }
+    .reveal-btn:hover { background:var(--color-primary-strong); }
+    .reveal-hint { font-size:0.82rem; color:var(--color-on-surface-muted); }
+    #revealAnswer { display:none; }
+    .reveal-answer { height:100%; align-items:center; justify-content:center; }
+    .reveal-answer svg { display:block; width:100%; height:auto; }
+  </style>
+</head>
+<body>
+
+<main class="deck">
+
+  <header class="deck-chrome">
+  <span class="deck-chrome__brand">CLAUDE CODE · 5D</span>
+  <span class="deck-chrome__divider">·</span>
+  <span class="deck-chrome__day">2일차 · 4 데이터와 AI</span>
+  <span class="deck-chrome__spacer"></span>
+  <span class="deck-chrome__counter">— / —</span>
+</header>
+
+  <!-- 1 · Section cover -->
+  <section class="slide is-section is-standard">
+    <div class="section-eyebrow">CHAPTER 5 · DATA &amp; AI</div>
+    <h2 class="section-title">데이터 속에 숨은 <span class="accent">진짜 규칙</span> 찾기</h2>
+    <p class="section-caption">자동화도 길들이기도 익혔다면 — 마지막은 "AI가 도대체 무엇인가". 흩어진 데이터점에서 숨은 곡선을 직접 찾아내며, 회귀와 신경망으로 그 정체를 만나봅니다.</p>
+    <div class="section-meta">
+      <div class="section-meta__item"><span class="section-meta__num">2</span><span>비밀 데이터셋</span></div>
+      <div class="section-meta__item"><span class="section-meta__num">6</span><span>실습 STEP</span></div>
+      <div class="section-meta__item"><span class="section-meta__num">1</span><span>정답 공개</span></div>
+    </div>
+  </section>
+
+  <!-- 2 · 위치잡기 -->
+  <section class="slide is-standard">
+    <div class="slide__eyebrow">RECAP · 여기까지 왔다</div>
+    <h2 class="slide__title">도구를 배웠으니 — 이제 <span class="accent">AI 자체</span>를 본다</h2>
+    <div class="slide__body">
+      <div class="bg-compare">
+        <div class="bg-compare__side bg-compare__side--soft">
+          <div class="bg-compare__label">챕터 1–3 · 도구를 썼다</div>
+          <div class="bg-compare__quote">
+            <div>공개 데이터로 반응형 페이지 만들기</div>
+            <div>Hooks · 텔레그램으로 자동화·알림</div>
+            <div>CLAUDE.md — 내 프로젝트 룰북</div>
+          </div>
+          <p class="bg-compare__note">Claude를 <strong>부리는 법</strong>을 손에 익혔습니다.</p>
+        </div>
+        <div class="bg-compare__side bg-compare__side--good">
+          <div class="bg-compare__label">챕터 4 · 원리를 본다</div>
+          <div class="bg-compare__quote">
+            <div>AI는 무엇으로 똑똑한가</div>
+            <div>데이터에서 규칙을 어떻게 찾나</div>
+            <div>회귀·신경망의 정체</div>
+          </div>
+          <p class="bg-compare__note">Claude <strong>안에서</strong> 무슨 일이 벌어지는가.</p>
+        </div>
+      </div>
+    </div>
+    <p class="slide__note">마지막 챕터는 새 기능이 아니라 — 그동안 써온 AI가 <strong>어떤 원리로 움직이는지</strong>입니다. 손으로 직접 겪어봅니다.</p>
+  </section>
+
+  <!-- 3 · 챕터 흐름 -->
+  <section class="slide is-standard">
+    <div class="slide__eyebrow">OVERVIEW · 오늘의 여정</div>
+    <h2 class="slide__title">흩어진 점 → 숨은 곡선 → <span class="accent">AI의 정체</span></h2>
+    <div class="slide__body">
+      <div class="grid-4">
+        <div class="diff-card">
+          <div class="diff-card__rank">01</div>
+          <h3 class="diff-card__title">자연의 규칙과 노이즈</h3>
+          <p class="diff-card__body">현상 뒤의 숨은 함수, 측정, 그리고 데이터에 늘 섞이는 흔들림.</p>
+        </div>
+        <div class="diff-card">
+          <div class="diff-card__rank">02</div>
+          <h3 class="diff-card__title">회귀로 곡선 찾기</h3>
+          <p class="diff-card__body">점들을 가장 잘 지나는 곡선 — Claude Code로 직접 실습.</p>
+        </div>
+        <div class="diff-card">
+          <div class="diff-card__rank">03</div>
+          <h3 class="diff-card__title">과적합의 함정</h3>
+          <p class="diff-card__body">노이즈까지 외워버리는 곡선, 그리고 데이터 밖의 위험.</p>
+        </div>
+        <div class="diff-card">
+          <div class="diff-card__rank">04</div>
+          <h3 class="diff-card__title">신경망과 AI의 정체</h3>
+          <p class="diff-card__body">더 유연한 함수 근사기 — 그리고 Claude도 거대한 함수.</p>
+        </div>
+      </div>
+      <p class="slide__note">강사가 노이즈 섞인 데이터 <strong>2개</strong>를 나눠주고, 끝에 진짜 규칙을 공개합니다 — 여러분의 추정과 겹쳐 봅니다.</p>
+    </div>
+  </section>
+
+  <!-- 4 · 자연에는 진짜 규칙이 있다 -->
+  <section class="slide is-statement">
+    <div class="statement-grid statement-grid--visual-wide">
+      <div class="statement-text">
+        <div class="slide__eyebrow">WORLD · 숨은 규칙</div>
+        <h2 class="statement__lead">세상의 현상 뒤엔 — <span class="accent">보이지 않는 규칙</span>이 있다.</h2>
+        <p class="statement__caption">햇빛이 강하면 기온이 오르고, 키가 크면 몸무게도 대체로 늘어납니다. 눈엔 안 보이지만 그 뒤엔 입력을 출력으로 바꾸는 하나의 규칙 — 함수가 있습니다.</p>
+        <div class="statement__points">
+          <div class="statement__point"><span class="statement__point-num">입력</span><span>온도 · 시간 · 거리 — 우리가 넣는 값</span></div>
+          <div class="statement__point"><span class="statement__point-num">규칙</span><span>그 둘을 잇는 함수 — 직접 못 봄</span></div>
+          <div class="statement__point"><span class="statement__point-num">출력</span><span>우리가 관찰하는 결과값</span></div>
+        </div>
+      </div>
+      <div class="statement-visual">
+        <svg viewBox="0 0 460 320" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <rect x="0" y="0" width="460" height="320" rx="16" fill="#fff5ec"/>
+          <text x="230" y="46" font-family="ui-sans-serif, system-ui" font-size="13" fill="#797067" letter-spacing="0.08em" font-weight="700" text-anchor="middle">현상 뒤에는 함수가 있다</text>
+          <circle cx="70" cy="170" r="30" fill="white" stroke="#cc5a14" stroke-width="2"/>
+          <text x="70" y="176" font-family="ui-sans-serif, system-ui" font-size="15" font-weight="700" fill="#cc5a14" text-anchor="middle">입력</text>
+          <text x="70" y="222" font-family="ui-sans-serif, system-ui" font-size="11" fill="#797067" text-anchor="middle">x</text>
+          <line x1="105" y1="170" x2="160" y2="170" stroke="#cc5a14" stroke-width="2.5"/>
+          <polygon points="160,170 150,164 150,176" fill="#cc5a14"/>
+          <rect x="168" y="110" width="124" height="120" rx="14" fill="white" stroke="#797067" stroke-width="2" stroke-dasharray="6 4"/>
+          <text x="230" y="150" font-family="ui-sans-serif, system-ui" font-size="40" font-weight="700" fill="#797067" text-anchor="middle">?</text>
+          <path d="M186 205 C200 150 245 195 274 135" fill="none" stroke="#797067" stroke-width="2" stroke-dasharray="4 4"/>
+          <text x="230" y="255" font-family="ui-sans-serif, system-ui" font-size="11" fill="#797067" text-anchor="middle">숨은 규칙 (함수)</text>
+          <line x1="300" y1="170" x2="355" y2="170" stroke="#cc5a14" stroke-width="2.5"/>
+          <polygon points="355,170 345,164 345,176" fill="#cc5a14"/>
+          <circle cx="390" cy="170" r="30" fill="#fe6e00"/>
+          <text x="390" y="176" font-family="ui-sans-serif, system-ui" font-size="15" font-weight="700" fill="white" text-anchor="middle">출력</text>
+          <text x="390" y="222" font-family="ui-sans-serif, system-ui" font-size="11" fill="#797067" text-anchor="middle">y</text>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5 · 측정 -->
+  <section class="slide is-standard">
+    <div class="slide__eyebrow">MEASURE · 관찰</div>
+    <h2 class="slide__title">규칙을 알려면 — 일단 <span class="accent">재본다</span></h2>
+    <div class="slide__body">
+      <div class="two-col">
+        <div>
+          <div class="content-card content-card--compact">
+            <h3 class="content-card__title">측정 = 관찰</h3>
+            <p class="content-card__body">숨은 규칙은 직접 볼 수 없습니다. 우리가 할 수 있는 건 — 재보는 것.</p>
+            <ul class="content-card__list">
+              <li>온도계를 본다 · 키를 잰다 · 시간을 적는다</li>
+              <li>한 번 재면 (입력, 출력) 숫자 한 쌍이 남는다</li>
+              <li>그게 데이터 점 하나</li>
+            </ul>
+          </div>
+        </div>
+        <div>
+          <div class="content-card content-card--compact">
+            <h3 class="content-card__title">점을 모으면?</h3>
+            <p class="content-card__body">한 점은 한 순간일 뿐. 여러 번 재서 점을 잔뜩 모으면 —</p>
+            <ul class="content-card__list">
+              <li>점들이 흩어진 모양에서 규칙의 윤곽이 보인다</li>
+              <li>점이 많을수록 규칙 추정이 쉬워진다</li>
+              <li>하지만 — 점 자체가 정확하지 않다</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <p class="slide__note">점을 많이 모으면 규칙이 보일 것 같지만 — 한 가지 문제가 있습니다. 측정한 점은 <strong>진짜 값이 아닙니다</strong>.</p>
+    </div>
+  </section>
+
+  <!-- 6 · 측정엔 오차가 있다 -->
+  <section class="slide is-statement">
+    <div class="statement-grid">
+      <div class="statement-text">
+        <div class="slide__eyebrow">NOISE · 오차</div>
+        <h2 class="statement__lead">같은 걸 두 번 재면 — <span class="accent">숫자가 다르다</span>.</h2>
+        <p class="statement__caption">저울에 같은 사람이 두 번 올라가도 0.1kg씩 다르게 나옵니다. 손 떨림, 기계의 한계, 반올림 — 측정엔 늘 작은 흔들림이 섞입니다. 이 흔들림이 노이즈(noise).</p>
+        <div class="statement__points">
+          <div class="statement__point"><span class="statement__point-num">원인</span><span>손 떨림 · 기계 정밀도 · 반올림</span></div>
+          <div class="statement__point"><span class="statement__point-num">결과</span><span>잴 때마다 조금씩 다른 값</span></div>
+          <div class="statement__point"><span class="statement__point-num">이름</span><span>이 흔들림을 노이즈라 부른다</span></div>
+        </div>
+      </div>
+      <div class="statement-visual">
+        <svg viewBox="0 0 460 320" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <rect x="0" y="0" width="460" height="320" rx="16" fill="#fff5ec"/>
+          <text x="230" y="44" font-family="ui-sans-serif, system-ui" font-size="13" fill="#797067" letter-spacing="0.08em" font-weight="700" text-anchor="middle">같은 무게 — 세 번 측정</text>
+          <line x1="60" y1="190" x2="400" y2="190" stroke="#cc5a14" stroke-width="2" stroke-dasharray="6 4"/>
+          <text x="410" y="194" font-family="ui-sans-serif, system-ui" font-size="11" fill="#cc5a14">참값</text>
+          <g font-family="ui-monospace, monospace" font-size="13" font-weight="700">
+            <circle cx="120" cy="172" r="9" fill="#fe6e00"/>
+            <text x="120" y="150" fill="#423d38" text-anchor="middle">70.1</text>
+            <line x1="120" y1="181" x2="120" y2="190" stroke="#797067" stroke-width="1.5"/>
+            <circle cx="230" cy="205" r="9" fill="#fe6e00"/>
+            <text x="230" y="232" fill="#423d38" text-anchor="middle">69.8</text>
+            <line x1="230" y1="196" x2="230" y2="205" stroke="#797067" stroke-width="1.5"/>
+            <circle cx="340" cy="178" r="9" fill="#fe6e00"/>
+            <text x="340" y="156" fill="#423d38" text-anchor="middle">70.2</text>
+            <line x1="340" y1="187" x2="340" y2="190" stroke="#797067" stroke-width="1.5"/>
+          </g>
+          <text x="230" y="278" font-family="ui-sans-serif, system-ui" font-size="12" fill="#797067" text-anchor="middle">진짜 값은 하나인데 — 측정값은 매번 살짝 다르다</text>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7 · 가우시안 노이즈 -->
+  <section class="slide is-statement">
+    <div class="statement-grid statement-grid--visual-wide">
+      <div class="statement-text">
+        <div class="slide__eyebrow">GAUSSIAN · 노이즈의 모양</div>
+        <h2 class="statement__lead">오차는 보통 — <span class="accent">참값 근처에 모인다</span>.</h2>
+        <p class="statement__caption">크게 틀리는 일은 드물고, 살짝 틀리는 일이 대부분. 측정값을 잔뜩 쌓으면 참값을 한가운데로 한 종 모양이 됩니다. 이게 가우시안(정규분포) 노이즈 — 외울 건 "가운데로 모인다" 하나뿐.</p>
+        <div class="statement__points">
+          <div class="statement__point"><span class="statement__point-num">가운데</span><span>참값 근처 — 가장 빽빽</span></div>
+          <div class="statement__point"><span class="statement__point-num">가장자리</span><span>멀어질수록 드물게</span></div>
+          <div class="statement__point"><span class="statement__point-num">기억</span><span>종 모양 한 덩어리 — 수식은 Claude가</span></div>
+        </div>
+      </div>
+      <div class="statement-visual">
+        <svg viewBox="0 0 460 320" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <rect x="0" y="0" width="460" height="320" rx="16" fill="#fff5ec"/>
+          <line x1="230" y1="70" x2="230" y2="272" stroke="#cc5a14" stroke-width="2" stroke-dasharray="5 4"/>
+          <text x="230" y="58" font-family="ui-sans-serif, system-ui" font-size="12" font-weight="700" fill="#cc5a14" text-anchor="middle">참값</text>
+          <g fill="#fe6e00">
+            <circle cx="110" cy="250" r="6"/>
+            <circle cx="150" cy="250" r="6"/><circle cx="150" cy="232" r="6"/><circle cx="150" cy="214" r="6"/>
+            <circle cx="190" cy="250" r="6"/><circle cx="190" cy="232" r="6"/><circle cx="190" cy="214" r="6"/><circle cx="190" cy="196" r="6"/><circle cx="190" cy="178" r="6"/><circle cx="190" cy="160" r="6"/>
+            <circle cx="230" cy="250" r="6"/><circle cx="230" cy="232" r="6"/><circle cx="230" cy="214" r="6"/><circle cx="230" cy="196" r="6"/><circle cx="230" cy="178" r="6"/><circle cx="230" cy="160" r="6"/><circle cx="230" cy="142" r="6"/><circle cx="230" cy="124" r="6"/><circle cx="230" cy="106" r="6"/>
+            <circle cx="270" cy="250" r="6"/><circle cx="270" cy="232" r="6"/><circle cx="270" cy="214" r="6"/><circle cx="270" cy="196" r="6"/><circle cx="270" cy="178" r="6"/><circle cx="270" cy="160" r="6"/>
+            <circle cx="310" cy="250" r="6"/><circle cx="310" cy="232" r="6"/><circle cx="310" cy="214" r="6"/>
+            <circle cx="350" cy="250" r="6"/>
+          </g>
+          <line x1="80" y1="272" x2="400" y2="272" stroke="#797067" stroke-width="1.5"/>
+          <text x="120" y="294" font-family="ui-sans-serif, system-ui" font-size="11" fill="#797067" text-anchor="middle">크게 틀림 — 드물게</text>
+          <text x="340" y="294" font-family="ui-sans-serif, system-ui" font-size="11" fill="#797067" text-anchor="middle">크게 틀림 — 드물게</text>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8 · 데이터 = 신호 + 노이즈 -->
+  <section class="slide is-statement">
+    <div class="statement-grid">
+      <div class="statement-text">
+        <div class="slide__eyebrow">DATA · 신호 + 노이즈</div>
+        <h2 class="statement__lead">우리가 가진 데이터 = <span class="accent">진짜 + 흔들림</span>.</h2>
+        <p class="statement__caption">매끄러운 진짜 곡선 위에 가우시안 흔들림이 얹히면, 점들이 곡선 주변에 흩뿌려집니다. 현실의 데이터는 늘 이렇게 생겼습니다 — 곡선은 노이즈에 가려 보이지 않습니다.</p>
+        <div class="statement__points">
+          <div class="statement__point"><span class="statement__point-num">신호</span><span>숨은 진짜 규칙 (곡선)</span></div>
+          <div class="statement__point"><span class="statement__point-num">노이즈</span><span>측정의 흔들림 (가우시안)</span></div>
+          <div class="statement__point"><span class="statement__point-num">우리 눈</span><span>둘이 합쳐진 — 흩어진 점들뿐</span></div>
+        </div>
+      </div>
+      <div class="statement-visual">
+        <svg viewBox="0 0 460 320" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <rect x="0" y="0" width="460" height="320" rx="16" fill="#fff5ec"/>
+          <text x="230" y="44" font-family="ui-sans-serif, system-ui" font-size="13" fill="#797067" letter-spacing="0.08em" font-weight="700" text-anchor="middle">진짜 곡선 + 노이즈 = 흩어진 점</text>
+          <path d="M50 230 C120 230 140 100 215 100 C290 100 320 215 410 205" fill="none" stroke="#797067" stroke-width="2.5" stroke-dasharray="6 5"/>
+          <g fill="#fe6e00" opacity="0.85">
+            <circle cx="60" cy="240" r="5"/><circle cx="92" cy="214" r="5"/><circle cx="120" cy="200" r="5"/>
+            <circle cx="148" cy="150" r="5"/><circle cx="172" cy="118" r="5"/><circle cx="198" cy="92" r="5"/>
+            <circle cx="222" cy="112" r="5"/><circle cx="248" cy="96" r="5"/><circle cx="274" cy="138" r="5"/>
+            <circle cx="300" cy="170" r="5"/><circle cx="328" cy="186" r="5"/><circle cx="356" cy="214" r="5"/>
+            <circle cx="384" cy="196" r="5"/><circle cx="408" cy="216" r="5"/>
+          </g>
+          <text x="300" y="262" font-family="ui-sans-serif, system-ui" font-size="11" fill="#797067">━ ━ 진짜 곡선 (안 보임)</text>
+          <text x="300" y="282" font-family="ui-sans-serif, system-ui" font-size="11" fill="#cc5a14">● 측정한 점 (우리가 봄)</text>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- 9 · 핵심 질문 -->
+  <section class="slide is-statement">
+    <div class="statement-grid statement-grid--visual-wide">
+      <div class="statement-text">
+        <div class="slide__eyebrow">THE QUESTION · 머신러닝의 질문</div>
+        <h2 class="statement__lead">흩어진 점만 보고 — <span class="accent">숨은 곡선</span>을 되찾을 수 있을까?</h2>
+        <p class="statement__caption">진짜 곡선은 노이즈에 가려 안 보입니다. 점들만 주어졌을 때 그 뒤의 곡선을 추정하는 것 — 바로 이것이 머신러닝, 그리고 AI가 푸는 문제입니다.</p>
+        <div class="statement__points">
+          <div class="statement__point"><span class="statement__point-num">주어진 것</span><span>흩어진 점들 (데이터)</span></div>
+          <div class="statement__point"><span class="statement__point-num">숨은 것</span><span>진짜 곡선 (규칙)</span></div>
+          <div class="statement__point"><span class="statement__point-num">목표</span><span>점에서 곡선을 추정하기</span></div>
+        </div>
+      </div>
+      <div class="statement-visual">
+        <svg viewBox="0 0 460 320" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <rect x="0" y="0" width="460" height="320" rx="16" fill="#fff5ec"/>
+          <g fill="#cc5a14" opacity="0.8">
+            <circle cx="60" cy="238" r="5"/><circle cx="95" cy="210" r="5"/><circle cx="125" cy="198" r="5"/>
+            <circle cx="155" cy="152" r="5"/><circle cx="180" cy="120" r="5"/><circle cx="208" cy="98" r="5"/>
+            <circle cx="232" cy="116" r="5"/><circle cx="262" cy="100" r="5"/><circle cx="290" cy="140" r="5"/>
+            <circle cx="318" cy="172" r="5"/><circle cx="350" cy="190" r="5"/><circle cx="392" cy="212" r="5"/>
+          </g>
+          <path d="M55 240 C120 235 150 110 215 105 C285 100 320 200 405 205" fill="none" stroke="#fe6e00" stroke-width="2" stroke-dasharray="3 5" opacity="0.55"/>
+          <path d="M55 250 C130 245 150 150 215 150 C290 150 330 215 405 220" fill="none" stroke="#fe6e00" stroke-width="2" stroke-dasharray="3 5" opacity="0.55"/>
+          <text x="230" y="58" font-family="ui-sans-serif, system-ui" font-size="58" font-weight="700" fill="#fe6e00" text-anchor="middle" opacity="0.9">?</text>
+          <text x="230" y="292" font-family="ui-sans-serif, system-ui" font-size="12" fill="#797067" text-anchor="middle">같은 점들 — 곡선 후보는 여러 개. 어느 게 진짜일까?</text>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- 10 · 회귀란 -->
+  <section class="slide is-statement">
+    <div class="statement-grid statement-grid--visual-wide">
+      <div class="statement-text">
+        <div class="slide__eyebrow">REGRESSION · 회귀</div>
+        <h2 class="statement__lead">회귀 = 점들을 <span class="accent">가장 잘 지나는 곡선</span> 찾기.</h2>
+        <p class="statement__caption">모든 점을 정확히 통과할 필요는 없습니다. 점들의 한가운데를 부드럽게 가로지르는 곡선 — 그게 숨은 진짜 규칙의 추정치입니다.</p>
+        <div class="statement__points">
+          <div class="statement__point"><span class="statement__point-num">가깝게</span><span>점에 최대한 붙도록</span></div>
+          <div class="statement__point"><span class="statement__point-num">부드럽게</span><span>점마다 출렁이지 않게</span></div>
+          <div class="statement__point"><span class="statement__point-num">"가장 잘"</span><span>점과의 어긋남 합이 가장 작게</span></div>
+        </div>
+      </div>
+      <div class="statement-visual">
+        <svg viewBox="0 0 460 320" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <rect x="0" y="0" width="460" height="320" rx="16" fill="#fff5ec"/>
+          <text x="230" y="44" font-family="ui-sans-serif, system-ui" font-size="13" fill="#797067" letter-spacing="0.08em" font-weight="700" text-anchor="middle">점들 한가운데를 지나는 곡선</text>
+          <path d="M50 235 C120 230 145 105 215 102 C288 99 320 205 410 200" fill="none" stroke="#016630" stroke-width="3"/>
+          <g>
+            <line x1="60" y1="240" x2="60" y2="226" stroke="#797067" stroke-width="1.5"/>
+            <line x1="120" y1="208" x2="120" y2="222" stroke="#797067" stroke-width="1.5"/>
+            <line x1="180" y1="118" x2="180" y2="132" stroke="#797067" stroke-width="1.5"/>
+            <line x1="248" y1="96" x2="248" y2="110" stroke="#797067" stroke-width="1.5"/>
+            <line x1="318" y1="186" x2="318" y2="172" stroke="#797067" stroke-width="1.5"/>
+            <line x1="380" y1="210" x2="380" y2="196" stroke="#797067" stroke-width="1.5"/>
+          </g>
+          <g fill="#cc5a14" opacity="0.85">
+            <circle cx="60" cy="240" r="5"/><circle cx="120" cy="208" r="5"/><circle cx="150" cy="158" r="5"/>
+            <circle cx="180" cy="118" r="5"/><circle cx="215" cy="112" r="5"/><circle cx="248" cy="96" r="5"/>
+            <circle cx="282" cy="132" r="5"/><circle cx="318" cy="186" r="5"/><circle cx="350" cy="196" r="5"/>
+            <circle cx="380" cy="210" r="5"/>
+          </g>
+          <text x="300" y="268" font-family="ui-sans-serif, system-ui" font-size="11" fill="#016630">━ 추정 곡선</text>
+          <text x="300" y="286" font-family="ui-sans-serif, system-ui" font-size="11" fill="#797067">│ 점과 곡선의 어긋남</text>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- 11 · 계산은 Claude Code가 -->
+  <section class="slide is-standard">
+    <div class="slide__eyebrow">HOW · 누가 계산하나</div>
+    <h2 class="slide__title">곡선 찾는 계산은 — <span class="accent">Claude Code가</span></h2>
+    <div class="slide__body">
+      <div class="bg-compare">
+        <div class="bg-compare__side bg-compare__side--bad">
+          <div class="bg-compare__label">× 옛날 방식 — 직접 수학</div>
+          <div class="bg-compare__quote">
+            <div>회귀식을 손으로 유도</div>
+            <div>미분 · 행렬 계산</div>
+            <div>통계 패키지 문법 암기</div>
+            <div>비전공자에겐 — 벽</div>
+          </div>
+          <p class="bg-compare__note">수학이 막히면 — 시작도 못 함.</p>
+        </div>
+        <div class="bg-compare__side bg-compare__side--good">
+          <div class="bg-compare__label">✓ 우리 방식 — 말로 지시</div>
+          <div class="bg-compare__quote">
+            <div>"이 CSV로 회귀해서</div>
+            <div>곡선 찾아줘" — 한 줄</div>
+            <div>→ Claude가 코드 · 계산 · 그래프</div>
+            <div>우리는 결과를 보고 판단</div>
+          </div>
+          <p class="bg-compare__note">무엇을 원하는지만 정하면 됨.</p>
+        </div>
+      </div>
+    </div>
+    <p class="slide__note">강의 내내 해온 그 방식 그대로 — <strong>우리는 방향을 정하고, 수학은 Claude가</strong> 합니다. 회귀를 몰라도 회귀를 쓸 수 있습니다.</p>
+  </section>
+
+  <!-- 12 · 모델 — 곡선의 종류 -->
+  <section class="slide is-standard">
+    <div class="slide__eyebrow">MODEL · 곡선의 모양 후보</div>
+    <h2 class="slide__title">곡선에도 <span class="accent">종류</span>가 있다 — 직선부터 구불구불까지</h2>
+    <div class="slide__body">
+      <div class="grid-3">
+        <div class="content-card content-card--compact">
+          <h3 class="content-card__title">직선 (1차)</h3>
+          <svg class="mini-shape" viewBox="0 0 220 56" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <line x1="14" y1="44" x2="206" y2="14" stroke="#cc5a14" stroke-width="3"/>
+          </svg>
+          <p class="content-card__body">가장 단순. 쭉 뻗은 직선 — 곡선이 휘는 데이터는 못 따라감.</p>
+        </div>
+        <div class="content-card content-card--compact">
+          <h3 class="content-card__title">완만한 곡선 (2–3차)</h3>
+          <svg class="mini-shape" viewBox="0 0 220 56" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M14 46 Q110 -6 206 40" fill="none" stroke="#cc5a14" stroke-width="3"/>
+          </svg>
+          <p class="content-card__body">한두 번 부드럽게 휨. 봉우리·골짜기 하나 정도를 잡아냄.</p>
+        </div>
+        <div class="content-card content-card--compact">
+          <h3 class="content-card__title">구불구불 (고차)</h3>
+          <svg class="mini-shape" viewBox="0 0 220 56" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M14 30 C40 0 60 52 86 26 C112 0 134 52 160 28 C178 12 192 40 206 24" fill="none" stroke="#cc5a14" stroke-width="3"/>
+          </svg>
+          <p class="content-card__body">여러 번 출렁임. 복잡한 규칙도 잡지만 — 노이즈까지 따라감.</p>
+        </div>
+      </div>
+      <p class="slide__note">어떤 모양이 이 데이터에 맞을까? — 너무 단순해도, 너무 복잡해도 문제입니다. 그 함정을 다음에.</p>
+    </div>
+  </section>
+
+  <!-- 13 · 회귀 한 사이클 -->
+  <section class="slide is-standard">
+    <div class="slide__eyebrow">FLOW · 회귀 한 바퀴</div>
+    <h2 class="slide__title">데이터 → 시도 → 비교 → <span class="accent">선택</span></h2>
+    <div class="slide__body">
+      <div class="cycle">
+        <div class="cycle__step"><div class="cycle__num">01</div><div class="cycle__title">불러오기</div><div class="cycle__desc">CSV 파일을 읽어들임</div><div class="cycle__example">data.csv 읽어줘</div></div>
+        <div class="cycle__step"><div class="cycle__num">02</div><div class="cycle__title">그려보기</div><div class="cycle__desc">점들을 산점도로 표시</div><div class="cycle__example">산점도로</div></div>
+        <div class="cycle__step"><div class="cycle__num">03</div><div class="cycle__title">회귀</div><div class="cycle__desc">곡선을 여러 개 맞춰봄</div><div class="cycle__example">곡선 맞춰줘</div></div>
+        <div class="cycle__step"><div class="cycle__num">04</div><div class="cycle__title">겹쳐보기</div><div class="cycle__desc">점 + 곡선 한 그래프에</div><div class="cycle__example">겹쳐서</div></div>
+        <div class="cycle__step"><div class="cycle__num">05</div><div class="cycle__title">판단</div><div class="cycle__desc">너무 단순? 너무 복잡?</div><div class="cycle__example">→ 선택</div></div>
+      </div>
+      <p class="slide__note">05 "판단"엔 곧 배울 <strong>과적합 감각</strong>이 필요합니다 — 잠깐 함정 이야기를 하고 옵니다.</p>
+    </div>
+  </section>
+
+  <!-- 14 · 양쪽 함정 -->
+  <section class="slide is-standard">
+    <div class="slide__eyebrow">PITFALL · 두 가지 실패</div>
+    <h2 class="slide__title">곡선 고르기엔 <span class="accent">양쪽 함정</span>이 있다</h2>
+    <div class="slide__body">
+      <div class="compare-2">
+        <div class="compare-side compare-side--soft">
+          <div class="compare-side__label">함정 1 · 과소적합</div>
+          <h3 class="compare-side__title">곡선이 너무 단순하다</h3>
+          <ul class="compare-side__list">
+            <li>직선처럼 — 데이터의 흐름을 못 따라감</li>
+            <li>봉우리·골짜기를 통째로 놓침</li>
+            <li>점들과 곡선이 멀리 떨어짐</li>
+            <li>큰 흐름조차 못 잡은 상태</li>
+          </ul>
+        </div>
+        <div class="compare-side compare-side--accent">
+          <div class="compare-side__label">함정 2 · 과적합</div>
+          <h3 class="compare-side__title">곡선이 너무 복잡하다</h3>
+          <ul class="compare-side__list">
+            <li>점을 하나하나 다 통과하려 함</li>
+            <li>노이즈(우연한 흔들림)까지 따라 그림</li>
+            <li>데이터엔 완벽 — 진짜 규칙엔 빗나감</li>
+            <li>다음 슬라이드에서 자세히</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <p class="slide__note">정답은 둘 사이 어딘가 — <strong>큰 흐름은 잡되 노이즈는 무시</strong>하는 곡선입니다.</p>
+  </section>
+
+  <!-- 15 · 과적합 핵심 -->
+  <section class="slide is-standard">
+    <div class="slide__eyebrow">OVERFITTING · 과적합</div>
+    <h2 class="slide__title">과적합 — 곡선이 <span class="accent">흔들림까지 외운다</span></h2>
+    <div class="slide__body">
+      <div class="bg-compare">
+        <div class="bg-compare__side bg-compare__side--bad">
+          <div class="bg-compare__label">× 과적합 — 점을 다 통과</div>
+          <div class="bg-compare__quote">
+            <div>모든 점을 정확히 지남</div>
+            <div>점 사이마다 구불구불 출렁임</div>
+            <div>노이즈를 규칙으로 착각</div>
+            <div>새 데이터엔 엉망</div>
+          </div>
+          <p class="bg-compare__note">데이터엔 완벽 — 진짜 규칙엔 빗나감.</p>
+        </div>
+        <div class="bg-compare__side bg-compare__side--good">
+          <div class="bg-compare__label">✓ 적당한 곡선 — 점들 사이로</div>
+          <div class="bg-compare__quote">
+            <div>점들 사이를 부드럽게 가로지름</div>
+            <div>노이즈는 흘려보냄</div>
+            <div>큰 흐름만 잡음</div>
+            <div>진짜 규칙에 가까움</div>
+          </div>
+          <p class="bg-compare__note">데이터엔 살짝 어긋나도 — 규칙엔 더 가까움.</p>
+        </div>
+      </div>
+    </div>
+    <p class="slide__note">점을 다 지나는 곡선이 좋은 게 아닙니다 — <strong>노이즈는 외우는 게 아니라 지나치는 것</strong>.</p>
+  </section>
+
+  <!-- 16 · 외삽의 위험 -->
+  <section class="slide is-statement">
+    <div class="statement-grid">
+      <div class="statement-text">
+        <div class="slide__eyebrow">EXTRAPOLATION · 데이터 밖</div>
+        <h2 class="statement__lead">데이터가 없는 곳은 — <span class="accent">곡선도 모른다</span>.</h2>
+        <p class="statement__caption">점들이 모인 구간 안에서는 추정이 제법 믿을 만합니다. 하지만 그 바깥으로 곡선을 연장하면(외삽), 특히 구불구불한 곡선은 엉뚱한 곳으로 튀어 오릅니다.</p>
+        <div class="statement__points">
+          <div class="statement__point"><span class="statement__point-num">데이터 안</span><span>내삽 — 비교적 안전</span></div>
+          <div class="statement__point"><span class="statement__point-num">데이터 밖</span><span>외삽 — 위험</span></div>
+          <div class="statement__point"><span class="statement__point-num">복잡할수록</span><span>더 크게, 더 빨리 빗나감</span></div>
+        </div>
+      </div>
+      <div class="statement-visual">
+        <svg viewBox="0 0 460 320" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <rect x="0" y="0" width="460" height="320" rx="16" fill="#fff5ec"/>
+          <rect x="135" y="40" width="190" height="240" rx="6" fill="#ffe7d1"/>
+          <text x="230" y="60" font-family="ui-sans-serif, system-ui" font-size="11" font-weight="700" fill="#cc5a14" text-anchor="middle">데이터 있는 구간</text>
+          <g fill="#cc5a14" opacity="0.85">
+            <circle cx="150" cy="210" r="4.5"/><circle cx="172" cy="186" r="4.5"/><circle cx="194" cy="150" r="4.5"/>
+            <circle cx="216" cy="128" r="4.5"/><circle cx="238" cy="140" r="4.5"/><circle cx="262" cy="170" r="4.5"/>
+            <circle cx="286" cy="196" r="4.5"/><circle cx="308" cy="210" r="4.5"/>
+          </g>
+          <path d="M150 212 C185 200 200 130 230 130 C265 130 290 205 312 210" fill="none" stroke="#016630" stroke-width="3"/>
+          <path d="M312 210 C330 215 340 250 360 300" fill="none" stroke="#fb2c36" stroke-width="3" stroke-dasharray="6 4"/>
+          <path d="M150 212 C130 205 120 150 100 70" fill="none" stroke="#fb2c36" stroke-width="3" stroke-dasharray="6 4"/>
+          <text x="70" y="60" font-family="ui-sans-serif, system-ui" font-size="11" fill="#fb2c36" text-anchor="middle">외삽 — 폭주</text>
+          <text x="390" y="300" font-family="ui-sans-serif, system-ui" font-size="11" fill="#fb2c36" text-anchor="middle">외삽 — 폭주</text>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- 17 · 회귀의 한계 -->
+  <section class="slide is-standard">
+    <div class="slide__eyebrow">LIMIT · 회귀의 한계</div>
+    <h2 class="slide__title">회귀로 안 잡히는 — <span class="accent">더 복잡한 규칙</span></h2>
+    <div class="slide__body">
+      <div class="two-col">
+        <div>
+          <div class="content-card content-card--compact">
+            <h3 class="content-card__title">회귀가 잘 맞을 때</h3>
+            <p class="content-card__body">규칙의 모양이 비교적 단순할 때 — 곡선 종류 몇 개만 시도하면 충분합니다.</p>
+            <ul class="content-card__list">
+              <li>입력이 하나 (x 하나 → y 하나)</li>
+              <li>봉우리·골짜기가 한두 개</li>
+              <li>적당한 차수의 곡선이면 잡힘</li>
+            </ul>
+          </div>
+        </div>
+        <div>
+          <div class="content-card content-card--compact">
+            <h3 class="content-card__title">한계가 오는 때</h3>
+            <p class="content-card__body">규칙이 복잡해지면 — "곡선 종류를 사람이 고르는" 방식이 벅차집니다.</p>
+            <ul class="content-card__list">
+              <li>입력이 여럿 (키 + 나이 + 운동량 → 몸무게)</li>
+              <li>규칙이 아주 구불구불할 때</li>
+              <li>어떤 곡선을 골라야 할지조차 모를 때</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <p class="slide__note">이럴 땐 — 곡선 종류를 미리 고르지 않아도 되는, 훨씬 유연한 도구가 필요합니다. 그게 <strong>신경망</strong>.</p>
+    </div>
+  </section>
+
+  <!-- 18 · 신경망 개념 -->
+  <section class="slide is-statement">
+    <div class="statement-grid statement-grid--visual-wide">
+      <div class="statement-text">
+        <div class="slide__eyebrow">NEURAL NET · 개념만</div>
+        <h2 class="statement__lead">신경망 = 거의 <span class="accent">어떤 곡선이든</span> 흉내내는 함수.</h2>
+        <p class="statement__caption">작은 계산 단위(뉴런)를 층층이 쌓아 입력을 출력으로 바꾸는 하나의 거대한 함수입니다. 회귀처럼 곡선 종류를 미리 정하지 않아도, 데이터에 맞춰 모양을 스스로 잡습니다. 오늘은 개념만 — 코드는 짜지 않습니다.</p>
+        <div class="statement__points">
+          <div class="statement__point"><span class="statement__point-num">뉴런</span><span>작은 계산 한 칸</span></div>
+          <div class="statement__point"><span class="statement__point-num">층(layer)</span><span>쌓을수록 유연함 ↑</span></div>
+          <div class="statement__point"><span class="statement__point-num">본질</span><span>여전히 입력 → 출력 함수</span></div>
+        </div>
+      </div>
+      <div class="statement-visual">
+        <svg viewBox="0 0 460 320" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <rect x="0" y="0" width="460" height="320" rx="16" fill="#fff5ec"/>
+          <g stroke="#e3b48c" stroke-width="1.2">
+            <line x1="80" y1="110" x2="190" y2="70"/><line x1="80" y1="110" x2="190" y2="135"/><line x1="80" y1="110" x2="190" y2="200"/><line x1="80" y1="110" x2="190" y2="265"/>
+            <line x1="80" y1="210" x2="190" y2="70"/><line x1="80" y1="210" x2="190" y2="135"/><line x1="80" y1="210" x2="190" y2="200"/><line x1="80" y1="210" x2="190" y2="265"/>
+            <line x1="190" y1="70" x2="300" y2="100"/><line x1="190" y1="70" x2="300" y2="165"/><line x1="190" y1="70" x2="300" y2="230"/>
+            <line x1="190" y1="135" x2="300" y2="100"/><line x1="190" y1="135" x2="300" y2="165"/><line x1="190" y1="135" x2="300" y2="230"/>
+            <line x1="190" y1="200" x2="300" y2="100"/><line x1="190" y1="200" x2="300" y2="165"/><line x1="190" y1="200" x2="300" y2="230"/>
+            <line x1="190" y1="265" x2="300" y2="100"/><line x1="190" y1="265" x2="300" y2="165"/><line x1="190" y1="265" x2="300" y2="230"/>
+            <line x1="300" y1="100" x2="395" y2="165"/><line x1="300" y1="165" x2="395" y2="165"/><line x1="300" y1="230" x2="395" y2="165"/>
+          </g>
+          <g fill="#cc5a14"><circle cx="80" cy="110" r="13"/><circle cx="80" cy="210" r="13"/></g>
+          <g fill="#fe6e00"><circle cx="190" cy="70" r="13"/><circle cx="190" cy="135" r="13"/><circle cx="190" cy="200" r="13"/><circle cx="190" cy="265" r="13"/>
+            <circle cx="300" cy="100" r="13"/><circle cx="300" cy="165" r="13"/><circle cx="300" cy="230" r="13"/></g>
+          <circle cx="395" cy="165" r="15" fill="#016630"/>
+          <text x="80" y="255" font-family="ui-sans-serif, system-ui" font-size="11" fill="#797067" text-anchor="middle">입력</text>
+          <text x="245" y="300" font-family="ui-sans-serif, system-ui" font-size="11" fill="#797067" text-anchor="middle">층층이 쌓인 뉴런</text>
+          <text x="395" y="205" font-family="ui-sans-serif, system-ui" font-size="11" fill="#797067" text-anchor="middle">출력</text>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- 19 · 회귀 vs 신경망 -->
+  <section class="slide is-standard">
+    <div class="slide__eyebrow">COMPARE · 회귀 vs 신경망</div>
+    <h2 class="slide__title">둘 다 하는 일은 같다 — <span class="accent">점에서 함수 찾기</span></h2>
+    <div class="slide__body">
+      <div class="compare-2">
+        <div class="compare-side compare-side--soft">
+          <div class="compare-side__label">회귀</div>
+          <h3 class="compare-side__title">곡선 종류를 사람이 고른다</h3>
+          <ul class="compare-side__list">
+            <li>1차·3차… 차수를 골라 시도</li>
+            <li>단순하고 빠름</li>
+            <li>왜 그렇게 됐는지 해석 쉬움</li>
+            <li>오늘 — 직접 실습</li>
+          </ul>
+        </div>
+        <div class="compare-side compare-side--accent">
+          <div class="compare-side__label">신경망</div>
+          <h3 class="compare-side__title">곡선 모양을 스스로 잡는다</h3>
+          <ul class="compare-side__list">
+            <li>층·뉴런이 데이터에 맞춰 모양 결정</li>
+            <li>매우 유연 — 복잡한 규칙도</li>
+            <li>데이터가 많이 필요 · 과적합 위험 ↑</li>
+            <li>오늘 — 개념만</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <p class="slide__note">본질은 똑같습니다 — <strong>데이터에서 숨은 함수를 추정하는 것</strong>. 신경망은 회귀의 "거대하고 유연한 버전".</p>
+  </section>
+
+  <!-- 20 · 실습 전환 -->
+  <section class="slide is-statement">
+    <div class="statement-grid statement-grid--visual-wide">
+      <div class="statement-text">
+        <div class="slide__eyebrow">MISSION · 실습 시작</div>
+        <h2 class="statement__lead">지금부터 — <span class="accent">숨은 곡선</span>을 직접 찾는다.</h2>
+        <p class="statement__caption">강사가 노이즈 섞인 데이터 2개(data_1 · data_2)를 나눠줍니다. 그 점들 뒤의 진짜 함수는 강사만 알고 있습니다. 여러분의 임무는 Claude Code로 그 함수를 추정하는 것.</p>
+        <div class="statement__points">
+          <div class="statement__point"><span class="statement__point-num">받는 것</span><span>흩어진 점 CSV 2개</span></div>
+          <div class="statement__point"><span class="statement__point-num">모르는 것</span><span>진짜 곡선 — 강사만 앎</span></div>
+          <div class="statement__point"><span class="statement__point-num">할 일</span><span>회귀로 추정 → 그래프로</span></div>
+        </div>
+      </div>
+      <div class="statement-visual">
+        <svg viewBox="0 0 460 320" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <rect x="0" y="0" width="460" height="320" rx="16" fill="#fff5ec"/>
+          <rect x="40" y="110" width="80" height="100" rx="8" fill="white" stroke="#cc5a14" stroke-width="2"/>
+          <text x="80" y="146" font-family="ui-sans-serif, system-ui" font-size="11" font-weight="700" fill="#cc5a14" text-anchor="middle">강사</text>
+          <text x="80" y="172" font-family="ui-sans-serif, system-ui" font-size="22" text-anchor="middle">🔒</text>
+          <text x="80" y="200" font-family="ui-sans-serif, system-ui" font-size="9" fill="#797067" text-anchor="middle">진짜 함수</text>
+          <g font-family="ui-monospace, monospace" font-size="10" font-weight="700">
+            <rect x="160" y="118" width="86" height="36" rx="5" fill="#fe6e00"/>
+            <text x="203" y="141" fill="white" text-anchor="middle">data_1.csv</text>
+            <rect x="160" y="166" width="86" height="36" rx="5" fill="#fe6e00"/>
+            <text x="203" y="189" fill="white" text-anchor="middle">data_2.csv</text>
+          </g>
+          <line x1="120" y1="160" x2="158" y2="150" stroke="#cc5a14" stroke-width="2"/>
+          <line x1="246" y1="160" x2="288" y2="160" stroke="#cc5a14" stroke-width="2.5"/>
+          <polygon points="288,160 278,154 278,166" fill="#cc5a14"/>
+          <rect x="296" y="116" width="124" height="90" rx="8" fill="rgba(0,0,0,0.92)"/>
+          <text x="358" y="150" font-family="ui-monospace, monospace" font-size="11" fill="#fe6e00" text-anchor="middle">&gt; 회귀해줘</text>
+          <text x="358" y="172" font-family="ui-monospace, monospace" font-size="10" fill="rgba(255,255,255,0.6)" text-anchor="middle">Claude Code</text>
+          <text x="230" y="252" font-family="ui-sans-serif, system-ui" font-size="12" fill="#797067" text-anchor="middle">노이즈 데이터를 받아 → Claude Code로 숨은 함수 추정</text>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- 21 · 환경 준비 -->
+  <section class="slide is-standard">
+    <div class="slide__eyebrow">실습 · 데이터 받기</div>
+    <h2 class="slide__title">데이터 내려받고 — <span class="accent">라이브러리 설치</span></h2>
+    <div class="slide__body">
+      <div class="two-col">
+        <div>
+          <div class="content-card content-card--compact">
+            <h3 class="content-card__title">1. 데이터 2개 받기</h3>
+            <p class="content-card__body">아래 파일을 내려받아 <code>C:\lecture\day2</code> 폴더에 저장하세요.</p>
+            <div class="dl-links">
+              <a class="dl-link" href="data_1.csv" download>⬇ data_1.csv</a>
+              <a class="dl-link" href="data_2.csv" download>⬇ data_2.csv</a>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div class="code-block">
+            <div class="code-block__header">
+              <span class="code-block__dot" style="background:#fb2c36"></span><span class="code-block__dot" style="background:#edb200"></span><span class="code-block__dot" style="background:#00c758"></span>
+              <span class="code-block__title">2. Claude Code — 라이브러리 설치</span>
+            </div>
+            <div class="code-block__body"><span class="code-block__line"><span class="code-block__prompt">&gt;</span> <span class="code-block__cmd">데이터 분석에 필요한 파이썬</span></span>
+<span class="code-block__line"><span class="code-block__cmd">  라이브러리 설치해줘 —</span></span>
+<span class="code-block__line"><span class="code-block__cmd">  pandas numpy matplotlib scikit-learn</span></span>
+<span class="code-block__line code-block__line--blank"></span>
+<span class="code-block__line"><span class="code-block__out">  → Claude가 pip 설치 실행</span></span>
+<span class="code-block__line"><span class="code-block__out">  → 권한 prompt 한 번 승인</span></span></div>
+          </div>
+        </div>
+      </div>
+      <p class="slide__note">Python은 1일차에 설치했습니다. <code>python</code>이 안 잡히면 새 PowerShell 창을 열거나, Claude Code에게 <strong>"python이 안 잡혀요"</strong>라고 그대로 말하면 진단해 줍니다.</p>
+    </div>
+  </section>
+
+  <!-- 22 · STEP 1 Plan Mode -->
+  <section class="slide is-standard">
+    <div class="slide__eyebrow">실습 · STEP 1</div>
+    <h2 class="slide__title">Plan Mode로 — <span class="accent">추정 계획</span>부터 세우기</h2>
+    <div class="slide__body">
+      <div class="two-col">
+        <div>
+          <div class="content-card content-card--compact">
+            <h3 class="content-card__title">이렇게 진행</h3>
+            <ol class="content-card__list content-card__list--ol">
+              <li><code>Shift+Tab</code> 두 번 → Plan 모드</li>
+              <li>data_1.csv 분석 계획을 요청</li>
+              <li>계획을 읽고 — 좋으면 Approve</li>
+              <li>아니면 Edit으로 다듬기</li>
+            </ol>
+          </div>
+        </div>
+        <div>
+          <div class="code-block">
+            <div class="code-block__header">
+              <span class="code-block__dot" style="background:#fb2c36"></span><span class="code-block__dot" style="background:#edb200"></span><span class="code-block__dot" style="background:#00c758"></span>
+              <span class="code-block__title">claude · Plan 모드</span>
+            </div>
+            <div class="code-block__body"><span class="code-block__line"><span class="code-block__prompt">&gt;</span> <span class="code-block__cmd">data_1.csv에 x, y 두 열이 있어.</span></span>
+<span class="code-block__line"><span class="code-block__cmd">  이 점들 뒤에 숨은 함수를 회귀로</span></span>
+<span class="code-block__line"><span class="code-block__cmd">  추정하고 싶어. 비개발자도 따라갈</span></span>
+<span class="code-block__line"><span class="code-block__cmd">  수 있게 순서를 계획해줘</span></span>
+<span class="code-block__line code-block__line--blank"></span>
+<span class="code-block__line"><span class="code-block__out">  [plan] 1. 데이터 불러오기·관찰</span></span>
+<span class="code-block__line"><span class="code-block__out">         2. 여러 차수로 회귀 …</span></span></div>
+          </div>
+        </div>
+      </div>
+      <p class="slide__note">Claude가 낸 계획이 정답은 아닙니다 — 읽고 마음에 안 들면 <strong>Edit</strong>으로 다듬으세요. 챕터 1의 Plan Mode 복습입니다.</p>
+    </div>
+  </section>
+
+  <!-- 23 · STEP 2-3 시각화 + 여러 차수 -->
+  <section class="slide is-standard">
+    <div class="slide__eyebrow">실습 · STEP 2–3</div>
+    <h2 class="slide__title">점을 그려보고 — <span class="accent">여러 곡선</span>을 맞춰본다</h2>
+    <div class="slide__body">
+      <div class="two-col">
+        <div>
+          <div class="content-card content-card--compact">
+            <h3 class="content-card__title">무엇을 하나</h3>
+            <p class="content-card__body">먼저 점을 눈으로 보고, 그다음 여러 모양의 곡선을 맞춰 비교합니다.</p>
+            <ul class="content-card__list">
+              <li>STEP 2 — 산점도로 점들의 모양 관찰</li>
+              <li>STEP 3 — 차수 1·3·7·15로 회귀</li>
+              <li>그림은 PNG로 저장 → 더블클릭해 확인</li>
+            </ul>
+          </div>
+        </div>
+        <div>
+          <div class="code-block">
+            <div class="code-block__header">
+              <span class="code-block__dot" style="background:#fb2c36"></span><span class="code-block__dot" style="background:#edb200"></span><span class="code-block__dot" style="background:#00c758"></span>
+              <span class="code-block__title">claude · 시각화 + 회귀</span>
+            </div>
+            <div class="code-block__body"><span class="code-block__line"><span class="code-block__cmt"># STEP 2 — 점들을 먼저 그려본다</span></span>
+<span class="code-block__line"><span class="code-block__prompt">&gt;</span> <span class="code-block__cmd">data_1.csv 읽어서 산점도로</span></span>
+<span class="code-block__line"><span class="code-block__cmd">  그려 scatter.png로 저장해줘</span></span>
+<span class="code-block__line code-block__line--blank"></span>
+<span class="code-block__line"><span class="code-block__cmt"># STEP 3 — 여러 곡선을 맞춰본다</span></span>
+<span class="code-block__line"><span class="code-block__prompt">&gt;</span> <span class="code-block__cmd">1차·3차·7차·15차 다항식으로</span></span>
+<span class="code-block__line"><span class="code-block__cmd">  각각 곡선을 맞춰 점 위에 겹쳐</span></span>
+<span class="code-block__line"><span class="code-block__cmd">  그린 그림 4장을 만들어줘</span></span></div>
+          </div>
+        </div>
+      </div>
+      <p class="slide__note">막히면 메타프롬프트 — <strong>"이 데이터 분석하려면 어떻게 시키는 게 좋아?"</strong>라고 먼저 물어보세요.</p>
+    </div>
+  </section>
+
+  <!-- 24 · STEP 4-5 비교·선택·최종 -->
+  <section class="slide is-standard">
+    <div class="slide__eyebrow">실습 · STEP 4–5</div>
+    <h2 class="slide__title">비교해서 — <span class="accent">가장 그럴듯한 곡선</span> 하나</h2>
+    <div class="slide__body">
+      <div class="two-col">
+        <div>
+          <div class="content-card content-card--compact">
+            <h3 class="content-card__title">STEP 4 · 비교하고 고르기</h3>
+            <p class="content-card__body">4장을 나란히 놓고 — Claude에게 판단을 물어봅니다.</p>
+            <ul class="content-card__list">
+              <li>"어떤 차수가 가장 적당해? 너무 낮으면 / 높으면 왜 문제인지 쉽게 설명해줘"</li>
+              <li>너무 단순(과소)도, 너무 출렁(과적합)도 아닌 것</li>
+            </ul>
+          </div>
+        </div>
+        <div>
+          <div class="content-card content-card--compact">
+            <h3 class="content-card__title">STEP 5 · 최종 곡선</h3>
+            <p class="content-card__body">고른 차수로 최종 추정 곡선을 그립니다.</p>
+            <ul class="content-card__list">
+              <li>"고른 차수로 최종 추정 곡선을 my_estimate_1.png로 깔끔하게 그려줘"</li>
+              <li>이 그림이 — 내가 추측한 "진짜 함수"</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <p class="slide__note">정답 곡선은 아직 비밀 — 본인 눈으로 "제일 그럴듯한" 곡선을 고르세요. <strong>점을 다 지나는 게 정답이 아닙니다</strong>.</p>
+    </div>
+  </section>
+
+  <!-- 25 · STEP 6 외삽 자기점검 -->
+  <section class="slide is-standard">
+    <div class="slide__eyebrow">실습 · STEP 6</div>
+    <h2 class="slide__title">데이터 밖으로 — <span class="accent">곡선을 늘려본다</span></h2>
+    <div class="slide__body">
+      <div class="two-col">
+        <div>
+          <div class="content-card content-card--compact">
+            <h3 class="content-card__title">이렇게 시켜보기</h3>
+            <p class="content-card__body">데이터가 끝나는 지점 너머로 곡선을 연장해 봅니다.</p>
+            <ul class="content-card__list">
+              <li>"내 곡선을 x가 10보다 큰 구간까지 늘려 그려줘"</li>
+              <li>"데이터 없는 곳에서 곡선이 어떻게 행동해?"</li>
+            </ul>
+          </div>
+        </div>
+        <div>
+          <div class="content-card content-card--compact">
+            <h3 class="content-card__title">무엇을 관찰하나</h3>
+            <p class="content-card__body">데이터 구간 안과 밖에서 곡선이 어떻게 달라지는지 봅니다.</p>
+            <ul class="content-card__list">
+              <li>데이터 끝을 지나며 — 부드럽나? 폭주하나?</li>
+              <li>차수가 높을수록 더 심하게 튐</li>
+              <li>이게 외삽의 위험</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <p class="slide__note">데이터가 없는 곳의 추정은 못 믿습니다 — 정답 공개 때 이게 왜 중요한지 눈으로 드러납니다.</p>
+    </div>
+  </section>
+
+  <!-- 26 · 직접 도전 data_2 -->
+  <section class="slide is-standard">
+    <div class="slide__eyebrow">실습 · 직접 도전</div>
+    <h2 class="slide__title">이번엔 혼자 — <span class="accent">data_2</span>를 추정하라</h2>
+    <div class="slide__body">
+      <div class="two-col">
+        <div>
+          <div class="content-card content-card--compact">
+            <h3 class="content-card__title">도전 과제</h3>
+            <p class="content-card__body">STEP 1~6을 <code>data_2.csv</code>로 똑같이 반복합니다.</p>
+            <ul class="content-card__list">
+              <li>한 줄로 맡겨도 OK — "data_2.csv도 같은 방식으로 분석해서 my_estimate_2.png 만들어줘"</li>
+              <li>단계별로 직접 시켜도 OK</li>
+            </ul>
+          </div>
+        </div>
+        <div>
+          <div class="content-card content-card--compact">
+            <h3 class="content-card__title">data_2는 다르다</h3>
+            <p class="content-card__body">data_1보다 까다롭게 느껴질 겁니다.</p>
+            <ul class="content-card__list">
+              <li>여러 번 출렁여 — 직선·낮은 차수로는 어림없음</li>
+              <li>차수를 더 올려야 겨우 따라감</li>
+              <li>그래도 깔끔하게 안 잡힐 수 있음 — 정상</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <p class="slide__note">data_2가 더 까다롭게 느껴진다면 — 제대로 하고 있는 겁니다. <strong>왜 그런지는 정답 공개 후에</strong>.</p>
+    </div>
+  </section>
+
+  <!-- 27 · 정답 공개 -->
+  <section class="slide is-standard">
+    <div class="slide__eyebrow">REVEAL · 정답 공개</div>
+    <h2 class="slide__title">정답 공개 — 진짜 함수 <span class="accent">2개</span></h2>
+    <div class="slide__body">
+      <div class="reveal-locked" id="revealLocked">
+        <div class="reveal-lock">🔒</div>
+        <button class="reveal-btn" id="revealBtn" type="button">정답 보기</button>
+        <div class="reveal-hint">강사가 비밀번호를 입력하면 — 두 진짜 함수의 수식과 곡선이 나타납니다</div>
+      </div>
+      <div class="reveal-answer" id="revealAnswer">
+        <svg viewBox="0 0 900 450" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <rect x="0" y="0" width="900" height="450" rx="16" fill="#fff5ec"/>
+          <rect x="50" y="52" width="585.7" height="160" fill="#ffe7d1"/>
+          <rect x="24" y="10" width="556" height="32" rx="8" fill="#ffffff" stroke="#fe6e00" stroke-width="2"/>
+          <text x="42" y="32" font-family="ui-monospace, monospace" font-size="17" font-weight="700" fill="#cc5a14">data_1  ·  f(x) = 6·exp(-(x-4)²/4) + 0.4x + 1</text>
+          <polyline points="50,192.3 108.6,175.9 167.1,140.7 225.7,89.9 284.3,59.1 342.9,75.6 401.4,112.3 460,133.2 518.6,135.4 577.1,130 635.7,123.1 694.3,116 752.9,108.9 811.4,101.8 870,94.7" fill="none" stroke="#fe6e00" stroke-width="4"/>
+          <line x1="635.7" y1="52" x2="635.7" y2="212" stroke="#fb2c36" stroke-width="2" stroke-dasharray="6 4"/>
+          <rect x="50" y="276" width="585.7" height="160" fill="#ffe7d1"/>
+          <rect x="24" y="234" width="556" height="32" rx="8" fill="#ffffff" stroke="#fe6e00" stroke-width="2"/>
+          <text x="42" y="256" font-family="ui-monospace, monospace" font-size="17" font-weight="700" fill="#cc5a14">data_2  ·  f(x) = 3·exp(-0.25x)·sin(1.5x) + 2</text>
+          <polyline points="50,372 79.3,314.4 108.6,297.4 167.1,363.7 225.7,413.6 284.3,381.9 342.9,346.1 401.4,363 460,384.8 518.6,379 577.1,365.6 635.7,366.9 752.9,375.5 870,369.4" fill="none" stroke="#fe6e00" stroke-width="4"/>
+          <line x1="635.7" y1="276" x2="635.7" y2="436" stroke="#fb2c36" stroke-width="2" stroke-dasharray="6 4"/>
+          <text x="626" y="449" text-anchor="end" font-family="ui-sans-serif, system-ui" font-size="14" font-weight="700" fill="#cc5a14">데이터 구간 (x ≤ 10)</text>
+          <text x="648" y="449" font-family="ui-sans-serif, system-ui" font-size="14" font-weight="700" fill="#fb2c36">외삽 (x &gt; 10) →</text>
+        </svg>
+      </div>
+    </div>
+    <p class="slide__note">각자 추정한 곡선(<code>my_estimate</code>)과 겹쳐 비교하세요 — 데이터 구간(x ≤ 10)은 잘 맞아도, 데이터 밖에서는 추정이 갈라집니다.</p>
+  </section>
+
+  <!-- 28 · 함께 보기 -->
+  <section class="slide is-standard">
+    <div class="slide__eyebrow">DISCUSS · 함께 보기</div>
+    <h2 class="slide__title">왜 빗나갔나 — <span class="accent">세 가지</span>를 이야기하기</h2>
+    <div class="slide__body">
+      <div class="grid-3">
+        <div class="content-card content-card--compact">
+          <h3 class="content-card__title">1 · 오차와 노이즈</h3>
+          <p class="content-card__body">내 곡선과 진짜 곡선 사이의 틈 — 어디서 가장 컸나? 그 틈의 일부는 노이즈 때문에 어쩔 수 없는 것.</p>
+        </div>
+        <div class="content-card content-card--compact">
+          <h3 class="content-card__title">2 · 과적합</h3>
+          <p class="content-card__body">점을 다 지나려 한 사람의 곡선이 — 오히려 진짜 곡선에서 더 멀었나? 노이즈를 외운 대가.</p>
+        </div>
+        <div class="content-card content-card--compact">
+          <h3 class="content-card__title">3 · 외삽</h3>
+          <p class="content-card__body">데이터 양 끝 바깥에서 추정이 무너졌나? 데이터 없는 곳은 — AI도 모른다.</p>
+        </div>
+      </div>
+      <p class="slide__note">그리고 — <strong>data_1보다 data_2가 왜 더 어려웠나?</strong> 진짜 규칙이 복잡할수록 회귀로는 벅차고, 더 유연한 신경망이 필요해집니다.</p>
+    </div>
+  </section>
+
+  <!-- 29 · 본질 -->
+  <section class="slide is-statement">
+    <div class="statement-grid statement-grid--visual-wide">
+      <div class="statement-text">
+        <div class="slide__eyebrow">ESSENCE · AI의 정체</div>
+        <h2 class="statement__lead">AI의 본질 — <span class="accent">데이터에서 자연의 숨은 함수를 추정</span>하는 것.</h2>
+        <p class="statement__caption">오늘 한 일이 그대로 AI의 정의입니다. 흩어진 데이터를 보고, 그 뒤의 규칙(함수)을 가장 그럴듯하게 추정하기. 회귀도, 신경망도 결국 이 한 문장.</p>
+        <div class="statement__points">
+          <div class="statement__point"><span class="statement__point-num">데이터</span><span>신호 + 노이즈</span></div>
+          <div class="statement__point"><span class="statement__point-num">학습</span><span>숨은 함수를 추정</span></div>
+          <div class="statement__point"><span class="statement__point-num">좋은 모델</span><span>노이즈는 버리고 규칙만</span></div>
+        </div>
+      </div>
+      <div class="statement-visual">
+        <svg viewBox="0 0 460 320" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <rect x="0" y="0" width="460" height="320" rx="16" fill="#fff5ec"/>
+          <g font-family="ui-sans-serif, system-ui" font-size="11" font-weight="700" text-anchor="middle">
+            <rect x="40" y="70" width="170" height="80" rx="10" fill="white" stroke="#797067" stroke-width="2"/>
+            <text x="125" y="105" fill="#423d38">자연의 규칙</text>
+            <text x="125" y="124" fill="#797067" font-weight="400">숨은 함수</text>
+            <rect x="250" y="70" width="170" height="80" rx="10" fill="white" stroke="#cc5a14" stroke-width="2"/>
+            <text x="335" y="105" fill="#cc5a14">측정</text>
+            <text x="335" y="124" fill="#797067" font-weight="400">노이즈가 섞임</text>
+            <rect x="40" y="190" width="170" height="80" rx="10" fill="white" stroke="#cc5a14" stroke-width="2"/>
+            <text x="125" y="225" fill="#cc5a14">흩어진 점</text>
+            <text x="125" y="244" fill="#797067" font-weight="400">데이터</text>
+            <rect x="250" y="190" width="170" height="80" rx="10" fill="#fe6e00"/>
+            <text x="335" y="225" fill="white">추정 함수</text>
+            <text x="335" y="244" fill="rgba(255,255,255,0.85)" font-weight="400">AI가 찾은 규칙</text>
+          </g>
+          <g stroke="#cc5a14" stroke-width="2.5" fill="none">
+            <line x1="210" y1="110" x2="246" y2="110"/>
+            <line x1="335" y1="150" x2="335" y2="186"/>
+            <line x1="210" y1="230" x2="246" y2="230"/>
+          </g>
+          <polygon points="246,110 236,105 236,115" fill="#cc5a14"/>
+          <polygon points="335,186 330,176 340,176" fill="#cc5a14"/>
+          <polygon points="246,230 236,225 236,235" fill="#cc5a14"/>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- 30 · Claude도 거대한 함수 -->
+  <section class="slide is-statement">
+    <div class="statement-grid statement-grid--visual-wide">
+      <div class="statement-text">
+        <div class="slide__eyebrow">BIG PICTURE · Claude도</div>
+        <h2 class="statement__lead">지금 쓰는 Claude도 — <span class="accent">똑같은 일의 거대한 버전</span>.</h2>
+        <p class="statement__caption">오늘 점 수십 개로 곡선 하나를 추정했다면, Claude는 인터넷 규모의 데이터로 "이 글 다음에 올 말"이라는 어마어마하게 복잡한 함수를 추정한 결과입니다. 종류가 다른 게 아니라 — 크기가 다를 뿐.</p>
+        <div class="statement__points">
+          <div class="statement__point"><span class="statement__point-num">우리 실습</span><span>점 수십 개 → 곡선 1개</span></div>
+          <div class="statement__point"><span class="statement__point-num">Claude</span><span>천문학적 데이터 → 거대한 함수</span></div>
+          <div class="statement__point"><span class="statement__point-num">같은 원리</span><span>데이터로 함수를 추정</span></div>
+        </div>
+      </div>
+      <div class="statement-visual">
+        <svg viewBox="0 0 460 320" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <rect x="0" y="0" width="460" height="320" rx="16" fill="#fff5ec"/>
+          <rect x="36" y="80" width="150" height="160" rx="12" fill="white" stroke="#cc5a14" stroke-width="2"/>
+          <text x="111" y="66" font-family="ui-sans-serif, system-ui" font-size="11" font-weight="700" fill="#797067" text-anchor="middle">오늘 — 회귀</text>
+          <g fill="#cc5a14" opacity="0.8">
+            <circle cx="66" cy="200" r="4"/><circle cx="92" cy="170" r="4"/><circle cx="118" cy="140" r="4"/><circle cx="144" cy="160" r="4"/><circle cx="160" cy="190" r="4"/>
+          </g>
+          <path d="M62 205 C95 150 130 130 162 185" fill="none" stroke="#fe6e00" stroke-width="2.5"/>
+          <text x="111" y="228" font-family="ui-sans-serif, system-ui" font-size="9" fill="#797067" text-anchor="middle">점 → 곡선</text>
+          <text x="218" y="166" font-family="ui-sans-serif, system-ui" font-size="22" fill="#797067">→</text>
+          <rect x="250" y="44" width="176" height="232" rx="12" fill="rgba(0,0,0,0.92)"/>
+          <text x="338" y="32" font-family="ui-sans-serif, system-ui" font-size="11" font-weight="700" fill="#797067" text-anchor="middle">Claude — 거대한 신경망</text>
+          <g stroke="rgba(254,110,0,0.5)" stroke-width="1">
+            <line x1="278" y1="90" x2="338" y2="120"/><line x1="278" y1="130" x2="338" y2="120"/><line x1="278" y1="170" x2="338" y2="120"/>
+            <line x1="278" y1="90" x2="338" y2="170"/><line x1="278" y1="130" x2="338" y2="170"/><line x1="278" y1="210" x2="338" y2="170"/>
+            <line x1="278" y1="170" x2="338" y2="220"/><line x1="278" y1="210" x2="338" y2="220"/><line x1="278" y1="250" x2="338" y2="220"/>
+            <line x1="338" y1="120" x2="398" y2="155"/><line x1="338" y1="170" x2="398" y2="155"/><line x1="338" y1="220" x2="398" y2="155"/>
+            <line x1="338" y1="120" x2="398" y2="205"/><line x1="338" y1="170" x2="398" y2="205"/><line x1="338" y1="220" x2="398" y2="205"/>
+          </g>
+          <g fill="#fe6e00">
+            <circle cx="278" cy="90" r="6"/><circle cx="278" cy="130" r="6"/><circle cx="278" cy="170" r="6"/><circle cx="278" cy="210" r="6"/><circle cx="278" cy="250" r="6"/>
+            <circle cx="338" cy="120" r="6"/><circle cx="338" cy="170" r="6"/><circle cx="338" cy="220" r="6"/>
+            <circle cx="398" cy="155" r="6"/><circle cx="398" cy="205" r="6"/>
+          </g>
+          <text x="338" y="296" font-family="ui-sans-serif, system-ui" font-size="9" fill="rgba(255,255,255,0.55)" text-anchor="middle">데이터 바다 → 거대한 함수</text>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- 31 · 마무리 -->
+  <section class="slide is-feature">
+    <div class="feature-head">
+      <div class="slide__eyebrow">WRAP · 데이터 챕터 끝</div>
+      <h2 class="feature-head__title">"<span class="accent">AI = 흩어진 데이터에서 자연의 숨은 함수를 찾는 일</span>"</h2>
+    </div>
+    <div class="feature-body">
+      <div class="feature-text">
+        <p class="statement__caption">이번 챕터를 한 줄로 압축. 노이즈 데이터에서 회귀로 곡선을 찾아본 경험이 — 그대로 AI의 정의였습니다.</p>
+        <div class="statement__points">
+          <div class="statement__point"><span class="statement__point-num">노이즈</span><span>데이터엔 늘 흔들림이 섞인다</span></div>
+          <div class="statement__point"><span class="statement__point-num">회귀</span><span>점에서 숨은 곡선을 추정한다</span></div>
+          <div class="statement__point"><span class="statement__point-num">과적합</span><span>노이즈는 외우지 말고 지나친다</span></div>
+          <div class="statement__point"><span class="statement__point-num">Claude</span><span>도 결국 — 거대한 함수</span></div>
+        </div>
+      </div>
+      <div class="feature-visual">
+        <svg viewBox="0 0 460 320" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <rect x="0" y="0" width="460" height="320" rx="16" fill="#fff5ec"/>
+          <path d="M50 235 C120 230 145 100 215 98 C288 96 320 210 410 200" fill="none" stroke="#fe6e00" stroke-width="3.5"/>
+          <g fill="#cc5a14" opacity="0.7">
+            <circle cx="62" cy="244" r="5"/><circle cx="98" cy="212" r="5"/><circle cx="126" cy="196" r="5"/>
+            <circle cx="152" cy="150" r="5"/><circle cx="178" cy="116" r="5"/><circle cx="208" cy="108" r="5"/>
+            <circle cx="236" cy="100" r="5"/><circle cx="266" cy="132" r="5"/><circle cx="296" cy="168" r="5"/>
+            <circle cx="330" cy="190" r="5"/><circle cx="366" cy="206" r="5"/><circle cx="402" cy="198" r="5"/>
+          </g>
+          <text x="230" y="285" font-family="ui-sans-serif, system-ui" font-size="13" fill="#cc5a14" font-weight="700" text-anchor="middle">흩어진 점 뒤의 — 진짜 규칙</text>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <div class="deck-progress"><div class="deck-progress__bar"></div></div>
+</main>
+<script src="../../scripts/deck.js"></script>
+<script>
+  (function () {
+    var btn = document.getElementById('revealBtn');
+    if (!btn) return;
+    btn.addEventListener('click', function () {
+      var pw = window.prompt('정답 공개 — 비밀번호를 입력하세요');
+      if (pw === null) return;
+      if (pw.trim().toLowerCase() === 'unicorn') {
+        document.getElementById('revealLocked').style.display = 'none';
+        document.getElementById('revealAnswer').style.display = 'flex';
+      } else {
+        window.alert('비밀번호가 맞지 않습니다.');
+      }
+    });
+  })();
+</script>
+</body>
+</html>

@@ -1,116 +1,77 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="ko">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Claude Code 5일 완주 — 전체 강의</title>
+  <title>Claude 강의 — 과정 선택</title>
   <link rel="stylesheet" href="styles/tokens.css">
   <link rel="stylesheet" href="styles/deck.css">
   <style>
-    .hero { display: grid; grid-template-columns: 1.3fr 1fr; gap: 1rem; align-items: end; }
-    .hero__brand { font-size: 0.7rem; letter-spacing: 0.18em; text-transform: uppercase; font-weight: 700; color: var(--color-primary-strong); margin-bottom: 0.3rem; }
-    .hero__title { font-size: 1.9rem; font-weight: 700; line-height: 1.1; letter-spacing: -0.03em; margin: 0 0 0.4rem 0; color: var(--color-on-surface); }
-    .hero__caption { font-size: 0.78rem; line-height: 1.5; color: var(--color-on-surface-muted); margin: 0; max-width: 36rem; }
-    .hero__meta { display: flex; flex-direction: column; gap: 0.3rem; font-family: var(--font-mono); font-size: 0.7rem; color: var(--color-on-surface-muted); padding: 0.7rem 0.9rem; background: var(--color-surface-elevated); border: 2px solid var(--color-outline-strong); border-radius: var(--rounded-md); }
-    .hero__meta-row { display: flex; justify-content: space-between; align-items: baseline; gap: 0.8rem; }
-    .hero__meta-label { color: var(--color-on-surface-muted); letter-spacing: 0.05em; font-size: 0.62rem; text-transform: uppercase; }
-    .hero__meta-value { color: var(--color-on-surface); font-weight: 700; font-size: 0.72rem; }
+    .home-hero { display: flex; flex-direction: column; gap: 0.3rem; flex-shrink: 0; margin-bottom: 0.9rem; }
+    .home-hero__brand { font-size: 0.7rem; letter-spacing: 0.18em; text-transform: uppercase; font-weight: 700; color: var(--color-primary-strong); }
+    .home-hero__title { font-size: 1.9rem; font-weight: 700; line-height: 1.12; letter-spacing: -0.03em; margin: 0.1rem 0 0.3rem 0; color: var(--color-on-surface); }
+    .home-hero__caption { font-size: 0.82rem; line-height: 1.5; color: var(--color-on-surface-muted); margin: 0; max-width: 42rem; }
 
-    .day-list { display: grid; grid-template-rows: repeat(5, 1fr); gap: 0.5rem; flex: 1; min-height: 0; }
-    .day-card { display: grid; grid-template-columns: 5rem 1fr auto; gap: 0.9rem; align-items: stretch; background: var(--color-surface-elevated); border: 2px solid var(--color-outline-strong); border-radius: var(--rounded-md); padding: 0.55rem 1rem; text-decoration: none; color: var(--color-on-surface); transition: transform var(--motion-fast) var(--easing-standard), border-color var(--motion-fast), box-shadow var(--motion-fast); min-height: 0; overflow: hidden; }
-    .day-card:hover { transform: translateY(-1px); border-color: var(--color-primary); box-shadow: var(--shadow-raised); }
-    .day-card__num { display: flex; flex-direction: column; align-items: flex-start; gap: 0.1rem; border-right: 2px solid var(--color-outline); padding-right: 0.7rem; height: 100%; justify-content: center; }
-    .day-card__num-label { font-family: var(--font-mono); font-size: 0.58rem; letter-spacing: 0.08em; color: var(--color-primary-strong); font-weight: 700; text-transform: uppercase; }
-    .day-card__num-big { font-family: var(--font-mono); font-size: 1.5rem; line-height: 1; font-weight: 700; color: var(--color-on-surface); letter-spacing: -0.02em; }
-    .day-card__num-date { font-family: var(--font-mono); font-size: 0.56rem; color: var(--color-on-surface-muted); letter-spacing: 0.02em; white-space: nowrap; }
-
-    /* body — keyword는 카드 상단 라벨로 절대 배치. 기본은 title만, hover 시 desc로 교차 */
-    .day-card__body { position: relative; min-width: 0; height: 100%; padding-top: 0.9rem; display: flex; flex-direction: column; justify-content: center; }
-    .day-card__keyword { position: absolute; top: 0; left: 0; font-size: 0.58rem; letter-spacing: 0.08em; font-weight: 700; color: var(--color-primary-strong); text-transform: uppercase; line-height: 1; margin: 0; }
-    .day-card__title, .day-card__desc {
-      margin: 0;
-      transition: opacity 0.18s ease;
-    }
-    .day-card__title { font-size: 1rem; font-weight: 700; letter-spacing: -0.025em; line-height: 1.2; }
-    .day-card__desc {
-      position: absolute;
-      left: 0; right: 0;
-      top: 0.9rem;
-      bottom: 0;
-      font-size: 0.72rem;
-      line-height: 1.4;
-      color: var(--color-on-surface-muted);
-      opacity: 0;
-      pointer-events: none;
-      display: flex;
-      align-items: center;
-      overflow: hidden;
-    }
-    .day-card:hover .day-card__title { opacity: 0; }
-    .day-card:hover .day-card__desc { opacity: 1; }
-    .day-card__meta { display: flex; flex-direction: column; align-items: flex-end; gap: 0.15rem; font-family: var(--font-mono); white-space: nowrap; }
-    .day-card__meta-count { font-size: 0.95rem; font-weight: 700; color: var(--color-primary-strong); }
-    .day-card__meta-label { font-size: 0.6rem; color: var(--color-on-surface-muted); letter-spacing: 0.05em; }
-    .day-card__meta-arrow { font-size: 1.2rem; color: var(--color-primary-strong); }
-
-    /* 수정 중 — 클릭 불가 카드 */
-    .day-card--wip { opacity: 0.5; cursor: not-allowed; }
-    .day-card--wip:hover { transform: none; border-color: var(--color-outline-strong); box-shadow: none; }
-    .day-card--wip:hover .day-card__title { opacity: 1; }
-    .day-card--wip:hover .day-card__desc { opacity: 0; }
-    .day-card__meta-wip { font-family: var(--font-mono); font-size: 0.72rem; font-weight: 700; color: var(--color-on-surface-muted); letter-spacing: 0.04em; }
+    .course-list { display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem; flex: 1; min-height: 0; }
+    .course-card { display: flex; flex-direction: column; gap: 0.5rem; background: var(--color-surface-elevated); border: 2px solid var(--color-outline-strong); border-radius: var(--rounded-md); padding: 1.1rem 1.2rem; text-decoration: none; color: var(--color-on-surface); transition: transform var(--motion-fast) var(--easing-standard), border-color var(--motion-fast), box-shadow var(--motion-fast); min-height: 0; overflow: hidden; }
+    .course-card:hover { transform: translateY(-2px); border-color: var(--color-primary); box-shadow: var(--shadow-raised); }
+    .course-card--accent { border-color: var(--color-primary); }
+    .course-card__eyebrow { font-family: var(--font-mono); font-size: 0.62rem; letter-spacing: 0.08em; text-transform: uppercase; font-weight: 700; color: var(--color-primary-strong); }
+    .course-card__title { font-size: 1.25rem; font-weight: 700; line-height: 1.18; letter-spacing: -0.025em; margin: 0; }
+    .course-card__desc { font-size: 0.74rem; line-height: 1.5; color: var(--color-on-surface-muted); margin: 0; }
+    .course-card__tags { margin-top: auto; display: flex; flex-wrap: wrap; gap: 0.3rem; }
+    .course-card__tag { font-family: var(--font-mono); font-size: 0.58rem; letter-spacing: 0.03em; color: var(--color-on-surface-muted); border: 1.5px solid var(--color-outline); border-radius: var(--rounded-sm); padding: 0.12rem 0.4rem; }
+    .course-card__cta { display: flex; align-items: baseline; justify-content: space-between; gap: 0.6rem; }
+    .course-card__meta { font-family: var(--font-mono); font-size: 0.66rem; font-weight: 700; color: var(--color-primary-strong); }
+    .course-card__arrow { font-size: 1.3rem; color: var(--color-primary-strong); line-height: 1; }
   </style>
 </head>
 <body data-index-root="true">
 
 <main class="index-stage">
   <header class="deck-chrome">
-    <span class="deck-chrome__brand">CLAUDE CODE · 5D</span>
+    <span class="deck-chrome__brand">CLAUDE 강의</span>
     <span class="deck-chrome__divider">·</span>
-    <span class="deck-chrome__day">전체 강의 인덱스</span>
+    <span class="deck-chrome__day">과정 선택</span>
     <span class="deck-chrome__spacer"></span>
   </header>
 
-  <section class="hero">
-    <div>
-      <div class="hero__brand">CLAUDE CODE · 5일 완주 · 전체 강의</div>
-      <h1 class="hero__title">AI에게 일을 시켜서<br>진짜 동작하는 프로그램을 만든다.</h1>
-      <p class="hero__caption">5일이 끝났을 때 "나 Claude Code 제대로 써봤다"고 말할 수 있는 수준까지.</p>
-    </div>
-    <div class="hero__meta">
-      <div class="hero__meta-row"><span class="hero__meta-label">기간</span><span class="hero__meta-value">5일 (월–금)</span></div>
-      <div class="hero__meta-row"><span class="hero__meta-label">시간</span><span class="hero__meta-value">09:00 — 17:00</span></div>
-      <div class="hero__meta-row"><span class="hero__meta-label">인원</span><span class="hero__meta-value">10명 + TA 1명</span></div>
-      <div class="hero__meta-row"><span class="hero__meta-label">1–3일차</span><span class="hero__meta-value">314 슬라이드</span></div>
-    </div>
+  <section class="home-hero">
+    <div class="home-hero__brand">CLAUDE · 강의 인덱스</div>
+    <h1 class="home-hero__title">AI에게 일을 시켜서<br>진짜 결과물을 만든다.</h1>
+    <p class="home-hero__caption">두 가지 과정 중 하나를 선택하세요. 카드를 클릭하면 해당 과정의 목차로 이동합니다.</p>
   </section>
 
-  <div class="day-list">
-    <a class="day-card" href="day-1/index.html">
-      <div class="day-card__num"><span class="day-card__num-label">DAY 01 · MON</span><span class="day-card__num-big">01</span><span class="day-card__num-date">2026.05.18</span></div>
-      <div class="day-card__body"><span class="day-card__keyword">입문</span><h2 class="day-card__title">Claude Code 시작부터 배포까지</h2><p class="day-card__desc">7챕터 — 이해 · 셋업 · 터미널·프롬프팅 · 자기소개 페이지 · Git+4대 문법 · 운영 감각·미션 · Vercel 배포.</p></div>
-      <div class="day-card__meta"><span class="day-card__meta-count">142</span><span class="day-card__meta-label">슬라이드</span><span class="day-card__meta-arrow">→</span></div>
+  <div class="course-list">
+    <a class="course-card" href="claude-code-5day/index.html">
+      <div class="course-card__eyebrow">CLAUDE CODE · 5일 완주</div>
+      <h2 class="course-card__title">터미널로 배우는<br>Claude Code 5일 과정</h2>
+      <p class="course-card__desc">설치 · 터미널 · Git · 데이터 · 도구 확장 · 데스크톱 프로그램 · 미니프로젝트까지. 직접 설치하고 코드를 다루며 배포까지 완주하는 정식 5일 커리큘럼.</p>
+      <div class="course-card__tags">
+        <span class="course-card__tag">CLI · 터미널</span>
+        <span class="course-card__tag">설치 · 배포</span>
+        <span class="course-card__tag">5일</span>
+      </div>
+      <div class="course-card__cta">
+        <span class="course-card__meta">DAY 1 – 5</span>
+        <span class="course-card__arrow">→</span>
+      </div>
     </a>
-    <a class="day-card" href="day-2/index.html">
-      <div class="day-card__num"><span class="day-card__num-label">DAY 02 · TUE</span><span class="day-card__num-big">02</span><span class="day-card__num-date">2026.05.19</span></div>
-      <div class="day-card__body"><span class="day-card__keyword">협업</span><h2 class="day-card__title">Plan · Hooks · CLAUDE.md · 데이터 · 디자인 · 로그인</h2><p class="day-card__desc">6챕터 — 공개 API 데이터 페이지+Plan Mode · Hooks 휴대폰 알림+텔레그램 원격 · CLAUDE.md 길들이기 · 데이터와 AI: 회귀로 숨은 함수 찾기 · Claude Design 프로토타입 · 구글 OAuth 로그인+배포.</p></div>
-      <div class="day-card__meta"><span class="day-card__meta-count">116</span><span class="day-card__meta-label">슬라이드</span><span class="day-card__meta-arrow">→</span></div>
+
+    <a class="course-card course-card--accent" href="claude-desktop-1day/index.html">
+      <div class="course-card__eyebrow">CLAUDE DESKTOP · 1일 과정</div>
+      <h2 class="course-card__title">설치 없이 바로,<br>Cowork로 만드는 하루</h2>
+      <p class="course-card__desc">데스크톱 앱(Cowork)으로 터미널 없이 자기소개 페이지 · 보고서 자동생성 · 업무 자동화 · 리서치 검증까지. 단계가 올라갈수록 도전적인 결과물을 하루 만에.</p>
+      <div class="course-card__tags">
+        <span class="course-card__tag">데스크톱 · 노코드</span>
+        <span class="course-card__tag">로컬 결과물</span>
+        <span class="course-card__tag">1일</span>
+      </div>
+      <div class="course-card__cta">
+        <span class="course-card__meta">T0 – T3</span>
+        <span class="course-card__arrow">→</span>
+      </div>
     </a>
-    <a class="day-card" href="day-3/index.html">
-      <div class="day-card__num"><span class="day-card__num-label">DAY 03 · WED</span><span class="day-card__num-big">03</span><span class="day-card__num-date">2026.05.20</span></div>
-      <div class="day-card__body"><span class="day-card__keyword">확장</span><h2 class="day-card__title">도구로 넓히고, 진짜 앱을 만든다</h2><p class="day-card__desc">4챕터 — 헤드리스+커스텀 슬래시 · 데이터베이스·서브에이전트로 나만의 메모장 제작(GitHub·Supabase·구글 로그인·Vercel) · MCP 브라우저 크롤링 · 스킬 문서 제작.</p></div>
-      <div class="day-card__meta"><span class="day-card__meta-count">62</span><span class="day-card__meta-label">슬라이드</span><span class="day-card__meta-arrow">→</span></div>
-    </a>
-    <a class="day-card" href="day-4/index.html">
-      <div class="day-card__num"><span class="day-card__num-label">DAY 04 · THU</span><span class="day-card__num-big">04</span><span class="day-card__num-date">2026.05.21</span></div>
-      <div class="day-card__body"><span class="day-card__keyword">응용</span><h2 class="day-card__title">데스크톱 도구 + 미니프로젝트</h2><p class="day-card__desc">오전 — PySide + PyInstaller로 내 PC에서 도는 진짜 프로그램(.exe). 오후 — 4일간 익힌 모든 도구로 미니프로젝트 시작.</p></div>
-      <div class="day-card__meta"><span class="day-card__meta-count">17</span><span class="day-card__meta-label">슬라이드</span><span class="day-card__meta-arrow">→</span></div>
-    </a>
-    <div class="day-card day-card--wip">
-      <div class="day-card__num"><span class="day-card__num-label">DAY 05 · FRI</span><span class="day-card__num-big">05</span><span class="day-card__num-date">2026.05.22</span></div>
-      <div class="day-card__body"><span class="day-card__keyword">수정 중</span><h2 class="day-card__title">미니프로젝트 빌드 + 시연 + 회고</h2><p class="day-card__desc">4단계 복습 · design.md · 발표자 노트 · 1인 4분 발표 × 10명 + 5일 회고 → 다음 주 월요일 첫 명령.</p></div>
-      <div class="day-card__meta"><span class="day-card__meta-wip">준비 중</span></div>
-    </div>
   </div>
 </main>
 

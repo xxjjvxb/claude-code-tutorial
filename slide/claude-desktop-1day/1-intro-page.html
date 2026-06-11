@@ -1,0 +1,276 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>1일 과정 · T1. 자기소개 페이지</title>
+  <link rel="stylesheet" href="../styles/tokens.css">
+  <link rel="stylesheet" href="../styles/deck.css">
+  <link rel="stylesheet" href="../styles/deck-89.css">
+</head>
+<body>
+
+<main class="deck">
+
+  <header class="deck-chrome">
+    <span class="deck-chrome__brand">CLAUDE DESKTOP · 1D</span>
+    <span class="deck-chrome__divider">·</span>
+    <span class="deck-chrome__day">T1 자기소개 페이지</span>
+    <span class="deck-chrome__spacer"></span>
+    <span class="deck-chrome__counter">— / —</span>
+  </header>
+
+  <!-- 1 · 표지 -->
+  <section class="slide is-section is-standard active">
+    <div class="section-eyebrow">TIER 1 · 첫 결과물</div>
+    <h2 class="section-title">나를 소개하는 <span class="accent">웹페이지</span>를 만든다</h2>
+    <div class="folder-pin">
+      <span class="folder-pin__icon">📁</span>
+      <span class="folder-pin__label">이번 단계 폴더 →</span>
+      <span class="folder-pin__path">실습자료/01-자기소개/</span>
+    </div>
+    <p class="section-caption">대화만으로 나를 인터뷰하게 하고, 그 내용을 브라우저로 바로 열리는 한 페이지로 완성합니다. 오늘의 첫 손에 잡히는 결과물.</p>
+    <div class="section-meta">
+      <div class="section-meta__item"><span class="section-meta__num">5</span><span>질문 인터뷰</span></div>
+      <div class="section-meta__item"><span class="section-meta__num">1</span><span>HTML 페이지</span></div>
+      <div class="section-meta__item"><span class="section-meta__num">∞</span><span>디자인 변형</span></div>
+    </div>
+  </section>
+
+  <!-- 2 · 오늘 만들 것 -->
+  <section class="slide is-standard">
+    <div class="slide__eyebrow">GOAL · 결과물</div>
+    <h2 class="slide__title">대화 → <span class="accent">브라우저로 열리는 페이지</span></h2>
+    <div class="slide__body">
+      <div class="flow-89">
+        <div class="content-card content-card--compact">
+          <h3 class="content-card__title">어떻게 진행되나</h3>
+          <ul class="content-card__list">
+            <li>Cowork이 나에게 <strong>질문</strong>을 합니다.</li>
+            <li>답을 모아 <strong>소개 글</strong>을 씁니다.</li>
+            <li>그 글로 <strong>웹페이지</strong>를 만듭니다.</li>
+            <li>마음에 들 때까지 <strong>고쳐</strong> 갑니다.</li>
+          </ul>
+        </div>
+        <figure class="photo-slot photo-slot--landscape" data-img="1day-t0-result.png">
+          <img class="photo-slot__img" src="../imgs/1day-t0-result.png" alt="완성된 자기소개 페이지 예시">
+          <figcaption class="photo-slot__ph">
+            <span class="photo-slot__icon">◧</span>
+            <span class="photo-slot__label">완성 페이지 예시</span>
+            <span class="photo-slot__hint">자기소개 HTML</span>
+          </figcaption>
+        </figure>
+        <div class="content-card content-card--compact">
+          <h3 class="content-card__title">보조 재료</h3>
+          <p class="content-card__body">이 폴더의 <code>이력메모.txt</code>를 보조 재료로 줘도 됩니다. 비어 있어도 OK — Cowork이 알아서 인터뷰합니다.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3 · STEP 1 인터뷰 -->
+  <section class="slide is-standard">
+    <div class="slide__eyebrow">STEP 1 · 인터뷰</div>
+    <h2 class="slide__title">나를 <span class="accent">인터뷰</span>하게 한다</h2>
+    <div class="slide__body">
+      <div class="prompt-pair">
+        <div class="prompt-card">
+          <div class="prompt-card__head">
+            <span class="prompt-card__label">① 빠른 인터뷰 — 5개 질문</span>
+            <button class="prompt-card__copy" type="button" data-copy>복사</button>
+          </div>
+          <pre class="prompt-card__body" data-no-nav>나를 인터뷰해서 어떤 사람인지 소개하는 글을 만들어 줘.
+질문은 한 번에 하나씩, 5개만.
+다 듣고 정중한 한 문단으로 정리해 줘.</pre>
+        </div>
+        <div class="prompt-card">
+          <div class="prompt-card__head">
+            <span class="prompt-card__label">② 깊은 인터뷰 — 10개 질문</span>
+            <button class="prompt-card__copy" type="button" data-copy>복사</button>
+          </div>
+          <pre class="prompt-card__body" data-no-nav>나를 더 깊게 인터뷰해 줘. 질문은 한 번에 하나씩, 10개.
+배경 · 경력 · 강점 · 관심사 · 앞으로의 계획을 골고루.
+끝나면 짧은 한 문단 + 핵심 키워드 5개로 정리.</pre>
+        </div>
+      </div>
+      <aside class="step-insight">
+        <div class="step-insight__row step-insight__row--caution">
+          <span class="step-insight__label">⚠️ 조심</span>
+          <span class="step-insight__text">AI가 "다듬은" 결과가 본인 답보다 더 멋있어 보이면 — 검증 본능이 약해짐. 다듬으면서 미세하게 과장·추가된 디테일은 거의 반드시 들어감.</span>
+        </div>
+        <div class="step-insight__row step-insight__row--takeaway">
+          <span class="step-insight__label">💡 가져갈 것</span>
+          <span class="step-insight__text">AI가 잘 듣는 인터뷰어가 될 수 있다는 사실보다 — <strong>인터뷰 비용이 0이 됐다</strong>는 게 결정 패턴을 바꿈. 뭔가 정하기 전 "한 번 더 들어보기"가 무료.</span>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <!-- 4 · STEP 2 톤 변형 -->
+  <section class="slide is-standard">
+    <div class="slide__eyebrow">STEP 2 · 톤 바꾸기</div>
+    <h2 class="slide__title">같은 내용을 — <span class="accent">다른 분위기</span>로</h2>
+    <div class="slide__body">
+      <div class="flow-89">
+        <div class="prompt-card prompt-card--compact">
+          <div class="prompt-card__head">
+            <span class="prompt-card__label">더 간결하게</span>
+            <button class="prompt-card__copy" type="button" data-copy>복사</button>
+          </div>
+          <pre class="prompt-card__body" data-no-nav>방금 글을 절반 길이로 더 간결하게 다듬어 줘.</pre>
+        </div>
+        <div class="prompt-card prompt-card--compact">
+          <div class="prompt-card__head">
+            <span class="prompt-card__label">격식 있게</span>
+            <button class="prompt-card__copy" type="button" data-copy>복사</button>
+          </div>
+          <pre class="prompt-card__body" data-no-nav>같은 내용을 더 격식 있고 공식적인 말투로 바꿔 줘.</pre>
+        </div>
+        <div class="prompt-card prompt-card--compact">
+          <div class="prompt-card__head">
+            <span class="prompt-card__label">따뜻하게</span>
+            <button class="prompt-card__copy" type="button" data-copy>복사</button>
+          </div>
+          <pre class="prompt-card__body" data-no-nav>이번엔 더 친근하고 따뜻한 말투로 바꿔 줘.</pre>
+        </div>
+      </div>
+    </div>
+    <aside class="step-insight">
+      <div class="step-insight__row step-insight__row--caution">
+        <span class="step-insight__label">⚠️ 조심</span>
+        <span class="step-insight__text">톤이 바뀌면 내용도 미세하게 바뀜. "간결하게"는 종종 핵심 사실을 빠뜨림. 톤만 보지 말고 — 톤 변형 사이의 <strong>정보 손실</strong>도 같이 검증.</span>
+      </div>
+      <div class="step-insight__row step-insight__row--takeaway">
+        <span class="step-insight__label">💡 가져갈 것</span>
+        <span class="step-insight__text">같은 메시지를 청중별로 즉시 맞춤 = 무료. 그런데 톤별로 조금씩 다른 사실을 전달하게 되면 — 청중에 따라 <strong>"다른 진실"</strong>이 전달되는 위험.</span>
+      </div>
+    </aside>
+  </section>
+
+  <!-- 5 · STEP 3 웹페이지로 -->
+  <section class="slide is-standard">
+    <div class="slide__eyebrow">STEP 3 · 웹페이지로</div>
+    <h2 class="slide__title">글을 — <span class="accent">웹페이지</span>로 바꾼다</h2>
+    <div class="slide__body">
+      <div class="prompt-pair">
+        <div class="prompt-card">
+          <div class="prompt-card__head">
+            <span class="prompt-card__label">① 깔끔 모던</span>
+            <button class="prompt-card__copy" type="button" data-copy>복사</button>
+          </div>
+          <pre class="prompt-card__body" data-no-nav>지금까지 인터뷰한 내용으로(인터뷰를 건너뛰었다면 01-자기소개/이력메모.txt를 읽고)
+한 페이지짜리 자기소개 웹페이지를 만들어 줘.
+브라우저로 바로 열 수 있게 — 01-자기소개 폴더에 "자기소개.html"로 저장.
+디자인은 깔끔하고 모던하게, 흰 배경에 한 가지 강조색.</pre>
+        </div>
+        <div class="prompt-card">
+          <div class="prompt-card__head">
+            <span class="prompt-card__label">② 개성 있게</span>
+            <button class="prompt-card__copy" type="button" data-copy>복사</button>
+          </div>
+          <pre class="prompt-card__body" data-no-nav>같은 내용으로 한 번 더 만들되, 이번엔 분위기를 다르게.
+대담한 색과 큰 글씨, 살짝 엉뚱한 레이아웃으로.
+01-자기소개 폴더에 "자기소개-개성.html"로 저장.</pre>
+        </div>
+      </div>
+    </div>
+    <p class="slide__note">파일명 <code>자기소개.html</code>은 그대로 두세요 — 다음 단계(T2)가 이 이름으로 읽어 갑니다.</p>
+  </section>
+
+  <!-- 6 · STEP 4 확인 -->
+  <section class="slide is-standard">
+    <div class="slide__eyebrow">STEP 4 · 확인</div>
+    <h2 class="slide__title">만든 페이지를 — <span class="accent">바로 확인</span></h2>
+    <div class="slide__body">
+      <div class="prompt-pair">
+        <div class="prompt-card">
+          <div class="prompt-card__head">
+            <span class="prompt-card__label">③ 브라우저로 열기</span>
+            <button class="prompt-card__copy" type="button" data-copy>복사</button>
+          </div>
+          <pre class="prompt-card__body" data-no-nav>방금 만든 페이지를 브라우저로 열어서 보여 줘.
+파일이 어디에 저장됐는지도 알려 줘.</pre>
+        </div>
+        <div class="prompt-card">
+          <div class="prompt-card__head">
+            <span class="prompt-card__label">④ 한눈에 비교</span>
+            <button class="prompt-card__copy" type="button" data-copy>복사</button>
+          </div>
+          <pre class="prompt-card__body" data-no-nav>두 자기소개 페이지를 나란히 비교할 수 있게,
+한 화면에 같이 띄워서 보여 줘.</pre>
+        </div>
+      </div>
+      <aside class="step-insight">
+        <div class="step-insight__row step-insight__row--caution">
+          <span class="step-insight__label">⚠️ 조심</span>
+          <span class="step-insight__text">깔끔한 결과물 = 검증된 결과물이 아님. UI 완성도와 콘텐츠 정확성은 다른 축. <strong>시각적 만족이 검증 욕구를 죽임</strong>.</span>
+        </div>
+        <div class="step-insight__row step-insight__row--takeaway">
+          <span class="step-insight__label">💡 가져갈 것</span>
+          <span class="step-insight__text">결과를 즉시 시각화 = 결정의 피드백 사이클 단축. 단축된 시간이 <strong>검증에 쓰여야</strong> 의미. 만족하고 끝나면 빠르게 잘못된 결정.</span>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <!-- 7 · STEP 5 디자인 다듬기 -->
+  <section class="slide is-standard">
+    <div class="slide__eyebrow">STEP 5 · 다듬기</div>
+    <h2 class="slide__title">조금씩 — <span class="accent">구체적으로</span> 고친다</h2>
+    <div class="slide__body">
+      <div class="flow-89">
+        <div class="prompt-card prompt-card--compact">
+          <div class="prompt-card__head">
+            <span class="prompt-card__label">색·분위기</span>
+            <button class="prompt-card__copy" type="button" data-copy>복사</button>
+          </div>
+          <pre class="prompt-card__body" data-no-nav>전체 색을 차분한 남색 계열로 바꾸고, 글씨를 조금 키워 줘.</pre>
+        </div>
+        <div class="prompt-card prompt-card--compact">
+          <div class="prompt-card__head">
+            <span class="prompt-card__label">섹션 추가</span>
+            <button class="prompt-card__copy" type="button" data-copy>복사</button>
+          </div>
+          <pre class="prompt-card__body" data-no-nav>맨 아래에 연락처 섹션과 프로필 사진 자리를 추가해 줘.</pre>
+        </div>
+      </div>
+    </div>
+    <aside class="step-insight">
+      <div class="step-insight__row step-insight__row--caution">
+        <span class="step-insight__label">⚠️ 조심</span>
+        <span class="step-insight__text">반복 수정에서 컨텍스트가 누적될수록 모델이 이전 결정 근거를 흐리게 기억. <strong>"원래 왜 이렇게 했지?"</strong> 가 사라지는 순간 결정이 우연이 됨.</span>
+      </div>
+      <div class="step-insight__row step-insight__row--takeaway">
+        <span class="step-insight__label">💡 가져갈 것</span>
+        <span class="step-insight__text">반복 수정 사이클은 강력. 단 — 핵심 결정 사항을 <strong>별도 메모로 박지 않으면</strong> 무엇이 어디서 결정됐는지 추적 불가. 결정 기록의 책임은 사람.</span>
+      </div>
+    </aside>
+  </section>
+
+  <!-- 8 · 도전 + 다음 -->
+  <section class="slide is-standard">
+    <div class="slide__eyebrow">CHALLENGE · 먼저 끝났다면</div>
+    <h2 class="slide__title">한 발 더 — <span class="accent">도전 과제</span></h2>
+    <div class="slide__body">
+      <div class="challenge">
+        <span class="challenge__label">도전 과제</span>
+        <ul class="challenge__list">
+          <li><strong>① 반응형 모바일</strong> — 휴대폰에서도 잘 보이게. 작은 화면에서는 세로로 쌓이고, 글씨·여백도 자동 조정되게.</li>
+          <li><strong>② 다크 모드 토글</strong> — 우상단 버튼을 누르면 밝은/어두운 테마가 부드럽게 전환되게 (애니메이션 포함).</li>
+          <li><strong>③ 타임라인 섹션</strong> — 경력·관심사를 연도순 세로 타임라인으로. 각 항목에 짧은 설명·아이콘.</li>
+          <li><strong>④ 실제 프로필 사진</strong> — 본인 사진 한 장을 <code>01-자기소개</code> 폴더에 넣어 두고 "이 사진을 둥근 액자 + 부드러운 그림자로 넣어 줘"라고.</li>
+          <li><strong>⑤ 인쇄 가능 명함</strong> — 같은 내용을 명함 한 장 크기로도 (인쇄용 PDF로).</li>
+        </ul>
+      </div>
+    </div>
+    <p class="slide__note">결과물이 만족스러우면 — 채팅 입력창에 <strong><code>/채점</code></strong> 이라고 글자 그대로 입력해 점수 받아보기. 다음 단계에서는 이 자기소개를 진짜 발표자료·보고서로 바꿉니다.</p>
+  </section>
+
+  <div class="deck-progress"><div class="deck-progress__bar"></div></div>
+</main>
+
+<script src="../scripts/deck.js"></script>
+<script src="../scripts/prompt-copy.js"></script>
+<script src="../scripts/slide-modify.js"></script>
+</body>
+</html>

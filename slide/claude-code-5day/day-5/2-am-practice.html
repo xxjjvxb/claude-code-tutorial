@@ -1,0 +1,281 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Day 5 · 오전 실습 · 빌드 + 디자인</title>
+  <link rel="stylesheet" href="../../styles/tokens.css">
+  <link rel="stylesheet" href="../../styles/deck.css">
+</head>
+<body>
+
+<main class="deck">
+
+  <header class="deck-chrome">
+  <span class="deck-chrome__brand">CLAUDE CODE · 5D</span>
+  <span class="deck-chrome__divider">·</span>
+  <span class="deck-chrome__day">DAY 05 · 오전 실습 · FINAL</span>
+  <span class="deck-chrome__spacer"></span>
+  <span class="deck-chrome__counter">— / —</span>
+</header>
+
+
+  <!-- 1 · Section cover -->
+  <section class="slide is-section is-standard">
+    <div class="section-eyebrow">PART 02 · HANDS-ON</div>
+    <h2 class="section-title">미니 빌드 + <span class="accent">슬라이드 디자인</span></h2>
+    <p class="section-caption">75분 동안 미니프로젝트 빌드 마무리 + 발표 슬라이드에 design.md 적용 + 발표자 노트 자동 생성.</p>
+    <div class="section-meta">
+      <div class="section-meta__item"><span class="section-meta__num">3</span><span>활동</span></div>
+      <div class="section-meta__item"><span class="section-meta__num">10:45</span><span>시작</span></div>
+    </div>
+  </section>
+
+  <!-- 2 · 흐름 -->
+  <section class="slide is-standard">
+    <div class="slide__eyebrow">OVERVIEW · 흐름</div>
+    <h2 class="slide__title">실습 흐름 — <span class="accent">3 활동</span></h2>
+    <div class="slide__body">
+      <div class="setup-grid">
+        <div class="setup-step"><div class="setup-step__num">A</div><h3 class="setup-step__title">미니 빌드 마무리</h3><p class="setup-step__desc">Plan + 모든 도구 활용 — 동작하는 1차 완성</p></div>
+        <div class="setup-step"><div class="setup-step__num">B</div><h3 class="setup-step__title">design.md + PPTX v2</h3><p class="setup-step__desc">디자인 룰 작성 + 어제 PPTX에 적용</p></div>
+        <div class="setup-step"><div class="setup-step__num">C</div><h3 class="setup-step__title">발표자 노트</h3><p class="setup-step__desc">Claude로 4분 대본 자동 생성 + 통독</p></div>
+      </div>
+      <p class="slide__note">A에 시간 가장 많이 — 미니가 발표 핵심. B·C는 마무리.</p>
+    </div>
+  </section>
+
+  <!-- 3 · A: 빌드 마무리 -->
+  <section class="slide is-standard">
+    <div class="slide__eyebrow">A · 미니 빌드 마무리</div>
+    <h2 class="slide__title">Plan 모드로 — <span class="accent">남은 기능 한 사이클</span></h2>
+    <div class="slide__body">
+      <div class="step-list step-list--compact">
+        <div class="step-list__item">
+          <div class="step-list__num">1</div>
+          <div class="step-list__content">
+            <p class="step-list__title">미니 폴더 → claude → /memory로 CLAUDE.md 확인</p>
+          </div>
+        </div>
+        <div class="step-list__item">
+          <div class="step-list__num">2</div>
+          <div class="step-list__content">
+            <p class="step-list__title">남은 기능 1개 — Plan 모드 (Shift+Tab 두 번) → 계획 → 승인 → 실행</p>
+          </div>
+        </div>
+        <div class="step-list__item">
+          <div class="step-list__num">3</div>
+          <div class="step-list__content">
+            <p class="step-list__title">test-writer 호출 — 새 기능에 테스트 자동 작성</p>
+          </div>
+        </div>
+        <div class="step-list__item">
+          <div class="step-list__num">4</div>
+          <div class="step-list__content">
+            <p class="step-list__title">실제 동작 확인 — 본인 손으로 한 번 (검증은 사람)</p>
+          </div>
+        </div>
+        <div class="step-list__item">
+          <div class="step-list__num">5</div>
+          <div class="step-list__content">
+            <p class="step-list__title">git commit + /usage 캡처</p>
+          </div>
+        </div>
+      </div>
+      <p class="slide__note">"1개 기능 추가"가 한도 — 발표 직전 큰 변경은 위험. <strong>오늘은 안정화 위주</strong>.</p>
+    </div>
+  </section>
+
+  <!-- 4 · A: 5일 도구 다 꺼내기 -->
+  <section class="slide is-standard">
+    <div class="slide__eyebrow">A · 7 도구 활용</div>
+    <h2 class="slide__title">한 사이클에 — <span class="accent">5~7 도구</span> 등장</h2>
+    <div class="slide__body">
+      <div class="code-block">
+        <div class="code-block__header">
+          <span class="code-block__dot" style="background:#fb2c36"></span><span class="code-block__dot" style="background:#edb200"></span><span class="code-block__dot" style="background:#00c758"></span>
+          <span class="code-block__title">claude · my-budget/ — 5일 도구 종합</span>
+        </div>
+        <div class="code-block__body"><span class="code-block__line"><span class="code-block__cmt"># 1) CLAUDE.md 자동 주입 (Day 3)</span></span><span class="code-block__line"><span class="code-block__out">  ✓ 한국어 답변 룰 적용</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__cmt"># 2) Plan 모드 (Day 3)</span></span><span class="code-block__line"><span class="code-block__hi">  [plan]</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__cmt"># 3) @ 멘션 (Day 2)</span></span><span class="code-block__line"><span class="code-block__cmd">&gt; @routes/transactions.py 페이지네이션 추가</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__cmt"># 4) Sub-agent (Day 4)</span></span><span class="code-block__line"><span class="code-block__hi">  → @test-writer 호출 자동</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__cmt"># 5) MCP filesystem (Day 4)</span></span><span class="code-block__line"><span class="code-block__hi">  → tests/ 폴더 스캔</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__cmt"># 6) 응답 끝 → Stop Hook (Day 3)</span></span><span class="code-block__line"><span class="code-block__hi">  → Telegram 알림 발송</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__cmt"># 7) /review 슬래시 (Day 4)</span></span><span class="code-block__line"><span class="code-block__cmd">&gt; /review</span></span></div>
+      </div>
+      <p class="slide__note">한 작업에 5~7 도구가 자연스럽게 결합. <strong>"군단 + 도구 + 자동화"의 진가</strong>.</p>
+    </div>
+  </section>
+
+  <!-- 5 · B: design.md 작성 -->
+  <section class="slide is-standard">
+    <div class="slide__eyebrow">B · design.md 작성</div>
+    <h2 class="slide__title">본인 디자인 룰 — <span class="accent">15줄 이내</span></h2>
+    <div class="slide__body">
+      <div class="code-block">
+        <div class="code-block__header">
+          <span class="code-block__dot" style="background:#fb2c36"></span><span class="code-block__dot" style="background:#edb200"></span><span class="code-block__dot" style="background:#00c758"></span>
+          <span class="code-block__title">my-budget/design.md — 예시</span>
+        </div>
+        <div class="code-block__body"><span class="code-block__line"><span class="code-block__hi"># my-budget · 디자인</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__cmt">## 컬러</span></span><span class="code-block__line"><span class="code-block__out">- primary: #2563eb (블루)</span></span><span class="code-block__line"><span class="code-block__out">- background: #f8fafc</span></span><span class="code-block__line"><span class="code-block__out">- text: #1e293b</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__cmt">## 폰트</span></span><span class="code-block__line"><span class="code-block__out">- Pretendard (한국어 우선)</span></span><span class="code-block__line"><span class="code-block__out">- 제목 굵게 32pt · 본문 보통 16pt</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__cmt">## 레이아웃</span></span><span class="code-block__line"><span class="code-block__out">- 16:9 비율</span></span><span class="code-block__line"><span class="code-block__out">- 한 슬라이드 1 메시지</span></span><span class="code-block__line"><span class="code-block__out">- 좌측 정렬 · 여백 16% 이상</span></span></div>
+      </div>
+      <p class="slide__note">본인 미니프로젝트 톤에 맞춰 — 가계부면 신뢰감 있는 블루, 일기 앱이면 따뜻한 베이지 등.</p>
+    </div>
+  </section>
+
+  <!-- 6 · B: PPTX v2 생성 -->
+  <section class="slide is-standard">
+    <div class="slide__eyebrow">B · PPTX v2 생성</div>
+    <h2 class="slide__title">"<span class="accent">@design.md 적용</span>" 한 줄</h2>
+    <div class="slide__body">
+      <div class="code-block">
+        <div class="code-block__header">
+          <span class="code-block__dot" style="background:#fb2c36"></span><span class="code-block__dot" style="background:#edb200"></span><span class="code-block__dot" style="background:#00c758"></span>
+          <span class="code-block__title">claude · 발표 슬라이드 만들기</span>
+        </div>
+        <div class="code-block__body"><span class="code-block__line"><span class="code-block__cmd">&gt; 본인 미니프로젝트 발표용 PPT 만들어줘. 5장 — 표지 · 무엇 · 어떻게 · 데모 · 마무리</span></span><span class="code-block__line"><span class="code-block__cmd">&gt; <span class="code-block__hi">@design.md 적용해서</span></span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__hi">  [skill: pptx-builder]</span></span><span class="code-block__line"><span class="code-block__out">  ✓ design.md 읽고 컬러·폰트·레이아웃 적용</span></span><span class="code-block__line"><span class="code-block__out">  ✓ 5장 슬라이드 생성 (16:9)</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__hi">  ⚠ Claude wants to write: presentation_v2.pptx</span></span><span class="code-block__line"><span class="code-block__out">  → Allow once</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__out">  ✓ presentation_v2.pptx 생성</span></span><span class="code-block__line"><span class="code-block__out">  PowerPoint로 열어 확인하세요.</span></span></div>
+      </div>
+      <p class="slide__note">v1과 v2를 나란히 열어 비교 — design.md 한 파일이 만든 차이가 보입니다.</p>
+    </div>
+  </section>
+
+  <!-- 7 · B: 슬라이드 검증 -->
+  <section class="slide is-standard">
+    <div class="slide__eyebrow">B · 검증 + 미세 조정</div>
+    <h2 class="slide__title">PPT 열어서 — <span class="accent">5 항목 체크</span></h2>
+    <div class="slide__body">
+      <div class="grid-4">
+        <div class="promise-card">
+          <div class="promise-card__num">✓</div>
+          <h3 class="promise-card__title">컬러 통일</h3>
+          <p class="promise-card__body">design.md 컬러가 모든 슬라이드에 일관되게.</p>
+        </div>
+        <div class="promise-card">
+          <div class="promise-card__num">✓</div>
+          <h3 class="promise-card__title">한글 폰트</h3>
+          <p class="promise-card__body">Pretendard 등 깨짐 X. 깨지면 폰트 임베드 추가.</p>
+        </div>
+        <div class="promise-card">
+          <div class="promise-card__num">✓</div>
+          <h3 class="promise-card__title">5장 구성</h3>
+          <p class="promise-card__body">표지·무엇·어떻게·데모·마무리 의도대로.</p>
+        </div>
+        <div class="promise-card">
+          <div class="promise-card__num">→</div>
+          <h3 class="promise-card__title">미세 조정</h3>
+          <p class="promise-card__body">아쉬운 슬라이드 1~2장은 PowerPoint에서 직접.</p>
+        </div>
+      </div>
+      <p class="slide__note">완벽 X — <strong>발표용으로 충분한 수준</strong>. 4분 안에 보일 텐데 디테일에 시간 빼앗기지 말기.</p>
+    </div>
+  </section>
+
+  <!-- 8 · C: 발표자 노트 자동 -->
+  <section class="slide is-standard">
+    <div class="slide__eyebrow">C · 발표자 노트 자동</div>
+    <h2 class="slide__title">"<span class="accent">4분 대본 만들어줘</span>"</h2>
+    <div class="slide__body">
+      <div class="code-block">
+        <div class="code-block__header">
+          <span class="code-block__dot" style="background:#fb2c36"></span><span class="code-block__dot" style="background:#edb200"></span><span class="code-block__dot" style="background:#00c758"></span>
+          <span class="code-block__title">claude · 발표자 노트</span>
+        </div>
+        <div class="code-block__body"><span class="code-block__line"><span class="code-block__cmd">&gt; <span class="code-block__hi">@presentation_v2.pptx</span> 보고 4분 발표용 대본 작성해줘.</span></span><span class="code-block__line"><span class="code-block__cmd">  포맷: 1분 무엇 · 1.5분 어떻게 · 1.5분 Q&A 도입.</span></span><span class="code-block__line"><span class="code-block__cmd">  대화체 · 한국어로.</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__out">  발표 대본 — 4분</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__hi">  [표지 · 30초]</span></span><span class="code-block__line"><span class="code-block__out">  "안녕하세요, 김OO입니다.</span></span><span class="code-block__line"><span class="code-block__out">  5일 동안 가계부 한 페이지를 만들었어요..."</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__hi">  [무엇 · 30초]</span></span><span class="code-block__line"><span class="code-block__out">  "Flask + SQLite로 거래 추가 + 카테고리..."</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__hi">  [어떻게 · 90초]</span></span><span class="code-block__line"><span class="code-block__out">  "가장 효과적이었던 건 Plan Mode..."</span></span><span class="code-block__line"><span class="code-block__out">  ...</span></span></div>
+      </div>
+      <p class="slide__note">대본 통독 → 본인 말투에 맞게 한두 줄 다듬기. <strong>외우지 말 것</strong> — 발표는 자연스러움이 우선.</p>
+    </div>
+  </section>
+
+  <!-- 9 · 검증 + 커밋 -->
+  <section class="slide is-standard">
+    <div class="slide__eyebrow">VERIFY · 실습 마무리</div>
+    <h2 class="slide__title">실습 끝났으면 <span class="accent">4가지 체크</span></h2>
+    <div class="slide__body">
+      <div class="grid-4">
+        <div class="promise-card">
+          <div class="promise-card__num">A</div>
+          <h3 class="promise-card__title">미니 동작</h3>
+          <p class="promise-card__body">기능 1개 추가 + 테스트 통과 + commit.</p>
+        </div>
+        <div class="promise-card">
+          <div class="promise-card__num">B</div>
+          <h3 class="promise-card__title">design.md</h3>
+          <p class="promise-card__body">15줄 이내 + presentation_v2.pptx 생성됨.</p>
+        </div>
+        <div class="promise-card">
+          <div class="promise-card__num">C</div>
+          <h3 class="promise-card__title">발표 대본</h3>
+          <p class="promise-card__body">4분 분량 + 본인 말투로 다듬음.</p>
+        </div>
+        <div class="promise-card">
+          <div class="promise-card__num">git</div>
+          <h3 class="promise-card__title">commit + /usage</h3>
+          <p class="promise-card__body">"발표 자료 준비" commit + /usage 확인.</p>
+        </div>
+      </div>
+      <p class="slide__note">막혔으면 점심 직전 손드세요 — TA가 1:1로. <strong>발표 직전 사고 방지</strong> 위해 일찍 정리.</p>
+    </div>
+  </section>
+
+  <!-- 10 · 점심 안내 -->
+  <section class="slide is-statement">
+    <div class="statement-grid">
+      <div class="statement-text">
+        <div class="slide__eyebrow">12:00 — 13:00 · 점심</div>
+        <h2 class="statement__lead">발표 시간 직전 — <span class="accent">한 번 더 동작 확인</span></h2>
+        <p class="statement__caption">발표 중 노트북이 안 켜지거나 미니가 안 돌아가는 건 흔한 사고. 점심 후 발표 전 한 번 더 + 화면 캡처 백업.</p>
+        <div class="statement__points">
+          <div class="statement__point"><span class="statement__point-num">통과</span><span>실습 다 됐으면 점심 → 13:00 오후 이론</span></div>
+          <div class="statement__point"><span class="statement__point-num">막힘</span><span>점심에 TA 1:1 — 발표 시간 (15:00) 전에 다 같이</span></div>
+          <div class="statement__point"><span class="statement__point-num">팁</span><span>미니 화면 4~5장 미리 캡처해두기 — 비상시 PPT에 박기</span></div>
+        </div>
+      </div>
+      <div class="statement-visual">
+        <svg viewBox="0 0 460 320" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <rect x="0" y="0" width="460" height="320" rx="16" fill="#fff5ec"/>
+          <text x="230" y="60" font-family="ui-sans-serif, system-ui" font-size="13" fill="#797067" letter-spacing="0.1em" font-weight="700" text-anchor="middle">발표까지 시간선</text>
+          <line x1="40" y1="160" x2="420" y2="160" stroke="#797067" stroke-width="2"/>
+          <circle cx="80" cy="160" r="10" fill="#016630"/>
+          <text x="80" y="195" font-family="ui-monospace, monospace" font-size="10" fill="#797067" text-anchor="middle">12:00</text>
+          <text x="80" y="135" font-family="ui-monospace, monospace" font-size="10" fill="#016630" text-anchor="middle">실습 끝</text>
+          <circle cx="180" cy="160" r="10" fill="#cc5a14"/>
+          <text x="180" y="195" font-family="ui-monospace, monospace" font-size="10" fill="#797067" text-anchor="middle">13:00</text>
+          <text x="180" y="135" font-family="ui-monospace, monospace" font-size="10" fill="#cc5a14" text-anchor="middle">오후 이론</text>
+          <circle cx="280" cy="160" r="10" fill="#cc5a14"/>
+          <text x="280" y="195" font-family="ui-monospace, monospace" font-size="10" fill="#797067" text-anchor="middle">14:45</text>
+          <text x="280" y="135" font-family="ui-monospace, monospace" font-size="10" fill="#cc5a14" text-anchor="middle">빌드 마무리</text>
+          <circle cx="400" cy="160" r="14" fill="#fb2c36"/>
+          <text x="400" y="195" font-family="ui-monospace, monospace" font-size="10" fill="#fb2c36" text-anchor="middle" font-weight="700">15:00</text>
+          <text x="400" y="135" font-family="ui-monospace, monospace" font-size="11" fill="#fb2c36" text-anchor="middle" font-weight="700">발표 시작</text>
+          <text x="230" y="270" font-family="ui-sans-serif, system-ui" font-size="13" fill="#cc5a14" font-weight="700" text-anchor="middle">발표까지 3시간 — 안정화 위주</text>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- 11 · 마무리 -->
+  <section class="slide is-standard">
+    <div class="slide__eyebrow">RECAP · 오전 마무리</div>
+    <h2 class="slide__title">오전 끝 — <span class="accent">발표 준비 완료</span></h2>
+    <div class="slide__body">
+      <div class="grid-3">
+        <div class="promise-card">
+          <div class="promise-card__num">A</div>
+          <h3 class="promise-card__title">미니 1차 완성</h3>
+          <p class="promise-card__body">기능 추가 + 테스트 + commit. 발표 시연 가능 상태.</p>
+        </div>
+        <div class="promise-card">
+          <div class="promise-card__num">B</div>
+          <h3 class="promise-card__title">PPT v2</h3>
+          <p class="promise-card__body">design.md 적용. 본인 톤의 5장 슬라이드.</p>
+        </div>
+        <div class="promise-card">
+          <div class="promise-card__num">C</div>
+          <h3 class="promise-card__title">발표 대본</h3>
+          <p class="promise-card__body">4분 분량 — 외우지 않아도 흐름 파악 가능.</p>
+        </div>
+      </div>
+      <p class="slide__note">오후엔 <strong>실전 패턴 + VS Code 깊게 + FAQ</strong> — 발표까지 1.5시간 동안 마지막 정리.</p>
+    </div>
+  </section>
+
+  <div class="deck-progress"><div class="deck-progress__bar"></div></div>
+</main>
+<script src="../../scripts/deck.js"></script>
+</body>
+</html>

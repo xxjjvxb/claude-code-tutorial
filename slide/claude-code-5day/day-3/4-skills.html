@@ -1,0 +1,393 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>3일차 · 4. 스킬 + DESIGN.md</title>
+  <link rel="stylesheet" href="../../styles/tokens.css">
+  <link rel="stylesheet" href="../../styles/deck.css">
+</head>
+<body>
+
+<main class="deck">
+
+  <header class="deck-chrome">
+  <span class="deck-chrome__brand">CLAUDE CODE · 5D</span>
+  <span class="deck-chrome__divider">·</span>
+  <span class="deck-chrome__day">3일차 · 4 스킬·DESIGN.md</span>
+  <span class="deck-chrome__spacer"></span>
+  <span class="deck-chrome__counter">— / —</span>
+</header>
+
+  <!-- 1 · Chapter intro -->
+  <section class="slide is-section is-standard">
+    <div class="section-eyebrow">CHAPTER 4 · SKILL &amp; DESIGN.md</div>
+    <h2 class="section-title">스킬과 DESIGN.md — <span class="accent">가져다 쓰는</span> 능력과 디자인</h2>
+    <p class="section-caption">1일차에 만든 자기소개를 다시 꺼냅니다. 공식 "스킬"로 코드 한 줄 없이 진짜 PPT·PDF로 바꾸고 — designmd.ai의 DESIGN.md로 웹·문서에 통일된 테마를 입힙니다. 끝으로 3일차에 모은 도구를 정리합니다.</p>
+    <div class="section-meta">
+      <div class="section-meta__item"><span class="section-meta__num">4</span><span>공식 문서 스킬 (PPTX·PDF·DOCX·XLSX)</span></div>
+      <div class="section-meta__item"><span class="section-meta__num">1</span><span>자기소개 → PPT·PDF 변환</span></div>
+      <div class="section-meta__item"><span class="section-meta__num">1</span><span>DESIGN.md로 테마 통일</span></div>
+    </div>
+  </section>
+
+  <!-- 2 · 스킬이란 -->
+  <section class="slide is-statement">
+    <div class="statement-grid statement-grid--visual-wide">
+      <div class="statement-text">
+        <div class="slide__eyebrow">WHAT · 스킬</div>
+        <h2 class="statement__lead">스킬 — 누군가 만들어 둔 <span class="accent">능력 한 묶음</span>.</h2>
+        <p class="statement__caption">"PowerPoint 문서를 제대로 만드는 법" 같은 절차·요령·도구를 한 폴더에 묶어 둔 것. 가져다 두기만 하면 — Claude가 그 능력을 갖춥니다.</p>
+        <div class="statement__points">
+          <div class="statement__point"><span class="statement__point-num">묶음</span><span>설명·절차·도구가 한 폴더에</span></div>
+          <div class="statement__point"><span class="statement__point-num">공식</span><span>Anthropic이 만든 검증된 스킬을 그대로</span></div>
+          <div class="statement__point"><span class="statement__point-num">대표</span><span>PPTX · DOCX · XLSX · PDF 문서 만들기</span></div>
+        </div>
+      </div>
+      <div class="statement-visual">
+        <svg viewBox="0 0 460 320" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <rect x="0" y="0" width="460" height="320" rx="16" fill="#fff5ec"/>
+          <rect x="130" y="64" width="200" height="120" rx="12" fill="#fff" stroke="#cc5a14" stroke-width="2.5"/>
+          <text x="230" y="92" font-family="ui-sans-serif, system-ui" font-size="12" font-weight="700" fill="#cc5a14" text-anchor="middle">pptx 스킬</text>
+          <g font-family="ui-sans-serif, system-ui" font-size="10" fill="#797067" text-anchor="middle">
+            <text x="230" y="118">설명서 · 절차</text>
+            <text x="230" y="138">예제 · 템플릿</text>
+            <text x="230" y="158">필요한 도구</text>
+          </g>
+          <text x="230" y="210" font-family="ui-monospace, monospace" font-size="18" fill="#cc5a14" text-anchor="middle">↓ 가져다 두면</text>
+          <rect x="150" y="226" width="160" height="50" rx="10" fill="#fe6e00"/>
+          <text x="230" y="256" font-family="ui-sans-serif, system-ui" font-size="13" fill="#fff" font-weight="700" text-anchor="middle">Claude가 능력 획득</text>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3 · 공식 문서 스킬 4 -->
+  <section class="slide is-standard">
+    <div class="slide__eyebrow">CATALOG · 공식 문서 스킬 4</div>
+    <h2 class="slide__title">바로 쓸 수 있는 — <span class="accent">문서 만들기 스킬 4</span></h2>
+    <div class="slide__body">
+      <div class="grid-4">
+        <div class="diff-card"><div class="diff-card__rank">PPTX</div><h3 class="diff-card__title">발표 자료</h3><p class="diff-card__body">내용을 PowerPoint 슬라이드로.</p></div>
+        <div class="diff-card"><div class="diff-card__rank">DOCX</div><h3 class="diff-card__title">워드 문서</h3><p class="diff-card__body">보고서·문서를 Word 형식으로.</p></div>
+        <div class="diff-card"><div class="diff-card__rank">XLSX</div><h3 class="diff-card__title">엑셀 표</h3><p class="diff-card__body">데이터를 수식·표가 든 엑셀로.</p></div>
+        <div class="diff-card"><div class="diff-card__rank">PDF</div><h3 class="diff-card__title">PDF 문서</h3><p class="diff-card__body">완성된 결과물을 PDF로.</p></div>
+      </div>
+      <p class="slide__note">오늘은 이 중 <strong>PPTX·PDF</strong>를 씁니다 — 1일차에 만든 자기소개를 한 줄 요청으로 진짜 발표 파일로 바꿔봅니다.</p>
+    </div>
+  </section>
+
+  <!-- 4 · 준비 — 1일차 폴더에서 -->
+  <section class="slide is-standard">
+    <div class="slide__eyebrow">READY · 1일차 폴더에서</div>
+    <h2 class="slide__title">시작 전에 — <span class="accent">자기소개가 있는 폴더</span>로</h2>
+    <div class="slide__body">
+      <div class="two-col">
+        <div>
+          <div class="content-card content-card--compact">
+            <h3 class="content-card__title">왜 그 폴더에서?</h3>
+            <p class="content-card__body">스킬은 — 지금 Claude가 켜진 폴더의 파일을 가지고 일합니다. 1일차 자기소개 <code>index.html</code>이 있는 폴더에서 시작해야 그 파일을 PPT로 바꿀 수 있습니다.</p>
+            <ul class="content-card__list">
+              <li>1일차에 <code>index.html</code>을 만든 폴더를 연다</li>
+              <li>그 폴더 안에서 <code>claude</code> 실행</li>
+              <li>새 폴더 말고 — <strong>꼭 그 폴더</strong>에서</li>
+            </ul>
+          </div>
+        </div>
+        <div>
+          <div class="code-block">
+            <div class="code-block__header">
+              <span class="code-block__dot" style="background:#fb2c36"></span><span class="code-block__dot" style="background:#edb200"></span><span class="code-block__dot" style="background:#00c758"></span>
+              <span class="code-block__title">PowerShell · 1일차 폴더</span>
+            </div>
+            <div class="code-block__body"><span class="code-block__line"><span class="code-block__cmt"># 1일차 자기소개를 만든 폴더로 이동</span></span><span class="code-block__line"><span class="code-block__prompt">PS&gt;</span> <span class="code-block__cmd">cd c:\lecture\day1</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__cmt"># index.html 이 보이면 — 제대로 왔다</span></span><span class="code-block__line"><span class="code-block__prompt">PS&gt;</span> <span class="code-block__cmd">dir</span></span><span class="code-block__line"><span class="code-block__out">  index.html   style.css</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__prompt">PS&gt;</span> <span class="code-block__cmd">claude</span></span></div>
+          </div>
+        </div>
+      </div>
+      <p class="slide__note">폴더 위치가 기억 안 나면 — 1일차에 자기소개를 저장한 곳입니다. 탐색기에서 찾아 주소창의 경로를 복사해 <code>cd</code> 뒤에 붙여넣으면 됩니다.</p>
+    </div>
+  </section>
+
+  <!-- 5 · 스킬 설치 -->
+  <section class="slide is-standard">
+    <div class="slide__eyebrow">INSTALL · 스킬 설치</div>
+    <h2 class="slide__title">스킬 설치 — <span class="accent">두 줄</span>이면 끝</h2>
+    <div class="slide__body">
+      <div class="two-col">
+        <div>
+          <div class="content-card content-card--compact">
+            <h3 class="content-card__title">마켓플레이스에서 한 번에</h3>
+            <p class="content-card__body">공식 문서 스킬은 "마켓플레이스"에서 받습니다. <code>document-skills</code> 묶음 하나에 — PPTX·PDF·DOCX·XLSX가 다 들어 있습니다.</p>
+            <ol class="content-card__list content-card__list--ol">
+              <li>보관소 등록 — <code>/plugin marketplace add</code></li>
+              <li>설치 — <code>/plugin install document-skills</code></li>
+              <li>적용 — <code>/reload-plugins</code> (또는 claude 재시작)</li>
+              <li>메뉴가 뜨면 — 화살표로 골라 "Install" 해도 OK</li>
+            </ol>
+          </div>
+        </div>
+        <div>
+          <div class="code-block">
+            <div class="code-block__header">
+              <span class="code-block__dot" style="background:#fb2c36"></span><span class="code-block__dot" style="background:#edb200"></span><span class="code-block__dot" style="background:#00c758"></span>
+              <span class="code-block__title">claude · /plugin</span>
+            </div>
+            <div class="code-block__body"><span class="code-block__line"><span class="code-block__prompt">&gt;</span> <span class="code-block__cmd">/plugin marketplace add anthropics/skills</span></span><span class="code-block__line"><span class="code-block__out">  ✓ anthropic-agent-skills 등록</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__prompt">&gt;</span> <span class="code-block__cmd">/plugin install</span></span><span class="code-block__line"><span class="code-block__cmd">  document-skills@anthropic-agent-skills</span></span><span class="code-block__line"><span class="code-block__out">  ✓ pptx · pdf · docx · xlsx 설치 완료</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__prompt">&gt;</span> <span class="code-block__cmd">/reload-plugins</span></span><span class="code-block__line"><span class="code-block__out">  ✓ 플러그인 다시 불러옴 — 즉시 사용 가능</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__cmt"># 이후엔 — 필요할 때 Claude가 알아서 켠다</span></span></div>
+          </div>
+        </div>
+      </div>
+      <p class="slide__note"><code>document-skills</code> 한 번 설치로 <strong>PPTX·PDF 둘 다</strong> 준비 끝. 설치 직후엔 <code>/reload-plugins</code>를 한 번 — 안 그러면 다음 claude 재시작까지 활성화가 안 됩니다. 명령이 헷갈리면 — Claude에게 "공식 문서 스킬 설치를 도와줘"라고 하면 이 과정을 대신 안내합니다.</p>
+    </div>
+  </section>
+
+  <!-- 6 · 자기소개 → PPT -->
+  <section class="slide is-standard">
+    <div class="slide__eyebrow">MAKE · 자기소개 → PPT</div>
+    <h2 class="slide__title">자기소개를 — <span class="accent">진짜 PPT</span>로</h2>
+    <div class="slide__body">
+      <div class="two-col">
+        <div>
+          <div class="content-card content-card--compact">
+            <h3 class="content-card__title">이렇게 시킵니다</h3>
+            <p class="content-card__body">스킬을 따로 부르지 않아도 됩니다 — "발표 자료로 만들어줘"라고만 하면 Claude가 알아서 pptx 스킬을 켭니다.</p>
+            <ul class="content-card__list">
+              <li><strong>index.html</strong>을 가리키며 — "발표용 PPT로"</li>
+              <li>표지·본문이 갖춰진 <code>.pptx</code>가 생성</li>
+              <li>아쉬우면 — "글자 크게"처럼 한 줄로 다듬기</li>
+            </ul>
+          </div>
+        </div>
+        <div>
+          <div class="code-block">
+            <div class="code-block__header">
+              <span class="code-block__dot" style="background:#fb2c36"></span><span class="code-block__dot" style="background:#edb200"></span><span class="code-block__dot" style="background:#00c758"></span>
+              <span class="code-block__title">claude · day1</span>
+            </div>
+            <div class="code-block__body"><span class="code-block__line"><span class="code-block__prompt">&gt;</span> <span class="code-block__cmd">index.html 내용으로 발표용 PPT를</span></span><span class="code-block__line"><span class="code-block__cmd">  만들어줘. 표지 1장 + 본문으로.</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__out">  ✓ pptx 스킬 실행</span></span><span class="code-block__line"><span class="code-block__out">  ✓ 자기소개.pptx 생성</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__prompt">&gt;</span> <span class="code-block__cmd">제목 글자를 <span class="code-block__hi">더 크게</span> 해줘</span></span><span class="code-block__line"><span class="code-block__out">  ✓ 자기소개.pptx 수정</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__prompt">&gt;</span> <span class="code-block__cmd">이 자기소개를 <span class="code-block__hi">PDF로도</span> 만들어줘</span></span></div>
+          </div>
+        </div>
+      </div>
+      <p class="slide__note">PDF도 똑같이 — "이 자기소개를 PDF로도". 만든 <code>.pptx</code>는 더블클릭하면 PowerPoint에서 바로 열립니다. 한 번에 완벽하지 않아도 — 한 줄씩 고치면 됩니다.</p>
+    </div>
+  </section>
+
+  <!-- 7 · 스킬 wow -->
+  <section class="slide is-statement">
+    <div class="statement-grid statement-grid--visual-wide">
+      <div class="statement-text">
+        <div class="slide__eyebrow">WOW · 진짜 파일이 나온다</div>
+        <h2 class="statement__lead">코드 한 줄 없이 — <span class="accent">진짜 PPT·PDF</span>가 툭.</h2>
+        <p class="statement__caption">"내 자기소개를 발표 자료로" 한 줄 → 더블클릭하면 PowerPoint에서 그대로 열리는 진짜 .pptx. PDF도 같은 방식. 코드를 한 줄도 안 썼는데 — 업무에 바로 쓰는 파일이 나옵니다.</p>
+        <div class="statement__points">
+          <div class="statement__point"><span class="statement__point-num">입력</span><span>"내 자기소개를 발표 자료로" 한 줄</span></div>
+          <div class="statement__point"><span class="statement__point-num">출력</span><span>.pptx · .pdf — 진짜 열리는 파일</span></div>
+          <div class="statement__point"><span class="statement__point-num">느낌</span><span>"코드를 안 썼는데 — 됐다"</span></div>
+        </div>
+      </div>
+      <div class="statement-visual">
+        <svg viewBox="0 0 460 320" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <rect x="0" y="0" width="460" height="320" rx="16" fill="#fff5ec"/>
+          <rect x="44" y="128" width="150" height="44" rx="8" fill="white" stroke="#cc5a14" stroke-width="2"/>
+          <text x="119" y="155" font-family="ui-monospace, monospace" font-size="11" fill="#423d38" text-anchor="middle">&gt; PPT로 만들어줘</text>
+          <text x="210" y="156" font-family="ui-monospace, monospace" font-size="20" fill="#cc5a14">→</text>
+          <rect x="248" y="74" width="84" height="64" rx="6" fill="#fff" stroke="#cc5a14" stroke-width="2"/>
+          <rect x="248" y="74" width="84" height="16" rx="6" fill="#fe6e00"/>
+          <text x="290" y="115" font-family="ui-sans-serif, system-ui" font-size="11" fill="#cc5a14" font-weight="700" text-anchor="middle">.pptx</text>
+          <rect x="346" y="74" width="84" height="64" rx="6" fill="#fff" stroke="#fb2c36" stroke-width="2"/>
+          <rect x="346" y="74" width="84" height="16" rx="6" fill="#fb2c36"/>
+          <text x="388" y="115" font-family="ui-sans-serif, system-ui" font-size="11" fill="#fb2c36" font-weight="700" text-anchor="middle">.pdf</text>
+          <text x="338" y="178" font-family="ui-sans-serif, system-ui" font-size="11" fill="#797067" text-anchor="middle">진짜 열리는 파일</text>
+          <text x="230" y="232" font-family="ui-sans-serif, system-ui" font-size="14" fill="#797067" text-anchor="middle">한 줄 요청 →</text>
+          <text x="230" y="266" font-family="ui-sans-serif, system-ui" font-size="16" fill="#cc5a14" font-weight="700" text-anchor="middle">진짜 업무 문서</text>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8 · DESIGN.md 란 -->
+  <section class="slide is-statement">
+    <div class="statement-grid statement-grid--visual-wide">
+      <div class="statement-text">
+        <div class="slide__eyebrow">DESIGN.md · designmd.ai</div>
+        <h2 class="statement__lead">디자인을 — <span class="accent">파일 하나</span>로 통째로.</h2>
+        <p class="statement__caption">designmd.ai에 가면 — 색·글꼴·간격 같은 "디자인 규칙"을 <code>DESIGN.md</code> 마크다운 파일 하나로 모아둔 걸 무료로 받을 수 있습니다. 이 파일을 Claude가 읽으면 — 결과물이 그 디자인대로 통일됩니다.</p>
+        <div class="statement__points">
+          <div class="statement__point"><span class="statement__point-num">정체</span><span>색·글꼴·간격 규칙을 한 파일에 정리한 것</span></div>
+          <div class="statement__point"><span class="statement__point-num">무료</span><span>designmd.ai에 수백 개 — 골라 받기</span></div>
+          <div class="statement__point"><span class="statement__point-num">공용</span><span>웹·문서 어디에 쓰든 — 같은 한 파일</span></div>
+        </div>
+      </div>
+      <div class="statement-visual">
+        <svg viewBox="0 0 460 320" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <rect x="0" y="0" width="460" height="320" rx="16" fill="#fff5ec"/>
+          <rect x="40" y="104" width="128" height="112" rx="10" fill="#fff" stroke="#cc5a14" stroke-width="2.5"/>
+          <text x="104" y="92" font-family="ui-monospace, monospace" font-size="12" font-weight="700" fill="#cc5a14" text-anchor="middle">DESIGN.md</text>
+          <g stroke="#ffd2ab" stroke-width="6" stroke-linecap="round">
+            <line x1="62" y1="134" x2="146" y2="134"/>
+            <line x1="62" y1="156" x2="128" y2="156"/>
+            <line x1="62" y1="178" x2="146" y2="178"/>
+            <line x1="62" y1="200" x2="118" y2="200"/>
+          </g>
+          <text x="200" y="166" font-family="ui-monospace, monospace" font-size="22" fill="#cc5a14" text-anchor="middle">→</text>
+          <g font-family="ui-sans-serif, system-ui" font-size="11" font-weight="700" fill="#cc5a14" text-anchor="middle">
+            <rect x="240" y="74" width="176" height="44" rx="9" fill="#fff" stroke="#fe6e00" stroke-width="2.5"/>
+            <text x="328" y="101">자기소개 웹페이지</text>
+            <rect x="240" y="132" width="176" height="44" rx="9" fill="#fff" stroke="#fe6e00" stroke-width="2.5"/>
+            <text x="328" y="159">발표 PPT</text>
+            <rect x="240" y="190" width="176" height="44" rx="9" fill="#fff" stroke="#fe6e00" stroke-width="2.5"/>
+            <text x="328" y="217">PDF 문서</text>
+          </g>
+          <text x="230" y="276" font-family="ui-sans-serif, system-ui" font-size="13" fill="#797067" text-anchor="middle">한 파일 → 어디에 쓰든 같은 디자인</text>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- 9 · DESIGN.md 3단계 -->
+  <section class="slide is-standard">
+    <div class="slide__eyebrow">HOW · DESIGN.md 쓰는 법</div>
+    <h2 class="slide__title">받아서 → 폴더에 두고 → <span class="accent">"이걸로 꾸며줘"</span></h2>
+    <div class="slide__body">
+      <div class="cycle">
+        <div class="cycle__step"><div class="cycle__num">01</div><div class="cycle__title">고르기</div><div class="cycle__desc">designmd.ai에 접속해 디자인을 구경</div><div class="cycle__example">designmd.ai</div></div>
+        <div class="cycle__step"><div class="cycle__num">02</div><div class="cycle__title">받기</div><div class="cycle__desc">마음에 드는 디자인을 다운로드</div><div class="cycle__example">DESIGN.md</div></div>
+        <div class="cycle__step"><div class="cycle__num">03</div><div class="cycle__title">폴더에 두기</div><div class="cycle__desc">작업 폴더 안에 그 파일을 넣기</div><div class="cycle__example">day1\DESIGN.md</div></div>
+        <div class="cycle__step"><div class="cycle__num">04</div><div class="cycle__title">적용</div><div class="cycle__desc">"이 디자인으로 꾸며줘"라고 요청</div><div class="cycle__example">@DESIGN.md</div></div>
+      </div>
+      <p class="slide__note">적용은 한 줄 — <strong>"@DESIGN.md 대로 자기소개 페이지를 다시 꾸며줘"</strong>. <code>@</code>로 파일을 콕 집어주면 Claude가 그 규칙을 그대로 따릅니다.</p>
+    </div>
+  </section>
+
+  <!-- 10 · 통일성 -->
+  <section class="slide is-standard">
+    <div class="slide__eyebrow">CONSISTENCY · 통일성</div>
+    <h2 class="slide__title">DESIGN.md 하나로 — <span class="accent">전부 같은 테마</span></h2>
+    <div class="slide__body">
+      <div class="grid-3">
+        <div class="diff-card">
+          <div class="diff-card__rank">한 곳에서</div>
+          <h3 class="diff-card__title">색·글꼴을 한 파일에</h3>
+          <p class="diff-card__body">색·글꼴·간격을 DESIGN.md에서만 정합니다. 디자인 결정이 한 곳에 모입니다.</p>
+        </div>
+        <div class="diff-card">
+          <div class="diff-card__rank">모두 같게</div>
+          <h3 class="diff-card__title">웹·PPT·PDF 한 세트</h3>
+          <p class="diff-card__body">Claude가 같은 DESIGN.md를 기준 삼아 — 자기소개 페이지도, PPT도, PDF도 같은 톤으로.</p>
+        </div>
+        <div class="diff-card">
+          <div class="diff-card__rank">바꾸기 쉽게</div>
+          <h3 class="diff-card__title">한 번 고치면 전부</h3>
+          <p class="diff-card__body">테마를 바꾸고 싶으면 DESIGN.md만 — 결과물 전체가 새 테마로 따라옵니다.</p>
+        </div>
+      </div>
+      <p class="slide__note">DESIGN.md는 본래 웹 화면용 디자인 명세지만 — Claude가 이를 기준으로 PPT·PDF에도 같은 색·글꼴을 입혀, 흩어진 결과물이 "한 브랜드"처럼 보이게 됩니다. 이게 <strong>템플릿 통일성</strong>입니다.</p>
+    </div>
+  </section>
+
+  <!-- 11 · 실습 한 바퀴 -->
+  <section class="slide is-standard">
+    <div class="slide__eyebrow">실습 · 한 바퀴</div>
+    <h2 class="slide__title">자기소개를 — <span class="accent">PPT·PDF + 새 테마</span>로</h2>
+    <div class="slide__body">
+      <div class="step-list step-list--compact">
+        <div class="step-list__item">
+          <div class="step-list__num">1</div>
+          <div class="step-list__content"><p class="step-list__title">1일차 폴더에서 claude 실행 <span class="step-list__desc" style="display:inline">— index.html이 있는 그 폴더에서</span></p></div>
+        </div>
+        <div class="step-list__item">
+          <div class="step-list__num">2</div>
+          <div class="step-list__content"><p class="step-list__title">문서 스킬 설치 <span class="step-list__desc" style="display:inline">— /plugin으로 document-skills (PPTX·PDF 한 묶음)</span></p></div>
+        </div>
+        <div class="step-list__item">
+          <div class="step-list__num">3</div>
+          <div class="step-list__content"><p class="step-list__title">자기소개 → PPT·PDF <span class="step-list__desc" style="display:inline">— "발표용 PPT로", 이어서 "PDF로도"</span></p></div>
+        </div>
+        <div class="step-list__item">
+          <div class="step-list__num">4</div>
+          <div class="step-list__content"><p class="step-list__title">DESIGN.md 받기 <span class="step-list__desc" style="display:inline">— designmd.ai에서 골라 받아 작업 폴더에 두기</span></p></div>
+        </div>
+        <div class="step-list__item">
+          <div class="step-list__num">5</div>
+          <div class="step-list__content"><p class="step-list__title">통일된 테마로 <span class="step-list__desc" style="display:inline">— "@DESIGN.md로 자기소개를 다시 꾸며줘"</span></p></div>
+        </div>
+      </div>
+      <p class="slide__note">막히면 — 화면을 캡처해 Claude에게 보여주거나, 에러를 그대로 붙여넣기. 한 줄씩 다듬으면 마음에 드는 결과가 나옵니다.</p>
+    </div>
+  </section>
+
+  <!-- 12 · 도구 다이어트 -->
+  <section class="slide is-statement">
+    <div class="statement-grid statement-grid--visual-wide">
+      <div class="statement-text">
+        <div class="slide__eyebrow">PRINCIPLE · 도구 다이어트</div>
+        <h2 class="statement__lead">도구는 많을수록 좋은 게 — <span class="accent">아니다</span>.</h2>
+        <p class="statement__caption">슬래시·에이전트·MCP·스킬을 잔뜩 만들어 두면, 정작 뭐가 있는지 잊고 관리만 늘어납니다. 기준은 하나 — "이번 주에 쓰는가".</p>
+        <div class="statement__points">
+          <div class="statement__point"><span class="statement__point-num">기준</span><span>주에 몇 번은 쓰는 도구만 남긴다</span></div>
+          <div class="statement__point"><span class="statement__point-num">정리</span><span>안 쓰는 건 — 미루지 말고 지운다</span></div>
+          <div class="statement__point"><span class="statement__point-num">시작</span><span>필요해질 때 만든다 — 미리 X</span></div>
+        </div>
+      </div>
+      <div class="statement-visual">
+        <svg viewBox="0 0 460 320" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <rect x="0" y="0" width="460" height="320" rx="16" fill="#fff5ec"/>
+          <text x="230" y="48" font-family="ui-sans-serif, system-ui" font-size="13" fill="#797067" font-weight="700" text-anchor="middle">"이번 주에 쓰는가"</text>
+          <g font-family="ui-sans-serif, system-ui" font-size="11" font-weight="700" text-anchor="middle">
+            <rect x="60" y="78" width="150" height="46" rx="9" fill="#dcfce7" stroke="#016630" stroke-width="2"/>
+            <text x="135" y="106" fill="#016630">자주 쓰는 도구 ✓</text>
+            <rect x="60" y="134" width="150" height="46" rx="9" fill="#dcfce7" stroke="#016630" stroke-width="2"/>
+            <text x="135" y="162" fill="#016630">손에 익은 도구 ✓</text>
+            <rect x="250" y="78" width="150" height="46" rx="9" fill="#fef2f2" stroke="#fb2c36" stroke-width="2" stroke-dasharray="5 4"/>
+            <text x="325" y="106" fill="#fb2c36">안 쓰는 도구 ✗</text>
+            <rect x="250" y="134" width="150" height="46" rx="9" fill="#fef2f2" stroke="#fb2c36" stroke-width="2" stroke-dasharray="5 4"/>
+            <text x="325" y="162" fill="#fb2c36">"언젠가" 도구 ✗</text>
+          </g>
+          <text x="230" y="232" font-family="ui-sans-serif, system-ui" font-size="13" fill="#797067" text-anchor="middle">남길 것만 남긴다 — 가볍게</text>
+          <text x="230" y="266" font-family="ui-sans-serif, system-ui" font-size="15" fill="#cc5a14" font-weight="700" text-anchor="middle">적게, 손에 익은 것으로</text>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- 13 · Wrap · 3일차 끝 -->
+  <section class="slide is-feature">
+    <div class="feature-head">
+      <div class="slide__eyebrow">WRAP · 3일차 끝</div>
+      <h2 class="feature-head__title">3일차 — <span class="accent">도구로 넓히고, 진짜 앱을 만들었다</span></h2>
+    </div>
+    <div class="feature-body">
+      <div class="feature-text">
+        <p class="statement__caption">자동 실행과 내 명령, 데이터베이스·도우미로 만든 메모장, MCP 크롤링, 스킬과 DESIGN.md까지 — 4챕터를 돌았습니다.</p>
+        <div class="statement__points">
+          <div class="statement__point"><span class="statement__point-num">4챕터</span><span>헤드리스·슬래시 · 데이터베이스·서브에이전트 · MCP · 스킬</span></div>
+          <div class="statement__point"><span class="statement__point-num">결과물</span><span>나만의 메모장, 그리고 PPT·PDF로 거듭난 자기소개</span></div>
+          <div class="statement__point"><span class="statement__point-num">다음</span><span>4일차 — 모은 도구로 본격 프로젝트를 시작한다</span></div>
+        </div>
+      </div>
+      <div class="feature-visual">
+        <svg viewBox="0 0 460 320" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <rect x="0" y="0" width="460" height="320" rx="16" fill="#fff5ec"/>
+          <text x="230" y="46" font-family="ui-sans-serif, system-ui" font-size="13" fill="#797067" font-weight="700" text-anchor="middle">3일차 — 4챕터</text>
+          <g font-family="ui-sans-serif, system-ui" font-size="11" font-weight="700" text-anchor="middle">
+            <rect x="56" y="64" width="166" height="46" rx="8" fill="white" stroke="#cc5a14" stroke-width="2"/>
+            <text x="139" y="91" fill="#423d38">헤드리스 · 슬래시</text>
+            <rect x="238" y="64" width="166" height="46" rx="8" fill="white" stroke="#cc5a14" stroke-width="2"/>
+            <text x="321" y="91" fill="#423d38">DB · 서브에이전트</text>
+            <rect x="56" y="118" width="166" height="46" rx="8" fill="white" stroke="#cc5a14" stroke-width="2"/>
+            <text x="139" y="145" fill="#423d38">MCP · 크롤링</text>
+            <rect x="238" y="118" width="166" height="46" rx="8" fill="#fe6e00" stroke="#cc5a14" stroke-width="2"/>
+            <text x="321" y="145" fill="#fff">스킬</text>
+          </g>
+          <rect x="150" y="190" width="160" height="44" rx="9" fill="#fff" stroke="#fe6e00" stroke-width="2.5"/>
+          <text x="230" y="217" font-family="ui-sans-serif, system-ui" font-size="12" fill="#cc5a14" font-weight="700" text-anchor="middle">나만의 메모장 완성</text>
+          <text x="230" y="272" font-family="ui-sans-serif, system-ui" font-size="15" fill="#cc5a14" font-weight="700" text-anchor="middle">도구는 갖췄다 — 4일차, 본격 제작</text>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <div class="deck-progress"><div class="deck-progress__bar"></div></div>
+</main>
+<script src="../../scripts/deck.js"></script>
+</body>
+</html>

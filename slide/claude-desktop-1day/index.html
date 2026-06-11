@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Claude Desktop 1일 과정 · 목차</title>
+  <link rel="stylesheet" href="../styles/tokens.css">
+  <link rel="stylesheet" href="../styles/deck.css">
+  <link rel="stylesheet" href="../styles/deck-89.css">
+  <style>
+    .day-header { display: flex; flex-direction: column; gap: 0.15rem; flex-shrink: 0; }
+    .day-header__brand { font-size: 0.6rem; letter-spacing: 0.15em; text-transform: uppercase; font-weight: 700; color: var(--color-primary-strong); }
+    .day-header__title { font-size: 1.4rem; font-weight: 700; line-height: 1.12; letter-spacing: -0.025em; margin: 0.1rem 0 0.2rem 0; color: var(--color-on-surface); }
+    .day-header__caption { font-size: 0.68rem; line-height: 1.45; color: var(--color-on-surface-muted); margin: 0; }
+
+    .chap-list { display: flex; flex-direction: column; gap: 0.45rem; flex: 1; min-height: 0; margin-top: 0.6rem; }
+    .chap-card { display: grid; grid-template-columns: 3.2rem 1fr auto; gap: 0.7rem; align-items: center; background: var(--color-surface-elevated); border: 2px solid var(--color-outline-strong); border-radius: var(--rounded-md); padding: 0.55rem 0.8rem; text-decoration: none; color: var(--color-on-surface); transition: transform var(--motion-fast) var(--easing-standard), border-color var(--motion-fast), box-shadow var(--motion-fast); min-height: 0; overflow: hidden; }
+    .chap-card:hover { transform: translateY(-1px); border-color: var(--color-primary); box-shadow: var(--shadow-raised); }
+    .chap-card--accent { border-color: var(--color-primary); }
+    .chap-card__tier { font-family: var(--font-mono); font-size: 0.92rem; font-weight: 700; color: var(--color-primary-strong); text-align: center; letter-spacing: -0.02em; }
+    .chap-card__body { min-width: 0; }
+    .chap-card__title { font-size: 0.92rem; font-weight: 700; line-height: 1.2; letter-spacing: -0.02em; margin: 0; }
+    .chap-card__desc { font-size: 0.64rem; line-height: 1.35; color: var(--color-on-surface-muted); margin: 0.1rem 0 0 0; }
+    .chap-card__arrow { font-size: 1.1rem; color: var(--color-primary-strong); }
+  </style>
+</head>
+<body>
+
+<main class="index-stage">
+  <header class="deck-chrome">
+    <span class="deck-chrome__brand">CLAUDE DESKTOP · 1D</span>
+    <span class="deck-chrome__divider">·</span>
+    <span class="deck-chrome__day">목차</span>
+    <span class="deck-chrome__spacer"></span>
+  </header>
+
+  <header class="day-header">
+    <div class="day-header__brand">CLAUDE DESKTOP · 1일 과정</div>
+    <h1 class="day-header__title">앱 하나로 끝,<br>Cowork로 만드는 하루</h1>
+    <p class="day-header__caption">셋업부터 시작해 — 자기소개·보고서·자동화·검증 리서치 → Dispatch·시나리오 투어·안전 가이드까지. 단계가 올라갈수록 도전적입니다.</p>
+  </header>
+
+  <div class="chap-list">
+    <a class="chap-card" href="0-setup.html">
+      <div class="chap-card__tier">00</div>
+      <div class="chap-card__body">
+        <h2 class="chap-card__title">오리엔테이션 + 셋업</h2>
+        <p class="chap-card__desc">Cowork 이해 · 잘 시키는 법 · 가입·초대·설치·첫 실행</p>
+      </div>
+      <div class="chap-card__arrow">→</div>
+    </a>
+    <a class="chap-card" href="1-intro-page.html">
+      <div class="chap-card__tier">T1</div>
+      <div class="chap-card__body">
+        <h2 class="chap-card__title">자기소개 페이지</h2>
+        <p class="chap-card__desc">인터뷰 → 소개 글 → 브라우저로 열리는 HTML 페이지</p>
+      </div>
+      <div class="chap-card__arrow">→</div>
+    </a>
+    <a class="chap-card" href="2-report.html">
+      <div class="chap-card__tier">T2</div>
+      <div class="chap-card__body">
+        <h2 class="chap-card__title">보고서 · 발표자료 자동생성</h2>
+        <p class="chap-card__desc">내용 → PPT · Word · PDF · 디자인 통일 · 발표자 노트</p>
+      </div>
+      <div class="chap-card__arrow">→</div>
+    </a>
+    <a class="chap-card" href="3-automation.html">
+      <div class="chap-card__tier">T3</div>
+      <div class="chap-card__body">
+        <h2 class="chap-card__title">개인 업무 자동화</h2>
+        <p class="chap-card__desc">파일 정리·변환·요약 · 계획 먼저 · 기억시키기 · 반복 예약</p>
+      </div>
+      <div class="chap-card__arrow">→</div>
+    </a>
+    <a class="chap-card" href="4-research-team.html">
+      <div class="chap-card__tier">T4</div>
+      <div class="chap-card__body">
+        <h2 class="chap-card__title">리서치 검증 에이전트 팀</h2>
+        <p class="chap-card__desc">팩트체커 · 출처/링크 검증 · 숫자 체커로 검증된 보고서</p>
+      </div>
+      <div class="chap-card__arrow">→</div>
+    </a>
+    <a class="chap-card" href="5-dispatch.html">
+      <div class="chap-card__tier">T5</div>
+      <div class="chap-card__body">
+        <h2 class="chap-card__title">Dispatch · 폰으로 시키기</h2>
+        <p class="chap-card__desc">회의·이동 중에도 폰 한 마디로 일이 굴러가게</p>
+      </div>
+      <div class="chap-card__arrow">→</div>
+    </a>
+    <a class="chap-card" href="6-scenarios.html">
+      <div class="chap-card__tier">T6</div>
+      <div class="chap-card__body">
+        <h2 class="chap-card__title">활용 시나리오 6가지</h2>
+        <p class="chap-card__desc">회의준비·한장요약·이메일·여론·다국가·검수</p>
+      </div>
+      <div class="chap-card__arrow">→</div>
+    </a>
+    <a class="chap-card chap-card--accent" href="7-governance.html">
+      <div class="chap-card__tier">T7</div>
+      <div class="chap-card__body">
+        <h2 class="chap-card__title">안전하게 쓰기 — 9 패턴 + 9원칙 <span style="font-size:0.6rem;color:var(--color-primary-strong);font-weight:700;">· 캡스톤</span></h2>
+        <p class="chap-card__desc">AI의 9가지 실패 패턴 + 우리 팀 9원칙 템플릿</p>
+      </div>
+      <div class="chap-card__arrow">→</div>
+    </a>
+    <a class="chap-card" href="8-wrapup.html">
+      <div class="chap-card__tier">END</div>
+      <div class="chap-card__body">
+        <h2 class="chap-card__title">마무리</h2>
+        <p class="chap-card__desc">돌아보기 · 공유·시연 · 내일부터 쓰는 법 · Q&amp;A</p>
+      </div>
+      <div class="chap-card__arrow">→</div>
+    </a>
+  </div>
+</main>
+
+<script src="../scripts/index-nav.js"></script>
+</body>
+</html>

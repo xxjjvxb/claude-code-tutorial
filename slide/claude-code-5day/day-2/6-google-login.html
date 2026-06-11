@@ -1,0 +1,519 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>2일차 · 6. 구글 로그인</title>
+  <link rel="stylesheet" href="../../styles/tokens.css">
+  <link rel="stylesheet" href="../../styles/deck.css">
+  <style>
+    /* 챕터 6 — 3문장 강조 블록 */
+    .three-prompt { background: rgba(0,0,0,0.92); border-radius: var(--rounded-md);
+      padding: 1.1rem 1.3rem; display: flex; flex-direction: column; gap: 0.85rem; }
+    .three-prompt__line { display: grid; grid-template-columns: 2rem 1fr; gap: 0.8rem; align-items: start; }
+    .three-prompt__num { font-family: var(--font-mono); font-size: 0.95rem; font-weight: 700;
+      color: #fe6e00; line-height: 1.5; }
+    .three-prompt__text { font-family: var(--font-mono); font-size: 0.98rem; line-height: 1.5;
+      color: #fff; }
+    .three-prompt__role { display: block; font-family: var(--font-sans); font-size: 0.72rem;
+      font-weight: 700; color: rgba(255,255,255,0.5); letter-spacing: 0.04em; margin-top: 0.15rem; }
+  </style>
+</head>
+<body>
+
+<main class="deck">
+
+  <header class="deck-chrome">
+  <span class="deck-chrome__brand">CLAUDE CODE · 5D</span>
+  <span class="deck-chrome__divider">·</span>
+  <span class="deck-chrome__day">2일차 · 6 구글 로그인</span>
+  <span class="deck-chrome__spacer"></span>
+  <span class="deck-chrome__counter">— / —</span>
+</header>
+
+  <!-- 1 · Chapter intro -->
+  <section class="slide is-section is-standard">
+    <div class="section-eyebrow">CHAPTER 6 · GOOGLE LOGIN</div>
+    <h2 class="section-title">내 서비스에 <span class="accent">구글 로그인</span>을 붙인다</h2>
+    <p class="section-caption">챕터 1에서 만든 공개 API 페이지를 — 이제 "로그인한 사람만" 쓰는 진짜 서비스로. 단계별 매뉴얼 없이, 단 3개의 문장과 Claude와의 대화만으로 구글 OAuth 로그인을 붙이고 Vercel에 배포합니다.</p>
+    <div class="section-meta">
+      <div class="section-meta__item"><span class="section-meta__num">3</span><span>시작 문장</span></div>
+      <div class="section-meta__item"><span class="section-meta__num">1</span><span>구글 로그인</span></div>
+      <div class="section-meta__item"><span class="section-meta__num">1</span><span>배포</span></div>
+    </div>
+  </section>
+
+  <!-- 2 · 챕터 1로 돌아가기 -->
+  <section class="slide is-statement">
+    <div class="statement-grid statement-grid--visual-wide">
+      <div class="statement-text">
+        <div class="slide__eyebrow">RECALL · 챕터 1의 그 페이지</div>
+        <h2 class="statement__lead">챕터 1에서 만든 API 페이지 — 지금은 <span class="accent">누구나</span> 본다.</h2>
+        <p class="statement__caption">공개 API 데이터를 가져와 보여주던 그 페이지. 링크만 알면 누구든 들어옵니다. 오늘은 여기에 문을 답니다 — "로그인한 사람만".</p>
+        <div class="statement__points">
+          <div class="statement__point"><span class="statement__point-num">지금</span><span>링크 = 아무나 접근 가능</span></div>
+          <div class="statement__point"><span class="statement__point-num">오늘</span><span>로그인해야 입장</span></div>
+          <div class="statement__point"><span class="statement__point-num">도구</span><span>구글 OAuth — "구글로 로그인" 버튼</span></div>
+        </div>
+      </div>
+      <div class="statement-visual">
+        <svg viewBox="0 0 460 320" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <rect x="0" y="0" width="460" height="320" rx="16" fill="#fff5ec"/>
+          <rect x="40" y="74" width="170" height="172" rx="10" fill="white" stroke="#cc5a14" stroke-width="2"/>
+          <rect x="56" y="90" width="138" height="18" rx="4" fill="#ffe0c2"/>
+          <rect x="56" y="118" width="62" height="50" rx="4" fill="#f3ede4"/>
+          <rect x="132" y="118" width="62" height="50" rx="4" fill="#f3ede4"/>
+          <rect x="56" y="178" width="138" height="50" rx="4" fill="#f3ede4"/>
+          <text x="125" y="266" font-family="ui-sans-serif, system-ui" font-size="11" fill="#fb2c36" text-anchor="middle">누구나 들어옴</text>
+          <text x="232" y="166" font-family="ui-monospace, monospace" font-size="22" fill="#cc5a14">→</text>
+          <rect x="262" y="74" width="158" height="172" rx="10" fill="white" stroke="#fe6e00" stroke-width="2.5"/>
+          <circle cx="341" cy="128" r="20" fill="none" stroke="#cc5a14" stroke-width="3"/>
+          <rect x="331" y="128" width="20" height="16" rx="3" fill="#cc5a14"/>
+          <rect x="296" y="166" width="90" height="26" rx="13" fill="#fff" stroke="#cc5a14" stroke-width="2"/>
+          <text x="341" y="183" font-family="ui-sans-serif, system-ui" font-size="10" fill="#423d38" text-anchor="middle" font-weight="700">구글로 로그인</text>
+          <text x="341" y="266" font-family="ui-sans-serif, system-ui" font-size="11" fill="#016630" text-anchor="middle" font-weight="700">로그인한 사람만</text>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3 · 로그인이 왜 필요한가 -->
+  <section class="slide is-standard">
+    <div class="slide__eyebrow">WHY · 로그인의 의미</div>
+    <h2 class="slide__title">로그인 — <span class="accent">"내 서비스"</span>의 시작</h2>
+    <div class="slide__body">
+      <div class="two-col">
+        <div>
+          <div class="content-card content-card--compact">
+            <h3 class="content-card__title">왜 로그인을 거나</h3>
+            <ul class="content-card__list">
+              <li>아무나 X — 허락한 사람만 들어옴</li>
+              <li>사용자가 누군지 알 수 있음 — 개인화의 출발</li>
+              <li>"공개 페이지"와 "진짜 서비스"를 가르는 기본기</li>
+            </ul>
+          </div>
+        </div>
+        <div>
+          <div class="content-card content-card--compact">
+            <h3 class="content-card__title">왜 하필 구글로?</h3>
+            <ul class="content-card__list">
+              <li>비밀번호를 내가 저장하지 않음 — 보안 부담 ↓</li>
+              <li>사용자는 이미 있는 구글 계정으로 한 번에</li>
+              <li>가입 절차 없음 — 버튼 한 번이면 끝</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <p class="slide__note">직접 비밀번호를 받고 저장하는 건 — 다루기 까다롭고 위험합니다. <strong>구글에 맡기는 게 더 안전하고 더 쉽습니다</strong>.</p>
+    </div>
+  </section>
+
+  <!-- 4 · 강의자료 없이 시작 -->
+  <section class="slide is-statement">
+    <div class="statement-grid">
+      <div class="statement-text">
+        <div class="slide__eyebrow">REAL · 강의자료가 없었다</div>
+        <h2 class="statement__lead">이 챕터엔 <span class="accent">단계별 매뉴얼</span>이 없습니다 — 일부러.</h2>
+        <p class="statement__caption">실제 강의에서도 슬라이드 없이 진행했습니다. 강사가 던진 건 단 3개의 문장. 나머지는 전부 Claude와 대화하며 풀었습니다 — 그게 오늘 배울 진짜 기술입니다.</p>
+        <div class="statement__points">
+          <div class="statement__point"><span class="statement__point-num">매뉴얼</span><span>없음 — 외울 절차가 아니다</span></div>
+          <div class="statement__point"><span class="statement__point-num">3문장</span><span>목표·제약·내 수준을 담은 시작점</span></div>
+          <div class="statement__point"><span class="statement__point-num">대화</span><span>막히면 되묻고 — Claude가 설명하며 진행</span></div>
+        </div>
+      </div>
+      <div class="statement-visual">
+        <svg viewBox="0 0 460 320" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <rect x="0" y="0" width="460" height="320" rx="16" fill="#fff5ec"/>
+          <text x="230" y="48" font-family="ui-sans-serif, system-ui" font-size="13" fill="#797067" letter-spacing="0.08em" font-weight="700" text-anchor="middle">매뉴얼 대신 — 3문장 + 대화</text>
+          <g>
+            <rect x="60" y="78" width="150" height="170" rx="10" fill="white" stroke="#bdb3a6" stroke-width="2" stroke-dasharray="6 5"/>
+            <line x1="92" y1="120" x2="178" y2="120" stroke="#d9cfc1" stroke-width="3"/>
+            <line x1="92" y1="146" x2="178" y2="146" stroke="#d9cfc1" stroke-width="3"/>
+            <line x1="92" y1="172" x2="178" y2="172" stroke="#d9cfc1" stroke-width="3"/>
+            <line x1="92" y1="198" x2="178" y2="198" stroke="#d9cfc1" stroke-width="3"/>
+            <text x="135" y="232" font-family="ui-sans-serif, system-ui" font-size="11" fill="#a99e90" text-anchor="middle">단계별 매뉴얼 ✗</text>
+          </g>
+          <g>
+            <rect x="250" y="78" width="150" height="170" rx="10" fill="white" stroke="#fe6e00" stroke-width="2.5"/>
+            <text x="270" y="118" font-family="ui-monospace, monospace" font-size="22" fill="#fe6e00" font-weight="700">1</text>
+            <text x="270" y="158" font-family="ui-monospace, monospace" font-size="22" fill="#fe6e00" font-weight="700">2</text>
+            <text x="270" y="198" font-family="ui-monospace, monospace" font-size="22" fill="#fe6e00" font-weight="700">3</text>
+            <line x1="296" y1="111" x2="380" y2="111" stroke="#ffd2ab" stroke-width="4"/>
+            <line x1="296" y1="151" x2="380" y2="151" stroke="#ffd2ab" stroke-width="4"/>
+            <line x1="296" y1="191" x2="380" y2="191" stroke="#ffd2ab" stroke-width="4"/>
+            <text x="325" y="232" font-family="ui-sans-serif, system-ui" font-size="11" fill="#cc5a14" text-anchor="middle" font-weight="700">3문장 ✓</text>
+          </g>
+          <text x="230" y="288" font-family="ui-sans-serif, system-ui" font-size="12" fill="#797067" text-anchor="middle">처음 하는 일도 — 이렇게 시작한다</text>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5 · THE 3 문장 -->
+  <section class="slide is-standard">
+    <div class="slide__eyebrow">THE THREE · 시작 문장 3개</div>
+    <h2 class="slide__title">강사가 던진 건 — <span class="accent">이 3문장</span>이 전부였다</h2>
+    <div class="slide__body">
+      <div class="three-prompt">
+        <div class="three-prompt__line">
+          <span class="three-prompt__num">&gt;</span>
+          <span class="three-prompt__text">로그인 기능 만들고 로그인 안 하면 서비스 사용 못 함. 로그인 창만 보여야 함.<span class="three-prompt__role">문장 1 — 무엇을 (목표)</span></span>
+        </div>
+        <div class="three-prompt__line">
+          <span class="three-prompt__num">&gt;</span>
+          <span class="three-prompt__text">구글 auth를 사용해서 만들 것임.<span class="three-prompt__role">문장 2 — 어떻게 (기술 제약)</span></span>
+        </div>
+        <div class="three-prompt__line">
+          <span class="three-prompt__num">&gt;</span>
+          <span class="three-prompt__text">나는 로그인 만드는 거 처음이니까 설명해 주면서 수행해야 함.<span class="three-prompt__role">문장 3 — 나에게 맞춰라 (내 수준)</span></span>
+        </div>
+      </div>
+      <p class="slide__note">화려한 프롬프트가 아닙니다 — 실제로 강의 중에 친 그대로입니다. <strong>이 3문장이 왜 통했는지</strong>를 다음 슬라이드에서 분해합니다.</p>
+    </div>
+  </section>
+
+  <!-- 6 · 3문장 분해 -->
+  <section class="slide is-standard">
+    <div class="slide__eyebrow">ANATOMY · 3문장 분해</div>
+    <h2 class="slide__title">이 3문장이 — <span class="accent">좋은 시작점</span>인 이유</h2>
+    <div class="slide__body">
+      <div class="grid-3">
+        <div class="diff-card">
+          <div class="diff-card__rank">문장 1 · 목표</div>
+          <h3 class="diff-card__title">무엇을 원하나</h3>
+          <p class="diff-card__body">"로그인 안 하면 못 쓴다, 로그인 창만." — 원하는 결과를 분명히. 모호하지 않으니 엉뚱하게 안 감.</p>
+        </div>
+        <div class="diff-card">
+          <div class="diff-card__rank">문장 2 · 제약</div>
+          <h3 class="diff-card__title">어떤 방법으로</h3>
+          <p class="diff-card__body">"구글 auth로." — 기술 선택을 못 박음. Claude가 여러 방법 사이에서 헤매지 않음.</p>
+        </div>
+        <div class="diff-card">
+          <div class="diff-card__rank">문장 3 · 내 수준</div>
+          <h3 class="diff-card__title">나에게 맞춰라</h3>
+          <p class="diff-card__body">"처음이니 설명하며." — Claude의 말투·속도를 내 수준에 맞춤. 모르는 채로 안 넘어감.</p>
+        </div>
+      </div>
+      <p class="slide__note"><strong>목표 · 제약 · 내 수준</strong> — 이 3가지는 로그인뿐 아니라 어떤 작업에도 쓰는 프롬프트 뼈대입니다. 외워두세요.</p>
+    </div>
+  </section>
+
+  <!-- 7 · 구글 OAuth란 -->
+  <section class="slide is-statement">
+    <div class="statement-grid statement-grid--visual-wide">
+      <div class="statement-text">
+        <div class="slide__eyebrow">WHAT · 구글 OAuth</div>
+        <h2 class="statement__lead"><span class="accent">"구글로 로그인"</span> — 비밀번호는 구글이 맡는다.</h2>
+        <p class="statement__caption">OAuth는 내 서비스가 구글에게 "이 사람 누군지 확인 좀"이라고 위임하는 방식. 사용자는 구글 로그인만 하면 되고, 내 서비스는 비밀번호를 받지도 저장하지도 않습니다.</p>
+        <div class="statement__points">
+          <div class="statement__point"><span class="statement__point-num">사용자</span><span>이미 가진 구글 계정으로 한 번에</span></div>
+          <div class="statement__point"><span class="statement__point-num">내 서비스</span><span>비밀번호를 안 다룸 — 보안 부담 ↓</span></div>
+          <div class="statement__point"><span class="statement__point-num">위임</span><span>신원 확인은 구글이 — 나는 결과만 받음</span></div>
+        </div>
+      </div>
+      <div class="statement-visual">
+        <svg viewBox="0 0 460 320" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <rect x="0" y="0" width="460" height="320" rx="16" fill="#fff5ec"/>
+          <rect x="110" y="70" width="240" height="56" rx="28" fill="white" stroke="#cc5a14" stroke-width="2.5"/>
+          <circle cx="156" cy="98" r="15" fill="none" stroke="#fe6e00" stroke-width="3"/>
+          <text x="156" y="104" font-family="ui-sans-serif, system-ui" font-size="15" fill="#fe6e00" font-weight="700" text-anchor="middle">G</text>
+          <text x="252" y="104" font-family="ui-sans-serif, system-ui" font-size="15" fill="#423d38" font-weight="700" text-anchor="middle">구글로 로그인</text>
+          <text x="230" y="166" font-family="ui-sans-serif, system-ui" font-size="12" fill="#797067" text-anchor="middle">버튼 한 번 →</text>
+          <rect x="60" y="190" width="150" height="80" rx="10" fill="#dcfce7" stroke="#016630" stroke-width="2"/>
+          <text x="135" y="226" font-family="ui-sans-serif, system-ui" font-size="12" fill="#016630" font-weight="700" text-anchor="middle">구글</text>
+          <text x="135" y="247" font-family="ui-sans-serif, system-ui" font-size="10" fill="#016630" text-anchor="middle">비밀번호 확인</text>
+          <text x="230" y="236" font-family="ui-monospace, monospace" font-size="20" fill="#cc5a14" text-anchor="middle">→</text>
+          <rect x="250" y="190" width="150" height="80" rx="10" fill="white" stroke="#fe6e00" stroke-width="2.5"/>
+          <text x="325" y="226" font-family="ui-sans-serif, system-ui" font-size="12" fill="#cc5a14" font-weight="700" text-anchor="middle">내 서비스</text>
+          <text x="325" y="247" font-family="ui-sans-serif, system-ui" font-size="10" fill="#797067" text-anchor="middle">"확인됨"만 받음</text>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8 · OAuth 한 바퀴 -->
+  <section class="slide is-standard">
+    <div class="slide__eyebrow">FLOW · 로그인 한 바퀴</div>
+    <h2 class="slide__title">버튼 클릭 → 구글 → <span class="accent">내 서비스로 복귀</span></h2>
+    <div class="slide__body">
+      <div class="cycle">
+        <div class="cycle__step"><div class="cycle__num">01</div><div class="cycle__title">클릭</div><div class="cycle__desc">사용자가 "구글로 로그인" 누름</div><div class="cycle__example">▶ 버튼</div></div>
+        <div class="cycle__step"><div class="cycle__num">02</div><div class="cycle__title">이동</div><div class="cycle__desc">구글 동의 화면으로 넘어감</div><div class="cycle__example">→ google.com</div></div>
+        <div class="cycle__step"><div class="cycle__num">03</div><div class="cycle__title">확인</div><div class="cycle__desc">구글이 본인 확인 + 동의 받음</div><div class="cycle__example">✓ 확인</div></div>
+        <div class="cycle__step"><div class="cycle__num">04</div><div class="cycle__title">복귀</div><div class="cycle__desc">내 서비스로 되돌아옴</div><div class="cycle__example">← 내 사이트</div></div>
+        <div class="cycle__step"><div class="cycle__num">05</div><div class="cycle__title">입장</div><div class="cycle__desc">로그인 완료 — 서비스 사용 가능</div><div class="cycle__example">→ 페이지</div></div>
+      </div>
+      <p class="slide__note">이 흐름의 코드를 우리가 직접 쓰지 않습니다 — <strong>Claude가 씁니다</strong>. 우리는 흐름만 이해하면 됩니다.</p>
+    </div>
+  </section>
+
+  <!-- 9 · 준비물: 구글 자격증명 -->
+  <section class="slide is-standard">
+    <div class="slide__eyebrow">SETUP · 구글 쪽 준비물</div>
+    <h2 class="slide__title">딱 하나 준비 — <span class="accent">구글 OAuth 자격증명</span></h2>
+    <div class="slide__body">
+      <div class="two-col">
+        <div>
+          <div class="content-card content-card--compact">
+            <h3 class="content-card__title">무엇을</h3>
+            <p class="content-card__body">Google Cloud Console에서 <strong>OAuth 클라이언트 ID + 시크릿</strong>을 발급받습니다.</p>
+            <ul class="content-card__list">
+              <li>"내 서비스가 구글에 등록됐다"는 증표</li>
+              <li>이게 있어야 "구글로 로그인"이 동작</li>
+              <li>발급은 무료 · 한 번만 하면 됨</li>
+            </ul>
+          </div>
+        </div>
+        <div>
+          <div class="content-card content-card--compact">
+            <h3 class="content-card__title">어떻게 — 막막한 게 정상</h3>
+            <p class="content-card__body">처음이라 어디를 눌러야 할지 막막합니다. Claude에게 그대로 물어보세요.</p>
+            <ul class="content-card__list">
+              <li>"구글 OAuth 클라이언트 어디서 어떻게 만들어?"</li>
+              <li>어느 메뉴를 누를지 단계로 설명해 줌</li>
+              <li>화면이 다르면 — 보이는 그대로 말하기</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <p class="slide__note">ID·시크릿은 <strong>비밀번호 같은 것</strong> — 채팅방·GitHub에 그대로 올리지 마세요. 안전하게 두는 법은 배포 슬라이드에서.</p>
+    </div>
+  </section>
+
+  <!-- 10 · 대화로 풀어가기 -->
+  <section class="slide is-standard">
+    <div class="slide__eyebrow">HOW · 대화로 진행</div>
+    <h2 class="slide__title">3문장을 던지고 — <span class="accent">막히면 되묻는다</span></h2>
+    <div class="slide__body">
+      <div class="two-col">
+        <div>
+          <div class="content-card content-card--compact">
+            <h3 class="content-card__title">진행</h3>
+            <ol class="content-card__list content-card__list--ol">
+              <li>Plan Mode 켜기 — <code>Shift+Tab</code> 두 번</li>
+              <li>3문장을 그대로 입력</li>
+              <li>Claude의 계획·설명을 읽기</li>
+              <li>모르는 말이 나오면 "그게 뭐야?" 되묻기</li>
+              <li>한 단계씩 승인하며 진행</li>
+            </ol>
+          </div>
+        </div>
+        <div>
+          <div class="code-block">
+            <div class="code-block__header">
+              <span class="code-block__dot" style="background:#fb2c36"></span><span class="code-block__dot" style="background:#edb200"></span><span class="code-block__dot" style="background:#00c758"></span>
+              <span class="code-block__title">claude · plan</span>
+            </div>
+            <div class="code-block__body"><span class="code-block__line"><span class="code-block__prompt">&gt;</span> <span class="code-block__cmd">[3문장 입력]</span></span><span class="code-block__line"><span class="code-block__out">  계획 [plan]</span></span><span class="code-block__line"><span class="code-block__out">  1. 구글 OAuth 설정</span></span><span class="code-block__line"><span class="code-block__out">  2. 로그인 페이지 만들기</span></span><span class="code-block__line"><span class="code-block__out">  3. 로그인 전 접근 차단</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__prompt">&gt;</span> <span class="code-block__cmd">OAuth 클라이언트가 뭔지부터</span></span><span class="code-block__line"><span class="code-block__cmd">  설명해줘</span></span></div>
+          </div>
+        </div>
+      </div>
+      <p class="slide__note">모르는 단어가 나오면 멈추고 물어보세요 — 문장 3번이 "설명하며 진행"이라, Claude가 풀어서 답합니다.</p>
+    </div>
+  </section>
+
+  <!-- 11 · 로컬에서 확인 -->
+  <section class="slide is-standard">
+    <div class="slide__eyebrow">CHECK · 로컬에서 확인</div>
+    <h2 class="slide__title">로그인 전·후가 <span class="accent">제대로 갈리는지</span></h2>
+    <div class="slide__body">
+      <div class="compare-2">
+        <div class="compare-side compare-side--soft">
+          <div class="compare-side__label">로그인 전</div>
+          <h3 class="compare-side__title">로그인 창만 보여야 한다</h3>
+          <ul class="compare-side__list">
+            <li>"구글로 로그인" 버튼 하나만 화면에</li>
+            <li>챕터 1 데이터·페이지는 안 보임</li>
+            <li>주소를 직접 쳐도 — 막혀야 함</li>
+          </ul>
+        </div>
+        <div class="compare-side compare-side--accent">
+          <div class="compare-side__label">로그인 후</div>
+          <h3 class="compare-side__title">서비스 전체가 열린다</h3>
+          <ul class="compare-side__list">
+            <li>구글 로그인 통과 → 페이지 진입</li>
+            <li>챕터 1에서 만든 화면 그대로 사용</li>
+            <li>로그아웃하면 — 다시 로그인 창으로</li>
+          </ul>
+        </div>
+      </div>
+      <p class="slide__note">둘 다 직접 해보세요 — 로그인 안 한 상태에서 페이지가 새어 보이면 <strong>"로그인 안 하면 아무것도 안 보이게 막아줘"</strong>라고 다시.</p>
+    </div>
+  </section>
+
+  <!-- 12 · Vercel 배포 -->
+  <section class="slide is-standard">
+    <div class="slide__eyebrow">DEPLOY · Vercel 배포</div>
+    <h2 class="slide__title">배포 — <span class="accent">환경변수와 리디렉트 URI</span> 두 가지만</h2>
+    <div class="slide__body">
+      <div class="two-col">
+        <div>
+          <div class="content-card content-card--compact">
+            <h3 class="content-card__title">① 환경변수</h3>
+            <p class="content-card__body">구글 ID·시크릿을 코드에 X — Vercel <strong>환경변수</strong>로 넣습니다.</p>
+            <ul class="content-card__list">
+              <li>Vercel 프로젝트 → Settings → Environment Variables</li>
+              <li>비밀이 GitHub에 올라가지 않음</li>
+              <li>로컬은 <code>.env</code> 파일에 (커밋 금지)</li>
+            </ul>
+          </div>
+        </div>
+        <div>
+          <div class="content-card content-card--compact">
+            <h3 class="content-card__title">② 리디렉트 URI</h3>
+            <p class="content-card__body">배포되면 주소가 바뀝니다 — <code>localhost</code> → <code>*.vercel.app</code>.</p>
+            <ul class="content-card__list">
+              <li>구글 Console "승인된 리디렉트 URI"에 배포 주소 추가</li>
+              <li>안 하면 <code>redirect_uri_mismatch</code> 에러</li>
+              <li>로컬·배포 주소를 둘 다 등록해 두기</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <p class="slide__note">"배포했더니 로그인이 안 돼요"의 90%는 이 두 가지 — Claude에게 <strong>"Vercel 배포용으로 OAuth 설정 맞춰줘"</strong>라고 하면 챙겨줍니다.</p>
+    </div>
+  </section>
+
+  <!-- 13 · OAuth 단골 에러 -->
+  <section class="slide is-standard">
+    <div class="slide__eyebrow">TROUBLE · 로그인 단골 에러</div>
+    <h2 class="slide__title">막히면 — <span class="accent">에러 메시지를 그대로</span> Claude에게</h2>
+    <div class="slide__body">
+      <div class="trouble-list trouble-list--compact">
+        <div class="trouble-item">
+          <div class="trouble-item__num">01</div>
+          <div class="trouble-item__problem">redirect_uri_mismatch</div>
+          <div class="trouble-item__solution">구글 Console의 "승인된 리디렉트 URI"에 지금 쓰는 주소를 추가했는지 확인.</div>
+        </div>
+        <div class="trouble-item">
+          <div class="trouble-item__num">02</div>
+          <div class="trouble-item__problem">로그인은 되는데 페이지가 다 보여요</div>
+          <div class="trouble-item__solution">접근 차단이 안 걸린 것 — "로그인 안 하면 아무것도 안 보이게 막아줘".</div>
+        </div>
+        <div class="trouble-item">
+          <div class="trouble-item__num">03</div>
+          <div class="trouble-item__problem">환경변수 없음 / undefined</div>
+          <div class="trouble-item__solution">Vercel과 로컬 <code>.env</code> 양쪽에 ID·시크릿을 넣었는지 확인.</div>
+        </div>
+        <div class="trouble-item">
+          <div class="trouble-item__num">04</div>
+          <div class="trouble-item__problem">동의 화면 오류</div>
+          <div class="trouble-item__solution">OAuth 동의 화면(consent screen)을 먼저 설정해야 — Claude에게 순서를 물어보기.</div>
+        </div>
+      </div>
+      <p class="slide__note">에러 화면을 캡처하거나 글자를 그대로 붙여넣으면 원인을 짚어줍니다 — 1일차 <strong>"에러는 그대로"</strong> 원칙 그대로.</p>
+    </div>
+  </section>
+
+  <!-- 14 · 실습 진행 -->
+  <section class="slide is-standard">
+    <div class="slide__eyebrow">실습 · 진행</div>
+    <h2 class="slide__title">챕터 1 폴더에서 — <span class="accent">로그인 한 바퀴</span></h2>
+    <div class="slide__body">
+      <div class="step-list step-list--compact">
+        <div class="step-list__item">
+          <div class="step-list__num">1</div>
+          <div class="step-list__content"><p class="step-list__title">챕터 1 작업 폴더 열기 <span class="step-list__desc" style="display:inline">— API 페이지를 만든 그 폴더에서 claude 실행</span></p></div>
+        </div>
+        <div class="step-list__item">
+          <div class="step-list__num">2</div>
+          <div class="step-list__content"><p class="step-list__title">Plan Mode + 3문장 입력 <span class="step-list__desc" style="display:inline">— 목표·제약·내 수준 그대로</span></p></div>
+        </div>
+        <div class="step-list__item">
+          <div class="step-list__num">3</div>
+          <div class="step-list__content"><p class="step-list__title">구글 자격증명 발급 <span class="step-list__desc" style="display:inline">— Claude 안내대로 클라이언트 ID·시크릿</span></p></div>
+        </div>
+        <div class="step-list__item">
+          <div class="step-list__num">4</div>
+          <div class="step-list__content"><p class="step-list__title">로컬에서 로그인 전·후 확인 <span class="step-list__desc" style="display:inline">— 로그인 창만 / 통과 후 전체</span></p></div>
+        </div>
+        <div class="step-list__item">
+          <div class="step-list__num">5</div>
+          <div class="step-list__content"><p class="step-list__title">Vercel 배포 + 리디렉트 URI <span class="step-list__desc" style="display:inline">— 환경변수와 승인 주소 챙기기</span></p></div>
+        </div>
+        <div class="step-list__item">
+          <div class="step-list__num">6</div>
+          <div class="step-list__content"><p class="step-list__title">배포 링크 채팅방 공유 <span class="step-list__desc" style="display:inline">— 옆 사람 계정으로 로그인 테스트</span></p></div>
+        </div>
+      </div>
+      <p class="slide__note">한 번에 안 되는 게 정상입니다 — 막히면 에러를 그대로 Claude에게, 그래도 안 되면 TA 호출.</p>
+    </div>
+  </section>
+
+  <!-- 15 · 배운 패턴 -->
+  <section class="slide is-statement">
+    <div class="statement-grid">
+      <div class="statement-text">
+        <div class="slide__eyebrow">PATTERN · 오늘 진짜 배운 것</div>
+        <h2 class="statement__lead">매뉴얼이 없어도 — <span class="accent">3문장이면</span> 시작할 수 있다.</h2>
+        <p class="statement__caption">오늘 외울 건 OAuth 설정 절차가 아닙니다. "처음 해보는 일도, 목표·제약·내 수준 3문장으로 Claude와 대화하며 끝낸다" — 이 방식이 5일 내내, 그리고 5일 뒤에도 쓰는 기술입니다.</p>
+        <div class="statement__points">
+          <div class="statement__point"><span class="statement__point-num">목표</span><span>무엇을 원하는지 분명히</span></div>
+          <div class="statement__point"><span class="statement__point-num">제약</span><span>어떤 방법·기술로 할지</span></div>
+          <div class="statement__point"><span class="statement__point-num">내 수준</span><span>모르면 "설명하며"라고 말하라</span></div>
+        </div>
+      </div>
+      <div class="statement-visual">
+        <svg viewBox="0 0 460 320" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <rect x="0" y="0" width="460" height="320" rx="16" fill="#fff5ec"/>
+          <text x="230" y="48" font-family="ui-sans-serif, system-ui" font-size="13" fill="#797067" letter-spacing="0.08em" font-weight="700" text-anchor="middle">어떤 작업에도 쓰는 뼈대</text>
+          <rect x="70" y="74" width="320" height="44" rx="8" fill="white" stroke="#fe6e00" stroke-width="2"/>
+          <text x="90" y="101" font-family="ui-sans-serif, system-ui" font-size="13" fill="#cc5a14" font-weight="700">목표</text>
+          <text x="160" y="101" font-family="ui-sans-serif, system-ui" font-size="12" fill="#423d38">무엇을 원하나</text>
+          <rect x="70" y="130" width="320" height="44" rx="8" fill="white" stroke="#fe6e00" stroke-width="2"/>
+          <text x="90" y="157" font-family="ui-sans-serif, system-ui" font-size="13" fill="#cc5a14" font-weight="700">제약</text>
+          <text x="160" y="157" font-family="ui-sans-serif, system-ui" font-size="12" fill="#423d38">어떤 방법으로</text>
+          <rect x="70" y="186" width="320" height="44" rx="8" fill="white" stroke="#fe6e00" stroke-width="2"/>
+          <text x="90" y="213" font-family="ui-sans-serif, system-ui" font-size="13" fill="#cc5a14" font-weight="700">내 수준</text>
+          <text x="160" y="213" font-family="ui-sans-serif, system-ui" font-size="12" fill="#423d38">나에게 맞춰라</text>
+          <text x="230" y="270" font-family="ui-sans-serif, system-ui" font-size="14" fill="#cc5a14" font-weight="700" text-anchor="middle">+ 대화로 막힌 곳을 푼다</text>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- 16 · Wrap · 2일차 끝 -->
+  <section class="slide is-feature">
+    <div class="feature-head">
+      <div class="slide__eyebrow">WRAP · 2일차 끝</div>
+      <h2 class="feature-head__title">2일차 — <span class="accent">길들이고, 자동화하고, 진짜 서비스까지</span></h2>
+    </div>
+    <div class="feature-body">
+      <div class="feature-text">
+        <p class="statement__caption">6개 챕터를 돌며 — 계획부터 세우고, 끝나면 알림 받고, 룰북으로 길들이고, AI의 정체를 보고, 게임을 프로토타이핑하고, 진짜 서비스에 로그인까지 붙였습니다.</p>
+        <div class="statement__points">
+          <div class="statement__point"><span class="statement__point-num">6챕터</span><span>Plan · Hooks · CLAUDE.md · 데이터 · 프로토타입 · 로그인</span></div>
+          <div class="statement__point"><span class="statement__point-num">패턴</span><span>3문장 — 목표 · 제약 · 내 수준</span></div>
+          <div class="statement__point"><span class="statement__point-num">다음</span><span>3일차 — 손에 맞는 도구를 늘린다</span></div>
+        </div>
+      </div>
+      <div class="feature-visual">
+        <svg viewBox="0 0 460 320" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <rect x="0" y="0" width="460" height="320" rx="16" fill="#fff5ec"/>
+          <text x="230" y="46" font-family="ui-sans-serif, system-ui" font-size="13" fill="#797067" letter-spacing="0.08em" font-weight="700" text-anchor="middle">2일차 — 6챕터</text>
+          <g font-family="ui-sans-serif, system-ui" font-size="11" font-weight="700">
+            <rect x="46" y="74" width="118" height="48" rx="8" fill="white" stroke="#cc5a14" stroke-width="2"/>
+            <text x="105" y="103" fill="#423d38" text-anchor="middle">Plan</text>
+            <rect x="172" y="74" width="118" height="48" rx="8" fill="white" stroke="#cc5a14" stroke-width="2"/>
+            <text x="231" y="103" fill="#423d38" text-anchor="middle">Hooks</text>
+            <rect x="298" y="74" width="118" height="48" rx="8" fill="white" stroke="#cc5a14" stroke-width="2"/>
+            <text x="357" y="103" fill="#423d38" text-anchor="middle">CLAUDE.md</text>
+            <rect x="46" y="134" width="118" height="48" rx="8" fill="white" stroke="#cc5a14" stroke-width="2"/>
+            <text x="105" y="163" fill="#423d38" text-anchor="middle">데이터와 AI</text>
+            <rect x="172" y="134" width="118" height="48" rx="8" fill="white" stroke="#cc5a14" stroke-width="2"/>
+            <text x="231" y="163" fill="#423d38" text-anchor="middle">프로토타입</text>
+            <rect x="298" y="134" width="118" height="48" rx="8" fill="#fe6e00" stroke="#cc5a14" stroke-width="2"/>
+            <text x="357" y="163" fill="#fff" text-anchor="middle">로그인</text>
+          </g>
+          <text x="230" y="232" font-family="ui-sans-serif, system-ui" font-size="14" fill="#797067" text-anchor="middle">매뉴얼 대신 — 목표·제약·내 수준</text>
+          <text x="230" y="266" font-family="ui-sans-serif, system-ui" font-size="16" fill="#cc5a14" font-weight="700" text-anchor="middle">3문장이면 시작한다</text>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <div class="deck-progress"><div class="deck-progress__bar"></div></div>
+</main>
+<script src="../../scripts/deck.js"></script>
+</body>
+</html>

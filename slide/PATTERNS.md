@@ -137,3 +137,33 @@ Day 2~5 강의안 작성 시 이 문서를 참고. 모든 패턴은 4:3 stage(19
 - [ ] 코드/경로 인라인은 `<code>`로?
 - [ ] 영문 긴 문구는 ` · ` ` → `로 끊김 처리?
 - [ ] 사진 자리는 photo-slot으로?
+
+---
+
+## 9. 8:9 세로 덱 (claude-desktop-1day 전용)
+
+`styles/deck-89.css`를 `deck.css` 뒤에 로드하면 스테이지가 8:9 세로형으로 바뀜 (좌-교안/우-실습 분할 운영용). 이 덱 전용 컴포넌트:
+
+| 컴포넌트 | 용도 | 규칙 |
+|---|---|---|
+| `prompt-card` | 복사 가능한 프롬프트 블록 | head(라벨+`[data-copy]` 버튼) + `pre.prompt-card__body[data-no-nav]`. 복사 버튼은 항상 우상단. `scripts/prompt-copy.js` 필요 |
+| `prompt-pair` | 프롬프트 2장 세로 묶음 | 한 STEP당 표준/변형 2장. 3장 이상이면 `prompt-card--compact` |
+| `step-insight` | ⚠️ 조심 + 💡 가져갈 것 2행 | 모든 실습 STEP 하단. `__row--caution` / `__row--takeaway` |
+| `challenge` | 도전 과제 박스 (점선 테두리) | `challenge__list`로 항목별 줄 구분. 워크스페이스 `도전과제/*.md`와 1:1 |
+| `folder-pin` | 작업 폴더 강조 칩 | 각 티어 표지 필수. `실습자료/0N-*/ ` 경로 |
+| `pattern-grid` | What/Why/Sign/Antidote 4행 | T7 위험 패턴 전용. 라벨 한국어 병기 (`What · 무엇`) |
+| `cover-onboard` | 표지 하단 QR+입장 안내 | 0-setup 표지 전용 |
+| `photo-slot[data-img]` | modify-mode 드롭존 | `?mode=modify` 접속 시 이미지 드래그&드롭 → imgs/에 저장 (`scripts/slide-modify.js`) |
+| `grid-2` / `flow-89` / `img-frame` | 2열 그리드 / 세로 스택 / 이미지 프레임 | 세로형 기본 레이아웃 |
+
+**이미지 규칙 (8:9)**:
+- 이미지는 항상 `img-frame` 또는 `photo-slot[data-img]` 안에 — 직접 `<img>` 금지.
+- 두 컨테이너 모두 **이미지를 감싸는 액자**로 동작: 비율 보존(contain), 가로 중앙, 높이 캡(스크린샷 14rem / 드롭 사진 12rem), overflow 차단.
+- placeholder 상태의 photo-slot은 점선 16:10(최대 11rem) — 이미지가 들어오면(has-img) 비율 고정이 풀리고 액자가 이미지에 맞춰 수축.
+- inline style로 높이 지정 금지 (% 높이는 무효 — 실제 사고 사례 있었음).
+- 본문은 위에서부터 흐름(flex-start) — 8:9에선 safe center가 제목 아래 구멍을 만듦.
+
+**8:9 전용 수칙**:
+- 가로 `two-col`·`grid-4`는 좁아서 비권장 — `grid-2` 또는 `flow-89` 스택.
+- 모든 프롬프트는 prompt-card로 (떠먹여주기 원칙 — 타이핑 금지).
+- 콘텐츠 수정 후 반드시: `C:\Python\Python311\python.exe materials/instructor-only/_verify50.py` → 50/50 확인 + `materials/실습자료.zip` 재생성.
