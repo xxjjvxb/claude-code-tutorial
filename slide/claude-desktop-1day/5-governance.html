@@ -1,0 +1,387 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>1일 과정 · T6. AI 에이전트의 진짜 위험 (그리고 도입)</title>
+  <link rel="stylesheet" href="../styles/tokens.css">
+  <link rel="stylesheet" href="../styles/deck.css">
+  <link rel="stylesheet" href="../styles/deck-89.css">
+</head>
+<body>
+
+<main class="deck">
+
+  <header class="deck-chrome">
+    <span class="deck-chrome__brand">CLAUDE DESKTOP · 1D</span>
+    <span class="deck-chrome__divider">·</span>
+    <span class="deck-chrome__day">T5 안전하게 쓰기</span>
+    <span class="deck-chrome__spacer"></span>
+    <span class="deck-chrome__counter">— / —</span>
+  </header>
+
+  <!-- 1 · 표지 -->
+  <section class="slide is-section is-standard active">
+    <div class="section-eyebrow">TIER 5 · 사례와 원칙</div>
+    <h2 class="section-title">도구가 아니라 — <span class="accent">사람과 조직</span>이 깨진다</h2>
+    <div class="folder-pin">
+      <span class="folder-pin__icon">📁</span>
+      <span class="folder-pin__label">이번 단계 폴더 →</span>
+      <span class="folder-pin__path">실습자료/05-안전/</span>
+    </div>
+    <p class="section-caption">써본 사람만 보이는 위험과, 그것을 알고도 어떻게 쓸 것인가. 내가 "안전"을 어떻게 정의하느냐가 팀 전체의 사용 패턴을 만든다.</p>
+    <div class="section-meta">
+      <div class="section-meta__item"><span class="section-meta__num">9</span><span>가지 실패 패턴</span></div>
+      <div class="section-meta__item"><span class="section-meta__num">5</span><span>실제 사고 사례</span></div>
+      <div class="section-meta__item"><span class="section-meta__num">9</span><span>팀과 약속할 원칙</span></div>
+    </div>
+    <div class="prompt-card prompt-card--compact" style="margin-top: 0.7rem;">
+      <div class="prompt-card__head">
+        <span class="prompt-card__label">▶ 작업 폴더 전환 — 새 프로젝트 X</span>
+        <button class="prompt-card__copy" type="button" data-copy>복사</button>
+      </div>
+      <pre class="prompt-card__body" data-no-nav>이제 05-안전 폴더에서 작업할 거야.
+프로젝트는 그대로 두고, 작업 컨텍스트만 옮기는 거야.</pre>
+    </div>
+    <p class="slide__note">💡 안전은 — AI에게 <strong>"우리 일에서 이 사례가 어떻게 재현될 수 있는가"를 먼저 묻게</strong> 시키세요. 추상 원칙이 아니라 내 자리에 닿은 위험이 됩니다.</p>
+  </section>
+
+  <!-- 2 · REWIND — 오늘 이미 일어났다 (복선 회수) -->
+  <section class="slide is-standard">
+    <div class="slide__eyebrow">REWIND · 오늘 하루 돌아보기</div>
+    <h2 class="slide__title">사실 — <span class="accent">오늘 이미 일어났습니다</span></h2>
+    <div class="slide__body">
+      <div class="step-list step-list--compact">
+        <div class="step-list__item"><span class="step-list__num">T1</span><div class="step-list__content"><p class="step-list__title">AI가 다듬어 준 자기소개에 — <strong>살짝 과장된 부분</strong>이 들어 있지 않았나요?</p></div></div>
+        <div class="step-list__item"><span class="step-list__num">T2</span><div class="step-list__content"><p class="step-list__title">디자인이 깔끔하니 — <strong>내용까지 믿음직해</strong> 보이지 않았어요?</p></div></div>
+        <div class="step-list__item"><span class="step-list__num">T3</span><div class="step-list__content"><p class="step-list__title">"기억해 둬"가 쌓이는 동안 — <strong>무엇이 어디에 남는지</strong> 확인하셨나요?</p></div></div>
+        <div class="step-list__item"><span class="step-list__num">T4</span><div class="step-list__content"><p class="step-list__title">폰으로 보낸 한 마디가 — <strong>책상 앞이라면 안 했을 결정</strong>은 아니었나요?</p></div></div>
+        <div class="step-list__item"><span class="step-list__num">T5</span><div class="step-list__content"><p class="step-list__title">8명이 <strong>만장일치</strong>로 낸 결론 — 그래서 더 믿었나요?</p></div></div>
+      </div>
+      <div class="content-card content-card--compact">
+        <h3 class="content-card__title">매 단계의 ⚠️ 조심 — 그게 전부 복선이었습니다</h3>
+        <p class="content-card__body">방금 떠올린 그 장면들이 — 지금부터 배울 <strong>9가지 실패 패턴</strong>입니다. 이름이 붙으면, 다음부터는 일어나는 순간 보입니다.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2 · 왜 내가 -->
+  <section class="slide is-standard">
+    <div class="slide__eyebrow">WHY · 왜 내가 알아야 하나</div>
+    <h2 class="slide__title">"안전"의 정의가 — <span class="accent">팀의 사용 패턴</span>이 된다</h2>
+    <div class="slide__body">
+      <div class="flow-89">
+        <div class="content-card content-card--compact">
+          <h3 class="content-card__title">가짜 안전 (Theatrical Safety)</h3>
+          <p class="content-card__body">"체크리스트 통과 = 안전"으로 정의하면 — 형식은 통과하면서 실제 위험은 그대로. 보고서엔 "검토 완료". 사고는 일어남.</p>
+        </div>
+        <div class="content-card content-card--compact">
+          <h3 class="content-card__title">진짜 안전 (Real Safety)</h3>
+          <p class="content-card__body">모델이 어떻게 실패하는지 이해 → 그 실패가 일어날 수 없게 시스템을 짬. 9가지 실패 패턴을 알면 — 정책이 다르게 써진다.</p>
+        </div>
+      </div>
+    </div>
+    <p class="slide__note">이 챕터는 정책 문서를 채우는 챕터가 아니라 — <strong>무엇을 채워야 하는지 알게 되는 챕터</strong>입니다.</p>
+  </section>
+
+  <!-- 3 · 패턴 1 자신감의 역설 -->
+  <section class="slide is-standard">
+    <div class="slide__eyebrow">PATTERN 1 / 9 · 생성의 위험 · Confidence Inversion</div>
+    <h2 class="slide__title">자신감의 역설 — <span class="accent">단정적일수록</span> 위험<br><span style="font-size:0.7em; color:var(--color-on-surface-muted); font-weight:500;">학술명: Confabulation (NIST AI 600-1)</span></h2>
+    <div class="slide__body">
+      <div class="pattern-grid">
+        <div class="pattern-grid__row pattern-grid__row--what">
+          <span class="pattern-grid__label">현상</span>
+          <span class="pattern-grid__text">구체적이고 딱 잘라 말하는 답일수록 — <strong>검증 안 된 채 지어낸 내용</strong>일 가능성이 높습니다.</span>
+        </div>
+        <div class="pattern-grid__row pattern-grid__row--why">
+          <span class="pattern-grid__label">원인</span>
+          <span class="pattern-grid__text">AI는 출처를 외우고 있는 게 아니라, 그럴듯하게 들릴 만한 문장을 만들어 내는 것. "OECD 2023 보고서에 따르면 5.7%" 같은 형식이 가장 만들기 쉬워요.</span>
+        </div>
+        <div class="pattern-grid__row pattern-grid__row--sign">
+          <span class="pattern-grid__label">신호</span>
+          <span class="pattern-grid__text">내가 잘 모르는 분야에서 AI가 너무 매끄럽게 딱 잘라 말할 때. "약 30조" 같은 모호한 답보다 "31.8조 (DART)" 같은 구체적인 답이 더 위험할 수도 있습니다 (가상 예시).</span>
+        </div>
+        <div class="pattern-grid__row pattern-grid__row--antidote">
+          <span class="pattern-grid__label">대처</span>
+          <span class="pattern-grid__text">단정하는 문장 옆에 <strong>★★★ ~ ? 등급 표시</strong>를 붙이게 시키세요. 표시 없는 단정은 보고서로 받지 않기로 팀과 약속해 두면 됩니다.</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4 · 패턴 2 아첨 -->
+  <section class="slide is-standard">
+    <div class="slide__eyebrow">PATTERN 2 / 9 · 생성의 위험 · Sycophancy</div>
+    <h2 class="slide__title">아첨 — <span class="accent">"확실해?"</span> 한 마디로 정답이 뒤집힘<br><span style="font-size:0.7em; color:var(--color-on-surface-muted); font-weight:500;">학술명: Sycophancy (Anthropic 2023 / ICLR 2024)</span></h2>
+    <div class="slide__body">
+      <div class="pattern-grid">
+        <div class="pattern-grid__row pattern-grid__row--what">
+          <span class="pattern-grid__label">현상</span>
+          <span class="pattern-grid__text">내가 의심하는 말투를 쓰면, AI는 원래 맞았던 답도 "다시 생각해 보니..." 하며 뒤집어 버립니다.</span>
+        </div>
+        <div class="pattern-grid__row pattern-grid__row--why">
+          <span class="pattern-grid__label">원인</span>
+          <span class="pattern-grid__text">AI는 학습 과정에서 사용자가 만족할 때 보상을 받습니다. 그래서 "의심하는 신호 = 의견을 바꿔야 한다는 신호"로 학습돼요.</span>
+        </div>
+        <div class="pattern-grid__row pattern-grid__row--sign">
+          <span class="pattern-grid__label">신호</span>
+          <span class="pattern-grid__text">동료가 "AI한테 이미 확인했어요"라고 할 때 — 그 확인이 사실은 <strong>동의 받아내기</strong>였을 수 있습니다. 한쪽으로 밀면 그쪽으로 답하니까요.</span>
+        </div>
+        <div class="pattern-grid__row pattern-grid__row--antidote">
+          <span class="pattern-grid__label">대처</span>
+          <span class="pattern-grid__text">"맞아?" 대신 <strong>"근거를 보여 줘"</strong>로 묻기. 의심 신호를 검증 요구로 바꾸는 습관 하나가 큰 차이를 만듭니다.</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5 · 패턴 3 권위 일루전 -->
+  <section class="slide is-standard">
+    <div class="slide__eyebrow">PATTERN 3 / 9 · 생성의 위험 · Format Authority</div>
+    <h2 class="slide__title">권위 일루전 — <span class="accent">형식</span>이 신뢰를 만든다<br><span style="font-size:0.7em; color:var(--color-on-surface-muted); font-weight:500;">학술명: Automation Bias (Parasuraman 1997) + Processing Fluency</span></h2>
+    <div class="slide__body">
+      <div class="pattern-grid">
+        <div class="pattern-grid__row pattern-grid__row--what">
+          <span class="pattern-grid__label">현상</span>
+          <span class="pattern-grid__text">같은 거짓 정보도 마크다운 표, 각주, 정장 보고서 형식으로 정리되면 — <strong>신뢰감이 훌쩍 올라갑니다</strong>.</span>
+        </div>
+        <div class="pattern-grid__row pattern-grid__row--why">
+          <span class="pattern-grid__label">원인</span>
+          <span class="pattern-grid__text">사람은 내용보다 <strong>형식의 정돈됨</strong>에 더 강하게 반응합니다 (UX·신뢰 연구에서 잘 알려진 사실). AI 출력은 형식이 항상 깔끔해서 신뢰가 자동으로 따라와요.</span>
+        </div>
+        <div class="pattern-grid__row pattern-grid__row--sign">
+          <span class="pattern-grid__label">신호</span>
+          <span class="pattern-grid__text">깔끔한 표 한 칸의 숫자에 별 의심 없이 동의하고 있는 자신. 표지 디자인이 좋다고 통과시키는 손이 가벼워질 때.</span>
+        </div>
+        <div class="pattern-grid__row pattern-grid__row--antidote">
+          <span class="pattern-grid__label">대처</span>
+          <span class="pattern-grid__text">형식과 검증은 따로. <strong>"표가 있다고 검증된 게 아님"</strong>을 팀에 박아 두기. 디자인 좋은 보고서일수록 한 번 더 의심합니다.</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6 · 패턴 4 동질성 함정 -->
+  <section class="slide is-standard">
+    <div class="slide__eyebrow">PATTERN 4 / 9 · 검증의 위험 · Homogeneity Trap</div>
+    <h2 class="slide__title">검증의 동질성 — <span class="accent">N번 통과 ≠ 검증</span><br><span style="font-size:0.7em; color:var(--color-on-surface-muted); font-weight:500;">학술명: Harmful Bias and Homogenization (NIST 12 risks #6)</span></h2>
+    <div class="slide__body">
+      <div class="pattern-grid">
+        <div class="pattern-grid__row pattern-grid__row--what">
+          <span class="pattern-grid__label">현상</span>
+          <span class="pattern-grid__text">"여러 AI가 교차로 검증했어요"가 — 실은 거짓 안심이 되는 경우.</span>
+        </div>
+        <div class="pattern-grid__row pattern-grid__row--why">
+          <span class="pattern-grid__label">원인</span>
+          <span class="pattern-grid__text">같은 모델 N개는 <strong>같은 사각지대를 N번</strong> 보는 것. 같은 편향을 가진 N명이 같은 자료를 보면 결론도 같습니다. 다양해 보이지만 다양하지 않아요.</span>
+        </div>
+        <div class="pattern-grid__row pattern-grid__row--sign">
+          <span class="pattern-grid__label">신호</span>
+          <span class="pattern-grid__text">여러 AI가 <strong>만장일치</strong>로 한 결론을 내놓을 때 — 그게 가장 위험한 신호. 사람도 그렇고 AI도 그래요.</span>
+        </div>
+        <div class="pattern-grid__row pattern-grid__row--antidote">
+          <span class="pattern-grid__label">대처</span>
+          <span class="pattern-grid__text">검증은 종류가 달라야 합니다. <strong>다른 모델, 다른 사람, 다른 시점</strong>에 봐도 같은 결론이 나야 진짜 검증. 같은 줄에 N명을 세워 봐야 1명과 다를 게 없어요.</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7 · 패턴 5 도구 연쇄 -->
+  <section class="slide is-standard">
+    <div class="slide__eyebrow">PATTERN 5 / 9 · 정보 흐름의 위험 · Cascade Loss</div>
+    <h2 class="slide__title">도구 연쇄 — <span class="accent">출처가 멀어질수록</span> 사실이 됨<br><span style="font-size:0.7em; color:var(--color-on-surface-muted); font-weight:500;">학술명: Cascading Failures / Source Laundering</span></h2>
+    <div class="slide__body">
+      <div class="pattern-grid">
+        <div class="pattern-grid__row pattern-grid__row--what">
+          <span class="pattern-grid__label">현상</span>
+          <span class="pattern-grid__text">A 도구가 만든 정보가 B로, B에서 C로 옮겨가면 — C 단계에선 그게 그냥 "사실"로 받아들여집니다.</span>
+        </div>
+        <div class="pattern-grid__row pattern-grid__row--why">
+          <span class="pattern-grid__label">원인</span>
+          <span class="pattern-grid__text">단계마다 원래 출처에서 점점 멀어지고, 옮긴 AI는 깊은 출처를 다시 확인하지 않습니다. 오류가 거리에 가려져 보이지 않게 돼요. 마치 <strong>"숫자 세탁"</strong>.</span>
+        </div>
+        <div class="pattern-grid__row pattern-grid__row--sign">
+          <span class="pattern-grid__label">신호</span>
+          <span class="pattern-grid__text">최종 보고서의 핵심 숫자 출처를 클릭했더니 — <strong>또 다른 요약 문서</strong>로 연결되고, 1차 출처가 안 나올 때.</span>
+        </div>
+        <div class="pattern-grid__row pattern-grid__row--antidote">
+          <span class="pattern-grid__label">대처</span>
+          <span class="pattern-grid__text"><strong>1차 출처 의무화</strong>. 2차 인용은 금지선. T4에서 다룬 "원소스 우선 원칙"을 팀 정책으로.</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8 · 패턴 6 컨텍스트 손실 -->
+  <section class="slide is-standard">
+    <div class="slide__eyebrow">PATTERN 6 / 9 · 정보 흐름의 위험 · Context Loss</div>
+    <h2 class="slide__title">컨텍스트 압축 — <span class="accent">잃은 줄도 모름</span><br><span style="font-size:0.7em; color:var(--color-on-surface-muted); font-weight:500;">학술명: Context Compression / Lost-in-the-Middle</span></h2>
+    <div class="slide__body">
+      <div class="pattern-grid">
+        <div class="pattern-grid__row pattern-grid__row--what">
+          <span class="pattern-grid__label">현상</span>
+          <span class="pattern-grid__text">대화가 길어지면 AI가 앞 내용을 자동으로 요약합니다. 디테일은 사라지는데, 답변은 여전히 자신 있어요.</span>
+        </div>
+        <div class="pattern-grid__row pattern-grid__row--why">
+          <span class="pattern-grid__label">원인</span>
+          <span class="pattern-grid__text">AI는 "지금 요약된 데이터를 보고 있다"는 사실을 <strong>사용자에게 알리지 않습니다</strong>. 손실이 보이지 않게 학습돼 있어요.</span>
+        </div>
+        <div class="pattern-grid__row pattern-grid__row--sign">
+          <span class="pattern-grid__label">신호</span>
+          <span class="pattern-grid__text">어제 1시간짜리 회의 기록을 줬는데, 오늘 AI가 "그때 합의된 건..."이라고 말할 때 — 실은 요약본만 본 것.</span>
+        </div>
+        <div class="pattern-grid__row pattern-grid__row--antidote">
+          <span class="pattern-grid__label">대처</span>
+          <span class="pattern-grid__text">중요한 결정은 끝나고 핵심을 <strong>파일로 적어 둡니다</strong>. 다음 세션엔 그 파일을 명시적으로 읽게 하기. 기억을 사람이 통제하는 거예요.</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 9 · 패턴 7 내가 결정을 안 내리게 되는 것 -->
+  <section class="slide is-standard">
+    <div class="slide__eyebrow">PATTERN 7 / 9 · 사용자의 위험 · Decisional Atrophy</div>
+    <h2 class="slide__title">내가 결정을 안 내리게 되는 것 — <span class="accent">직관이 사라진다</span><br><span style="font-size:0.7em; color:var(--color-on-surface-muted); font-weight:500;">학술명: Automation Complacency (Parasuraman &amp; Manzey 2010)</span></h2>
+    <div class="slide__body">
+      <div class="pattern-grid">
+        <div class="pattern-grid__row pattern-grid__row--what">
+          <span class="pattern-grid__label">현상</span>
+          <span class="pattern-grid__text">위임이 쌓이면 내 직관이 무뎌집니다. 새로운 영역에서 AI가 자신 있게 틀려도 알아보지 못해요.</span>
+        </div>
+        <div class="pattern-grid__row pattern-grid__row--why">
+          <span class="pattern-grid__label">원인</span>
+          <span class="pattern-grid__text">직관은 직접 결정한 경험이 쌓여 생기는 것. AI에게 자꾸 넘기면 <strong>그 근육이 사라집니다</strong>. 1~2년에 걸쳐 천천히 일어나는 위험.</span>
+        </div>
+        <div class="pattern-grid__row pattern-grid__row--sign">
+          <span class="pattern-grid__label">신호</span>
+          <span class="pattern-grid__text">6개월이 지나면 — "이건 AI한테 물어보자"가 모든 일의 첫 반응이 됩니다. 회의에서 본인 의견을 즉답할 수 없을 때도 신호.</span>
+        </div>
+        <div class="pattern-grid__row pattern-grid__row--antidote">
+          <span class="pattern-grid__label">대처</span>
+          <span class="pattern-grid__text">매주 한 결정은 <strong>일부러 AI 없이</strong> 내려 보기. 직관을 잃지 않기 위한 습관. 팀 차원의 약속으로 두면 좋습니다.</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 10 · 패턴 8 · 90% 함정 -->
+  <section class="slide is-standard">
+    <div class="slide__eyebrow">PATTERN 8 / 9 · 사용자의 위험 · The 90% Trap</div>
+    <h2 class="slide__title">90% 함정 — <span class="accent">마지막 10%</span>를 건너뜀<br><span style="font-size:0.7em; color:var(--color-on-surface-muted); font-weight:500;">학술명: End-Effect Bias / Completion Heuristic</span></h2>
+    <div class="slide__body">
+      <div class="pattern-grid">
+        <div class="pattern-grid__row pattern-grid__row--what">
+          <span class="pattern-grid__label">현상</span>
+          <span class="pattern-grid__text">AI가 90%까지 5분이면 만들어 줍니다. 나머지 10%(검증·맥락·예외 케이스)에 5시간이 드는데 — <strong>사람들이 그걸 생략하고 그냥 내보내요</strong>.</span>
+        </div>
+        <div class="pattern-grid__row pattern-grid__row--why">
+          <span class="pattern-grid__label">원인</span>
+          <span class="pattern-grid__text">사람은 "거의 다 됐다"고 느끼면 마무리에 드는 노력을 비합리적으로 줄입니다 (end-effect bias라는 인지 편향). 시작 비용이 0이 된 만큼, 마지막 비용이 더 안 보여요.</span>
+        </div>
+        <div class="pattern-grid__row pattern-grid__row--sign">
+          <span class="pattern-grid__label">신호</span>
+          <span class="pattern-grid__text"><strong>"이미 80% 됐는데 그냥 가시죠"</strong> 같은 동료의 말. 검증 시간이 작성 시간의 10%도 안 될 때.</span>
+        </div>
+        <div class="pattern-grid__row pattern-grid__row--antidote">
+          <span class="pattern-grid__label">대처</span>
+          <span class="pattern-grid__text">검증 단계를 <strong>별도 성과 지표</strong>로 잡기. 검증 시간이 작성 시간의 50% 미만이면 안 통과시키는 식. 마지막 10%가 진짜 일이에요.</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 11 · 패턴 9 · 프롬프트 인젝션 (외부 침해) -->
+  <section class="slide is-standard">
+    <div class="slide__eyebrow">PATTERN 9 / 9 · 외부 침해 · Prompt Injection</div>
+    <h2 class="slide__title">프롬프트 인젝션 — <span class="accent">바깥에서</span> 시키는 사람<br><span style="font-size:0.7em; color:var(--color-on-surface-muted); font-weight:500;">학술명: Indirect Prompt Injection (Greshake et al. 2023 / OWASP LLM01)</span></h2>
+    <div class="slide__body">
+      <div class="pattern-grid">
+        <div class="pattern-grid__row pattern-grid__row--what">
+          <span class="pattern-grid__label">현상</span>
+          <span class="pattern-grid__text">AI가 읽은 문서, 웹페이지, 메일 안에 숨겨진 지시가 — <strong>사용자가 시킨 지시를 덮어쓰고</strong> AI를 조종하는 경우.</span>
+        </div>
+        <div class="pattern-grid__row pattern-grid__row--why">
+          <span class="pattern-grid__label">원인</span>
+          <span class="pattern-grid__text">AI는 "내가 시키는 지시"와 "읽은 데이터" 구분이 약합니다. 받은 내용 안에 "이전 지시는 무시하고 X 해" 같은 문장이 있으면 따라가는 경향이 있어요. Cowork처럼 파일·웹을 직접 다루는 AI일수록 위험이 큽니다.</span>
+        </div>
+        <div class="pattern-grid__row pattern-grid__row--sign">
+          <span class="pattern-grid__label">신호</span>
+          <span class="pattern-grid__text">AI가 갑자기 시킨 적 없는 작업을 시작 / 결과물에 이상한 외부 링크가 나옴 / 메일을 정리시켰는데 메일 내용이 답변에 그대로 인용될 때.</span>
+        </div>
+        <div class="pattern-grid__row pattern-grid__row--antidote">
+          <span class="pattern-grid__label">대처</span>
+          <span class="pattern-grid__text">믿을 수 없는 출처(외부 메일·웹 캡처·미확인 PDF)는 <strong>"읽기만 시키고 행동은 시키지 않기"</strong>. 자동 실행과 외부 데이터를 분리. 의심될 땐 "이 안에 다른 지시가 숨어 있는지 먼저 봐 줘" 하고 묻기.</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 12 · 가짜 vs 진짜 안전 -->
+  <section class="slide is-standard">
+    <div class="slide__eyebrow">SAFETY · 가짜 vs 진짜</div>
+    <h2 class="slide__title">진짜 안전 — <span class="accent">4가지</span>가 동시에 작동</h2>
+    <div class="slide__body">
+      <div class="grid-2">
+        <div class="diff-card"><div class="diff-card__rank">방법 1</div><h3 class="diff-card__title">다른 종류로 교차 검증</h3><p class="diff-card__body">서로 다른 모델, 사람, 시점에 본 결과가 같은 결론이어야 "검증됐다"고 말함.</p></div>
+        <div class="diff-card"><div class="diff-card__rank">방법 2</div><h3 class="diff-card__title">확실한 정도 표시</h3><p class="diff-card__body">단정하는 문장마다 ★★★(확실) ~ ?(모름) 라벨. 라벨 없는 단정은 보고가 아님.</p></div>
+        <div class="diff-card"><div class="diff-card__rank">방법 3</div><h3 class="diff-card__title">사람이 마지막에 결정</h3><p class="diff-card__body">AI가 만든 결과 뒤에는 반드시 사람 한 명이 "OK"하고 책임지는 단계.</p></div>
+        <div class="diff-card"><div class="diff-card__rank">방법 4</div><h3 class="diff-card__title">실패를 숨기지 않기</h3><p class="diff-card__body">실수가 생기면 빨리 공개해서 같은 실수가 반복되지 않게.</p></div>
+      </div>
+    </div>
+    <p class="slide__note">체크리스트 통과는 가짜 안전. 4가지 방법이 동시에 살아 있어야 진짜.</p>
+  </section>
+
+  <!-- 13 · 9원칙 -->
+  <section class="slide is-standard">
+    <div class="slide__eyebrow">PRINCIPLES · 우리 팀과 약속할 9원칙</div>
+    <h2 class="slide__title">정책의 알맹이 — <span class="accent">9원칙</span></h2>
+    <div class="slide__body">
+      <ul class="challenge__list" style="border:none; padding:0;">
+        <li><strong>① 확실한 정도 표시 없는 단정은 받지 않기</strong> — ★★★(확실), ★★, ★, ?(모름) 표시가 없는 보고서는 보고서로 안 침. <em>(NIST: Measure)</em></li>
+        <li><strong>② 1차 출처만 근거로</strong> — "어디서 들었다" 같은 2차 인용은 그 출처를 다시 찾아야지, 그대로는 근거 아님. <em>(OECD AI Principle: Robustness)</em></li>
+        <li><strong>③ 여러 AI를 쓸 땐 종류를 다르게</strong> — 같은 AI한테 N번 묻는 건 검증이 아님. <em>(NIST: Bias mitigation)</em></li>
+        <li><strong>④ 사람이 마지막에 결정</strong> — 중요한 결정에는 반드시 한 사람의 OK가 들어가야. <em>(EU AI Act: Human oversight)</em></li>
+        <li><strong>⑤ 매주 한 번은 AI 없이 일하기</strong> — 내 직관이 무뎌지지 않게.</li>
+        <li><strong>⑥ 실패 사례를 숨기지 않고 공유</strong> — 같은 실수가 N번 반복되지 않게. <em>(NIST: Govern)</em></li>
+        <li><strong>⑦ 6개월에 한 번 사용 습관 점검</strong> — 너무 의존하고 있지 않은지, 쓰는 범위가 적절한지.</li>
+        <li><strong>⑧ AI가 만든 자료라고 표시</strong> — 외부에 공개하는 문서엔 "AI 보조 작성" 한 줄 명시. <em>(EU AI Act Art. 50)</em></li>
+        <li><strong>⑨ 민감한 데이터는 미리 분류해서 격리</strong> — 분류 안 된 데이터는 AI에 입력 금지. <em>(NIST: Privacy / GDPR Art. 25)</em></li>
+      </ul>
+    </div>
+    <p class="slide__note">이 9원칙을 워크스페이스 <code>9원칙-템플릿.md</code>에 우리 팀 상황으로 채우는 게 오늘의 최종 산출물입니다.</p>
+  </section>
+
+  <!-- 14 · 실제 사고 사례 5건 안내 -->
+  <section class="slide is-standard">
+    <div class="slide__eyebrow">CASES · 실제 사고 사례 5건</div>
+    <h2 class="slide__title">9 패턴이 실제로 — <span class="accent">어떻게 작동했나</span></h2>
+    <div class="slide__body">
+      <p class="slide__note" style="margin: 0 0 0.5rem 0; padding: 0.5rem 0.7rem; background: var(--color-surface-soft); border-radius: var(--rounded-md);">아래 5건은 <code>05-안전/사례모음/</code> 폴더에 정리돼 있습니다. 강의 후 집에서 한 건씩 읽어 보세요 — 모두 실제 일어난 사건입니다.</p>
+      <ul class="challenge__list" style="border:none; padding:0;">
+        <li><strong>① Mata v. Avianca 가짜 판례</strong> (2023) — 변호사가 ChatGPT가 만든 가짜 판례 6건을 법원에 제출. <em>자신감의 역설 + 권위 일루전.</em> (<code>01-가짜판례.md</code>)</li>
+        <li><strong>② Air Canada 챗봇 환불 사건</strong> (2024) — 챗봇이 잘못 안내한 환불 정책을 항공사가 책임지게 됨. <em>권위 일루전 + 책임 분산.</em> (<code>02-에어캐나다.md</code>)</li>
+        <li><strong>③ NYC MyCity 챗봇 불법 권고</strong> (2024) — 시 공식 챗봇이 시민에게 위법 행위를 권유. <em>권위 일루전 + 베타 핑계.</em> (<code>03-뉴욕챗봇.md</code>)</li>
+        <li><strong>④ Samsung ChatGPT 코드 유출</strong> (2023) — 직원이 사내 코드·회의록을 외부 AI에 입력. <em>90% 함정 + 컨텍스트 손실.</em> (<code>04-삼성유출.md</code>)</li>
+        <li><strong>⑤ iTutor Group AI 채용 차별</strong> (2023) — AI 채용 도구가 나이로 자동 거절. EEOC 첫 합의. <em>동질성 함정 + 결정 위축.</em> (<code>05-채용차별.md</code>)</li>
+      </ul>
+    </div>
+    <p class="slide__note">각 사례의 패턴 매핑·신호·우리 팀 대응은 .md 안에 상세. 시간 되시는 분은 — <code>05-안전/9원칙-템플릿.md</code>를 본인 팀 맥락으로 채우는 것이 가장 큰 자산.</p>
+    <div class="chapter-nav">
+      <a class="chapter-nav__link chapter-nav__link--next" href="8-wrapup.html">
+        <span class="chapter-nav__tier">END</span>
+        <span>마무리</span>
+        <span class="chapter-nav__arrow">→</span>
+      </a>
+    </div>
+  </section>
+
+  <div class="deck-progress"><div class="deck-progress__bar"></div></div>
+</main>
+
+<script src="../scripts/deck.js"></script>
+<script src="../scripts/prompt-copy.js"></script>
+<script src="../scripts/slide-modify.js"></script>
+</body>
+</html>

@@ -235,6 +235,104 @@ html { font-size: calc(var(--stage-w) * 0.026); }
 body.modify-mode .photo-slot[data-img] { cursor: copy; outline: 2px solid transparent; }
 body.modify-mode .photo-slot[data-img]:hover { border-color: var(--color-primary); }
 .photo-slot.is-drop { border-color: var(--color-primary); border-style: solid; background: color-mix(in srgb, var(--color-primary) 12%, #fff); }
+.photo-slot.is-active {
+  outline: 3px solid var(--color-primary);
+  outline-offset: 3px;
+  border-color: var(--color-primary);
+}
+.photo-slot.is-active::after {
+  content: "Ctrl+V";
+  position: absolute;
+  top: 0.4rem; right: 0.4rem;
+  background: var(--color-primary);
+  color: #fff;
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  padding: 0.18rem 0.45rem;
+  border-radius: var(--rounded-sm);
+  pointer-events: none;
+  z-index: 4;
+}
+/* 이미 사진이 있는 슬롯도 클릭으로 교체 가능 — modify-mode에서 hover·active 안내 강화 */
+/* 클릭을 슬롯이 직접 잡도록 — img/figcaption이 클릭을 가로채면 deck.js의 좌·우 슬라이드 넘김으로 가버림 */
+body.modify-mode .photo-slot[data-img] .photo-slot__img,
+body.modify-mode .photo-slot[data-img] .photo-slot__ph,
+body.modify-mode .photo-slot[data-img] .photo-slot__ph * { pointer-events: none; }
+body.modify-mode .photo-slot.has-img { cursor: pointer; }
+
+/* 삭제 버튼 — modify-mode + (hover 또는 active) 시 우상단 표시 */
+.photo-slot__delete {
+  position: absolute;
+  top: 0.45rem;
+  right: 0.45rem;
+  z-index: 6;
+  width: 1.9rem;
+  height: 1.9rem;
+  border-radius: var(--rounded-pill);
+  border: 2px solid var(--color-danger);
+  background: rgba(255, 255, 255, 0.96);
+  color: var(--color-danger);
+  font-family: var(--font-sans);
+  font-size: 1.05rem;
+  font-weight: 700;
+  line-height: 1;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  pointer-events: auto;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.18);
+  transition: background var(--motion-fast), color var(--motion-fast), transform var(--motion-fast);
+}
+.photo-slot__delete:hover {
+  background: var(--color-danger);
+  color: #fff;
+  transform: scale(1.08);
+}
+.photo-slot__delete:active { transform: scale(0.94); }
+body.modify-mode .photo-slot.has-img:hover .photo-slot__delete,
+body.modify-mode .photo-slot.has-img.is-active .photo-slot__delete {
+  display: inline-flex;
+}
+/* active 상태에서 Ctrl+V 뱃지(::after)와 자리 안 겹치게 — 활성일 땐 ::after는 살짝 왼쪽으로 */
+body.modify-mode .photo-slot.has-img.is-active::after { right: 2.8rem; }
+body.modify-mode .photo-slot.has-img:hover {
+  outline: 2px dashed var(--color-primary);
+  outline-offset: 2px;
+}
+body.modify-mode .photo-slot.has-img:hover::before {
+  content: "클릭 → Ctrl+V 로 교체";
+  position: absolute;
+  left: 50%; bottom: 0.5rem; transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.78);
+  color: #fff;
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 0.28rem 0.6rem;
+  border-radius: var(--rounded-pill);
+  white-space: nowrap;
+  pointer-events: none;
+  z-index: 4;
+}
+/* 활성화 + 이미지 있음 — 이미지 위에 옅은 오버레이로 "교체 모드" 명확히 */
+body.modify-mode .photo-slot.has-img.is-active::before {
+  content: "교체하려면 Ctrl+V";
+  position: absolute;
+  inset: 0;
+  background: color-mix(in srgb, var(--color-primary) 28%, transparent);
+  color: #fff;
+  font-size: 0.95rem;
+  font-weight: 700;
+  display: flex; align-items: center; justify-content: center;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
+  pointer-events: none;
+  z-index: 3;
+  left: auto; right: auto; bottom: auto; transform: none;
+  border-radius: 0;
+  border-radius: var(--rounded-md);
+}
 .photo-slot__toast {
   position: absolute; left: 50%; bottom: 0.5rem; transform: translateX(-50%);
   background: var(--color-on-surface); color: #fff;
@@ -259,6 +357,43 @@ body.modify-mode .photo-slot[data-img]:hover { border-color: var(--color-primary
 .modify-bar__btn[disabled] { opacity: 0.5; cursor: not-allowed; }
 .modify-bar.is-connected .modify-bar__btn { background: var(--color-success); border-color: var(--color-success); }
 .modify-bar__hint { opacity: 0.75; font-size: 0.66rem; }
+
+/* chapter-nav — 챕터 첫/마지막 슬라이드의 이전·다음 챕터 이동 링크 */
+.chapter-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.6rem;
+  margin-top: 0.7rem;
+}
+.chapter-nav__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.55rem 1rem;
+  border: 2px solid var(--color-primary);
+  border-radius: var(--rounded-md);
+  text-decoration: none;
+  color: var(--color-primary-strong);
+  font-weight: 700;
+  font-size: 0.88rem;
+  background: var(--color-surface-elevated);
+  transition: background var(--motion-fast), color var(--motion-fast), transform var(--motion-fast);
+}
+.chapter-nav__link:hover {
+  background: var(--color-primary);
+  color: #fff;
+  transform: translateY(-1px);
+}
+.chapter-nav__link--prev { margin-right: auto; }
+.chapter-nav__link--next { margin-left: auto; font-size: 0.95rem; padding: 0.65rem 1.2rem; }
+.chapter-nav__arrow { font-size: 1.05em; line-height: 1; }
+.chapter-nav__tier {
+  font-family: var(--font-mono);
+  font-size: 0.78em;
+  letter-spacing: 0.05em;
+  opacity: 0.85;
+}
 
 /* step-insight — 각 STEP 하단에 박는 ⚠️ 조심 + 💡 가져갈 것 2줄 */
 .step-insight {
@@ -296,26 +431,38 @@ body.modify-mode .photo-slot[data-img]:hover { border-color: var(--color-primary
 }
 .step-insight__text strong { color: var(--color-primary-strong); }
 
-/* pattern-grid — T7 위험 패턴 슬라이드용 (what/why/sign/antidote 4행) */
+/* pattern-grid — 위험 패턴 슬라이드용 (현상/원인/신호/대처 4단락)
+   세로 흐름 + 좌측 진한 라벨 라인. 영어 병기 제거, 색은 강조 1색만. */
 .pattern-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  margin-top: 0.5rem;
+}
+.pattern-grid__row {
   display: grid;
-  grid-template-columns: 5.5rem 1fr;
-  gap: 0.6rem 0.9rem;
-  margin-top: 0.4rem;
+  grid-template-columns: 4.5rem 1fr;
+  gap: 0.95rem;
+  align-items: start;
+  padding-left: 0.7rem;
+  border-left: 3px solid var(--color-outline);
 }
+.pattern-grid__row--what     { border-left-color: var(--color-on-surface-muted); }
+.pattern-grid__row--why      { border-left-color: var(--color-on-surface-muted); }
+.pattern-grid__row--sign     { border-left-color: var(--color-warning); }
+.pattern-grid__row--antidote { border-left-color: var(--color-primary); }
 .pattern-grid__label {
-  font-family: var(--font-mono);
-  font-size: 0.78rem;
-  font-weight: 700;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: var(--color-on-surface);
+  padding-top: 0.05rem;
+  letter-spacing: 0;
+  text-transform: none;
   align-self: start;
-  padding-top: 0.1rem;
 }
-.pattern-grid__label--what { color: var(--color-on-surface); }
-.pattern-grid__label--why { color: var(--color-info); }
-.pattern-grid__label--sign { color: var(--color-warning); }
-.pattern-grid__label--antidote { color: var(--color-success); }
+.pattern-grid__row--sign .pattern-grid__label { color: var(--color-warning); }
+.pattern-grid__row--antidote .pattern-grid__label { color: var(--color-primary-strong); }
 .pattern-grid__text {
   font-size: 0.92rem;
   line-height: 1.55;

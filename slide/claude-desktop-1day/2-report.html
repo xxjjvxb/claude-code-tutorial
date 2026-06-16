@@ -35,6 +35,15 @@
       <div class="section-meta__item"><span class="section-meta__num">DOC</span><span>보고서</span></div>
       <div class="section-meta__item"><span class="section-meta__num">PDF</span><span>최종본</span></div>
     </div>
+    <div class="prompt-card prompt-card--compact" style="margin-top: 0.7rem;">
+      <div class="prompt-card__head">
+        <span class="prompt-card__label">▶ 작업 폴더 전환 — 새 프로젝트 X</span>
+        <button class="prompt-card__copy" type="button" data-copy>복사</button>
+      </div>
+      <pre class="prompt-card__body" data-no-nav>이제 02-보고서 폴더에서 작업할 거야.
+프로젝트는 그대로 두고, 작업 컨텍스트만 이 폴더로 옮기는 거야.</pre>
+    </div>
+    <p class="slide__note">💡 막막할 땐 — AI에게 <strong>청중·분량·톤을 먼저 묻게</strong> 시키세요. 그 답을 채우는 과정에서 보고서의 정체성이 내 손에 머뭅니다.</p>
   </section>
 
   <!-- 2 · 무엇으로 바꾸나 -->
@@ -60,104 +69,153 @@
       <div class="prompt-pair">
         <div class="prompt-card">
           <div class="prompt-card__head">
-            <span class="prompt-card__label">① 5장 — 표준</span>
+            <span class="prompt-card__label">① 물어봐 + 페이지 구성</span>
             <button class="prompt-card__copy" type="button" data-copy>복사</button>
           </div>
-          <pre class="prompt-card__body" data-no-nav>01-자기소개 폴더의 자기소개(자기소개.html)를 읽고 — 5장짜리 PowerPoint로 만들어 줘.
-순서는 표지 · 소개 · 주요 경력 · 강점 · 연락처.
-02-보고서 폴더에 저장하고, 다 되면 파일을 열어서 보여 줘.</pre>
+          <pre class="prompt-card__body" data-no-nav>01-자기소개/자기소개.html을 읽고 5장짜리 발표자료 만들 거야. 두 가지 부탁.
+
+1) 청중·분량·톤·강조 메시지 — 필요한 정보 있으면 5개 이내로 먼저 물어봐.
+
+2) 답 다 들으면 바로 PPT 만들지 말고 페이지 구성부터 짜 줘.
+   각 슬라이드 — 제목 / 핵심 메시지 한 줄 / 들어갈 내용 3~5개.
+
+내가 OK 하면 그때 만들기.</pre>
         </div>
         <div class="prompt-card">
           <div class="prompt-card__head">
-            <span class="prompt-card__label">② 10장 — 자세히</span>
+            <span class="prompt-card__label">② 구성 OK → PPT 생성</span>
             <button class="prompt-card__copy" type="button" data-copy>복사</button>
           </div>
-          <pre class="prompt-card__body" data-no-nav>같은 내용을 10장짜리 더 자세한 발표자료로 만들어 줘.
-각 주제마다 한 슬라이드씩, 사진이나 도표 자리도 마련해서.
-파일명은 "자기소개-10장.pptx"로.</pre>
+          <pre class="prompt-card__body" data-no-nav>좋아, 위 구성대로 5장짜리 PowerPoint 만들어 줘.
+
+02-보고서 폴더에 저장하고, 다 되면 열어서 보여 줘.</pre>
         </div>
       </div>
       <aside class="step-insight">
         <div class="step-insight__row step-insight__row--caution">
           <span class="step-insight__label">⚠️ 조심</span>
-          <span class="step-insight__text">"5장으로 만들어 줘" 하면 정확히 5장. 그런데 그 내용에 5장이 적절한 분량인가는 아무도 안 물음. <strong>"내가 시킨 분량 = 최적 분량"의 함정</strong>. 시킨 사람의 사양이 곧 결과의 한계.</span>
+          <span class="step-insight__text">PPT 생성은 1~2분 걸리는 무거운 작업. 구성도 안 보고 바로 만들면 — 마음에 안 들 때 시간이 두 배.</span>
         </div>
         <div class="step-insight__row step-insight__row--takeaway">
           <span class="step-insight__label">💡 가져갈 것</span>
-          <span class="step-insight__text">형식 노동(서식·정렬·표)이 사라진 시간이 어디로 가야 하는가가 진짜 질문. 검증·맥락·메시지 정제로 가지 않고 그냥 보고서 양만 늘면 — <strong>결정 품질은 오히려 떨어짐</strong>.</span>
+          <span class="step-insight__text">맥락 = 주도권. <strong>"물어봐 + 구성 먼저"</strong>가 가장 강력한 품질 장치. 모든 STEP에 적용.</span>
         </div>
       </aside>
     </div>
-    <p class="slide__note">자기소개.html이 아직 없다면(T1을 건너뛴 경우) — 이 폴더의 <code>회의메모-*.txt</code>를 원문 삼아 같은 프롬프트로 진행하면 됩니다.</p>
   </section>
 
-  <!-- 4 · STEP 2 보고서 -->
+  <!-- 4 · STEP 2 PPT 비판 보고서 -->
   <section class="slide is-standard">
-    <div class="slide__eyebrow">STEP 2 · 보고서</div>
-    <h2 class="slide__title">같은 내용을 — <span class="accent">Word 보고서</span>로</h2>
+    <div class="slide__eyebrow">STEP 2 · 비판 보고서</div>
+    <h2 class="slide__title">방금 만든 PPT를 — <span class="accent">스스로 뜯어 보기</span></h2>
     <div class="slide__body">
       <div class="prompt-pair">
         <div class="prompt-card">
           <div class="prompt-card__head">
-            <span class="prompt-card__label">① 한 장 — 요약 보고서</span>
+            <span class="prompt-card__label">① 비판 항목 구성 먼저</span>
             <button class="prompt-card__copy" type="button" data-copy>복사</button>
           </div>
-          <pre class="prompt-card__body" data-no-nav>같은 내용을 한 장짜리 공식 보고서(Word)로 만들어 줘.
-제목 · 한 줄 요약 · 본문 순서로, 격식 있는 문체.</pre>
+          <pre class="prompt-card__body" data-no-nav>방금 만든 자기소개 PPT를 비판적으로 뜯어 보는 Word 보고서를 만들 거야.
+
+만들기 전에 — 어떤 항목으로 비판할지 4~6개 항목부터 짜 줘.
+(메시지 명확성, 청중 적합성, 약한 슬라이드, 빠진 내용, 매력도 등)
+
+내가 OK 하면 그때 Word로.</pre>
         </div>
         <div class="prompt-card">
           <div class="prompt-card__head">
-            <span class="prompt-card__label">② 여러 장 — 정식 보고서</span>
+            <span class="prompt-card__label">② 구성 OK → 비판 보고서 작성</span>
             <button class="prompt-card__copy" type="button" data-copy>복사</button>
           </div>
-          <pre class="prompt-card__body" data-no-nav>좀 더 정식 보고서 형태로 만들어 줘.
-표지 · 목차 · 각 챕터 · 결론까지 갖춰서 여러 페이지로,
-가독성 좋은 격식 있는 디자인으로.</pre>
+          <pre class="prompt-card__body" data-no-nav>좋아, 위 항목대로 비판 보고서 Word로 만들어 줘.
+
+PPT 한 슬라이드씩 자세히 보고 — 각 항목마다 구체적 지적 + 개선 제안.
+좋게 포장하지 말고 솔직하게.
+
+02-보고서 폴더에 "PPT-비판보고서.docx"로 저장.</pre>
         </div>
       </div>
       <aside class="step-insight">
         <div class="step-insight__row step-insight__row--caution">
           <span class="step-insight__label">⚠️ 조심</span>
-          <span class="step-insight__text">같은 내용을 다른 형식으로 변환 = 형식에 맞춰 내용도 미세하게 <strong>재구성</strong>됨. 변환을 거치면서 원문에 없던 결론이 살짝 들어가는 경우가 흔함.</span>
+          <span class="step-insight__text">AI는 비판시켜도 <strong>아첨 모드</strong>로 감 ("전반적으로 훌륭하나..."). 두루뭉술하면 "포장 빼고 약점만"으로 다시.</span>
         </div>
         <div class="step-insight__row step-insight__row--takeaway">
           <span class="step-insight__label">💡 가져갈 것</span>
-          <span class="step-insight__text">한 원문 → 여러 형식 = 청중별 메시지 일관성 무료 보장처럼 보임. 그러나 일관성은 "겉" — 디테일은 변환 단계마다 미세 변형. <strong>핵심 사실은 별도 기록</strong>.</span>
+          <span class="step-insight__text">AI는 만드는 도구일 뿐 아니라 <strong>비판 도구</strong>. 회의 자료·메일·보고서에도 같은 패턴 적용.</span>
         </div>
       </aside>
     </div>
   </section>
 
-  <!-- 5 · STEP 3 PDF + 디자인 -->
+  <!-- 5 · STEP 3 (1/2) getdesign.md 소개 -->
   <section class="slide is-standard">
-    <div class="slide__eyebrow">STEP 3 · 마감</div>
-    <h2 class="slide__title">PDF로 내보내고 — <span class="accent">디자인</span>을 통일</h2>
+    <div class="slide__eyebrow">STEP 3 (1/2) · 브랜드 가이드 사이트</div>
+    <h2 class="slide__title"><a href="https://getdesign.md/" target="_blank" rel="noopener" style="color: var(--color-primary-strong); text-decoration: none;">getdesign.md</a> — <span class="accent">실제 회사 가이드</span>를 가져오기</h2>
     <div class="slide__body">
-      <div class="flow-89">
-        <div class="prompt-card prompt-card--compact">
+      <div class="content-card content-card--compact">
+        <h3 class="content-card__title">왜 이 사이트?</h3>
+        <p class="content-card__body">Stripe·Linear·Vercel·Figma·Notion 같은 실제 회사의 디자인 가이드를 <strong>.md 형식</strong>으로 모아 둔 곳. 한 사이트에서 톤이 다른 가이드를 비교해 볼 수 있고, 마음에 드는 걸 그대로 내 결과물에 입힐 수 있습니다.</p>
+      </div>
+      <div class="grid-2">
+        <figure class="photo-slot photo-slot--landscape" data-img="2-report-getdesign-1.png">
+          <img class="photo-slot__img" src="../imgs/2-report-getdesign-1.png" alt="getdesign.md 메인 — 회사 가이드 카드 목록">
+          <figcaption class="photo-slot__ph">
+            <span class="photo-slot__icon">◧</span>
+            <span class="photo-slot__label">메인 — 회사 카드 목록</span>
+            <span class="photo-slot__hint">곧 부착</span>
+          </figcaption>
+        </figure>
+        <figure class="photo-slot photo-slot--landscape" data-img="2-report-getdesign-2.png">
+          <img class="photo-slot__img" src="../imgs/2-report-getdesign-2.png" alt="getdesign.md 가이드 페이지 — .md 원문 보기">
+          <figcaption class="photo-slot__ph">
+            <span class="photo-slot__icon">◧</span>
+            <span class="photo-slot__label">가이드 페이지 — .md 원문</span>
+            <span class="photo-slot__hint">곧 부착</span>
+          </figcaption>
+        </figure>
+      </div>
+    </div>
+    <p class="slide__note">브라우저로 직접 들어가 회사 하나 고르고, 그 가이드 <strong>.md 원문을 받아 <code>02-보고서</code> 폴더에 "브랜드가이드.md"로 저장</strong>해 두세요. 다음 슬라이드에서 이 파일을 Cowork이 읽어 톤을 입힙니다.</p>
+  </section>
+
+  <!-- 6 · STEP 3 (2/2) 가져와서 적용 -->
+  <section class="slide is-standard">
+    <div class="slide__eyebrow">STEP 3 (2/2) · 가져와서 입히기</div>
+    <h2 class="slide__title">고른 회사의 톤을 — <span class="accent">내 결과물에</span></h2>
+    <div class="slide__body">
+      <div class="prompt-pair">
+        <div class="prompt-card">
           <div class="prompt-card__head">
-            <span class="prompt-card__label">PDF로</span>
+            <span class="prompt-card__label">① 가이드 가져오기</span>
             <button class="prompt-card__copy" type="button" data-copy>복사</button>
           </div>
-          <pre class="prompt-card__body" data-no-nav>완성한 발표자료를 PDF로도 내보내 줘.</pre>
+          <pre class="prompt-card__body" data-no-nav>앞에서 getdesign.md에서 받은 디자인 가이드 .md 파일을
+02-보고서 폴더에 "브랜드가이드.md"로 넣어 뒀어.
+
+그 파일을 읽고 — 어느 회사 가이드인지, 핵심 톤(색·폰트·분위기)이 뭔지
+한 줄로 알려 줘. 다음 단계에서 이 톤을 내 결과물에 입힐 거야.</pre>
         </div>
-        <div class="prompt-card prompt-card--compact">
+        <div class="prompt-card">
           <div class="prompt-card__head">
-            <span class="prompt-card__label">디자인 통일</span>
+            <span class="prompt-card__label">② 톤 적용 + PDF</span>
             <button class="prompt-card__copy" type="button" data-copy>복사</button>
           </div>
-          <pre class="prompt-card__body" data-no-nav>차분한 색과 일관된 폰트로 전체 디자인을 통일해 줘.
-표지에는 제목과 이름이 잘 보이게.</pre>
+          <pre class="prompt-card__body" data-no-nav>방금 저장한 브랜드가이드.md를 읽고 —
+PPT랑 비판 보고서(Word)를 그 톤대로 통일해 줘.
+색·폰트·표지 분위기까지.
+
+그 다음 PPT는 PDF로도 내보내. 모두 02-보고서 폴더에.</pre>
         </div>
       </div>
       <aside class="step-insight">
         <div class="step-insight__row step-insight__row--caution">
           <span class="step-insight__label">⚠️ 조심</span>
-          <span class="step-insight__text">디자인 통일은 신뢰감을 만들지만 — <strong>신뢰감과 신뢰도는 다름</strong>. 깔끔한 표·일관된 색이 곧 검증을 의미하지 않음. (T7 권위 일루전.)</span>
+          <span class="step-insight__text">디자인 통일은 신뢰감을 만들지만 — <strong>신뢰감과 신뢰도는 다름</strong>. 깔끔한 표·일관된 색이 검증을 의미하지 않음. (T5 권위 일루전.)</span>
         </div>
         <div class="step-insight__row step-insight__row--takeaway">
           <span class="step-insight__label">💡 가져갈 것</span>
-          <span class="step-insight__text">디자인 노동이 사라지면 — "디자인 잘 됐다고 통과시키는" 습관이 위험해짐. 검토 기준이 <strong>형식에서 내용으로</strong> 옮겨가야 함.</span>
+          <span class="step-insight__text"><strong>"가이드 파일 → AI에게 읽힘 → 다 따라옴"</strong> 패턴은 우리 회사 가이드에도 그대로 적용 가능.</span>
         </div>
       </aside>
     </div>
@@ -171,16 +229,19 @@
       <div class="challenge">
         <span class="challenge__label">도전 과제</span>
         <ul class="challenge__list">
-          <li><strong>① 분량 실험</strong> — 같은 내용을 <code>1장 핵심본 / 3장 표준본 / 10장 상세본</code> 세 버전으로. 각 버전은 청중도 다르게 가정.</li>
-          <li><strong>② 회의록 자동화</strong> — 워크스페이스 <code>02-보고서/회의메모-*.txt</code> 두 개를 합쳐 한 페이지 회의록(Word)으로. 결정사항·다음 액션 따로 정리.</li>
-          <li><strong>③ 브랜드 통일</strong> — <code>디자인/디자인-가이드.md</code>의 색·폰트·로고 위치를 따라 모든 결과물(PPT·Word·PDF)을 같은 톤으로.</li>
-          <li><strong>④ 엑셀 자동화</strong> — <code>02-보고서/핵심지표.csv</code>를 엑셀로 가져와 분기별 합계·증감률을 자동 계산하는 표로.</li>
-          <li><strong>⑤ 한 번에 4종</strong> — 같은 원문 하나에서 PPT·Word·PDF·엑셀을 한 번의 지시로 동시에 산출.</li>
-          <li><strong>⑥ 발표자 노트 자동 생성</strong> — 각 슬라이드에 발표 시 말할 내용을 노트로 달기. "발표자 노트 달아 줘" 한 마디로.</li>
+          <li><strong>① 발표자 노트 자동 생성</strong> — PPT 각 슬라이드에 발표할 때 말할 내용을 노트로 달기. "발표자 노트 달아 줘" 한 마디로.</li>
+          <li><strong>② 영어 자료 → 엑셀 차트</strong> — <code>02-보고서/영어-학습수입.txt</code>를 한국어로 옮기고, 학력별 평균 연봉을 엑셀 파일(.xlsx)에 표 + 막대 차트로 정리. 차트는 엑셀 차트 객체로 (이미지 X).</li>
         </ul>
       </div>
     </div>
-    <p class="slide__note">결과물이 만족스러우면 — <strong><code>/채점</code></strong>. 다음 단계는 내 폴더의 진짜 업무를 자동화합니다.</p>
+    <p class="slide__note">결과물이 만족스러우면 — <strong>"채점해 줘"</strong>.</p>
+    <div class="chapter-nav">
+      <a class="chapter-nav__link chapter-nav__link--next" href="3-automation.html">
+        <span class="chapter-nav__tier">T3</span>
+        <span>업무 자동화</span>
+        <span class="chapter-nav__arrow">→</span>
+      </a>
+    </div>
   </section>
 
   <div class="deck-progress"><div class="deck-progress__bar"></div></div>
