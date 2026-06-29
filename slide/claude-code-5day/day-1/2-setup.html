@@ -390,12 +390,12 @@
           <div class="trouble-item__problem">"<span class="os-win">인식되지 않습니다</span><span class="os-mac">command not found</span>"</div>
           <div class="trouble-item__solution"><strong>새 <span class="os-win">PowerShell</span><span class="os-mac">터미널</span> 창</strong> → PATH 갱신. 안 되면 <span class="os-win">시작 메뉴</span><span class="os-mac">Spotlight</span>에서 다시 검색해 실행.</div>
         </div>
-        <div class="trouble-item os-win is-block">
+        <div class="trouble-item os-win is-grid">
           <div class="trouble-item__num">02</div>
           <div class="trouble-item__problem">PowerShell 스크립트 실행 정책 에러</div>
           <div class="trouble-item__solution">관리자 PowerShell → <code>Set-ExecutionPolicy -Scope CurrentUser RemoteSigned</code> → 재시도.</div>
         </div>
-        <div class="trouble-item os-mac is-block">
+        <div class="trouble-item os-mac is-grid">
           <div class="trouble-item__num">02</div>
           <div class="trouble-item__problem">"Permission denied" / 실행 권한 에러</div>
           <div class="trouble-item__solution">설치 스크립트를 다시 실행하거나, 막힌 파일에 <code>chmod +x ~/.claude/bin/claude</code>. Mac은 별도 정책 없음 — 권한만 맞으면 OK.</div>

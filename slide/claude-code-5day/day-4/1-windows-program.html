@@ -541,22 +541,22 @@
           <div class="trouble-item__problem">PyInstaller 빌드 에러</div>
           <div class="trouble-item__solution">출력 끝부분의 빨간 줄을 <strong>통째로</strong> 복사해 Claude에게. 대개는 "이 라이브러리도 같이 묶어줘" 한 줄 추가로 해결.</div>
         </div>
-        <div class="trouble-item os-win is-block">
+        <div class="trouble-item os-win is-grid">
           <div class="trouble-item__num">04</div>
           <div class="trouble-item__problem">.exe 더블클릭했더니 "Windows의 PC 보호"</div>
           <div class="trouble-item__solution">정상. "추가 정보 → 실행". 슬라이드 13 참고.</div>
         </div>
-        <div class="trouble-item os-mac is-block">
+        <div class="trouble-item os-mac is-grid">
           <div class="trouble-item__num">04</div>
           <div class="trouble-item__problem">.app 더블클릭했더니 Gatekeeper 차단</div>
           <div class="trouble-item__solution">정상. Finder에서 <strong>우클릭 → 열기</strong>(1회). 또는 자체 서명: <code>codesign --deep --force --sign - dist/myapp.app</code>. 슬라이드 13 참고.</div>
         </div>
-        <div class="trouble-item os-win is-block">
+        <div class="trouble-item os-win is-grid">
           <div class="trouble-item__num">05</div>
           <div class="trouble-item__problem">.exe가 백신에 격리됐다</div>
           <div class="trouble-item__solution">서명 없는 새 파일이라 가끔 오탐. Windows 보안 → 보호 기록 → 복원. 작업 폴더를 Defender 예외에 추가해두면 재발 방지.</div>
         </div>
-        <div class="trouble-item os-mac is-block">
+        <div class="trouble-item os-mac is-grid">
           <div class="trouble-item__num">05</div>
           <div class="trouble-item__problem">"손상된 파일이라 열 수 없습니다"</div>
           <div class="trouble-item__solution">실제 손상이 아니라 격리 속성 때문. <code>xattr -dr com.apple.quarantine dist/myapp.app</code> 한 줄로 풀림. (다운로드한 앱에 macOS가 붙이는 속성)</div>

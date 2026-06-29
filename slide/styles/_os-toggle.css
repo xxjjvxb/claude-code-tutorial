@@ -47,11 +47,13 @@ html[data-os="win"] .os-win { display: inline; }
 html[data-os="win"] .os-win.is-block { display: block; }
 html[data-os="win"] .os-win.is-flex { display: flex; }
 html[data-os="win"] .os-win.is-inline-flex { display: inline-flex; }
+html[data-os="win"] .os-win.is-grid { display: grid; }
 
 html[data-os="mac"] .os-mac { display: inline; }
 html[data-os="mac"] .os-mac.is-block { display: block; }
 html[data-os="mac"] .os-mac.is-flex { display: flex; }
 html[data-os="mac"] .os-mac.is-inline-flex { display: inline-flex; }
+html[data-os="mac"] .os-mac.is-grid { display: grid; }
 
 /* JS 로드 전(no-flash) — data-os 없으면 win 기본으로 동작
    (스크립트가 즉시 html[data-os] 박지만 안전망) */

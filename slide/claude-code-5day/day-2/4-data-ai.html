@@ -859,16 +859,16 @@
         <div>
           <div class="content-card content-card--compact">
             <h3 class="content-card__title">data_2는 다르다</h3>
-            <p class="content-card__body">data_1보다 까다롭게 느껴질 겁니다.</p>
+            <p class="content-card__body">data_1보다 살짝 까다롭게 느껴질 겁니다.</p>
             <ul class="content-card__list">
-              <li>여러 번 출렁여 — 직선·낮은 차수로는 어림없음</li>
-              <li>차수를 더 올려야 겨우 따라감</li>
-              <li>그래도 깔끔하게 안 잡힐 수 있음 — 정상</li>
+              <li>한 번 솟았다 한 번 가라앉는 S자 — 직선·2차로는 어림없음</li>
+              <li><strong>3차쯤이면 데이터 구간은 거의 맞아 보임</strong></li>
+              <li>하지만 외삽(x &gt; 10)에서는 추정이 무너질 수 있음 — 그게 묘미</li>
             </ul>
           </div>
         </div>
       </div>
-      <p class="slide__note">data_2가 더 까다롭게 느껴진다면 — 제대로 하고 있는 겁니다. <strong>왜 그런지는 정답 공개 후에</strong>.</p>
+      <p class="slide__note">3차 다항식이 데이터 점 위에 그럴듯하게 얹히면 — "맞췄다" 싶죠. <strong>진짜 함수가 정말 3차인지는 정답 공개 후에</strong>.</p>
     </div>
   </section>
 
@@ -892,8 +892,8 @@
           <line x1="635.7" y1="52" x2="635.7" y2="212" stroke="#fb2c36" stroke-width="2" stroke-dasharray="6 4"/>
           <rect x="50" y="276" width="585.7" height="160" fill="#ffe7d1"/>
           <rect x="24" y="234" width="556" height="32" rx="8" fill="#ffffff" stroke="#fe6e00" stroke-width="2"/>
-          <text x="42" y="256" font-family="ui-monospace, monospace" font-size="17" font-weight="700" fill="#cc5a14">data_2  ·  f(x) = 3·exp(-0.25x)·sin(1.5x) + 2</text>
-          <polyline points="50,372 79.3,314.4 108.6,297.4 167.1,363.7 225.7,413.6 284.3,381.9 342.9,346.1 401.4,363 460,384.8 518.6,379 577.1,365.6 635.7,366.9 752.9,375.5 870,369.4" fill="none" stroke="#fe6e00" stroke-width="4"/>
+          <text x="42" y="256" font-family="ui-monospace, monospace" font-size="17" font-weight="700" fill="#cc5a14">data_2  ·  f(x) = 1.8·sin(0.55x) + 0.12x + 2</text>
+          <polyline points="50,366.4 91,340 137.9,314.2 184.7,297.1 231.6,291.4 284.3,299.1 331.1,316.3 383.8,342.2 430.7,365.6 483.4,385.7 536.1,393.7 588.8,386.9 635.7,368.9 706,315.8 776.3,264.4 846.6,243.8" fill="none" stroke="#fe6e00" stroke-width="4"/>
           <line x1="635.7" y1="276" x2="635.7" y2="436" stroke="#fb2c36" stroke-width="2" stroke-dasharray="6 4"/>
           <text x="626" y="449" text-anchor="end" font-family="ui-sans-serif, system-ui" font-size="14" font-weight="700" fill="#cc5a14">데이터 구간 (x ≤ 10)</text>
           <text x="648" y="449" font-family="ui-sans-serif, system-ui" font-size="14" font-weight="700" fill="#fb2c36">외삽 (x &gt; 10) →</text>
@@ -922,7 +922,7 @@
           <p class="content-card__body">데이터 양 끝 바깥에서 추정이 무너졌나? 데이터 없는 곳은 — AI도 모른다.</p>
         </div>
       </div>
-      <p class="slide__note">그리고 — <strong>data_1보다 data_2가 왜 더 어려웠나?</strong> 진짜 규칙이 복잡할수록 회귀로는 벅차고, 더 유연한 신경망이 필요해집니다.</p>
+      <p class="slide__note">그리고 — <strong>data_2는 3차로 거의 맞아 보였지만, 진짜는 사인 + 선형</strong>. 데이터 구간만 보면 속기 쉬워요. 진짜 규칙이 복잡할수록 회귀로는 벅차고, 더 유연한 신경망이 필요해집니다.</p>
     </div>
   </section>
 
