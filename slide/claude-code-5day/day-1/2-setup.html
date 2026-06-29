@@ -6,6 +6,8 @@
   <title>1일차 · 2. 셋업</title>
   <link rel="stylesheet" href="../../styles/tokens.css">
   <link rel="stylesheet" href="../../styles/deck.css">
+  <link rel="stylesheet" href="../../styles/_os-toggle.css">
+  <script defer src="../../scripts/os-toggle.js"></script>
 </head>
 <body>
 
@@ -24,10 +26,11 @@
   <section class="slide is-section is-standard">
     <div class="section-eyebrow">CHAPTER 2 · SETUP</div>
     <h2 class="section-title">0부터 Claude Code <span class="accent">셋업</span></h2>
-    <p class="section-caption">VS Code 설치 → Claude Code 설치(PowerShell 한 줄) → 교육 팀 계정 초대 → 첫 실행. Node.js는 나중에 프론트엔드 만들 때만.</p>
+    <p class="section-caption"><span class="os-win is-inline">VS Code 설치 → Claude Code 설치(PowerShell 한 줄)</span><span class="os-mac is-inline">VS Code 설치 → Claude Code 설치(터미널 한 줄)</span> → 교육 팀 계정 초대 → 첫 실행. Node.js는 나중에 프론트엔드 만들 때만.</p>
     <div class="section-meta">
       <div class="section-meta__item"><span class="section-meta__num">7</span><span>핵심 단계</span></div>
     </div>
+    <p class="section-caption" style="margin-top:0.6rem;font-size:0.72rem;color:var(--color-on-surface-muted)"><strong>Mac이세요?</strong> 우상단 <code>🪟 Win ⇄ 🍎 Mac</code> 토글 클릭 — 명령어·경로·단축키가 즉시 Mac으로 바뀝니다.</p>
   </section>
 
   <!-- 2 · 셋업 흐름 한눈에 -->
@@ -36,9 +39,9 @@
     <h2 class="slide__title">셋업 흐름, <span class="accent">한눈에</span></h2>
     <div class="slide__body">
       <div class="setup-grid">
-        <div class="setup-step"><div class="setup-step__num">01</div><h3 class="setup-step__title">VS Code 설치</h3><p class="setup-step__desc">Microsoft Store에서 검색</p></div>
-        <div class="setup-step"><div class="setup-step__num">02</div><h3 class="setup-step__title">환경변수 · PATH</h3><p class="setup-step__desc">왜 PowerShell 새로 열어야 하나</p></div>
-        <div class="setup-step"><div class="setup-step__num">03</div><h3 class="setup-step__title">Claude Code 설치</h3><p class="setup-step__desc">irm https://claude.ai/install.ps1 | iex</p></div>
+        <div class="setup-step"><div class="setup-step__num">01</div><h3 class="setup-step__title">VS Code 설치</h3><p class="setup-step__desc"><span class="os-win">Microsoft Store</span><span class="os-mac">Homebrew / 공식 사이트</span>에서 검색</p></div>
+        <div class="setup-step"><div class="setup-step__num">02</div><h3 class="setup-step__title">환경변수 · PATH</h3><p class="setup-step__desc">왜 <span class="os-win">PowerShell</span><span class="os-mac">터미널</span> 새로 열어야 하나</p></div>
+        <div class="setup-step"><div class="setup-step__num">03</div><h3 class="setup-step__title">Claude Code 설치</h3><p class="setup-step__desc"><span class="os-win">irm https://claude.ai/install.ps1 | iex</span><span class="os-mac">curl -fsSL https://claude.ai/install.sh | bash</span></p></div>
         <div class="setup-step"><div class="setup-step__num">04</div><h3 class="setup-step__title">PATH 확인</h3><p class="setup-step__desc">claude --version 통과</p></div>
         <div class="setup-step"><div class="setup-step__num">05</div><h3 class="setup-step__title">강의 계정</h3><p class="setup-step__desc">팀 초대 또는 본인 가입</p></div>
         <div class="setup-step"><div class="setup-step__num">06</div><h3 class="setup-step__title">claude → "안녕"</h3><p class="setup-step__desc">첫 응답 확인</p></div>
@@ -51,9 +54,9 @@
   <!-- 3 · VS Code 설치 단계 -->
   <section class="slide is-standard">
     <div class="slide__eyebrow">STEP 01 (1/2) · VS Code 설치</div>
-    <h2 class="slide__title">VS Code · <span class="accent">Microsoft Store</span>로 설치</h2>
+    <h2 class="slide__title">VS Code · <span class="os-win"><span class="accent">Microsoft Store</span>로 설치</span><span class="os-mac"><span class="accent">공식 사이트</span>에서 설치</span></h2>
     <div class="slide__body">
-      <div class="install-detail">
+      <div class="install-detail os-win is-block">
         <div class="install-detail__header">
           <div class="install-detail__logo"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 4v24L8 16 22 4z"/><path d="M4 14l3-2 15 12-15 12-3-2v-4l3-2-3-2v-12z"/></svg></div>
           <div class="install-detail__where"><div class="install-detail__where-label">받는 곳</div><div class="install-detail__where-value">Microsoft Store → "Visual Studio Code"</div></div>
@@ -66,7 +69,20 @@
           <li>(선택) Extensions → "Korean" 검색 → 언어팩 설치하면 한국어 메뉴</li>
         </ol>
       </div>
-      <p class="slide__note">설치 후 <strong>다음 슬라이드</strong>에서 PowerShell로 정상 동작 확인 + PATH 트러블슈팅.</p>
+      <div class="install-detail os-mac is-block">
+        <div class="install-detail__header">
+          <div class="install-detail__logo"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 4v24L8 16 22 4z"/><path d="M4 14l3-2 15 12-15 12-3-2v-4l3-2-3-2v-12z"/></svg></div>
+          <div class="install-detail__where"><div class="install-detail__where-label">받는 곳</div><div class="install-detail__where-value">code.visualstudio.com → "Download for Mac"</div></div>
+        </div>
+        <ol class="install-detail__steps">
+          <li><strong>code.visualstudio.com</strong> 접속 → 가운데 <strong>"Download for Mac"</strong> 버튼 (Apple Silicon / Intel 자동 감지)</li>
+          <li>다운로드된 <code>VSCode-darwin-*.zip</code> 더블클릭 → 자동 압축 풀림 → <strong>"Visual Studio Code.app"</strong> 생성</li>
+          <li><strong>응용 프로그램(Applications) 폴더로 드래그</strong>해 이동 — Launchpad에서 검색 가능해짐</li>
+          <li>첫 실행 시 Gatekeeper 경고 → <strong>"열기"</strong> 클릭 (App Store 외부 앱 1회 승인)</li>
+          <li>(선택) Extensions → "Korean" 검색 → 언어팩 설치하면 한국어 메뉴</li>
+        </ol>
+      </div>
+      <p class="slide__note">설치 후 <strong>다음 슬라이드</strong>에서 <span class="os-win">PowerShell</span><span class="os-mac">터미널</span>로 정상 동작 확인 + PATH 트러블슈팅.</p>
     </div>
   </section>
 
@@ -77,27 +93,27 @@
     <div class="slide__body">
       <div class="install-detail__verify" style="margin-top:0">
         <span class="install-detail__verify-label">정상 출력 화면</span>
-        <span class="accent-cmd">PS&gt;</span> code --version &nbsp;→&nbsp; 1.95.x · x64
+        <span class="accent-cmd"><span class="os-win">PS&gt;</span><span class="os-mac">$</span></span> code --version &nbsp;→&nbsp; 1.95.x · <span class="os-win">x64</span><span class="os-mac">arm64</span>
       </div>
       <div class="content-card">
-        <h3 class="content-card__title">"인식되지 않습니다" 가 뜨면</h3>
+        <h3 class="content-card__title">"<span class="os-win">인식되지 않습니다</span><span class="os-mac">command not found</span>" 가 뜨면</h3>
         <div class="step-list step-list--compact">
           <div class="step-list__item">
             <div class="step-list__num">1</div>
             <div class="step-list__content">
-              <p class="step-list__title">PowerShell 새로 열기 <span class="step-list__desc" style="display:inline">— PATH 갱신, 90% 해결</span></p>
+              <p class="step-list__title"><span class="os-win">PowerShell</span><span class="os-mac">터미널</span> 새로 열기 <span class="step-list__desc" style="display:inline">— PATH 갱신, 90% 해결</span></p>
             </div>
           </div>
           <div class="step-list__item">
             <div class="step-list__num">2</div>
             <div class="step-list__content">
-              <p class="step-list__title">VS Code → Ctrl+Shift+P → "Install 'code' command in PATH"</p>
+              <p class="step-list__title">VS Code → <span class="os-win">Ctrl</span><span class="os-mac">⌘</span>+Shift+P → "Install 'code' command in PATH"</p>
             </div>
           </div>
           <div class="step-list__item">
             <div class="step-list__num">3</div>
             <div class="step-list__content">
-              <p class="step-list__title">새 PowerShell에서 <code>code --version</code> 다시 확인</p>
+              <p class="step-list__title">새 <span class="os-win">PowerShell</span><span class="os-mac">터미널</span>에서 <code>code --version</code> 다시 확인</p>
             </div>
           </div>
           <div class="step-list__item">
@@ -108,7 +124,8 @@
           </div>
         </div>
       </div>
-      <p class="slide__note">MS Store 버전은 PATH 자동 등록이지만 가끔 갱신이 늦어요. <strong>새 PowerShell 창</strong>이 거의 모든 경우 해결책.</p>
+      <p class="slide__note os-win is-block">MS Store 버전은 PATH 자동 등록이지만 가끔 갱신이 늦어요. <strong>새 PowerShell 창</strong>이 거의 모든 경우 해결책.</p>
+      <p class="slide__note os-mac is-block">Mac은 <strong>Cmd+Shift+P → "Install 'code' command in PATH"</strong>를 한 번 실행해야 <code>code</code>가 잡혀요. 그 후 <strong>새 터미널</strong>에서 확인.</p>
     </div>
   </section>
 
@@ -123,14 +140,14 @@
             <h3 class="content-card__title">PATH가 뭔가</h3>
             <p class="content-card__body">"명령어를 어디서 찾을지" 폴더 목록을 적어둔 환경변수.</p>
             <ul class="content-card__list">
-              <li>PowerShell이 <code>claude</code>를 PATH 폴더들에서 검색</li>
+              <li><span class="os-win">PowerShell</span><span class="os-mac">셸(zsh)</span>이 <code>claude</code>를 PATH 폴더들에서 검색</li>
               <li>설치 스크립트가 PATH에 자동 추가</li>
-              <li>새로 등록된 PATH는 <strong>새 PowerShell 창</strong>에서만 적용</li>
+              <li>새로 등록된 PATH는 <strong>새 <span class="os-win">PowerShell</span><span class="os-mac">터미널</span> 창</strong>에서만 적용</li>
             </ul>
           </div>
         </div>
         <div>
-          <div class="path-tree">
+          <div class="path-tree os-win is-block">
             <span class="path-tree__line">PATH (시스템 환경변수)</span>
             <span class="path-tree__line">  ├── C:\Windows\System32</span>
             <span class="path-tree__line path-tree__line--cur">  ├── <span class="path-tree__line--hi">C:\Users\you\.claude\bin\</span>  ← claude.cmd</span>
@@ -138,9 +155,18 @@
             <span class="path-tree__line"></span>
             <span class="path-tree__line">PS&gt; claude → 위 폴더들에서 검색 → 실행</span>
           </div>
+          <div class="path-tree os-mac is-block">
+            <span class="path-tree__line">$PATH (환경변수)</span>
+            <span class="path-tree__line">  ├── /usr/local/bin</span>
+            <span class="path-tree__line">  ├── /usr/bin</span>
+            <span class="path-tree__line path-tree__line--cur">  ├── <span class="path-tree__line--hi">~/.claude/bin/</span>  ← claude</span>
+            <span class="path-tree__line">  └── ...</span>
+            <span class="path-tree__line"></span>
+            <span class="path-tree__line">$ claude → 위 폴더들에서 검색 → 실행</span>
+          </div>
         </div>
       </div>
-      <p class="slide__note">"인식되지 않습니다"는 99% PATH 문제. <strong>새 PowerShell 창</strong>이 1차 해결책.</p>
+      <p class="slide__note">"<span class="os-win">인식되지 않습니다</span><span class="os-mac">command not found</span>"는 99% PATH 문제. <strong>새 <span class="os-win">PowerShell</span><span class="os-mac">터미널</span> 창</strong>이 1차 해결책.</p>
     </div>
   </section>
 
@@ -149,7 +175,7 @@
     <div class="slide__eyebrow">STEP 03 · Claude Code 설치</div>
     <h2 class="slide__title">설치 방법 <span class="accent">3가지</span> — 본인 환경에 맞게</h2>
     <div class="slide__body">
-      <div class="install-methods">
+      <div class="install-methods os-win is-block">
         <div class="install-method install-method--primary">
           <div class="install-method__label">방법 1 · PowerShell 한 줄 — 이번 강의 메인</div>
           <div class="install-method__cmd"><span class="accent-cmd">PS&gt;</span> irm https://claude.ai/install.ps1 | iex</div>
@@ -166,7 +192,24 @@
           <div class="install-method__note"><code>npm update</code>로 업데이트도 한 줄.</div>
         </div>
       </div>
-      <p class="slide__note">설치 직후 <strong>PowerShell을 껐다 새로 열어야</strong> PATH 갱신 → <code>claude</code> 인식. 실패 시 → 관리자 권한 PowerShell.</p>
+      <div class="install-methods os-mac is-block">
+        <div class="install-method install-method--primary">
+          <div class="install-method__label">방법 1 · 터미널 한 줄 — 이번 강의 메인</div>
+          <div class="install-method__cmd"><span class="accent-cmd">$</span> curl -fsSL https://claude.ai/install.sh | bash</div>
+          <div class="install-method__note">다운로드 후 즉시 실행. <strong>Node.js 없이 한 줄로 끝</strong>.</div>
+        </div>
+        <div class="install-method">
+          <div class="install-method__label">방법 2 · Homebrew (이미 brew 쓰는 분)</div>
+          <div class="install-method__cmd"><span class="accent-cmd">$</span> brew install anthropic/tap/claude-code</div>
+          <div class="install-method__note">설치·업데이트를 <code>brew upgrade</code> 한 줄로.</div>
+        </div>
+        <div class="install-method">
+          <div class="install-method__label">방법 3 · npm 전역 (Node.js 이미 있을 때)</div>
+          <div class="install-method__cmd"><span class="accent-cmd">$</span> npm install -g @anthropic-ai/claude-code</div>
+          <div class="install-method__note"><code>npm update</code>로 업데이트도 한 줄.</div>
+        </div>
+      </div>
+      <p class="slide__note">설치 직후 <strong><span class="os-win">PowerShell</span><span class="os-mac">터미널</span>을 껐다 새로 열어야</strong> PATH 갱신 → <code>claude</code> 인식. <span class="os-win">실패 시 → 관리자 권한 PowerShell.</span><span class="os-mac">실패 시 → <code>sudo</code> 또는 권한 확인.</span></p>
     </div>
   </section>
 
@@ -178,9 +221,9 @@
       <div class="code-block">
         <div class="code-block__header">
           <span class="code-block__dot" style="background:#fb2c36"></span><span class="code-block__dot" style="background:#edb200"></span><span class="code-block__dot" style="background:#00c758"></span>
-          <span class="code-block__title">PowerShell — 새 창에서</span>
+          <span class="code-block__title"><span class="os-win">PowerShell</span><span class="os-mac">Terminal (zsh)</span> — 새 창에서</span>
         </div>
-        <div class="code-block__body"><span class="code-block__line"><span class="code-block__prompt">PS&gt;</span> <span class="code-block__cmd">claude --version</span></span><span class="code-block__line"><span class="code-block__hi">1.x.x</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__cmt"># 위처럼 버전 숫자가 나오면 PATH 통과 ✓</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__cmt"># "command not found" / "인식되지 않습니다" 가 뜨면:</span></span><span class="code-block__line"><span class="code-block__cmt">#   1. PowerShell을 완전히 닫고 새로 열기 (PATH 갱신)</span></span><span class="code-block__line"><span class="code-block__cmt">#   2. 시작 메뉴에서 "PowerShell" 다시 검색해 실행</span></span><span class="code-block__line"><span class="code-block__cmt">#   3. 그래도 안 되면 → TA 호출</span></span></div>
+        <div class="code-block__body"><span class="code-block__line"><span class="code-block__prompt" data-auto-os></span> <span class="code-block__cmd">claude --version</span></span><span class="code-block__line"><span class="code-block__hi">1.x.x</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__cmt"># 위처럼 버전 숫자가 나오면 PATH 통과 ✓</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__cmt"># "<span class="os-win">인식되지 않습니다</span><span class="os-mac">command not found</span>" 가 뜨면:</span></span><span class="code-block__line"><span class="code-block__cmt">#   1. <span class="os-win">PowerShell</span><span class="os-mac">터미널</span>을 완전히 닫고 새로 열기 (PATH 갱신)</span></span><span class="code-block__line"><span class="code-block__cmt">#   2. <span class="os-win">시작 메뉴에서 "PowerShell" 다시 검색해 실행</span><span class="os-mac">Spotlight(⌘+Space)에서 "Terminal" 다시 실행</span></span></span><span class="code-block__line"><span class="code-block__cmt">#   3. 그래도 안 되면 → TA 호출</span></span></div>
       </div>
     </div>
   </section>
@@ -208,13 +251,23 @@
     <div class="slide__body">
       <div class="two-col">
         <div>
-          <div class="content-card content-card--compact">
+          <div class="content-card content-card--compact os-win is-block">
             <h3 class="content-card__title">쉬운 방법 · 마우스 우클릭</h3>
             <ol class="content-card__list content-card__list--ol">
               <li><strong>바탕화면 빈 공간 우클릭</strong> → 새로 만들기 → 폴더</li>
               <li>폴더 이름 <code>Day1</code> 입력</li>
               <li>Day1 폴더 안 빈 공간 우클릭 → <strong>"터미널에서 열기"</strong></li>
               <li>열린 PowerShell에 <code>claude</code> 입력</li>
+              <li>처음이면 <strong>브라우저 로그인</strong> 창 → 교육 팀 계정 메일로 로그인</li>
+            </ol>
+          </div>
+          <div class="content-card content-card--compact os-mac is-block">
+            <h3 class="content-card__title">쉬운 방법 · Finder에서</h3>
+            <ol class="content-card__list content-card__list--ol">
+              <li><strong>Finder → 데스크탑</strong>에서 빈 공간 우클릭 → 새로운 폴더</li>
+              <li>폴더 이름 <code>Day1</code> 입력</li>
+              <li>Day1 폴더를 <strong>우클릭 → "폴더에 있는 새로운 터미널"</strong> (서비스 메뉴)</li>
+              <li>열린 터미널에 <code>claude</code> 입력</li>
               <li>처음이면 <strong>브라우저 로그인</strong> 창 → 교육 팀 계정 메일로 로그인</li>
             </ol>
           </div>
@@ -225,11 +278,12 @@
               <span class="code-block__dot" style="background:#fb2c36"></span><span class="code-block__dot" style="background:#edb200"></span><span class="code-block__dot" style="background:#00c758"></span>
               <span class="code-block__title">claude — Day1/</span>
             </div>
-            <div class="code-block__body"><span class="code-block__line"><span class="code-block__prompt">PS&gt;</span> <span class="code-block__cmd">claude</span></span><span class="code-block__line"><span class="code-block__out">  ✓ Claude Code ready.</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__cmd">&gt; 안녕하세요</span></span><span class="code-block__line"><span class="code-block__out">  안녕하세요!</span></span><span class="code-block__line"><span class="code-block__out">  무엇을 도와드릴까요?</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__cmd">&gt; /help</span></span><span class="code-block__line"><span class="code-block__out">  Available commands:</span></span><span class="code-block__line"><span class="code-block__out">  /clear  /usage  /model  /resume ...</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__cmd">&gt; /exit</span></span><span class="code-block__line"><span class="code-block__out">  Goodbye 👋</span></span></div>
+            <div class="code-block__body"><span class="code-block__line"><span class="code-block__prompt" data-auto-os></span> <span class="code-block__cmd">claude</span></span><span class="code-block__line"><span class="code-block__out">  ✓ Claude Code ready.</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__cmd">&gt; 안녕하세요</span></span><span class="code-block__line"><span class="code-block__out">  안녕하세요!</span></span><span class="code-block__line"><span class="code-block__out">  무엇을 도와드릴까요?</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__cmd">&gt; /help</span></span><span class="code-block__line"><span class="code-block__out">  Available commands:</span></span><span class="code-block__line"><span class="code-block__out">  /clear  /usage  /model  /resume ...</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__cmd">&gt; /exit</span></span><span class="code-block__line"><span class="code-block__out">  Goodbye 👋</span></span></div>
           </div>
         </div>
       </div>
-      <p class="slide__note">Windows 10이라면 <strong>Shift + 우클릭</strong> → "여기에서 PowerShell 창 열기". 또는 <code>cd C:\Users\<em>본인계정</em>\Desktop\Day1</code>.</p>
+      <p class="slide__note os-win is-block">Windows 10이라면 <strong>Shift + 우클릭</strong> → "여기에서 PowerShell 창 열기". 또는 <code>cd C:\Users\<em>본인계정</em>\Desktop\Day1</code>.</p>
+      <p class="slide__note os-mac is-block">우클릭 메뉴에 "폴더에 있는 새로운 터미널"이 없으면 <strong>시스템 환경설정 → 키보드 → 단축키 → 서비스</strong>에서 활성화. 또는 <code>cd ~/Desktop/Day1</code>.</p>
     </div>
   </section>
 
@@ -244,13 +298,13 @@
             <h3 class="content-card__title">3가지만 하면 끝</h3>
             <ol class="content-card__list content-card__list--ol">
               <li><strong>VS Code 실행</strong> → File → Open Folder → Day1</li>
-              <li><strong>Ctrl + `</strong> 로 통합 터미널 띄우기 (PowerShell 모드)</li>
+              <li><strong><span class="os-win">Ctrl</span><span class="os-mac">⌃</span> + `</strong> 로 통합 터미널 띄우기 (<span class="os-win">PowerShell</span><span class="os-mac">zsh</span> 모드)</li>
               <li>거기서 <strong>claude</strong> 입력</li>
             </ol>
           </div>
         </div>
         <div>
-          <svg viewBox="0 0 460 280" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" style="width:100%;height:auto;border-radius:12px;box-shadow:0 12px 32px rgba(0,0,0,0.18)">
+          <svg class="os-win is-block" viewBox="0 0 460 280" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" style="width:100%;height:auto;border-radius:12px;box-shadow:0 12px 32px rgba(0,0,0,0.18)">
             <rect x="0" y="0" width="460" height="280" rx="12" fill="#1e1e1e"/>
             <rect x="0" y="0" width="460" height="28" fill="#252526"/>
             <text x="14" y="18" font-family="ui-sans-serif, system-ui" font-size="11" fill="rgba(255,255,255,0.5)">VS Code — Day1</text>
@@ -268,6 +322,24 @@
             <text x="158" y="232" font-family="ui-monospace, monospace" font-size="10" fill="rgba(255,255,255,0.55)">  ✓ Claude Code ready.</text>
             <text x="158" y="252" font-family="ui-monospace, monospace" font-size="11" fill="white">&gt; 자기소개 페이지 만들어줘</text>
           </svg>
+          <svg class="os-mac is-block" viewBox="0 0 460 280" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" style="width:100%;height:auto;border-radius:12px;box-shadow:0 12px 32px rgba(0,0,0,0.18)">
+            <rect x="0" y="0" width="460" height="280" rx="12" fill="#1e1e1e"/>
+            <rect x="0" y="0" width="460" height="28" fill="#252526"/>
+            <text x="14" y="18" font-family="ui-sans-serif, system-ui" font-size="11" fill="rgba(255,255,255,0.5)">VS Code — Day1</text>
+            <rect x="0" y="28" width="140" height="252" fill="#252526"/>
+            <text x="14" y="54" font-family="ui-monospace, monospace" font-size="10" fill="rgba(255,255,255,0.45)">EXPLORER</text>
+            <text x="14" y="78" font-family="ui-monospace, monospace" font-size="11" fill="rgba(255,255,255,0.85)">▾ DAY1</text>
+            <text x="28" y="98" font-family="ui-monospace, monospace" font-size="11" fill="#fe6e00">app.html</text>
+            <text x="28" y="116" font-family="ui-monospace, monospace" font-size="11" fill="rgba(255,255,255,0.7)">style.css</text>
+            <rect x="140" y="28" width="320" height="140" fill="#1e1e1e"/>
+            <text x="158" y="56" font-family="ui-monospace, monospace" font-size="11" fill="#888">1</text>
+            <text x="178" y="56" font-family="ui-monospace, monospace" font-size="11" fill="#569cd6">&lt;!doctype html&gt;</text>
+            <rect x="140" y="168" width="320" height="112" fill="#0d0d0d"/>
+            <text x="158" y="188" font-family="ui-monospace, monospace" font-size="10" fill="rgba(255,255,255,0.4)">TERMINAL — zsh</text>
+            <text x="158" y="214" font-family="ui-monospace, monospace" font-size="11" fill="#fe6e00">$ claude</text>
+            <text x="158" y="232" font-family="ui-monospace, monospace" font-size="10" fill="rgba(255,255,255,0.55)">  ✓ Claude Code ready.</text>
+            <text x="158" y="252" font-family="ui-monospace, monospace" font-size="11" fill="white">&gt; 자기소개 페이지 만들어줘</text>
+          </svg>
         </div>
       </div>
       <p class="slide__note">5일 내내 이 환경에서 작업합니다 — 에디터 + 터미널 + AI가 한 화면.</p>
@@ -279,7 +351,7 @@
     <div class="slide__eyebrow">선택 A · Node.js · 나중에 프론트엔드 만들 때</div>
     <h2 class="slide__title">Node.js — <span class="accent">필요할 때 설치</span></h2>
     <div class="slide__body">
-      <div class="install-detail">
+      <div class="install-detail os-win is-block">
         <div class="install-detail__header">
           <div class="install-detail__logo"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 3l11 6.5v13L16 29 5 22.5v-13L16 3z"/><path d="M16 11v9M11 14v3M21 14v6"/></svg></div>
           <div class="install-detail__where"><div class="install-detail__where-label">받는 곳</div><div class="install-detail__where-value">https://nodejs.org</div></div>
@@ -289,6 +361,18 @@
           <li><code>node-v20.x.x-x64.msi</code> 더블클릭 → 보안 경고 "예" → 설치 마법사 Next 따라 진행</li>
           <li><strong>Custom Setup에서 "Add to PATH" 체크 확인</strong> → Install → UAC 승인 → 1~2분 대기</li>
           <li>완료 후 <strong>새 PowerShell</strong>에서 <code>node --version</code> → <code>v20.x.x</code> 출력되면 OK</li>
+        </ol>
+      </div>
+      <div class="install-detail os-mac is-block">
+        <div class="install-detail__header">
+          <div class="install-detail__logo"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 3l11 6.5v13L16 29 5 22.5v-13L16 3z"/><path d="M16 11v9M11 14v3M21 14v6"/></svg></div>
+          <div class="install-detail__where"><div class="install-detail__where-label">받는 곳</div><div class="install-detail__where-value">Homebrew · nodejs.org</div></div>
+        </div>
+        <ol class="install-detail__steps">
+          <li><strong>Homebrew</strong>가 설치돼 있으면 <code>brew install node</code> 한 줄 — 30초~1분</li>
+          <li>Brew가 없으면 <strong>nodejs.org</strong> → "LTS" 버튼 → <code>.pkg</code> 다운로드 → 더블클릭 → 설치 마법사</li>
+          <li>설치 후 <strong>새 터미널</strong>에서 <code>node --version</code> → <code>v20.x.x</code> 출력되면 OK</li>
+          <li>Homebrew 자체 설치는 <code>/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"</code></li>
         </ol>
       </div>
       <p class="slide__note"><strong>오늘 Claude Code 사용에는 필요 없습니다.</strong> Node.js는 나중에 프론트엔드(React·Vue) 또는 npm 패키지 도구 만들 때만.</p>
@@ -303,13 +387,18 @@
       <div class="trouble-list trouble-list--compact">
         <div class="trouble-item">
           <div class="trouble-item__num">01</div>
-          <div class="trouble-item__problem">"인식되지 않습니다" / "command not found"</div>
-          <div class="trouble-item__solution"><strong>새 PowerShell 창</strong> → PATH 갱신. 안 되면 시작 메뉴에서 다시 검색해 실행.</div>
+          <div class="trouble-item__problem">"<span class="os-win">인식되지 않습니다</span><span class="os-mac">command not found</span>"</div>
+          <div class="trouble-item__solution"><strong>새 <span class="os-win">PowerShell</span><span class="os-mac">터미널</span> 창</strong> → PATH 갱신. 안 되면 <span class="os-win">시작 메뉴</span><span class="os-mac">Spotlight</span>에서 다시 검색해 실행.</div>
         </div>
-        <div class="trouble-item">
+        <div class="trouble-item os-win is-block">
           <div class="trouble-item__num">02</div>
           <div class="trouble-item__problem">PowerShell 스크립트 실행 정책 에러</div>
           <div class="trouble-item__solution">관리자 PowerShell → <code>Set-ExecutionPolicy -Scope CurrentUser RemoteSigned</code> → 재시도.</div>
+        </div>
+        <div class="trouble-item os-mac is-block">
+          <div class="trouble-item__num">02</div>
+          <div class="trouble-item__problem">"Permission denied" / 실행 권한 에러</div>
+          <div class="trouble-item__solution">설치 스크립트를 다시 실행하거나, 막힌 파일에 <code>chmod +x ~/.claude/bin/claude</code>. Mac은 별도 정책 없음 — 권한만 맞으면 OK.</div>
         </div>
         <div class="trouble-item">
           <div class="trouble-item__num">03</div>
@@ -324,7 +413,7 @@
         <div class="trouble-item">
           <div class="trouble-item__num">05</div>
           <div class="trouble-item__problem">VS Code에서 code 명령이 인식 안 됨</div>
-          <div class="trouble-item__solution">VS Code → Ctrl+Shift+P → <strong>"Install 'code' command in PATH"</strong> → 새 PowerShell 재시도.</div>
+          <div class="trouble-item__solution">VS Code → <span class="os-win">Ctrl</span><span class="os-mac">⌘</span>+Shift+P → <strong>"Install 'code' command in PATH"</strong> → 새 <span class="os-win">PowerShell</span><span class="os-mac">터미널</span> 재시도.</div>
         </div>
       </div>
     </div>

@@ -6,6 +6,8 @@
   <title>Day 5 · 오후 이론 · 실전 패턴 + FAQ</title>
   <link rel="stylesheet" href="../../styles/tokens.css">
   <link rel="stylesheet" href="../../styles/deck.css">
+  <link rel="stylesheet" href="../../styles/_os-toggle.css">
+  <script defer src="../../scripts/os-toggle.js"></script>
 </head>
 <body>
 
@@ -203,7 +205,7 @@
             <h3 class="content-card__title">상황</h3>
             <ul class="content-card__list">
               <li>VS Code 종료 후 다시 켰음</li>
-              <li>또는 Ctrl+` 통합 터미널 닫혔음</li>
+              <li>또는 <span class="os-win">Ctrl</span><span class="os-mac">⌃</span>+` 통합 터미널 닫혔음</li>
               <li>"어제 대화 이어서" 하고 싶음</li>
             </ul>
           </div>
@@ -213,7 +215,7 @@
             <h3 class="content-card__title">해법</h3>
             <ul class="content-card__list">
               <li>같은 폴더 열기 (File → Open Folder)</li>
-              <li>Ctrl+` → 새 터미널</li>
+              <li><span class="os-win">Ctrl</span><span class="os-mac">⌃</span>+` → 새 터미널</li>
               <li><code>claude --continue</code></li>
               <li>이전 세션 그대로 복원</li>
             </ul>
@@ -310,7 +312,7 @@
         <div class="trouble-item">
           <div class="trouble-item__num">01</div>
           <div class="trouble-item__problem">claude 명령이 안 잡힘</div>
-          <div class="trouble-item__solution">PowerShell 새로 → PATH 갱신. 안 되면 시작 메뉴에서 다시 검색해 실행.</div>
+          <div class="trouble-item__solution"><span class="os-win">PowerShell</span><span class="os-mac">터미널</span> 새로 → PATH 갱신. 안 되면 <span class="os-win">시작 메뉴</span><span class="os-mac">Spotlight</span>에서 다시 검색해 실행.</div>
         </div>
         <div class="trouble-item">
           <div class="trouble-item__num">02</div>

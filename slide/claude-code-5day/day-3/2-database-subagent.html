@@ -6,6 +6,8 @@
   <title>3일차 · 2. 데이터베이스 + 서브에이전트 + 메모장</title>
   <link rel="stylesheet" href="../../styles/tokens.css">
   <link rel="stylesheet" href="../../styles/deck.css">
+  <link rel="stylesheet" href="../../styles/_os-toggle.css">
+  <script defer src="../../scripts/os-toggle.js"></script>
 </head>
 <body>
 
@@ -151,8 +153,8 @@
           <div class="content-card content-card--compact">
             <h3 class="content-card__title">스크린샷 — 두 단계</h3>
             <ol class="content-card__list content-card__list--ol">
-              <li><code>Windows + Shift + S</code> — 화면에서 필요한 부분만 드래그해 캡처</li>
-              <li><code>Alt + V</code> — Claude Code 입력창에 그 이미지를 붙여넣기</li>
+              <li><code><span class="os-win">Windows + Shift + S</span><span class="os-mac">⌘ + Shift + 4</span></code> — 화면에서 필요한 부분만 드래그해 캡처</li>
+              <li><code><span class="os-win">Alt</span><span class="os-mac">⌃</span> + V</code> — Claude Code 입력창에 그 이미지를 붙여넣기</li>
               <li>Claude가 화면을 직접 보고 — "이 버튼을 누르세요" 안내</li>
             </ol>
             <p class="content-card__body">Supabase 설정 화면처럼 — 말로 풀기 번거로운 건 그냥 보여주세요.</p>

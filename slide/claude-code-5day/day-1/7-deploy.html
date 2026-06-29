@@ -6,6 +6,8 @@
   <title>1일차 · 7. Vercel 배포</title>
   <link rel="stylesheet" href="../../styles/tokens.css">
   <link rel="stylesheet" href="../../styles/deck.css">
+  <link rel="stylesheet" href="../../styles/_os-toggle.css">
+  <script defer src="../../scripts/os-toggle.js"></script>
 </head>
 <body>
 
@@ -99,9 +101,9 @@
           <div class="code-block">
             <div class="code-block__header">
               <span class="code-block__dot" style="background:#fb2c36"></span><span class="code-block__dot" style="background:#edb200"></span><span class="code-block__dot" style="background:#00c758"></span>
-              <span class="code-block__title">PowerShell — 자기소개 폴더</span>
+              <span class="code-block__title"><span class="os-win">PowerShell</span><span class="os-mac">Terminal (zsh)</span> — 자기소개 폴더</span>
             </div>
-            <div class="code-block__body"><span class="code-block__line"><span class="code-block__cmt"># 챕터 5에서 이미 했으면 생략</span></span><span class="code-block__line"><span class="code-block__prompt">PS&gt;</span> <span class="code-block__cmd">git init</span></span><span class="code-block__line"><span class="code-block__prompt">PS&gt;</span> <span class="code-block__cmd">git add .</span></span><span class="code-block__line"><span class="code-block__prompt">PS&gt;</span> <span class="code-block__cmd">git commit -m "<span class="code-block__hi">자기소개 페이지</span>"</span></span></div>
+            <div class="code-block__body"><span class="code-block__line"><span class="code-block__cmt"># 챕터 5에서 이미 했으면 생략</span></span><span class="code-block__line"><span class="code-block__prompt" data-auto-os></span> <span class="code-block__cmd">git init</span></span><span class="code-block__line"><span class="code-block__prompt" data-auto-os></span> <span class="code-block__cmd">git add .</span></span><span class="code-block__line"><span class="code-block__prompt" data-auto-os></span> <span class="code-block__cmd">git commit -m "<span class="code-block__hi">자기소개 페이지</span>"</span></span></div>
           </div>
         </div>
       </div>
@@ -129,9 +131,9 @@
           <div class="code-block">
             <div class="code-block__header">
               <span class="code-block__dot" style="background:#fb2c36"></span><span class="code-block__dot" style="background:#edb200"></span><span class="code-block__dot" style="background:#00c758"></span>
-              <span class="code-block__title">PowerShell — 원격 연결 + push</span>
+              <span class="code-block__title"><span class="os-win">PowerShell</span><span class="os-mac">Terminal (zsh)</span> — 원격 연결 + push</span>
             </div>
-            <div class="code-block__body"><span class="code-block__line"><span class="code-block__cmt"># 복사해둔 저장소 주소를 연결</span></span><span class="code-block__line"><span class="code-block__prompt">PS&gt;</span> <span class="code-block__cmd">git remote add origin <span class="code-block__hi">https://github.com/...git</span></span></span><span class="code-block__line"><span class="code-block__prompt">PS&gt;</span> <span class="code-block__cmd">git branch -M main</span></span><span class="code-block__line"><span class="code-block__prompt">PS&gt;</span> <span class="code-block__cmd">git push -u origin main</span></span><span class="code-block__line"><span class="code-block__out">  ✓ GitHub에 업로드 완료</span></span></div>
+            <div class="code-block__body"><span class="code-block__line"><span class="code-block__cmt"># 복사해둔 저장소 주소를 연결</span></span><span class="code-block__line"><span class="code-block__prompt" data-auto-os></span> <span class="code-block__cmd">git remote add origin <span class="code-block__hi">https://github.com/...git</span></span></span><span class="code-block__line"><span class="code-block__prompt" data-auto-os></span> <span class="code-block__cmd">git branch -M main</span></span><span class="code-block__line"><span class="code-block__prompt" data-auto-os></span> <span class="code-block__cmd">git push -u origin main</span></span><span class="code-block__line"><span class="code-block__out">  ✓ GitHub에 업로드 완료</span></span></div>
           </div>
         </div>
       </div>
@@ -220,9 +222,9 @@
       <div class="code-block">
         <div class="code-block__header">
           <span class="code-block__dot" style="background:#fb2c36"></span><span class="code-block__dot" style="background:#edb200"></span><span class="code-block__dot" style="background:#00c758"></span>
-          <span class="code-block__title">PowerShell — 페이지 수정 후</span>
+          <span class="code-block__title"><span class="os-win">PowerShell</span><span class="os-mac">Terminal (zsh)</span> — 페이지 수정 후</span>
         </div>
-        <div class="code-block__body"><span class="code-block__line"><span class="code-block__cmt"># 자기소개 페이지를 고쳤다면</span></span><span class="code-block__line"><span class="code-block__prompt">PS&gt;</span> <span class="code-block__cmd">git add .</span></span><span class="code-block__line"><span class="code-block__prompt">PS&gt;</span> <span class="code-block__cmd">git commit -m "<span class="code-block__hi">사진 추가</span>"</span></span><span class="code-block__line"><span class="code-block__prompt">PS&gt;</span> <span class="code-block__cmd">git push</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__out">  Vercel이 push를 자동 감지 → 재배포</span></span><span class="code-block__line"><span class="code-block__hi">  ✓ 같은 주소에 최신 내용 반영</span></span></div>
+        <div class="code-block__body"><span class="code-block__line"><span class="code-block__cmt"># 자기소개 페이지를 고쳤다면</span></span><span class="code-block__line"><span class="code-block__prompt" data-auto-os></span> <span class="code-block__cmd">git add .</span></span><span class="code-block__line"><span class="code-block__prompt" data-auto-os></span> <span class="code-block__cmd">git commit -m "<span class="code-block__hi">사진 추가</span>"</span></span><span class="code-block__line"><span class="code-block__prompt" data-auto-os></span> <span class="code-block__cmd">git push</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__out">  Vercel이 push를 자동 감지 → 재배포</span></span><span class="code-block__line"><span class="code-block__hi">  ✓ 같은 주소에 최신 내용 반영</span></span></div>
       </div>
       <p class="slide__note">한 번 연결해두면 — 같은 주소가 항상 최신입니다. <code>git push</code> 한 줄이면 몇 초 뒤 반영, 별도 업로드 작업이 없습니다.</p>
     </div>

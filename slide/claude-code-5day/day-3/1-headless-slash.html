@@ -6,6 +6,8 @@
   <title>3일차 · 1. 헤드리스 + 커스텀 슬래시</title>
   <link rel="stylesheet" href="../../styles/tokens.css">
   <link rel="stylesheet" href="../../styles/deck.css">
+  <link rel="stylesheet" href="../../styles/_os-toggle.css">
+  <script defer src="../../scripts/os-toggle.js"></script>
   <style>
     /* 챕터 1 — 작업 스케줄러 동작 칸 폼 */
     .sched-lead { font-size: 0.84rem; color: var(--color-on-surface-muted); margin: 0 0 0.8rem 0; }
@@ -122,10 +124,10 @@
       <div class="statement-text">
         <div class="slide__eyebrow">HEADLESS · 헤드리스</div>
         <h2 class="statement__lead">헤드리스 — 대화 없이 <span class="accent">명령 한 줄</span>로.</h2>
-        <p class="statement__caption">평소엔 Claude와 대화하지만, <code>claude -p "..."</code>는 대화창을 열지 않고 한 번의 요청을 즉시 처리하고 끝냅니다. 오늘은 각자 직접 써 보고 — 작업 스케줄러로 자동 실행까지 합니다.</p>
+        <p class="statement__caption">평소엔 Claude와 대화하지만, <code>claude -p "..."</code>는 대화창을 열지 않고 한 번의 요청을 즉시 처리하고 끝냅니다. 오늘은 각자 직접 써 보고 — <span class="os-win">작업 스케줄러</span><span class="os-mac">launchd · cron</span>로 자동 실행까지 합니다.</p>
         <div class="statement__points">
           <div class="statement__point"><span class="statement__point-num">한 줄</span><span>요청 → 결과 → 종료. 대화 없음</span></div>
-          <div class="statement__point"><span class="statement__point-num">자동화</span><span>작업 스케줄러에 걸어 — 사람 없이 실행</span></div>
+          <div class="statement__point"><span class="statement__point-num">자동화</span><span><span class="os-win">작업 스케줄러</span><span class="os-mac">launchd · cron</span>에 걸어 — 사람 없이 실행</span></div>
           <div class="statement__point"><span class="statement__point-num">오늘</span><span>직접 쳐 보고 — 5분마다 자동까지</span></div>
         </div>
       </div>
@@ -158,7 +160,7 @@
           <div class="content-card content-card--compact">
             <h3 class="content-card__title">다 같이 한 번</h3>
             <ol class="content-card__list content-card__list--ol">
-              <li>PowerShell을 연다</li>
+              <li><span class="os-win">PowerShell</span><span class="os-mac">터미널</span>을 연다</li>
               <li><code>claude -p</code> 뒤에 따옴표로 부탁을 적는다</li>
               <li>엔터 — 대화창 없이 결과만 바로 나온다</li>
             </ol>
@@ -169,9 +171,9 @@
           <div class="code-block">
             <div class="code-block__header">
               <span class="code-block__dot" style="background:#fb2c36"></span><span class="code-block__dot" style="background:#edb200"></span><span class="code-block__dot" style="background:#00c758"></span>
-              <span class="code-block__title">PowerShell · headless</span>
+              <span class="code-block__title"><span class="os-win">PowerShell</span><span class="os-mac">Terminal (zsh)</span> · headless</span>
             </div>
-            <div class="code-block__body"><span class="code-block__line"><span class="code-block__prompt">PS&gt;</span> <span class="code-block__cmd">claude -p "나를 아주 신나게</span></span><span class="code-block__line"><span class="code-block__cmd">  칭찬해줘"</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__out">  오늘 여기까지 온 것만으로</span></span><span class="code-block__line"><span class="code-block__out">  충분히 멋져요 — 계속 가요!</span></span><span class="code-block__line"><span class="code-block__cmt"># 대화창 없이 바로 끝</span></span></div>
+            <div class="code-block__body"><span class="code-block__line"><span class="code-block__prompt" data-auto-os></span> <span class="code-block__cmd">claude -p "나를 아주 신나게</span></span><span class="code-block__line"><span class="code-block__cmd">  칭찬해줘"</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__out">  오늘 여기까지 온 것만으로</span></span><span class="code-block__line"><span class="code-block__out">  충분히 멋져요 — 계속 가요!</span></span><span class="code-block__line"><span class="code-block__cmt"># 대화창 없이 바로 끝</span></span></div>
           </div>
         </div>
       </div>
@@ -181,7 +183,7 @@
 
   <!-- 6 · 작업 스케줄러로 5분마다 -->
   <section class="slide is-standard">
-    <div class="slide__eyebrow">AUTO · 작업 스케줄러</div>
+    <div class="slide__eyebrow">AUTO · <span class="os-win">작업 스케줄러</span><span class="os-mac">launchd · cron</span></div>
     <h2 class="slide__title">5분마다 — <span class="accent">알아서 실행</span>되게</h2>
     <div class="slide__body">
       <div class="two-col">
@@ -190,14 +192,14 @@
             <h3 class="content-card__title">먼저 — 폴더 하나</h3>
             <p class="content-card__body">작업이 돌아갈 <strong>기본 폴더</strong>를 만듭니다.</p>
             <ul class="content-card__list">
-              <li><code>c:\lecture\day3\headless</code> 폴더 생성</li>
+              <li><code><span class="os-win">c:\lecture\day3\headless</span><span class="os-mac">~/lecture/day3/headless</span></code> 폴더 생성</li>
               <li>여기서 claude가 실행되고</li>
               <li>결과 기록(<code>log.txt</code>)도 여기 쌓임</li>
             </ul>
           </div>
         </div>
         <div>
-          <div class="content-card content-card--compact">
+          <div class="content-card content-card--compact os-win is-block">
             <h3 class="content-card__title">작업 스케줄러에 등록할 3가지</h3>
             <ul class="content-card__list">
               <li><strong>트리거</strong> — 언제: 5분마다</li>
@@ -206,9 +208,18 @@
             </ul>
             <p class="content-card__body">윈도우 기본 도구 "작업 스케줄러"를 검색해 엽니다.</p>
           </div>
+          <div class="content-card content-card--compact os-mac is-block">
+            <h3 class="content-card__title">launchd 또는 crontab에 등록할 3가지</h3>
+            <ul class="content-card__list">
+              <li><strong>주기</strong> — 언제: 5분마다 (<code>StartInterval=300</code> 또는 <code>*/5 * * * *</code>)</li>
+              <li><strong>실행 명령</strong> — 무엇을: <code>claude -p "..."</code></li>
+              <li><strong>작업 디렉토리</strong> — 어디서: 위 headless 폴더 (<code>WorkingDirectory</code>)</li>
+            </ul>
+            <p class="content-card__body">손쉬운 방법: 터미널에서 <code>crontab -e</code>. 정식 방법: <code>~/Library/LaunchAgents/</code>에 plist.</p>
+          </div>
         </div>
       </div>
-      <p class="slide__note">2일차 Hooks가 "이벤트가 일어나면" 자동이었다면 — 작업 스케줄러는 <strong>"정해둔 시각이 되면"</strong> 자동입니다.</p>
+      <p class="slide__note">2일차 Hooks가 "이벤트가 일어나면" 자동이었다면 — <span class="os-win">작업 스케줄러</span><span class="os-mac">launchd · cron</span>는 <strong>"정해둔 시각이 되면"</strong> 자동입니다.</p>
     </div>
   </section>
 
@@ -217,8 +228,9 @@
     <div class="slide__eyebrow">SETUP · 새 동작 만들기</div>
     <h2 class="slide__title">"새 동작 만들기" — <span class="accent">세 칸</span>을 이렇게 채운다</h2>
     <div class="slide__body">
-      <p class="sched-lead">동작(I) 드롭다운은 <strong>"프로그램 시작"</strong> — 그 아래 세 칸을 화면 그대로 채웁니다.</p>
-      <div class="sched-form">
+      <p class="sched-lead os-win is-block">동작(I) 드롭다운은 <strong>"프로그램 시작"</strong> — 그 아래 세 칸을 화면 그대로 채웁니다.</p>
+      <p class="sched-lead os-mac is-block">Mac은 GUI가 없으니 <strong>crontab -e</strong> 한 줄로 등록합니다. 아래 박스의 한 줄을 그대로 붙여넣고 저장하면 끝.</p>
+      <div class="sched-form os-win is-block">
         <div class="sched-row">
           <div class="sched-row__label">① 프로그램/스크립트(P)</div>
           <div class="sched-row__input">powershell</div>
@@ -235,8 +247,16 @@
           <div class="sched-row__hint">여기서 claude가 실행되고 — <code>log.txt</code> 기록도 이 폴더에 쌓입니다. 따옴표 없이 경로만.</div>
         </div>
       </div>
+      <div class="sched-form os-mac is-block">
+        <div class="sched-row">
+          <div class="sched-row__label">crontab 한 줄</div>
+          <div class="sched-row__input">*/5 * * * * cd ~/lecture/day3/headless && claude -p '오후 5시까지 몇 분 남았는지 알려주고 log.txt에 한 줄 기록해줘' &gt;&gt; log.txt 2&gt;&amp;1</div>
+          <div class="sched-row__hint"><code>*/5 * * * *</code> = 5분마다. <code>cd</code>로 폴더 이동 후 claude 실행. 결과는 <code>log.txt</code>에 append. 첫 등록 시 시스템 환경설정 → 개인정보 → 전체 디스크 접근 허용이 한 번 떠요.</div>
+        </div>
+      </div>
     </div>
-    <p class="slide__note">세 칸을 다 채웠으면 — "확인"으로 저장. 막히는 부분이 있으면 화면을 캡처해 Claude에게 보여주며 물어보세요.</p>
+    <p class="slide__note os-win is-block">세 칸을 다 채웠으면 — "확인"으로 저장. 막히는 부분이 있으면 화면을 캡처해 Claude에게 보여주며 물어보세요.</p>
+    <p class="slide__note os-mac is-block">터미널에서 <code>crontab -e</code> → 위 한 줄 붙여넣기 → ESC + <code>:wq</code> 저장. 등록 확인은 <code>crontab -l</code>. 막히면 화면 캡처해 Claude에게.</p>
   </section>
 
   <!-- 8 · 5분마다 — 창 + 기록 -->
@@ -245,7 +265,8 @@
       <div class="statement-text">
         <div class="slide__eyebrow">WOW · 5분마다</div>
         <h2 class="statement__lead">5분마다 — <span class="accent">Claude가 말을 건다</span>.</h2>
-        <p class="statement__caption">등록해 두면 5분마다 PowerShell 창이 떠 Claude가 답을 보여줍니다. <code>-NoExit</code>라 창이 안 닫혀 바로 읽고, <code>log.txt</code>엔 기록이 차곡차곡 쌓입니다.</p>
+        <p class="statement__caption os-win is-block">등록해 두면 5분마다 PowerShell 창이 떠 Claude가 답을 보여줍니다. <code>-NoExit</code>라 창이 안 닫혀 바로 읽고, <code>log.txt</code>엔 기록이 차곡차곡 쌓입니다.</p>
+        <p class="statement__caption os-mac is-block">등록해 두면 5분마다 cron이 Claude를 호출합니다. 백그라운드 실행이라 창은 안 뜨지만 <code>log.txt</code>엔 기록이 차곡차곡 쌓입니다 — <code>tail -f log.txt</code>로 실시간 관찰.</p>
         <div class="statement__points">
           <div class="statement__point"><span class="statement__point-num">창</span><span>-NoExit — 결과가 눈앞에 그대로 남는다</span></div>
           <div class="statement__point"><span class="statement__point-num">기록</span><span>headless 폴더의 log.txt 에 history</span></div>
@@ -287,7 +308,7 @@
       <div class="step-list step-list--compact">
         <div class="step-list__item">
           <div class="step-list__num">1</div>
-          <div class="step-list__content"><p class="step-list__title">기본 폴더 만들기 <span class="step-list__desc" style="display:inline">— c:\lecture\day3\headless</span></p></div>
+          <div class="step-list__content"><p class="step-list__title">기본 폴더 만들기 <span class="step-list__desc" style="display:inline">— <span class="os-win">c:\lecture\day3\headless</span><span class="os-mac">~/lecture/day3/headless</span></span></p></div>
         </div>
         <div class="step-list__item">
           <div class="step-list__num">2</div>
@@ -295,14 +316,14 @@
         </div>
         <div class="step-list__item">
           <div class="step-list__num">3</div>
-          <div class="step-list__content"><p class="step-list__title">작업 스케줄러에 등록 <span class="step-list__desc" style="display:inline">— 5분마다 실행되게. 어렵다면 Claude와 함께 — 화면을 보여주며 물어보기</span></p></div>
+          <div class="step-list__content"><p class="step-list__title"><span class="os-win">작업 스케줄러에 등록</span><span class="os-mac">crontab -e 한 줄 등록</span> <span class="step-list__desc" style="display:inline">— 5분마다 실행되게. 어렵다면 Claude와 함께 — 화면을 보여주며 물어보기</span></p></div>
         </div>
         <div class="step-list__item">
           <div class="step-list__num">4</div>
           <div class="step-list__content"><p class="step-list__title">5분 기다려 확인 <span class="step-list__desc" style="display:inline">— 창이 뜨는지, log.txt가 쌓이는지</span></p></div>
         </div>
       </div>
-      <p class="slide__note">5분마다는 <strong>오늘 데모용</strong> 설정입니다 — 강의가 끝나면 작업 스케줄러에서 이 작업을 끄거나 지우세요.</p>
+      <p class="slide__note">5분마다는 <strong>오늘 데모용</strong> 설정입니다 — 강의가 끝나면 <span class="os-win">작업 스케줄러에서 이 작업을 끄거나 지우세요</span><span class="os-mac"><code>crontab -e</code>에서 해당 줄을 지우세요</span>.</p>
     </div>
   </section>
 
@@ -318,8 +339,8 @@
             <p class="content-card__body">"방금 뭘 한 거야? 쉽게 정리해줘" — 같은 부탁을 매번 다시 칩니다. 한 번 적어 명령으로 굳히면 됩니다.</p>
             <ul class="content-card__list">
               <li><strong>.md 파일 이름</strong>이 곧 명령 — <code>asdf.md</code> → <code>/asdf</code></li>
-              <li>개인 폴더 <code>%USERPROFILE%\.claude\commands</code> 에 두면 — 어떤 프로젝트에서나</li>
-              <li>프로젝트 폴더의 <code>.claude\commands</code> 는 — 그 프로젝트 안에서만</li>
+              <li>개인 폴더 <code><span class="os-win">%USERPROFILE%\.claude\commands</span><span class="os-mac">~/.claude/commands</span></code> 에 두면 — 어떤 프로젝트에서나</li>
+              <li>프로젝트 폴더의 <code><span class="os-win">.claude\commands</span><span class="os-mac">.claude/commands</span></code> 는 — 그 프로젝트 안에서만</li>
             </ul>
           </div>
         </div>
@@ -327,7 +348,7 @@
           <div class="code-block">
             <div class="code-block__header">
               <span class="code-block__dot" style="background:#fb2c36"></span><span class="code-block__dot" style="background:#edb200"></span><span class="code-block__dot" style="background:#00c758"></span>
-              <span class="code-block__title">%USERPROFILE%\.claude\commands\asdf.md</span>
+              <span class="code-block__title"><span class="os-win">%USERPROFILE%\.claude\commands\asdf.md</span><span class="os-mac">~/.claude/commands/asdf.md</span></span>
             </div>
             <div class="code-block__body"><span class="code-block__line"><span class="code-block__cmd">나는 비개발자라 잘 모르겠어.</span></span><span class="code-block__line"><span class="code-block__cmd">방금 한 대답을 — 딱 3줄로 요약.</span></span><span class="code-block__line"><span class="code-block__cmd">1줄: 방금 네가 뭘 했는지</span></span><span class="code-block__line"><span class="code-block__cmd">2줄: 지금 어떤 상태인지</span></span><span class="code-block__line"><span class="code-block__cmd">3줄: 내가 이제 뭘 하면 되는지</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__cmt"># 이 파일이 곧 /asdf 명령</span></span></div>
           </div>
@@ -448,7 +469,7 @@
       <div class="feature-text">
         <p class="statement__caption">헤드리스는 사람 없이 자동으로, 슬래시는 자주 하는 부탁을 한 단어로 — 둘 다 Claude를 내 작업에 맞추는 도구입니다.</p>
         <div class="statement__points">
-          <div class="statement__point"><span class="statement__point-num">헤드리스</span><span>claude -p + 작업 스케줄러로 자동 실행</span></div>
+          <div class="statement__point"><span class="statement__point-num">헤드리스</span><span>claude -p + <span class="os-win">작업 스케줄러</span><span class="os-mac">launchd · cron</span>로 자동 실행</span></div>
           <div class="statement__point"><span class="statement__point-num">슬래시</span><span>자주 하는 부탁을 — /명령 한 단어로</span></div>
           <div class="statement__point"><span class="statement__point-num">다음</span><span>데이터베이스·서브에이전트로 — 진짜 앱을 만든다</span></div>
         </div>

@@ -6,6 +6,8 @@
   <title>1일차 · 6. 운영 감각 + 미션</title>
   <link rel="stylesheet" href="../../styles/tokens.css">
   <link rel="stylesheet" href="../../styles/deck.css">
+  <link rel="stylesheet" href="../../styles/_os-toggle.css">
+  <script defer src="../../scripts/os-toggle.js"></script>
 </head>
 <body>
 
@@ -477,7 +479,7 @@
           <div class="compare-side__label">--continue · 셸 옵션으로 바로</div>
           <h3 class="compare-side__title">claude 실행 시 즉시 복귀</h3>
           <ul class="compare-side__list">
-            <li>PowerShell에서 <code>claude --continue</code></li>
+            <li><span class="os-win">PowerShell</span><span class="os-mac">터미널</span>에서 <code>claude --continue</code></li>
             <li>직전 세션 자동 복원 — 가장 빠름</li>
             <li>가장 흔한 사용 — 끄고 다시 켰을 때</li>
             <li>여러 세션 중 선택은 X (직전만)</li>
@@ -601,7 +603,7 @@
     <h2 class="slide__title">실습 — <span class="accent">2 미션 + 보너스 + 결과물 공유</span></h2>
     <div class="slide__body">
       <div class="setup-grid">
-        <div class="setup-step"><div class="setup-step__num">셋업</div><h3 class="setup-step__title">Python 설치</h3><p class="setup-step__desc">Microsoft Store에서 설치 — 미션 진입 전</p></div>
+        <div class="setup-step"><div class="setup-step__num">셋업</div><h3 class="setup-step__title">Python 설치</h3><p class="setup-step__desc"><span class="os-win">Microsoft Store</span><span class="os-mac">Homebrew · python.org</span>에서 설치 — 미션 진입 전</p></div>
         <div class="setup-step"><div class="setup-step__num">미션 1</div><h3 class="setup-step__title">가위바위보 CLI</h3><p class="setup-step__desc">뼈대 → 입력 → 기록 — 3단계 분할</p></div>
         <div class="setup-step"><div class="setup-step__num">미션 2</div><h3 class="setup-step__title">단위 변환기</h3><p class="setup-step__desc">cm↔inch · kg↔lb · 본인 명세</p></div>
         <div class="setup-step"><div class="setup-step__num">보너스</div><h3 class="setup-step__title">먼저 끝낸 사람</h3><p class="setup-step__desc">통계+그래프 또는 GUI</p></div>
@@ -614,11 +616,11 @@
   <!-- 21 · Python 설치 -->
   <section class="slide is-standard">
     <div class="slide__eyebrow">SETUP · Python 설치</div>
-    <h2 class="slide__title">미션 진입 전 — <span class="accent">Microsoft Store</span>에서 Python</h2>
+    <h2 class="slide__title">미션 진입 전 — <span class="os-win"><span class="accent">Microsoft Store</span>에서 Python</span><span class="os-mac"><span class="accent">Homebrew</span>로 Python</span></h2>
     <div class="slide__body">
       <div class="two-col">
         <div>
-          <div class="content-card content-card--compact">
+          <div class="content-card content-card--compact os-win is-block">
             <h3 class="content-card__title">3가지만 하면 됨</h3>
             <ol class="content-card__list content-card__list--ol">
               <li><strong>Microsoft Store</strong> 앱 열기</li>
@@ -626,18 +628,26 @@
               <li>설치 완료 — PATH 자동 등록</li>
             </ol>
           </div>
+          <div class="content-card content-card--compact os-mac is-block">
+            <h3 class="content-card__title">한 줄로 끝</h3>
+            <ol class="content-card__list content-card__list--ol">
+              <li>터미널 → <code>brew install python@3.12</code></li>
+              <li>또는 python.org에서 <code>python-3.12.x-macos.pkg</code> 다운로드 → 더블클릭</li>
+              <li><strong>새 터미널</strong>에서 <code>python3 --version</code> — PATH 자동 등록</li>
+            </ol>
+          </div>
         </div>
         <div>
           <div class="code-block">
             <div class="code-block__header">
               <span class="code-block__dot" style="background:#fb2c36"></span><span class="code-block__dot" style="background:#edb200"></span><span class="code-block__dot" style="background:#00c758"></span>
-              <span class="code-block__title">PowerShell — 검증</span>
+              <span class="code-block__title"><span class="os-win">PowerShell</span><span class="os-mac">Terminal (zsh)</span> — 검증</span>
             </div>
-            <div class="code-block__body"><span class="code-block__line"><span class="code-block__prompt">PS&gt;</span> <span class="code-block__cmd">python --version</span></span><span class="code-block__line"><span class="code-block__hi">  Python 3.12.x</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__cmt"># 버전이 출력되면 OK</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__cmt"># 안 잡히면: 새 PowerShell 창 열기</span></span></div>
+            <div class="code-block__body"><span class="code-block__line"><span class="code-block__prompt" data-auto-os></span> <span class="code-block__cmd"><span class="os-win">python</span><span class="os-mac">python3</span> --version</span></span><span class="code-block__line"><span class="code-block__hi">  Python 3.12.x</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__cmt"># 버전이 출력되면 OK</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__cmt"># 안 잡히면: 새 <span class="os-win">PowerShell</span><span class="os-mac">터미널</span> 창 열기</span></span></div>
           </div>
         </div>
       </div>
-      <p class="slide__note">강의는 <strong>Python 3.12</strong> 기준 — 검색 시 최신(3.13)이 먼저 떠도 3.12를 고르세요. MS Store는 PATH 자동 등록 · 이미 설치된 분은 건너뛰기.</p>
+      <p class="slide__note">강의는 <strong>Python 3.12</strong> 기준 — 검색 시 최신(3.13)이 먼저 떠도 3.12를 고르세요. <span class="os-win">MS Store는 PATH 자동 등록 · 이미 설치된 분은 건너뛰기.</span><span class="os-mac">Mac에는 시스템 Python이 있지만 그건 쓰지 말고 Homebrew·python.org 버전을 따로 설치하세요.</span></p>
     </div>
   </section>
 
@@ -692,9 +702,9 @@
           <div class="code-block">
             <div class="code-block__header">
               <span class="code-block__dot" style="background:#fb2c36"></span><span class="code-block__dot" style="background:#edb200"></span><span class="code-block__dot" style="background:#00c758"></span>
-              <span class="code-block__title">PowerShell — 검증</span>
+              <span class="code-block__title"><span class="os-win">PowerShell</span><span class="os-mac">Terminal (zsh)</span> — 검증</span>
             </div>
-            <div class="code-block__body"><span class="code-block__line"><span class="code-block__prompt">PS&gt;</span> <span class="code-block__cmd">python game.py</span></span><span class="code-block__line"><span class="code-block__out">  컴퓨터: 바위</span></span><span class="code-block__line"><span class="code-block__out">  결과: (테스트용 출력)</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__cmt"># 동작하면 → 커밋</span></span><span class="code-block__line"><span class="code-block__prompt">PS&gt;</span> <span class="code-block__cmd">git add .</span></span><span class="code-block__line"><span class="code-block__prompt">PS&gt;</span> <span class="code-block__cmd">git commit -m "<span class="code-block__hi">가위바위보 뼈대</span>"</span></span></div>
+            <div class="code-block__body"><span class="code-block__line"><span class="code-block__prompt" data-auto-os></span> <span class="code-block__cmd">python game.py</span></span><span class="code-block__line"><span class="code-block__out">  컴퓨터: 바위</span></span><span class="code-block__line"><span class="code-block__out">  결과: (테스트용 출력)</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__cmt"># 동작하면 → 커밋</span></span><span class="code-block__line"><span class="code-block__prompt" data-auto-os></span> <span class="code-block__cmd">git add .</span></span><span class="code-block__line"><span class="code-block__prompt" data-auto-os></span> <span class="code-block__cmd">git commit -m "<span class="code-block__hi">가위바위보 뼈대</span>"</span></span></div>
           </div>
         </div>
       </div>
@@ -725,7 +735,7 @@
               <span class="code-block__dot" style="background:#fb2c36"></span><span class="code-block__dot" style="background:#edb200"></span><span class="code-block__dot" style="background:#00c758"></span>
               <span class="code-block__title">실행 — 한 판</span>
             </div>
-            <div class="code-block__body"><span class="code-block__line"><span class="code-block__prompt">PS&gt;</span> <span class="code-block__cmd">python game.py</span></span><span class="code-block__line"><span class="code-block__out">  가위/바위/보 중 하나 입력: <span class="code-block__hi">바위</span></span><span class="code-block__line"><span class="code-block__out">  컴퓨터: 가위</span></span><span class="code-block__line"><span class="code-block__out">  결과: 이김 🎉</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__cmt"># 정상 동작 → 커밋</span></span><span class="code-block__line"><span class="code-block__prompt">PS&gt;</span> <span class="code-block__cmd">git commit -am "사용자 입력 추가"</span></span></div>
+            <div class="code-block__body"><span class="code-block__line"><span class="code-block__prompt" data-auto-os></span> <span class="code-block__cmd">python game.py</span></span><span class="code-block__line"><span class="code-block__out">  가위/바위/보 중 하나 입력: <span class="code-block__hi">바위</span></span><span class="code-block__line"><span class="code-block__out">  컴퓨터: 가위</span></span><span class="code-block__line"><span class="code-block__out">  결과: 이김 🎉</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__cmt"># 정상 동작 → 커밋</span></span><span class="code-block__line"><span class="code-block__prompt" data-auto-os></span> <span class="code-block__cmd">git commit -am "사용자 입력 추가"</span></span></div>
           </div>
         </div>
       </div>
@@ -756,7 +766,7 @@
               <span class="code-block__dot" style="background:#fb2c36"></span><span class="code-block__dot" style="background:#edb200"></span><span class="code-block__dot" style="background:#00c758"></span>
               <span class="code-block__title">실행 — 5판 + 통계</span>
             </div>
-            <div class="code-block__body"><span class="code-block__line"><span class="code-block__cmt"># [1/5] [2/5] ... [5/5] 진행</span></span><span class="code-block__line"><span class="code-block__out">  ─── 결과 ───</span></span><span class="code-block__line"><span class="code-block__out">  승: 2 · 무: 1 · 패: 2</span></span><span class="code-block__line"><span class="code-block__out">  더 하시겠어요? (y/n): n</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__prompt">PS&gt;</span> <span class="code-block__cmd">git commit -am "<span class="code-block__hi">5판 + 통계 추가</span>"</span></span><span class="code-block__line"><span class="code-block__prompt">PS&gt;</span> <span class="code-block__cmd">claude</span></span><span class="code-block__line"><span class="code-block__cmd">&gt; /usage</span></span></div>
+            <div class="code-block__body"><span class="code-block__line"><span class="code-block__cmt"># [1/5] [2/5] ... [5/5] 진행</span></span><span class="code-block__line"><span class="code-block__out">  ─── 결과 ───</span></span><span class="code-block__line"><span class="code-block__out">  승: 2 · 무: 1 · 패: 2</span></span><span class="code-block__line"><span class="code-block__out">  더 하시겠어요? (y/n): n</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__prompt" data-auto-os></span> <span class="code-block__cmd">git commit -am "<span class="code-block__hi">5판 + 통계 추가</span>"</span></span><span class="code-block__line"><span class="code-block__prompt" data-auto-os></span> <span class="code-block__cmd">claude</span></span><span class="code-block__line"><span class="code-block__cmd">&gt; /usage</span></span></div>
           </div>
         </div>
       </div>
@@ -938,8 +948,8 @@
         <svg viewBox="0 0 460 320" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
           <rect x="0" y="0" width="460" height="320" rx="14" fill="rgba(0,0,0,0.92)"/>
           <rect x="0" y="0" width="460" height="32" fill="rgba(255,255,255,0.06)"/>
-          <text x="14" y="20" font-family="ui-monospace, monospace" font-size="11" fill="rgba(255,255,255,0.5)">PowerShell · git log --oneline</text>
-          <text x="20" y="68" fill="#fe6e00" font-family="ui-monospace, monospace" font-size="13">PS&gt; git log --oneline</text>
+          <text x="14" y="20" font-family="ui-monospace, monospace" font-size="11" fill="rgba(255,255,255,0.5)"><tspan class="os-win">PowerShell</tspan><tspan class="os-mac">Terminal</tspan> · git log --oneline</text>
+          <text x="20" y="68" fill="#fe6e00" font-family="ui-monospace, monospace" font-size="13"><tspan class="os-win">PS&gt;</tspan><tspan class="os-mac">$</tspan> git log --oneline</text>
           <text x="20" y="105" fill="#cc5a14" font-family="ui-monospace, monospace" font-size="11">a3f1b2c</text>
           <text x="100" y="105" fill="rgba(255,255,255,0.85)" font-family="ui-monospace, monospace" font-size="11">5판 + 통계 추가</text>
           <text x="20" y="128" fill="#cc5a14" font-family="ui-monospace, monospace" font-size="11">5e2a8c1</text>

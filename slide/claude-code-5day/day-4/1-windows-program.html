@@ -3,9 +3,11 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>4일차 · 1. 윈도우 프로그램 — PySide + PyInstaller</title>
+  <title>4일차 · 1. 데스크톱 프로그램 — PySide + PyInstaller</title>
   <link rel="stylesheet" href="../../styles/tokens.css">
   <link rel="stylesheet" href="../../styles/deck.css">
+  <link rel="stylesheet" href="../../styles/_os-toggle.css">
+  <script defer src="../../scripts/os-toggle.js"></script>
   <style>
     /* 챕터 1 — 프로그램 메뉴 그룹 (A · 파일 / B · 데스크톱) */
     .menu-group { display: flex; flex-direction: column; gap: 0.4rem; }
@@ -24,7 +26,7 @@
   <header class="deck-chrome">
     <span class="deck-chrome__brand">CLAUDE CODE · 5D</span>
     <span class="deck-chrome__divider">·</span>
-    <span class="deck-chrome__day">4일차 · 1 윈도우 프로그램</span>
+    <span class="deck-chrome__day">4일차 · 1 데스크톱 프로그램</span>
     <span class="deck-chrome__spacer"></span>
     <span class="deck-chrome__counter">— / —</span>
   </header>
@@ -51,7 +53,7 @@
             <text x="355" y="136" font-family="ui-sans-serif, system-ui" font-size="10" fill="#cc5a14" text-anchor="middle">찾기</text>
             <rect x="80" y="168" width="300" height="44" rx="8" fill="#fe6e00"/>
             <text x="230" y="196" font-family="ui-sans-serif, system-ui" font-size="14" fill="#fff" text-anchor="middle" font-weight="700">정리 시작</text>
-            <text x="230" y="262" font-family="ui-monospace, monospace" font-size="10" fill="#cc5a14" text-anchor="middle">파일정리기.exe — 더블클릭으로 실행</text>
+            <text x="230" y="262" font-family="ui-monospace, monospace" font-size="10" fill="#cc5a14" text-anchor="middle">파일정리기<tspan class="os-win">.exe</tspan><tspan class="os-mac">.app</tspan> — 더블클릭으로 실행</text>
           </svg>
         </div>
         <div class="cover-foot">
@@ -62,7 +64,7 @@
       <div class="cover-right">
         <div class="cover-card">
           <div class="cover-card__day">4일차 · 오전</div>
-          <h2 class="cover-card__title">내 PC에서 도는 —<br>진짜 프로그램(.exe)</h2>
+          <h2 class="cover-card__title">내 PC에서 도는 —<br>진짜 프로그램(<span class="os-win">.exe</span><span class="os-mac">.app</span>)</h2>
           <p class="cover-card__subtitle">PySide로 창을 그리고, PyInstaller로 굳혀 —<br>더블클릭하면 열리는 나만의 프로그램.</p>
         </div>
       </div>
@@ -72,7 +74,7 @@
   <!-- 2 · 3일차 → 4일차 -->
   <section class="slide is-standard">
     <div class="slide__eyebrow">3일차 → 4일차</div>
-    <h2 class="slide__title">웹페이지였다면, 오늘은 <span class="accent">내 PC에 사는 프로그램</span></h2>
+    <h2 class="slide__title">웹페이지였다면, 오늘은 <span class="accent">내 <span class="os-win">PC</span><span class="os-mac">Mac</span>에 사는 프로그램</span></h2>
     <div class="slide__body">
       <div class="bg-compare">
         <div class="bg-compare__side bg-compare__side--soft">
@@ -89,11 +91,11 @@
           <div class="bg-compare__label">Day 4 오전 · 오늘</div>
           <div class="bg-compare__quote">
             <div>창·버튼·입력칸 있는</div>
-            <div>윈도우 프로그램을 만들고</div>
-            <div>.exe 파일 하나로 굳혀</div>
+            <div><span class="os-win">윈도우</span><span class="os-mac">데스크톱</span> 프로그램을 만들고</div>
+            <div><span class="os-win">.exe</span><span class="os-mac">.app</span> 파일 하나로 굳혀</div>
             <div>— 더블클릭으로 실행.</div>
           </div>
-          <p class="bg-compare__note">오늘은 — <strong>내 PC에 사는</strong> 프로그램.</p>
+          <p class="bg-compare__note">오늘은 — <strong>내 <span class="os-win">PC</span><span class="os-mac">Mac</span>에 사는</strong> 프로그램.</p>
         </div>
       </div>
     </div>
@@ -105,11 +107,11 @@
       <div class="statement-text">
         <div class="slide__eyebrow">TODAY · 오늘 만들 것</div>
         <h2 class="statement__lead">더블클릭하면 — <span class="accent">내 창이 뜬다</span>.</h2>
-        <p class="statement__caption">오늘 만들 건 웹페이지가 아닙니다. 내 컴퓨터에서 도는 진짜 프로그램(.exe) — 인터넷도, 배포도, 로그인도 필요 없습니다. 파일 하나로 친구한테 보낼 수도 있습니다.</p>
+        <p class="statement__caption">오늘 만들 건 웹페이지가 아닙니다. 내 컴퓨터에서 도는 진짜 프로그램(<span class="os-win">.exe</span><span class="os-mac">.app</span>) — 인터넷도, 배포도, 로그인도 필요 없습니다. 파일 하나로 친구한테 보낼 수도 있습니다.</p>
         <div class="statement__points">
           <div class="statement__point"><span class="statement__point-num">모양</span><span>버튼·입력칸이 있는 창</span></div>
-          <div class="statement__point"><span class="statement__point-num">형태</span><span>.exe 파일 하나</span></div>
-          <div class="statement__point"><span class="statement__point-num">공유</span><span>메신저로 보내면 끝 — 인터넷 불필요</span></div>
+          <div class="statement__point"><span class="statement__point-num">형태</span><span><span class="os-win">.exe</span><span class="os-mac">.app</span> 파일 하나</span></div>
+          <div class="statement__point"><span class="statement__point-num">공유</span><span>같은 OS끼리는 메신저로 보내면 끝 — 인터넷 불필요. (Win↔Mac은 따로 빌드)</span></div>
         </div>
       </div>
       <div class="statement-visual">
@@ -128,7 +130,7 @@
           <circle cx="262" cy="92" r="3" fill="#fff" fill-opacity="0.85"/>
           <circle cx="272" cy="92" r="3" fill="#fff" fill-opacity="0.6"/>
           <circle cx="282" cy="92" r="3" fill="#fff" fill-opacity="0.4"/>
-          <text x="335" y="160" font-family="ui-sans-serif, system-ui" font-size="11" fill="#cc5a14" text-anchor="middle" font-weight="700">내 프로그램.exe</text>
+          <text x="335" y="160" font-family="ui-sans-serif, system-ui" font-size="11" fill="#cc5a14" text-anchor="middle" font-weight="700">내 프로그램<tspan class="os-win">.exe</tspan><tspan class="os-mac">.app</tspan></text>
           <text x="335" y="180" font-family="ui-sans-serif, system-ui" font-size="9" fill="#cc5a14" text-anchor="middle">더블클릭 — 인터넷 불필요</text>
           <text x="230" y="280" font-family="ui-sans-serif, system-ui" font-size="13" fill="#797067" text-anchor="middle">손에 잡히는 — 파일 한 개</text>
         </svg>
@@ -153,12 +155,12 @@
           <p class="bg-compare__note">CLI — 파이썬 스크립트 그대로.</p>
         </div>
         <div class="bg-compare__side bg-compare__side--good">
-          <div class="bg-compare__label">Day 4 · 윈도우 프로그램</div>
+          <div class="bg-compare__label">Day 4 · <span class="os-win">윈도우</span><span class="os-mac">데스크톱</span> 프로그램</div>
           <div class="bg-compare__quote">
             <div>창에 버튼·입력칸</div>
             <div>마우스로 클릭</div>
             <div>친구도 쓸 수 있음</div>
-            <div>파일 하나(.exe)로 공유</div>
+            <div>파일 하나(<span class="os-win">.exe</span><span class="os-mac">.app</span>)로 공유</div>
           </div>
           <p class="bg-compare__note">GUI — 같은 파이썬에 <strong>창을 입힌</strong> 것.</p>
         </div>
@@ -180,18 +182,18 @@
             <ul class="content-card__list">
               <li>"이 버튼을 누르면 ~" 만 짜면 됨</li>
               <li>코드는 Claude가 — 우리는 무엇을 만들지만</li>
-              <li>운영체제 그대로의 모양 — 윈도우다움</li>
+              <li>운영체제 그대로의 모양 — <span class="os-win">윈도우다움</span><span class="os-mac">맥다움</span></li>
             </ul>
           </div>
         </div>
         <div>
           <div class="content-card">
-            <h3 class="content-card__title">PyInstaller — .exe로 굳힌다</h3>
-            <p class="content-card__body">파이썬으로 만든 .py 파일을 <strong>.exe 한 덩어리</strong>로 묶어줍니다. 파이썬이 없는 PC에서도 그대로 동작.</p>
+            <h3 class="content-card__title">PyInstaller — <span class="os-win">.exe</span><span class="os-mac">.app</span>로 굳힌다</h3>
+            <p class="content-card__body">파이썬으로 만든 .py 파일을 <strong><span class="os-win">.exe</span><span class="os-mac">.app</span> 한 덩어리</strong>로 묶어줍니다. 파이썬이 없는 PC에서도 그대로 동작.</p>
             <ul class="content-card__list">
-              <li>명령 한 줄 — <code>pyinstaller --onefile</code></li>
-              <li>1~2분이면 .exe 완성</li>
-              <li>파일 하나로 친구한테 보내기</li>
+              <li>명령 한 줄 — <code>pyinstaller --onefile<span class="os-mac"> --windowed</span></code></li>
+              <li>1~2분이면 <span class="os-win">.exe</span><span class="os-mac">.app</span> 완성</li>
+              <li>파일 하나로 친구한테 보내기 (같은 OS끼리)</li>
             </ul>
           </div>
         </div>
@@ -209,7 +211,7 @@
         <div>
           <div class="content-card content-card--compact">
             <h3 class="content-card__title">Python 3.12 — 이미 깔려 있다</h3>
-            <p class="content-card__body">Day 1에 깐 <strong>Python 3.12</strong>를 그대로 씁니다. 새 PowerShell 창에서 <code>python --version</code> — <code>3.12.x</code>가 뜨면 OK.</p>
+            <p class="content-card__body">Day 1에 깐 <strong>Python 3.12</strong>를 그대로 씁니다. 새 <span class="os-win">PowerShell</span><span class="os-mac">터미널</span> 창에서 <code><span class="os-win">python</span><span class="os-mac">python3</span> --version</code> — <code>3.12.x</code>가 뜨면 OK.</p>
             <ul class="content-card__list">
               <li>안 뜨면 — Day 1 셋업 슬라이드의 PATH 점검</li>
               <li>pip는 파이썬과 함께 — 따로 설치 불필요</li>
@@ -221,9 +223,9 @@
           <div class="code-block">
             <div class="code-block__header">
               <span class="code-block__dot" style="background:#fb2c36"></span><span class="code-block__dot" style="background:#edb200"></span><span class="code-block__dot" style="background:#00c758"></span>
-              <span class="code-block__title">PowerShell · 한 줄 설치</span>
+              <span class="code-block__title"><span class="os-win">PowerShell</span><span class="os-mac">Terminal (zsh)</span> · 한 줄 설치</span>
             </div>
-            <div class="code-block__body"><span class="code-block__line"><span class="code-block__prompt">PS&gt;</span> <span class="code-block__cmd">python --version</span></span><span class="code-block__line"><span class="code-block__out">  Python 3.12.x</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__prompt">PS&gt;</span> <span class="code-block__cmd">pip install pyside6 pyinstaller</span></span><span class="code-block__line"><span class="code-block__out">  ... (다운로드 1~3분)</span></span><span class="code-block__line"><span class="code-block__out">  Successfully installed PySide6 pyinstaller</span></span><span class="code-block__line"><span class="code-block__cmt"># 한 번만 — 다음부터는 바로 사용</span></span></div>
+            <div class="code-block__body"><span class="code-block__line"><span class="code-block__prompt" data-auto-os></span> <span class="code-block__cmd"><span class="os-win">python</span><span class="os-mac">python3</span> --version</span></span><span class="code-block__line"><span class="code-block__out">  Python 3.12.x</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__prompt" data-auto-os></span> <span class="code-block__cmd"><span class="os-win">pip</span><span class="os-mac">pip3</span> install pyside6 pyinstaller</span></span><span class="code-block__line"><span class="code-block__out">  ... (다운로드 1~3분)</span></span><span class="code-block__line"><span class="code-block__out">  Successfully installed PySide6 pyinstaller</span></span><span class="code-block__line"><span class="code-block__cmt"># 한 번만 — 다음부터는 바로 사용</span></span></div>
           </div>
         </div>
       </div>
@@ -261,12 +263,12 @@
   <!-- 8 · 만드는 흐름 -->
   <section class="slide is-standard">
     <div class="slide__eyebrow">FLOW · 만드는 흐름</div>
-    <h2 class="slide__title">폴더 → .py → 동작 확인 → <span class="accent">.exe</span></h2>
+    <h2 class="slide__title">폴더 → .py → 동작 확인 → <span class="accent"><span class="os-win">.exe</span><span class="os-mac">.app</span></span></h2>
     <div class="slide__body">
       <div class="step-list step-list--compact">
         <div class="step-list__item">
           <div class="step-list__num">1</div>
-          <div class="step-list__content"><p class="step-list__title">기본 폴더 만들기 <span class="step-list__desc" style="display:inline">— c:\lecture\day4\myapp (이름은 자유)</span></p></div>
+          <div class="step-list__content"><p class="step-list__title">기본 폴더 만들기 <span class="step-list__desc" style="display:inline">— <span class="os-win">c:\lecture\day4\myapp</span><span class="os-mac">~/lecture/day4/myapp</span> (이름은 자유)</span></p></div>
         </div>
         <div class="step-list__item">
           <div class="step-list__num">2</div>
@@ -274,11 +276,11 @@
         </div>
         <div class="step-list__item">
           <div class="step-list__num">3</div>
-          <div class="step-list__content"><p class="step-list__title">python myapp.py — 띄워 보기 <span class="step-list__desc" style="display:inline">— 막히면 화면 보여주며 다시 대화</span></p></div>
+          <div class="step-list__content"><p class="step-list__title"><span class="os-win">python</span><span class="os-mac">python3</span> myapp.py — 띄워 보기 <span class="step-list__desc" style="display:inline">— 막히면 화면 보여주며 다시 대화</span></p></div>
         </div>
         <div class="step-list__item">
           <div class="step-list__num">4</div>
-          <div class="step-list__content"><p class="step-list__title">PyInstaller로 .exe로 굳히기 <span class="step-list__desc" style="display:inline">— dist 폴더에 myapp.exe 한 덩어리</span></p></div>
+          <div class="step-list__content"><p class="step-list__title">PyInstaller로 <span class="os-win">.exe</span><span class="os-mac">.app</span>로 굳히기 <span class="step-list__desc" style="display:inline">— dist 폴더에 myapp<span class="os-win">.exe</span><span class="os-mac">.app</span> 한 덩어리</span></p></div>
         </div>
         <div class="step-list__item">
           <div class="step-list__num">5</div>
@@ -286,7 +288,7 @@
         </div>
       </div>
     </div>
-    <p class="slide__note">.exe로 굳히는 건 <strong>마지막 단계</strong>. 먼저 .py로 동작이 다 맞춰져야 합니다 — 80%는 .py에서 끝납니다.</p>
+    <p class="slide__note"><span class="os-win">.exe</span><span class="os-mac">.app</span>로 굳히는 건 <strong>마지막 단계</strong>. 먼저 .py로 동작이 다 맞춰져야 합니다 — 80%는 .py에서 끝납니다.</p>
   </section>
 
   <!-- 9 · Claude에게 부탁하는 법 -->
@@ -301,7 +303,7 @@
             <p class="content-card__body">Day 2 챕터 6에서 익힌 3문장. 데스크톱 프로그램에도 그대로 — 매뉴얼이 없어도 시작이 됩니다.</p>
             <ul class="content-card__list">
               <li><strong>목표</strong> — 무엇을 만들지</li>
-              <li><strong>제약</strong> — PySide6로, .exe로 굳힐 것</li>
+              <li><strong>제약</strong> — PySide6로, <span class="os-win">.exe</span><span class="os-mac">.app</span>로 굳힐 것</li>
               <li><strong>내 수준</strong> — "처음이니 설명하며"</li>
             </ul>
           </div>
@@ -312,25 +314,25 @@
               <span class="code-block__dot" style="background:#fb2c36"></span><span class="code-block__dot" style="background:#edb200"></span><span class="code-block__dot" style="background:#00c758"></span>
               <span class="code-block__title">예시 — 파일 정리기</span>
             </div>
-            <div class="code-block__body"><span class="code-block__line"><span class="code-block__cmd">내 다운로드 폴더 안 파일들을 종류별</span></span><span class="code-block__line"><span class="code-block__cmd">폴더로 자동 분류해주는 창 있는</span></span><span class="code-block__line"><span class="code-block__cmd">프로그램을 만들어줘.</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__cmd">PySide6로 만들고, 마지막에 PyInstaller로</span></span><span class="code-block__line"><span class="code-block__cmd">.exe로 굳힐 거야.</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__cmd">나는 PySide 처음이니까 설명하며</span></span><span class="code-block__line"><span class="code-block__cmd">진행해줘.</span></span></div>
+            <div class="code-block__body"><span class="code-block__line"><span class="code-block__cmd">내 다운로드 폴더 안 파일들을 종류별</span></span><span class="code-block__line"><span class="code-block__cmd">폴더로 자동 분류해주는 창 있는</span></span><span class="code-block__line"><span class="code-block__cmd">프로그램을 만들어줘.</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__cmd">PySide6로 만들고, 마지막에 PyInstaller로</span></span><span class="code-block__line"><span class="code-block__cmd"><span class="os-win">.exe</span><span class="os-mac">.app</span>로 굳힐 거야.</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__cmd">나는 PySide 처음이니까 설명하며</span></span><span class="code-block__line"><span class="code-block__cmd">진행해줘.</span></span></div>
           </div>
         </div>
       </div>
     </div>
-    <p class="slide__note">메뉴 8개 어느 것이든 같은 뼈대 — <strong>"무엇을 / PySide6+.exe / 처음이니 설명하며"</strong>. 1번 문장만 바꿉니다.</p>
+    <p class="slide__note">메뉴 8개 어느 것이든 같은 뼈대 — <strong>"무엇을 / PySide6+<span class="os-win">.exe</span><span class="os-mac">.app</span> / 처음이니 설명하며"</strong>. 1번 문장만 바꿉니다.</p>
   </section>
 
   <!-- 10 · 먼저 .py로 -->
   <section class="slide is-standard">
     <div class="slide__eyebrow">RUN · 먼저 .py로</div>
-    <h2 class="slide__title">.exe로 굳히기 전 — <span class="accent">python으로 띄워보기</span></h2>
+    <h2 class="slide__title"><span class="os-win">.exe</span><span class="os-mac">.app</span>로 굳히기 전 — <span class="accent">python으로 띄워보기</span></h2>
     <div class="slide__body">
       <div class="two-col">
         <div>
           <div class="content-card content-card--compact">
             <h3 class="content-card__title">왜 먼저 .py?</h3>
             <ul class="content-card__list">
-              <li>.exe 빌드는 1~2분 — 매번 굳히면 느림</li>
+              <li><span class="os-win">.exe</span><span class="os-mac">.app</span> 빌드는 1~2분 — 매번 굳히면 느림</li>
               <li>.py로 띄우면 <strong>즉시 실행</strong></li>
               <li>동작·모양이 다 맞춰진 뒤에 굳힌다</li>
             </ul>
@@ -341,9 +343,9 @@
           <div class="code-block">
             <div class="code-block__header">
               <span class="code-block__dot" style="background:#fb2c36"></span><span class="code-block__dot" style="background:#edb200"></span><span class="code-block__dot" style="background:#00c758"></span>
-              <span class="code-block__title">PowerShell · .py 실행</span>
+              <span class="code-block__title"><span class="os-win">PowerShell</span><span class="os-mac">Terminal (zsh)</span> · .py 실행</span>
             </div>
-            <div class="code-block__body"><span class="code-block__line"><span class="code-block__prompt">PS&gt;</span> <span class="code-block__cmd">cd c:\lecture\day4\myapp</span></span><span class="code-block__line"><span class="code-block__prompt">PS&gt;</span> <span class="code-block__cmd">python myapp.py</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__out">  # 창이 뜬다 — 클릭해 보기</span></span><span class="code-block__line"><span class="code-block__out">  # 어색하면 창 끄고 다시 대화</span></span><span class="code-block__line"><span class="code-block__cmt"># 80%는 이 단계에서 다듬는다</span></span></div>
+            <div class="code-block__body"><span class="code-block__line"><span class="code-block__prompt" data-auto-os></span> <span class="code-block__cmd"><span class="os-win">cd c:\lecture\day4\myapp</span><span class="os-mac">cd ~/lecture/day4/myapp</span></span></span><span class="code-block__line"><span class="code-block__prompt" data-auto-os></span> <span class="code-block__cmd"><span class="os-win">python</span><span class="os-mac">python3</span> myapp.py</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__out">  # 창이 뜬다 — 클릭해 보기</span></span><span class="code-block__line"><span class="code-block__out">  # 어색하면 창 끄고 다시 대화</span></span><span class="code-block__line"><span class="code-block__cmt"># 80%는 이 단계에서 다듬는다</span></span></div>
           </div>
         </div>
       </div>
@@ -370,7 +372,7 @@
         <div class="diff-card">
           <div class="diff-card__rank">정체성</div>
           <h3 class="diff-card__title">창 제목·아이콘</h3>
-          <p class="diff-card__body">작업표시줄에서 알아볼 수 있게 — 창 제목을 정하고, 아이콘이 있으면 한 끗 더.</p>
+          <p class="diff-card__body"><span class="os-win">작업표시줄</span><span class="os-mac">Dock</span>에서 알아볼 수 있게 — 창 제목을 정하고, 아이콘이 있으면 한 끗 더.</p>
         </div>
       </div>
     </div>
@@ -379,18 +381,18 @@
 
   <!-- 12 · .exe로 굳히기 -->
   <section class="slide is-standard">
-    <div class="slide__eyebrow">BUILD · .exe로 굳히기</div>
-    <h2 class="slide__title">PyInstaller — <span class="accent">한 줄로</span> .exe 완성</h2>
+    <div class="slide__eyebrow">BUILD · <span class="os-win">.exe</span><span class="os-mac">.app</span>로 굳히기</div>
+    <h2 class="slide__title">PyInstaller — <span class="accent">한 줄로</span> <span class="os-win">.exe</span><span class="os-mac">.app</span> 완성</h2>
     <div class="slide__body">
       <div class="two-col">
         <div>
           <div class="content-card content-card--compact">
             <h3 class="content-card__title">명령 한 줄</h3>
-            <p class="content-card__body"><code>pyinstaller --onefile myapp.py</code> — 진행 메시지가 쏟아져도 가만히 1~2분.</p>
+            <p class="content-card__body"><code>pyinstaller --onefile<span class="os-mac"> --windowed</span> myapp.py</code> — 진행 메시지가 쏟아져도 가만히 1~2분.</p>
             <ul class="content-card__list">
-              <li>결과는 <code>dist\myapp.exe</code> 하나</li>
-              <li>다른 PC에 옮겨도 동작 — 파이썬 없어도</li>
-              <li><code>--onefile</code> = 한 덩어리, <code>--onedir</code> = 폴더로 분산(더 빠른 실행)</li>
+              <li>결과는 <code><span class="os-win">dist\myapp.exe</span><span class="os-mac">dist/myapp.app</span></code> 하나</li>
+              <li>같은 OS의 다른 PC에 옮겨도 동작 — 파이썬 없어도. (Win↔Mac은 따로 빌드)</li>
+              <li><code>--onefile</code> = 한 덩어리, <code>--onedir</code> = 폴더로 분산(더 빠른 실행)<span class="os-mac"> · <code>--windowed</code> = 터미널 창 안 뜨게</span></li>
             </ul>
           </div>
         </div>
@@ -398,14 +400,14 @@
           <div class="code-block">
             <div class="code-block__header">
               <span class="code-block__dot" style="background:#fb2c36"></span><span class="code-block__dot" style="background:#edb200"></span><span class="code-block__dot" style="background:#00c758"></span>
-              <span class="code-block__title">PowerShell · 빌드</span>
+              <span class="code-block__title"><span class="os-win">PowerShell</span><span class="os-mac">Terminal (zsh)</span> · 빌드</span>
             </div>
-            <div class="code-block__body"><span class="code-block__line"><span class="code-block__prompt">PS&gt;</span> <span class="code-block__cmd">pyinstaller --onefile myapp.py</span></span><span class="code-block__line"><span class="code-block__out">  INFO: PyInstaller: 6.x</span></span><span class="code-block__line"><span class="code-block__out">  ... (1~2분)</span></span><span class="code-block__line"><span class="code-block__out">  INFO: Building EXE ... completed</span></span><span class="code-block__line"><span class="code-block__out">  INFO: Building dist\myapp.exe</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__prompt">PS&gt;</span> <span class="code-block__cmd">.\dist\myapp.exe</span></span><span class="code-block__line"><span class="code-block__cmt"># 더블클릭과 동일 — 창이 뜬다</span></span></div>
+            <div class="code-block__body"><span class="code-block__line"><span class="code-block__prompt" data-auto-os></span> <span class="code-block__cmd">pyinstaller --onefile<span class="os-mac"> --windowed</span> myapp.py</span></span><span class="code-block__line"><span class="code-block__out">  INFO: PyInstaller: 6.x</span></span><span class="code-block__line"><span class="code-block__out">  ... (1~2분)</span></span><span class="code-block__line"><span class="code-block__out">  INFO: Building <span class="os-win">EXE</span><span class="os-mac">BUNDLE</span> ... completed</span></span><span class="code-block__line"><span class="code-block__out">  INFO: Building <span class="os-win">dist\myapp.exe</span><span class="os-mac">dist/myapp.app</span></span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__prompt" data-auto-os></span> <span class="code-block__cmd"><span class="os-win">.\dist\myapp.exe</span><span class="os-mac">open dist/myapp.app</span></span></span><span class="code-block__line"><span class="code-block__cmt"># 더블클릭과 동일 — 창이 뜬다</span></span></div>
           </div>
         </div>
       </div>
     </div>
-    <p class="slide__note">옵션을 외울 필요 없습니다 — "이 .py를 .exe 한 덩어리로 만들어줘"라고 Claude에게 부탁하면 명령까지 대신 칩니다.</p>
+    <p class="slide__note">옵션을 외울 필요 없습니다 — "이 .py를 <span class="os-win">.exe</span><span class="os-mac">.app</span> 한 덩어리로 만들어줘"라고 Claude에게 부탁하면 명령까지 대신 칩니다.<span class="os-mac"> Mac은 본인이 만든 앱이라 자체 서명 한 줄을 같이 시키면 깔끔 — <code>codesign --deep --force --sign - dist/myapp.app</code>.</span></p>
   </section>
 
   <!-- 13 · "Windows의 PC 보호" 경고 -->
@@ -414,15 +416,21 @@
       <div class="statement-text">
         <div class="slide__eyebrow">⚠ SAFETY · 처음 켤 때</div>
         <h2 class="statement__lead">경고창이 뜬다 — <span class="accent">정상</span>이다.</h2>
-        <p class="statement__caption">내가 만든 .exe는 "서명"이 없어 Windows가 한 번 멈춰 묻습니다. 모르는 인터넷 .exe였다면 조심할 일이지만, <strong>방금 내가 만든 거니</strong> — "추가 정보" → "실행".</p>
-        <div class="statement__points">
+        <p class="statement__caption os-win is-block">내가 만든 .exe는 "서명"이 없어 Windows가 한 번 멈춰 묻습니다. 모르는 인터넷 .exe였다면 조심할 일이지만, <strong>방금 내가 만든 거니</strong> — "추가 정보" → "실행".</p>
+        <p class="statement__caption os-mac is-block">내가 만든 .app은 "서명"이 없어 Gatekeeper가 한 번 멈춰 묻습니다. 모르는 인터넷 앱이었다면 조심할 일이지만, <strong>방금 내가 만든 거니</strong> — Finder에서 <strong>우클릭 → 열기</strong>(첫 실행 1회).</p>
+        <div class="statement__points os-win is-block">
           <div class="statement__point"><span class="statement__point-num">왜</span><span>서명 없는 새 파일은 SmartScreen이 차단</span></div>
           <div class="statement__point"><span class="statement__point-num">풀기</span><span>"추가 정보" 클릭 → "실행"</span></div>
           <div class="statement__point"><span class="statement__point-num">가끔</span><span>Defender가 격리하기도 — 복원 + 예외 추가</span></div>
         </div>
+        <div class="statement__points os-mac is-block">
+          <div class="statement__point"><span class="statement__point-num">왜</span><span>서명·공증 없는 앱은 Gatekeeper가 차단</span></div>
+          <div class="statement__point"><span class="statement__point-num">풀기</span><span>Finder에서 <strong>우클릭 → 열기</strong> (첫 실행 1회만)</span></div>
+          <div class="statement__point"><span class="statement__point-num">옵션</span><span>자체 서명: <code>codesign --deep --force --sign - dist/myapp.app</code></span></div>
+        </div>
       </div>
       <div class="statement-visual">
-        <svg viewBox="0 0 460 320" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <svg class="os-win is-block" viewBox="0 0 460 320" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
           <rect x="0" y="0" width="460" height="320" rx="16" fill="#fff5ec"/>
           <rect x="60" y="60" width="340" height="200" rx="10" fill="#fff" stroke="#cc5a14" stroke-width="2"/>
           <rect x="60" y="60" width="340" height="44" rx="10" fill="#fe6e00"/>
@@ -440,6 +448,24 @@
           <text x="300" y="240" font-family="ui-sans-serif, system-ui" font-size="10" fill="#fff" text-anchor="middle" font-weight="700">실행 (한 번만)</text>
           <text x="230" y="288" font-family="ui-sans-serif, system-ui" font-size="11" fill="#797067" text-anchor="middle">"추가 정보" 클릭 → "실행"</text>
         </svg>
+        <svg class="os-mac is-block" viewBox="0 0 460 320" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <rect x="0" y="0" width="460" height="320" rx="16" fill="#fff5ec"/>
+          <rect x="60" y="60" width="340" height="200" rx="10" fill="#fff" stroke="#cc5a14" stroke-width="2"/>
+          <rect x="60" y="60" width="340" height="44" rx="10" fill="#fe6e00"/>
+          <rect x="60" y="80" width="340" height="24" fill="#fe6e00"/>
+          <text x="230" y="88" font-family="ui-sans-serif, system-ui" font-size="13" fill="#fff" text-anchor="middle" font-weight="700">"myapp.app"을(를) 열 수 없습니다</text>
+          <text x="230" y="138" font-family="ui-sans-serif, system-ui" font-size="11" fill="#797067" text-anchor="middle">개발자를 확인할 수 없기 때문에</text>
+          <text x="230" y="156" font-family="ui-sans-serif, system-ui" font-size="11" fill="#797067" text-anchor="middle">macOS가 이 소프트웨어를 열 수 없습니다.</text>
+          <text x="100" y="190" font-family="ui-sans-serif, system-ui" font-size="11" fill="#cc5a14" font-weight="700">앱:</text>
+          <text x="140" y="190" font-family="ui-monospace, monospace" font-size="11" fill="#797067">myapp.app</text>
+          <text x="100" y="208" font-family="ui-sans-serif, system-ui" font-size="11" fill="#cc5a14" font-weight="700">상태:</text>
+          <text x="140" y="208" font-family="ui-sans-serif, system-ui" font-size="11" fill="#797067">검증되지 않음 (Gatekeeper)</text>
+          <rect x="90" y="226" width="120" height="20" rx="4" fill="none" stroke="#cc5a14" stroke-width="1.5"/>
+          <text x="150" y="240" font-family="ui-sans-serif, system-ui" font-size="10" fill="#cc5a14" text-anchor="middle" font-weight="700">취소</text>
+          <rect x="240" y="226" width="120" height="20" rx="4" fill="#fe6e00"/>
+          <text x="300" y="240" font-family="ui-sans-serif, system-ui" font-size="10" fill="#fff" text-anchor="middle" font-weight="700">열기 (우클릭 후)</text>
+          <text x="230" y="288" font-family="ui-sans-serif, system-ui" font-size="11" fill="#797067" text-anchor="middle">Finder에서 우클릭 → 열기 (1회만)</text>
+        </svg>
       </div>
     </div>
   </section>
@@ -447,7 +473,7 @@
   <!-- 14 · 실습 -->
   <section class="slide is-standard">
     <div class="slide__eyebrow">실습 · 내 프로그램 만들기</div>
-    <h2 class="slide__title">메뉴 하나 골라 — <span class="accent">.py → .exe</span>까지</h2>
+    <h2 class="slide__title">메뉴 하나 골라 — <span class="accent">.py → <span class="os-win">.exe</span><span class="os-mac">.app</span></span>까지</h2>
     <div class="slide__body">
       <div class="step-list step-list--compact">
         <div class="step-list__item">
@@ -456,7 +482,7 @@
         </div>
         <div class="step-list__item">
           <div class="step-list__num">2</div>
-          <div class="step-list__content"><p class="step-list__title">폴더 + 3문장으로 시작 <span class="step-list__desc" style="display:inline">— c:\lecture\day4\내앱 → Claude에게 목표·제약·내 수준</span></p></div>
+          <div class="step-list__content"><p class="step-list__title">폴더 + 3문장으로 시작 <span class="step-list__desc" style="display:inline">— <span class="os-win">c:\lecture\day4\내앱</span><span class="os-mac">~/lecture/day4/내앱</span> → Claude에게 목표·제약·내 수준</span></p></div>
         </div>
         <div class="step-list__item">
           <div class="step-list__num">3</div>
@@ -464,11 +490,11 @@
         </div>
         <div class="step-list__item">
           <div class="step-list__num">4</div>
-          <div class="step-list__content"><p class="step-list__title">pyinstaller --onefile <span class="step-list__desc" style="display:inline">— dist\내앱.exe 완성, 1~2분 기다림</span></p></div>
+          <div class="step-list__content"><p class="step-list__title">pyinstaller --onefile<span class="os-mac"> --windowed</span> <span class="step-list__desc" style="display:inline">— <span class="os-win">dist\내앱.exe</span><span class="os-mac">dist/내앱.app</span> 완성, 1~2분 기다림</span></p></div>
         </div>
         <div class="step-list__item">
           <div class="step-list__num">5</div>
-          <div class="step-list__content"><p class="step-list__title">더블클릭 + 친구한테 보내기 <span class="step-list__desc" style="display:inline">— 경고창은 "추가 정보 → 실행"</span></p></div>
+          <div class="step-list__content"><p class="step-list__title">더블클릭 + 친구한테 보내기 <span class="step-list__desc" style="display:inline">— 경고창은 <span class="os-win">"추가 정보 → 실행"</span><span class="os-mac">우클릭 → 열기</span></span></p></div>
         </div>
       </div>
     </div>
@@ -503,27 +529,37 @@
         <div class="trouble-item">
           <div class="trouble-item__num">01</div>
           <div class="trouble-item__problem">"pyside6를 찾을 수 없다"</div>
-          <div class="trouble-item__solution">pip 설치가 안 됐거나 다른 파이썬을 쓰는 중. <code>pip install pyside6</code>를 그 PowerShell 창에서 한 번 더.</div>
+          <div class="trouble-item__solution">pip 설치가 안 됐거나 다른 파이썬을 쓰는 중. <code><span class="os-win">pip</span><span class="os-mac">pip3</span> install pyside6</code>를 그 <span class="os-win">PowerShell</span><span class="os-mac">터미널</span> 창에서 한 번 더.</div>
         </div>
         <div class="trouble-item">
           <div class="trouble-item__num">02</div>
           <div class="trouble-item__problem">.py가 안 뜬다 — 까만 창만 깜빡</div>
-          <div class="trouble-item__solution">에러 메시지가 잠깐 뜨고 닫힘. <code>python myapp.py</code>를 PowerShell에서 직접 실행하면 메시지가 남음 → 그대로 Claude에게.</div>
+          <div class="trouble-item__solution">에러 메시지가 잠깐 뜨고 닫힘. <code><span class="os-win">python</span><span class="os-mac">python3</span> myapp.py</code>를 <span class="os-win">PowerShell</span><span class="os-mac">터미널</span>에서 직접 실행하면 메시지가 남음 → 그대로 Claude에게.</div>
         </div>
         <div class="trouble-item">
           <div class="trouble-item__num">03</div>
           <div class="trouble-item__problem">PyInstaller 빌드 에러</div>
           <div class="trouble-item__solution">출력 끝부분의 빨간 줄을 <strong>통째로</strong> 복사해 Claude에게. 대개는 "이 라이브러리도 같이 묶어줘" 한 줄 추가로 해결.</div>
         </div>
-        <div class="trouble-item">
+        <div class="trouble-item os-win is-block">
           <div class="trouble-item__num">04</div>
           <div class="trouble-item__problem">.exe 더블클릭했더니 "Windows의 PC 보호"</div>
           <div class="trouble-item__solution">정상. "추가 정보 → 실행". 슬라이드 13 참고.</div>
         </div>
-        <div class="trouble-item">
+        <div class="trouble-item os-mac is-block">
+          <div class="trouble-item__num">04</div>
+          <div class="trouble-item__problem">.app 더블클릭했더니 Gatekeeper 차단</div>
+          <div class="trouble-item__solution">정상. Finder에서 <strong>우클릭 → 열기</strong>(1회). 또는 자체 서명: <code>codesign --deep --force --sign - dist/myapp.app</code>. 슬라이드 13 참고.</div>
+        </div>
+        <div class="trouble-item os-win is-block">
           <div class="trouble-item__num">05</div>
           <div class="trouble-item__problem">.exe가 백신에 격리됐다</div>
           <div class="trouble-item__solution">서명 없는 새 파일이라 가끔 오탐. Windows 보안 → 보호 기록 → 복원. 작업 폴더를 Defender 예외에 추가해두면 재발 방지.</div>
+        </div>
+        <div class="trouble-item os-mac is-block">
+          <div class="trouble-item__num">05</div>
+          <div class="trouble-item__problem">"손상된 파일이라 열 수 없습니다"</div>
+          <div class="trouble-item__solution">실제 손상이 아니라 격리 속성 때문. <code>xattr -dr com.apple.quarantine dist/myapp.app</code> 한 줄로 풀림. (다운로드한 앱에 macOS가 붙이는 속성)</div>
         </div>
       </div>
     </div>
@@ -537,10 +573,10 @@
     </div>
     <div class="feature-body">
       <div class="feature-text">
-        <p class="statement__caption">웹페이지는 인터넷에 살지만, 오늘 만든 건 내 컴퓨터에 삽니다. 파일로 친구에게 보낼 수도, 작업표시줄에 고정할 수도 있습니다. 다음은 오후 — 4일간 익힌 도구를 다 꺼내 진짜 미니프로젝트를 만듭니다.</p>
+        <p class="statement__caption">웹페이지는 인터넷에 살지만, 오늘 만든 건 내 컴퓨터에 삽니다. 파일로 친구에게 보낼 수도, <span class="os-win">작업표시줄</span><span class="os-mac">Dock</span>에 고정할 수도 있습니다. 다음은 오후 — 4일간 익힌 도구를 다 꺼내 진짜 미니프로젝트를 만듭니다.</p>
         <div class="statement__points">
           <div class="statement__point"><span class="statement__point-num">PySide</span><span>창·버튼·입력칸을 파이썬으로</span></div>
-          <div class="statement__point"><span class="statement__point-num">PyInstaller</span><span>.py를 .exe 한 덩어리로</span></div>
+          <div class="statement__point"><span class="statement__point-num">PyInstaller</span><span>.py를 <span class="os-win">.exe</span><span class="os-mac">.app</span> 한 덩어리로</span></div>
           <div class="statement__point"><span class="statement__point-num">다음</span><span>오후 — 오늘까지 익힌 모든 도구로 미니프로젝트</span></div>
         </div>
       </div>
@@ -559,8 +595,8 @@
           <text x="322" y="160" font-family="ui-sans-serif, system-ui" font-size="10" fill="rgba(255,255,255,0.85)" text-anchor="middle">한 덩어리</text>
           <text x="322" y="180" font-family="ui-sans-serif, system-ui" font-size="14" fill="#fff" text-anchor="middle">↓</text>
           <rect x="160" y="222" width="140" height="44" rx="8" fill="#fff" stroke="#cc5a14" stroke-width="2"/>
-          <text x="230" y="248" font-family="ui-monospace, monospace" font-size="13" fill="#cc5a14" text-anchor="middle" font-weight="700">myapp.exe</text>
-          <text x="230" y="290" font-family="ui-sans-serif, system-ui" font-size="13" fill="#797067" text-anchor="middle">더블클릭으로 — 내 PC에서 실행</text>
+          <text x="230" y="248" font-family="ui-monospace, monospace" font-size="13" fill="#cc5a14" text-anchor="middle" font-weight="700">myapp<tspan class="os-win">.exe</tspan><tspan class="os-mac">.app</tspan></text>
+          <text x="230" y="290" font-family="ui-sans-serif, system-ui" font-size="13" fill="#797067" text-anchor="middle">더블클릭으로 — 내 <tspan class="os-win">PC</tspan><tspan class="os-mac">Mac</tspan>에서 실행</text>
         </svg>
       </div>
     </div>

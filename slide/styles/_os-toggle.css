@@ -1,0 +1,79 @@
+/* _os-toggle.css — Windows ↔ macOS 전역 토글 UI + 표시 규칙.
+   deck.css 뒤에 로드. 5일 과정 전용. */
+
+/* ============ chrome chip ============ */
+.deck-chrome__os {
+  display: inline-flex;
+  align-items: center;
+  gap: 0;
+  margin: 0 0.5rem 0 0;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: var(--rounded-pill, 9999px);
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.04);
+  height: 1.6rem;
+}
+.deck-chrome__os-btn {
+  appearance: none;
+  border: 0;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.65);
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  padding: 0 0.65rem;
+  height: 100%;
+  cursor: pointer;
+  transition: background var(--motion-fast), color var(--motion-fast);
+}
+.deck-chrome__os-btn:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: rgba(255, 255, 255, 0.92);
+}
+.deck-chrome__os-btn[aria-pressed="true"] {
+  background: var(--color-primary);
+  color: #fff;
+}
+.deck-chrome__os-btn[aria-pressed="true"]:hover {
+  background: var(--color-primary-strong);
+}
+
+/* ============ 표시·숨김 ============
+   .os-win / .os-mac — 인라인 기본. 블록 컨테이너에는 .is-block 추가. */
+.os-win, .os-mac { display: none; }
+
+html[data-os="win"] .os-win { display: inline; }
+html[data-os="win"] .os-win.is-block { display: block; }
+html[data-os="win"] .os-win.is-flex { display: flex; }
+html[data-os="win"] .os-win.is-inline-flex { display: inline-flex; }
+
+html[data-os="mac"] .os-mac { display: inline; }
+html[data-os="mac"] .os-mac.is-block { display: block; }
+html[data-os="mac"] .os-mac.is-flex { display: flex; }
+html[data-os="mac"] .os-mac.is-inline-flex { display: inline-flex; }
+
+/* JS 로드 전(no-flash) — data-os 없으면 win 기본으로 동작
+   (스크립트가 즉시 html[data-os] 박지만 안전망) */
+html:not([data-os]) .os-win { display: inline; }
+html:not([data-os]) .os-mac { display: none; }
+
+/* ============ cmd-card 프롬프트 자동 치환 ============
+   .cmd-card__example-prompt 의 내용은 마크업에서 비워 두고
+   CSS가 OS에 따라 'PS> ' 또는 '$ '를 자동 주입. */
+html[data-os="win"] .cmd-card__example-prompt[data-auto-os]::before {
+  content: "PS> ";
+}
+html[data-os="mac"] .cmd-card__example-prompt[data-auto-os]::before {
+  content: "$ ";
+}
+
+/* code-block 프롬프트도 동일 규칙 (선택 적용 — data-auto-os 명시한 경우만) */
+html[data-os="win"] .code-block__prompt[data-auto-os]::before { content: "PS>"; }
+html[data-os="mac"] .code-block__prompt[data-auto-os]::before { content: "$"; }
+.code-block__prompt[data-auto-os] { color: inherit; }
+
+/* ============ 좁은 화면 대응 ============ */
+@media (max-width: 720px) {
+  .deck-chrome__os-btn { padding: 0 0.5rem; font-size: 0.62rem; }
+}

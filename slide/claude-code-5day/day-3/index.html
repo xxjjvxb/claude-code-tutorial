@@ -6,6 +6,8 @@
   <title>3일차 · 확장 — 도구와 제작</title>
   <link rel="stylesheet" href="../../styles/tokens.css">
   <link rel="stylesheet" href="../../styles/deck.css">
+  <link rel="stylesheet" href="../../styles/_os-toggle.css">
+  <script defer src="../../scripts/os-toggle.js"></script>
   <style>
     .day-header { display: flex; flex-direction: column; gap: 0.15rem; flex-shrink: 0; }
     .day-header__brand { font-size: 0.62rem; letter-spacing: 0.15em; text-transform: uppercase; font-weight: 700; color: var(--color-primary-strong); }
@@ -41,7 +43,7 @@
     <a class="block-card" href="1-headless-slash.html">
       <div class="block-card__time">CHAPTER 1</div>
       <h2 class="block-card__title">헤드리스 + 커스텀 슬래시</h2>
-      <p class="block-card__desc">Claude를 "내 방식대로" 시키는 두 가지. 대화창 없이 명령 한 줄로 도는 헤드리스(claude -p)를 작업 스케줄러에 걸어 5분마다 자동 실행 — 결과는 파일로. 그리고 자주 하는 부탁을 한 단어로 굳히는 커스텀 슬래시, "방금 한 거 3줄로" /asdf를 직접 제작.</p>
+      <p class="block-card__desc">Claude를 "내 방식대로" 시키는 두 가지. 대화창 없이 명령 한 줄로 도는 헤드리스(claude -p)를 <span class="os-win">작업 스케줄러</span><span class="os-mac">launchd · cron</span>에 걸어 5분마다 자동 실행 — 결과는 파일로. 그리고 자주 하는 부탁을 한 단어로 굳히는 커스텀 슬래시, "방금 한 거 3줄로" /asdf를 직접 제작.</p>
       <div class="block-card__count">15 슬라이드 →</div>
     </a>
     <a class="block-card" href="2-database-subagent.html">

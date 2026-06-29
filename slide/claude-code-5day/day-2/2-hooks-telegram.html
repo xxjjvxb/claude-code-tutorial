@@ -6,6 +6,8 @@
   <title>2일차 · 2. Hooks + 텔레그램</title>
   <link rel="stylesheet" href="../../styles/tokens.css">
   <link rel="stylesheet" href="../../styles/deck.css">
+  <link rel="stylesheet" href="../../styles/_os-toggle.css">
+  <script defer src="../../scripts/os-toggle.js"></script>
 </head>
 <body>
 
@@ -142,7 +144,7 @@
         <div class="content-card content-card--compact" style="border-color:var(--color-primary)">
           <h3 class="content-card__title">① Stop · 응답 끝 알림 ★</h3>
           <p class="content-card__body" style="font-size:0.78rem">긴 작업 시키고 다른 일 → 휴대폰 알림 → 복귀.</p>
-          <div class="code-block code-block--inline-xs"><div class="code-block__body"><span class="code-block__line"><span class="code-block__out">"Stop": [{</span></span><span class="code-block__line"><span class="code-block__out">  "hooks": [{</span></span><span class="code-block__line"><span class="code-block__hi">    "command": "curl.exe ...</span></span><span class="code-block__line"><span class="code-block__hi">      api.telegram.org/bot.../</span></span><span class="code-block__line"><span class="code-block__hi">      sendMessage"</span></span><span class="code-block__line"><span class="code-block__out">  }]</span></span><span class="code-block__line"><span class="code-block__out">}]</span></span></div></div>
+          <div class="code-block code-block--inline-xs"><div class="code-block__body"><span class="code-block__line"><span class="code-block__out">"Stop": [{</span></span><span class="code-block__line"><span class="code-block__out">  "hooks": [{</span></span><span class="code-block__line"><span class="code-block__hi">    "command": "curl ...</span></span><span class="code-block__line"><span class="code-block__hi">      api.telegram.org/bot.../</span></span><span class="code-block__line"><span class="code-block__hi">      sendMessage"</span></span><span class="code-block__line"><span class="code-block__out">  }]</span></span><span class="code-block__line"><span class="code-block__out">}]</span></span></div></div>
         </div>
         <div class="content-card content-card--compact">
           <h3 class="content-card__title">② PostToolUse · 저장 후 포맷</h3>
@@ -159,37 +161,7 @@
     </div>
   </section>
 
-  <!-- 6 · PowerShell curl 주의 -->
-  <section class="slide is-standard">
-    <div class="slide__eyebrow">GOTCHA · PowerShell의 curl</div>
-    <h2 class="slide__title">PowerShell의 <span class="accent">curl은 가짜</span> — Invoke-WebRequest의 alias</h2>
-    <div class="slide__body">
-      <div class="bg-compare">
-        <div class="bg-compare__side bg-compare__side--bad">
-          <div class="bg-compare__label">× 그냥 curl</div>
-          <div class="bg-compare__quote">
-            <div>command: "curl -X POST ..."</div>
-            <div>↓</div>
-            <div>PowerShell에선 Invoke-WebRequest 호출됨</div>
-            <div>인자 형식이 달라서 → 에러</div>
-          </div>
-          <p class="bg-compare__note">Linux/Mac 예제를 그대로 복사하면 동작 X.</p>
-        </div>
-        <div class="bg-compare__side bg-compare__side--good">
-          <div class="bg-compare__label">✓ curl.exe 또는 Invoke-RestMethod</div>
-          <div class="bg-compare__quote">
-            <div>command: "<strong>curl.exe</strong> -X POST ..."</div>
-            <div>또는</div>
-            <div>command: "Invoke-RestMethod ..."</div>
-          </div>
-          <p class="bg-compare__note"><code>curl.exe</code>는 진짜 curl 실행 파일을 명시적으로 호출.</p>
-        </div>
-      </div>
-      <p class="slide__note">Windows에선 <strong>curl.exe</strong>로 시작 — 5일 내내 이 패턴 반복됩니다.</p>
-    </div>
-  </section>
-
-  <!-- 7 · 처음엔 2-3개만 -->
+  <!-- 6 · 처음엔 2-3개만 -->
   <section class="slide is-statement">
     <div class="statement-grid">
       <div class="statement-text">
@@ -326,15 +298,15 @@
           <span class="code-block__dot" style="background:#fb2c36"></span><span class="code-block__dot" style="background:#edb200"></span><span class="code-block__dot" style="background:#00c758"></span>
           <span class="code-block__title">.claude/settings.json</span>
         </div>
-        <div class="code-block__body"><span class="code-block__line"><span class="code-block__out">{</span></span><span class="code-block__line"><span class="code-block__out">  "hooks": {</span></span><span class="code-block__line"><span class="code-block__out">    "Stop": [{</span></span><span class="code-block__line"><span class="code-block__out">      "matcher": "",</span></span><span class="code-block__line"><span class="code-block__out">      "hooks": [{</span></span><span class="code-block__line"><span class="code-block__out">        "type": "command",</span></span><span class="code-block__line"><span class="code-block__hi">        "command": "curl.exe -s -X POST</span></span><span class="code-block__line"><span class="code-block__hi">          https://api.telegram.org/bot&lt;TOKEN&gt;/sendMessage</span></span><span class="code-block__line"><span class="code-block__hi">          -d chat_id=&lt;CHAT_ID&gt;</span></span><span class="code-block__line"><span class="code-block__hi">          -d text='Claude Done'"</span></span><span class="code-block__line"><span class="code-block__out">      }]</span></span><span class="code-block__line"><span class="code-block__out">    }]</span></span><span class="code-block__line"><span class="code-block__out">  }</span></span><span class="code-block__line"><span class="code-block__out">}</span></span></div>
+        <div class="code-block__body"><span class="code-block__line"><span class="code-block__out">{</span></span><span class="code-block__line"><span class="code-block__out">  "hooks": {</span></span><span class="code-block__line"><span class="code-block__out">    "Stop": [{</span></span><span class="code-block__line"><span class="code-block__out">      "matcher": "",</span></span><span class="code-block__line"><span class="code-block__out">      "hooks": [{</span></span><span class="code-block__line"><span class="code-block__out">        "type": "command",</span></span><span class="code-block__line"><span class="code-block__hi">        "command": "curl -s -X POST</span></span><span class="code-block__line"><span class="code-block__hi">          https://api.telegram.org/bot&lt;TOKEN&gt;/sendMessage</span></span><span class="code-block__line"><span class="code-block__hi">          -d chat_id=&lt;CHAT_ID&gt;</span></span><span class="code-block__line"><span class="code-block__hi">          -d text='Claude Done'"</span></span><span class="code-block__line"><span class="code-block__out">      }]</span></span><span class="code-block__line"><span class="code-block__out">    }]</span></span><span class="code-block__line"><span class="code-block__out">  }</span></span><span class="code-block__line"><span class="code-block__out">}</span></span></div>
       </div>
-      <div class="caveat-grid--compact" style="margin-top:0.55rem">
+      <div class="caveat-grid--compact os-win is-block" style="margin-top:0.55rem">
         <div class="caveat-card">
-          <div class="caveat-card__label">WINDOWS · 한글 인코딩</div>
-          <p class="caveat-card__body"><code>curl.exe</code>는 한글을 제대로 못 보내 텔레그램에 글자가 깨져 도착 — 그래서 메시지는 <code>Claude Done</code>처럼 영문으로. 꼭 한글로 보내고 싶다면 Claude Code에게 "텔레그램 알림 한글이 깨져요, 고쳐줘"라고 하면 PowerShell 방식으로 해결해 줍니다.</p>
+          <div class="caveat-card__label">WINDOWS · 한글 알림이 깨질 때</div>
+          <p class="caveat-card__body">메시지는 <code>Claude Done</code>처럼 영문으로 시작하면 무탈. Windows 기본 PowerShell(5.1)에서 한글이 깨져 도착하면 — Claude Code에게 "텔레그램 알림 한글이 깨져요, 고쳐줘"라고 하면 PowerShell 방식 또는 인코딩을 자동으로 잡아 줍니다.</p>
         </div>
       </div>
-      <p class="slide__note"><code>&lt;TOKEN&gt;</code>과 <code>&lt;CHAT_ID&gt;</code>를 <strong>본인 값</strong>으로 교체. <code>curl.exe</code>(점exe 필수) — PowerShell의 가짜 curl 피하기. 위 <code>command</code>는 화면이 좁아 나눠 보일 뿐 — <strong style="color:var(--color-danger)">실제 파일에선 한 줄로 이어 적습니다(JSON 문자열엔 줄바꿈 불가)</strong>.</p>
+      <p class="slide__note"><code>&lt;TOKEN&gt;</code>과 <code>&lt;CHAT_ID&gt;</code>를 <strong>본인 값</strong>으로 교체. 위 <code>command</code>는 화면이 좁아 나눠 보일 뿐 — <strong style="color:var(--color-danger)">실제 파일에선 한 줄로 이어 적습니다(JSON 문자열엔 줄바꿈 불가)</strong>.</p>
     </div>
   </section>
 
@@ -348,9 +320,9 @@
           <span class="code-block__dot" style="background:#fb2c36"></span><span class="code-block__dot" style="background:#edb200"></span><span class="code-block__dot" style="background:#00c758"></span>
           <span class="code-block__title">claude · 알림 테스트</span>
         </div>
-        <div class="code-block__body"><span class="code-block__line"><span class="code-block__cmt"># 1) Claude 재시작 (settings.json 갱신을 위해)</span></span><span class="code-block__line"><span class="code-block__cmd">&gt; /exit</span></span><span class="code-block__line"><span class="code-block__prompt">PS&gt;</span> <span class="code-block__cmd">claude</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__cmt"># 2) 짧은 응답 시키기</span></span><span class="code-block__line"><span class="code-block__cmd">&gt; "안녕" 이라고 한 번 답해줘</span></span><span class="code-block__line"><span class="code-block__out">  안녕!</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__hi">  [Stop hook fired]</span></span><span class="code-block__line"><span class="code-block__out">  ✓ Telegram에 메시지 전송</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__cmt"># 3) 휴대폰 → Telegram → 본인 봇 채팅</span></span><span class="code-block__line"><span class="code-block__cmt">#    "Claude Done" 표시 보임</span></span></div>
+        <div class="code-block__body"><span class="code-block__line"><span class="code-block__cmt"># 1) Claude 재시작 (settings.json 갱신을 위해)</span></span><span class="code-block__line"><span class="code-block__cmd">&gt; /exit</span></span><span class="code-block__line"><span class="code-block__prompt" data-auto-os></span> <span class="code-block__cmd">claude</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__cmt"># 2) 짧은 응답 시키기</span></span><span class="code-block__line"><span class="code-block__cmd">&gt; "안녕" 이라고 한 번 답해줘</span></span><span class="code-block__line"><span class="code-block__out">  안녕!</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__hi">  [Stop hook fired]</span></span><span class="code-block__line"><span class="code-block__out">  ✓ Telegram에 메시지 전송</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__cmt"># 3) 휴대폰 → Telegram → 본인 봇 채팅</span></span><span class="code-block__line"><span class="code-block__cmt">#    "Claude Done" 표시 보임</span></span></div>
       </div>
-      <p class="slide__note">알림 안 오면: <strong>① TOKEN 오타 ② chat_id 오타 ③ curl이 아닌 curl.exe ④ Claude 재시작 안 함</strong> — 이 4가지 우선 점검.</p>
+      <p class="slide__note">알림 안 오면: <strong>① TOKEN 오타 ② chat_id 오타 ③ Claude 재시작 안 함 ④ 인터넷 차단(사내망)</strong> — 이 4가지 우선 점검.</p>
     </div>
   </section>
 
@@ -427,8 +399,9 @@
         <div>
           <div class="content-card content-card--compact">
             <h3 class="content-card__title">① Bun 설치 — 플러그인 실행 환경</h3>
-            <p class="content-card__body"><strong>Bun</strong>은 자바스크립트 프로그램을 실행하는 환경입니다 — Node.js의 빠르고 가벼운 대안. 텔레그램 플러그인이 자바스크립트로 만들어져, <strong>Bun이 있어야 동작</strong>합니다. 아래 명령을 PowerShell에 붙여넣어 설치하세요.</p>
-            <div class="code-block code-block--inline-xs"><div class="code-block__body"><span class="code-block__line"><span class="code-block__prompt">PS&gt;</span> <span class="code-block__cmd">powershell -c "irm bun.sh/install.ps1 | iex"</span></span></div></div>
+            <p class="content-card__body"><strong>Bun</strong>은 자바스크립트 프로그램을 실행하는 환경입니다 — Node.js의 빠르고 가벼운 대안. 텔레그램 플러그인이 자바스크립트로 만들어져, <strong>Bun이 있어야 동작</strong>합니다. 아래 명령을 <span class="os-win">PowerShell</span><span class="os-mac">터미널</span>에 붙여넣어 설치하세요.</p>
+            <div class="code-block code-block--inline-xs os-win is-block"><div class="code-block__body"><span class="code-block__line"><span class="code-block__prompt" data-auto-os></span> <span class="code-block__cmd">powershell -c "irm bun.sh/install.ps1 | iex"</span></span></div></div>
+            <div class="code-block code-block--inline-xs os-mac is-block"><div class="code-block__body"><span class="code-block__line"><span class="code-block__prompt" data-auto-os></span> <span class="code-block__cmd">curl -fsSL https://bun.sh/install | bash</span></span></div></div>
           </div>
         </div>
         <div>
@@ -444,7 +417,7 @@
         </div>
       </div>
     </div>
-    <p class="slide__note">Bun은 공식 사이트 <code>bun.sh</code>에서 설치 — 끝나면 PowerShell을 새 창으로 다시 엽니다(PATH 반영). 두 준비는 다음 '<strong>켜기</strong>' 슬라이드 전에 끝나 있어야 합니다.</p>
+    <p class="slide__note">Bun은 공식 사이트 <code>bun.sh</code>에서 설치 — 끝나면 <span class="os-win">PowerShell</span><span class="os-mac">터미널</span>을 새 창으로 다시 엽니다(PATH 반영). 두 준비는 다음 '<strong>켜기</strong>' 슬라이드 전에 끝나 있어야 합니다.</p>
   </section>
 
   <!-- 16 · Channels 켜기 -->
