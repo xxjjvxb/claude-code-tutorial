@@ -584,7 +584,7 @@
   <section class="slide is-section is-standard">
     <div class="section-eyebrow">CHAPTER 5 · 손풀이 실습</div>
     <h2 class="section-title">Git + 4문법 — <span class="accent">손풀이</span></h2>
-    <p class="section-caption">어제 만든 Day1 폴더에 그대로 적용. git 설치부터 4가지 문법까지 한 번씩 다 써봅니다.</p>
+    <p class="section-caption">어제 만든 Day1 폴더에 그대로 적용. (git은 1일차 2 셋업에서 이미 설치) 신원 등록 점검부터 4가지 문법까지 한 번씩 다 써봅니다.</p>
     <div class="section-meta">
       <div class="section-meta__item"><span class="section-meta__num">8</span><span>핵심 단계</span></div>
     </div>
@@ -596,7 +596,7 @@
     <h2 class="slide__title">실습 흐름 — <span class="accent">8단계</span></h2>
     <div class="slide__body">
       <div class="setup-grid">
-        <div class="setup-step"><div class="setup-step__num">준비</div><h3 class="setup-step__title">git 설치 + 신원 등록</h3><p class="setup-step__desc">git-scm.com 설치 → 이름·이메일 config</p></div>
+        <div class="setup-step"><div class="setup-step__num">점검</div><h3 class="setup-step__title">git 설치·신원 확인</h3><p class="setup-step__desc">셋업 챕터에서 설치 끝 — 2줄로 점검만</p></div>
         <div class="setup-step"><div class="setup-step__num">01</div><h3 class="setup-step__title">git init</h3><p class="setup-step__desc">어제 Day1 폴더를 Git 저장소로</p></div>
         <div class="setup-step"><div class="setup-step__num">02</div><h3 class="setup-step__title">첫 커밋</h3><p class="setup-step__desc">status → add → commit 한 사이클</p></div>
         <div class="setup-step"><div class="setup-step__num">03</div><h3 class="setup-step__title">/model</h3><p class="setup-step__desc">슬래시로 모델 바꿔보기</p></div>
@@ -609,26 +609,20 @@
     </div>
   </section>
 
-  <!-- 23 · 실습 전: git 설치 -->
+  <!-- 23 · git 설치·신원 점검 (1일차 2 셋업에서 이미 진행) -->
   <section class="slide is-standard">
-    <div class="slide__eyebrow">준비 · git 설치 + 신원 등록</div>
-    <h2 class="slide__title">먼저 — <span class="accent">git</span> 설치하고 신원 등록</h2>
+    <div class="slide__eyebrow">CHECK · git 설치·신원 점검</div>
+    <h2 class="slide__title">시작 전 — <span class="accent">git --version</span> 한 번 확인</h2>
     <div class="slide__body">
       <div class="two-col">
         <div>
-          <div class="content-card content-card--compact os-win is-block">
-            <h3 class="content-card__title">git-scm.com에서 받기</h3>
-            <a class="install-link" href="https://git-scm.com/download/win" target="_blank" rel="noopener">git-scm.com/download/win ↗</a>
-            <img class="install-shot" src="../../imgs/insatll-git.png" alt="git-scm.com Windows 다운로드 페이지 — Git for Windows x64 Setup">
-            <p class="content-card__body">노란색 <strong>"Git for Windows/x64 Setup"</strong> 클릭 → 받은 파일 실행 → 옵션은 <strong>전부 기본값</strong>으로 Install. 끝나면 PowerShell을 새로 엽니다.</p>
-          </div>
-          <div class="content-card content-card--compact os-mac is-block">
-            <h3 class="content-card__title">Mac은 이미 설치돼 있을 가능성 높음</h3>
-            <p class="content-card__body">터미널에서 <code>git --version</code>을 먼저 쳐 보세요.</p>
+          <div class="content-card content-card--compact">
+            <h3 class="content-card__title">1일차 2 셋업에서 이미 깔았죠?</h3>
+            <p class="content-card__body">Claude 설치 전에 git을 먼저 깔고 신원 등록까지 했습니다. 본 챕터로 들어오기 전 두 가지를 빠르게 점검합니다.</p>
             <ul class="content-card__list">
-              <li>버전이 나오면 <strong>설치 끝</strong> — 신원 등록만 하면 됨</li>
-              <li>"command not found"가 뜨면 <strong>Xcode Command Line Tools</strong>가 떠요 → <code>xcode-select --install</code> 후 동의 + 설치 (5~10분)</li>
-              <li>또는 Homebrew 사용자는 <code>brew install git</code> 한 줄</li>
+              <li><code>git --version</code> 출력 → 버전 숫자가 나오면 OK</li>
+              <li><code>git config --global user.name</code> 출력 → 본인 이름이 나오면 OK</li>
+              <li>둘 중 안 되는 게 있으면 — 오른쪽 박스 보고 보강</li>
             </ul>
           </div>
         </div>
@@ -636,13 +630,13 @@
           <div class="code-block">
             <div class="code-block__header">
               <span class="code-block__dot" style="background:#fb2c36"></span><span class="code-block__dot" style="background:#edb200"></span><span class="code-block__dot" style="background:#00c758"></span>
-              <span class="code-block__title"><span class="os-win">PowerShell</span><span class="os-mac">Terminal (zsh)</span> — 새 창에서</span>
+              <span class="code-block__title"><span class="os-win">PowerShell</span><span class="os-mac">Terminal (zsh)</span> — 점검 2줄</span>
             </div>
-            <div class="code-block__body"><span class="code-block__line"><span class="code-block__cmt"># 설치가 됐는지 — 버전 확인</span></span><span class="code-block__line"><span class="code-block__prompt" data-auto-os></span> <span class="code-block__cmd">git --version</span></span><span class="code-block__line"><span class="code-block__hi">  git version 2.49.0.windows.1</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__cmt"># 커밋에 남길 신원 — 최초 1회만</span></span><span class="code-block__line"><span class="code-block__prompt" data-auto-os></span> <span class="code-block__cmd">git config --global user.name "<span class="code-block__hi">홍길동</span>"</span></span><span class="code-block__line"><span class="code-block__prompt" data-auto-os></span> <span class="code-block__cmd">git config --global user.email "<span class="code-block__hi">hong@example.com</span>"</span></span></div>
+            <div class="code-block__body"><span class="code-block__line"><span class="code-block__cmt"># 1) 설치 확인</span></span><span class="code-block__line"><span class="code-block__prompt" data-auto-os></span> <span class="code-block__cmd">git --version</span></span><span class="code-block__line"><span class="code-block__hi">  git version 2.49.x</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__cmt"># 2) 신원 등록 확인</span></span><span class="code-block__line"><span class="code-block__prompt" data-auto-os></span> <span class="code-block__cmd">git config --global user.name</span></span><span class="code-block__line"><span class="code-block__hi">  홍길동</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__cmt"># 안 됐으면 — 1일차 2 셋업 STEP 03 다시</span></span><span class="code-block__line"><span class="code-block__cmt">#   git config --global user.name "이름"</span></span><span class="code-block__line"><span class="code-block__cmt">#   git config --global user.email "메일"</span></span></div>
           </div>
         </div>
       </div>
-      <p class="slide__note">설치 마법사는 옵션이 많지만 <strong>전부 기본값</strong>으로 두면 됩니다. 신원을 등록하지 않으면 첫 커밋에서 <code>*** Please tell me who you are</code> 에러 — <code>git config</code> 두 줄이면 해결, 평생 한 번만.</p>
+      <p class="slide__note">신원이 등록 안 되면 첫 커밋에서 <code>*** Please tell me who you are</code> 에러 — <code>git config</code> 두 줄로 해결, 평생 한 번만. 막히면 손드세요.</p>
     </div>
   </section>
 
