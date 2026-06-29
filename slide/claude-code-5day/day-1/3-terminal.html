@@ -234,8 +234,8 @@
 
   <!-- 6 · 추가 PowerShell 명령어 -->
   <section class="slide is-standard">
-    <div class="slide__eyebrow"><span class="os-win">POWERSHELL</span><span class="os-mac">ZSH</span> · 더 알면 편한 4가지</div>
-    <h2 class="slide__title">덤으로 <span class="accent">알아둘 4가지</span></h2>
+    <div class="slide__eyebrow"><span class="os-win">POWERSHELL</span><span class="os-mac">ZSH</span> · 더 알면 편한 5가지</div>
+    <h2 class="slide__title">덤으로 <span class="accent">알아둘 5가지</span></h2>
     <div class="slide__body">
       <div class="cmd-cards cmd-cards--compact">
         <div class="cmd-card">
@@ -243,6 +243,12 @@
           <div class="cmd-card__etym">"Clear screen"</div>
           <div class="cmd-card__desc">화면을 깨끗하게 — 출력이 너무 길어졌을 때</div>
           <div class="cmd-card__example"><span class="cmd-card__example-prompt" data-auto-os></span>clear</div>
+        </div>
+        <div class="cmd-card">
+          <div class="cmd-card__row"><span class="cmd-card__alias"><span class="os-win">start .</span><span class="os-mac">open .</span></span><span class="cmd-card__formal"><span class="os-win">Invoke-Item</span><span class="os-mac">macOS 표준</span></span></div>
+          <div class="cmd-card__etym">"Open current folder"</div>
+          <div class="cmd-card__desc">지금 위치의 폴더를 <span class="os-win">파일 탐색기</span><span class="os-mac">Finder</span>로 열기 — <strong>지금 어디인지 눈으로 확인</strong></div>
+          <div class="cmd-card__example"><span class="cmd-card__example-prompt" data-auto-os></span><span class="os-win">start .</span><span class="os-mac">open .</span></div>
         </div>
         <div class="cmd-card">
           <div class="cmd-card__row"><span class="cmd-card__alias">exit</span><span class="cmd-card__formal">exit</span></div>
@@ -263,7 +269,7 @@
           <div class="cmd-card__example"><span class="cmd-card__example-prompt" data-auto-os></span>cd Day(Tab) → Day1<span class="os-win">\</span><span class="os-mac">/</span></div>
         </div>
       </div>
-      <p class="slide__note">화살표 키와 Tab은 <strong>매일 100번 쓰게 됩니다</strong>. 손에 꼭 익히세요.</p>
+      <p class="slide__note">화살표 키와 Tab은 <strong>매일 100번 쓰게 됩니다</strong>. <code><span class="os-win">start .</span><span class="os-mac">open .</span></code>는 "지금 어디?"가 헷갈릴 때 — GUI로 위치를 확인하는 감각이 빨라집니다.</p>
     </div>
   </section>
 
@@ -307,7 +313,7 @@
         <span class="path-tree__line">      └── style.css     ← 절대: "/Users/.../Day1/style.css"</span>
       </div>
       <p class="slide__note os-win is-block">한글 Windows에서 <code>\</code>와 <code>₩</code>는 <strong>같은 문자</strong>. PowerShell은 <code>/</code>도 동일 인식 → <code>cd C:/Users/you/Day1</code> OK.</p>
-      <p class="slide__note os-mac is-block">Mac은 <code>/</code> 슬래시만 쓰고, 홈 폴더 줄임 <code>~</code> 이 자주 등장 — <code>~/Desktop/Day1</code> = <code>/Users/you/Desktop/Day1</code>.</p>
+      <p class="slide__note os-mac is-block">Mac은 <code>/</code> 슬래시만 쓰고, 홈 폴더 줄임 <code>~</code> 이 자주 등장 — <code>~/Desktop/Day1</code> = <code>/Users/you/Desktop/Day1</code>. 한글 macOS의 Finder는 "데스크탑"으로 보여도 <strong>실제 경로는 영문 <code>Desktop</code></strong>.</p>
     </div>
   </section>
 
