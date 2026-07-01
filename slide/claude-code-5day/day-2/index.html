@@ -14,13 +14,13 @@
     .day-header__title { font-size: 1.5rem; font-weight: 700; line-height: 1.1; letter-spacing: -0.025em; margin: 0.05rem 0 0.2rem 0; color: var(--color-on-surface); }
     .day-header__caption { font-size: 0.68rem; line-height: 1.45; color: var(--color-on-surface-muted); margin: 0; max-width: 42rem; }
 
-    .block-grid { display: grid; grid-template-columns: repeat(2, 1fr); grid-auto-rows: 1fr; gap: 0.6rem; flex: 1; min-height: 0; }
-    .block-card { background: var(--color-surface-elevated); border: 2px solid var(--color-outline-strong); border-radius: var(--rounded-md); padding: 0.85rem 0.95rem; text-decoration: none; color: var(--color-on-surface); display: flex; flex-direction: column; gap: 0.3rem; transition: transform var(--motion-fast) var(--easing-standard), border-color var(--motion-fast), box-shadow var(--motion-fast); min-height: 0; overflow: hidden; }
+    .block-grid { display: grid; grid-template-columns: repeat(2, 1fr); grid-template-rows: repeat(3, 1fr); gap: 0.55rem; flex: 1; min-height: 0; }
+    .block-card { background: var(--color-surface-elevated); border: 2px solid var(--color-outline-strong); border-radius: var(--rounded-md); padding: 0.75rem 0.9rem; text-decoration: none; color: var(--color-on-surface); display: flex; flex-direction: column; gap: 0.25rem; transition: transform var(--motion-fast) var(--easing-standard), border-color var(--motion-fast), box-shadow var(--motion-fast); min-height: 0; overflow: hidden; }
     .block-card:hover { transform: translateY(-2px); border-color: var(--color-primary); box-shadow: var(--shadow-raised); }
-    .block-card__time { font-family: var(--font-mono); font-size: 0.62rem; color: var(--color-primary-strong); font-weight: 700; letter-spacing: 0.06em; }
-    .block-card__title { font-size: 1rem; font-weight: 700; line-height: 1.25; letter-spacing: -0.02em; margin: 0; }
-    .block-card__desc { font-size: 0.68rem; line-height: 1.5; color: var(--color-on-surface-muted); margin: 0.1rem 0 0; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 7; -webkit-box-orient: vertical; }
-    .block-card__count { margin-top: auto; font-family: var(--font-mono); font-size: 0.64rem; color: var(--color-primary-strong); font-weight: 700; }
+    .block-card__time { font-family: var(--font-mono); font-size: 0.6rem; color: var(--color-primary-strong); font-weight: 700; letter-spacing: 0.06em; }
+    .block-card__title { font-size: 0.95rem; font-weight: 700; line-height: 1.25; letter-spacing: -0.02em; margin: 0; }
+    .block-card__desc { font-size: 0.66rem; line-height: 1.45; color: var(--color-on-surface-muted); margin: 0.08rem 0 0; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical; }
+    .block-card__count { margin-top: auto; padding-top: 0.25rem; font-family: var(--font-mono); font-size: 0.62rem; color: var(--color-primary-strong); font-weight: 700; }
   </style>
 </head>
 <body>
@@ -43,37 +43,37 @@
     <a class="block-card" href="1-warmup.html">
       <div class="block-card__time">CHAPTER 1</div>
       <h2 class="block-card__title">공개 데이터 + Plan Mode</h2>
-      <p class="block-card__desc">API란 무엇인가 · 공개 API 9개 · c:\lecture\day2 폴더 · GitHub 저장소. Plan Mode로 계획을 확인·수정·논의하며 데이터를 가져와 가공해 보여주는 반응형 페이지를 만들어 Vercel 배포 — 1일차 복습.</p>
+      <p class="block-card__desc">공개 API 9개 중 하나를 골라, Plan Mode로 계획을 다듬으며 반응형 페이지를 만들어 Vercel 배포. 1일차 흐름의 복습편.</p>
       <div class="block-card__count">16 슬라이드 →</div>
     </a>
     <a class="block-card" href="2-hooks-telegram.html">
       <div class="block-card__time">CHAPTER 2</div>
       <h2 class="block-card__title">Hooks + 텔레그램</h2>
-      <p class="block-card__desc">Hook 6 이벤트 · Stop 훅으로 "응답 끝 → 휴대폰 알림". 텔레그램 봇 만들기 · Channels로 텔레그램에서 Claude에게 원격 명령 — 양방향 연결. MCP·Skill·Plugin 개념 정리.</p>
+      <p class="block-card__desc">Stop 훅으로 "응답 끝 → 휴대폰 알림", Channels로 텔레그램에서 Claude에게 원격 명령까지. 양방향 연결.</p>
       <div class="block-card__count">18 슬라이드 →</div>
     </a>
     <a class="block-card" href="3-claude-md.html">
       <div class="block-card__time">CHAPTER 3</div>
       <h2 class="block-card__title">CLAUDE.md 길들이기</h2>
-      <p class="block-card__desc">매 세션 자동 주입되는 룰북 · 200줄·핵심vs군더더기 원칙 · 3단 계층 · .claude 폴더 · effort·ultrathink로 더 깊이. day2 폴더에 CLAUDE.md 작성 실습 + Karpathy의 CLAUDE.md 4원칙 분석.</p>
+      <p class="block-card__desc">매 세션 자동 주입되는 룰북. 200줄·3단 계층·핵심vs군더더기 원칙 + 실습 작성. Karpathy의 4원칙 분석.</p>
       <div class="block-card__count">23 슬라이드 →</div>
     </a>
     <a class="block-card" href="4-data-ai.html">
       <div class="block-card__time">CHAPTER 4</div>
       <h2 class="block-card__title">데이터와 AI — 회귀 실습</h2>
-      <p class="block-card__desc">자연현상 → 측정 → 노이즈 → 데이터. 강사가 준 노이즈 섞인 데이터 2개에서 Claude Code로 회귀를 돌려 숨은 함수를 추정하고, 과적합·외삽을 거쳐 정답과 비교. 신경망은 개념으로 — "AI = 데이터에서 함수 찾기"를 손으로 익힙니다.</p>
+      <p class="block-card__desc">노이즈 섞인 데이터에서 회귀로 숨은 함수 찾기. 과적합·외삽까지 손으로 — "AI = 데이터에서 함수 찾기"를 몸으로 익힙니다.</p>
       <div class="block-card__count">31 슬라이드 →</div>
     </a>
     <a class="block-card" href="5-prototype-game.html">
       <div class="block-card__time">CHAPTER 5</div>
       <h2 class="block-card__title">Claude Design 프로토타입</h2>
-      <p class="block-card__desc">완벽한 설계 대신 빠르게 만들어 굴려보는 프로토타입 감각. claude.ai의 디자인 도구 Claude Design으로, 9개 소재(게임·앱) 중 하나를 골라 말 몇 마디로 화면을 만들고 2~3번 다듬는 한 바퀴 — 디자인 지식 없이 머릿속 그림을 화면으로.</p>
+      <p class="block-card__desc">claude.ai의 디자인 도구 Claude Design으로 9개 소재(게임·앱) 중 하나 골라 말 몇 마디로 화면을 만들고 2~3번 다듬는 한 바퀴.</p>
       <div class="block-card__count">12 슬라이드 →</div>
     </a>
     <a class="block-card" href="6-google-login.html">
       <div class="block-card__time">CHAPTER 6</div>
       <h2 class="block-card__title">내 서비스에 구글 로그인</h2>
-      <p class="block-card__desc">챕터 1의 공개 API 페이지를 "로그인한 사람만" 쓰는 진짜 서비스로. 단계별 매뉴얼 없이 목표·제약·내 수준 3문장과 대화만으로 구글 OAuth를 붙이고 Vercel 배포 — 처음 하는 일을 푸는 방식을 익힙니다.</p>
+      <p class="block-card__desc">챕터 1의 공개 API 페이지에 구글 OAuth를 붙여 "로그인한 사람만" 쓰는 진짜 서비스로. 3문장 + 대화로 처음 하는 일을 푸는 방식을 익힙니다.</p>
       <div class="block-card__count">16 슬라이드 →</div>
     </a>
   </div>
