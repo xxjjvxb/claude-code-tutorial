@@ -27,7 +27,7 @@
     <h2 class="section-title">자기소개 페이지를 <span class="accent">세상에 공개</span></h2>
     <p class="section-caption">챕터 4에서 만든 자기소개 페이지는 아직 내 컴퓨터 안에만 있습니다. GitHub와 Vercel로 인터넷에 올려, 링크 하나로 누구에게나 공유합니다 — 전부 무료.</p>
     <div class="section-meta">
-      <div class="section-meta__item"><span class="section-meta__num">5</span><span>단계</span></div>
+      <div class="section-meta__item"><span class="section-meta__num">6</span><span>단계</span></div>
       <div class="section-meta__item"><span class="section-meta__num">0원</span><span>비용</span></div>
       <div class="section-meta__item"><span class="section-meta__num">1</span><span>링크로 공유</span></div>
     </div>
@@ -72,9 +72,10 @@
       <div class="setup-grid">
         <div class="setup-step"><div class="setup-step__num">01</div><h3 class="setup-step__title">GitHub 저장소 만들기</h3><p class="setup-step__desc">자기소개 폴더를 담을 저장소</p></div>
         <div class="setup-step"><div class="setup-step__num">02</div><h3 class="setup-step__title">GitHub에 push</h3><p class="setup-step__desc">내 컴퓨터 코드를 원격으로 올리기</p></div>
-        <div class="setup-step"><div class="setup-step__num">03</div><h3 class="setup-step__title">Vercel 가입</h3><p class="setup-step__desc">GitHub 계정으로 로그인</p></div>
-        <div class="setup-step"><div class="setup-step__num">04</div><h3 class="setup-step__title">저장소 Import</h3><p class="setup-step__desc">선택 → Deploy → 자동 배포</p></div>
-        <div class="setup-step"><div class="setup-step__num">05</div><h3 class="setup-step__title">링크 공유</h3><p class="setup-step__desc">*.vercel.app 주소를 카톡방에</p></div>
+        <div class="setup-step"><div class="setup-step__num">03</div><h3 class="setup-step__title">Vercel ↔ GitHub 연동</h3><p class="setup-step__desc">GitHub 계정으로 로그인·권한 승인</p></div>
+        <div class="setup-step"><div class="setup-step__num">04</div><h3 class="setup-step__title">저장소 Import</h3><p class="setup-step__desc">저장소 선택 → Deploy → 자동 배포</p></div>
+        <div class="setup-step"><div class="setup-step__num">05</div><h3 class="setup-step__title">링크 공유</h3><p class="setup-step__desc">*.vercel.app 주소를 공유</p></div>
+        <div class="setup-step"><div class="setup-step__num">06</div><h3 class="setup-step__title">수정 → 재배포</h3><p class="setup-step__desc">git push만으로 자동 갱신</p></div>
       </div>
       <p class="slide__note">한 번 연결해두면 — 이후엔 <code>git push</code>만 하면 Vercel이 알아서 다시 배포합니다.</p>
     </div>
@@ -141,57 +142,82 @@
     </div>
   </section>
 
-  <!-- 6 · STEP 3 · Vercel 가입 + Import -->
+  <!-- 6 · STEP 3 · Vercel ↔ GitHub 연동 -->
   <section class="slide is-standard">
-    <div class="slide__eyebrow">STEP 3 · Vercel</div>
-    <h2 class="slide__title">Vercel — <span class="accent">GitHub 계정으로</span> 시작</h2>
+    <div class="slide__eyebrow">STEP 3 · Vercel ↔ GitHub 연동</div>
+    <h2 class="slide__title">Vercel에 <span class="accent">GitHub 계정으로</span> 로그인</h2>
     <div class="slide__body">
-      <div class="step-list step-list--compact">
-        <div class="step-list__item">
-          <div class="step-list__num">1</div>
-          <div class="step-list__content">
-            <p class="step-list__title"><code>vercel.com</code> → <strong>Sign Up</strong> → "Continue with GitHub"</p>
+      <div class="two-col">
+        <div>
+          <div class="content-card content-card--compact">
+            <h3 class="content-card__title">왜 GitHub로 로그인하나</h3>
+            <p class="content-card__body">Vercel이 내 GitHub 저장소를 <strong>들여다볼 수 있어야</strong> 코드를 가져가 배포합니다. 그래서 새 회원가입 대신 GitHub 계정을 그대로 연결(연동)합니다.</p>
+            <ul class="content-card__list">
+              <li>계정 하나로 <strong>두 서비스가 연결</strong>됨</li>
+              <li>내가 push하면 → Vercel이 자동 감지 → 재배포</li>
+              <li>새 아이디·비밀번호 만들 필요 없음</li>
+            </ul>
           </div>
         </div>
-        <div class="step-list__item">
-          <div class="step-list__num">2</div>
-          <div class="step-list__content">
-            <p class="step-list__title">GitHub 권한 승인 (최초 1회)</p>
-          </div>
-        </div>
-        <div class="step-list__item">
-          <div class="step-list__num">3</div>
-          <div class="step-list__content">
-            <p class="step-list__title"><strong>Add New → Project</strong> → 방금 만든 <code>my-intro</code> 저장소 선택</p>
-          </div>
-        </div>
-        <div class="step-list__item">
-          <div class="step-list__num">4</div>
-          <div class="step-list__content">
-            <p class="step-list__title">설정은 건드리지 않고 <strong>Deploy</strong> 클릭</p>
-          </div>
-        </div>
-        <div class="step-list__item">
-          <div class="step-list__num">5</div>
-          <div class="step-list__content">
-            <p class="step-list__title">30초~1분 빌드 → 배포 완료 화면</p>
+        <div>
+          <div class="content-card content-card--compact">
+            <h3 class="content-card__title">연동 3단계</h3>
+            <ol class="content-card__list content-card__list--ol">
+              <li><code>vercel.com</code> → <strong>Sign Up</strong></li>
+              <li><strong>"Continue with GitHub"</strong> 클릭</li>
+              <li>GitHub 권한 화면 → <strong>Authorize Vercel</strong> (최초 1회)</li>
+            </ol>
+            <p class="content-card__body">"Authorize"는 <strong>Vercel이 내 저장소를 읽고 배포</strong>하도록 허락하는 것 — 코드를 가져가 웹에 올리는 용도라 안전합니다.</p>
           </div>
         </div>
       </div>
-      <p class="slide__note">자기소개 페이지는 HTML 한 장이라 별도 설정이 필요 없습니다 — <strong>Deploy</strong>만 누르면 됩니다.</p>
+      <p class="slide__note">이미 브라우저에 GitHub 로그인이 돼 있으면 클릭 몇 번으로 끝. 한 번 연동하면 다음부턴 다시 묻지 않습니다.</p>
     </div>
   </section>
 
-  <!-- 7 · STEP 4 · 도메인 공유 -->
+  <!-- 7 · STEP 4 · 저장소 Import + Deploy -->
+  <section class="slide is-standard">
+    <div class="slide__eyebrow">STEP 4 · 저장소 Import</div>
+    <h2 class="slide__title">GitHub 저장소를 <span class="accent">Vercel로 가져오기</span></h2>
+    <div class="slide__body">
+      <div class="two-col">
+        <div>
+          <div class="content-card content-card--compact">
+            <h3 class="content-card__title">Import = "가져오기"</h3>
+            <p class="content-card__body">아까 GitHub에 올린 저장소를 Vercel 프로젝트로 <strong>연결해 가져오는</strong> 단계입니다.</p>
+            <ol class="content-card__list content-card__list--ol">
+              <li><strong>Add New → Project</strong></li>
+              <li>내 저장소 목록에서 <code>my-intro</code> → <strong>Import</strong></li>
+              <li>설정 화면 그대로 → <strong>Deploy</strong></li>
+            </ol>
+          </div>
+        </div>
+        <div>
+          <div class="content-card content-card--compact">
+            <h3 class="content-card__title">설정은 건드릴 게 없다</h3>
+            <ul class="content-card__list">
+              <li><strong>Framework Preset</strong> — Vercel이 자동 감지 (HTML은 "Other"), 그대로 둠</li>
+              <li>Build·Output 칸 — 자기소개 HTML은 <strong>빈칸 그대로</strong></li>
+              <li><strong>Deploy</strong> → 30초~1분 빌드 → 완료 화면</li>
+            </ul>
+            <p class="content-card__body">저장소가 목록에 안 보이면 → <strong>"Adjust GitHub App Permissions"</strong>에서 접근을 허용해 주세요.</p>
+          </div>
+        </div>
+      </div>
+      <p class="slide__note">한 번 Import 해두면 이 저장소는 Vercel과 계속 연결 — 이후엔 <code>git push</code>만으로 자동 재배포됩니다.</p>
+    </div>
+  </section>
+
+  <!-- 8 · STEP 5 · 도메인 공유 -->
   <section class="slide is-statement">
     <div class="statement-grid">
       <div class="statement-text">
-        <div class="slide__eyebrow">STEP 4 · 도메인 공유</div>
+        <div class="slide__eyebrow">STEP 5 · 도메인 공유</div>
         <h2 class="statement__lead"><span class="accent">내이름.vercel.app</span><br>— 내 페이지 주소</h2>
         <p class="statement__caption">배포가 끝나면 Vercel이 인터넷 주소를 발급합니다. 이 링크를 가진 사람은 누구나, 어디서나 내 자기소개 페이지를 볼 수 있습니다.</p>
         <div class="statement__points">
           <div class="statement__point"><span class="statement__point-num">확인</span><span>Vercel 화면의 <strong>Visit</strong> 버튼 → 내 페이지 열림</span></div>
-          <div class="statement__point"><span class="statement__point-num">공유</span><span>주소를 복사해 <strong>카카오톡 오픈채팅방</strong>에</span></div>
+          <div class="statement__point"><span class="statement__point-num">공유</span><span>주소를 복사해 <strong>강사가 안내한 채널</strong>에</span></div>
           <div class="statement__point"><span class="statement__point-num">테스트</span><span>휴대폰으로 열어보기 — PC와 똑같이 보임</span></div>
         </div>
       </div>
@@ -214,9 +240,9 @@
     </div>
   </section>
 
-  <!-- 8 · STEP 5 · 수정과 재배포 -->
+  <!-- 9 · STEP 6 · 수정과 재배포 -->
   <section class="slide is-standard">
-    <div class="slide__eyebrow">STEP 5 · 수정과 재배포</div>
+    <div class="slide__eyebrow">STEP 6 · 수정과 재배포</div>
     <h2 class="slide__title">고치고 <span class="accent">git push</span> — 자동으로 갱신</h2>
     <div class="slide__body">
       <div class="code-block">
@@ -230,7 +256,7 @@
     </div>
   </section>
 
-  <!-- 9 · 마무리 -->
+  <!-- 10 · 마무리 -->
   <section class="slide is-statement">
     <div class="statement-grid">
       <div class="statement-text">
