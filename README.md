@@ -375,12 +375,10 @@ claude-code-tutorial/
 ├── PRECHECK.md           # 운영자 사전 점검 (OS 레벨)
 ├── materials/            # 원본 자료 (basis.txt, pptx)
 └── slide/
-    ├── OUTLINE.md        # ← 본 문서
-    ├── day-1/
-    ├── day-2/
-    ├── day-3/
-    ├── day-4/
-    └── day-5/
+    ├── vibe-coding/      # "클로드코드 실습으로 배우는 바이브코딩" — 결과물 기준 11챕터 + 부록
+    │   ├── ch01-setup/ … ch11-mini-project/
+    │   └── appendix/
+    └── claude-desktop-1day/  # Cowork 1일 과정
 ```
 
-각 `day-N/` 폴더에 슬라이드 마크다운(Marp 호환)을 채울 예정.
+(구 day-N 날짜 기준 구조는 2026-07 결과물 기준 챕터 구조로 재편됨. 본 문서의 Day 표기는 옛 커리큘럼 기록입니다.)

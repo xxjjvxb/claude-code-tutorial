@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>2일차 · 1. 공개 데이터로 페이지 만들기</title>
+  <title>5장 · 1. 공개 API 데이터 페이지</title>
   <link rel="stylesheet" href="../../styles/tokens.css">
   <link rel="stylesheet" href="../../styles/deck.css">
   <link rel="stylesheet" href="../../styles/_os-toggle.css">
@@ -14,9 +14,9 @@
 <main class="deck">
 
   <header class="deck-chrome">
-  <span class="deck-chrome__brand">CLAUDE CODE · 5D</span>
+  <span class="deck-chrome__brand">바이브코딩 · CLAUDE CODE</span>
   <span class="deck-chrome__divider">·</span>
-  <span class="deck-chrome__day">2일차 · 1 데이터 페이지</span>
+  <span class="deck-chrome__day">5장 · 1 공개 API</span>
   <span class="deck-chrome__spacer"></span>
   <span class="deck-chrome__counter">— / —</span>
 </header>
@@ -25,7 +25,7 @@
   <section class="slide is-cover">
     <div class="cover-grid">
       <div class="cover-left">
-        <div class="cover-brand">CLAUDE CODE · 5일 완주</div>
+        <div class="cover-brand">클로드코드 실습으로 배우는 바이브코딩</div>
         <div class="cover-illustration">
           <svg class="cover-terminal" viewBox="0 0 460 280" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
             <rect x="0" y="0" width="460" height="280" rx="14" fill="rgba(0,0,0,0.92)"/>
@@ -33,7 +33,7 @@
             <circle cx="22" cy="18" r="5" fill="#fb2c36"/>
             <circle cx="42" cy="18" r="5" fill="#edb200"/>
             <circle cx="62" cy="18" r="5" fill="#00c758"/>
-            <text x="230" y="22" fill="rgba(255,255,255,0.4)" font-family="ui-monospace, monospace" font-size="11" text-anchor="middle">claude · day2</text>
+            <text x="230" y="22" fill="rgba(255,255,255,0.4)" font-family="ui-monospace, monospace" font-size="11" text-anchor="middle">claude · ch05</text>
             <text x="22" y="74" fill="#fe6e00" font-family="ui-monospace, monospace" font-size="13">&gt; 공개 API로 반응형 페이지 만들어줘</text>
             <text x="22" y="100" fill="rgba(255,255,255,0.55)" font-family="ui-monospace, monospace" font-size="11">  계획부터 보여드릴게요  [plan]</text>
             <text x="22" y="134" fill="white" font-family="ui-monospace, monospace" font-size="12">  1. fetch로 데이터 가져오기</text>
@@ -43,81 +43,81 @@
           </svg>
         </div>
         <div class="cover-foot">
-          <div class="cover-foot-num">02</div>
-          <div class="cover-foot-meta">2일차 · 협업과 자동화</div>
+          <div class="cover-foot-num">05</div>
+          <div class="cover-foot-meta">5장 · API 이해와 활용</div>
         </div>
       </div>
       <div class="cover-right">
         <div class="cover-card">
-          <div class="cover-card__day">2일차 · 협업</div>
-          <h2 class="cover-card__title">Plan · Hooks ·<br>CLAUDE.md</h2>
-          <p class="cover-card__subtitle">큰 일은 계획부터. 끝나면 휴대폰에 알림.<br>AI에게 내 프로젝트의 규칙을 가르친다.</p>
+          <div class="cover-card__day">5장 · API</div>
+          <h2 class="cover-card__title">공개 API ·<br>Plan Mode</h2>
+          <p class="cover-card__subtitle">인터넷의 진짜 데이터를 가져와 반응형 페이지로.<br>큰 일은 계획부터 — Plan Mode를 깊게 씁니다.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- 2 · 어제 → 오늘 -->
+  <!-- 2 · 지금까지 → 이번 장 -->
   <section class="slide is-standard">
-    <div class="slide__eyebrow">1일차 → 2일차</div>
-    <h2 class="slide__title">어제 만들어봤다면, 오늘은 <span class="accent">더 잘 시킨다</span></h2>
+    <div class="slide__eyebrow">1~4장 → 5장</div>
+    <h2 class="slide__title">내 이야기를 만들었다면, 이번 장은 <span class="accent">진짜 데이터</span></h2>
     <div class="slide__body">
       <div class="bg-compare">
         <div class="bg-compare__side bg-compare__side--soft">
-          <div class="bg-compare__label">1일차 · 어제까지</div>
+          <div class="bg-compare__label">1~4장 · 지금까지</div>
           <div class="bg-compare__quote">
-            <div>Claude Code 설치 · 첫 응답</div>
-            <div>자기소개 페이지 만들어 인터넷에 배포</div>
-            <div>Git · / @ ! # 4대 문법</div>
-            <div>모드 · 권한 · 비용 운영 감각</div>
+            <div>Claude Code 설치 · 터미널 첫 응답</div>
+            <div>자기소개 페이지 · / @ ! # 4대 문법</div>
+            <div>Git · GitHub · Vercel 외부 배포</div>
+            <div>CLAUDE.md · 커스텀 슬래시 — 길들이기</div>
           </div>
           <p class="bg-compare__note">AI로 만들고 배포하는 한 바퀴를 돌았습니다.</p>
         </div>
         <div class="bg-compare__side bg-compare__side--good">
-          <div class="bg-compare__label">2일차 · 오늘</div>
+          <div class="bg-compare__label">5장 · 이번 장</div>
           <div class="bg-compare__quote">
-            <div>Plan Mode — 큰 변경 전 계획부터</div>
-            <div>Hooks — 응답 끝나면 휴대폰 알림</div>
-            <div>텔레그램 ↔ Claude 양방향 연결</div>
-            <div>CLAUDE.md — 내 프로젝트 룰북</div>
+            <div>API — 인터넷의 데이터 창구 이해</div>
+            <div>공개 API 데이터로 반응형 페이지 제작</div>
+            <div>Plan Mode 심화 — 계획을 읽고 다듬기</div>
+            <div>3장에서 해본 배포 그대로 Vercel까지</div>
           </div>
-          <p class="bg-compare__note">AI를 <strong>길들이고 자동화</strong>하기 시작합니다.</p>
+          <p class="bg-compare__note">내 컴퓨터 밖의 <strong>진짜 데이터</strong>를 다루기 시작합니다.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- 3 · 2일차 흐름 -->
+  <!-- 3 · 이번 장 흐름 -->
   <section class="slide is-standard">
-    <div class="slide__eyebrow">OVERVIEW · 오늘의 흐름</div>
-    <h2 class="slide__title">2일차는 <span class="accent">3개 챕터</span></h2>
+    <div class="slide__eyebrow">OVERVIEW · 이번 장의 흐름</div>
+    <h2 class="slide__title">이번 장은 <span class="accent">3단계</span></h2>
     <div class="slide__body">
       <div class="grid-3">
         <div class="diff-card">
-          <div class="diff-card__rank">CH 1</div>
-          <h3 class="diff-card__title">공개 데이터 + Plan Mode</h3>
-          <p class="diff-card__body">Plan Mode로 계획을 다듬으며 공개 API 반응형 페이지를 만들어 배포 — 1일차 복습.</p>
+          <div class="diff-card__rank">STEP 1</div>
+          <h3 class="diff-card__title">API 이해</h3>
+          <p class="diff-card__body">API가 뭔지 감을 잡고, 공개 API 9개 중 끌리는 소재 하나 고르기.</p>
         </div>
         <div class="diff-card">
-          <div class="diff-card__rank">CH 2</div>
-          <h3 class="diff-card__title">Hooks + 텔레그램</h3>
-          <p class="diff-card__body">응답 끝 알림 + 텔레그램에서 Claude 원격 명령.</p>
+          <div class="diff-card__rank">STEP 2</div>
+          <h3 class="diff-card__title">Plan Mode 심화</h3>
+          <p class="diff-card__body">2장에서 만난 Plan Mode를 제대로 — 계획을 읽고 다듬는 법.</p>
         </div>
         <div class="diff-card">
-          <div class="diff-card__rank">CH 3</div>
-          <h3 class="diff-card__title">CLAUDE.md</h3>
-          <p class="diff-card__body">내 프로젝트 룰북을 직접 작성해 AI를 길들이기.</p>
+          <div class="diff-card__rank">STEP 3</div>
+          <h3 class="diff-card__title">제작 → 배포</h3>
+          <p class="diff-card__body">반응형 데이터 페이지를 만들어 3장에서 해본 대로 Vercel 배포.</p>
         </div>
       </div>
-      <p class="slide__note">먼저 공개 API 데이터로 페이지를 만듭니다 — Plan Mode를 쓰면서, 어제 한 "만들고 배포"를 다시 한 바퀴.</p>
+      <p class="slide__note">공개 API 데이터로 페이지를 만듭니다 — Plan Mode를 쓰면서, 앞 장들에서 익힌 "만들고 배포"를 진짜 데이터로 한 바퀴 더.</p>
     </div>
   </section>
 
-  <!-- 4 · 오늘 만들 것 -->
+  <!-- 4 · 이번 장에서 만들 것 -->
   <section class="slide is-statement">
     <div class="statement-grid">
       <div class="statement-text">
-        <div class="slide__eyebrow">MISSION · 오늘 만들 것</div>
+        <div class="slide__eyebrow">MISSION · 이번 장에서 만들 것</div>
         <h2 class="statement__lead">공개 API 데이터를<br><span class="accent">반응형 페이지</span>로</h2>
         <p class="statement__caption">인터넷에 공개된 데이터(API)를 가져와 보여주는 한 페이지를 만듭니다. PC·태블릿·스마트폰 어디서 봐도 깔끔하게 — 그리고 Vercel에 배포.</p>
         <div class="statement__points">
@@ -179,7 +179,7 @@
           </div>
         </div>
       </div>
-      <p class="slide__note">오늘은 공개 API(무료·가입 불필요)를 골라, 그 데이터를 <strong>가져와 가공해 화면에 보여주는</strong> 페이지를 만듭니다.</p>
+      <p class="slide__note">이번 장에서는 공개 API(무료·가입 불필요)를 골라, 그 데이터를 <strong>가져와 가공해 화면에 보여주는</strong> 페이지를 만듭니다.</p>
     </div>
   </section>
 
@@ -234,7 +234,7 @@
               <li>VS Code → File → Open Folder → <strong>day2</strong></li>
               <li>통합 터미널 (<code><span class="os-win">Ctrl + `</span><span class="os-mac">⌘ + J</span></code>)에서 <code>claude</code></li>
             </ol>
-            <p class="content-card__body">오늘 작업은 모두 이 폴더 안에서 — 한 곳에 모아둡니다.</p>
+            <p class="content-card__body">이번 장 작업은 모두 이 폴더 안에서 — 한 곳에 모아둡니다.</p>
           </div>
         </div>
         <div>
@@ -243,7 +243,7 @@
               <span class="code-block__dot" style="background:#fb2c36"></span><span class="code-block__dot" style="background:#edb200"></span><span class="code-block__dot" style="background:#00c758"></span>
               <span class="code-block__title"><span class="os-win">PowerShell</span><span class="os-mac">Terminal (zsh)</span> — <span class="os-win">c:\lecture\day2</span><span class="os-mac">~/lecture/day2</span></span>
             </div>
-            <div class="code-block__body"><span class="code-block__line"><span class="code-block__prompt" data-auto-os></span> <span class="code-block__cmd"><span class="os-win">cd C:\lecture\day2</span><span class="os-mac">cd ~/lecture/day2</span></span></span><span class="code-block__line"><span class="code-block__prompt" data-auto-os></span> <span class="code-block__cmd">claude</span></span><span class="code-block__line"><span class="code-block__out">  ✓ Claude Code ready.</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__cmt"># 이 폴더가 오늘의 작업 공간</span></span></div>
+            <div class="code-block__body"><span class="code-block__line"><span class="code-block__prompt" data-auto-os></span> <span class="code-block__cmd"><span class="os-win">cd C:\lecture\day2</span><span class="os-mac">cd ~/lecture/day2</span></span></span><span class="code-block__line"><span class="code-block__prompt" data-auto-os></span> <span class="code-block__cmd">claude</span></span><span class="code-block__line"><span class="code-block__out">  ✓ Claude Code ready.</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__cmt"># 이 폴더가 이번 장의 작업 공간</span></span></div>
           </div>
         </div>
       </div>
@@ -259,10 +259,10 @@
       <div class="two-col">
         <div>
           <div class="content-card content-card--compact">
-            <h3 class="content-card__title">1일차에 해본 그 흐름</h3>
+            <h3 class="content-card__title">3장에서 해본 그 흐름</h3>
             <ol class="content-card__list content-card__list--ol">
               <li><code>github.com</code> 좌측 상단 <strong>+</strong> → New repository</li>
-              <li>저장소 이름 입력 (예: <code>day2-warmup</code>)</li>
+              <li>저장소 이름 입력 (예: <code>api-page</code>)</li>
               <li><strong>Private</strong> 선택 → Create repository</li>
               <li>막히면 Claude Code에게 — "이 저장소 연결 도와줘"</li>
             </ol>
@@ -273,13 +273,13 @@
             <h3 class="content-card__title">왜 먼저 만드나</h3>
             <ul class="content-card__list">
               <li>나중에 Vercel이 이 저장소를 보고 자동 배포</li>
-              <li>1일차 자기소개 배포 때와 <strong>같은 패턴</strong></li>
+              <li>3장 자기소개 배포 때와 <strong>같은 패턴</strong></li>
               <li>잘 기억 안 나면 — Claude Code와 대화하며</li>
             </ul>
           </div>
         </div>
       </div>
-      <p class="slide__note">저장소 만들기·연결은 가볍게 — 1일차에 한 번 해봤습니다. <strong>막히면 Claude Code에게 그대로 물어보세요</strong>.</p>
+      <p class="slide__note">저장소 만들기·연결은 가볍게 — 3장에서 한 번 해봤습니다. <strong>막히면 Claude Code에게 그대로 물어보세요</strong>.</p>
     </div>
   </section>
 
@@ -337,7 +337,7 @@
       <div class="statement-text">
         <div class="slide__eyebrow">ENTRY · 진입은 단축키로</div>
         <h2 class="statement__lead"><span class="accent">Shift+Tab</span> 두 번이면 됩니다.</h2>
-        <p class="statement__caption">1일차에 본 모드 순환 단축키. Interactive → Auto → Plan 순서이므로, 기본 상태에서 <strong>두 번</strong> 누르면 Plan.</p>
+        <p class="statement__caption">2장에서 본 모드 순환 단축키. Interactive → Auto → Plan 순서이므로, 기본 상태에서 <strong>두 번</strong> 누르면 Plan.</p>
         <div class="statement__points">
           <div class="statement__point"><span class="statement__point-num">한 번</span><span>Interactive → Auto (accept-edits)</span></div>
           <div class="statement__point"><span class="statement__point-num">두 번</span><span>Auto → <strong>Plan</strong></span></div>
@@ -466,7 +466,7 @@
         <div class="diff-card">
           <div class="diff-card__rank">배포</div>
           <h3 class="diff-card__title">GitHub → Vercel</h3>
-          <p class="diff-card__body">1일차와 같은 흐름 — push → Vercel이 자동 배포 → <code>*.vercel.app</code> 링크.</p>
+          <p class="diff-card__body">3장과 같은 흐름 — push → Vercel이 자동 배포 → <code>*.vercel.app</code> 링크.</p>
         </div>
         <div class="diff-card">
           <div class="diff-card__rank">공유</div>
@@ -476,8 +476,8 @@
       </div>
       <div class="grid-2" style="margin-top: 0.7rem;">
         <div class="content-card content-card--compact" style="border-color: var(--color-primary); background: color-mix(in srgb, var(--color-primary) 7%, var(--color-surface-elevated));">
-          <h3 class="content-card__title">💡 Vercel 처음이라면 — <strong>GitHub로 로그인</strong></h3>
-          <p class="content-card__body">vercel.com 가입 화면에서 <strong>"Continue with GitHub"</strong>를 누르세요. 이메일로 가입하면 나중에 레포 연동을 따로 해야 하지만 — GitHub 로그인을 쓰면 어제 만든 레포가 자동으로 보입니다. <code>Import</code> 한 번이면 배포 끝.</p>
+          <h3 class="content-card__title">💡 Vercel 로그인은 — <strong>GitHub로</strong></h3>
+          <p class="content-card__body">3장에서 해본 대로, vercel.com에서 <strong>"Continue with GitHub"</strong>를 누르세요. GitHub 로그인을 쓰면 방금 만든 레포가 자동으로 보입니다. <code>Import</code> 한 번이면 배포 끝 — 기억 안 나면 Claude에게 물어보세요.</p>
         </div>
         <figure style="margin: 0; display: flex; align-items: center; justify-content: center; aspect-ratio: 16 / 10; border: 2px dashed var(--color-outline-strong); border-radius: var(--rounded-md); background: var(--color-surface-soft); color: var(--color-on-surface-muted); text-align: center; padding: 1rem; overflow: hidden;">
           <img src="../../imgs/day2-vercel-github-login.png" alt="Vercel 가입 화면 — Continue with GitHub 버튼" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" style="max-width: 100%; max-height: 100%; object-fit: contain; border-radius: calc(var(--rounded-md) - 4px);">
@@ -488,7 +488,7 @@
           </figcaption>
         </figure>
       </div>
-      <p class="slide__note">여기까지 30분 — 어제 한 "만들고 배포"를 손이 기억하는지 확인하는 과정입니다. 이제 본론으로.</p>
+      <p class="slide__note">여기까지 하면 이번 장 완주 — 앞 장들에서 익힌 "만들고 배포"가 손에 붙었는지 확인하는 과정입니다. 다음 — 6장 데이터베이스 이해.</p>
     </div>
   </section>
 

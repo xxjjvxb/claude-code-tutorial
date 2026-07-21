@@ -3,13 +3,13 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>4일차 · 1. 데스크톱 프로그램 — PySide + PyInstaller</title>
+  <title>10장 · 1. 데스크톱 프로그램 — PySide + PyInstaller</title>
   <link rel="stylesheet" href="../../styles/tokens.css">
   <link rel="stylesheet" href="../../styles/deck.css">
   <link rel="stylesheet" href="../../styles/_os-toggle.css">
   <script defer src="../../scripts/os-toggle.js"></script>
   <style>
-    /* 챕터 1 — 프로그램 메뉴 그룹 (A · 파일 / B · 데스크톱) */
+    /* 10장 — 프로그램 메뉴 그룹 (A · 파일 / B · 데스크톱) */
     .menu-group { display: flex; flex-direction: column; gap: 0.4rem; }
     .menu-group + .menu-group { margin-top: 0.55rem; }
     .menu-group__label { font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.08em;
@@ -24,9 +24,9 @@
 <main class="deck">
 
   <header class="deck-chrome">
-    <span class="deck-chrome__brand">CLAUDE CODE · 5D</span>
+    <span class="deck-chrome__brand">바이브코딩 · CLAUDE CODE</span>
     <span class="deck-chrome__divider">·</span>
-    <span class="deck-chrome__day">4일차 · 1 데스크톱 프로그램</span>
+    <span class="deck-chrome__day">10장 · 1 데스크톱 프로그램</span>
     <span class="deck-chrome__spacer"></span>
     <span class="deck-chrome__counter">— / —</span>
   </header>
@@ -35,7 +35,7 @@
   <section class="slide is-cover">
     <div class="cover-grid">
       <div class="cover-left">
-        <div class="cover-brand">CLAUDE CODE · 5일 완주</div>
+        <div class="cover-brand">클로드코드 실습으로 배우는 바이브코딩</div>
         <div class="cover-illustration">
           <svg class="cover-terminal" viewBox="0 0 460 280" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
             <rect x="0" y="0" width="460" height="280" rx="14" fill="#fff5ec"/>
@@ -57,13 +57,13 @@
           </svg>
         </div>
         <div class="cover-foot">
-          <div class="cover-foot-num">04</div>
-          <div class="cover-foot-meta">4일차 · 오전</div>
+          <div class="cover-foot-num">10</div>
+          <div class="cover-foot-meta">10장 · 윈도우/맥 프로그램</div>
         </div>
       </div>
       <div class="cover-right">
         <div class="cover-card">
-          <div class="cover-card__day">4일차 · 오전</div>
+          <div class="cover-card__day">10장 · 윈도우/맥 프로그램</div>
           <h2 class="cover-card__title">내 PC에서 도는 —<br>진짜 프로그램(<span class="os-win">.exe</span><span class="os-mac">.app</span>)</h2>
           <p class="cover-card__subtitle">PySide로 창을 그리고, PyInstaller로 굳혀 —<br>더블클릭하면 열리는 나만의 프로그램.</p>
         </div>
@@ -71,14 +71,14 @@
     </div>
   </section>
 
-  <!-- 2 · 3일차 → 4일차 -->
+  <!-- 2 · 지금까지 → 이번 장 -->
   <section class="slide is-standard">
-    <div class="slide__eyebrow">3일차 → 4일차</div>
-    <h2 class="slide__title">웹페이지였다면, 오늘은 <span class="accent">내 <span class="os-win">PC</span><span class="os-mac">Mac</span>에 사는 프로그램</span></h2>
+    <div class="slide__eyebrow">지금까지 → 이번 장</div>
+    <h2 class="slide__title">웹페이지였다면, 이제는 <span class="accent">내 <span class="os-win">PC</span><span class="os-mac">Mac</span>에 사는 프로그램</span></h2>
     <div class="slide__body">
       <div class="bg-compare">
         <div class="bg-compare__side bg-compare__side--soft">
-          <div class="bg-compare__label">Day 1~3 · 어제까지</div>
+          <div class="bg-compare__label">지금까지</div>
           <div class="bg-compare__quote">
             <div>HTML 페이지를 만들어</div>
             <div>Vercel에 배포하고</div>
@@ -88,26 +88,26 @@
           <p class="bg-compare__note">웹페이지는 인터넷에 삽니다.</p>
         </div>
         <div class="bg-compare__side bg-compare__side--good">
-          <div class="bg-compare__label">Day 4 오전 · 오늘</div>
+          <div class="bg-compare__label">이번 장 · 데스크톱</div>
           <div class="bg-compare__quote">
             <div>창·버튼·입력칸 있는</div>
             <div><span class="os-win">윈도우</span><span class="os-mac">데스크톱</span> 프로그램을 만들고</div>
             <div><span class="os-win">.exe</span><span class="os-mac">.app</span> 파일 하나로 굳혀</div>
             <div>— 더블클릭으로 실행.</div>
           </div>
-          <p class="bg-compare__note">오늘은 — <strong>내 <span class="os-win">PC</span><span class="os-mac">Mac</span>에 사는</strong> 프로그램.</p>
+          <p class="bg-compare__note">이번엔 — <strong>내 <span class="os-win">PC</span><span class="os-mac">Mac</span>에 사는</strong> 프로그램.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- 3 · 오늘 만들 것 -->
+  <!-- 3 · 이번에 만들 것 -->
   <section class="slide is-statement">
     <div class="statement-grid">
       <div class="statement-text">
-        <div class="slide__eyebrow">TODAY · 오늘 만들 것</div>
+        <div class="slide__eyebrow">이번에 만들 것</div>
         <h2 class="statement__lead">더블클릭하면 — <span class="accent">내 창이 뜬다</span>.</h2>
-        <p class="statement__caption">오늘 만들 건 웹페이지가 아닙니다. 내 컴퓨터에서 도는 진짜 프로그램(<span class="os-win">.exe</span><span class="os-mac">.app</span>) — 인터넷도, 배포도, 로그인도 필요 없습니다. 파일 하나로 친구한테 보낼 수도 있습니다.</p>
+        <p class="statement__caption">이번에 만들 건 웹페이지가 아닙니다. 내 컴퓨터에서 도는 진짜 프로그램(<span class="os-win">.exe</span><span class="os-mac">.app</span>) — 인터넷도, 배포도, 로그인도 필요 없습니다. 파일 하나로 친구한테 보낼 수도 있습니다.</p>
         <div class="statement__points">
           <div class="statement__point"><span class="statement__point-num">모양</span><span>버튼·입력칸이 있는 창</span></div>
           <div class="statement__point"><span class="statement__point-num">형태</span><span><span class="os-win">.exe</span><span class="os-mac">.app</span> 파일 하나</span></div>
@@ -122,7 +122,7 @@
           <rect x="40" y="80" width="170" height="22" rx="10" fill="#f3ece1"/>
           <rect x="40" y="92" width="170" height="10" fill="#f3ece1"/>
           <text x="125" y="96" font-family="ui-monospace, monospace" font-size="8" fill="#797067" text-anchor="middle">https://my-site.vercel.app</text>
-          <text x="125" y="160" font-family="ui-sans-serif, system-ui" font-size="11" fill="#797067" text-anchor="middle">웹페이지 (Day 1~3)</text>
+          <text x="125" y="160" font-family="ui-sans-serif, system-ui" font-size="11" fill="#797067" text-anchor="middle">웹페이지 (지금까지)</text>
           <text x="125" y="180" font-family="ui-sans-serif, system-ui" font-size="9" fill="#a39a8a" text-anchor="middle">브라우저 + 인터넷 필요</text>
           <rect x="250" y="80" width="170" height="160" rx="10" fill="#fff" stroke="#cc5a14" stroke-width="2"/>
           <rect x="250" y="80" width="170" height="22" rx="10" fill="#fe6e00"/>
@@ -145,7 +145,7 @@
     <div class="slide__body">
       <div class="bg-compare">
         <div class="bg-compare__side bg-compare__side--soft">
-          <div class="bg-compare__label">Day 1 · 변환기 · 가위바위보</div>
+          <div class="bg-compare__label">2장 · 변환기 · 가위바위보</div>
           <div class="bg-compare__quote">
             <div>검은 터미널 창</div>
             <div>키보드로만 조작</div>
@@ -155,7 +155,7 @@
           <p class="bg-compare__note">CLI — 파이썬 스크립트 그대로.</p>
         </div>
         <div class="bg-compare__side bg-compare__side--good">
-          <div class="bg-compare__label">Day 4 · <span class="os-win">윈도우</span><span class="os-mac">데스크톱</span> 프로그램</div>
+          <div class="bg-compare__label">이번 장 · <span class="os-win">윈도우</span><span class="os-mac">데스크톱</span> 프로그램</div>
           <div class="bg-compare__quote">
             <div>창에 버튼·입력칸</div>
             <div>마우스로 클릭</div>
@@ -166,7 +166,7 @@
         </div>
       </div>
     </div>
-    <p class="slide__note">Day 1 가위바위보·변환기는 검은 터미널이었습니다 — 오늘은 그 위에 <strong>버튼과 입력칸</strong>을 입혀 GUI로 만듭니다.</p>
+    <p class="slide__note">2장의 가위바위보·변환기는 검은 터미널이었습니다 — 이번엔 그 위에 <strong>버튼과 입력칸</strong>을 입혀 GUI로 만듭니다.</p>
   </section>
 
   <!-- 5 · 두 도구 -->
@@ -211,9 +211,9 @@
         <div>
           <div class="content-card content-card--compact">
             <h3 class="content-card__title">Python 3.12 — 이미 깔려 있다</h3>
-            <p class="content-card__body">Day 1에 깐 <strong>Python 3.12</strong>를 그대로 씁니다. 새 <span class="os-win">PowerShell</span><span class="os-mac">터미널</span> 창에서 <code><span class="os-win">python</span><span class="os-mac">python3</span> --version</code> — <code>3.12.x</code>가 뜨면 OK.</p>
+            <p class="content-card__body">2장에서 깐 <strong>Python 3.12</strong>를 그대로 씁니다. 새 <span class="os-win">PowerShell</span><span class="os-mac">터미널</span> 창에서 <code><span class="os-win">python</span><span class="os-mac">python3</span> --version</code> — <code>3.12.x</code>가 뜨면 OK.</p>
             <ul class="content-card__list">
-              <li>안 뜨면 — Day 1 셋업 슬라이드의 PATH 점검</li>
+              <li>안 뜨면 — 1장 셋업 슬라이드의 PATH 점검</li>
               <li>pip는 파이썬과 함께 — 따로 설치 불필요</li>
               <li>PySide6·PyInstaller 둘 다 3.12 정식 지원</li>
             </ul>
@@ -233,9 +233,9 @@
     <p class="slide__note">PySide6는 다운로드가 좀 큽니다(수십 MB) — 와이파이가 약하면 3~5분. <code>pip</code>는 인터넷에서 도구를 받아오는 명령입니다.</p>
   </section>
 
-  <!-- 7 · 오늘의 프로그램 후보 8 -->
+  <!-- 7 · 프로그램 후보 8 -->
   <section class="slide is-standard">
-    <div class="slide__eyebrow">CANDIDATES · 오늘의 메뉴 8</div>
+    <div class="slide__eyebrow">CANDIDATES · 프로그램 메뉴 8</div>
     <h2 class="slide__title">이 8개 중 — <span class="accent">하나만</span> 골라 만든다</h2>
     <div class="slide__body">
       <div class="menu-group">
@@ -268,7 +268,7 @@
       <div class="step-list step-list--compact">
         <div class="step-list__item">
           <div class="step-list__num">1</div>
-          <div class="step-list__content"><p class="step-list__title">기본 폴더 만들기 <span class="step-list__desc" style="display:inline">— <span class="os-win">c:\lecture\day4\myapp</span><span class="os-mac">~/lecture/day4/myapp</span> (이름은 자유)</span></p></div>
+          <div class="step-list__content"><p class="step-list__title">기본 폴더 만들기 <span class="step-list__desc" style="display:inline">— <span class="os-win">c:\lecture\myapp</span><span class="os-mac">~/lecture/myapp</span> (이름은 자유)</span></p></div>
         </div>
         <div class="step-list__item">
           <div class="step-list__num">2</div>
@@ -294,13 +294,13 @@
   <!-- 9 · Claude에게 부탁하는 법 -->
   <section class="slide is-standard">
     <div class="slide__eyebrow">PROMPT · 부탁하는 법</div>
-    <h2 class="slide__title">2일차에서 배운 — <span class="accent">3문장</span>이면 시작한다</h2>
+    <h2 class="slide__title">앞서 익힌 — <span class="accent">3문장</span>이면 시작한다</h2>
     <div class="slide__body">
       <div class="two-col">
         <div>
           <div class="content-card content-card--compact">
             <h3 class="content-card__title">목표 · 제약 · 내 수준</h3>
-            <p class="content-card__body">Day 2 챕터 6에서 익힌 3문장. 데스크톱 프로그램에도 그대로 — 매뉴얼이 없어도 시작이 됩니다.</p>
+            <p class="content-card__body">프롬프팅에서 익힌 목표·제약·수준 3문장. 데스크톱 프로그램에도 그대로 — 매뉴얼이 없어도 시작이 됩니다.</p>
             <ul class="content-card__list">
               <li><strong>목표</strong> — 무엇을 만들지</li>
               <li><strong>제약</strong> — PySide6로, <span class="os-win">.exe</span><span class="os-mac">.app</span>로 굳힐 것</li>
@@ -345,7 +345,7 @@
               <span class="code-block__dot" style="background:#fb2c36"></span><span class="code-block__dot" style="background:#edb200"></span><span class="code-block__dot" style="background:#00c758"></span>
               <span class="code-block__title"><span class="os-win">PowerShell</span><span class="os-mac">Terminal (zsh)</span> · .py 실행</span>
             </div>
-            <div class="code-block__body"><span class="code-block__line"><span class="code-block__prompt" data-auto-os></span> <span class="code-block__cmd"><span class="os-win">cd c:\lecture\day4\myapp</span><span class="os-mac">cd ~/lecture/day4/myapp</span></span></span><span class="code-block__line"><span class="code-block__prompt" data-auto-os></span> <span class="code-block__cmd"><span class="os-win">python</span><span class="os-mac">python3</span> myapp.py</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__out">  # 창이 뜬다 — 클릭해 보기</span></span><span class="code-block__line"><span class="code-block__out">  # 어색하면 창 끄고 다시 대화</span></span><span class="code-block__line"><span class="code-block__cmt"># 80%는 이 단계에서 다듬는다</span></span></div>
+            <div class="code-block__body"><span class="code-block__line"><span class="code-block__prompt" data-auto-os></span> <span class="code-block__cmd"><span class="os-win">cd c:\lecture\myapp</span><span class="os-mac">cd ~/lecture/myapp</span></span></span><span class="code-block__line"><span class="code-block__prompt" data-auto-os></span> <span class="code-block__cmd"><span class="os-win">python</span><span class="os-mac">python3</span> myapp.py</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__out">  # 창이 뜬다 — 클릭해 보기</span></span><span class="code-block__line"><span class="code-block__out">  # 어색하면 창 끄고 다시 대화</span></span><span class="code-block__line"><span class="code-block__cmt"># 80%는 이 단계에서 다듬는다</span></span></div>
           </div>
         </div>
       </div>
@@ -482,7 +482,7 @@
         </div>
         <div class="step-list__item">
           <div class="step-list__num">2</div>
-          <div class="step-list__content"><p class="step-list__title">폴더 + 3문장으로 시작 <span class="step-list__desc" style="display:inline">— <span class="os-win">c:\lecture\day4\내앱</span><span class="os-mac">~/lecture/day4/내앱</span> → Claude에게 목표·제약·내 수준</span></p></div>
+          <div class="step-list__content"><p class="step-list__title">폴더 + 3문장으로 시작 <span class="step-list__desc" style="display:inline">— <span class="os-win">c:\lecture\내앱</span><span class="os-mac">~/lecture/내앱</span> → Claude에게 목표·제약·내 수준</span></p></div>
         </div>
         <div class="step-list__item">
           <div class="step-list__num">3</div>
@@ -568,16 +568,16 @@
   <!-- 17 · Wrap -->
   <section class="slide is-feature">
     <div class="feature-head">
-      <div class="slide__eyebrow">WRAP · 4일차 오전 끝</div>
+      <div class="slide__eyebrow">WRAP · 10장 끝</div>
       <h2 class="feature-head__title">내 PC에 — <span class="accent">진짜 프로그램</span>이 생겼다</h2>
     </div>
     <div class="feature-body">
       <div class="feature-text">
-        <p class="statement__caption">웹페이지는 인터넷에 살지만, 오늘 만든 건 내 컴퓨터에 삽니다. 파일로 친구에게 보낼 수도, <span class="os-win">작업표시줄</span><span class="os-mac">Dock</span>에 고정할 수도 있습니다. 다음은 오후 — 4일간 익힌 도구를 다 꺼내 진짜 미니프로젝트를 만듭니다.</p>
+        <p class="statement__caption">웹페이지는 인터넷에 살지만, 이번에 만든 건 내 컴퓨터에 삽니다. 파일로 친구에게 보낼 수도, <span class="os-win">작업표시줄</span><span class="os-mac">Dock</span>에 고정할 수도 있습니다. 다음은 마지막 장 — 지금까지 익힌 도구를 다 꺼내 진짜 미니프로젝트를 만듭니다.</p>
         <div class="statement__points">
           <div class="statement__point"><span class="statement__point-num">PySide</span><span>창·버튼·입력칸을 파이썬으로</span></div>
           <div class="statement__point"><span class="statement__point-num">PyInstaller</span><span>.py를 <span class="os-win">.exe</span><span class="os-mac">.app</span> 한 덩어리로</span></div>
-          <div class="statement__point"><span class="statement__point-num">다음</span><span>오후 — 오늘까지 익힌 모든 도구로 미니프로젝트</span></div>
+          <div class="statement__point"><span class="statement__point-num">다음</span><span>11장 — 지금까지 익힌 모든 도구로 미니프로젝트</span></div>
         </div>
       </div>
       <div class="feature-visual">

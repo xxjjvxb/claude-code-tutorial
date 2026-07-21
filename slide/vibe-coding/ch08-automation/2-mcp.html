@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>3일차 · 3. MCP + 브라우저 크롤링</title>
+  <title>8장 · 2. MCP + 브라우저 크롤링</title>
   <link rel="stylesheet" href="../../styles/tokens.css">
   <link rel="stylesheet" href="../../styles/deck.css">
   <link rel="stylesheet" href="../../styles/_os-toggle.css">
@@ -14,16 +14,16 @@
 <main class="deck">
 
   <header class="deck-chrome">
-  <span class="deck-chrome__brand">CLAUDE CODE · 5D</span>
+  <span class="deck-chrome__brand">바이브코딩 · CLAUDE CODE</span>
   <span class="deck-chrome__divider">·</span>
-  <span class="deck-chrome__day">3일차 · 3 MCP</span>
+  <span class="deck-chrome__day">8장 · 2 MCP</span>
   <span class="deck-chrome__spacer"></span>
   <span class="deck-chrome__counter">— / —</span>
 </header>
 
   <!-- 1 · Chapter intro -->
   <section class="slide is-section is-standard">
-    <div class="section-eyebrow">CHAPTER 3 · MCP</div>
+    <div class="section-eyebrow">CHAPTER 8 · MCP</div>
     <h2 class="section-title">MCP — 외부 세계와 연결하고, <span class="accent">크롤링</span>까지</h2>
     <p class="section-caption">Claude는 기본적으로 내 프로젝트 폴더 안만 봅니다. MCP는 파일·GitHub·브라우저 같은 외부 도구를 꽂는 "표준 포트"입니다. 연결을 배우고 — 끝으로 브라우저 MCP로 웹 정보를 직접 긁어옵니다.</p>
     <div class="section-meta">
@@ -108,7 +108,7 @@
   <!-- 4 · claude mcp add -->
   <section class="slide is-standard">
     <div class="slide__eyebrow">HOW · 연결과 Playwright</div>
-    <h2 class="slide__title">연결은 한 줄 — 오늘 꽂을 건 <span class="accent">Playwright</span></h2>
+    <h2 class="slide__title">연결은 한 줄 — 이번에 꽂을 건 <span class="accent">Playwright</span></h2>
     <div class="slide__body">
       <div class="two-col">
         <div>
@@ -143,14 +143,14 @@
     <h2 class="slide__title">자주 쓰이는 MCP — <span class="accent">필요한 것만</span> 골라 꽂기</h2>
     <div class="slide__body">
       <div class="grid-3">
-        <div class="content-card content-card--compact"><h3 class="content-card__title">브라우저 ★</h3><p class="content-card__body">진짜 브라우저를 열어 웹을 보고 정보 수집. 오늘 프로젝트.</p></div>
+        <div class="content-card content-card--compact"><h3 class="content-card__title">브라우저 ★</h3><p class="content-card__body">진짜 브라우저를 열어 웹을 보고 정보 수집. 이번 덱 프로젝트.</p></div>
         <div class="content-card content-card--compact"><h3 class="content-card__title">Filesystem</h3><p class="content-card__body">프로젝트 밖 파일·폴더 접근.</p></div>
         <div class="content-card content-card--compact"><h3 class="content-card__title">GitHub</h3><p class="content-card__body">이슈·PR·저장소를 직접 읽고 다루기.</p></div>
         <div class="content-card content-card--compact"><h3 class="content-card__title">웹 검색</h3><p class="content-card__body">최신 정보를 인터넷에서 찾아오기.</p></div>
         <div class="content-card content-card--compact"><h3 class="content-card__title">데이터베이스</h3><p class="content-card__body">Supabase·SQLite 같은 DB를 조회·질의.</p></div>
         <div class="content-card content-card--compact"><h3 class="content-card__title">Slack · Notion</h3><p class="content-card__body">팀 채널·문서를 읽고 쓰기.</p></div>
       </div>
-      <p class="slide__note">전부 꽂을 필요 없습니다 — <strong>지금 일에 필요한 것만</strong>. 정리 원칙은 챕터 4에서 한 번 더.</p>
+      <p class="slide__note">전부 꽂을 필요 없습니다 — <strong>지금 일에 필요한 것만</strong>. 정리 원칙은 9장에서 한 번 더.</p>
     </div>
   </section>
 
@@ -160,7 +160,7 @@
       <div class="statement-text">
         <div class="slide__eyebrow">SAFETY · 권한 감각</div>
         <h2 class="statement__lead">읽기는 마음껏 — <span class="accent">쓰기·삭제</span>는 한 번 멈춰서.</h2>
-        <p class="statement__caption">MCP는 외부 도구에 손을 댑니다. 읽어 오는 일은 거의 안전하지만, 파일을 바꾸거나 지우는 일은 — 1일차에 배운 권한 감각 그대로 신중하게.</p>
+        <p class="statement__caption">MCP는 외부 도구에 손을 댑니다. 읽어 오는 일은 거의 안전하지만, 파일을 바꾸거나 지우는 일은 — 2장에서 배운 권한 감각 그대로 신중하게.</p>
         <div class="statement__points">
           <div class="statement__point"><span class="statement__point-num">읽기</span><span>참고·조회·수집 — 부담 없이</span></div>
           <div class="statement__point"><span class="statement__point-num">쓰기</span><span>수정·삭제 — 권한 prompt를 꼭 읽고</span></div>
@@ -193,7 +193,7 @@
     <div class="slide__body">
       <div class="compare-2">
         <div class="compare-side compare-side--soft">
-          <div class="compare-side__label">서브에이전트</div>
+          <div class="compare-side__label">서브에이전트 · 7장</div>
           <h3 class="compare-side__title">역할을 맡는 도우미</h3>
           <ul class="compare-side__list">
             <li>여전히 Claude — 역할·규칙만 따로</li>
@@ -282,7 +282,7 @@
               <li>로그인 담벼락 안쪽·대량 수집은 피하기</li>
               <li>사이트 이용 규칙을 존중</li>
             </ul>
-            <p class="content-card__body">오늘은 "이게 되네"를 느끼는 게 목적 — 작게.</p>
+            <p class="content-card__body">이번 실습은 "이게 되네"를 느끼는 게 목적 — 작게.</p>
           </div>
         </div>
       </div>
@@ -346,7 +346,7 @@
         <div class="statement__points">
           <div class="statement__point"><span class="statement__point-num">정의</span><span>외부 도구를 잇는 USB 포트</span></div>
           <div class="statement__point"><span class="statement__point-num">연결</span><span>claude mcp add — 한 줄</span></div>
-          <div class="statement__point"><span class="statement__point-num">다음</span><span>포장된 능력 — 스킬</span></div>
+          <div class="statement__point"><span class="statement__point-num">다음</span><span>9장 문서와 디자인 — 스킬부터</span></div>
         </div>
       </div>
       <div class="feature-visual">

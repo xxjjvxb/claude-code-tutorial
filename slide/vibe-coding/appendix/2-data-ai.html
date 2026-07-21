@@ -3,13 +3,13 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>2일차 · 4. 데이터와 AI</title>
+  <title>부록 · B. 데이터와 AI</title>
   <link rel="stylesheet" href="../../styles/tokens.css">
   <link rel="stylesheet" href="../../styles/deck.css">
   <link rel="stylesheet" href="../../styles/_os-toggle.css">
   <script defer src="../../scripts/os-toggle.js"></script>
   <style>
-    /* 챕터 4 — 데이터 다운로드 링크 + 정답 공개 게이트 */
+    /* 부록 B — 데이터 다운로드 링크 + 정답 공개 게이트 */
     .dl-links { display:flex; flex-wrap:wrap; gap:0.4rem; margin-top:0.55rem; }
     .dl-link { display:inline-flex; align-items:center; gap:0.35rem; font-family:var(--font-mono);
       font-size:0.8rem; font-weight:700; color:var(--color-primary-strong); text-decoration:none;
@@ -33,16 +33,16 @@
 <main class="deck">
 
   <header class="deck-chrome">
-  <span class="deck-chrome__brand">CLAUDE CODE · 5D</span>
+  <span class="deck-chrome__brand">바이브코딩 · CLAUDE CODE</span>
   <span class="deck-chrome__divider">·</span>
-  <span class="deck-chrome__day">2일차 · 4 데이터와 AI</span>
+  <span class="deck-chrome__day">부록 · B 데이터와 AI</span>
   <span class="deck-chrome__spacer"></span>
   <span class="deck-chrome__counter">— / —</span>
 </header>
 
   <!-- 1 · Section cover -->
   <section class="slide is-section is-standard">
-    <div class="section-eyebrow">CHAPTER 5 · DATA &amp; AI</div>
+    <div class="section-eyebrow">부록 B · DATA &amp; AI</div>
     <h2 class="section-title">데이터 속에 숨은 <span class="accent">진짜 규칙</span> 찾기</h2>
     <p class="section-caption">자동화도 길들이기도 익혔다면 — 마지막은 "AI가 도대체 무엇인가". 흩어진 데이터점에서 숨은 곡선을 직접 찾아내며, 회귀와 신경망으로 그 정체를 만나봅니다.</p>
     <div class="section-meta">
@@ -59,7 +59,7 @@
     <div class="slide__body">
       <div class="bg-compare">
         <div class="bg-compare__side bg-compare__side--soft">
-          <div class="bg-compare__label">챕터 1–3 · 도구를 썼다</div>
+          <div class="bg-compare__label">지금까지 · 도구를 썼다</div>
           <div class="bg-compare__quote">
             <div>공개 데이터로 반응형 페이지 만들기</div>
             <div>Hooks · 텔레그램으로 자동화·알림</div>
@@ -68,7 +68,7 @@
           <p class="bg-compare__note">Claude를 <strong>부리는 법</strong>을 손에 익혔습니다.</p>
         </div>
         <div class="bg-compare__side bg-compare__side--good">
-          <div class="bg-compare__label">챕터 4 · 원리를 본다</div>
+          <div class="bg-compare__label">이 부록 · 원리를 본다</div>
           <div class="bg-compare__quote">
             <div>AI는 무엇으로 똑똑한가</div>
             <div>데이터에서 규칙을 어떻게 찾나</div>
@@ -78,12 +78,12 @@
         </div>
       </div>
     </div>
-    <p class="slide__note">마지막 챕터는 새 기능이 아니라 — 그동안 써온 AI가 <strong>어떤 원리로 움직이는지</strong>입니다. 손으로 직접 겪어봅니다.</p>
+    <p class="slide__note">이 부록은 새 기능이 아니라 — 그동안 써온 AI가 <strong>어떤 원리로 움직이는지</strong>입니다. 손으로 직접 겪어봅니다.</p>
   </section>
 
   <!-- 3 · 챕터 흐름 -->
   <section class="slide is-standard">
-    <div class="slide__eyebrow">OVERVIEW · 오늘의 여정</div>
+    <div class="slide__eyebrow">OVERVIEW · 이 부록의 여정</div>
     <h2 class="slide__title">흩어진 점 → 숨은 곡선 → <span class="accent">AI의 정체</span></h2>
     <div class="slide__body">
       <div class="grid-4">
@@ -567,7 +567,7 @@
       <div class="statement-text">
         <div class="slide__eyebrow">NEURAL NET · 개념만</div>
         <h2 class="statement__lead">신경망 = 거의 <span class="accent">어떤 곡선이든</span> 흉내내는 함수.</h2>
-        <p class="statement__caption">작은 계산 단위(뉴런)를 층층이 쌓아 입력을 출력으로 바꾸는 하나의 거대한 함수입니다. 회귀처럼 곡선 종류를 미리 정하지 않아도, 데이터에 맞춰 모양을 스스로 잡습니다. 오늘은 개념만 — 코드는 짜지 않습니다.</p>
+        <p class="statement__caption">작은 계산 단위(뉴런)를 층층이 쌓아 입력을 출력으로 바꾸는 하나의 거대한 함수입니다. 회귀처럼 곡선 종류를 미리 정하지 않아도, 데이터에 맞춰 모양을 스스로 잡습니다. 여기서는 개념만 — 코드는 짜지 않습니다.</p>
         <div class="statement__points">
           <div class="statement__point"><span class="statement__point-num">뉴런</span><span>작은 계산 한 칸</span></div>
           <div class="statement__point"><span class="statement__point-num">층(layer)</span><span>쌓을수록 유연함 ↑</span></div>
@@ -611,7 +611,7 @@
             <li>1차·3차… 차수를 골라 시도</li>
             <li>단순하고 빠름</li>
             <li>왜 그렇게 됐는지 해석 쉬움</li>
-            <li>오늘 — 직접 실습</li>
+            <li>이 부록 — 직접 실습</li>
           </ul>
         </div>
         <div class="compare-side compare-side--accent">
@@ -621,7 +621,7 @@
             <li>층·뉴런이 데이터에 맞춰 모양 결정</li>
             <li>매우 유연 — 복잡한 규칙도</li>
             <li>데이터가 많이 필요 · 과적합 위험 ↑</li>
-            <li>오늘 — 개념만</li>
+            <li>여기선 — 개념만</li>
           </ul>
         </div>
       </div>
@@ -676,7 +676,7 @@
         <div>
           <div class="content-card content-card--compact">
             <h3 class="content-card__title">1. 데이터 2개 받기</h3>
-            <p class="content-card__body">아래 파일을 내려받아 <code>C:\lecture\day2</code> 폴더에 저장하세요.</p>
+            <p class="content-card__body">아래 파일을 내려받아 <code>C:\lecture\data-ai</code> 폴더에 저장하세요.</p>
             <div class="dl-links">
               <a class="dl-link" href="data_1.csv" download>⬇ data_1.csv</a>
               <a class="dl-link" href="data_2.csv" download>⬇ data_2.csv</a>
@@ -698,7 +698,7 @@
           </div>
         </div>
       </div>
-      <p class="slide__note">Python은 1일차에 설치했습니다. <code><span class="os-win">python</span><span class="os-mac">python3</span></code>이 안 잡히면 새 <span class="os-win">PowerShell</span><span class="os-mac">터미널</span> 창을 열거나, Claude Code에게 <strong>"python이 안 잡혀요"</strong>라고 그대로 말하면 진단해 줍니다.</p>
+      <p class="slide__note">Python은 2장에서 설치했습니다. <code><span class="os-win">python</span><span class="os-mac">python3</span></code>이 안 잡히면 새 <span class="os-win">PowerShell</span><span class="os-mac">터미널</span> 창을 열거나, Claude Code에게 <strong>"python이 안 잡혀요"</strong>라고 그대로 말하면 진단해 줍니다.</p>
     </div>
   </section>
 
@@ -735,7 +735,7 @@
           </div>
         </div>
       </div>
-      <p class="slide__note">Claude가 낸 계획이 정답은 아닙니다 — 읽고 마음에 안 들면 <strong>Edit</strong>으로 다듬으세요. 챕터 1의 Plan Mode 복습입니다.</p>
+      <p class="slide__note">Claude가 낸 계획이 정답은 아닙니다 — 읽고 마음에 안 들면 <strong>Edit</strong>으로 다듬으세요. 5장 Plan Mode 복습입니다.</p>
     </div>
   </section>
 
@@ -932,7 +932,7 @@
       <div class="statement-text">
         <div class="slide__eyebrow">ESSENCE · AI의 정체</div>
         <h2 class="statement__lead">AI의 본질 — <span class="accent">데이터에서 자연의 숨은 함수를 추정</span>하는 것.</h2>
-        <p class="statement__caption">오늘 한 일이 그대로 AI의 정의입니다. 흩어진 데이터를 보고, 그 뒤의 규칙(함수)을 가장 그럴듯하게 추정하기. 회귀도, 신경망도 결국 이 한 문장.</p>
+        <p class="statement__caption">여기서 한 일이 그대로 AI의 정의입니다. 흩어진 데이터를 보고, 그 뒤의 규칙(함수)을 가장 그럴듯하게 추정하기. 회귀도, 신경망도 결국 이 한 문장.</p>
         <div class="statement__points">
           <div class="statement__point"><span class="statement__point-num">데이터</span><span>신호 + 노이즈</span></div>
           <div class="statement__point"><span class="statement__point-num">학습</span><span>숨은 함수를 추정</span></div>
@@ -975,7 +975,7 @@
       <div class="statement-text">
         <div class="slide__eyebrow">BIG PICTURE · Claude도</div>
         <h2 class="statement__lead">지금 쓰는 Claude도 — <span class="accent">똑같은 일의 거대한 버전</span>.</h2>
-        <p class="statement__caption">오늘 점 수십 개로 곡선 하나를 추정했다면, Claude는 인터넷 규모의 데이터로 "이 글 다음에 올 말"이라는 어마어마하게 복잡한 함수를 추정한 결과입니다. 종류가 다른 게 아니라 — 크기가 다를 뿐.</p>
+        <p class="statement__caption">방금 점 수십 개로 곡선 하나를 추정했다면, Claude는 인터넷 규모의 데이터로 "이 글 다음에 올 말"이라는 어마어마하게 복잡한 함수를 추정한 결과입니다. 종류가 다른 게 아니라 — 크기가 다를 뿐.</p>
         <div class="statement__points">
           <div class="statement__point"><span class="statement__point-num">우리 실습</span><span>점 수십 개 → 곡선 1개</span></div>
           <div class="statement__point"><span class="statement__point-num">Claude</span><span>천문학적 데이터 → 거대한 함수</span></div>
@@ -986,7 +986,7 @@
         <svg viewBox="0 0 460 320" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
           <rect x="0" y="0" width="460" height="320" rx="16" fill="#fff5ec"/>
           <rect x="36" y="80" width="150" height="160" rx="12" fill="white" stroke="#cc5a14" stroke-width="2"/>
-          <text x="111" y="66" font-family="ui-sans-serif, system-ui" font-size="11" font-weight="700" fill="#797067" text-anchor="middle">오늘 — 회귀</text>
+          <text x="111" y="66" font-family="ui-sans-serif, system-ui" font-size="11" font-weight="700" fill="#797067" text-anchor="middle">여기 — 회귀</text>
           <g fill="#cc5a14" opacity="0.8">
             <circle cx="66" cy="200" r="4"/><circle cx="92" cy="170" r="4"/><circle cx="118" cy="140" r="4"/><circle cx="144" cy="160" r="4"/><circle cx="160" cy="190" r="4"/>
           </g>
@@ -1016,12 +1016,12 @@
   <!-- 31 · 마무리 -->
   <section class="slide is-feature">
     <div class="feature-head">
-      <div class="slide__eyebrow">WRAP · 데이터 챕터 끝</div>
+      <div class="slide__eyebrow">WRAP · 데이터와 AI 끝</div>
       <h2 class="feature-head__title">"<span class="accent">AI = 흩어진 데이터에서 자연의 숨은 함수를 찾는 일</span>"</h2>
     </div>
     <div class="feature-body">
       <div class="feature-text">
-        <p class="statement__caption">이번 챕터를 한 줄로 압축. 노이즈 데이터에서 회귀로 곡선을 찾아본 경험이 — 그대로 AI의 정의였습니다.</p>
+        <p class="statement__caption">이 부록을 한 줄로 압축. 노이즈 데이터에서 회귀로 곡선을 찾아본 경험이 — 그대로 AI의 정의였습니다.</p>
         <div class="statement__points">
           <div class="statement__point"><span class="statement__point-num">노이즈</span><span>데이터엔 늘 흔들림이 섞인다</span></div>
           <div class="statement__point"><span class="statement__point-num">회귀</span><span>점에서 숨은 곡선을 추정한다</span></div>
