@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>6장 · 1. 데이터베이스 이해</title>
+  <link rel="stylesheet" href="../../styles/tokens.css">
+  <link rel="stylesheet" href="../../styles/deck.css">
+  <link rel="stylesheet" href="../../styles/_os-toggle.css">
+  <script defer src="../../scripts/os-toggle.js"></script>
+</head>
+<body>
+
+<main class="deck">
+
+  <header class="deck-chrome">
+  <span class="deck-chrome__brand">바이브코딩 · CLAUDE CODE</span>
+  <span class="deck-chrome__divider">·</span>
+  <span class="deck-chrome__day">6장 · 1 데이터베이스</span>
+  <span class="deck-chrome__spacer"></span>
+  <span class="deck-chrome__counter">— / —</span>
+</header>
+
+  <!-- 1 · Chapter intro -->
+  <section class="slide is-section is-standard">
+    <div class="section-eyebrow">6장 · DATABASE</div>
+    <h2 class="section-title">데이터베이스 — <span class="accent">데이터가 사는 곳</span>을 이해한다</h2>
+    <p class="section-caption">껐다 켜도 남아 있는 앱을 만들려면 데이터를 담을 창고가 필요합니다. 데이터베이스가 뭔지, CRUD·SQL/NoSQL이 뭔지 감을 잡고 — 우리가 쓸 도구 Supabase까지. 여기서 잡은 개념은 7장에서 진짜 앱(나만의 메모장)에 바로 연결됩니다.</p>
+    <div class="section-meta">
+      <div class="section-meta__item"><span class="section-meta__num">4</span><span>CRUD — 데이터로 하는 일</span></div>
+      <div class="section-meta__item"><span class="section-meta__num">2</span><span>갈래 (SQL · NoSQL)</span></div>
+      <div class="section-meta__item"><span class="section-meta__num">1</span><span>우리의 선택 — Supabase</span></div>
+    </div>
+  </section>
+  <!-- 2 · 데이터베이스란 + WHY -->
+  <section class="slide is-statement">
+    <div class="statement-grid statement-grid--visual-wide">
+      <div class="statement-text">
+        <div class="slide__eyebrow">DATABASE · 데이터 창고</div>
+        <h2 class="statement__lead">껐다 켜면 사라진다 — 데이터는 <span class="accent">어딘가 담겨야</span>.</h2>
+        <p class="statement__caption">메모를 적고 새로고침하면 사라집니다. 메모장이 진짜가 되려면 — 적은 내용이 남아 있어야 하죠. 데이터를 차곡차곡 담아두는 전용 창고가 데이터베이스입니다.</p>
+        <div class="statement__points">
+          <div class="statement__point"><span class="statement__point-num">화면</span><span>보여줄 뿐 — 닫으면 사라진다</span></div>
+          <div class="statement__point"><span class="statement__point-num">창고</span><span>데이터베이스에 담으면 — 내일도 그대로</span></div>
+          <div class="statement__point"><span class="statement__point-num">표</span><span>엑셀처럼 — 행·열의 표에 줄줄이 쌓인다</span></div>
+        </div>
+      </div>
+      <div class="statement-visual">
+        <svg viewBox="0 0 460 320" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <rect x="0" y="0" width="460" height="320" rx="16" fill="#fff5ec"/>
+          <rect x="40" y="80" width="160" height="160" rx="10" fill="#fef2f2" stroke="#fb2c36" stroke-width="2"/>
+          <text x="120" y="108" font-family="ui-sans-serif, system-ui" font-size="12" font-weight="700" fill="#fb2c36" text-anchor="middle">저장 없이</text>
+          <text x="120" y="152" font-family="ui-sans-serif, system-ui" font-size="13" fill="#797067" text-anchor="middle">메모 입력</text>
+          <text x="120" y="180" font-family="ui-monospace, monospace" font-size="15" fill="#fb2c36" text-anchor="middle">↓ 새로고침</text>
+          <text x="120" y="212" font-family="ui-sans-serif, system-ui" font-size="13" fill="#fb2c36" font-weight="700" text-anchor="middle">사라짐</text>
+          <text x="230" y="166" font-family="ui-monospace, monospace" font-size="20" fill="#cc5a14">→</text>
+          <rect x="260" y="80" width="160" height="160" rx="10" fill="#dcfce7" stroke="#016630" stroke-width="2"/>
+          <text x="340" y="108" font-family="ui-sans-serif, system-ui" font-size="12" font-weight="700" fill="#016630" text-anchor="middle">데이터베이스에</text>
+          <ellipse cx="340" cy="146" rx="44" ry="13" fill="none" stroke="#016630" stroke-width="2"/>
+          <path d="M296 146 v40 a44 13 0 0 0 88 0 v-40" fill="none" stroke="#016630" stroke-width="2"/>
+          <text x="340" y="216" font-family="ui-sans-serif, system-ui" font-size="13" fill="#016630" font-weight="700" text-anchor="middle">남아 있음</text>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3 · CRUD -->
+  <section class="slide is-standard">
+    <div class="slide__eyebrow">CRUD · 데이터로 하는 4가지</div>
+    <h2 class="slide__title">데이터로 하는 일은 — 결국 <span class="accent">이 4가지</span></h2>
+    <div class="slide__body">
+      <div class="grid-4">
+        <div class="diff-card"><div class="diff-card__rank">C · Create</div><h3 class="diff-card__title">추가</h3><p class="diff-card__body">새 메모를 표에 한 줄 더한다.</p></div>
+        <div class="diff-card"><div class="diff-card__rank">R · Read</div><h3 class="diff-card__title">조회</h3><p class="diff-card__body">저장된 메모를 불러와 화면에 보여준다.</p></div>
+        <div class="diff-card"><div class="diff-card__rank">U · Update</div><h3 class="diff-card__title">수정</h3><p class="diff-card__body">이미 있는 메모의 내용을 고친다.</p></div>
+        <div class="diff-card"><div class="diff-card__rank">D · Delete</div><h3 class="diff-card__title">삭제</h3><p class="diff-card__body">필요 없어진 메모를 지운다.</p></div>
+      </div>
+      <p class="slide__note">CRUD — <strong>추가·조회·수정·삭제</strong>. 메모장이든 쇼핑몰이든, 데이터를 다루는 앱은 모두 이 네 가지의 조합입니다.</p>
+    </div>
+  </section>
+
+  <!-- 4 · SQL vs NoSQL -->
+  <section class="slide is-standard">
+    <div class="slide__eyebrow">TYPES · 두 갈래</div>
+    <h2 class="slide__title">데이터베이스엔 — <span class="accent">SQL과 NoSQL</span> 두 갈래</h2>
+    <div class="slide__body">
+      <div class="compare-2">
+        <div class="compare-side compare-side--accent">
+          <div class="compare-side__label">SQL — 표 방식</div>
+          <h3 class="compare-side__title">정해진 표에 줄을 세운다</h3>
+          <ul class="compare-side__list">
+            <li>행·열이 정해진 표 — 엑셀처럼 정돈됨</li>
+            <li>규칙이 엄격해 데이터가 흐트러지지 않음</li>
+            <li>표끼리 연결도 가능 (회원 ↔ 메모)</li>
+            <li>예: PostgreSQL, MySQL</li>
+          </ul>
+        </div>
+        <div class="compare-side compare-side--soft">
+          <div class="compare-side__label">NoSQL — 문서 방식</div>
+          <h3 class="compare-side__title">자유로운 묶음으로 담는다</h3>
+          <ul class="compare-side__list">
+            <li>표 틀이 없어 — 형태가 제각각이어도 OK</li>
+            <li>유연하지만 — 정돈은 내가 챙겨야</li>
+            <li>예: MongoDB, Firebase Firestore</li>
+          </ul>
+        </div>
+      </div>
+      <p class="slide__note">정답은 없지만 — 데이터를 처음 다뤄본다면 <strong>표가 눈에 보이는 SQL</strong>이 직관적입니다. 그래서 오늘은 SQL로.</p>
+    </div>
+  </section>
+
+  <!-- 5 · Supabase -->
+  <section class="slide is-standard">
+    <div class="slide__eyebrow">CHOICE · 오늘의 데이터베이스</div>
+    <h2 class="slide__title">우리의 선택 — <span class="accent">Supabase</span></h2>
+    <div class="slide__body">
+      <div class="two-col">
+        <div>
+          <div class="content-card content-card--compact">
+            <h3 class="content-card__title">왜 Supabase</h3>
+            <ul class="content-card__list">
+              <li>무료 — 수업·개인 프로젝트엔 무료 티어로 충분</li>
+              <li>SQL — 표가 스프레드시트처럼 눈에 보임</li>
+              <li>백엔드 서버를 따로 안 만들어도 됨 (BaaS)</li>
+            </ul>
+            <p class="content-card__body">내 앱이 Supabase에 바로 연결 — 서버 코드 없이.</p>
+          </div>
+        </div>
+        <div>
+          <div class="content-card content-card--compact">
+            <h3 class="content-card__title">Supabase가 해주는 3가지</h3>
+            <ul class="content-card__list">
+              <li><strong>데이터베이스</strong> — 메모를 담는 표</li>
+              <li><strong>CRUD 연결</strong> — 추가·조회·수정·삭제 통로</li>
+              <li><strong>로그인</strong> — 구글 로그인까지 내장</li>
+            </ul>
+            <p class="content-card__body">메모장에 필요한 게 — 도구 하나에 다 들어 있음.</p>
+          </div>
+        </div>
+      </div>
+      <p class="slide__note">"백엔드"는 보통 따로 만들어 띄우는 서버지만 — Supabase 같은 서비스(BaaS)를 쓰면 그 서버 없이 앱이 바로 데이터에 연결됩니다.</p>
+    </div>
+  </section>
+
+  <!-- 6 · 스크린샷 팁 -->
+  <section class="slide is-standard">
+    <div class="slide__eyebrow">TIP · 화면이 막힐 때</div>
+    <h2 class="slide__title">말로 설명이 어렵다면 — <span class="accent">화면을 찍어서</span> 보여준다</h2>
+    <div class="slide__body">
+      <div class="two-col">
+        <div>
+          <div class="content-card content-card--compact">
+            <h3 class="content-card__title">스크린샷 — 두 단계</h3>
+            <ol class="content-card__list content-card__list--ol">
+              <li><code><span class="os-win">Windows + Shift + S</span><span class="os-mac">⌘ + Shift + 4</span></code> — 화면에서 필요한 부분만 드래그해 캡처</li>
+              <li><code><span class="os-win">Alt</span><span class="os-mac">⌃</span> + V</code> — Claude Code 입력창에 그 이미지를 붙여넣기</li>
+              <li>Claude가 화면을 직접 보고 — "이 버튼을 누르세요" 안내</li>
+            </ol>
+            <p class="content-card__body">Supabase 설정 화면처럼 — 말로 풀기 번거로운 건 그냥 보여주세요.</p>
+          </div>
+        </div>
+        <div>
+          <div class="content-card content-card--compact">
+            <h3 class="content-card__title">다만 — 비용 트레이드오프</h3>
+            <p class="content-card__body">이미지는 글자보다 <strong>훨씬 많은 비용(토큰)</strong>이 듭니다 — 편하지만 공짜가 아닙니다.</p>
+            <ul class="content-card__list">
+              <li>편하다고 매번 화면을 통째로 — X</li>
+              <li>필요한 부분만 작게 잘라 찍기</li>
+              <li>글로 될 일은 글로, 막힐 때만 이미지로</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <p class="slide__note">"보여주기"는 강력한 카드입니다 — 다만 비싸니, <strong>막혔을 때의 비상 수단</strong>으로 아껴 쓰세요.</p>
+    </div>
+  </section>
+  <!-- 7 · Wrap -->
+  <section class="slide is-standard">
+    <div class="slide__eyebrow">RECAP · 6장 마무리</div>
+    <h2 class="slide__title">데이터베이스 — <span class="accent">네 가지</span>만 기억하면 됩니다</h2>
+    <div class="slide__body">
+      <div class="grid-4">
+        <div class="promise-card">
+          <div class="promise-card__num">창고</div>
+          <h3 class="promise-card__title">데이터베이스</h3>
+          <p class="promise-card__body">새로고침해도 사라지지 않게 — 데이터를 담는 전용 창고.</p>
+        </div>
+        <div class="promise-card">
+          <div class="promise-card__num">CRUD</div>
+          <h3 class="promise-card__title">추가·조회·수정·삭제</h3>
+          <p class="promise-card__body">어떤 앱이든 데이터로 하는 일은 이 4가지의 조합.</p>
+        </div>
+        <div class="promise-card">
+          <div class="promise-card__num">2갈래</div>
+          <h3 class="promise-card__title">SQL vs NoSQL</h3>
+          <p class="promise-card__body">표 방식 vs 문서 방식 — 처음엔 표가 보이는 SQL이 직관적.</p>
+        </div>
+        <div class="promise-card">
+          <div class="promise-card__num">도구</div>
+          <h3 class="promise-card__title">Supabase</h3>
+          <p class="promise-card__body">DB + CRUD 통로 + 로그인까지 — 서버 없이 하나로.</p>
+        </div>
+      </div>
+      <p class="slide__note">다음 — <strong>7장에서 이 개념을 진짜 앱에 연결</strong>합니다. 서브에이전트 셋과 함께 "나만의 메모장"을 만들고 배포합니다.</p>
+    </div>
+  </section>
+
+  <div class="deck-progress"><div class="deck-progress__bar"></div></div>
+</main>
+<script src="../../scripts/deck.js"></script>
+</body>
+</html>
