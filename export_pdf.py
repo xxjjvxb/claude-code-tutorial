@@ -12,8 +12,34 @@ DIST = ROOT / 'dist'
 PNG_DIR = DIST / 'pdf-png'
 PDF_PATH = DIST / 'lecture.pdf'
 
-DAYS = [1, 2, 3, 4, 5]
-BLOCKS = ['1-am-theory', '2-am-practice', '3-pm-theory', '4-pm-practice']
+# 결과물 기준 11챕터 + 부록 (slide/ 기준 상대경로, 출력 순서)
+DECKS = [
+    'vibe-coding/ch01-setup/1-understand.html',
+    'vibe-coding/ch01-setup/2-setup.html',
+    'vibe-coding/ch01-setup/3-terminal.html',
+    'vibe-coding/ch02-homepage/1-intro-page.html',
+    'vibe-coding/ch02-homepage/2-grammar.html',
+    'vibe-coding/ch02-homepage/3-ops-mission.html',
+    'vibe-coding/ch03-deploy/1-git-basics.html',
+    'vibe-coding/ch03-deploy/2-deploy.html',
+    'vibe-coding/ch04-taming/1-claude-md.html',
+    'vibe-coding/ch04-taming/2-custom-slash.html',
+    'vibe-coding/ch05-api/1-open-api.html',
+    'vibe-coding/ch06-database/1-database.html',
+    'vibe-coding/ch07-interactive/1-google-login.html',
+    'vibe-coding/ch07-interactive/2-subagent-memo.html',
+    'vibe-coding/ch08-automation/1-hooks-telegram.html',
+    'vibe-coding/ch08-automation/2-mcp.html',
+    'vibe-coding/ch09-docs-design/1-skills.html',
+    'vibe-coding/ch09-docs-design/2-design-prototype.html',
+    'vibe-coding/ch10-desktop/1-desktop-program.html',
+    'vibe-coding/ch11-mini-project/1-project-theory.html',
+    'vibe-coding/ch11-mini-project/2-project-build.html',
+    'vibe-coding/ch11-mini-project/3-workflow-faq.html',
+    'vibe-coding/ch11-mini-project/4-demo-retro.html',
+    'vibe-coding/appendix/1-headless.html',
+    'vibe-coding/appendix/2-data-ai.html',
+]
 
 VIEW_W, VIEW_H = 1920, 1440
 
@@ -35,24 +61,25 @@ async def capture():
             "document.documentElement.appendChild(s);"
         )
         page = await context.new_page()
-        for day in DAYS:
-            for block in BLOCKS:
-                html = ROOT / 'slide' / f'day-{day}' / f'{block}.html'
-                if not html.exists():
-                    print(f'  skip: {html.relative_to(ROOT)}')
-                    continue
-                base = html.as_uri()
-                await page.goto(base)
+        seq = 0
+        for rel in DECKS:
+            html = ROOT / 'slide' / Path(rel)
+            if not html.exists():
+                print(f'  skip: {rel}')
+                continue
+            base = html.as_uri()
+            await page.goto(base)
+            await page.wait_for_load_state('networkidle')
+            n = await page.evaluate("document.querySelectorAll('.slide').length")
+            for i in range(1, n + 1):
+                await page.goto(f'{base}#slide={i}')
                 await page.wait_for_load_state('networkidle')
-                n = await page.evaluate("document.querySelectorAll('.slide').length")
-                for i in range(1, n + 1):
-                    await page.goto(f'{base}#slide={i}')
-                    await page.wait_for_load_state('networkidle')
-                    await page.wait_for_timeout(250)
-                    out = PNG_DIR / f'd{day}-{block}-{i:02d}.png'
-                    await page.screenshot(path=str(out), full_page=False)
-                    images.append(out)
-                    print(f'  day{day} {block} [{i:02d}/{n}]')
+                await page.wait_for_timeout(250)
+                seq += 1
+                out = PNG_DIR / f'{seq:04d}.png'
+                await page.screenshot(path=str(out), full_page=False)
+                images.append(out)
+                print(f'  {rel} [{i:02d}/{n}]')
         await browser.close()
     return images
 
@@ -64,17 +91,8 @@ def build_pdf(images):
 
 
 def build_pdf_from_dir():
+    # 파일명이 캡처 순서(0001.png ...)라 알파벳 정렬 = 슬라이드 순서
     images = sorted(PNG_DIR.glob('*.png'))
-    day_order = {'1-am-theory': 0, '2-am-practice': 1, '3-pm-theory': 2, '4-pm-practice': 3}
-
-    def key(p):
-        stem = p.stem
-        d = int(stem[1])
-        block = stem[3:-3]
-        idx = int(stem[-2:])
-        return (d, day_order.get(block, 99), idx)
-
-    images = sorted(images, key=key)
     build_pdf(images)
 
 

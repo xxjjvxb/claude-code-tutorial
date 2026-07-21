@@ -19,35 +19,58 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const REPO_ROOT = path.resolve(__dirname, '..', '..');
 const OUT_DIR = path.join(REPO_ROOT, 'dist');
 
-// 출력 순서 — 전체 인덱스 → Day 인덱스 → 챕터 파일
+// 출력 순서 — 과정 인덱스 → 챕터 인덱스 → 챕터 덱 (결과물 기준 11챕터 + 부록)
 const DECKS = [
-  { rel: 'slide/index.html',                   kind: 'index' },
+  { rel: 'slide/vibe-coding/index.html',                        kind: 'index' },
 
-  { rel: 'slide/day-1/index.html',             kind: 'index' },
-  { rel: 'slide/day-1/1-understand.html',      kind: 'deck'  },
-  { rel: 'slide/day-1/2-setup.html',           kind: 'deck'  },
-  { rel: 'slide/day-1/3-terminal.html',        kind: 'deck'  },
-  { rel: 'slide/day-1/4-intro-page.html',      kind: 'deck'  },
-  { rel: 'slide/day-1/5-git-grammar.html',     kind: 'deck'  },
-  { rel: 'slide/day-1/6-ops-mission.html',     kind: 'deck'  },
-  { rel: 'slide/day-1/7-deploy.html',          kind: 'deck'  },
+  { rel: 'slide/vibe-coding/ch01-setup/index.html',             kind: 'index' },
+  { rel: 'slide/vibe-coding/ch01-setup/1-understand.html',      kind: 'deck'  },
+  { rel: 'slide/vibe-coding/ch01-setup/2-setup.html',           kind: 'deck'  },
+  { rel: 'slide/vibe-coding/ch01-setup/3-terminal.html',        kind: 'deck'  },
 
-  { rel: 'slide/day-2/index.html',             kind: 'index' },
-  { rel: 'slide/day-2/1-warmup.html',          kind: 'deck'  },
-  { rel: 'slide/day-2/2-hooks-telegram.html',  kind: 'deck'  },
-  { rel: 'slide/day-2/3-claude-md.html',       kind: 'deck'  },
-  { rel: 'slide/day-2/4-data-ai.html',         kind: 'deck'  },
-  { rel: 'slide/day-2/5-prototype-game.html',  kind: 'deck'  },
-  { rel: 'slide/day-2/6-google-login.html',    kind: 'deck'  },
+  { rel: 'slide/vibe-coding/ch02-homepage/index.html',          kind: 'index' },
+  { rel: 'slide/vibe-coding/ch02-homepage/1-intro-page.html',   kind: 'deck'  },
+  { rel: 'slide/vibe-coding/ch02-homepage/2-grammar.html',      kind: 'deck'  },
+  { rel: 'slide/vibe-coding/ch02-homepage/3-ops-mission.html',  kind: 'deck'  },
 
-  { rel: 'slide/day-3/index.html',             kind: 'index' },
-  { rel: 'slide/day-3/1-headless-slash.html',  kind: 'deck'  },
-  { rel: 'slide/day-3/2-database-subagent.html', kind: 'deck'  },
-  { rel: 'slide/day-3/3-mcp.html',             kind: 'deck'  },
-  { rel: 'slide/day-3/4-skills.html',          kind: 'deck'  },
+  { rel: 'slide/vibe-coding/ch03-deploy/index.html',            kind: 'index' },
+  { rel: 'slide/vibe-coding/ch03-deploy/1-git-basics.html',     kind: 'deck'  },
+  { rel: 'slide/vibe-coding/ch03-deploy/2-deploy.html',         kind: 'deck'  },
 
-  { rel: 'slide/day-4/index.html',             kind: 'index' },
-  { rel: 'slide/day-4/1-windows-program.html', kind: 'deck'  },
+  { rel: 'slide/vibe-coding/ch04-taming/index.html',            kind: 'index' },
+  { rel: 'slide/vibe-coding/ch04-taming/1-claude-md.html',      kind: 'deck'  },
+  { rel: 'slide/vibe-coding/ch04-taming/2-custom-slash.html',   kind: 'deck'  },
+
+  { rel: 'slide/vibe-coding/ch05-api/index.html',               kind: 'index' },
+  { rel: 'slide/vibe-coding/ch05-api/1-open-api.html',          kind: 'deck'  },
+
+  { rel: 'slide/vibe-coding/ch06-database/index.html',          kind: 'index' },
+  { rel: 'slide/vibe-coding/ch06-database/1-database.html',     kind: 'deck'  },
+
+  { rel: 'slide/vibe-coding/ch07-interactive/index.html',       kind: 'index' },
+  { rel: 'slide/vibe-coding/ch07-interactive/1-google-login.html',   kind: 'deck'  },
+  { rel: 'slide/vibe-coding/ch07-interactive/2-subagent-memo.html',  kind: 'deck'  },
+
+  { rel: 'slide/vibe-coding/ch08-automation/index.html',        kind: 'index' },
+  { rel: 'slide/vibe-coding/ch08-automation/1-hooks-telegram.html',  kind: 'deck'  },
+  { rel: 'slide/vibe-coding/ch08-automation/2-mcp.html',        kind: 'deck'  },
+
+  { rel: 'slide/vibe-coding/ch09-docs-design/index.html',       kind: 'index' },
+  { rel: 'slide/vibe-coding/ch09-docs-design/1-skills.html',    kind: 'deck'  },
+  { rel: 'slide/vibe-coding/ch09-docs-design/2-design-prototype.html', kind: 'deck'  },
+
+  { rel: 'slide/vibe-coding/ch10-desktop/index.html',           kind: 'index' },
+  { rel: 'slide/vibe-coding/ch10-desktop/1-desktop-program.html',    kind: 'deck'  },
+
+  { rel: 'slide/vibe-coding/ch11-mini-project/index.html',      kind: 'index' },
+  { rel: 'slide/vibe-coding/ch11-mini-project/1-project-theory.html', kind: 'deck'  },
+  { rel: 'slide/vibe-coding/ch11-mini-project/2-project-build.html',  kind: 'deck'  },
+  { rel: 'slide/vibe-coding/ch11-mini-project/3-workflow-faq.html',   kind: 'deck'  },
+  { rel: 'slide/vibe-coding/ch11-mini-project/4-demo-retro.html',     kind: 'deck'  },
+
+  { rel: 'slide/vibe-coding/appendix/index.html',               kind: 'index' },
+  { rel: 'slide/vibe-coding/appendix/1-headless.html',          kind: 'deck'  },
+  { rel: 'slide/vibe-coding/appendix/2-data-ai.html',           kind: 'deck'  },
 ];
 
 // 4:3 stage — 1280x960 px @ 96 DPI = 13.333in x 10in

@@ -1755,3 +1755,29 @@ body.deck-no-chrome .deck-progress { opacity: 0; pointer-events: none; }
   display: block;
   margin-bottom: 0.55rem;
 }
+
+/* ─────────────────────────────────────────────────────────
+   저작권 워터마크 — SVG 낙관(도장) 인장 · © 2026 이일규
+   모든 슬라이드/인덱스 우하단에 은은하게. base CSS(스크린·인쇄 공통)라
+   스크린샷/인쇄 PDF 내보내기에도 그대로 찍힘. deck-chrome/progress의
+   자식이 아니므로 내보내기에서 숨겨지지 않음.
+   ───────────────────────────────────────────────────────── */
+.slide::after,
+.index-stage::after {
+  content: "";
+  position: absolute;
+  right: 1.4%;
+  bottom: 2.4%;
+  width: 3.2rem;
+  height: 3.2rem;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect x='5' y='5' width='90' height='90' rx='16' fill='none' stroke='%23b83227' stroke-width='6'/%3E%3Crect x='13' y='13' width='74' height='74' rx='10' fill='none' stroke='%23b83227' stroke-width='1.5'/%3E%3Cg fill='%23b83227' font-family='sans-serif' font-weight='800' font-size='30' text-anchor='middle'%3E%3Ctext x='50' y='36'%3E%EC%9D%B4%3C/text%3E%3Ctext x='50' y='63'%3E%EC%9D%BC%3C/text%3E%3Ctext x='50' y='90'%3E%EA%B7%9C%3C/text%3E%3C/g%3E%3C/svg%3E") no-repeat center / contain;
+  opacity: 0.26;
+  pointer-events: none;
+  user-select: none;
+  z-index: 9;
+}
+/* 오렌지 커버 슬라이드 — 붉은 도장이 묻히므로 흰색 인장으로 */
+.slide.is-cover::after {
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect x='5' y='5' width='90' height='90' rx='16' fill='none' stroke='%23ffffff' stroke-width='6'/%3E%3Crect x='13' y='13' width='74' height='74' rx='10' fill='none' stroke='%23ffffff' stroke-width='1.5'/%3E%3Cg fill='%23ffffff' font-family='sans-serif' font-weight='800' font-size='30' text-anchor='middle'%3E%3Ctext x='50' y='36'%3E%EC%9D%B4%3C/text%3E%3Ctext x='50' y='63'%3E%EC%9D%BC%3C/text%3E%3Ctext x='50' y='90'%3E%EA%B7%9C%3C/text%3E%3C/g%3E%3C/svg%3E") no-repeat center / contain;
+  opacity: 0.34;
+}
