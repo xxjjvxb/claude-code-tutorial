@@ -18,7 +18,7 @@
     .hero__meta-label { color: var(--color-on-surface-muted); letter-spacing: 0.05em; font-size: 0.62rem; text-transform: uppercase; }
     .hero__meta-value { color: var(--color-on-surface); font-weight: 700; font-size: 0.72rem; }
 
-    .day-list { display: grid; grid-template-rows: repeat(5, 1fr); gap: 0.5rem; flex: 1; min-height: 0; }
+    .day-list { display: grid; grid-template-rows: repeat(6, 1fr); gap: 0.42rem; flex: 1; min-height: 0; }
     .day-card { display: grid; grid-template-columns: 5rem 1fr auto; gap: 0.9rem; align-items: stretch; background: var(--color-surface-elevated); border: 2px solid var(--color-outline-strong); border-radius: var(--rounded-md); padding: 0.55rem 1rem; text-decoration: none; color: var(--color-on-surface); transition: transform var(--motion-fast) var(--easing-standard), border-color var(--motion-fast), box-shadow var(--motion-fast); min-height: 0; overflow: hidden; }
     .day-card:hover { transform: translateY(-1px); border-color: var(--color-primary); box-shadow: var(--shadow-raised); }
     .day-card__num { display: flex; flex-direction: column; align-items: flex-start; gap: 0.1rem; border-right: 2px solid var(--color-outline); padding-right: 0.7rem; height: 100%; justify-content: center; }
@@ -80,39 +80,44 @@
       <p class="hero__caption">5일이 끝났을 때 "나 Claude Code 제대로 써봤다"고 말할 수 있는 수준까지.</p>
     </div>
     <div class="hero__meta">
-      <div class="hero__meta-row"><span class="hero__meta-label">기간</span><span class="hero__meta-value">5일 (월–금)</span></div>
-      <div class="hero__meta-row"><span class="hero__meta-label">시간</span><span class="hero__meta-value">09:00 — 17:00</span></div>
+      <div class="hero__meta-row"><span class="hero__meta-label">구성</span><span class="hero__meta-value">5개 파트 + 부록</span></div>
+      <div class="hero__meta-row"><span class="hero__meta-label">진도</span><span class="hero__meta-value">가능한 만큼 유연하게</span></div>
       <div class="hero__meta-row"><span class="hero__meta-label">인원</span><span class="hero__meta-value">10명 + TA 1명</span></div>
-      <div class="hero__meta-row"><span class="hero__meta-label">1–3일차</span><span class="hero__meta-value">314 슬라이드</span></div>
+      <div class="hero__meta-row"><span class="hero__meta-label">파트 1–3</span><span class="hero__meta-value">316 슬라이드</span></div>
     </div>
   </section>
 
   <div class="day-list">
     <a class="day-card" href="day-1/index.html">
-      <div class="day-card__num"><span class="day-card__num-label">DAY 01 · MON</span><span class="day-card__num-big">01</span><span class="day-card__num-date">2026.05.18</span></div>
+      <div class="day-card__num"><span class="day-card__num-label">PART 01</span><span class="day-card__num-big">01</span></div>
       <div class="day-card__body"><span class="day-card__keyword">입문</span><h2 class="day-card__title">Claude Code 시작부터 배포까지</h2><p class="day-card__desc">7챕터 — 이해 · 셋업 · 터미널·프롬프팅 · 자기소개 페이지 · Git+4대 문법 · 운영 감각·미션 · Vercel 배포.</p></div>
-      <div class="day-card__meta"><span class="day-card__meta-count">142</span><span class="day-card__meta-label">슬라이드</span><span class="day-card__meta-arrow">→</span></div>
+      <div class="day-card__meta"><span class="day-card__meta-count">145</span><span class="day-card__meta-label">슬라이드</span><span class="day-card__meta-arrow">→</span></div>
     </a>
     <a class="day-card" href="day-2/index.html">
-      <div class="day-card__num"><span class="day-card__num-label">DAY 02 · TUE</span><span class="day-card__num-big">02</span><span class="day-card__num-date">2026.05.19</span></div>
+      <div class="day-card__num"><span class="day-card__num-label">PART 02</span><span class="day-card__num-big">02</span></div>
       <div class="day-card__body"><span class="day-card__keyword">협업</span><h2 class="day-card__title">Plan · Hooks · CLAUDE.md · 데이터 · 디자인 · 로그인</h2><p class="day-card__desc">6챕터 — 공개 API 데이터 페이지+Plan Mode · Hooks 휴대폰 알림+텔레그램 원격 · CLAUDE.md 길들이기 · 데이터와 AI: 회귀로 숨은 함수 찾기 · Claude Design 프로토타입 · 구글 OAuth 로그인+배포.</p></div>
-      <div class="day-card__meta"><span class="day-card__meta-count">116</span><span class="day-card__meta-label">슬라이드</span><span class="day-card__meta-arrow">→</span></div>
+      <div class="day-card__meta"><span class="day-card__meta-count">115</span><span class="day-card__meta-label">슬라이드</span><span class="day-card__meta-arrow">→</span></div>
     </a>
     <a class="day-card" href="day-3/index.html">
-      <div class="day-card__num"><span class="day-card__num-label">DAY 03 · WED</span><span class="day-card__num-big">03</span><span class="day-card__num-date">2026.05.20</span></div>
-      <div class="day-card__body"><span class="day-card__keyword">확장</span><h2 class="day-card__title">도구로 넓히고, 진짜 앱을 만든다</h2><p class="day-card__desc">4챕터 — 헤드리스+커스텀 슬래시 · 데이터베이스·서브에이전트로 나만의 메모장 제작(GitHub·Supabase·구글 로그인·Vercel) · MCP 브라우저 크롤링 · 스킬 문서 제작.</p></div>
-      <div class="day-card__meta"><span class="day-card__meta-count">62</span><span class="day-card__meta-label">슬라이드</span><span class="day-card__meta-arrow">→</span></div>
+      <div class="day-card__num"><span class="day-card__num-label">PART 03</span><span class="day-card__num-big">03</span></div>
+      <div class="day-card__body"><span class="day-card__keyword">확장</span><h2 class="day-card__title">도구로 넓히고, 진짜 앱을 만든다</h2><p class="day-card__desc">4챕터 — 커스텀 슬래시 · 데이터베이스·서브에이전트로 나만의 메모장 제작(GitHub·Supabase·구글 로그인·Vercel) · MCP 브라우저 크롤링 · 스킬 문서 제작.</p></div>
+      <div class="day-card__meta"><span class="day-card__meta-count">56</span><span class="day-card__meta-label">슬라이드</span><span class="day-card__meta-arrow">→</span></div>
     </a>
     <a class="day-card" href="day-4/index.html">
-      <div class="day-card__num"><span class="day-card__num-label">DAY 04 · THU</span><span class="day-card__num-big">04</span><span class="day-card__num-date">2026.05.21</span></div>
-      <div class="day-card__body"><span class="day-card__keyword">응용</span><h2 class="day-card__title">데스크톱 도구 + 미니프로젝트</h2><p class="day-card__desc">오전 — PySide + PyInstaller로 내 PC에서 도는 진짜 프로그램(.exe). 오후 — 4일간 익힌 모든 도구로 미니프로젝트 시작.</p></div>
+      <div class="day-card__num"><span class="day-card__num-label">PART 04</span><span class="day-card__num-big">04</span></div>
+      <div class="day-card__body"><span class="day-card__keyword">응용</span><h2 class="day-card__title">데스크톱 도구 + 미니프로젝트</h2><p class="day-card__desc">전반 — PySide + PyInstaller로 내 PC에서 도는 진짜 프로그램(.exe). 후반 — 그동안 익힌 모든 도구로 미니프로젝트 시작.</p></div>
       <div class="day-card__meta"><span class="day-card__meta-count">17</span><span class="day-card__meta-label">슬라이드</span><span class="day-card__meta-arrow">→</span></div>
     </a>
     <div class="day-card day-card--wip">
-      <div class="day-card__num"><span class="day-card__num-label">DAY 05 · FRI</span><span class="day-card__num-big">05</span><span class="day-card__num-date">2026.05.22</span></div>
-      <div class="day-card__body"><span class="day-card__keyword">수정 중</span><h2 class="day-card__title">미니프로젝트 빌드 + 시연 + 회고</h2><p class="day-card__desc">4단계 복습 · design.md · 발표자 노트 · 1인 4분 발표 × 10명 + 5일 회고 → 다음 주 월요일 첫 명령.</p></div>
+      <div class="day-card__num"><span class="day-card__num-label">PART 05</span><span class="day-card__num-big">05</span></div>
+      <div class="day-card__body"><span class="day-card__keyword">수정 중</span><h2 class="day-card__title">미니프로젝트 빌드 + 시연 + 회고</h2><p class="day-card__desc">4단계 복습 · design.md · 발표자 노트 · 1인 4분 발표 × 10명 + 회고 → 다음 첫 명령.</p></div>
       <div class="day-card__meta"><span class="day-card__meta-wip">준비 중</span></div>
     </div>
+    <a class="day-card" href="appendix/headless.html">
+      <div class="day-card__num"><span class="day-card__num-label">APPENDIX</span><span class="day-card__num-big">A</span></div>
+      <div class="day-card__body"><span class="day-card__keyword">부록 · 선택</span><h2 class="day-card__title">헤드리스 자동화 (claude -p)</h2><p class="day-card__desc">대화 없이 명령 한 줄로 도는 claude -p를 <span class="os-win">작업 스케줄러</span><span class="os-mac">launchd · cron</span>에 걸어 사람 없이 자동 실행 — 본문에서 분리한 선택 심화.</p></div>
+      <div class="day-card__meta"><span class="day-card__meta-count">7</span><span class="day-card__meta-label">슬라이드</span><span class="day-card__meta-arrow">→</span></div>
+    </a>
   </div>
 </main>
 
