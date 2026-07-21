@@ -1,122 +1,130 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="ko">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Claude Code 5일 완주 — 전체 강의</title>
+  <title>클로드코드 실습으로 배우는 바이브코딩 — 전체 목차</title>
   <link rel="stylesheet" href="../styles/tokens.css">
   <link rel="stylesheet" href="../styles/deck.css">
   <link rel="stylesheet" href="../styles/_os-toggle.css">
   <script defer src="../scripts/os-toggle.js"></script>
   <style>
-    .hero { display: grid; grid-template-columns: 1.3fr 1fr; gap: 1rem; align-items: end; }
+    .hero { display: grid; grid-template-columns: 1.3fr 1fr; gap: 1rem; align-items: end; margin-bottom: 0.6rem; }
     .hero__brand { font-size: 0.7rem; letter-spacing: 0.18em; text-transform: uppercase; font-weight: 700; color: var(--color-primary-strong); margin-bottom: 0.3rem; }
-    .hero__title { font-size: 1.9rem; font-weight: 700; line-height: 1.1; letter-spacing: -0.03em; margin: 0 0 0.4rem 0; color: var(--color-on-surface); }
-    .hero__caption { font-size: 0.78rem; line-height: 1.5; color: var(--color-on-surface-muted); margin: 0; max-width: 36rem; }
-    .hero__meta { display: flex; flex-direction: column; gap: 0.3rem; font-family: var(--font-mono); font-size: 0.7rem; color: var(--color-on-surface-muted); padding: 0.7rem 0.9rem; background: var(--color-surface-elevated); border: 2px solid var(--color-outline-strong); border-radius: var(--rounded-md); }
+    .hero__title { font-size: 1.6rem; font-weight: 700; line-height: 1.1; letter-spacing: -0.03em; margin: 0 0 0.3rem 0; color: var(--color-on-surface); }
+    .hero__caption { font-size: 0.74rem; line-height: 1.5; color: var(--color-on-surface-muted); margin: 0; max-width: 36rem; }
+    .hero__meta { display: flex; flex-direction: column; gap: 0.25rem; font-family: var(--font-mono); font-size: 0.7rem; color: var(--color-on-surface-muted); padding: 0.6rem 0.9rem; background: var(--color-surface-elevated); border: 2px solid var(--color-outline-strong); border-radius: var(--rounded-md); }
     .hero__meta-row { display: flex; justify-content: space-between; align-items: baseline; gap: 0.8rem; }
-    .hero__meta-label { color: var(--color-on-surface-muted); letter-spacing: 0.05em; font-size: 0.62rem; text-transform: uppercase; }
-    .hero__meta-value { color: var(--color-on-surface); font-weight: 700; font-size: 0.72rem; }
+    .hero__meta-label { color: var(--color-on-surface-muted); letter-spacing: 0.05em; font-size: 0.6rem; text-transform: uppercase; }
+    .hero__meta-value { color: var(--color-on-surface); font-weight: 700; font-size: 0.68rem; }
 
-    .day-list { display: grid; grid-template-rows: repeat(6, 1fr); gap: 0.42rem; flex: 1; min-height: 0; }
-    .day-card { display: grid; grid-template-columns: 5rem 1fr auto; gap: 0.9rem; align-items: stretch; background: var(--color-surface-elevated); border: 2px solid var(--color-outline-strong); border-radius: var(--rounded-md); padding: 0.55rem 1rem; text-decoration: none; color: var(--color-on-surface); transition: transform var(--motion-fast) var(--easing-standard), border-color var(--motion-fast), box-shadow var(--motion-fast); min-height: 0; overflow: hidden; }
+    .day-list { display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: repeat(6, 1fr); grid-auto-flow: column; gap: 0.4rem; flex: 1; min-height: 0; }
+    .day-card { display: grid; grid-template-columns: 3.4rem 1fr auto; gap: 0.7rem; align-items: stretch; background: var(--color-surface-elevated); border: 2px solid var(--color-outline-strong); border-radius: var(--rounded-md); padding: 0.4rem 0.8rem; text-decoration: none; color: var(--color-on-surface); transition: transform var(--motion-fast) var(--easing-standard), border-color var(--motion-fast), box-shadow var(--motion-fast); min-height: 0; overflow: hidden; }
     .day-card:hover { transform: translateY(-1px); border-color: var(--color-primary); box-shadow: var(--shadow-raised); }
-    .day-card__num { display: flex; flex-direction: column; align-items: flex-start; gap: 0.1rem; border-right: 2px solid var(--color-outline); padding-right: 0.7rem; height: 100%; justify-content: center; }
-    .day-card__num-label { font-family: var(--font-mono); font-size: 0.58rem; letter-spacing: 0.08em; color: var(--color-primary-strong); font-weight: 700; text-transform: uppercase; }
-    .day-card__num-big { font-family: var(--font-mono); font-size: 1.5rem; line-height: 1; font-weight: 700; color: var(--color-on-surface); letter-spacing: -0.02em; }
-    .day-card__num-date { font-family: var(--font-mono); font-size: 0.56rem; color: var(--color-on-surface-muted); letter-spacing: 0.02em; white-space: nowrap; }
+    .day-card__num { display: flex; flex-direction: column; align-items: flex-start; gap: 0.05rem; border-right: 2px solid var(--color-outline); padding-right: 0.55rem; height: 100%; justify-content: center; }
+    .day-card__num-label { font-family: var(--font-mono); font-size: 0.5rem; letter-spacing: 0.06em; color: var(--color-primary-strong); font-weight: 700; text-transform: uppercase; white-space: nowrap; }
+    .day-card__num-big { font-family: var(--font-mono); font-size: 1.15rem; line-height: 1; font-weight: 700; color: var(--color-on-surface); letter-spacing: -0.02em; }
 
-    /* body — keyword는 카드 상단 라벨로 절대 배치. 기본은 title만, hover 시 desc로 교차 */
-    .day-card__body { position: relative; min-width: 0; height: 100%; padding-top: 0.9rem; display: flex; flex-direction: column; justify-content: center; }
-    .day-card__keyword { position: absolute; top: 0; left: 0; font-size: 0.58rem; letter-spacing: 0.08em; font-weight: 700; color: var(--color-primary-strong); text-transform: uppercase; line-height: 1; margin: 0; }
-    .day-card__title, .day-card__desc {
-      margin: 0;
-      transition: opacity 0.18s ease;
-    }
-    .day-card__title { font-size: 1rem; font-weight: 700; letter-spacing: -0.025em; line-height: 1.2; }
+    .day-card__body { position: relative; min-width: 0; height: 100%; padding-top: 0.72rem; display: flex; flex-direction: column; justify-content: center; }
+    .day-card__keyword { position: absolute; top: 0.1rem; left: 0; font-size: 0.52rem; letter-spacing: 0.08em; font-weight: 700; color: var(--color-primary-strong); text-transform: uppercase; line-height: 1; margin: 0; }
+    .day-card__title, .day-card__desc { margin: 0; transition: opacity 0.18s ease; }
+    .day-card__title { font-size: 0.82rem; font-weight: 700; letter-spacing: -0.02em; line-height: 1.2; }
     .day-card__desc {
-      position: absolute;
-      left: 0; right: 0;
-      top: 0.9rem;
-      bottom: 0;
-      font-size: 0.72rem;
-      line-height: 1.4;
-      color: var(--color-on-surface-muted);
-      opacity: 0;
-      pointer-events: none;
-      display: flex;
-      align-items: center;
-      overflow: hidden;
+      position: absolute; left: 0; right: 0; top: 0.72rem; bottom: 0;
+      font-size: 0.6rem; line-height: 1.35; color: var(--color-on-surface-muted);
+      opacity: 0; pointer-events: none; display: flex; align-items: center; overflow: hidden;
     }
     .day-card:hover .day-card__title { opacity: 0; }
     .day-card:hover .day-card__desc { opacity: 1; }
-    .day-card__meta { display: flex; flex-direction: column; align-items: flex-end; gap: 0.15rem; font-family: var(--font-mono); white-space: nowrap; }
-    .day-card__meta-count { font-size: 0.95rem; font-weight: 700; color: var(--color-primary-strong); }
-    .day-card__meta-label { font-size: 0.6rem; color: var(--color-on-surface-muted); letter-spacing: 0.05em; }
-    .day-card__meta-arrow { font-size: 1.2rem; color: var(--color-primary-strong); }
-
-    /* 수정 중 — 클릭 불가 카드 */
-    .day-card--wip { opacity: 0.5; cursor: not-allowed; }
-    .day-card--wip:hover { transform: none; border-color: var(--color-outline-strong); box-shadow: none; }
-    .day-card--wip:hover .day-card__title { opacity: 1; }
-    .day-card--wip:hover .day-card__desc { opacity: 0; }
-    .day-card__meta-wip { font-family: var(--font-mono); font-size: 0.72rem; font-weight: 700; color: var(--color-on-surface-muted); letter-spacing: 0.04em; }
+    .day-card__meta { display: flex; flex-direction: column; align-items: flex-end; justify-content: center; gap: 0.08rem; font-family: var(--font-mono); white-space: nowrap; }
+    .day-card__meta-count { font-size: 0.8rem; font-weight: 700; color: var(--color-primary-strong); }
+    .day-card__meta-label { font-size: 0.52rem; color: var(--color-on-surface-muted); letter-spacing: 0.05em; }
   </style>
 </head>
 <body>
 
 <main class="index-stage">
   <header class="deck-chrome">
-    <span class="deck-chrome__brand">CLAUDE CODE · 5D</span>
+    <span class="deck-chrome__brand">바이브코딩 · CLAUDE CODE</span>
     <span class="deck-chrome__divider">·</span>
-    <span class="deck-chrome__day">전체 강의 인덱스</span>
+    <span class="deck-chrome__day">전체 목차</span>
     <span class="deck-chrome__spacer"></span>
   </header>
 
   <section class="hero">
     <div>
-      <div class="hero__brand">CLAUDE CODE · 5일 완주 · 전체 강의</div>
+      <div class="hero__brand">클로드코드 실습으로 배우는 바이브코딩</div>
       <h1 class="hero__title">AI에게 일을 시켜서<br>진짜 동작하는 프로그램을 만든다.</h1>
-      <p class="hero__caption">5일이 끝났을 때 "나 Claude Code 제대로 써봤다"고 말할 수 있는 수준까지.</p>
+      <p class="hero__caption">결과물 하나씩 — 홈페이지 · 배포 · API 페이지 · 메모장 앱 · 자동화 · 문서 · 데스크톱 프로그램. 진도는 가능한 만큼, 순서대로.</p>
     </div>
     <div class="hero__meta">
-      <div class="hero__meta-row"><span class="hero__meta-label">구성</span><span class="hero__meta-value">5개 파트 + 부록</span></div>
+      <div class="hero__meta-row"><span class="hero__meta-label">구성</span><span class="hero__meta-value">11챕터 + 부록</span></div>
       <div class="hero__meta-row"><span class="hero__meta-label">진도</span><span class="hero__meta-value">가능한 만큼 유연하게</span></div>
-      <div class="hero__meta-row"><span class="hero__meta-label">인원</span><span class="hero__meta-value">10명 + TA 1명</span></div>
-      <div class="hero__meta-row"><span class="hero__meta-label">파트 1–3</span><span class="hero__meta-value">316 슬라이드</span></div>
+      <div class="hero__meta-row"><span class="hero__meta-label">방식</span><span class="hero__meta-value">결과물 중심 실습</span></div>
+      <div class="hero__meta-row"><span class="hero__meta-label">슬라이드</span><span class="hero__meta-value">총 405장</span></div>
     </div>
   </section>
 
   <div class="day-list">
-    <a class="day-card" href="day-1/index.html">
-      <div class="day-card__num"><span class="day-card__num-label">PART 01</span><span class="day-card__num-big">01</span></div>
-      <div class="day-card__body"><span class="day-card__keyword">입문</span><h2 class="day-card__title">Claude Code 시작부터 배포까지</h2><p class="day-card__desc">7챕터 — 이해 · 셋업 · 터미널·프롬프팅 · 자기소개 페이지 · Git+4대 문법 · 운영 감각·미션 · Vercel 배포.</p></div>
-      <div class="day-card__meta"><span class="day-card__meta-count">145</span><span class="day-card__meta-label">슬라이드</span><span class="day-card__meta-arrow">→</span></div>
+    <a class="day-card" href="ch01-setup/index.html">
+      <div class="day-card__num"><span class="day-card__num-label">CH 01</span><span class="day-card__num-big">01</span></div>
+      <div class="day-card__body"><span class="day-card__keyword">세팅</span><h2 class="day-card__title">바이브코딩 세팅</h2><p class="day-card__desc">Claude Code 이해 · 설치 · 터미널·프롬프팅. 도구: VS Code · Git · Claude Code.</p></div>
+      <div class="day-card__meta"><span class="day-card__meta-count">58</span><span class="day-card__meta-label">슬라이드</span></div>
     </a>
-    <a class="day-card" href="day-2/index.html">
-      <div class="day-card__num"><span class="day-card__num-label">PART 02</span><span class="day-card__num-big">02</span></div>
-      <div class="day-card__body"><span class="day-card__keyword">협업</span><h2 class="day-card__title">Plan · Hooks · CLAUDE.md · 데이터 · 디자인 · 로그인</h2><p class="day-card__desc">6챕터 — 공개 API 데이터 페이지+Plan Mode · Hooks 휴대폰 알림+텔레그램 원격 · CLAUDE.md 길들이기 · 데이터와 AI: 회귀로 숨은 함수 찾기 · Claude Design 프로토타입 · 구글 OAuth 로그인+배포.</p></div>
-      <div class="day-card__meta"><span class="day-card__meta-count">115</span><span class="day-card__meta-label">슬라이드</span><span class="day-card__meta-arrow">→</span></div>
+    <a class="day-card" href="ch02-homepage/index.html">
+      <div class="day-card__num"><span class="day-card__num-label">CH 02</span><span class="day-card__num-big">02</span></div>
+      <div class="day-card__body"><span class="day-card__keyword">첫 결과물</span><h2 class="day-card__title">자기 홈페이지 만들기</h2><p class="day-card__desc">자기소개 페이지 + 4대 문법(/ @ ! #) + 모드·권한·비용 운영 감각. 도구: Claude Code · VS Code.</p></div>
+      <div class="day-card__meta"><span class="day-card__meta-count">63</span><span class="day-card__meta-label">슬라이드</span></div>
     </a>
-    <a class="day-card" href="day-3/index.html">
-      <div class="day-card__num"><span class="day-card__num-label">PART 03</span><span class="day-card__num-big">03</span></div>
-      <div class="day-card__body"><span class="day-card__keyword">확장</span><h2 class="day-card__title">도구로 넓히고, 진짜 앱을 만든다</h2><p class="day-card__desc">4챕터 — 커스텀 슬래시 · 데이터베이스·서브에이전트로 나만의 메모장 제작(GitHub·Supabase·구글 로그인·Vercel) · MCP 브라우저 크롤링 · 스킬 문서 제작.</p></div>
-      <div class="day-card__meta"><span class="day-card__meta-count">56</span><span class="day-card__meta-label">슬라이드</span><span class="day-card__meta-arrow">→</span></div>
+    <a class="day-card" href="ch03-deploy/index.html">
+      <div class="day-card__num"><span class="day-card__num-label">CH 03</span><span class="day-card__num-big">03</span></div>
+      <div class="day-card__body"><span class="day-card__keyword">배포</span><h2 class="day-card__title">홈페이지 외부 배포</h2><p class="day-card__desc">Git 안전벨트 → GitHub에 올려 → Vercel 자동 배포로 실주소 발급. 도구: Git · GitHub · Vercel.</p></div>
+      <div class="day-card__meta"><span class="day-card__meta-count">28</span><span class="day-card__meta-label">슬라이드</span></div>
     </a>
-    <a class="day-card" href="day-4/index.html">
-      <div class="day-card__num"><span class="day-card__num-label">PART 04</span><span class="day-card__num-big">04</span></div>
-      <div class="day-card__body"><span class="day-card__keyword">응용</span><h2 class="day-card__title">데스크톱 도구 + 미니프로젝트</h2><p class="day-card__desc">전반 — PySide + PyInstaller로 내 PC에서 도는 진짜 프로그램(.exe). 후반 — 그동안 익힌 모든 도구로 미니프로젝트 시작.</p></div>
-      <div class="day-card__meta"><span class="day-card__meta-count">17</span><span class="day-card__meta-label">슬라이드</span><span class="day-card__meta-arrow">→</span></div>
+    <a class="day-card" href="ch04-taming/index.html">
+      <div class="day-card__num"><span class="day-card__num-label">CH 04</span><span class="day-card__num-big">04</span></div>
+      <div class="day-card__body"><span class="day-card__keyword">길들이기</span><h2 class="day-card__title">Claude 길들이기</h2><p class="day-card__desc">내 규칙(CLAUDE.md)과 내 명령(커스텀 슬래시)으로 Claude를 내 방식대로. 도구: CLAUDE.md · 슬래시 커맨드.</p></div>
+      <div class="day-card__meta"><span class="day-card__meta-count">32</span><span class="day-card__meta-label">슬라이드</span></div>
     </a>
-    <div class="day-card day-card--wip">
-      <div class="day-card__num"><span class="day-card__num-label">PART 05</span><span class="day-card__num-big">05</span></div>
-      <div class="day-card__body"><span class="day-card__keyword">수정 중</span><h2 class="day-card__title">미니프로젝트 빌드 + 시연 + 회고</h2><p class="day-card__desc">4단계 복습 · design.md · 발표자 노트 · 1인 4분 발표 × 10명 + 회고 → 다음 첫 명령.</p></div>
-      <div class="day-card__meta"><span class="day-card__meta-wip">준비 중</span></div>
-    </div>
-    <a class="day-card" href="appendix/headless.html">
-      <div class="day-card__num"><span class="day-card__num-label">APPENDIX</span><span class="day-card__num-big">A</span></div>
-      <div class="day-card__body"><span class="day-card__keyword">부록 · 선택</span><h2 class="day-card__title">헤드리스 자동화 (claude -p)</h2><p class="day-card__desc">대화 없이 명령 한 줄로 도는 claude -p를 <span class="os-win">작업 스케줄러</span><span class="os-mac">launchd · cron</span>에 걸어 사람 없이 자동 실행 — 본문에서 분리한 선택 심화.</p></div>
-      <div class="day-card__meta"><span class="day-card__meta-count">7</span><span class="day-card__meta-label">슬라이드</span><span class="day-card__meta-arrow">→</span></div>
+    <a class="day-card" href="ch05-api/index.html">
+      <div class="day-card__num"><span class="day-card__num-label">CH 05</span><span class="day-card__num-big">05</span></div>
+      <div class="day-card__body"><span class="day-card__keyword">데이터</span><h2 class="day-card__title">API 이해와 활용</h2><p class="day-card__desc">공개 API로 실데이터 페이지 제작·배포 + Plan Mode 깊게. 도구: 공개 API · Plan Mode · Vercel.</p></div>
+      <div class="day-card__meta"><span class="day-card__meta-count">16</span><span class="day-card__meta-label">슬라이드</span></div>
+    </a>
+    <a class="day-card" href="ch06-database/index.html">
+      <div class="day-card__num"><span class="day-card__num-label">CH 06</span><span class="day-card__num-big">06</span></div>
+      <div class="day-card__body"><span class="day-card__keyword">데이터</span><h2 class="day-card__title">데이터베이스 이해</h2><p class="day-card__desc">창고·CRUD·SQL/NoSQL 개념 + 우리가 쓸 Supabase. 도구: Supabase (PostgreSQL).</p></div>
+      <div class="day-card__meta"><span class="day-card__meta-count">7</span><span class="day-card__meta-label">슬라이드</span></div>
+    </a>
+    <a class="day-card" href="ch07-interactive/index.html">
+      <div class="day-card__num"><span class="day-card__num-label">CH 07</span><span class="day-card__num-big">07</span></div>
+      <div class="day-card__body"><span class="day-card__keyword">진짜 앱</span><h2 class="day-card__title">상호작용 페이지</h2><p class="day-card__desc">구글 로그인 + 서브에이전트 셋이 만드는 나만의 메모장. 도구: Google OAuth · Supabase · 서브에이전트 · GitHub · Vercel.</p></div>
+      <div class="day-card__meta"><span class="day-card__meta-count">33</span><span class="day-card__meta-label">슬라이드</span></div>
+    </a>
+    <a class="day-card" href="ch08-automation/index.html">
+      <div class="day-card__num"><span class="day-card__num-label">CH 08</span><span class="day-card__num-big">08</span></div>
+      <div class="day-card__body"><span class="day-card__keyword">자동화</span><h2 class="day-card__title">알림과 자동화</h2><p class="day-card__desc">응답 끝나면 폰 알림 + 텔레그램 원격 + 브라우저 크롤링. 도구: Hooks · 텔레그램(BotFather) · MCP · Playwright.</p></div>
+      <div class="day-card__meta"><span class="day-card__meta-count">29</span><span class="day-card__meta-label">슬라이드</span></div>
+    </a>
+    <a class="day-card" href="ch09-docs-design/index.html">
+      <div class="day-card__num"><span class="day-card__num-label">CH 09</span><span class="day-card__num-big">09</span></div>
+      <div class="day-card__body"><span class="day-card__keyword">문서</span><h2 class="day-card__title">문서와 디자인</h2><p class="day-card__desc">코드 없이 진짜 PPT·PDF + 디자인 프로토타입. 도구: 스킬(PPTX·PDF) · DESIGN.md · Claude Design.</p></div>
+      <div class="day-card__meta"><span class="day-card__meta-count">25</span><span class="day-card__meta-label">슬라이드</span></div>
+    </a>
+    <a class="day-card" href="ch10-desktop/index.html">
+      <div class="day-card__num"><span class="day-card__num-label">CH 10</span><span class="day-card__num-big">10</span></div>
+      <div class="day-card__body"><span class="day-card__keyword">데스크톱</span><h2 class="day-card__title">윈도우/맥 프로그램</h2><p class="day-card__desc">내 PC에서 도는 실행 파일(.exe/.app) 제작. 도구: Python · PySide6 · PyInstaller.</p></div>
+      <div class="day-card__meta"><span class="day-card__meta-count">17</span><span class="day-card__meta-label">슬라이드</span></div>
+    </a>
+    <a class="day-card" href="ch11-mini-project/index.html">
+      <div class="day-card__num"><span class="day-card__num-label">CH 11</span><span class="day-card__num-big">11</span></div>
+      <div class="day-card__body"><span class="day-card__keyword">종합</span><h2 class="day-card__title">미니프로젝트</h2><p class="day-card__desc">모든 도구로 각자의 작품 — 워크플로우·빌드·발표·회고. 도구: 전부.</p></div>
+      <div class="day-card__meta"><span class="day-card__meta-count">59</span><span class="day-card__meta-label">슬라이드</span></div>
+    </a>
+    <a class="day-card" href="appendix/index.html">
+      <div class="day-card__num"><span class="day-card__num-label">부록</span><span class="day-card__num-big">A</span></div>
+      <div class="day-card__body"><span class="day-card__keyword">선택 심화</span><h2 class="day-card__title">헤드리스 · 데이터와 AI</h2><p class="day-card__desc">claude -p 스케줄 자동화 + 회귀로 숨은 함수 찾기. 도구: 작업 스케줄러/cron · Python.</p></div>
+      <div class="day-card__meta"><span class="day-card__meta-count">38</span><span class="day-card__meta-label">슬라이드</span></div>
     </a>
   </div>
 </main>

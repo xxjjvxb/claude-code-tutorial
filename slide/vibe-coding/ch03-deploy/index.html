@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>3장 · 홈페이지 외부 배포</title>
+  <link rel="stylesheet" href="../../styles/tokens.css">
+  <link rel="stylesheet" href="../../styles/deck.css">
+  <link rel="stylesheet" href="../../styles/_os-toggle.css">
+  <script defer src="../../scripts/os-toggle.js"></script>
+  <style>
+    .day-header { display: flex; flex-direction: column; gap: 0.15rem; flex-shrink: 0; }
+    .day-header__brand { font-size: 0.62rem; letter-spacing: 0.15em; text-transform: uppercase; font-weight: 700; color: var(--color-primary-strong); }
+    .day-header__title { font-size: 1.5rem; font-weight: 700; line-height: 1.1; letter-spacing: -0.025em; margin: 0.05rem 0 0.2rem 0; color: var(--color-on-surface); }
+    .day-header__caption { font-size: 0.68rem; line-height: 1.45; color: var(--color-on-surface-muted); margin: 0; max-width: 42rem; }
+
+    .block-grid { display: grid; grid-template-columns: repeat(2, 1fr); grid-auto-rows: 1fr; gap: 0.6rem; flex: 1; min-height: 0; }
+    .block-card { background: var(--color-surface-elevated); border: 2px solid var(--color-outline-strong); border-radius: var(--rounded-md); padding: 0.85rem 0.95rem; text-decoration: none; color: var(--color-on-surface); display: flex; flex-direction: column; gap: 0.3rem; transition: transform var(--motion-fast) var(--easing-standard), border-color var(--motion-fast), box-shadow var(--motion-fast); min-height: 0; overflow: hidden; }
+    .block-card:hover { transform: translateY(-2px); border-color: var(--color-primary); box-shadow: var(--shadow-raised); }
+    .block-card__time { font-family: var(--font-mono); font-size: 0.62rem; color: var(--color-primary-strong); font-weight: 700; letter-spacing: 0.06em; }
+    .block-card__title { font-size: 1rem; font-weight: 700; line-height: 1.25; letter-spacing: -0.02em; margin: 0; }
+    .block-card__desc { font-size: 0.68rem; line-height: 1.5; color: var(--color-on-surface-muted); margin: 0.1rem 0 0; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 6; -webkit-box-orient: vertical; }
+    .block-card__count { margin-top: auto; font-family: var(--font-mono); font-size: 0.64rem; color: var(--color-primary-strong); font-weight: 700; }
+  </style>
+</head>
+<body>
+
+<main class="index-stage">
+  <header class="deck-chrome">
+    <span class="deck-chrome__brand">바이브코딩 · CLAUDE CODE</span>
+    <span class="deck-chrome__divider">·</span>
+    <span class="deck-chrome__day">3장 · 목차</span>
+    <span class="deck-chrome__spacer"></span>
+  </header>
+
+  <header class="day-header">
+    <div class="day-header__brand">클로드코드 실습으로 배우는 바이브코딩 · 3장</div>
+    <h1 class="day-header__title">3장 — 홈페이지 외부 배포</h1>
+    <p class="day-header__caption">내 컴퓨터에만 있던 홈페이지가 진짜 인터넷 주소를 갖습니다. Git 안전벨트를 채우고 → GitHub에 올려 → Vercel로 자동 배포. 도구: Git · GitHub · Vercel.</p>
+  </header>
+
+  <div class="block-grid">
+    <a class="block-card" href="1-git-basics.html">
+      <div class="block-card__time">DECK 1</div>
+      <h2 class="block-card__title">Git 기초</h2>
+      <p class="block-card__desc">코드의 시간여행 장치 Git — AI가 파일을 고치는 시대의 안전벨트. init·status·add·commit·restore 다섯 명령, GitHub 가입, "커밋해줘" 한마디로 AI에게 git 시키기까지.</p>
+      <div class="block-card__count">18 슬라이드 →</div>
+    </a>
+    <a class="block-card" href="2-deploy.html">
+      <div class="block-card__time">DECK 2</div>
+      <h2 class="block-card__title">Vercel 배포</h2>
+      <p class="block-card__desc">GitHub 저장소를 Vercel에 연결(Import)하면 — push할 때마다 자동 재배포. 홈페이지에 실주소가 생기고, 수정 → push → 반영 사이클을 체험합니다.</p>
+      <div class="block-card__count">10 슬라이드 →</div>
+    </a>
+  </div>
+</main>
+
+<script src="../../scripts/index-nav.js"></script>
+</body>
+</html>

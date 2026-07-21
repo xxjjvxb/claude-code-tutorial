@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>11장 · 미니프로젝트</title>
+  <link rel="stylesheet" href="../../styles/tokens.css">
+  <link rel="stylesheet" href="../../styles/deck.css">
+  <link rel="stylesheet" href="../../styles/_os-toggle.css">
+  <script defer src="../../scripts/os-toggle.js"></script>
+  <style>
+    .day-header { display: flex; flex-direction: column; gap: 0.15rem; flex-shrink: 0; }
+    .day-header__brand { font-size: 0.62rem; letter-spacing: 0.15em; text-transform: uppercase; font-weight: 700; color: var(--color-primary-strong); }
+    .day-header__title { font-size: 1.5rem; font-weight: 700; line-height: 1.1; letter-spacing: -0.025em; margin: 0.05rem 0 0.2rem 0; color: var(--color-on-surface); }
+    .day-header__caption { font-size: 0.68rem; line-height: 1.45; color: var(--color-on-surface-muted); margin: 0; max-width: 42rem; }
+
+    .block-grid { display: grid; grid-template-columns: repeat(2, 1fr); grid-auto-rows: 1fr; gap: 0.6rem; flex: 1; min-height: 0; }
+    .block-card { background: var(--color-surface-elevated); border: 2px solid var(--color-outline-strong); border-radius: var(--rounded-md); padding: 0.85rem 0.95rem; text-decoration: none; color: var(--color-on-surface); display: flex; flex-direction: column; gap: 0.3rem; transition: transform var(--motion-fast) var(--easing-standard), border-color var(--motion-fast), box-shadow var(--motion-fast); min-height: 0; overflow: hidden; }
+    .block-card:hover { transform: translateY(-2px); border-color: var(--color-primary); box-shadow: var(--shadow-raised); }
+    .block-card__time { font-family: var(--font-mono); font-size: 0.62rem; color: var(--color-primary-strong); font-weight: 700; letter-spacing: 0.06em; }
+    .block-card__title { font-size: 1rem; font-weight: 700; line-height: 1.25; letter-spacing: -0.02em; margin: 0; }
+    .block-card__desc { font-size: 0.68rem; line-height: 1.5; color: var(--color-on-surface-muted); margin: 0.1rem 0 0; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 6; -webkit-box-orient: vertical; }
+    .block-card__count { margin-top: auto; font-family: var(--font-mono); font-size: 0.64rem; color: var(--color-primary-strong); font-weight: 700; }
+  </style>
+</head>
+<body>
+
+<main class="index-stage">
+  <header class="deck-chrome">
+    <span class="deck-chrome__brand">바이브코딩 · CLAUDE CODE</span>
+    <span class="deck-chrome__divider">·</span>
+    <span class="deck-chrome__day">11장 · 목차</span>
+    <span class="deck-chrome__spacer"></span>
+  </header>
+
+  <header class="day-header">
+    <div class="day-header__brand">클로드코드 실습으로 배우는 바이브코딩 · 11장</div>
+    <h1 class="day-header__title">11장 — 미니프로젝트</h1>
+    <p class="day-header__caption">지금까지의 모든 도구로 각자의 작품을 완성하고 — 발표와 회고로 마무리. 도구: 전부 (Plan Mode · design.md · git · 스킬 · /usage …).</p>
+  </header>
+
+  <div class="block-grid">
+    <a class="block-card" href="1-project-theory.html">
+      <div class="block-card__time">DECK 1</div>
+      <h2 class="block-card__title">워크플로우 이론</h2>
+      <p class="block-card__desc">탐색 → 계획 → 실행 → 검증 루프("검증만은 사람이"), git 복구 원라이너 3개, 3단계 디버깅, design.md — 그리고 발표 준비 방법.</p>
+      <div class="block-card__count">19 슬라이드 →</div>
+    </a>
+    <a class="block-card" href="2-project-build.html">
+      <div class="block-card__time">DECK 2</div>
+      <h2 class="block-card__title">빌드 + 디자인</h2>
+      <p class="block-card__desc">남은 기능을 Plan Mode 사이클로 완성하고 — 내 design.md(15줄 이내)를 만들어 @design.md로 적용. 발표용 PPT v2와 4분 대본 자동 생성까지.</p>
+      <div class="block-card__count">11 슬라이드 →</div>
+    </a>
+    <a class="block-card" href="3-workflow-faq.html">
+      <div class="block-card__time">DECK 3</div>
+      <h2 class="block-card__title">실전 패턴 + FAQ</h2>
+      <p class="block-card__desc">테스트 먼저 → 통과시키기, "정리해줘" 리팩토링, --continue 세션 복원, 비용·요금 감각, 자주 걸리는 함정 7+2 — 과정이 끝나도 혼자 쓸 수 있게.</p>
+      <div class="block-card__count">17 슬라이드 →</div>
+    </a>
+    <a class="block-card" href="4-demo-retro.html">
+      <div class="block-card__time">DECK 4</div>
+      <h2 class="block-card__title">발표 + 회고</h2>
+      <p class="block-card__desc">1인 4분 시연 — 완성도보다 시도가 점수. 시작할 때의 나와 지금의 나를 비교하는 회고, 그리고 다음에 바로 실행할 액션 3가지.</p>
+      <div class="block-card__count">12 슬라이드 →</div>
+    </a>
+  </div>
+</main>
+
+<script src="../../scripts/index-nav.js"></script>
+</body>
+</html>

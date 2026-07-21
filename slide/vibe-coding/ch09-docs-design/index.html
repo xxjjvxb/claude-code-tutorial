@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>9장 · 문서와 디자인</title>
+  <link rel="stylesheet" href="../../styles/tokens.css">
+  <link rel="stylesheet" href="../../styles/deck.css">
+  <link rel="stylesheet" href="../../styles/_os-toggle.css">
+  <script defer src="../../scripts/os-toggle.js"></script>
+  <style>
+    .day-header { display: flex; flex-direction: column; gap: 0.15rem; flex-shrink: 0; }
+    .day-header__brand { font-size: 0.62rem; letter-spacing: 0.15em; text-transform: uppercase; font-weight: 700; color: var(--color-primary-strong); }
+    .day-header__title { font-size: 1.5rem; font-weight: 700; line-height: 1.1; letter-spacing: -0.025em; margin: 0.05rem 0 0.2rem 0; color: var(--color-on-surface); }
+    .day-header__caption { font-size: 0.68rem; line-height: 1.45; color: var(--color-on-surface-muted); margin: 0; max-width: 42rem; }
+
+    .block-grid { display: grid; grid-template-columns: repeat(2, 1fr); grid-auto-rows: 1fr; gap: 0.6rem; flex: 1; min-height: 0; }
+    .block-card { background: var(--color-surface-elevated); border: 2px solid var(--color-outline-strong); border-radius: var(--rounded-md); padding: 0.85rem 0.95rem; text-decoration: none; color: var(--color-on-surface); display: flex; flex-direction: column; gap: 0.3rem; transition: transform var(--motion-fast) var(--easing-standard), border-color var(--motion-fast), box-shadow var(--motion-fast); min-height: 0; overflow: hidden; }
+    .block-card:hover { transform: translateY(-2px); border-color: var(--color-primary); box-shadow: var(--shadow-raised); }
+    .block-card__time { font-family: var(--font-mono); font-size: 0.62rem; color: var(--color-primary-strong); font-weight: 700; letter-spacing: 0.06em; }
+    .block-card__title { font-size: 1rem; font-weight: 700; line-height: 1.25; letter-spacing: -0.02em; margin: 0; }
+    .block-card__desc { font-size: 0.68rem; line-height: 1.5; color: var(--color-on-surface-muted); margin: 0.1rem 0 0; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 6; -webkit-box-orient: vertical; }
+    .block-card__count { margin-top: auto; font-family: var(--font-mono); font-size: 0.64rem; color: var(--color-primary-strong); font-weight: 700; }
+  </style>
+</head>
+<body>
+
+<main class="index-stage">
+  <header class="deck-chrome">
+    <span class="deck-chrome__brand">바이브코딩 · CLAUDE CODE</span>
+    <span class="deck-chrome__divider">·</span>
+    <span class="deck-chrome__day">9장 · 목차</span>
+    <span class="deck-chrome__spacer"></span>
+  </header>
+
+  <header class="day-header">
+    <div class="day-header__brand">클로드코드 실습으로 배우는 바이브코딩 · 9장</div>
+    <h1 class="day-header__title">9장 — 문서와 디자인</h1>
+    <p class="day-header__caption">코드 한 줄 없이 — 진짜 PPT·PDF 문서와 클릭되는 디자인 프로토타입을 만듭니다. 도구: 스킬(PPTX·DOCX·PDF) · DESIGN.md · Claude Design.</p>
+  </header>
+
+  <div class="block-grid">
+    <a class="block-card" href="1-skills.html">
+      <div class="block-card__time">DECK 1</div>
+      <h2 class="block-card__title">스킬 + DESIGN.md</h2>
+      <p class="block-card__desc">공식 문서 스킬을 /plugin 두 줄로 설치 — 2장 자기소개를 진짜 PPT·PDF로 변환. DESIGN.md 파일 하나로 웹·문서에 통일된 테마를 입히고, 도구 다이어트 원칙까지.</p>
+      <div class="block-card__count">13 슬라이드 →</div>
+    </a>
+    <a class="block-card" href="2-design-prototype.html">
+      <div class="block-card__time">DECK 2</div>
+      <h2 class="block-card__title">디자인 프로토타입</h2>
+      <p class="block-card__desc">Claude Design으로 아이디어를 몇 분 만에 클릭되는 프로토타입으로 — 랜딩 페이지·슬라이드·원페이저 9가지 주제 중 골라 반복 다듬기, 공유·내보내기까지.</p>
+      <div class="block-card__count">12 슬라이드 →</div>
+    </a>
+  </div>
+</main>
+
+<script src="../../scripts/index-nav.js"></script>
+</body>
+</html>

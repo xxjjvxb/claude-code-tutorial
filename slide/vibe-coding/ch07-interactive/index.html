@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>7장 · 상호작용 페이지</title>
+  <link rel="stylesheet" href="../../styles/tokens.css">
+  <link rel="stylesheet" href="../../styles/deck.css">
+  <link rel="stylesheet" href="../../styles/_os-toggle.css">
+  <script defer src="../../scripts/os-toggle.js"></script>
+  <style>
+    .day-header { display: flex; flex-direction: column; gap: 0.15rem; flex-shrink: 0; }
+    .day-header__brand { font-size: 0.62rem; letter-spacing: 0.15em; text-transform: uppercase; font-weight: 700; color: var(--color-primary-strong); }
+    .day-header__title { font-size: 1.5rem; font-weight: 700; line-height: 1.1; letter-spacing: -0.025em; margin: 0.05rem 0 0.2rem 0; color: var(--color-on-surface); }
+    .day-header__caption { font-size: 0.68rem; line-height: 1.45; color: var(--color-on-surface-muted); margin: 0; max-width: 42rem; }
+
+    .block-grid { display: grid; grid-template-columns: repeat(2, 1fr); grid-auto-rows: 1fr; gap: 0.6rem; flex: 1; min-height: 0; }
+    .block-card { background: var(--color-surface-elevated); border: 2px solid var(--color-outline-strong); border-radius: var(--rounded-md); padding: 0.85rem 0.95rem; text-decoration: none; color: var(--color-on-surface); display: flex; flex-direction: column; gap: 0.3rem; transition: transform var(--motion-fast) var(--easing-standard), border-color var(--motion-fast), box-shadow var(--motion-fast); min-height: 0; overflow: hidden; }
+    .block-card:hover { transform: translateY(-2px); border-color: var(--color-primary); box-shadow: var(--shadow-raised); }
+    .block-card__time { font-family: var(--font-mono); font-size: 0.62rem; color: var(--color-primary-strong); font-weight: 700; letter-spacing: 0.06em; }
+    .block-card__title { font-size: 1rem; font-weight: 700; line-height: 1.25; letter-spacing: -0.02em; margin: 0; }
+    .block-card__desc { font-size: 0.68rem; line-height: 1.5; color: var(--color-on-surface-muted); margin: 0.1rem 0 0; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 6; -webkit-box-orient: vertical; }
+    .block-card__count { margin-top: auto; font-family: var(--font-mono); font-size: 0.64rem; color: var(--color-primary-strong); font-weight: 700; }
+  </style>
+</head>
+<body>
+
+<main class="index-stage">
+  <header class="deck-chrome">
+    <span class="deck-chrome__brand">바이브코딩 · CLAUDE CODE</span>
+    <span class="deck-chrome__divider">·</span>
+    <span class="deck-chrome__day">7장 · 목차</span>
+    <span class="deck-chrome__spacer"></span>
+  </header>
+
+  <header class="day-header">
+    <div class="day-header__brand">클로드코드 실습으로 배우는 바이브코딩 · 7장</div>
+    <h1 class="day-header__title">7장 — 상호작용 페이지</h1>
+    <p class="day-header__caption">보기만 하는 페이지에서 — 로그인하고 저장되는 진짜 앱으로. 구글 로그인을 붙이고, 서브에이전트 셋과 "나만의 메모장"을 만들어 배포합니다. 도구: Google OAuth · Supabase · Claude Code 서브에이전트 · GitHub · Vercel.</p>
+  </header>
+
+  <div class="block-grid">
+    <a class="block-card" href="1-google-login.html">
+      <div class="block-card__time">DECK 1</div>
+      <h2 class="block-card__title">구글 로그인</h2>
+      <p class="block-card__desc">5장에서 만든 데이터 페이지에 진짜 구글 OAuth 로그인을 답니다. Google Cloud 설정 → 대화로 구현 → 로컬 확인 → Vercel 재배포(redirect URI)까지 — 자주 나는 로그인 에러 해결법 포함.</p>
+      <div class="block-card__count">16 슬라이드 →</div>
+    </a>
+    <a class="block-card" href="2-subagent-memo.html">
+      <div class="block-card__time">DECK 2</div>
+      <h2 class="block-card__title">서브에이전트 + 나만의 메모장</h2>
+      <p class="block-card__desc">일을 나눠 맡는 도우미(ui-helper·data-helper·login-helper)를 /agents로 만들어 — 셋이 동시에 메모장 앱을 제작. 6장의 Supabase에 저장하고, 검색·태그·즐겨찾기·폴더 확장에 배포까지.</p>
+      <div class="block-card__count">17 슬라이드 →</div>
+    </a>
+  </div>
+</main>
+
+<script src="../../scripts/index-nav.js"></script>
+</body>
+</html>
