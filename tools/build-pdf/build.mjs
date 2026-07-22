@@ -40,6 +40,7 @@ const DECKS = [
   { rel: 'slide/vibe-coding/ch04-taming/index.html',            kind: 'index' },
   { rel: 'slide/vibe-coding/ch04-taming/1-claude-md.html',      kind: 'deck'  },
   { rel: 'slide/vibe-coding/ch04-taming/2-custom-slash.html',   kind: 'deck'  },
+  { rel: 'slide/vibe-coding/ch04-taming/3-hooks-telegram.html', kind: 'deck'  },
 
   { rel: 'slide/vibe-coding/ch05-api/index.html',               kind: 'index' },
   { rel: 'slide/vibe-coding/ch05-api/1-open-api.html',          kind: 'deck'  },
@@ -51,9 +52,9 @@ const DECKS = [
   { rel: 'slide/vibe-coding/ch07-interactive/1-google-login.html',   kind: 'deck'  },
   { rel: 'slide/vibe-coding/ch07-interactive/2-subagent-memo.html',  kind: 'deck'  },
 
-  { rel: 'slide/vibe-coding/ch08-automation/index.html',        kind: 'index' },
-  { rel: 'slide/vibe-coding/ch08-automation/1-hooks-telegram.html',  kind: 'deck'  },
-  { rel: 'slide/vibe-coding/ch08-automation/2-mcp.html',        kind: 'deck'  },
+  { rel: 'slide/vibe-coding/ch08-mcp-crawl/index.html',         kind: 'index' },
+  { rel: 'slide/vibe-coding/ch08-mcp-crawl/1-mcp.html',         kind: 'deck'  },
+  { rel: 'slide/vibe-coding/ch08-mcp-crawl/2-crawling.html',    kind: 'deck'  },
 
   { rel: 'slide/vibe-coding/ch09-docs-design/index.html',       kind: 'index' },
   { rel: 'slide/vibe-coding/ch09-docs-design/1-skills.html',    kind: 'deck'  },

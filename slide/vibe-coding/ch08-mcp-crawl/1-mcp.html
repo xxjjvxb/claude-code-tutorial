@@ -7,7 +7,7 @@
   <meta name="author" content="이일규">
   <meta name="copyright" content="© 2026 이일규 · 본 강의자료는 저작권법으로 보호되는 저작물입니다. 무단 복제·배포 금지.">
   <script defer src="../../scripts/protect.js"></script>
-  <title>8장 · 2. MCP + 브라우저 크롤링</title>
+  <title>8장 · 1. MCP 연결</title>
   <link rel="stylesheet" href="../../styles/tokens.css">
   <link rel="stylesheet" href="../../styles/deck.css">
   <link rel="stylesheet" href="../../styles/_os-toggle.css">
@@ -20,20 +20,20 @@
   <header class="deck-chrome">
   <span class="deck-chrome__brand">바이브코딩 · CLAUDE CODE</span>
   <span class="deck-chrome__divider">·</span>
-  <span class="deck-chrome__day">8장 · 2 MCP</span>
+  <span class="deck-chrome__day">8장 · 1 MCP 연결</span>
   <span class="deck-chrome__spacer"></span>
   <span class="deck-chrome__counter">— / —</span>
 </header>
 
   <!-- 1 · Chapter intro -->
   <section class="slide is-section is-standard">
-    <div class="section-eyebrow">CHAPTER 8 · MCP</div>
-    <h2 class="section-title">MCP — 외부 세계와 연결하고, <span class="accent">크롤링</span>까지</h2>
-    <p class="section-caption">Claude는 기본적으로 내 프로젝트 폴더 안만 봅니다. MCP는 파일·GitHub·브라우저 같은 외부 도구를 꽂는 "표준 포트"입니다. 연결을 배우고 — 끝으로 브라우저 MCP로 웹 정보를 직접 긁어옵니다.</p>
+    <div class="section-eyebrow">8장 · MCP</div>
+    <h2 class="section-title">MCP — 외부 세계와 <span class="accent">연결</span>하는 표준 포트</h2>
+    <p class="section-caption">Claude는 기본적으로 내 프로젝트 폴더 안만 봅니다. MCP는 파일·GitHub·브라우저 같은 외부 도구를 꽂는 "표준 포트"입니다. 이 덱에서 MCP 개념과 연결을 익히고 — 다음 덱에서 브라우저 MCP로 웹을 직접 크롤링합니다.</p>
     <div class="section-meta">
       <div class="section-meta__item"><span class="section-meta__num">1</span><span>줄로 연결</span></div>
       <div class="section-meta__item"><span class="section-meta__num">6</span><span>대표 MCP</span></div>
-      <div class="section-meta__item"><span class="section-meta__num">1</span><span>크롤링 프로젝트</span></div>
+      <div class="section-meta__item"><span class="section-meta__num">→</span><span>다음 덱 크롤링</span></div>
     </div>
   </section>
 
@@ -111,19 +111,18 @@
 
   <!-- 4 · claude mcp add -->
   <section class="slide is-standard">
-    <div class="slide__eyebrow">HOW · 연결과 Playwright</div>
-    <h2 class="slide__title">연결은 한 줄 — 이번에 꽂을 건 <span class="accent">Playwright</span></h2>
+    <div class="slide__eyebrow">HOW · 연결은 한 줄</div>
+    <h2 class="slide__title">연결은 한 줄 — <span class="accent">claude mcp add</span></h2>
     <div class="slide__body">
       <div class="two-col">
         <div>
           <div class="content-card content-card--compact">
-            <h3 class="content-card__title">Playwright — 브라우저 자동화 도구</h3>
-            <p class="content-card__body">웹 브라우저를 사람 대신 움직이는 도구. 이걸 MCP로 꽂으면 — Claude가 진짜 브라우저를 직접 조종합니다.</p>
+            <h3 class="content-card__title">내가 할 일은 "연결" 한 줄</h3>
+            <p class="content-card__body">도구를 한 번 꽂아 두면 — 쓰는 법은 Claude가 알아서. 명령을 외울 필요 없이 Claude에게 물어보면 됩니다.</p>
             <ul class="content-card__list">
-              <li>페이지 열기 · 클릭 · 스크롤</li>
-              <li>화면의 글·이미지를 읽어 오기</li>
-              <li>다음 페이지로 넘기며 정보 수집</li>
-              <li>스크린샷 찍기</li>
+              <li><code>claude mcp add &lt;도구&gt;</code> — 한 줄로 연결</li>
+              <li><code>claude mcp list</code> — 연결 상태 확인</li>
+              <li>안 쓰면 <code>claude mcp remove</code>로 뺀다</li>
             </ul>
           </div>
         </div>
@@ -133,11 +132,11 @@
               <span class="code-block__dot" style="background:#fb2c36"></span><span class="code-block__dot" style="background:#edb200"></span><span class="code-block__dot" style="background:#00c758"></span>
               <span class="code-block__title"><span class="os-win">PowerShell</span><span class="os-mac">Terminal (zsh)</span> · MCP 연결</span>
             </div>
-            <div class="code-block__body"><span class="code-block__line"><span class="code-block__prompt" data-auto-os></span> <span class="code-block__cmd">claude mcp add playwright</span></span><span class="code-block__line"><span class="code-block__out">  ✓ playwright 연결됨</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__prompt" data-auto-os></span> <span class="code-block__cmd">claude mcp list</span></span><span class="code-block__line"><span class="code-block__out">  playwright · 연결됨</span></span></div>
+            <div class="code-block__body"><span class="code-block__line"><span class="code-block__prompt" data-auto-os></span> <span class="code-block__cmd">claude mcp add &lt;도구&gt;</span></span><span class="code-block__line"><span class="code-block__out">  ✓ 연결됨</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__prompt" data-auto-os></span> <span class="code-block__cmd">claude mcp list</span></span><span class="code-block__line"><span class="code-block__out">  연결된 MCP 목록…</span></span></div>
           </div>
         </div>
       </div>
-      <p class="slide__note">Playwright는 다음 크롤링 프로젝트의 핵심 도구 — 정확한 연결 명령은 도구마다 다르니, Claude에게 <strong>"playwright MCP 연결 도와줘"</strong>라고 물어 받으세요.</p>
+      <p class="slide__note">정확한 연결 명령은 도구마다 다릅니다 — Claude에게 <strong>"○○ MCP 연결 도와줘"</strong>라고 물으면 명령까지 대신 알려줍니다. 브라우저(Playwright) 연결은 <strong>다음 덱</strong>에서 직접.</p>
     </div>
   </section>
 
@@ -147,7 +146,7 @@
     <h2 class="slide__title">자주 쓰이는 MCP — <span class="accent">필요한 것만</span> 골라 꽂기</h2>
     <div class="slide__body">
       <div class="grid-3">
-        <div class="content-card content-card--compact"><h3 class="content-card__title">브라우저 ★</h3><p class="content-card__body">진짜 브라우저를 열어 웹을 보고 정보 수집. 이번 덱 프로젝트.</p></div>
+        <div class="content-card content-card--compact"><h3 class="content-card__title">브라우저 ★</h3><p class="content-card__body">진짜 브라우저를 열어 웹을 보고 정보 수집. 다음 덱 크롤링 프로젝트.</p></div>
         <div class="content-card content-card--compact"><h3 class="content-card__title">Filesystem</h3><p class="content-card__body">프로젝트 밖 파일·폴더 접근.</p></div>
         <div class="content-card content-card--compact"><h3 class="content-card__title">GitHub</h3><p class="content-card__body">이슈·PR·저장소를 직접 읽고 다루기.</p></div>
         <div class="content-card content-card--compact"><h3 class="content-card__title">웹 검색</h3><p class="content-card__body">최신 정보를 인터넷에서 찾아오기.</p></div>
@@ -215,142 +214,23 @@
           </ul>
         </div>
       </div>
-      <p class="slide__note">둘은 함께 쓰입니다 — <strong>도우미(에이전트)가 도구(MCP)를 들고 일하는</strong> 그림. 이제 브라우저 도구를 꽂아 봅니다.</p>
+      <p class="slide__note">둘은 함께 쓰입니다 — <strong>도우미(에이전트)가 도구(MCP)를 들고 일하는</strong> 그림. 다음 덱에서 브라우저 도구를 꽂아 크롤링합니다.</p>
     </div>
   </section>
 
-  <!-- 8 · 프로젝트 소개 — 크롤링 -->
-  <section class="slide is-statement">
-    <div class="statement-grid">
-      <div class="statement-text">
-        <div class="slide__eyebrow">PROJECT · 와 이게 되네</div>
-        <h2 class="statement__lead">Claude가 — <span class="accent">직접 웹을 돌아다닌다</span>.</h2>
-        <p class="statement__caption">브라우저 MCP를 꽂으면, Claude가 진짜 브라우저를 열어 페이지를 보고·넘기고·정보를 긁어옵니다. 흩어진 웹 정보를 한 번에 모아오는 — "크롤링"입니다.</p>
-        <div class="statement__points">
-          <div class="statement__point"><span class="statement__point-num">연결</span><span>브라우저 MCP를 한 줄로 꽂는다</span></div>
-          <div class="statement__point"><span class="statement__point-num">시킴</span><span>"이 정보 모아줘" — 사람 말로</span></div>
-          <div class="statement__point"><span class="statement__point-num">결과</span><span>흩어진 정보가 — 표 하나로</span></div>
-        </div>
-      </div>
-      <div class="statement-visual">
-        <svg viewBox="0 0 460 320" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <rect x="0" y="0" width="460" height="320" rx="16" fill="#fff5ec"/>
-          <g>
-            <rect x="44" y="70" width="80" height="58" rx="8" fill="white" stroke="#cc5a14" stroke-width="2"/>
-            <rect x="44" y="140" width="80" height="58" rx="8" fill="white" stroke="#cc5a14" stroke-width="2"/>
-            <rect x="44" y="210" width="80" height="42" rx="8" fill="white" stroke="#cc5a14" stroke-width="2"/>
-            <text x="84" y="103" font-family="ui-sans-serif, system-ui" font-size="10" fill="#797067" text-anchor="middle">사이트 A</text>
-            <text x="84" y="173" font-family="ui-sans-serif, system-ui" font-size="10" fill="#797067" text-anchor="middle">사이트 B</text>
-            <text x="84" y="235" font-family="ui-sans-serif, system-ui" font-size="10" fill="#797067" text-anchor="middle">사이트 C</text>
-          </g>
-          <g stroke="#cc5a14" stroke-width="2">
-            <line x1="124" y1="99" x2="190" y2="150"/><line x1="124" y1="169" x2="190" y2="160"/><line x1="124" y1="231" x2="190" y2="170"/>
-          </g>
-          <rect x="190" y="132" width="74" height="56" rx="10" fill="#fe6e00"/>
-          <text x="227" y="165" font-family="ui-sans-serif, system-ui" font-size="11" fill="#fff" font-weight="700" text-anchor="middle">Claude</text>
-          <text x="284" y="164" font-family="ui-monospace, monospace" font-size="20" fill="#cc5a14">→</text>
-          <rect x="306" y="92" width="110" height="136" rx="10" fill="white" stroke="#fe6e00" stroke-width="2.5"/>
-          <g stroke="#ffd2ab" stroke-width="8" stroke-linecap="round">
-            <line x1="324" y1="118" x2="398" y2="118"/><line x1="324" y1="142" x2="398" y2="142"/>
-            <line x1="324" y1="166" x2="398" y2="166"/><line x1="324" y1="190" x2="380" y2="190"/>
-          </g>
-          <text x="361" y="248" font-family="ui-sans-serif, system-ui" font-size="11" fill="#cc5a14" font-weight="700" text-anchor="middle">한 표로 정리</text>
-          <text x="230" y="290" font-family="ui-sans-serif, system-ui" font-size="12" fill="#797067" text-anchor="middle">흩어진 웹 정보 → 한곳에</text>
-        </svg>
-      </div>
-    </div>
-  </section>
-
-  <!-- 9 · 브라우저 MCP -->
-  <section class="slide is-standard">
-    <div class="slide__eyebrow">TOOL · 브라우저 MCP</div>
-    <h2 class="slide__title">브라우저 MCP — Claude가 <span class="accent">진짜 브라우저</span>를 연다</h2>
-    <div class="slide__body">
-      <div class="two-col">
-        <div>
-          <div class="content-card content-card--compact">
-            <h3 class="content-card__title">무엇을 하나</h3>
-            <ul class="content-card__list">
-              <li>실제 브라우저 창을 열어 페이지를 본다</li>
-              <li>스크롤·클릭·다음 페이지로 넘기기</li>
-              <li>화면의 정보를 읽어 와 정리</li>
-            </ul>
-            <p class="content-card__body">대표 도구는 <strong>Playwright</strong> — 연결은 Claude에게 물어보면 됩니다.</p>
-          </div>
-        </div>
-        <div>
-          <div class="content-card content-card--compact">
-            <h3 class="content-card__title">가볍게 — 규칙은 지키며</h3>
-            <ul class="content-card__list">
-              <li>공개된 정보를, 가벼운 양만 — 부담 없이</li>
-              <li>로그인 담벼락 안쪽·대량 수집은 피하기</li>
-              <li>사이트 이용 규칙을 존중</li>
-            </ul>
-            <p class="content-card__body">이번 실습은 "이게 되네"를 느끼는 게 목적 — 작게.</p>
-          </div>
-        </div>
-      </div>
-      <p class="slide__note">크롤링이 막히는 사이트도 있습니다 — 안 되면 다른 사이트로. <strong>"이 사이트에서 막혀"</strong>라고 하면 Claude가 대안을 찾아줍니다.</p>
-    </div>
-  </section>
-
-  <!-- 10 · 뭘 크롤링할까 -->
-  <section class="slide is-standard">
-    <div class="slide__eyebrow">IDEAS · 뭘 모아볼까</div>
-    <h2 class="slide__title">크롤링 — <span class="accent">끌리는 것</span> 하나 골라</h2>
-    <div class="slide__body">
-      <div class="grid-3">
-        <div class="diff-card"><div class="diff-card__rank">가격</div><h3 class="diff-card__title">가격 비교</h3><p class="diff-card__body">여러 쇼핑몰의 같은 상품 가격을 한 표로.</p></div>
-        <div class="diff-card"><div class="diff-card__rank">뉴스</div><h3 class="diff-card__title">관심 뉴스 모으기</h3><p class="diff-card__body">키워드로 여러 사이트의 헤드라인을 수집.</p></div>
-        <div class="diff-card"><div class="diff-card__rank">공고</div><h3 class="diff-card__title">채용·공고 목록</h3><p class="diff-card__body">조건에 맞는 공고만 골라 목록으로.</p></div>
-        <div class="diff-card"><div class="diff-card__rank">후기</div><h3 class="diff-card__title">평점·후기 정리</h3><p class="diff-card__body">흩어진 리뷰를 모아 한눈에 비교.</p></div>
-        <div class="diff-card"><div class="diff-card__rank">매물</div><h3 class="diff-card__title">중고·부동산 목록</h3><p class="diff-card__body">관심 매물 목록을 긁어 표로.</p></div>
-        <div class="diff-card"><div class="diff-card__rank">화면</div><h3 class="diff-card__title">스크린샷 모으기</h3><p class="diff-card__body">여러 페이지의 화면을 한 번에 캡처.</p></div>
-      </div>
-      <p class="slide__note">정답 없음 — <strong>"내가 평소 손으로 찾아보던 것"</strong>이 가장 좋은 소재입니다. 그걸 Claude가 대신 모아옵니다.</p>
-    </div>
-  </section>
-
-  <!-- 11 · 실습 진행 -->
-  <section class="slide is-standard">
-    <div class="slide__eyebrow">실습 · 진행</div>
-    <h2 class="slide__title">브라우저 MCP — <span class="accent">크롤링 한 바퀴</span></h2>
-    <div class="slide__body">
-      <div class="step-list step-list--compact">
-        <div class="step-list__item">
-          <div class="step-list__num">1</div>
-          <div class="step-list__content"><p class="step-list__title">작업 폴더에서 브라우저 MCP 연결 <span class="step-list__desc" style="display:inline">— c:\lecture\day3\crawl 폴더에서, Claude에게 "브라우저 MCP 연결 명령 알려줘"</span></p></div>
-        </div>
-        <div class="step-list__item">
-          <div class="step-list__num">2</div>
-          <div class="step-list__content"><p class="step-list__title">소재 하나 정하기 <span class="step-list__desc" style="display:inline">— 가격·뉴스·후기 등 평소 찾아보던 것</span></p></div>
-        </div>
-        <div class="step-list__item">
-          <div class="step-list__num">3</div>
-          <div class="step-list__content"><p class="step-list__title">모아 달라고 시키기 <span class="step-list__desc" style="display:inline">— "이 정보를 모아서 표로 정리해줘"</span></p></div>
-        </div>
-        <div class="step-list__item">
-          <div class="step-list__num">4</div>
-          <div class="step-list__content"><p class="step-list__title">결과 확인 + 다듬기 <span class="step-list__desc" style="display:inline">— "정렬해줘" "이 항목도 추가" — 마음에 들 때까지</span></p></div>
-        </div>
-      </div>
-      <p class="slide__note">막히면 다른 사이트로 — 크롤링은 사이트마다 사정이 다릅니다. 핵심은 <strong>"Claude가 웹을 직접 다닌다"</strong>는 감각.</p>
-    </div>
-  </section>
-
-  <!-- 12 · Wrap -->
+  <!-- 8 · Wrap -->
   <section class="slide is-feature">
     <div class="feature-head">
-      <div class="slide__eyebrow">WRAP · MCP 끝</div>
+      <div class="slide__eyebrow">WRAP · MCP 연결 끝</div>
       <h2 class="feature-head__title">필요한 도구를 — <span class="accent">한 줄로 꽂는다</span></h2>
     </div>
     <div class="feature-body">
       <div class="feature-text">
-        <p class="statement__caption">MCP는 Claude의 손이 닿는 범위를 넓히는 표준 포트입니다. 브라우저를 꽂으니 — Claude가 웹을 직접 돌아다녔습니다.</p>
+        <p class="statement__caption">MCP는 Claude의 손이 닿는 범위를 넓히는 표준 포트입니다. 연결은 한 줄 — 다음 덱에서 브라우저를 꽂아 웹을 직접 크롤링합니다.</p>
         <div class="statement__points">
           <div class="statement__point"><span class="statement__point-num">정의</span><span>외부 도구를 잇는 USB 포트</span></div>
           <div class="statement__point"><span class="statement__point-num">연결</span><span>claude mcp add — 한 줄</span></div>
-          <div class="statement__point"><span class="statement__point-num">다음</span><span>9장 문서와 디자인 — 스킬부터</span></div>
+          <div class="statement__point"><span class="statement__point-num">다음</span><span>다음 덱 — 브라우저 크롤링 실습</span></div>
         </div>
       </div>
       <div class="feature-visual">
