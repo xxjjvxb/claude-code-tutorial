@@ -7,11 +7,14 @@
   <meta name="author" content="이일규">
   <meta name="copyright" content="© 2026 이일규 · 본 강의자료는 저작권법으로 보호되는 저작물입니다. 무단 복제·배포 금지.">
   <script defer src="../../scripts/protect.js"></script>
-  <title>9장 · 2. 디자인 프로토타입</title>
+  <title>7장 · 2. 디자인 프로토타입</title>
   <link rel="stylesheet" href="../../styles/tokens.css">
   <link rel="stylesheet" href="../../styles/deck.css">
   <link rel="stylesheet" href="../../styles/_os-toggle.css">
+  <link rel="stylesheet" href="../../styles/_practice.css">
   <script defer src="../../scripts/os-toggle.js"></script>
+  <script defer src="../../scripts/prompt-copy.js"></script>
+  <script defer src="../../scripts/slide-modify.js"></script>
 </head>
 <body>
 
@@ -20,14 +23,14 @@
   <header class="deck-chrome">
   <span class="deck-chrome__brand">바이브코딩 · CLAUDE CODE</span>
   <span class="deck-chrome__divider">·</span>
-  <span class="deck-chrome__day">9장 · 2 디자인 프로토타입</span>
+  <span class="deck-chrome__day">7장 · 2 디자인 프로토타입</span>
   <span class="deck-chrome__spacer"></span>
   <span class="deck-chrome__counter">— / —</span>
 </header>
 
   <!-- 1 · Chapter intro -->
   <section class="slide is-section is-standard">
-    <div class="section-eyebrow">9장 · PROTOTYPE</div>
+    <div class="section-eyebrow">7장 · PROTOTYPE</div>
     <h2 class="section-title">프로토타입 — 머릿속 그림을 <span class="accent">화면으로</span></h2>
     <p class="section-caption">완벽한 설계 대신, 되는지 빠르게 만들어 눈으로 보고 손으로 굴려보는 게 프로토타입입니다. 여기서는 Claude Design으로 — 디자인 지식 없이 말 몇 마디만으로 진짜처럼 보이는 화면을 만들어 봅니다.</p>
     <div class="section-meta">
@@ -169,16 +172,35 @@
           </div>
         </div>
         <div>
-          <div class="code-block">
-            <div class="code-block__header">
-              <span class="code-block__dot" style="background:#fb2c36"></span><span class="code-block__dot" style="background:#edb200"></span><span class="code-block__dot" style="background:#00c758"></span>
-              <span class="code-block__title">Claude Design · 대화</span>
+          <div class="prompt-card">
+            <div class="prompt-card__head">
+              <span class="prompt-card__label">프롬프트 · 첫 요청</span>
+              <button class="prompt-card__copy" type="button" data-copy>복사</button>
             </div>
-            <div class="code-block__body"><span class="code-block__line"><span class="code-block__prompt">&gt;</span> <span class="code-block__cmd">할 일 목록(투두) 앱 화면 만들어줘.</span></span><span class="code-block__line"><span class="code-block__cmd">  할 일을 추가하고, 끝나면 체크하는 화면으로.</span></span><span class="code-block__line"><span class="code-block__cmd">  색은 깔끔하고 밝게.</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__out">  화면을 만들었어요. 오른쪽 미리보기에서</span></span><span class="code-block__line"><span class="code-block__out">  바로 확인하고 — 고칠 곳을 말해주세요.</span></span></div>
+            <pre class="prompt-card__body" data-no-nav>할 일 목록(투두) 앱 화면 만들어줘.
+할 일을 추가하고, 끝나면 체크하는 화면으로.
+색은 깔끔하고 밝게.</pre>
           </div>
         </div>
       </div>
       <p class="slide__note">글로 설명하는 게 기본 — <strong>참고 이미지를 올리거나</strong>, 마음에 드는 웹사이트 화면을 그대로 가져올 수도 있습니다.</p>
+    </div>
+  </section>
+
+  <!-- RESULT · 프로토타입 결과 -->
+  <section class="slide is-standard">
+    <div class="slide__eyebrow">RESULT · 이렇게 나옵니다</div>
+    <h2 class="slide__title">첫 한 줄로 나온 — <span class="accent">진짜 같은 화면</span></h2>
+    <div class="slide__body">
+      <figure class="photo-slot photo-slot--landscape" data-img="vc-ch07-design-prototype-result.png">
+        <img class="photo-slot__img" src="../../imgs/vc-ch07-design-prototype-result.png" alt="생성된 투두 앱 프로토타입 미리보기 화면">
+        <figcaption class="photo-slot__ph">
+          <span class="photo-slot__icon">◧</span>
+          <span class="photo-slot__label">투두 앱 — 생성된 프로토타입</span>
+          <span class="photo-slot__hint">오른쪽 미리보기에 바로 뜨는 실제 화면</span>
+        </figcaption>
+      </figure>
+      <p class="slide__note">아직 다듬기 전 — 첫 한 줄만으로 나온 화면입니다. 여기서부터 <strong>고칠 곳을 말하며</strong> 점점 마음에 들게 만듭니다.</p>
     </div>
   </section>
 
@@ -300,7 +322,7 @@
   <!-- 12 · Wrap -->
   <section class="slide is-feature">
     <div class="feature-head">
-      <div class="slide__eyebrow">WRAP · 9장 끝</div>
+      <div class="slide__eyebrow">WRAP · 7장 끝</div>
       <h2 class="feature-head__title">말 몇 마디에서 — <span class="accent">보이는 화면</span>까지</h2>
     </div>
     <div class="feature-body">
@@ -309,7 +331,7 @@
         <div class="statement__points">
           <div class="statement__point"><span class="statement__point-num">프로토타입</span><span>완벽함보다 — 빠르게 보여준다</span></div>
           <div class="statement__point"><span class="statement__point-num">Claude Design</span><span>디자인 지식 없이 — 말로 화면을</span></div>
-          <div class="statement__point"><span class="statement__point-num">다음</span><span>10장 — 브라우저 밖 내 PC에서 도는 프로그램(.exe/.app)</span></div>
+          <div class="statement__point"><span class="statement__point-num">다음</span><span>8장 — 브라우저 밖 내 PC에서 도는 프로그램(.exe/.app)</span></div>
         </div>
       </div>
       <div class="feature-visual">

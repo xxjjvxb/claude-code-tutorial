@@ -1,4 +1,5 @@
 ﻿<!doctype html>
+<!-- © 2026 이일규 (Ilkyu Lee). All rights reserved. 본 강의자료는 저작권법으로 보호되는 저작물입니다. 무단 복제·배포·재사용을 금합니다. -->
 <html lang="ko">
 <head>
   <meta charset="utf-8">
@@ -6,11 +7,14 @@
   <meta name="author" content="이일규">
   <meta name="copyright" content="© 2026 이일규 · 본 강의자료는 저작권법으로 보호되는 저작물입니다. 무단 복제·배포 금지.">
   <script defer src="../../scripts/protect.js"></script>
-  <title>4장 · 3. Hooks + 텔레그램</title>
+  <title>2장 · 6. Hooks + 텔레그램</title>
   <link rel="stylesheet" href="../../styles/tokens.css">
   <link rel="stylesheet" href="../../styles/deck.css">
   <link rel="stylesheet" href="../../styles/_os-toggle.css">
+  <link rel="stylesheet" href="../../styles/_practice.css">
   <script defer src="../../scripts/os-toggle.js"></script>
+  <script defer src="../../scripts/prompt-copy.js"></script>
+  <script defer src="../../scripts/slide-modify.js"></script>
 </head>
 <body>
 
@@ -19,16 +23,16 @@
   <header class="deck-chrome">
   <span class="deck-chrome__brand">바이브코딩 · CLAUDE CODE</span>
   <span class="deck-chrome__divider">·</span>
-  <span class="deck-chrome__day">4장 · 3 Hooks·텔레그램</span>
+  <span class="deck-chrome__day">2장 · 6 Hooks·텔레그램</span>
   <span class="deck-chrome__spacer"></span>
   <span class="deck-chrome__counter">— / —</span>
 </header>
 
   <!-- 1 · Part B intro -->
   <section class="slide is-section is-standard">
-    <div class="section-eyebrow">4장 · HOOKS</div>
+    <div class="section-eyebrow">2장 · HOOKS</div>
     <h2 class="section-title">Hooks — <span class="accent">자동화의 첫 경험</span></h2>
-    <p class="section-caption">규칙(CLAUDE.md)·명령(슬래시)으로 길들였다면 — 이제 Claude가 먼저 말을 걸게 할 차례. "이런 일이 일어나면, 자동으로 이걸 실행" — 이벤트 기반 자동화. 6개 이벤트가 있지만 이번 덱에서는 Stop 한 개만.</p>
+    <p class="section-caption">규칙(CLAUDE.md)·명령(슬래시)으로 길들였다면 — 이제 Claude가 먼저 말을 걸게 할 차례. "이런 일이 일어나면, 자동으로 이걸 실행" — 이벤트 기반 자동화. 이벤트 종류는 여러 가지지만 이번 덱에서는 Stop 한 개만.</p>
     <div class="section-meta">
       <div class="section-meta__item"><span class="section-meta__num">6</span><span>이벤트</span></div>
       <div class="section-meta__item"><span class="section-meta__num">1</span><span>이번 덱의 시작</span></div>
@@ -75,7 +79,7 @@
   <!-- 3 · 6 이벤트 카탈로그 -->
   <section class="slide is-standard">
     <div class="slide__eyebrow">CATALOG · 6 이벤트</div>
-    <h2 class="slide__title">Hook 이벤트 — <span class="accent">6가지가 있다</span> (외울 필요 X)</h2>
+    <h2 class="slide__title">Hook 이벤트 — <span class="accent">대표 6가지</span> (외울 필요 X)</h2>
     <div class="slide__body">
       <div class="grid-3">
         <div class="content-card content-card--compact">
@@ -100,7 +104,7 @@
         </div>
         <div class="content-card content-card--compact">
           <h3 class="content-card__title">SubagentStop</h3>
-          <p class="content-card__body">서브에이전트(7장에서 배울) 작업 끝.<br><code style="font-size:0.7rem">예) 긴 작업 끝 → 요약 보여주기</code></p>
+          <p class="content-card__body">서브에이전트(5장에서 배울) 작업 끝.<br><code style="font-size:0.7rem">예) 긴 작업 끝 → 요약 보여주기</code></p>
         </div>
       </div>
       <p class="slide__note">6개 다 외울 필요 X — <strong>Stop 하나로</strong> 시작하면 충분. 나머지는 필요할 때.</p>
@@ -221,7 +225,7 @@
         <div class="step-list__item">
           <div class="step-list__num">4</div>
           <div class="step-list__content">
-            <p class="step-list__title">앱 안에서 검색 (돋보기) → <code>BotFather</code> 검색 → "+ Start" 누르기</p>
+            <p class="step-list__title">상단 검색창(돋보기)에 <code>BotFather</code> 입력 → 파란 인증배지 붙은 <strong>@BotFather</strong> 선택 → 채팅 열리면 하단 <strong>시작(Start)</strong> 탭</p>
           </div>
         </div>
       </div>
@@ -238,6 +242,7 @@
         <div>
           <div class="content-card content-card--compact">
             <h3 class="content-card__title">BotFather 대화</h3>
+            <p class="content-card__body"><strong>@BotFather</strong> 채팅창에 — 아래를 한 줄씩 메시지로 보냅니다.</p>
             <ol class="content-card__list content-card__list--ol">
               <li><code>/newbot</code> 입력</li>
               <li>봇 이름 (예: <code>Claude Notify</code>)</li>
@@ -257,6 +262,37 @@
         </div>
       </div>
       <p class="slide__note">토큰 = <strong>비밀번호와 같음</strong>. 단톡방·코드에 직접 적지 마세요. 메모장에 임시 저장 → 환경변수로 사용.</p>
+    </div>
+  </section>
+
+  <!-- 9b · BotFather 실제 화면 -->
+  <section class="slide is-standard">
+    <div class="slide__eyebrow">STEP 2 · 실제 화면</div>
+    <h2 class="slide__title">BotFather 화면 — <span class="accent">이렇게 주고받습니다</span></h2>
+    <div class="slide__body">
+      <div class="two-col">
+        <div>
+          <figure class="photo-slot photo-slot--portrait" data-img="vc-ch02-hooks-botfather.png">
+            <img class="photo-slot__img" src="../../imgs/vc-ch02-hooks-botfather.png" alt="BotFather와 /newbot 주고받는 대화 화면">
+            <figcaption class="photo-slot__ph">
+              <span class="photo-slot__icon">◧</span>
+              <span class="photo-slot__label">BotFather · /newbot 대화</span>
+              <span class="photo-slot__hint">봇 이름 → username 차례로 답하기</span>
+            </figcaption>
+          </figure>
+        </div>
+        <div>
+          <figure class="photo-slot photo-slot--portrait" data-img="vc-ch02-hooks-token.png">
+            <img class="photo-slot__img" src="../../imgs/vc-ch02-hooks-token.png" alt="봇 토큰이 발급된 메시지 화면">
+            <figcaption class="photo-slot__ph">
+              <span class="photo-slot__icon">◧</span>
+              <span class="photo-slot__label">토큰 발급 메시지</span>
+              <span class="photo-slot__hint">긴 문자열 = 토큰 · 캡처 공유 땐 가리기</span>
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+      <p class="slide__note"><strong>@BotFather</strong> 채팅에 <code>/newbot</code>을 보내면 — 이름·username을 차례로 물어봅니다. 마지막에 오는 <strong>긴 문자열이 토큰</strong> — 남에게 보일 캡처라면 토큰 부분은 꼭 가리세요.</p>
     </div>
   </section>
 
@@ -291,17 +327,57 @@
     </div>
   </section>
 
+  <!-- 10b · chat_id 실제 화면 -->
+  <section class="slide is-standard">
+    <div class="slide__eyebrow">STEP 3 · 실제 화면</div>
+    <h2 class="slide__title">getUpdates 화면에서 — <span class="accent">chat_id 찾기</span></h2>
+    <div class="slide__body">
+      <div class="two-col">
+        <div>
+          <figure class="photo-slot photo-slot--landscape" data-img="vc-ch02-hooks-chatid.png">
+            <img class="photo-slot__img" src="../../imgs/vc-ch02-hooks-chatid.png" alt="브라우저 getUpdates JSON 결과 화면">
+            <figcaption class="photo-slot__ph">
+              <span class="photo-slot__icon">◧</span>
+              <span class="photo-slot__label">브라우저 · getUpdates 결과</span>
+              <span class="photo-slot__hint">주소창에 api.telegram.org/bot…/getUpdates</span>
+            </figcaption>
+          </figure>
+        </div>
+        <div>
+          <div class="content-card content-card--compact">
+            <h3 class="content-card__title">어디를 보나</h3>
+            <ul class="content-card__list">
+              <li><code>"chat"</code> → <code>"id"</code> 뒤의 <strong>숫자</strong>가 chat_id</li>
+              <li>따옴표·중괄호 빼고 — <strong>숫자만</strong> 복사</li>
+              <li>결과가 <code>[]</code>로 비면 — 봇에 메시지 보내고 <strong>F5</strong></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <p class="slide__note">이 숫자가 다음 단계 <code>settings.json</code>의 <code>&lt;CHAT_ID&gt;</code> 자리에 들어갑니다.</p>
+    </div>
+  </section>
+
   <!-- 11 · settings.json 작성 -->
   <section class="slide is-standard">
     <div class="slide__eyebrow">STEP 4 · settings.json 작성</div>
     <h2 class="slide__title">.claude/settings.json — <span class="accent">Stop 훅</span> 추가</h2>
     <div class="slide__body">
-      <div class="code-block">
-        <div class="code-block__header">
-          <span class="code-block__dot" style="background:#fb2c36"></span><span class="code-block__dot" style="background:#edb200"></span><span class="code-block__dot" style="background:#00c758"></span>
-          <span class="code-block__title">.claude/settings.json</span>
+      <div class="prompt-card">
+        <div class="prompt-card__head">
+          <span class="prompt-card__label">.claude/settings.json</span>
+          <button class="prompt-card__copy" type="button" data-copy>복사</button>
         </div>
-        <div class="code-block__body"><span class="code-block__line"><span class="code-block__out">{</span></span><span class="code-block__line"><span class="code-block__out">  "hooks": {</span></span><span class="code-block__line"><span class="code-block__out">    "Stop": [{</span></span><span class="code-block__line"><span class="code-block__out">      "matcher": "",</span></span><span class="code-block__line"><span class="code-block__out">      "hooks": [{</span></span><span class="code-block__line"><span class="code-block__out">        "type": "command",</span></span><span class="code-block__line"><span class="code-block__hi">        "command": "curl -s -X POST</span></span><span class="code-block__line"><span class="code-block__hi">          https://api.telegram.org/bot&lt;TOKEN&gt;/sendMessage</span></span><span class="code-block__line"><span class="code-block__hi">          -d chat_id=&lt;CHAT_ID&gt;</span></span><span class="code-block__line"><span class="code-block__hi">          -d text='Claude Done'"</span></span><span class="code-block__line"><span class="code-block__out">      }]</span></span><span class="code-block__line"><span class="code-block__out">    }]</span></span><span class="code-block__line"><span class="code-block__out">  }</span></span><span class="code-block__line"><span class="code-block__out">}</span></span></div>
+        <pre class="prompt-card__body" data-no-nav>{
+  "hooks": {
+    "Stop": [{
+      "hooks": [{
+        "type": "command",
+        "command": "curl -s -X POST https://api.telegram.org/bot<span class="ph">&lt;TOKEN&gt;</span>/sendMessage -d chat_id=<span class="ph">&lt;CHAT_ID&gt;</span> -d text='Claude Done'"
+      }]
+    }]
+  }
+}</pre>
       </div>
       <div class="caveat-grid--compact os-win is-block" style="margin-top:0.55rem">
         <div class="caveat-card">
@@ -309,7 +385,7 @@
           <p class="caveat-card__body">메시지는 <code>Claude Done</code>처럼 영문으로 시작하면 무탈. Windows 기본 PowerShell(5.1)에서 한글이 깨져 도착하면 — Claude Code에게 "텔레그램 알림 한글이 깨져요, 고쳐줘"라고 하면 PowerShell 방식 또는 인코딩을 자동으로 잡아 줍니다.</p>
         </div>
       </div>
-      <p class="slide__note"><code>&lt;TOKEN&gt;</code>과 <code>&lt;CHAT_ID&gt;</code>를 <strong>본인 값</strong>으로 교체. 위 <code>command</code>는 화면이 좁아 나눠 보일 뿐 — <strong style="color:var(--color-danger)">실제 파일에선 한 줄로 이어 적습니다(JSON 문자열엔 줄바꿈 불가)</strong>.</p>
+      <p class="slide__note">복사 버튼으로 붙여넣고 — <code>&lt;TOKEN&gt;</code>·<code>&lt;CHAT_ID&gt;</code>만 <strong>본인 값</strong>으로 교체하세요. <code>command</code>는 화면에서 접혀 보여도 <strong style="color:var(--color-danger)">실제로는 한 줄</strong>입니다(JSON 문자열엔 줄바꿈 불가).</p>
     </div>
   </section>
 
@@ -326,6 +402,38 @@
         <div class="code-block__body"><span class="code-block__line"><span class="code-block__cmt"># 1) Claude 재시작 (settings.json 갱신을 위해)</span></span><span class="code-block__line"><span class="code-block__cmd">&gt; /exit</span></span><span class="code-block__line"><span class="code-block__prompt" data-auto-os></span> <span class="code-block__cmd">claude</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__cmt"># 2) 짧은 응답 시키기</span></span><span class="code-block__line"><span class="code-block__cmd">&gt; "안녕" 이라고 한 번 답해줘</span></span><span class="code-block__line"><span class="code-block__out">  안녕!</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__hi">  [Stop hook fired]</span></span><span class="code-block__line"><span class="code-block__out">  ✓ Telegram에 메시지 전송</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__cmt"># 3) 휴대폰 → Telegram → 본인 봇 채팅</span></span><span class="code-block__line"><span class="code-block__cmt">#    "Claude Done" 표시 보임</span></span></div>
       </div>
       <p class="slide__note">알림 안 오면: <strong>① TOKEN 오타 ② chat_id 오타 ③ Claude 재시작 안 함 ④ 인터넷 차단(사내망)</strong> — 이 4가지 우선 점검.</p>
+    </div>
+  </section>
+
+  <!-- 12b · 알림 수신 실제 화면 -->
+  <section class="slide is-standard">
+    <div class="slide__eyebrow">STEP 5 · 실제 화면</div>
+    <h2 class="slide__title">휴대폰에 <span class="accent">이렇게 도착하면</span> 성공</h2>
+    <div class="slide__body">
+      <div class="two-col">
+        <div>
+          <figure class="photo-slot photo-slot--portrait" data-img="vc-ch02-hooks-notify.png">
+            <img class="photo-slot__img" src="../../imgs/vc-ch02-hooks-notify.png" alt="휴대폰 텔레그램에 Claude Done 알림이 도착한 화면">
+            <figcaption class="photo-slot__ph">
+              <span class="photo-slot__icon">◧</span>
+              <span class="photo-slot__label">휴대폰 · 텔레그램 알림</span>
+              <span class="photo-slot__hint">본인 봇 채팅에 "Claude Done" 도착</span>
+            </figcaption>
+          </figure>
+        </div>
+        <div>
+          <div class="content-card content-card--compact">
+            <h3 class="content-card__title">성공 신호</h3>
+            <ul class="content-card__list">
+              <li>잠금화면·상단바에 <strong>텔레그램 푸시</strong> 배너</li>
+              <li>봇 채팅에 <code>Claude Done</code> 한 줄</li>
+              <li>응답을 끝낼 때마다 — 자동으로 다시 도착</li>
+            </ul>
+            <p class="content-card__body">안 오면 앞 슬라이드의 <strong>4가지 점검</strong>부터.</p>
+          </div>
+        </div>
+      </div>
+      <p class="slide__note">여기까지 오면 <strong>Stop 훅 완성</strong> — Claude가 일을 끝낼 때마다 휴대폰이 알려줍니다.</p>
     </div>
   </section>
 
@@ -494,7 +602,7 @@
           <p class="diff-card__body">MCP·Skill·Hook을 하나로 묶어 <code>/plugin install</code>로 설치 — 가장 큰 단위.</p>
         </div>
       </div>
-      <p class="slide__note"><strong>Plugin이 가장 큰 단위</strong> — 그 안에 MCP·Skill이 들어 있습니다. 방금 설치한 <code>telegram</code>도 Plugin — 텔레그램 연결(MCP) + <code>/telegram:configure</code>(Skill)가 한 묶음이었습니다. <strong>MCP는 8장, Skill은 9장</strong>에서 직접 체험합니다. 다음 — <strong>5장 API 이해와 활용</strong>.</p>
+      <p class="slide__note"><strong>Plugin이 가장 큰 단위</strong> — 그 안에 MCP·Skill이 들어 있습니다. 방금 설치한 <code>telegram</code>도 Plugin — 텔레그램 연결(MCP) + <code>/telegram:configure</code>(Skill)가 한 묶음이었습니다. <strong>MCP는 6장, Skill은 7장</strong>에서 직접 체험합니다. 다음 — <strong>3장 홈페이지 외부 배포</strong>: 길들인 Claude와 함께, 이 홈페이지를 인터넷 실주소로.</p>
     </div>
   </section>
 

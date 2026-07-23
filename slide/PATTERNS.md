@@ -93,24 +93,45 @@ Day 2~5 강의안 작성 시 이 문서를 참고. 모든 패턴은 4:3 stage(19
 ### D. is-cover (표지)
 ### E. is-section (섹션 인트로)
 
-## 5. 사진/이미지 자리
+## 5. 사진/이미지 자리 (photo-slot — `styles/_practice.css`)
 
-실제 사진 미준비 상태에서 자리만 잡을 때:
+4:3 덱에서 photo-slot을 쓰려면 `_practice.css` + `scripts/slide-modify.js`가 로드돼 있어야 함 (vibe-coding 덱은 전부 로드됨). 마크업은 드롭존 호환 형태로:
 
 ```html
-<div class="photo-slot photo-slot--landscape">
-  <div class="photo-slot__icon">◧</div>
-  <div class="photo-slot__label">사진 라벨</div>
-  <div class="photo-slot__hint">설명 힌트</div>
+<figure class="photo-slot photo-slot--landscape" data-img="vc-ch03-vercel-import.png">
+  <img class="photo-slot__img" src="../../imgs/vc-ch03-vercel-import.png" alt="Vercel Import 화면">
+  <figcaption class="photo-slot__ph">
+    <span class="photo-slot__icon">◧</span>
+    <span class="photo-slot__label">Vercel — Import 화면</span>
+    <span class="photo-slot__hint">GitHub 저장소 선택 → Import 클릭</span>
+  </figcaption>
+</figure>
+```
+
+- 파일명 규칙(vibe-coding): `vc-ch<NN>-<슬러그>.png`, 저장 위치는 `slide/imgs/`.
+- 이미지가 없으면 점선 placeholder, 로드되면 자동으로 사진 표시(has-img).
+- `?mode=modify`로 열면 드래그&드롭 / 클릭 후 Ctrl+V로 캡처를 바로 채워넣고 imgs/에 저장.
+- 변형: `.photo-slot--portrait` (3:4) · `.photo-slot--landscape` (16:10) · `.photo-slot--square` (1:1).
+
+## 5b. 프롬프트 복사 블록 (prompt-card — `styles/_practice.css`)
+
+수강생이 그대로 복사해 쓰는 프롬프트·파일 내용·명령은 code-block이 아니라 prompt-card로 (`scripts/prompt-copy.js` 필요 — vibe-coding 덱은 전부 로드됨):
+
+```html
+<div class="prompt-card">
+  <div class="prompt-card__head">
+    <span class="prompt-card__label">프롬프트</span>
+    <button class="prompt-card__copy" type="button" data-copy>복사</button>
+  </div>
+  <pre class="prompt-card__body" data-no-nav>프롬프트 원문. <span class="ph">[채울 칸]</span>은 span.ph로.</pre>
 </div>
 ```
 
-변형:
-- `.photo-slot--portrait` (1:1)
-- `.photo-slot--landscape` (16:10)
-- `.photo-slot--square` (1:1)
-
-추후 사진 들어갈 때는 `<img>`로 교체.
+- 터미널 명령이면 `prompt-card--cmd`(mono 폰트), 라벨은 `PowerShell`/`터미널` 등.
+- 파일 내용이면 라벨을 파일명으로 (`CLAUDE.md`, `.claude/settings.json` …).
+- 3개 이상이면 `prompt-card--compact` + `prompt-pair`로 묶기.
+- 출력 예시가 섞인 화면 재현·문법 설명용 예시는 그대로 code-block.
+- `pre` 안은 복사 시 그대로 동작하는 원문이어야 함 (innerText가 클립보드로 감).
 
 ## 6. 색·강조
 

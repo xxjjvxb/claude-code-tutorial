@@ -10,7 +10,10 @@
   <link rel="stylesheet" href="../../styles/tokens.css">
   <link rel="stylesheet" href="../../styles/deck.css">
   <link rel="stylesheet" href="../../styles/_os-toggle.css">
+  <link rel="stylesheet" href="../../styles/_practice.css">
   <script defer src="../../scripts/os-toggle.js"></script>
+  <script defer src="../../scripts/prompt-copy.js"></script>
+  <script defer src="../../scripts/slide-modify.js"></script>
 </head>
 <body>
 
@@ -37,7 +40,7 @@
             <circle cx="22" cy="18" r="5" fill="#fb2c36"/>
             <circle cx="42" cy="18" r="5" fill="#edb200"/>
             <circle cx="62" cy="18" r="5" fill="#00c758"/>
-            <text x="230" y="22" fill="rgba(255,255,255,0.4)" font-family="ui-monospace, monospace" font-size="11" text-anchor="middle">claude — Day1/</text>
+            <text x="230" y="22" fill="rgba(255,255,255,0.4)" font-family="ui-monospace, monospace" font-size="11" text-anchor="middle">claude — my-intro/</text>
             <text x="22" y="74" fill="#fe6e00" font-family="ui-monospace, monospace" font-size="13"><tspan class="os-win">PS&gt;</tspan><tspan class="os-mac">$</tspan> claude</text>
             <text x="22" y="98" fill="rgba(255,255,255,0.55)" font-family="ui-monospace, monospace" font-size="11">  ✓ Claude Code ready</text>
             <text x="22" y="138" fill="white" font-family="ui-monospace, monospace" font-size="13">&gt; 안녕</text>
@@ -122,41 +125,41 @@
     </div>
   </section>
 
-  <!-- 4 · 11장 로드맵 -->
+  <!-- 4 · 9장 로드맵 -->
   <section class="slide is-standard">
-    <div class="slide__eyebrow">11장 로드맵</div>
+    <div class="slide__eyebrow">9장 로드맵</div>
     <h2 class="slide__title">도구 사용자 → <span class="accent">에이전트 운영자</span></h2>
     <div class="slide__body">
       <div class="roadmap">
         <div class="roadmap__day roadmap__day--accent">
           <div class="roadmap__icon"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="16" cy="16" r="11"/><path d="M5 16h11M11 11l5 5-5 5"/></svg></div>
           <div class="roadmap__day-num">CH 01–02</div>
-          <div class="roadmap__day-title">세팅 + 홈페이지</div>
-          <div class="roadmap__day-keywords">설치 · 터미널<br>자기 홈페이지</div>
+          <div class="roadmap__day-title">세팅 + 홈페이지·길들이기</div>
+          <div class="roadmap__day-keywords">설치 · 터미널<br>자기 홈페이지<br>CLAUDE.md · 알림</div>
         </div>
         <div class="roadmap__day">
           <div class="roadmap__icon"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 7l-7 9 7 9M21 7l7 9-7 9"/></svg></div>
           <div class="roadmap__day-num">CH 03–04</div>
-          <div class="roadmap__day-title">배포 + 길들이기</div>
-          <div class="roadmap__day-keywords">Git · Vercel 배포<br>CLAUDE.md · 슬래시<br>Hooks · 텔레그램</div>
+          <div class="roadmap__day-title">배포 + API</div>
+          <div class="roadmap__day-keywords">Git · Vercel 배포<br>공개 API · Plan Mode</div>
         </div>
         <div class="roadmap__day">
           <div class="roadmap__icon"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="8" r="3"/><circle cx="24" cy="8" r="3"/><circle cx="16" cy="24" r="3"/><path d="M8 11l8 13M24 11l-8 13M11 8h10"/></svg></div>
-          <div class="roadmap__day-num">CH 05–07</div>
-          <div class="roadmap__day-title">API · DB · 앱</div>
-          <div class="roadmap__day-keywords">공개 API<br>Supabase<br>나만의 메모장</div>
+          <div class="roadmap__day-num">CH 05–06</div>
+          <div class="roadmap__day-title">앱 + 크롤링</div>
+          <div class="roadmap__day-keywords">Supabase · 메모장<br>MCP · 크롤링</div>
         </div>
         <div class="roadmap__day">
           <div class="roadmap__icon"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="16" r="2.5"/><circle cx="24" cy="6" r="2.5"/><circle cx="24" cy="16" r="2.5"/><circle cx="24" cy="26" r="2.5"/><path d="M10.5 16h11M10 14C14 8 17 6 21.5 6M10 18C14 24 17 26 21.5 26"/></svg></div>
-          <div class="roadmap__day-num">CH 08–09</div>
-          <div class="roadmap__day-title">크롤링 + 문서</div>
-          <div class="roadmap__day-keywords">MCP 연결<br>브라우저 크롤링<br>PPT · 디자인</div>
+          <div class="roadmap__day-num">CH 07–08</div>
+          <div class="roadmap__day-title">문서 + 프로그램</div>
+          <div class="roadmap__day-keywords">PPT · 디자인<br><span class="os-win">.exe</span><span class="os-mac">.app</span> 프로그램</div>
         </div>
         <div class="roadmap__day">
           <div class="roadmap__icon"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="16" cy="16" r="11"/><circle cx="16" cy="16" r="5"/><circle cx="16" cy="16" r="1.5" fill="currentColor"/></svg></div>
-          <div class="roadmap__day-num">CH 10–11</div>
-          <div class="roadmap__day-title">프로그램 + 완성</div>
-          <div class="roadmap__day-keywords"><span class="os-win">.exe</span><span class="os-mac">.app</span> 프로그램<br>미니프로젝트<br>발표 · 회고</div>
+          <div class="roadmap__day-num">CH 09</div>
+          <div class="roadmap__day-title">미니프로젝트 · 완성</div>
+          <div class="roadmap__day-keywords">각자의 작품<br>빌드 · 발표 · 회고</div>
         </div>
       </div>
     </div>
@@ -236,7 +239,7 @@
           <div class="statement__point"><span class="statement__point-num">이해</span><span>Claude Code가 무엇이고 · 왜 다른지 · 60년 AI 코딩사</span></div>
           <div class="statement__point"><span class="statement__point-num">셋업</span><span>VS Code · Claude Code 설치 · 교육 팀 계정 · 첫 실행</span></div>
           <div class="statement__point"><span class="statement__point-num">결과물</span><span>터미널·프롬프팅 → 자기소개 HTML 페이지 만들기</span></div>
-          <div class="statement__point"><span class="statement__point-num">다루기</span><span>Git 안전벨트 · / @ ! # 4대 문법 · 운영 감각 · 미션</span></div>
+          <div class="statement__point"><span class="statement__point-num">다루기</span><span>Git 안전벨트 · / @ ! Esc 4대 문법 · 운영 감각 · 미션</span></div>
           <div class="statement__point"><span class="statement__point-num">배포</span><span>자기소개 페이지를 인터넷에 공개 — 링크로 공유</span></div>
         </div>
       </div>
@@ -345,7 +348,7 @@
           <p class="gen-deep__insight">시키면 파일을 읽고·쓰고·실행. 복붙 0회. 여러분의 역할은 지시·검토·결정으로 이동.</p>
         </div>
         <div class="gen-deep__milestones">
-          <div class="gen-deep__milestone"><div class="gen-deep__milestone-year">2024.02</div><div class="gen-deep__milestone-text">Claude Code 출시 — 터미널에 에이전트를 풀다</div></div>
+          <div class="gen-deep__milestone"><div class="gen-deep__milestone-year">2025.02</div><div class="gen-deep__milestone-text">Claude Code 출시 — 터미널에 에이전트를 풀다</div></div>
           <div class="gen-deep__milestone"><div class="gen-deep__milestone-year">2024</div><div class="gen-deep__milestone-text">Cursor · Devin — IDE 안 멀티파일 수정 가능한 에이전트</div></div>
           <div class="gen-deep__milestone"><div class="gen-deep__milestone-year">2025</div><div class="gen-deep__milestone-text">Sub-agents · MCP · Hooks — 위임의 표준화</div></div>
           <div class="gen-deep__milestone"><div class="gen-deep__milestone-year">2026</div><div class="gen-deep__milestone-text">긴 컨텍스트 · 자율 판단 수준의 향상</div></div>
@@ -574,7 +577,7 @@
           </ul>
         </div>
         <div class="model-card model-card--accent">
-          <h3 class="model-card__name">Sonnet 4.6</h3>
+          <h3 class="model-card__name">Sonnet 5</h3>
           <p class="model-card__tagline">균형 — 일상 코딩의 표준</p>
           <ul class="model-card__list">
             <li>속도/품질: 빠름 · 거의 모든 작업 충분</li>
@@ -597,11 +600,11 @@
           <ul class="model-card__list">
             <li>속도/품질: 느림 · 추론력 최강</li>
             <li>비용: 가장 비쌈</li>
-            <li>2026.6 출시 · <strong>현재 국내 미지원</strong></li>
+            <li>2026.6 출시 · <strong>최상위 요금 티어</strong></li>
           </ul>
         </div>
       </div>
-      <p class="slide__note"><code>/model</code> 명령으로 세션 중 전환 가능. <strong>강의 기본은 Sonnet</strong>, 비용 신경 쓰일 땐 Haiku, 진짜 막힐 때만 Opus. <strong>Fable은 현재 국내에서 비활성</strong> — 한국 사용자는 Opus까지만 선택됩니다.</p>
+      <p class="slide__note"><code>/model</code> 명령으로 세션 중 전환 가능. <strong>강의 기본은 Sonnet</strong>, 비용 신경 쓰일 땐 Haiku, 진짜 막힐 때만 Opus. <strong>Fable은 계정·플랜에 따라 선택지에 없을 수</strong> 있어요 — 이 과정 실습은 Sonnet이면 충분합니다.</p>
     </div>
   </section>
 
@@ -626,7 +629,7 @@
       </div>
       <div class="origin-timeline">
         <div class="origin-timeline__row"><div class="origin-timeline__year">2021</div><div class="origin-timeline__event">Anthropic 창립 — 전 OpenAI 멤버들이 AI 안전 연구로 출발</div></div>
-        <div class="origin-timeline__row"><div class="origin-timeline__year">2024.02</div><div class="origin-timeline__event">Claude Code 출시 — 터미널 에이전트, 코딩의 형태를 바꿈</div></div>
+        <div class="origin-timeline__row"><div class="origin-timeline__year">2025.02</div><div class="origin-timeline__event">Claude Code 출시 — 터미널 에이전트, 코딩의 형태를 바꿈</div></div>
         <div class="origin-timeline__row"><div class="origin-timeline__year">2025</div><div class="origin-timeline__event">개발자 표준 도구로 자리잡음 — Sub-agents · MCP · Hooks</div></div>
       </div>
     </div>
@@ -687,31 +690,31 @@
       <div class="stage-grid">
         <div class="stage-card stage-card--current">
           <div class="stage-card__day">CH 01–02 · 지금</div>
-          <h3 class="stage-card__title">자기 홈페이지</h3>
-          <p class="stage-card__desc">세팅 → 인터뷰 → 자기소개 HTML 페이지. 첫 결과물.</p>
+          <h3 class="stage-card__title">홈페이지 + 나만의 Claude</h3>
+          <p class="stage-card__desc">세팅 → 자기소개 페이지 → CLAUDE.md·알림으로 길들이기.</p>
         </div>
         <div class="stage-card">
           <div class="stage-card__day">CH 03–04</div>
-          <h3 class="stage-card__title">실주소 배포 + 길들이기</h3>
-          <p class="stage-card__desc">Git · GitHub · Vercel로 인터넷 공개 · CLAUDE.md · Hooks 폰 알림.</p>
+          <h3 class="stage-card__title">실주소 배포 + API 페이지</h3>
+          <p class="stage-card__desc">Git · GitHub · Vercel로 인터넷 공개 · 공개 API 데이터 페이지.</p>
         </div>
         <div class="stage-card">
-          <div class="stage-card__day">CH 05–07</div>
-          <h3 class="stage-card__title">나만의 메모장 앱</h3>
-          <p class="stage-card__desc">공개 API · Supabase DB · 구글 로그인 메모장.</p>
+          <div class="stage-card__day">CH 05–06</div>
+          <h3 class="stage-card__title">메모장 앱 + 크롤링</h3>
+          <p class="stage-card__desc">Supabase · 구글 로그인 메모장 · 크롤링 치트시트.</p>
         </div>
         <div class="stage-card">
-          <div class="stage-card__day">CH 08–09</div>
-          <h3 class="stage-card__title">웹 크롤링 + PPT</h3>
-          <p class="stage-card__desc">MCP 브라우저 크롤링 · 스킬로 PPT/PDF · 디자인.</p>
+          <div class="stage-card__day">CH 07–08</div>
+          <h3 class="stage-card__title">PPT + <span class="os-win">.exe</span><span class="os-mac">.app</span> 프로그램</h3>
+          <p class="stage-card__desc">스킬로 PPT/PDF · 디자인 · 내 PC용 프로그램.</p>
         </div>
         <div class="stage-card">
-          <div class="stage-card__day">CH 10–11</div>
-          <h3 class="stage-card__title"><span class="os-win">.exe</span><span class="os-mac">.app</span> 프로그램 + 발표</h3>
-          <p class="stage-card__desc">윈도우/맥 프로그램 · 미니프로젝트 빌드 · 작품 발표.</p>
+          <div class="stage-card__day">CH 09</div>
+          <h3 class="stage-card__title">미니프로젝트 + 발표</h3>
+          <p class="stage-card__desc">모든 도구로 각자의 작품 빌드 · 발표 · 회고.</p>
         </div>
       </div>
-      <p class="slide__note">장마다 결과물이 누적됩니다. 2장 자기 홈페이지 → 9장에서 PPT·PDF로 변환되어 다시 등장.</p>
+      <p class="slide__note">장마다 결과물이 누적됩니다. 2장 자기 홈페이지 → 7장에서 PPT·PDF로 변환되어 다시 등장.</p>
     </div>
   </section>
 

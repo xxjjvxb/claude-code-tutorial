@@ -7,11 +7,14 @@
   <meta name="author" content="이일규">
   <meta name="copyright" content="© 2026 이일규 · 본 강의자료는 저작권법으로 보호되는 저작물입니다. 무단 복제·배포 금지.">
   <script defer src="../../scripts/protect.js"></script>
-  <title>9장 · 1. 스킬 + DESIGN.md</title>
+  <title>7장 · 1. 스킬 + DESIGN.md</title>
   <link rel="stylesheet" href="../../styles/tokens.css">
   <link rel="stylesheet" href="../../styles/deck.css">
   <link rel="stylesheet" href="../../styles/_os-toggle.css">
+  <link rel="stylesheet" href="../../styles/_practice.css">
   <script defer src="../../scripts/os-toggle.js"></script>
+  <script defer src="../../scripts/prompt-copy.js"></script>
+  <script defer src="../../scripts/slide-modify.js"></script>
 </head>
 <body>
 
@@ -20,14 +23,14 @@
   <header class="deck-chrome">
   <span class="deck-chrome__brand">바이브코딩 · CLAUDE CODE</span>
   <span class="deck-chrome__divider">·</span>
-  <span class="deck-chrome__day">9장 · 1 스킬·DESIGN.md</span>
+  <span class="deck-chrome__day">7장 · 1 스킬·DESIGN.md</span>
   <span class="deck-chrome__spacer"></span>
   <span class="deck-chrome__counter">— / —</span>
 </header>
 
   <!-- 1 · Chapter intro -->
   <section class="slide is-section is-standard">
-    <div class="section-eyebrow">CHAPTER 9 · SKILL &amp; DESIGN.md</div>
+    <div class="section-eyebrow">CHAPTER 8 · SKILL &amp; DESIGN.md</div>
     <h2 class="section-title">스킬과 DESIGN.md — <span class="accent">가져다 쓰는</span> 능력과 디자인</h2>
     <p class="section-caption">2장에서 만든 자기소개를 다시 꺼냅니다. 공식 "스킬"로 코드 한 줄 없이 진짜 PPT·PDF로 바꾸고 — designmd.ai의 DESIGN.md로 웹·문서에 통일된 테마를 입힙니다. 끝으로 지금까지 모은 도구를 정리합니다.</p>
     <div class="section-meta">
@@ -133,12 +136,28 @@
           </div>
         </div>
         <div>
-          <div class="code-block">
-            <div class="code-block__header">
-              <span class="code-block__dot" style="background:#fb2c36"></span><span class="code-block__dot" style="background:#edb200"></span><span class="code-block__dot" style="background:#00c758"></span>
-              <span class="code-block__title">claude · /plugin</span>
+          <div class="prompt-pair">
+            <div class="prompt-card prompt-card--cmd prompt-card--compact">
+              <div class="prompt-card__head">
+                <span class="prompt-card__label">claude · ① 보관소 등록</span>
+                <button class="prompt-card__copy" type="button" data-copy>복사</button>
+              </div>
+              <pre class="prompt-card__body" data-no-nav>/plugin marketplace add anthropics/skills</pre>
             </div>
-            <div class="code-block__body"><span class="code-block__line"><span class="code-block__prompt">&gt;</span> <span class="code-block__cmd">/plugin marketplace add anthropics/skills</span></span><span class="code-block__line"><span class="code-block__out">  ✓ anthropic-agent-skills 등록</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__prompt">&gt;</span> <span class="code-block__cmd">/plugin install</span></span><span class="code-block__line"><span class="code-block__cmd">  document-skills@anthropic-agent-skills</span></span><span class="code-block__line"><span class="code-block__out">  ✓ pptx · pdf · docx · xlsx 설치 완료</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__prompt">&gt;</span> <span class="code-block__cmd">/reload-plugins</span></span><span class="code-block__line"><span class="code-block__out">  ✓ 플러그인 다시 불러옴 — 즉시 사용 가능</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__cmt"># 이후엔 — 필요할 때 Claude가 알아서 켠다</span></span></div>
+            <div class="prompt-card prompt-card--cmd prompt-card--compact">
+              <div class="prompt-card__head">
+                <span class="prompt-card__label">claude · ② 설치</span>
+                <button class="prompt-card__copy" type="button" data-copy>복사</button>
+              </div>
+              <pre class="prompt-card__body" data-no-nav>/plugin install document-skills@anthropic-agent-skills</pre>
+            </div>
+            <div class="prompt-card prompt-card--cmd prompt-card--compact">
+              <div class="prompt-card__head">
+                <span class="prompt-card__label">claude · ③ 적용</span>
+                <button class="prompt-card__copy" type="button" data-copy>복사</button>
+              </div>
+              <pre class="prompt-card__body" data-no-nav>/reload-plugins</pre>
+            </div>
           </div>
         </div>
       </div>
@@ -164,16 +183,59 @@
           </div>
         </div>
         <div>
-          <div class="code-block">
-            <div class="code-block__header">
-              <span class="code-block__dot" style="background:#fb2c36"></span><span class="code-block__dot" style="background:#edb200"></span><span class="code-block__dot" style="background:#00c758"></span>
-              <span class="code-block__title">claude · 자기소개 폴더</span>
+          <div class="prompt-pair">
+            <div class="prompt-card prompt-card--compact">
+              <div class="prompt-card__head">
+                <span class="prompt-card__label">프롬프트 · PPT 만들기</span>
+                <button class="prompt-card__copy" type="button" data-copy>복사</button>
+              </div>
+              <pre class="prompt-card__body" data-no-nav>index.html 내용으로 발표용 PPT를 만들어줘. 표지 1장 + 본문으로.</pre>
             </div>
-            <div class="code-block__body"><span class="code-block__line"><span class="code-block__prompt">&gt;</span> <span class="code-block__cmd">index.html 내용으로 발표용 PPT를</span></span><span class="code-block__line"><span class="code-block__cmd">  만들어줘. 표지 1장 + 본문으로.</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__out">  ✓ pptx 스킬 실행</span></span><span class="code-block__line"><span class="code-block__out">  ✓ 자기소개.pptx 생성</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__prompt">&gt;</span> <span class="code-block__cmd">제목 글자를 <span class="code-block__hi">더 크게</span> 해줘</span></span><span class="code-block__line"><span class="code-block__out">  ✓ 자기소개.pptx 수정</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__prompt">&gt;</span> <span class="code-block__cmd">이 자기소개를 <span class="code-block__hi">PDF로도</span> 만들어줘</span></span></div>
+            <div class="prompt-card prompt-card--compact">
+              <div class="prompt-card__head">
+                <span class="prompt-card__label">프롬프트 · 다듬기</span>
+                <button class="prompt-card__copy" type="button" data-copy>복사</button>
+              </div>
+              <pre class="prompt-card__body" data-no-nav>제목 글자를 더 크게 해줘</pre>
+            </div>
+            <div class="prompt-card prompt-card--compact">
+              <div class="prompt-card__head">
+                <span class="prompt-card__label">프롬프트 · PDF로도</span>
+                <button class="prompt-card__copy" type="button" data-copy>복사</button>
+              </div>
+              <pre class="prompt-card__body" data-no-nav>이 자기소개를 PDF로도 만들어줘</pre>
+            </div>
           </div>
         </div>
       </div>
       <p class="slide__note">PDF도 똑같이 — "이 자기소개를 PDF로도". 만든 <code>.pptx</code>는 더블클릭하면 PowerPoint에서 바로 열립니다. 한 번에 완벽하지 않아도 — 한 줄씩 고치면 됩니다.</p>
+    </div>
+  </section>
+
+  <!-- RESULT · PPT·PDF 결과물 -->
+  <section class="slide is-standard">
+    <div class="slide__eyebrow">RESULT · 이렇게 나옵니다</div>
+    <h2 class="slide__title">대화 몇 줄로 나온 — <span class="accent">진짜 PPT·PDF</span></h2>
+    <div class="slide__body">
+      <div class="two-col">
+        <figure class="photo-slot photo-slot--landscape" data-img="vc-ch07-skills-pptx-result.png">
+          <img class="photo-slot__img" src="../../imgs/vc-ch07-skills-pptx-result.png" alt="생성된 자기소개.pptx를 PowerPoint에서 연 화면">
+          <figcaption class="photo-slot__ph">
+            <span class="photo-slot__icon">◧</span>
+            <span class="photo-slot__label">자기소개.pptx — PowerPoint</span>
+            <span class="photo-slot__hint">더블클릭하면 열리는 실제 발표 파일</span>
+          </figcaption>
+        </figure>
+        <figure class="photo-slot photo-slot--landscape" data-img="vc-ch07-skills-pdf-result.png">
+          <img class="photo-slot__img" src="../../imgs/vc-ch07-skills-pdf-result.png" alt="생성된 자기소개.pdf를 연 화면">
+          <figcaption class="photo-slot__ph">
+            <span class="photo-slot__icon">◧</span>
+            <span class="photo-slot__label">자기소개.pdf — 문서 뷰어</span>
+            <span class="photo-slot__hint">같은 자기소개를 PDF로도</span>
+          </figcaption>
+        </figure>
+      </div>
+      <p class="slide__note">화면은 강사가 실제로 만든 결과물로 채워집니다 — 여러분 폴더에도 <code>자기소개.pptx</code>·<code>자기소개.pdf</code>가 똑같이 생깁니다.</p>
     </div>
   </section>
 
@@ -260,7 +322,14 @@
         <div class="cycle__step"><div class="cycle__num">03</div><div class="cycle__title">폴더에 두기</div><div class="cycle__desc">작업 폴더 안에 그 파일을 넣기</div><div class="cycle__example">my-intro\DESIGN.md</div></div>
         <div class="cycle__step"><div class="cycle__num">04</div><div class="cycle__title">적용</div><div class="cycle__desc">"이 디자인으로 꾸며줘"라고 요청</div><div class="cycle__example">@DESIGN.md</div></div>
       </div>
-      <p class="slide__note">적용은 한 줄 — <strong>"@DESIGN.md 대로 자기소개 페이지를 다시 꾸며줘"</strong>. <code>@</code>로 파일을 콕 집어주면 Claude가 그 규칙을 그대로 따릅니다.</p>
+      <div class="prompt-card prompt-card--compact" style="margin-top:0.7rem;">
+        <div class="prompt-card__head">
+          <span class="prompt-card__label">프롬프트 · 적용</span>
+          <button class="prompt-card__copy" type="button" data-copy>복사</button>
+        </div>
+        <pre class="prompt-card__body" data-no-nav>@DESIGN.md 대로 자기소개 페이지를 다시 꾸며줘</pre>
+      </div>
+      <p class="slide__note">적용은 한 줄이면 끝 — <code>@</code>로 파일을 콕 집어주면 Claude가 그 규칙을 그대로 따릅니다.</p>
     </div>
   </section>
 

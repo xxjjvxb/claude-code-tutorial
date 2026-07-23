@@ -7,11 +7,14 @@
   <meta name="author" content="이일규">
   <meta name="copyright" content="© 2026 이일규 · 본 강의자료는 저작권법으로 보호되는 저작물입니다. 무단 복제·배포 금지.">
   <script defer src="../../scripts/protect.js"></script>
-  <title>5장 · 1. 공개 API 데이터 페이지</title>
+  <title>4장 · 1. 공개 API 데이터 페이지</title>
   <link rel="stylesheet" href="../../styles/tokens.css">
   <link rel="stylesheet" href="../../styles/deck.css">
   <link rel="stylesheet" href="../../styles/_os-toggle.css">
+  <link rel="stylesheet" href="../../styles/_practice.css">
   <script defer src="../../scripts/os-toggle.js"></script>
+  <script defer src="../../scripts/prompt-copy.js"></script>
+  <script defer src="../../scripts/slide-modify.js"></script>
 </head>
 <body>
 
@@ -20,7 +23,7 @@
   <header class="deck-chrome">
   <span class="deck-chrome__brand">바이브코딩 · CLAUDE CODE</span>
   <span class="deck-chrome__divider">·</span>
-  <span class="deck-chrome__day">5장 · 1 공개 API</span>
+  <span class="deck-chrome__day">4장 · 1 공개 API</span>
   <span class="deck-chrome__spacer"></span>
   <span class="deck-chrome__counter">— / —</span>
 </header>
@@ -37,7 +40,7 @@
             <circle cx="22" cy="18" r="5" fill="#fb2c36"/>
             <circle cx="42" cy="18" r="5" fill="#edb200"/>
             <circle cx="62" cy="18" r="5" fill="#00c758"/>
-            <text x="230" y="22" fill="rgba(255,255,255,0.4)" font-family="ui-monospace, monospace" font-size="11" text-anchor="middle">claude · ch05</text>
+            <text x="230" y="22" fill="rgba(255,255,255,0.4)" font-family="ui-monospace, monospace" font-size="11" text-anchor="middle">claude · ch04</text>
             <text x="22" y="74" fill="#fe6e00" font-family="ui-monospace, monospace" font-size="13">&gt; 공개 API로 반응형 페이지 만들어줘</text>
             <text x="22" y="100" fill="rgba(255,255,255,0.55)" font-family="ui-monospace, monospace" font-size="11">  계획부터 보여드릴게요  [plan]</text>
             <text x="22" y="134" fill="white" font-family="ui-monospace, monospace" font-size="12">  1. fetch로 데이터 가져오기</text>
@@ -47,13 +50,13 @@
           </svg>
         </div>
         <div class="cover-foot">
-          <div class="cover-foot-num">05</div>
-          <div class="cover-foot-meta">5장 · API 이해와 활용</div>
+          <div class="cover-foot-num">04</div>
+          <div class="cover-foot-meta">4장 · API 이해와 활용</div>
         </div>
       </div>
       <div class="cover-right">
         <div class="cover-card">
-          <div class="cover-card__day">5장 · API</div>
+          <div class="cover-card__day">4장 · API</div>
           <h2 class="cover-card__title">공개 API ·<br>Plan Mode</h2>
           <p class="cover-card__subtitle">인터넷의 진짜 데이터를 가져와 반응형 페이지로.<br>큰 일은 계획부터 — Plan Mode를 깊게 씁니다.</p>
         </div>
@@ -63,22 +66,22 @@
 
   <!-- 2 · 지금까지 → 이번 장 -->
   <section class="slide is-standard">
-    <div class="slide__eyebrow">1~4장 → 5장</div>
+    <div class="slide__eyebrow">1~3장 → 4장</div>
     <h2 class="slide__title">내 이야기를 만들었다면, 이번 장은 <span class="accent">진짜 데이터</span></h2>
     <div class="slide__body">
       <div class="bg-compare">
         <div class="bg-compare__side bg-compare__side--soft">
-          <div class="bg-compare__label">1~4장 · 지금까지</div>
+          <div class="bg-compare__label">1~3장 · 지금까지</div>
           <div class="bg-compare__quote">
             <div>Claude Code 설치 · 터미널 첫 응답</div>
-            <div>자기소개 페이지 · / @ ! # 4대 문법</div>
+            <div>자기소개 페이지 · / @ ! Esc 4대 문법</div>
             <div>Git · GitHub · Vercel 외부 배포</div>
             <div>CLAUDE.md · 커스텀 슬래시 — 길들이기</div>
           </div>
           <p class="bg-compare__note">AI로 만들고 배포하는 한 바퀴를 돌았습니다.</p>
         </div>
         <div class="bg-compare__side bg-compare__side--good">
-          <div class="bg-compare__label">5장 · 이번 장</div>
+          <div class="bg-compare__label">4장 · 이번 장</div>
           <div class="bg-compare__quote">
             <div>API — 인터넷의 데이터 창구 이해</div>
             <div>공개 API 데이터로 반응형 페이지 제작</div>
@@ -224,18 +227,45 @@
     </div>
   </section>
 
+  <!-- 7b · 완성 미리보기 (photo-slot) -->
+  <section class="slide is-standard">
+    <div class="slide__eyebrow">RESULT · 완성하면 이런 모습</div>
+    <h2 class="slide__title">같은 페이지가 — <span class="accent">PC와 폰</span>에서 이렇게</h2>
+    <div class="slide__body">
+      <div class="grid-2">
+        <figure class="photo-slot photo-slot--landscape" data-img="vc-ch04-open-api-result-pc.png">
+          <img class="photo-slot__img" src="../../imgs/vc-ch04-open-api-result-pc.png" alt="완성된 공개 API 데이터 페이지 — PC 화면">
+          <figcaption class="photo-slot__ph">
+            <span class="photo-slot__icon">◧</span>
+            <span class="photo-slot__label">완성 페이지 · PC 화면</span>
+            <span class="photo-slot__hint">넓은 화면 — 카드가 가로로 여러 열</span>
+          </figcaption>
+        </figure>
+        <figure class="photo-slot photo-slot--portrait" data-img="vc-ch04-open-api-result-mobile.png">
+          <img class="photo-slot__img" src="../../imgs/vc-ch04-open-api-result-mobile.png" alt="같은 페이지 — 스마트폰 화면">
+          <figcaption class="photo-slot__ph">
+            <span class="photo-slot__icon">▯</span>
+            <span class="photo-slot__label">같은 페이지 · 폰 화면</span>
+            <span class="photo-slot__hint">좁은 화면 — 카드가 세로로 한 열</span>
+          </figcaption>
+        </figure>
+      </div>
+      <p class="slide__note">화면 크기에 따라 카드가 알아서 재배치됩니다 — 같은 페이지인데 PC에선 여러 열, 폰에선 한 열. 이게 바로 <strong>반응형</strong>입니다.</p>
+    </div>
+  </section>
+
   <!-- 8 · 작업 폴더 -->
   <section class="slide is-standard">
     <div class="slide__eyebrow">START · 작업 폴더</div>
-    <h2 class="slide__title">먼저 — <span class="accent">c:\lecture\day2</span> 폴더에서 시작</h2>
+    <h2 class="slide__title">먼저 — <span class="accent">c:\lecture\api-page</span> 폴더에서 시작</h2>
     <div class="slide__body">
       <div class="two-col">
         <div>
           <div class="content-card content-card--compact">
             <h3 class="content-card__title">3가지만</h3>
             <ol class="content-card__list content-card__list--ol">
-              <li><code>C:\lecture</code> 안에 <code>day2</code> 폴더 생성</li>
-              <li>VS Code → File → Open Folder → <strong>day2</strong></li>
+              <li><code>C:\lecture</code> 안에 <code>api-page</code> 폴더 생성</li>
+              <li>VS Code → File → Open Folder → <strong>api-page</strong></li>
               <li>통합 터미널 (<code><span class="os-win">Ctrl + `</span><span class="os-mac">⌘ + J</span></code>)에서 <code>claude</code></li>
             </ol>
             <p class="content-card__body">이번 장 작업은 모두 이 폴더 안에서 — 한 곳에 모아둡니다.</p>
@@ -245,13 +275,13 @@
           <div class="code-block">
             <div class="code-block__header">
               <span class="code-block__dot" style="background:#fb2c36"></span><span class="code-block__dot" style="background:#edb200"></span><span class="code-block__dot" style="background:#00c758"></span>
-              <span class="code-block__title"><span class="os-win">PowerShell</span><span class="os-mac">Terminal (zsh)</span> — <span class="os-win">c:\lecture\day2</span><span class="os-mac">~/lecture/day2</span></span>
+              <span class="code-block__title"><span class="os-win">PowerShell</span><span class="os-mac">Terminal (zsh)</span> — <span class="os-win">c:\lecture\api-page</span><span class="os-mac">~/lecture/api-page</span></span>
             </div>
-            <div class="code-block__body"><span class="code-block__line"><span class="code-block__prompt" data-auto-os></span> <span class="code-block__cmd"><span class="os-win">cd C:\lecture\day2</span><span class="os-mac">cd ~/lecture/day2</span></span></span><span class="code-block__line"><span class="code-block__prompt" data-auto-os></span> <span class="code-block__cmd">claude</span></span><span class="code-block__line"><span class="code-block__out">  ✓ Claude Code ready.</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__cmt"># 이 폴더가 이번 장의 작업 공간</span></span></div>
+            <div class="code-block__body"><span class="code-block__line"><span class="code-block__prompt" data-auto-os></span> <span class="code-block__cmd"><span class="os-win">cd C:\lecture\api-page</span><span class="os-mac">cd ~/lecture/api-page</span></span></span><span class="code-block__line"><span class="code-block__prompt" data-auto-os></span> <span class="code-block__cmd">claude</span></span><span class="code-block__line"><span class="code-block__out">  ✓ Claude Code ready.</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__cmt"># 이 폴더가 이번 장의 작업 공간</span></span></div>
           </div>
         </div>
       </div>
-      <p class="slide__note">바탕화면 대신 <code><span class="os-win">c:\lecture\day2</span><span class="os-mac">~/lecture/day2</span></code> — 경로가 짧고 찾기 쉬워 실습 내내 편합니다.</p>
+      <p class="slide__note">바탕화면 대신 <code><span class="os-win">c:\lecture\api-page</span><span class="os-mac">~/lecture/api-page</span></code> — 경로가 짧고 찾기 쉬워 실습 내내 편합니다.</p>
     </div>
   </section>
 
@@ -442,13 +472,32 @@
           </div>
         </div>
         <div>
-          <div class="content-card content-card--compact">
-            <h3 class="content-card__title">프롬프트가 막히면 — 메타프롬프트</h3>
-            <p class="content-card__body">"어떻게 시켜야 할지 모르겠다" 싶으면, 프롬프트를 직접 짜기 전에 Claude에게 먼저 물어보세요.</p>
-            <ul class="content-card__list">
-              <li>"이런 페이지 만들려면 어떻게 시키는 게 좋아?"</li>
-              <li>"좋은 프롬프트로 다시 정리해줘"</li>
-            </ul>
+          <div class="prompt-pair">
+            <div class="prompt-card prompt-card--compact">
+              <div class="prompt-card__head">
+                <span class="prompt-card__label">① 만들기 — Plan 모드에서</span>
+                <button class="prompt-card__copy" type="button" data-copy>복사</button>
+              </div>
+              <pre class="prompt-card__body" data-no-nav><span class="ph">[고른 공개 API]</span> 데이터로 반응형 웹페이지를 만들어줘.
+데이터를 카드 형태로 보기 좋게 보여주고,
+PC·태블릿·스마트폰 어디서 봐도 배치가 자연스럽게 바뀌게 해줘.</pre>
+            </div>
+            <div class="prompt-card prompt-card--compact">
+              <div class="prompt-card__head">
+                <span class="prompt-card__label">② 막히면 — 메타프롬프트</span>
+                <button class="prompt-card__copy" type="button" data-copy>복사</button>
+              </div>
+              <pre class="prompt-card__body" data-no-nav><span class="ph">[고른 공개 API]</span>로 이런 걸 만들고 싶은데, 어떻게 시키는 게 좋을까?
+좋은 프롬프트로 다시 정리해서 제안해줘.</pre>
+            </div>
+            <div class="prompt-card prompt-card--compact">
+              <div class="prompt-card__head">
+                <span class="prompt-card__label">③ 고치기 — 마음에 안 들 때</span>
+                <button class="prompt-card__copy" type="button" data-copy>복사</button>
+              </div>
+              <pre class="prompt-card__body" data-no-nav>지금 화면을 폰에서도 잘 보이게 고쳐줘.
+카드가 작거나 글자가 넘치면 크기도 같이 조정해줘.</pre>
+            </div>
           </div>
         </div>
       </div>
@@ -492,7 +541,7 @@
           </figcaption>
         </figure>
       </div>
-      <p class="slide__note">여기까지 하면 이번 장 완주 — 앞 장들에서 익힌 "만들고 배포"가 손에 붙었는지 확인하는 과정입니다. 다음 — 6장 데이터베이스 이해.</p>
+      <p class="slide__note">여기까지 하면 이번 장 완주 — 앞 장들에서 익힌 "만들고 배포"가 손에 붙었는지 확인하는 과정입니다. 다음 — 5장 나만의 메모장 (데이터베이스 이해부터).</p>
     </div>
   </section>
 

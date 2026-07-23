@@ -11,7 +11,10 @@
   <link rel="stylesheet" href="../../styles/tokens.css">
   <link rel="stylesheet" href="../../styles/deck.css">
   <link rel="stylesheet" href="../../styles/_os-toggle.css">
+  <link rel="stylesheet" href="../../styles/_practice.css">
   <script defer src="../../scripts/os-toggle.js"></script>
+  <script defer src="../../scripts/prompt-copy.js"></script>
+  <script defer src="../../scripts/slide-modify.js"></script>
 </head>
 <body>
 
@@ -97,7 +100,7 @@
           <ul class="model-card__list">
             <li>큰 변경 전 필수</li>
             <li>계획 읽고 승인</li>
-            <li>5장 본격</li>
+            <li>4장 본격</li>
           </ul>
         </div>
         <div class="model-card">
@@ -181,11 +184,11 @@
     </div>
   </section>
 
-  <!-- 6 · Plan 모드 (5장 예고) -->
+  <!-- 6 · Plan 모드 (4장 예고) -->
   <section class="slide is-statement">
     <div class="statement-grid">
       <div class="statement-text">
-        <div class="slide__eyebrow">MODE · Plan (5장 본격)</div>
+        <div class="slide__eyebrow">MODE · Plan (4장 본격)</div>
         <h2 class="statement__lead">실행 전에 <span class="accent">계획</span>부터 본다</h2>
         <p class="statement__caption">큰 작업에 들어가기 전 — 무엇을 어떻게 할지 Claude가 먼저 계획서를 제시. 사람이 읽고 승인해야 실행.</p>
         <div class="statement__points">
@@ -226,7 +229,7 @@
             <ul class="content-card__list">
               <li>Interactive → Auto → Plan → 다시 Interactive</li>
               <li>현재 모드는 <strong>입력란 상단에 표시</strong></li>
-              <li>Bypass는 별도로 <code>--allow-dangerously-skip-permissions</code></li>
+              <li>Bypass는 별도로 <code>--dangerously-skip-permissions</code></li>
             </ul>
           </div>
         </div>
@@ -240,7 +243,7 @@
           </div>
         </div>
       </div>
-      <p class="slide__note"><code>--allow-dangerously-skip-permissions</code>는 강의 중 <strong>한 번도 쓸 일 없음</strong>. 호기심에라도 X.</p>
+      <p class="slide__note"><code>--dangerously-skip-permissions</code>는 강의 중 <strong>한 번도 쓸 일 없음</strong>. 호기심에라도 X.</p>
     </div>
   </section>
 
@@ -317,7 +320,7 @@
         <div class="impact-card">
           <div class="impact-card__num">Haiku</div>
           <div class="impact-card__label">짧은 응답 · 분류 · 자동화</div>
-          <p class="impact-card__desc">입력 $0.80 / 출력 $4 (1M 토큰당). <strong>Sonnet의 1/4 가격</strong>. 단순 작업 반복엔 이게 정답.</p>
+          <p class="impact-card__desc">입력 $1 / 출력 $5 (1M 토큰당). <strong>Sonnet의 1/3 가격</strong>. 단순 작업 반복엔 이게 정답.</p>
         </div>
         <div class="impact-card">
           <div class="impact-card__num">Sonnet</div>
@@ -327,7 +330,7 @@
         <div class="impact-card">
           <div class="impact-card__num">Opus</div>
           <div class="impact-card__label">복잡한 추론 · Plan Mode</div>
-          <p class="impact-card__desc">입력 $15 / 출력 $75. <strong>Sonnet의 5배</strong>. 어려운 디버깅·설계에만.</p>
+          <p class="impact-card__desc">입력 $5 / 출력 $25. <strong>Sonnet의 약 1.7배</strong>. 어려운 디버깅·설계에.</p>
         </div>
       </div>
       <p class="slide__note">강의에선 모두 <strong>Sonnet</strong> 기본. 단순 반복엔 <code>/model haiku</code>로 절약, 막힌 디버깅엔 <code>/model opus</code>로 잠깐.</p>
@@ -628,15 +631,15 @@
             <h3 class="content-card__title">3가지만 하면 됨</h3>
             <ol class="content-card__list content-card__list--ol">
               <li><strong>Microsoft Store</strong> 앱 열기</li>
-              <li><code>Python 3.12</code> 검색 → <strong>"받기"</strong> 클릭</li>
+              <li><code>Python</code> 검색 → 최신 버전 <strong>"받기"</strong> 클릭</li>
               <li>설치 완료 — PATH 자동 등록</li>
             </ol>
           </div>
           <div class="content-card content-card--compact os-mac is-block">
             <h3 class="content-card__title">한 줄로 끝</h3>
             <ol class="content-card__list content-card__list--ol">
-              <li>터미널 → <code>brew install python@3.12</code></li>
-              <li>또는 python.org에서 <code>python-3.12.x-macos.pkg</code> 다운로드 → 더블클릭</li>
+              <li>터미널 → <code>brew install python</code></li>
+              <li>또는 python.org에서 최신 안정판 <code>.pkg</code> 다운로드 → 더블클릭</li>
               <li><strong>새 터미널</strong>에서 <code>python3 --version</code> — PATH 자동 등록</li>
             </ol>
           </div>
@@ -647,11 +650,11 @@
               <span class="code-block__dot" style="background:#fb2c36"></span><span class="code-block__dot" style="background:#edb200"></span><span class="code-block__dot" style="background:#00c758"></span>
               <span class="code-block__title"><span class="os-win">PowerShell</span><span class="os-mac">Terminal (zsh)</span> — 검증</span>
             </div>
-            <div class="code-block__body"><span class="code-block__line"><span class="code-block__prompt" data-auto-os></span> <span class="code-block__cmd"><span class="os-win">python</span><span class="os-mac">python3</span> --version</span></span><span class="code-block__line"><span class="code-block__hi">  Python 3.12.x</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__cmt"># 버전이 출력되면 OK</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__cmt"># 안 잡히면: 새 <span class="os-win">PowerShell</span><span class="os-mac">터미널</span> 창 열기</span></span></div>
+            <div class="code-block__body"><span class="code-block__line"><span class="code-block__prompt" data-auto-os></span> <span class="code-block__cmd"><span class="os-win">python</span><span class="os-mac">python3</span> --version</span></span><span class="code-block__line"><span class="code-block__hi">  Python 3.x.x</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__cmt"># 버전이 출력되면 OK</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__cmt"># 안 잡히면: 새 <span class="os-win">PowerShell</span><span class="os-mac">터미널</span> 창 열기</span></span></div>
           </div>
         </div>
       </div>
-      <p class="slide__note">강의는 <strong>Python 3.12</strong> 기준 — 검색 시 최신(3.13)이 먼저 떠도 3.12를 고르세요. <span class="os-win">MS Store는 PATH 자동 등록 · 이미 설치된 분은 건너뛰기.</span><span class="os-mac">Mac에는 시스템 Python이 있지만 그건 쓰지 말고 Homebrew·python.org 버전을 따로 설치하세요.</span></p>
+      <p class="slide__note"><strong>Python 3.12 이상</strong>이면 어떤 버전이든 OK — 스토어·사이트의 최신 안정판을 그대로 받으세요. <span class="os-win">MS Store는 PATH 자동 등록 · 이미 설치된 분은 건너뛰기.</span><span class="os-mac">Mac에는 시스템 Python이 있지만 그건 쓰지 말고 Homebrew·python.org 버전을 따로 설치하세요.</span></p>
     </div>
   </section>
 
@@ -692,14 +695,15 @@
     <div class="slide__body">
       <div class="two-col">
         <div>
-          <div class="content-card content-card--compact">
-            <h3 class="content-card__title">시키는 말</h3>
-            <ul class="content-card__list">
-              <li>"가위바위보 CLI를 Python으로"</li>
-              <li>"<strong>뼈대만</strong> 먼저 — 컴퓨터 손이 랜덤 + 결과 출력"</li>
-              <li>"한 판만 — 사용자 입력은 다음에"</li>
-              <li>"<strong>game.py</strong> 한 파일"</li>
-            </ul>
+          <div class="prompt-card">
+            <div class="prompt-card__head">
+              <span class="prompt-card__label">시키는 말 · 뼈대</span>
+              <button class="prompt-card__copy" type="button" data-copy>복사</button>
+            </div>
+            <pre class="prompt-card__body" data-no-nav>가위바위보 게임을 Python으로 만들어줘.
+먼저 뼈대만: 컴퓨터가 랜덤으로 내고 결과를 출력.
+한 판만 (사용자 입력은 다음 단계에).
+game.py 한 파일로.</pre>
           </div>
         </div>
         <div>
@@ -723,14 +727,14 @@
     <div class="slide__body">
       <div class="two-col">
         <div>
-          <div class="content-card content-card--compact">
-            <h3 class="content-card__title">시키는 말</h3>
-            <ul class="content-card__list">
-              <li>"<code>@game.py</code>에 사용자 입력 추가"</li>
-              <li>"가위/바위/보 중 하나 입력받기"</li>
-              <li>"이상한 입력은 다시 묻기"</li>
-              <li>"승/무/패 메시지 한국어로"</li>
-            </ul>
+          <div class="prompt-card">
+            <div class="prompt-card__head">
+              <span class="prompt-card__label">시키는 말 · 입력</span>
+              <button class="prompt-card__copy" type="button" data-copy>복사</button>
+            </div>
+            <pre class="prompt-card__body" data-no-nav>@game.py 에 사용자 입력을 추가해줘.
+가위/바위/보 중 하나를 입력받고, 이상한 입력이면 다시 묻기.
+승/무/패 메시지는 한국어로.</pre>
           </div>
         </div>
         <div>
@@ -754,14 +758,14 @@
     <div class="slide__body">
       <div class="two-col">
         <div>
-          <div class="content-card content-card--compact">
-            <h3 class="content-card__title">시키는 말</h3>
-            <ul class="content-card__list">
-              <li>"<code>@game.py</code>에 5판 반복"</li>
-              <li>"각 판 결과를 list에 저장"</li>
-              <li>"끝나면 승/무/패 횟수 출력"</li>
-              <li>"5판 끝나도 한 번 더? 재시작 옵션"</li>
-            </ul>
+          <div class="prompt-card">
+            <div class="prompt-card__head">
+              <span class="prompt-card__label">시키는 말 · 5판</span>
+              <button class="prompt-card__copy" type="button" data-copy>복사</button>
+            </div>
+            <pre class="prompt-card__body" data-no-nav>@game.py 를 5판 반복하도록 바꿔줘.
+각 판 결과를 list에 저장하고, 끝나면 승/무/패 횟수를 출력.
+5판이 끝나면 "한 번 더?" 재시작 옵션도.</pre>
           </div>
         </div>
         <div>
@@ -816,14 +820,15 @@
     <div class="slide__body">
       <div class="two-col">
         <div>
-          <div class="content-card content-card--compact">
-            <h3 class="content-card__title">기본 명세</h3>
-            <ul class="content-card__list">
-              <li>cm ↔ inch 변환</li>
-              <li>kg ↔ lb 변환</li>
-              <li>방향 묻기 (어느 → 어느)</li>
-              <li>숫자 입력 → 결과 출력</li>
-            </ul>
+          <div class="prompt-card">
+            <div class="prompt-card__head">
+              <span class="prompt-card__label">시작 프롬프트</span>
+              <button class="prompt-card__copy" type="button" data-copy>복사</button>
+            </div>
+            <pre class="prompt-card__body" data-no-nav>단위 변환기를 Python으로 만들어줘.
+cm ↔ inch, kg ↔ lb 변환.
+어느 단위 → 어느 단위인지 먼저 묻고, 숫자를 입력받아 결과 출력.
+convert.py 한 파일로.</pre>
           </div>
         </div>
         <div>
@@ -923,7 +928,7 @@
         <div class="diff-card">
           <div class="diff-card__rank">30초</div>
           <h3 class="diff-card__title">제일 좋았던 4문법</h3>
-          <p class="diff-card__body">/ @ ! # 중에 어떤 게 손에 잘 박혔나? 어떤 상황에 썼나?</p>
+          <p class="diff-card__body">/ @ ! Esc 중에 어떤 게 손에 잘 박혔나? 어떤 상황에 썼나?</p>
         </div>
         <div class="diff-card">
           <div class="diff-card__rank">10초</div>
@@ -973,18 +978,18 @@
     </div>
   </section>
 
-  <!-- 32 · 2장 마무리 + 다음 3장 배포 -->
+  <!-- 32 · 전반부 마무리 + 다음 길들이기 -->
   <section class="slide is-standard">
-    <div class="slide__eyebrow">RECAP · 2장 마무리 + 다음</div>
-    <h2 class="slide__title">다음 — <span class="accent">3장 홈페이지 외부 배포</span></h2>
+    <div class="slide__eyebrow">RECAP · 2장 전반부 마무리 + 다음</div>
+    <h2 class="slide__title">다음 — 이 홈페이지로 <span class="accent">Claude 길들이기</span> (덱 4~6)</h2>
     <div class="slide__body">
       <div class="preview-grid">
-        <div class="preview-item"><div class="preview-item__symbol">📦</div><div class="preview-item__name">GitHub 저장</div><div class="preview-item__desc">Git 기초부터 배우고 — 저장소를 원격에 올림</div></div>
-        <div class="preview-item"><div class="preview-item__symbol">🚀</div><div class="preview-item__name">Vercel 연결</div><div class="preview-item__desc">GitHub와 연결 → 자동 배포</div></div>
-        <div class="preview-item"><div class="preview-item__symbol">🌐</div><div class="preview-item__name">공개 URL</div><div class="preview-item__desc">*.vercel.app 링크 하나로 누구에게나</div></div>
-        <div class="preview-item"><div class="preview-item__symbol">🔄</div><div class="preview-item__name">git push → 자동 반영</div><div class="preview-item__desc">한 번 연결하면 이후는 손 안 감</div></div>
+        <div class="preview-item"><div class="preview-item__symbol">📏</div><div class="preview-item__name">CLAUDE.md — 내 규칙</div><div class="preview-item__desc">매번 다시 말하던 규칙을 파일로 — 늘 기억하게</div></div>
+        <div class="preview-item"><div class="preview-item__symbol">⚡</div><div class="preview-item__name">커스텀 슬래시 — 내 명령</div><div class="preview-item__desc">자주 시키는 일을 /명령 하나로</div></div>
+        <div class="preview-item"><div class="preview-item__symbol">🔔</div><div class="preview-item__name">Hooks + 텔레그램</div><div class="preview-item__desc">"작업 끝나면 폰으로 알림" 자동화</div></div>
+        <div class="preview-item"><div class="preview-item__symbol">🏠</div><div class="preview-item__name">같은 홈페이지로</div><div class="preview-item__desc">버리는 데모 X — 방금 만든 프로젝트를 계속 다듬으며</div></div>
       </div>
-      <p class="slide__note">전부 <strong>무료</strong>로 진행 — 신용카드 X. 잠깐 쉬고 3장에서 이어갑니다.</p>
+      <p class="slide__note">잠깐 쉬고 — 방금 만든 홈페이지 폴더 그대로, 이번엔 <strong>Claude를 내 방식대로 길들입니다</strong>.</p>
     </div>
   </section>
 

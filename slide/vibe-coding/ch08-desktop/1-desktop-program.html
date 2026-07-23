@@ -7,13 +7,16 @@
   <meta name="author" content="이일규">
   <meta name="copyright" content="© 2026 이일규 · 본 강의자료는 저작권법으로 보호되는 저작물입니다. 무단 복제·배포 금지.">
   <script defer src="../../scripts/protect.js"></script>
-  <title>10장 · 1. 데스크톱 프로그램 — PySide + PyInstaller</title>
+  <title>8장 · 1. 데스크톱 프로그램 — PySide + PyInstaller</title>
   <link rel="stylesheet" href="../../styles/tokens.css">
   <link rel="stylesheet" href="../../styles/deck.css">
   <link rel="stylesheet" href="../../styles/_os-toggle.css">
+  <link rel="stylesheet" href="../../styles/_practice.css">
   <script defer src="../../scripts/os-toggle.js"></script>
+  <script defer src="../../scripts/prompt-copy.js"></script>
+  <script defer src="../../scripts/slide-modify.js"></script>
   <style>
-    /* 10장 — 프로그램 메뉴 그룹 (A · 파일 / B · 데스크톱) */
+    /* 8장 — 프로그램 메뉴 그룹 (A · 파일 / B · 데스크톱) */
     .menu-group { display: flex; flex-direction: column; gap: 0.4rem; }
     .menu-group + .menu-group { margin-top: 0.55rem; }
     .menu-group__label { font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.08em;
@@ -30,7 +33,7 @@
   <header class="deck-chrome">
     <span class="deck-chrome__brand">바이브코딩 · CLAUDE CODE</span>
     <span class="deck-chrome__divider">·</span>
-    <span class="deck-chrome__day">10장 · 1 데스크톱 프로그램</span>
+    <span class="deck-chrome__day">8장 · 1 데스크톱 프로그램</span>
     <span class="deck-chrome__spacer"></span>
     <span class="deck-chrome__counter">— / —</span>
   </header>
@@ -62,12 +65,12 @@
         </div>
         <div class="cover-foot">
           <div class="cover-foot-num">10</div>
-          <div class="cover-foot-meta">10장 · 윈도우/맥 프로그램</div>
+          <div class="cover-foot-meta">8장 · 윈도우/맥 프로그램</div>
         </div>
       </div>
       <div class="cover-right">
         <div class="cover-card">
-          <div class="cover-card__day">10장 · 윈도우/맥 프로그램</div>
+          <div class="cover-card__day">8장 · 윈도우/맥 프로그램</div>
           <h2 class="cover-card__title">내 PC에서 도는 —<br>진짜 프로그램(<span class="os-win">.exe</span><span class="os-mac">.app</span>)</h2>
           <p class="cover-card__subtitle">PySide로 창을 그리고, PyInstaller로 굳혀 —<br>더블클릭하면 열리는 나만의 프로그램.</p>
         </div>
@@ -195,7 +198,7 @@
             <h3 class="content-card__title">PyInstaller — <span class="os-win">.exe</span><span class="os-mac">.app</span>로 굳힌다</h3>
             <p class="content-card__body">파이썬으로 만든 .py 파일을 <strong><span class="os-win">.exe</span><span class="os-mac">.app</span> 한 덩어리</strong>로 묶어줍니다. 파이썬이 없는 PC에서도 그대로 동작.</p>
             <ul class="content-card__list">
-              <li>명령 한 줄 — <code>pyinstaller --onefile<span class="os-mac"> --windowed</span></code></li>
+              <li>명령 한 줄 — <code>pyinstaller --onefile --windowed</code></li>
               <li>1~2분이면 <span class="os-win">.exe</span><span class="os-mac">.app</span> 완성</li>
               <li>파일 하나로 친구한테 보내기 (같은 OS끼리)</li>
             </ul>
@@ -214,12 +217,12 @@
       <div class="two-col">
         <div>
           <div class="content-card content-card--compact">
-            <h3 class="content-card__title">Python 3.12 — 이미 깔려 있다</h3>
-            <p class="content-card__body">2장에서 깐 <strong>Python 3.12</strong>를 그대로 씁니다. 새 <span class="os-win">PowerShell</span><span class="os-mac">터미널</span> 창에서 <code><span class="os-win">python</span><span class="os-mac">python3</span> --version</code> — <code>3.12.x</code>가 뜨면 OK.</p>
+            <h3 class="content-card__title">Python — 이미 깔려 있다</h3>
+            <p class="content-card__body">2장에서 깐 <strong>Python</strong>을 그대로 씁니다. 새 <span class="os-win">PowerShell</span><span class="os-mac">터미널</span> 창에서 <code><span class="os-win">python</span><span class="os-mac">python3</span> --version</code> — <code>3.x</code> 버전 숫자가 뜨면 OK.</p>
             <ul class="content-card__list">
-              <li>안 뜨면 — 1장 셋업 슬라이드의 PATH 점검</li>
+              <li>안 뜨면 — 2장 Python 설치 슬라이드의 PATH 점검</li>
               <li>pip는 파이썬과 함께 — 따로 설치 불필요</li>
-              <li>PySide6·PyInstaller 둘 다 3.12 정식 지원</li>
+              <li>PySide6·PyInstaller 모두 정식 지원</li>
             </ul>
           </div>
         </div>
@@ -227,14 +230,21 @@
           <div class="code-block">
             <div class="code-block__header">
               <span class="code-block__dot" style="background:#fb2c36"></span><span class="code-block__dot" style="background:#edb200"></span><span class="code-block__dot" style="background:#00c758"></span>
-              <span class="code-block__title"><span class="os-win">PowerShell</span><span class="os-mac">Terminal (zsh)</span> · 한 줄 설치</span>
+              <span class="code-block__title"><span class="os-win">PowerShell</span><span class="os-mac">Terminal (zsh)</span> · 확인</span>
             </div>
-            <div class="code-block__body"><span class="code-block__line"><span class="code-block__prompt" data-auto-os></span> <span class="code-block__cmd"><span class="os-win">python</span><span class="os-mac">python3</span> --version</span></span><span class="code-block__line"><span class="code-block__out">  Python 3.12.x</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__prompt" data-auto-os></span> <span class="code-block__cmd"><span class="os-win">pip</span><span class="os-mac">pip3</span> install pyside6 pyinstaller</span></span><span class="code-block__line"><span class="code-block__out">  ... (다운로드 1~3분)</span></span><span class="code-block__line"><span class="code-block__out">  Successfully installed PySide6 pyinstaller</span></span><span class="code-block__line"><span class="code-block__cmt"># 한 번만 — 다음부터는 바로 사용</span></span></div>
+            <div class="code-block__body"><span class="code-block__line"><span class="code-block__prompt" data-auto-os></span> <span class="code-block__cmd"><span class="os-win">python</span><span class="os-mac">python3</span> --version</span></span><span class="code-block__line"><span class="code-block__out">  Python 3.x — 버전 숫자가 뜨면 OK</span></span></div>
+          </div>
+          <div class="prompt-card prompt-card--cmd" style="margin-top:0.55rem">
+            <div class="prompt-card__head">
+              <span class="prompt-card__label"><span class="os-win">PowerShell</span><span class="os-mac">터미널</span> · 한 줄 설치</span>
+              <button class="prompt-card__copy" type="button" data-copy>복사</button>
+            </div>
+            <pre class="prompt-card__body" data-no-nav><span class="os-win">pip</span><span class="os-mac">pip3</span> install pyside6 pyinstaller</pre>
           </div>
         </div>
       </div>
     </div>
-    <p class="slide__note">PySide6는 다운로드가 좀 큽니다(수십 MB) — 와이파이가 약하면 3~5분. <code>pip</code>는 인터넷에서 도구를 받아오는 명령입니다.</p>
+    <p class="slide__note">PySide6는 다운로드가 좀 큽니다(수십 MB) — 와이파이가 약하면 3~5분. 설치 끝에 <code>Successfully installed</code>가 뜨면 완료입니다. <code>pip</code>는 인터넷에서 도구를 받아오는 명령입니다.</p>
   </section>
 
   <!-- 7 · 프로그램 후보 8 -->
@@ -313,12 +323,16 @@
           </div>
         </div>
         <div>
-          <div class="code-block">
-            <div class="code-block__header">
-              <span class="code-block__dot" style="background:#fb2c36"></span><span class="code-block__dot" style="background:#edb200"></span><span class="code-block__dot" style="background:#00c758"></span>
-              <span class="code-block__title">예시 — 파일 정리기</span>
+          <div class="prompt-card">
+            <div class="prompt-card__head">
+              <span class="prompt-card__label">프롬프트 예시 — 파일 정리기</span>
+              <button class="prompt-card__copy" type="button" data-copy>복사</button>
             </div>
-            <div class="code-block__body"><span class="code-block__line"><span class="code-block__cmd">내 다운로드 폴더 안 파일들을 종류별</span></span><span class="code-block__line"><span class="code-block__cmd">폴더로 자동 분류해주는 창 있는</span></span><span class="code-block__line"><span class="code-block__cmd">프로그램을 만들어줘.</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__cmd">PySide6로 만들고, 마지막에 PyInstaller로</span></span><span class="code-block__line"><span class="code-block__cmd"><span class="os-win">.exe</span><span class="os-mac">.app</span>로 굳힐 거야.</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__cmd">나는 PySide 처음이니까 설명하며</span></span><span class="code-block__line"><span class="code-block__cmd">진행해줘.</span></span></div>
+            <pre class="prompt-card__body" data-no-nav>내 다운로드 폴더 안 파일들을 종류별 폴더로 자동 분류해주는, 창 있는 프로그램을 만들어줘.
+
+PySide6로 만들고, 마지막에 PyInstaller로 <span class="os-win">.exe</span><span class="os-mac">.app</span>로 굳힐 거야.
+
+나는 PySide 처음이니까 설명하며 진행해줘.</pre>
           </div>
         </div>
       </div>
@@ -392,21 +406,23 @@
         <div>
           <div class="content-card content-card--compact">
             <h3 class="content-card__title">명령 한 줄</h3>
-            <p class="content-card__body"><code>pyinstaller --onefile<span class="os-mac"> --windowed</span> myapp.py</code> — 진행 메시지가 쏟아져도 가만히 1~2분.</p>
+            <p class="content-card__body"><code>pyinstaller --onefile --windowed myapp.py</code> — 진행 메시지가 쏟아져도 가만히 1~2분.</p>
             <ul class="content-card__list">
               <li>결과는 <code><span class="os-win">dist\myapp.exe</span><span class="os-mac">dist/myapp.app</span></code> 하나</li>
               <li>같은 OS의 다른 PC에 옮겨도 동작 — 파이썬 없어도. (Win↔Mac은 따로 빌드)</li>
-              <li><code>--onefile</code> = 한 덩어리, <code>--onedir</code> = 폴더로 분산(더 빠른 실행)<span class="os-mac"> · <code>--windowed</code> = 터미널 창 안 뜨게</span></li>
+              <li><code>--onefile</code> = 한 덩어리, <code>--onedir</code> = 폴더로 분산(더 빠른 실행) · <code>--windowed</code> = 실행 시 검은 콘솔 창 안 뜨게 (완성본은 켜기)</li>
             </ul>
           </div>
         </div>
         <div>
-          <div class="code-block">
-            <div class="code-block__header">
-              <span class="code-block__dot" style="background:#fb2c36"></span><span class="code-block__dot" style="background:#edb200"></span><span class="code-block__dot" style="background:#00c758"></span>
-              <span class="code-block__title"><span class="os-win">PowerShell</span><span class="os-mac">Terminal (zsh)</span> · 빌드</span>
+          <div class="prompt-card prompt-card--cmd">
+            <div class="prompt-card__head">
+              <span class="prompt-card__label"><span class="os-win">PowerShell</span><span class="os-mac">터미널</span> · 빌드 → 실행</span>
+              <button class="prompt-card__copy" type="button" data-copy>복사</button>
             </div>
-            <div class="code-block__body"><span class="code-block__line"><span class="code-block__prompt" data-auto-os></span> <span class="code-block__cmd">pyinstaller --onefile<span class="os-mac"> --windowed</span> myapp.py</span></span><span class="code-block__line"><span class="code-block__out">  INFO: PyInstaller: 6.x</span></span><span class="code-block__line"><span class="code-block__out">  ... (1~2분)</span></span><span class="code-block__line"><span class="code-block__out">  INFO: Building <span class="os-win">EXE</span><span class="os-mac">BUNDLE</span> ... completed</span></span><span class="code-block__line"><span class="code-block__out">  INFO: Building <span class="os-win">dist\myapp.exe</span><span class="os-mac">dist/myapp.app</span></span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__prompt" data-auto-os></span> <span class="code-block__cmd"><span class="os-win">.\dist\myapp.exe</span><span class="os-mac">open dist/myapp.app</span></span></span><span class="code-block__line"><span class="code-block__cmt"># 더블클릭과 동일 — 창이 뜬다</span></span></div>
+            <pre class="prompt-card__body" data-no-nav>pyinstaller --onefile --windowed myapp.py
+
+<span class="os-win">.\dist\myapp.exe</span><span class="os-mac">open dist/myapp.app</span></pre>
           </div>
         </div>
       </div>
@@ -474,6 +490,33 @@
     </div>
   </section>
 
+  <!-- 13.5 · 완성된 모습 (photo-slot) -->
+  <section class="slide is-standard">
+    <div class="slide__eyebrow">DONE · 완성된 모습</div>
+    <h2 class="slide__title">더블클릭하면 — <span class="accent">이런 창이 뜬다</span></h2>
+    <div class="slide__body">
+      <div class="two-col">
+        <figure class="photo-slot photo-slot--landscape" data-img="vc-ch08-desktop-run-file.png">
+          <img class="photo-slot__img" src="../../imgs/vc-ch08-desktop-run-file.png" alt="완성된 파일 정리기 실행 화면">
+          <figcaption class="photo-slot__ph">
+            <span class="photo-slot__icon">◧</span>
+            <span class="photo-slot__label">A · 파일 정리기 예시</span>
+            <span class="photo-slot__hint">폴더 선택 + "정리 시작" 버튼이 있는 창</span>
+          </figcaption>
+        </figure>
+        <figure class="photo-slot photo-slot--landscape" data-img="vc-ch08-desktop-run-timer.png">
+          <img class="photo-slot__img" src="../../imgs/vc-ch08-desktop-run-timer.png" alt="완성된 뽀모도로 타이머 실행 화면">
+          <figcaption class="photo-slot__ph">
+            <span class="photo-slot__icon">◧</span>
+            <span class="photo-slot__label">B · 뽀모도로 타이머 예시</span>
+            <span class="photo-slot__hint">화면에 늘 떠 있는 작은 타이머 창</span>
+          </figcaption>
+        </figure>
+      </div>
+    </div>
+    <p class="slide__note">메뉴에서 무엇을 고르든 — 완성되면 이렇게 <strong>내 창</strong>이 뜹니다. <span class="os-win">경고창이 뜨면 "추가 정보 → 실행"</span><span class="os-mac">첫 실행은 우클릭 → 열기</span>.</p>
+  </section>
+
   <!-- 14 · 실습 -->
   <section class="slide is-standard">
     <div class="slide__eyebrow">실습 · 내 프로그램 만들기</div>
@@ -494,7 +537,7 @@
         </div>
         <div class="step-list__item">
           <div class="step-list__num">4</div>
-          <div class="step-list__content"><p class="step-list__title">pyinstaller --onefile<span class="os-mac"> --windowed</span> <span class="step-list__desc" style="display:inline">— <span class="os-win">dist\내앱.exe</span><span class="os-mac">dist/내앱.app</span> 완성, 1~2분 기다림</span></p></div>
+          <div class="step-list__content"><p class="step-list__title">pyinstaller --onefile --windowed <span class="step-list__desc" style="display:inline">— <span class="os-win">dist\내앱.exe</span><span class="os-mac">dist/내앱.app</span> 완성, 1~2분 기다림</span></p></div>
         </div>
         <div class="step-list__item">
           <div class="step-list__num">5</div>
@@ -572,7 +615,7 @@
   <!-- 17 · Wrap -->
   <section class="slide is-feature">
     <div class="feature-head">
-      <div class="slide__eyebrow">WRAP · 10장 끝</div>
+      <div class="slide__eyebrow">WRAP · 8장 끝</div>
       <h2 class="feature-head__title">내 PC에 — <span class="accent">진짜 프로그램</span>이 생겼다</h2>
     </div>
     <div class="feature-body">
@@ -581,7 +624,7 @@
         <div class="statement__points">
           <div class="statement__point"><span class="statement__point-num">PySide</span><span>창·버튼·입력칸을 파이썬으로</span></div>
           <div class="statement__point"><span class="statement__point-num">PyInstaller</span><span>.py를 <span class="os-win">.exe</span><span class="os-mac">.app</span> 한 덩어리로</span></div>
-          <div class="statement__point"><span class="statement__point-num">다음</span><span>11장 — 지금까지 익힌 모든 도구로 미니프로젝트</span></div>
+          <div class="statement__point"><span class="statement__point-num">다음</span><span>9장 — 지금까지 익힌 모든 도구로 미니프로젝트</span></div>
         </div>
       </div>
       <div class="feature-visual">

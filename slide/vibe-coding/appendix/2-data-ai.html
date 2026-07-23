@@ -11,7 +11,10 @@
   <link rel="stylesheet" href="../../styles/tokens.css">
   <link rel="stylesheet" href="../../styles/deck.css">
   <link rel="stylesheet" href="../../styles/_os-toggle.css">
+  <link rel="stylesheet" href="../../styles/_practice.css">
   <script defer src="../../scripts/os-toggle.js"></script>
+  <script defer src="../../scripts/prompt-copy.js"></script>
+  <script defer src="../../scripts/slide-modify.js"></script>
   <style>
     /* 부록 B — 데이터 다운로드 링크 + 정답 공개 게이트 */
     .dl-links { display:flex; flex-wrap:wrap; gap:0.4rem; margin-top:0.55rem; }
@@ -688,18 +691,14 @@
           </div>
         </div>
         <div>
-          <div class="code-block">
-            <div class="code-block__header">
-              <span class="code-block__dot" style="background:#fb2c36"></span><span class="code-block__dot" style="background:#edb200"></span><span class="code-block__dot" style="background:#00c758"></span>
-              <span class="code-block__title">2. Claude Code — 라이브러리 설치</span>
+          <div class="prompt-card">
+            <div class="prompt-card__head">
+              <span class="prompt-card__label">2. 라이브러리 설치 — 프롬프트</span>
+              <button class="prompt-card__copy" type="button" data-copy>복사</button>
             </div>
-            <div class="code-block__body"><span class="code-block__line"><span class="code-block__prompt">&gt;</span> <span class="code-block__cmd">데이터 분석에 필요한 파이썬</span></span>
-<span class="code-block__line"><span class="code-block__cmd">  라이브러리 설치해줘 —</span></span>
-<span class="code-block__line"><span class="code-block__cmd">  pandas numpy matplotlib scikit-learn</span></span>
-<span class="code-block__line code-block__line--blank"></span>
-<span class="code-block__line"><span class="code-block__out">  → Claude가 pip 설치 실행</span></span>
-<span class="code-block__line"><span class="code-block__out">  → 권한 prompt 한 번 승인</span></span></div>
+            <pre class="prompt-card__body" data-no-nav>데이터 분석에 필요한 파이썬 라이브러리 설치해줘 — pandas, numpy, matplotlib, scikit-learn</pre>
           </div>
+          <p style="font-size:0.78rem; line-height:1.5; color:var(--color-on-surface-muted); margin:0.5rem 0 0;">→ Claude가 <code>pip</code> 설치를 실행하고, 권한 승인 창이 한 번 뜹니다.</p>
         </div>
       </div>
       <p class="slide__note">Python은 2장에서 설치했습니다. <code><span class="os-win">python</span><span class="os-mac">python3</span></code>이 안 잡히면 새 <span class="os-win">PowerShell</span><span class="os-mac">터미널</span> 창을 열거나, Claude Code에게 <strong>"python이 안 잡혀요"</strong>라고 그대로 말하면 진단해 줍니다.</p>
@@ -724,22 +723,17 @@
           </div>
         </div>
         <div>
-          <div class="code-block">
-            <div class="code-block__header">
-              <span class="code-block__dot" style="background:#fb2c36"></span><span class="code-block__dot" style="background:#edb200"></span><span class="code-block__dot" style="background:#00c758"></span>
-              <span class="code-block__title">claude · Plan 모드</span>
+          <div class="prompt-card">
+            <div class="prompt-card__head">
+              <span class="prompt-card__label">프롬프트 · Plan 모드</span>
+              <button class="prompt-card__copy" type="button" data-copy>복사</button>
             </div>
-            <div class="code-block__body"><span class="code-block__line"><span class="code-block__prompt">&gt;</span> <span class="code-block__cmd">data_1.csv에 x, y 두 열이 있어.</span></span>
-<span class="code-block__line"><span class="code-block__cmd">  이 점들 뒤에 숨은 함수를 회귀로</span></span>
-<span class="code-block__line"><span class="code-block__cmd">  추정하고 싶어. 비개발자도 따라갈</span></span>
-<span class="code-block__line"><span class="code-block__cmd">  수 있게 순서를 계획해줘</span></span>
-<span class="code-block__line code-block__line--blank"></span>
-<span class="code-block__line"><span class="code-block__out">  [plan] 1. 데이터 불러오기·관찰</span></span>
-<span class="code-block__line"><span class="code-block__out">         2. 여러 차수로 회귀 …</span></span></div>
+            <pre class="prompt-card__body" data-no-nav>data_1.csv에 x, y 두 열이 있어. 이 점들 뒤에 숨은 함수를 회귀로 추정하고 싶어. 비개발자도 따라갈 수 있게 순서를 계획해줘</pre>
           </div>
+          <p style="font-size:0.78rem; line-height:1.5; color:var(--color-on-surface-muted); margin:0.5rem 0 0;">→ Claude가 <code>[plan]</code> 단계별 계획을 제시합니다 — 읽고 Approve, 아니면 Edit.</p>
         </div>
       </div>
-      <p class="slide__note">Claude가 낸 계획이 정답은 아닙니다 — 읽고 마음에 안 들면 <strong>Edit</strong>으로 다듬으세요. 5장 Plan Mode 복습입니다.</p>
+      <p class="slide__note">Claude가 낸 계획이 정답은 아닙니다 — 읽고 마음에 안 들면 <strong>Edit</strong>으로 다듬으세요. 4장 Plan Mode 복습입니다.</p>
     </div>
   </section>
 
@@ -761,19 +755,21 @@
           </div>
         </div>
         <div>
-          <div class="code-block">
-            <div class="code-block__header">
-              <span class="code-block__dot" style="background:#fb2c36"></span><span class="code-block__dot" style="background:#edb200"></span><span class="code-block__dot" style="background:#00c758"></span>
-              <span class="code-block__title">claude · 시각화 + 회귀</span>
+          <div class="prompt-pair">
+            <div class="prompt-card prompt-card--compact">
+              <div class="prompt-card__head">
+                <span class="prompt-card__label">STEP 2 · 산점도</span>
+                <button class="prompt-card__copy" type="button" data-copy>복사</button>
+              </div>
+              <pre class="prompt-card__body" data-no-nav>data_1.csv 읽어서 산점도로 그려 scatter.png로 저장해줘</pre>
             </div>
-            <div class="code-block__body"><span class="code-block__line"><span class="code-block__cmt"># STEP 2 — 점들을 먼저 그려본다</span></span>
-<span class="code-block__line"><span class="code-block__prompt">&gt;</span> <span class="code-block__cmd">data_1.csv 읽어서 산점도로</span></span>
-<span class="code-block__line"><span class="code-block__cmd">  그려 scatter.png로 저장해줘</span></span>
-<span class="code-block__line code-block__line--blank"></span>
-<span class="code-block__line"><span class="code-block__cmt"># STEP 3 — 여러 곡선을 맞춰본다</span></span>
-<span class="code-block__line"><span class="code-block__prompt">&gt;</span> <span class="code-block__cmd">1차·3차·7차·15차 다항식으로</span></span>
-<span class="code-block__line"><span class="code-block__cmd">  각각 곡선을 맞춰 점 위에 겹쳐</span></span>
-<span class="code-block__line"><span class="code-block__cmd">  그린 그림 4장을 만들어줘</span></span></div>
+            <div class="prompt-card prompt-card--compact">
+              <div class="prompt-card__head">
+                <span class="prompt-card__label">STEP 3 · 여러 곡선</span>
+                <button class="prompt-card__copy" type="button" data-copy>복사</button>
+              </div>
+              <pre class="prompt-card__body" data-no-nav>1차·3차·7차·15차 다항식으로 각각 곡선을 맞춰 점 위에 겹쳐 그린 그림 2장을 만들어줘</pre>
+            </div>
           </div>
         </div>
       </div>

@@ -28,6 +28,11 @@
     if (s.hasAttribute('data-img')) registerSlot(s);
   }
   Array.prototype.forEach.call(document.querySelectorAll('.photo-slot__img'), function (img) {
+    // 저장 후 즉시 표시할 경로의 디렉터리를 원본 src에서 기억
+    // (덱 위치에 따라 ../imgs/ 또는 ../../imgs/ — 하드코딩하면 vibe-coding 덱에서 깨짐)
+    var slot = img.closest('.photo-slot');
+    var src = img.getAttribute('src') || '';
+    if (slot && src.indexOf('/') >= 0) slot.dataset.imgBase = src.slice(0, src.lastIndexOf('/') + 1);
     if (img.complete && img.naturalWidth > 0) { markLoaded(img); return; }
     img.addEventListener('load', function () { if (img.naturalWidth > 0) markLoaded(img); });
     img.addEventListener('error', function () { markMissing(img); });
@@ -102,7 +107,7 @@
       (dirHandle ? Promise.resolve(dirHandle) : connectDir()).then(function (h) {
         if (!h) { showInSlot(slot, URL.createObjectURL(file)); downloadAs(file, name); toast(slot, '폴더 미연결 — 다운로드됨'); return; }
         saveToDir(file, name).then(function () {
-          showInSlot(slot, '../imgs/' + name + '?t=' + Date.now());
+          showInSlot(slot, (slot.dataset.imgBase || '../imgs/') + name + '?t=' + Date.now());
           toast(slot, '저장됨 ✓ ' + name);
         }).catch(function () {
           showInSlot(slot, URL.createObjectURL(file)); downloadAs(file, name); toast(slot, '저장 실패 — 다운로드됨');

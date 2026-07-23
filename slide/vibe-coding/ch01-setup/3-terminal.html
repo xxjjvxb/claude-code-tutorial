@@ -10,7 +10,10 @@
   <link rel="stylesheet" href="../../styles/tokens.css">
   <link rel="stylesheet" href="../../styles/deck.css">
   <link rel="stylesheet" href="../../styles/_os-toggle.css">
+  <link rel="stylesheet" href="../../styles/_practice.css">
   <script defer src="../../scripts/os-toggle.js"></script>
+  <script defer src="../../scripts/prompt-copy.js"></script>
+  <script defer src="../../scripts/slide-modify.js"></script>
 </head>
 <body>
 
@@ -160,13 +163,13 @@
           <div class="cmd-card__row"><span class="cmd-card__alias">pwd</span><span class="cmd-card__formal">Get-Location</span></div>
           <div class="cmd-card__etym">"Print Working Directory"</div>
           <div class="cmd-card__desc">지금 어느 폴더에 있는지 보여준다</div>
-          <div class="cmd-card__example"><span class="cmd-card__example-prompt">PS&gt;</span> pwd<br>C:\Users\you\Day1</div>
+          <div class="cmd-card__example"><span class="cmd-card__example-prompt">PS&gt;</span> pwd<br>C:\Users\you\my-intro</div>
         </div>
         <div class="cmd-card">
           <div class="cmd-card__row"><span class="cmd-card__alias">cd</span><span class="cmd-card__formal">Set-Location</span></div>
           <div class="cmd-card__etym">"Change Directory"</div>
           <div class="cmd-card__desc">다른 폴더로 이동한다</div>
-          <div class="cmd-card__example"><span class="cmd-card__example-prompt">PS&gt;</span> cd Day1</div>
+          <div class="cmd-card__example"><span class="cmd-card__example-prompt">PS&gt;</span> cd my-intro</div>
         </div>
         <div class="cmd-card">
           <div class="cmd-card__row"><span class="cmd-card__alias">ls</span><span class="cmd-card__formal">Get-ChildItem</span></div>
@@ -199,13 +202,13 @@
           <div class="cmd-card__row"><span class="cmd-card__alias">pwd</span><span class="cmd-card__formal">유닉스 표준</span></div>
           <div class="cmd-card__etym">"Print Working Directory"</div>
           <div class="cmd-card__desc">지금 어느 폴더에 있는지 보여준다</div>
-          <div class="cmd-card__example"><span class="cmd-card__example-prompt">$</span> pwd<br>/Users/you/Day1</div>
+          <div class="cmd-card__example"><span class="cmd-card__example-prompt">$</span> pwd<br>/Users/you/my-intro</div>
         </div>
         <div class="cmd-card">
           <div class="cmd-card__row"><span class="cmd-card__alias">cd</span><span class="cmd-card__formal">유닉스 표준</span></div>
           <div class="cmd-card__etym">"Change Directory"</div>
           <div class="cmd-card__desc">다른 폴더로 이동한다</div>
-          <div class="cmd-card__example"><span class="cmd-card__example-prompt">$</span> cd Day1</div>
+          <div class="cmd-card__example"><span class="cmd-card__example-prompt">$</span> cd my-intro</div>
         </div>
         <div class="cmd-card">
           <div class="cmd-card__row"><span class="cmd-card__alias">ls</span><span class="cmd-card__formal">유닉스 표준</span></div>
@@ -269,7 +272,7 @@
           <div class="cmd-card__row"><span class="cmd-card__alias">Tab</span><span class="cmd-card__formal">탭 자동완성</span></div>
           <div class="cmd-card__etym">"Tab completion"</div>
           <div class="cmd-card__desc">경로 · 파일 이름 자동 완성. 길게 안 쳐도 됨.</div>
-          <div class="cmd-card__example"><span class="cmd-card__example-prompt" data-auto-os></span>cd Day(Tab) → Day1<span class="os-win">\</span><span class="os-mac">/</span></div>
+          <div class="cmd-card__example"><span class="cmd-card__example-prompt" data-auto-os></span>cd Day(Tab) → my-intro<span class="os-win">\</span><span class="os-mac">/</span></div>
         </div>
       </div>
       <p class="slide__note">화살표 키와 Tab은 <strong>매일 100번 쓰게 됩니다</strong>. <code><span class="os-win">start .</span><span class="os-mac">open .</span></code>는 "지금 어디?"가 헷갈릴 때 — GUI로 위치를 확인하는 감각이 빨라집니다.</p>
@@ -287,7 +290,7 @@
             <h3 class="content-card__title">절대 경로 (Absolute)</h3>
             <p class="content-card__body">최상위부터 적는 길 — 어디서든 같은 위치.</p>
             <ul class="content-card__list">
-              <li><code><span class="os-win">C:\Users\you\Desktop\Day1\app.html</span><span class="os-mac">/Users/you/Desktop/Day1/app.html</span></code></li>
+              <li><code><span class="os-win">C:\Users\you\Desktop\my-intro\app.html</span><span class="os-mac">/Users/you/Desktop/my-intro/app.html</span></code></li>
               <li><span class="os-win">드라이브 문자(C:)부터 시작</span><span class="os-mac">루트(/)부터 시작</span> · 길지만 명확</li>
             </ul>
           </div>
@@ -305,18 +308,18 @@
       </div>
       <div class="path-tree os-win is-block">
         <span class="path-tree__line">C:\Users\you\Desktop\</span>
-        <span class="path-tree__line path-tree__line--cur">  └── <span class="path-tree__line--hi">Day1\</span>  ← 현재 위치 (pwd)</span>
+        <span class="path-tree__line path-tree__line--cur">  └── <span class="path-tree__line--hi">my-intro\</span>  ← 현재 위치 (pwd)</span>
         <span class="path-tree__line">      ├── app.html      ← 상대: "app.html"</span>
-        <span class="path-tree__line">      └── style.css     ← 절대: "C:\...\Day1\style.css"</span>
+        <span class="path-tree__line">      └── style.css     ← 절대: "C:\...\my-intro\style.css"</span>
       </div>
       <div class="path-tree os-mac is-block">
         <span class="path-tree__line">/Users/you/Desktop/</span>
-        <span class="path-tree__line path-tree__line--cur">  └── <span class="path-tree__line--hi">Day1/</span>  ← 현재 위치 (pwd)</span>
+        <span class="path-tree__line path-tree__line--cur">  └── <span class="path-tree__line--hi">my-intro/</span>  ← 현재 위치 (pwd)</span>
         <span class="path-tree__line">      ├── app.html      ← 상대: "app.html"</span>
-        <span class="path-tree__line">      └── style.css     ← 절대: "/Users/.../Day1/style.css"</span>
+        <span class="path-tree__line">      └── style.css     ← 절대: "/Users/.../my-intro/style.css"</span>
       </div>
-      <p class="slide__note os-win is-block">한글 Windows에서 <code>\</code>와 <code>₩</code>는 <strong>같은 문자</strong>. PowerShell은 <code>/</code>도 동일 인식 → <code>cd C:/Users/you/Day1</code> OK.</p>
-      <p class="slide__note os-mac is-block">Mac은 <code>/</code> 슬래시만 쓰고, 홈 폴더 줄임 <code>~</code> 이 자주 등장 — <code>~/Desktop/Day1</code> = <code>/Users/you/Desktop/Day1</code>. 한글 macOS의 Finder는 "데스크탑"으로 보여도 <strong>실제 경로는 영문 <code>Desktop</code></strong>.</p>
+      <p class="slide__note os-win is-block">한글 Windows에서 <code>\</code>와 <code>₩</code>는 <strong>같은 문자</strong>. PowerShell은 <code>/</code>도 동일 인식 → <code>cd C:/Users/you/my-intro</code> OK.</p>
+      <p class="slide__note os-mac is-block">Mac은 <code>/</code> 슬래시만 쓰고, 홈 폴더 줄임 <code>~</code> 이 자주 등장 — <code>~/Desktop/my-intro</code> = <code>/Users/you/Desktop/my-intro</code>. 한글 macOS의 Finder는 "데스크탑"으로 보여도 <strong>실제 경로는 영문 <code>Desktop</code></strong>.</p>
     </div>
   </section>
 
@@ -342,7 +345,7 @@
             <rect x="0" y="0" width="460" height="320" rx="12" fill="rgba(0,0,0,0.92)"/>
             <rect x="0" y="0" width="460" height="36" fill="rgba(255,255,255,0.06)"/>
             <text x="14" y="22" font-family="ui-monospace, monospace" font-size="11" fill="#fe6e00" font-weight="700">claude · sonnet</text>
-            <text x="320" y="22" font-family="ui-monospace, monospace" font-size="10" fill="rgba(255,255,255,0.5)">~/Desktop/Day1</text>
+            <text x="320" y="22" font-family="ui-monospace, monospace" font-size="10" fill="rgba(255,255,255,0.5)">~/Desktop/my-intro</text>
             <text x="20" y="68" fill="white" font-family="ui-monospace, monospace" font-size="11">&gt; 안녕</text>
             <text x="20" y="92" fill="rgba(255,255,255,0.7)" font-family="ui-monospace, monospace" font-size="10">  안녕하세요! 무엇을 도와드릴까요?</text>
             <text x="20" y="124" fill="white" font-family="ui-monospace, monospace" font-size="11">&gt; 자기소개 페이지 만들어줘</text>
@@ -404,7 +407,7 @@
         <svg viewBox="0 0 460 320" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
           <rect x="0" y="0" width="460" height="320" rx="14" fill="#1e1e1e"/>
           <rect x="0" y="0" width="460" height="32" fill="#252526"/>
-          <text x="14" y="20" font-family="ui-sans-serif, system-ui" font-size="11" fill="rgba(255,255,255,0.5)">VS Code — Day1</text>
+          <text x="14" y="20" font-family="ui-sans-serif, system-ui" font-size="11" fill="rgba(255,255,255,0.5)">VS Code — my-intro</text>
           <rect x="0" y="32" width="160" height="288" fill="#252526"/>
           <text x="14" y="58" font-family="ui-monospace, monospace" font-size="11" fill="rgba(255,255,255,0.45)">EXPLORER</text>
           <text x="14" y="84" font-family="ui-monospace, monospace" font-size="12" fill="rgba(255,255,255,0.85)">▾ DAY1</text>
@@ -442,7 +445,7 @@
             <div class="prompt-principle__example">
               <div>todo 앱을 만드는데, HTML+JS 한 파일로,</div>
               <div>추가/완료/삭제 기능 포함, 다크 테마로,</div>
-              <div>결과는 Day1 폴더에 app.html로 저장</div>
+              <div>결과는 my-intro 폴더에 app.html로 저장</div>
             </div>
           </div>
         </div>
@@ -574,7 +577,7 @@
         <div class="slash-card"><div class="slash-card__cmd">/clear</div><div class="slash-card__desc">컨텍스트 초기화 — 비용 · 집중력 절약</div></div>
         <div class="slash-card"><div class="slash-card__cmd">/usage</div><div class="slash-card__desc">현재까지 토큰 · 달러 사용량 확인</div></div>
         <div class="slash-card"><div class="slash-card__cmd">/model</div><div class="slash-card__desc">모델 변경 (Haiku · Sonnet · Opus)</div></div>
-        <div class="slash-card"><div class="slash-card__cmd">/agents</div><div class="slash-card__desc">서브 에이전트 관리 — 7장에서 깊게</div></div>
+        <div class="slash-card"><div class="slash-card__cmd">/agents</div><div class="slash-card__desc">서브 에이전트 관리 — 5장에서 깊게</div></div>
         <div class="slash-card"><div class="slash-card__cmd">/resume</div><div class="slash-card__desc">이전 세션 이어가기 — 작업 끊겼을 때</div></div>
       </div>
       <p class="slide__note">이어지는 두 슬라이드에서 가장 많이 쓰는 4개를 더 자세히 봅니다.</p>

@@ -7,11 +7,14 @@
   <meta name="author" content="이일규">
   <meta name="copyright" content="© 2026 이일규 · 본 강의자료는 저작권법으로 보호되는 저작물입니다. 무단 복제·배포 금지.">
   <script defer src="../../scripts/protect.js"></script>
-  <title>11장 · 2. 빌드 + 디자인</title>
+  <title>9장 · 2. 빌드 + 디자인</title>
   <link rel="stylesheet" href="../../styles/tokens.css">
   <link rel="stylesheet" href="../../styles/deck.css">
   <link rel="stylesheet" href="../../styles/_os-toggle.css">
+  <link rel="stylesheet" href="../../styles/_practice.css">
   <script defer src="../../scripts/os-toggle.js"></script>
+  <script defer src="../../scripts/prompt-copy.js"></script>
+  <script defer src="../../scripts/slide-modify.js"></script>
 </head>
 <body>
 
@@ -20,7 +23,7 @@
   <header class="deck-chrome">
   <span class="deck-chrome__brand">바이브코딩 · CLAUDE CODE</span>
   <span class="deck-chrome__divider">·</span>
-  <span class="deck-chrome__day">11장 · 2 빌드 + 디자인</span>
+  <span class="deck-chrome__day">9장 · 2 빌드 + 디자인</span>
   <span class="deck-chrome__spacer"></span>
   <span class="deck-chrome__counter">— / —</span>
 </header>
@@ -44,7 +47,7 @@
     <div class="slide__body">
       <div class="setup-grid">
         <div class="setup-step"><div class="setup-step__num">A</div><h3 class="setup-step__title">미니 빌드 마무리</h3><p class="setup-step__desc">Plan + 모든 도구 활용 — 동작하는 1차 완성</p></div>
-        <div class="setup-step"><div class="setup-step__num">B</div><h3 class="setup-step__title">design.md + PPTX v2</h3><p class="setup-step__desc">디자인 룰 작성 + 9장 PPTX에 적용</p></div>
+        <div class="setup-step"><div class="setup-step__num">B</div><h3 class="setup-step__title">design.md + PPTX v2</h3><p class="setup-step__desc">디자인 룰 작성 + 7장 PPTX에 적용</p></div>
         <div class="setup-step"><div class="setup-step__num">C</div><h3 class="setup-step__title">발표자 노트</h3><p class="setup-step__desc">Claude로 4분 대본 자동 생성 + 통독</p></div>
       </div>
       <p class="slide__note">A에 시간 가장 많이 — 미니가 발표 핵심. B·C는 마무리.</p>
@@ -102,7 +105,7 @@
           <span class="code-block__dot" style="background:#fb2c36"></span><span class="code-block__dot" style="background:#edb200"></span><span class="code-block__dot" style="background:#00c758"></span>
           <span class="code-block__title">claude · my-budget/ — 전 과정 도구 종합</span>
         </div>
-        <div class="code-block__body"><span class="code-block__line"><span class="code-block__cmt"># 1) CLAUDE.md 자동 주입 (4장)</span></span><span class="code-block__line"><span class="code-block__out">  ✓ 한국어 답변 룰 적용</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__cmt"># 2) Plan 모드 (5장)</span></span><span class="code-block__line"><span class="code-block__hi">  [plan]</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__cmt"># 3) @ 멘션 (2장)</span></span><span class="code-block__line"><span class="code-block__cmd">&gt; @routes/transactions.py 페이지네이션 추가</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__cmt"># 4) Sub-agent (7장)</span></span><span class="code-block__line"><span class="code-block__hi">  → @test-writer 호출 자동</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__cmt"># 5) MCP filesystem (8장)</span></span><span class="code-block__line"><span class="code-block__hi">  → tests/ 폴더 스캔</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__cmt"># 6) 응답 끝 → Stop Hook (8장)</span></span><span class="code-block__line"><span class="code-block__hi">  → Telegram 알림 발송</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__cmt"># 7) /review 슬래시 (4장)</span></span><span class="code-block__line"><span class="code-block__cmd">&gt; /review</span></span></div>
+        <div class="code-block__body"><span class="code-block__line"><span class="code-block__cmt"># 1) CLAUDE.md 자동 주입 (2장)</span></span><span class="code-block__line"><span class="code-block__out">  ✓ 한국어 답변 룰 적용</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__cmt"># 2) Plan 모드 (4장)</span></span><span class="code-block__line"><span class="code-block__hi">  [plan]</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__cmt"># 3) @ 멘션 (2장)</span></span><span class="code-block__line"><span class="code-block__cmd">&gt; @routes/transactions.py 페이지네이션 추가</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__cmt"># 4) Sub-agent (5장)</span></span><span class="code-block__line"><span class="code-block__hi">  → @test-writer 호출 자동</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__cmt"># 5) MCP filesystem (6장)</span></span><span class="code-block__line"><span class="code-block__hi">  → tests/ 폴더 스캔</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__cmt"># 6) 응답 끝 → Stop Hook (2장)</span></span><span class="code-block__line"><span class="code-block__hi">  → Telegram 알림 발송</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__cmt"># 7) /review 슬래시 (2장)</span></span><span class="code-block__line"><span class="code-block__cmd">&gt; /review</span></span></div>
       </div>
       <p class="slide__note">한 작업에 5~7 도구가 자연스럽게 결합. <strong>"군단 + 도구 + 자동화"의 진가</strong>.</p>
     </div>
@@ -113,14 +116,28 @@
     <div class="slide__eyebrow">B · design.md 작성</div>
     <h2 class="slide__title">본인 디자인 룰 — <span class="accent">15줄 이내</span></h2>
     <div class="slide__body">
-      <div class="code-block">
-        <div class="code-block__header">
-          <span class="code-block__dot" style="background:#fb2c36"></span><span class="code-block__dot" style="background:#edb200"></span><span class="code-block__dot" style="background:#00c758"></span>
-          <span class="code-block__title">my-budget/design.md — 예시</span>
+      <div class="prompt-card">
+        <div class="prompt-card__head">
+          <span class="prompt-card__label">design.md</span>
+          <button class="prompt-card__copy" type="button" data-copy>복사</button>
         </div>
-        <div class="code-block__body"><span class="code-block__line"><span class="code-block__hi"># my-budget · 디자인</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__cmt">## 컬러</span></span><span class="code-block__line"><span class="code-block__out">- primary: #2563eb (블루)</span></span><span class="code-block__line"><span class="code-block__out">- background: #f8fafc</span></span><span class="code-block__line"><span class="code-block__out">- text: #1e293b</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__cmt">## 폰트</span></span><span class="code-block__line"><span class="code-block__out">- Pretendard (한국어 우선)</span></span><span class="code-block__line"><span class="code-block__out">- 제목 굵게 32pt · 본문 보통 16pt</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__cmt">## 레이아웃</span></span><span class="code-block__line"><span class="code-block__out">- 16:9 비율</span></span><span class="code-block__line"><span class="code-block__out">- 한 슬라이드 1 메시지</span></span><span class="code-block__line"><span class="code-block__out">- 좌측 정렬 · 여백 16% 이상</span></span></div>
+        <pre class="prompt-card__body" data-no-nav># my-budget · 디자인
+
+## 컬러
+- primary: #2563eb (블루)
+- background: #f8fafc
+- text: #1e293b
+
+## 폰트
+- Pretendard (한국어 우선)
+- 제목 굵게 32pt · 본문 보통 16pt
+
+## 레이아웃
+- 16:9 비율
+- 한 슬라이드 1 메시지
+- 좌측 정렬 · 여백 16% 이상</pre>
       </div>
-      <p class="slide__note">본인 미니프로젝트 톤에 맞춰 — 가계부면 신뢰감 있는 블루, 일기 앱이면 따뜻한 베이지 등.</p>
+      <p class="slide__note">위 내용을 복사해 프로젝트 루트에 <code>design.md</code>로 저장 — 본인 톤에 맞춰 컬러만 바꾸면 됩니다. 가계부면 신뢰감 있는 블루, 일기 앱이면 따뜻한 베이지.</p>
     </div>
   </section>
 
@@ -129,14 +146,50 @@
     <div class="slide__eyebrow">B · PPTX v2 생성</div>
     <h2 class="slide__title">"<span class="accent">@design.md 적용</span>" 한 줄</h2>
     <div class="slide__body">
+      <div class="prompt-card">
+        <div class="prompt-card__head">
+          <span class="prompt-card__label">프롬프트</span>
+          <button class="prompt-card__copy" type="button" data-copy>복사</button>
+        </div>
+        <pre class="prompt-card__body" data-no-nav>본인 미니프로젝트 발표용 PPT 만들어줘.
+5장 구성 — 표지 · 무엇 · 어떻게 · 데모 · 마무리.
+@design.md 적용해서.</pre>
+      </div>
       <div class="code-block">
         <div class="code-block__header">
           <span class="code-block__dot" style="background:#fb2c36"></span><span class="code-block__dot" style="background:#edb200"></span><span class="code-block__dot" style="background:#00c758"></span>
-          <span class="code-block__title">claude · 발표 슬라이드 만들기</span>
+          <span class="code-block__title">claude · 결과</span>
         </div>
-        <div class="code-block__body"><span class="code-block__line"><span class="code-block__cmd">&gt; 본인 미니프로젝트 발표용 PPT 만들어줘. 5장 — 표지 · 무엇 · 어떻게 · 데모 · 마무리</span></span><span class="code-block__line"><span class="code-block__cmd">&gt; <span class="code-block__hi">@design.md 적용해서</span></span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__hi">  [skill: pptx-builder]</span></span><span class="code-block__line"><span class="code-block__out">  ✓ design.md 읽고 컬러·폰트·레이아웃 적용</span></span><span class="code-block__line"><span class="code-block__out">  ✓ 5장 슬라이드 생성 (16:9)</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__hi">  ⚠ Claude wants to write: presentation_v2.pptx</span></span><span class="code-block__line"><span class="code-block__out">  → Allow once</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__out">  ✓ presentation_v2.pptx 생성</span></span><span class="code-block__line"><span class="code-block__out">  PowerPoint로 열어 확인하세요.</span></span></div>
+        <div class="code-block__body"><span class="code-block__line"><span class="code-block__hi">  [skill: pptx-builder]</span></span><span class="code-block__line"><span class="code-block__out">  ✓ design.md 읽고 컬러·폰트·레이아웃 적용</span></span><span class="code-block__line"><span class="code-block__out">  ✓ 5장 슬라이드 생성 (16:9)</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__hi">  ⚠ Claude wants to write: presentation_v2.pptx</span></span><span class="code-block__line"><span class="code-block__out">  → Allow once</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__out">  ✓ presentation_v2.pptx 생성 — PowerPoint로 열어 확인</span></span></div>
       </div>
       <p class="slide__note">v1과 v2를 나란히 열어 비교 — design.md 한 파일이 만든 차이가 보입니다.</p>
+    </div>
+  </section>
+
+  <!-- 6b · B: design.md 전후 비교 (결과물 예시) -->
+  <section class="slide is-standard">
+    <div class="slide__eyebrow">B · 결과물 예시</div>
+    <h2 class="slide__title">design.md 적용 — <span class="accent">전후 비교</span></h2>
+    <div class="slide__body">
+      <div class="two-col">
+        <figure class="photo-slot photo-slot--landscape" data-img="vc-ch09-build-pptx-v1.png">
+          <img class="photo-slot__img" src="../../imgs/vc-ch09-build-pptx-v1.png" alt="design.md 적용 전 발표 슬라이드">
+          <figcaption class="photo-slot__ph">
+            <span class="photo-slot__icon">◧</span>
+            <span class="photo-slot__label">전 — 기본 PPT (v1)</span>
+            <span class="photo-slot__hint">흰 배경 · 기본 폰트 · 슬라이드마다 제각각</span>
+          </figcaption>
+        </figure>
+        <figure class="photo-slot photo-slot--landscape" data-img="vc-ch09-build-pptx-v2.png">
+          <img class="photo-slot__img" src="../../imgs/vc-ch09-build-pptx-v2.png" alt="design.md 적용 후 발표 슬라이드">
+          <figcaption class="photo-slot__ph">
+            <span class="photo-slot__icon">◧</span>
+            <span class="photo-slot__label">후 — design.md 적용 (v2)</span>
+            <span class="photo-slot__hint">본인 컬러·폰트·레이아웃 통일</span>
+          </figcaption>
+        </figure>
+      </div>
+      <p class="slide__note">같은 내용, 다른 옷 — <strong>design.md 한 파일</strong>이 4장 전체의 톤을 한 번에 통일합니다.</p>
     </div>
   </section>
 
@@ -158,7 +211,7 @@
         </div>
         <div class="promise-card">
           <div class="promise-card__num">✓</div>
-          <h3 class="promise-card__title">5장 구성</h3>
+          <h3 class="promise-card__title">4장 구성</h3>
           <p class="promise-card__body">표지·무엇·어떻게·데모·마무리 의도대로.</p>
         </div>
         <div class="promise-card">
@@ -176,12 +229,21 @@
     <div class="slide__eyebrow">C · 발표자 노트 자동</div>
     <h2 class="slide__title">"<span class="accent">4분 대본 만들어줘</span>"</h2>
     <div class="slide__body">
+      <div class="prompt-card">
+        <div class="prompt-card__head">
+          <span class="prompt-card__label">프롬프트</span>
+          <button class="prompt-card__copy" type="button" data-copy>복사</button>
+        </div>
+        <pre class="prompt-card__body" data-no-nav>@presentation_v2.pptx 보고 4분 발표용 대본 작성해줘.
+포맷: 1분 무엇 · 1.5분 어떻게 · 1.5분 Q&amp;A 도입.
+대화체 · 한국어로.</pre>
+      </div>
       <div class="code-block">
         <div class="code-block__header">
           <span class="code-block__dot" style="background:#fb2c36"></span><span class="code-block__dot" style="background:#edb200"></span><span class="code-block__dot" style="background:#00c758"></span>
-          <span class="code-block__title">claude · 발표자 노트</span>
+          <span class="code-block__title">claude · 생성된 대본 (일부)</span>
         </div>
-        <div class="code-block__body"><span class="code-block__line"><span class="code-block__cmd">&gt; <span class="code-block__hi">@presentation_v2.pptx</span> 보고 4분 발표용 대본 작성해줘.</span></span><span class="code-block__line"><span class="code-block__cmd">  포맷: 1분 무엇 · 1.5분 어떻게 · 1.5분 Q&A 도입.</span></span><span class="code-block__line"><span class="code-block__cmd">  대화체 · 한국어로.</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__out">  발표 대본 — 4분</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__hi">  [표지 · 30초]</span></span><span class="code-block__line"><span class="code-block__out">  "안녕하세요, 김OO입니다.</span></span><span class="code-block__line"><span class="code-block__out">  이번 과정에서 가계부 한 페이지를 만들었어요..."</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__hi">  [무엇 · 30초]</span></span><span class="code-block__line"><span class="code-block__out">  "Flask + SQLite로 거래 추가 + 카테고리..."</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__hi">  [어떻게 · 90초]</span></span><span class="code-block__line"><span class="code-block__out">  "가장 효과적이었던 건 Plan Mode..."</span></span><span class="code-block__line"><span class="code-block__out">  ...</span></span></div>
+        <div class="code-block__body"><span class="code-block__line"><span class="code-block__out">  발표 대본 — 4분</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__hi">  [표지 · 30초]</span></span><span class="code-block__line"><span class="code-block__out">  "안녕하세요, 김OO입니다.</span></span><span class="code-block__line"><span class="code-block__out">  이번 과정에서 가계부 한 페이지를 만들었어요..."</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__hi">  [어떻게 · 90초]</span></span><span class="code-block__line"><span class="code-block__out">  "가장 효과적이었던 건 Plan Mode..."</span></span><span class="code-block__line"><span class="code-block__out">  ...</span></span></div>
       </div>
       <p class="slide__note">대본 통독 → 본인 말투에 맞게 한두 줄 다듬기. <strong>외우지 말 것</strong> — 발표는 자연스러움이 우선.</p>
     </div>

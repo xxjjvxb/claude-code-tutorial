@@ -11,7 +11,10 @@
   <link rel="stylesheet" href="../../styles/tokens.css">
   <link rel="stylesheet" href="../../styles/deck.css">
   <link rel="stylesheet" href="../../styles/_os-toggle.css">
+  <link rel="stylesheet" href="../../styles/_practice.css">
   <script defer src="../../scripts/os-toggle.js"></script>
+  <script defer src="../../scripts/prompt-copy.js"></script>
+  <script defer src="../../scripts/slide-modify.js"></script>
 </head>
 <body>
 
@@ -38,8 +41,8 @@
             <circle cx="22" cy="18" r="5" fill="#fb2c36"/>
             <circle cx="42" cy="18" r="5" fill="#edb200"/>
             <circle cx="62" cy="18" r="5" fill="#00c758"/>
-            <text x="230" y="22" fill="rgba(255,255,255,0.4)" font-family="ui-monospace, monospace" font-size="11" text-anchor="middle">claude — Day1/</text>
-            <text x="22" y="74" fill="white" font-family="ui-monospace, monospace" font-size="13">&gt; / @ ! #</text>
+            <text x="230" y="22" fill="rgba(255,255,255,0.4)" font-family="ui-monospace, monospace" font-size="11" text-anchor="middle">claude — my-intro/</text>
+            <text x="22" y="74" fill="white" font-family="ui-monospace, monospace" font-size="13">&gt; / @ ! Esc</text>
             <text x="22" y="102" fill="rgba(255,255,255,0.75)" font-family="ui-monospace, monospace" font-size="12">  4가지 문법으로 Claude를</text>
             <text x="22" y="122" fill="rgba(255,255,255,0.75)" font-family="ui-monospace, monospace" font-size="12">  손에 익힌다</text>
             <text x="22" y="162" fill="#fe6e00" font-family="ui-monospace, monospace" font-size="13">&gt; @index.html 분석해줘</text>
@@ -57,7 +60,7 @@
         <div class="cover-card">
           <div class="cover-card__day">2장 · 자기 홈페이지 만들기</div>
           <h2 class="cover-card__title">Claude Code<br>4대 문법</h2>
-          <p class="cover-card__subtitle">/ @ ! # — 하루 100번 누르게 될 4가지 핵심 도구.<br>방금 만든 홈페이지에 바로 적용하며 손에 익힌다.</p>
+          <p class="cover-card__subtitle">/ @ ! Esc — 하루 100번 누르게 될 4가지 핵심 도구.<br>방금 만든 홈페이지에 바로 적용하며 손에 익힌다.</p>
         </div>
       </div>
     </div>
@@ -72,7 +75,7 @@
       <div class="section-meta__item"><span class="section-meta__num">/</span><span>Claude 기능</span></div>
       <div class="section-meta__item"><span class="section-meta__num">@</span><span>파일 멘션</span></div>
       <div class="section-meta__item"><span class="section-meta__num">!</span><span>셸 실행</span></div>
-      <div class="section-meta__item"><span class="section-meta__num">#</span><span>메모 추가</span></div>
+      <div class="section-meta__item"><span class="section-meta__num">Esc</span><span>멈춤 · 되돌리기</span></div>
     </div>
   </section>
 
@@ -85,9 +88,9 @@
         <div class="preview-item"><div class="preview-item__symbol">/</div><div class="preview-item__name">슬래시 커맨드</div><div class="preview-item__desc">Claude 자체 기능 호출 — /init /clear /usage 등</div></div>
         <div class="preview-item"><div class="preview-item__symbol">@</div><div class="preview-item__name">파일 · 폴더 멘션</div><div class="preview-item__desc">@app.html @tests/ 로 컨텍스트에 끼워 넣기</div></div>
         <div class="preview-item"><div class="preview-item__symbol">!</div><div class="preview-item__name">셸 명령 실행</div><div class="preview-item__desc"><span class="os-win">!dir</span><span class="os-mac">!ls</span> 처럼 <span class="os-win">PowerShell</span><span class="os-mac">셸</span>을 즉석 호출</div></div>
-        <div class="preview-item"><div class="preview-item__symbol">#</div><div class="preview-item__name">메모리 추가</div><div class="preview-item__desc"># 한국어로 답해줘 → CLAUDE.md에 기록</div></div>
+        <div class="preview-item"><div class="preview-item__symbol">Esc</div><div class="preview-item__name">멈춤 · 되돌리기</div><div class="preview-item__desc">한 번 = 멈춤 · 빈 입력에서 두 번 = 되돌리기 메뉴</div></div>
       </div>
-      <p class="slide__note">4개 모두 <strong>입력 첫 글자에서</strong> 시작 — 자연스럽게 손이 가야 합니다.</p>
+      <p class="slide__note">/ @ !는 <strong>입력 첫 글자에서</strong>, Esc는 언제든 — 넷 다 저절로 손이 가야 합니다.</p>
     </div>
   </section>
 
@@ -98,7 +101,7 @@
     <div class="slide__body">
       <div class="slash-grid">
         <div class="slash-card"><div class="slash-card__cmd">/init</div><div class="slash-card__desc">현재 폴더 분석 → CLAUDE.md 자동 초안 생성</div></div>
-        <div class="slash-card"><div class="slash-card__cmd">/agents</div><div class="slash-card__desc">서브 에이전트 관리 — 7장에서 본격, 여기선 미리보기</div></div>
+        <div class="slash-card"><div class="slash-card__cmd">/agents</div><div class="slash-card__desc">서브 에이전트 관리 — 5장에서 본격, 여기선 미리보기</div></div>
         <div class="slash-card"><div class="slash-card__cmd">/model</div><div class="slash-card__desc">Haiku · Sonnet · Opus 전환 — 한 명령</div></div>
         <div class="slash-card"><div class="slash-card__cmd">/memory</div><div class="slash-card__desc">CLAUDE.md 직접 보기 · 편집 진입</div></div>
         <div class="slash-card"><div class="slash-card__cmd">/compact</div><div class="slash-card__desc">컨텍스트 요약 — /clear보다 부드러움 (다음 덱)</div></div>
@@ -125,13 +128,13 @@
         <svg viewBox="0 0 460 320" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
           <rect x="0" y="0" width="460" height="320" rx="14" fill="rgba(0,0,0,0.92)"/>
           <rect x="0" y="0" width="460" height="32" fill="rgba(255,255,255,0.06)"/>
-          <text x="14" y="20" font-family="ui-monospace, monospace" font-size="11" fill="rgba(255,255,255,0.5)">claude — Day1/</text>
+          <text x="14" y="20" font-family="ui-monospace, monospace" font-size="11" fill="rgba(255,255,255,0.5)">claude — my-intro/</text>
           <text x="20" y="68" fill="#fe6e00" font-family="ui-monospace, monospace" font-size="13">&gt; /init</text>
           <text x="20" y="96" fill="rgba(255,255,255,0.55)" font-family="ui-monospace, monospace" font-size="11">  현재 폴더 분석 중...</text>
           <text x="20" y="116" fill="rgba(255,255,255,0.55)" font-family="ui-monospace, monospace" font-size="11">  ✓ index.html · style.css 발견</text>
           <text x="20" y="148" fill="rgba(255,255,255,0.85)" font-family="ui-monospace, monospace" font-size="11">  CLAUDE.md 초안:</text>
           <rect x="20" y="158" width="420" height="120" rx="6" fill="rgba(255,255,255,0.06)"/>
-          <text x="32" y="180" fill="rgba(255,255,255,0.85)" font-family="ui-monospace, monospace" font-size="10"># Day1 자기소개</text>
+          <text x="32" y="180" fill="rgba(255,255,255,0.85)" font-family="ui-monospace, monospace" font-size="10"># my-intro 자기소개</text>
           <text x="32" y="200" fill="rgba(255,255,255,0.6)" font-family="ui-monospace, monospace" font-size="10">- 자기소개 HTML 한 페이지</text>
           <text x="32" y="218" fill="rgba(255,255,255,0.6)" font-family="ui-monospace, monospace" font-size="10">- 디자인: 모던 sans-serif</text>
           <text x="32" y="236" fill="rgba(255,255,255,0.6)" font-family="ui-monospace, monospace" font-size="10">- 한국어 콘텐츠</text>
@@ -158,7 +161,7 @@
         <svg viewBox="0 0 460 320" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
           <rect x="0" y="0" width="460" height="320" rx="14" fill="rgba(0,0,0,0.92)"/>
           <rect x="0" y="0" width="460" height="32" fill="rgba(255,255,255,0.06)"/>
-          <text x="14" y="20" font-family="ui-monospace, monospace" font-size="11" fill="rgba(255,255,255,0.5)">claude — Day1/</text>
+          <text x="14" y="20" font-family="ui-monospace, monospace" font-size="11" fill="rgba(255,255,255,0.5)">claude — my-intro/</text>
           <text x="20" y="68" fill="white" font-family="ui-monospace, monospace" font-size="13">&gt; <tspan fill="#fe6e00">@index.html</tspan> 의 디자인 분석해줘</text>
           <text x="20" y="100" fill="rgba(255,255,255,0.55)" font-family="ui-monospace, monospace" font-size="11">  ✓ index.html 읽음 (124줄)</text>
           <text x="20" y="120" fill="rgba(255,255,255,0.55)" font-family="ui-monospace, monospace" font-size="11">  ✓ style.css 읽음 (95줄)</text>
@@ -191,7 +194,7 @@
         <svg viewBox="0 0 460 320" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
           <rect x="0" y="0" width="460" height="320" rx="14" fill="rgba(0,0,0,0.92)"/>
           <rect x="0" y="0" width="460" height="32" fill="rgba(255,255,255,0.06)"/>
-          <text x="14" y="20" font-family="ui-monospace, monospace" font-size="11" fill="rgba(255,255,255,0.5)">claude — Day1/</text>
+          <text x="14" y="20" font-family="ui-monospace, monospace" font-size="11" fill="rgba(255,255,255,0.5)">claude — my-intro/</text>
           <text x="20" y="68" fill="white" font-family="ui-monospace, monospace" font-size="13">&gt; <tspan fill="#fe6e00"><tspan class="os-win">!dir</tspan><tspan class="os-mac">!ls</tspan></tspan></text>
           <text x="20" y="98" fill="rgba(255,255,255,0.55)" font-family="ui-monospace, monospace" font-size="11">  $ <tspan class="os-win">dir</tspan><tspan class="os-mac">ls</tspan></text>
           <text x="20" y="118" fill="rgba(255,255,255,0.7)" font-family="ui-monospace, monospace" font-size="10">  index.html</text>
@@ -210,28 +213,26 @@
   <section class="slide is-statement">
     <div class="statement-grid statement-grid--visual-wide">
       <div class="statement-text">
-        <div class="slide__eyebrow"># MEMORY — 메모리 추가</div>
-        <h2 class="statement__lead">한 줄 던져서 <span class="accent">CLAUDE.md</span>에 기록.</h2>
-        <p class="statement__caption">대화 중 "앞으로는 이렇게 해줘" 규칙을 남기고 싶을 때. <code>#</code>로 시작하면 Claude가 어디에 저장할지 묻고 → CLAUDE.md에 자동 추가.</p>
+        <div class="slide__eyebrow">MEMORY — 규칙 남기기</div>
+        <h2 class="statement__lead">"기억해줘" 한마디로 <span class="accent">CLAUDE.md</span>에 기록.</h2>
+        <p class="statement__caption">대화 중 "앞으로는 이렇게 해줘" 규칙을 남기고 싶을 때 — 그냥 말하고 <strong>"기억해줘"</strong>를 붙이면 Claude가 CLAUDE.md에 적어 둡니다. <code>/memory</code>로 언제든 확인.</p>
         <div class="statement__points">
-          <div class="statement__point"><span class="statement__point-num">규칙</span><span><code># 한국어로 답해줘</code></span></div>
-          <div class="statement__point"><span class="statement__point-num">스타일</span><span><code># 들여쓰기는 스페이스 4칸</code></span></div>
-          <div class="statement__point"><span class="statement__point-num">맥락</span><span><code># 이 프로젝트는 Flask 사용</code></span></div>
+          <div class="statement__point"><span class="statement__point-num">규칙</span><span><code>항상 한국어로 답해줘. 기억해줘</code></span></div>
+          <div class="statement__point"><span class="statement__point-num">스타일</span><span><code>들여쓰기는 스페이스 4칸으로. 기억해줘</code></span></div>
+          <div class="statement__point"><span class="statement__point-num">확인</span><span><code>/memory</code> — 저장된 규칙 열람</span></div>
         </div>
       </div>
       <div class="statement-visual">
         <svg viewBox="0 0 460 320" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
           <rect x="0" y="0" width="460" height="320" rx="14" fill="rgba(0,0,0,0.92)"/>
           <rect x="0" y="0" width="460" height="32" fill="rgba(255,255,255,0.06)"/>
-          <text x="14" y="20" font-family="ui-monospace, monospace" font-size="11" fill="rgba(255,255,255,0.5)">claude — Day1/</text>
-          <text x="20" y="68" fill="white" font-family="ui-monospace, monospace" font-size="13">&gt; <tspan fill="#fe6e00"># 항상 한국어로 답해줘</tspan></text>
-          <text x="20" y="100" fill="rgba(255,255,255,0.85)" font-family="ui-monospace, monospace" font-size="11">  메모리에 추가하시겠어요?</text>
-          <text x="20" y="120" fill="rgba(255,255,255,0.55)" font-family="ui-monospace, monospace" font-size="10">  · 프로젝트 (Day1/CLAUDE.md)</text>
-          <text x="20" y="138" fill="rgba(255,255,255,0.55)" font-family="ui-monospace, monospace" font-size="10">  · 유저 (~/.claude/CLAUDE.md)</text>
-          <text x="20" y="170" fill="white" font-family="ui-monospace, monospace" font-size="13">&gt; 1</text>
-          <text x="20" y="200" fill="rgba(255,255,255,0.7)" font-family="ui-monospace, monospace" font-size="11">  ✓ Day1/CLAUDE.md 에 추가됨</text>
+          <text x="14" y="20" font-family="ui-monospace, monospace" font-size="11" fill="rgba(255,255,255,0.5)">claude — my-intro/</text>
+          <text x="20" y="68" fill="white" font-family="ui-monospace, monospace" font-size="13">&gt; <tspan fill="#fe6e00">항상 한국어로 답해줘. 기억해줘</tspan></text>
+          <text x="20" y="104" fill="rgba(255,255,255,0.85)" font-family="ui-monospace, monospace" font-size="11">  알겠습니다 — 앞으로 한국어로 답할게요.</text>
+          <text x="20" y="136" fill="rgba(255,255,255,0.7)" font-family="ui-monospace, monospace" font-size="11">  ✓ my-intro/CLAUDE.md 에 추가됨</text>
+          <text x="20" y="182" fill="rgba(255,255,255,0.5)" font-family="ui-monospace, monospace" font-size="10">  확인은 /memory 로</text>
           <line x1="20" y1="220" x2="440" y2="220" stroke="rgba(255,255,255,0.15)"/>
-          <text x="20" y="248" fill="rgba(255,255,255,0.5)" font-family="ui-monospace, monospace" font-size="10">  Day1/CLAUDE.md (지금)</text>
+          <text x="20" y="248" fill="rgba(255,255,255,0.5)" font-family="ui-monospace, monospace" font-size="10">  my-intro/CLAUDE.md (지금)</text>
           <rect x="20" y="258" width="420" height="44" rx="4" fill="rgba(255,255,255,0.05)"/>
           <text x="32" y="278" fill="rgba(255,255,255,0.85)" font-family="ui-monospace, monospace" font-size="10"># 답변 규칙</text>
           <text x="32" y="294" fill="rgba(255,255,255,0.65)" font-family="ui-monospace, monospace" font-size="10">- 항상 한국어로 답해줘</text>
@@ -248,9 +249,9 @@
       <div class="code-block">
         <div class="code-block__header">
           <span class="code-block__dot" style="background:#fb2c36"></span><span class="code-block__dot" style="background:#edb200"></span><span class="code-block__dot" style="background:#00c758"></span>
-          <span class="code-block__title">claude — Day1/ — 강사 라이브 시연</span>
+          <span class="code-block__title">claude — my-intro/ — 강사 라이브 시연</span>
         </div>
-        <div class="code-block__body"><span class="code-block__line"><span class="code-block__cmt"># 1) 폴더 분석부터</span></span><span class="code-block__line"><span class="code-block__cmd">&gt; <span class="code-block__hi">/init</span></span></span><span class="code-block__line"><span class="code-block__out">  ✓ CLAUDE.md 자동 생성</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__cmt"># 2) 답변 규칙 추가</span></span><span class="code-block__line"><span class="code-block__cmd">&gt; <span class="code-block__hi"># 항상 한국어로</span> 답해줘</span></span><span class="code-block__line"><span class="code-block__out">  ✓ CLAUDE.md에 추가</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__cmt"># 3) 방금 만든 파일 분석 시키기</span></span><span class="code-block__line"><span class="code-block__cmd">&gt; <span class="code-block__hi">@index.html</span> 의 디자인 분석해줘</span></span><span class="code-block__line"><span class="code-block__out">  ✓ index.html 읽고 분석 보고</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__cmt"># 4) 셸 명령 즉석 호출</span></span><span class="code-block__line"><span class="code-block__cmd">&gt; <span class="code-block__hi"><span class="os-win">!dir</span><span class="os-mac">!ls</span></span></span></span><span class="code-block__line"><span class="code-block__out">  $ <span class="os-win">dir</span><span class="os-mac">ls</span> → 폴더 파일 목록 출력</span></span></div>
+        <div class="code-block__body"><span class="code-block__line"><span class="code-block__cmt"># 1) 폴더 분석부터</span></span><span class="code-block__line"><span class="code-block__cmd">&gt; <span class="code-block__hi">/init</span></span></span><span class="code-block__line"><span class="code-block__out">  ✓ CLAUDE.md 자동 생성</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__cmt"># 2) 답변 규칙 추가</span></span><span class="code-block__line"><span class="code-block__cmd">&gt; <span class="code-block__hi">항상 한국어로 답해줘 — 기억해줘</span></span></span><span class="code-block__line"><span class="code-block__out">  ✓ CLAUDE.md에 추가</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__cmt"># 3) 방금 만든 파일 분석 시키기</span></span><span class="code-block__line"><span class="code-block__cmd">&gt; <span class="code-block__hi">@index.html</span> 의 디자인 분석해줘</span></span><span class="code-block__line"><span class="code-block__out">  ✓ index.html 읽고 분석 보고</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__cmt"># 4) 셸 명령 즉석 호출</span></span><span class="code-block__line"><span class="code-block__cmd">&gt; <span class="code-block__hi"><span class="os-win">!dir</span><span class="os-mac">!ls</span></span></span></span><span class="code-block__line"><span class="code-block__out">  $ <span class="os-win">dir</span><span class="os-mac">ls</span> → 폴더 파일 목록 출력</span></span></div>
       </div>
     </div>
   </section>
@@ -273,8 +274,8 @@
         </div>
         <div class="diff-card">
           <div class="diff-card__rank">STEP 3</div>
-          <h3 class="diff-card__title"># 메모 + ESC</h3>
-          <p class="diff-card__body"># 한국어 규칙을 CLAUDE.md에 남기고, ESC 두 번 되돌리기까지 체험.</p>
+          <h3 class="diff-card__title">메모리 + Esc</h3>
+          <p class="diff-card__body">"기억해줘"로 한국어 규칙을 CLAUDE.md에 남기고, Esc 두 번 되돌리기까지 체험.</p>
         </div>
       </div>
       <p class="slide__note">잠깐 쉬고 이어서. 막히면 손드세요 — TA가 1:1로.</p>
@@ -285,7 +286,7 @@
   <section class="slide is-section is-standard">
     <div class="section-eyebrow">4대 문법 · 손풀이 실습</div>
     <h2 class="section-title">4대 문법 — <span class="accent">손풀이</span></h2>
-    <p class="section-caption">앞 덱에서 만든 홈페이지 폴더(Day1)에 그대로 적용. / @ ! # 네 가지를 한 번씩 다 써봅니다.</p>
+    <p class="section-caption">앞 덱에서 만든 홈페이지 폴더(my-intro)에 그대로 적용. / @ ! Esc 네 가지를 한 번씩 다 써봅니다.</p>
     <div class="section-meta">
       <div class="section-meta__item"><span class="section-meta__num">5</span><span>핵심 단계</span></div>
     </div>
@@ -300,7 +301,7 @@
         <div class="setup-step"><div class="setup-step__num">01</div><h3 class="setup-step__title">/model</h3><p class="setup-step__desc">슬래시로 모델 바꿔보기</p></div>
         <div class="setup-step"><div class="setup-step__num">02</div><h3 class="setup-step__title">@ 멘션</h3><p class="setup-step__desc">@index.html 분석 시키기</p></div>
         <div class="setup-step"><div class="setup-step__num">03</div><h3 class="setup-step__title">! 셸 실행</h3><p class="setup-step__desc"><span class="os-win">!dir</span><span class="os-mac">!ls</span> · !code --version</p></div>
-        <div class="setup-step"><div class="setup-step__num">04</div><h3 class="setup-step__title"># 메모</h3><p class="setup-step__desc">CLAUDE.md에 한국어 규칙</p></div>
+        <div class="setup-step"><div class="setup-step__num">04</div><h3 class="setup-step__title">"기억해줘" 메모</h3><p class="setup-step__desc">CLAUDE.md에 한국어 규칙</p></div>
         <div class="setup-step"><div class="setup-step__num">05</div><h3 class="setup-step__title">ESC 두 번</h3><p class="setup-step__desc">AI 편집 직전으로 되돌리기</p></div>
       </div>
       <p class="slide__note">막히면 즉시 손드세요 — TA가 1:1.</p>
@@ -329,7 +330,7 @@
           <div class="code-block">
             <div class="code-block__header">
               <span class="code-block__dot" style="background:#fb2c36"></span><span class="code-block__dot" style="background:#edb200"></span><span class="code-block__dot" style="background:#00c758"></span>
-              <span class="code-block__title">claude — Day1/</span>
+              <span class="code-block__title">claude — my-intro/</span>
             </div>
             <div class="code-block__body"><span class="code-block__line"><span class="code-block__cmd">&gt; <span class="code-block__hi">/model</span></span></span><span class="code-block__line"><span class="code-block__out">  Select a model:</span></span><span class="code-block__line"><span class="code-block__out">  &gt; haiku   (빠르고 저렴)</span></span><span class="code-block__line"><span class="code-block__out">    sonnet  (현재) ← 강의 기본</span></span><span class="code-block__line"><span class="code-block__out">    opus    (느리지만 똑똑)</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__out">  ✓ haiku 로 변경됨</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__cmd">&gt; 안녕</span></span><span class="code-block__line"><span class="code-block__out">  안녕하세요! (응답이 더 빠름)</span></span></div>
           </div>
@@ -379,7 +380,7 @@
       <div class="code-block">
         <div class="code-block__header">
           <span class="code-block__dot" style="background:#fb2c36"></span><span class="code-block__dot" style="background:#edb200"></span><span class="code-block__dot" style="background:#00c758"></span>
-          <span class="code-block__title">claude — Day1/</span>
+          <span class="code-block__title">claude — my-intro/</span>
         </div>
         <div class="code-block__body"><span class="code-block__line"><span class="code-block__cmt"># 1) 셸 명령 즉석 실행</span></span><span class="code-block__line"><span class="code-block__cmd">&gt; <span class="code-block__hi"><span class="os-win">!dir</span><span class="os-mac">!ls</span></span></span></span><span class="code-block__line"><span class="code-block__hi">  ⚠ Claude wants to run: <span class="os-win">dir</span><span class="os-mac">ls</span></span></span><span class="code-block__line"><span class="code-block__out">  [ Allow once / Always allow / Deny ]</span></span><span class="code-block__line"><span class="code-block__out">  → "Allow once" 선택</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__out">  $ <span class="os-win">dir</span><span class="os-mac">ls</span></span></span><span class="code-block__line"><span class="code-block__out">  index.html   style.css   CLAUDE.md</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__cmt"># 2) 그 결과 활용</span></span><span class="code-block__line"><span class="code-block__cmd">&gt; 방금 목록 보고, 다음 작업 제안해줘</span></span><span class="code-block__line"><span class="code-block__out">  홈페이지 기본 파일은 다 있습니다. 다음으로:</span></span><span class="code-block__line"><span class="code-block__out">  · style.css에 hover 효과 추가</span></span><span class="code-block__line"><span class="code-block__out">  · 사진(photo.jpg) 최적화</span></span></div>
       </div>
@@ -389,7 +390,7 @@
 
   <!-- 16 · STEP 4: # 메모 -->
   <section class="slide is-standard">
-    <div class="slide__eyebrow">STEP 04 · # 메모</div>
+    <div class="slide__eyebrow">STEP 04 · 메모리</div>
     <h2 class="slide__title">CLAUDE.md에 <span class="accent">한국어 규칙</span> 추가</h2>
     <div class="slide__body">
       <div class="two-col">
@@ -397,11 +398,11 @@
           <div class="content-card content-card--compact">
             <h3 class="content-card__title">3개 추가해보기</h3>
             <ol class="content-card__list content-card__list--ol">
-              <li><code># 항상 한국어로 답해줘</code></li>
-              <li><code># 코드 블록은 마크다운으로</code></li>
-              <li><code># 변수명은 영어, 주석은 한국어</code></li>
+              <li><code>항상 한국어로 답해줘. 기억해줘</code></li>
+              <li><code>코드 블록은 마크다운으로 써줘. 기억해줘</code></li>
+              <li><code>변수명은 영어, 주석은 한국어로. 기억해줘</code></li>
             </ol>
-            <p class="content-card__body">매번 "프로젝트 (Day1/CLAUDE.md)" 선택.</p>
+            <p class="content-card__body">Claude의 답에서 my-intro/CLAUDE.md에 적었는지 확인.</p>
           </div>
         </div>
         <div>
@@ -416,7 +417,7 @@
           </div>
         </div>
       </div>
-      <p class="slide__note">CLAUDE.md는 200줄 넘기면 신호대잡음비 ↓ — 짧고 명확한 규칙만 적습니다 (4장에서 자세히).</p>
+      <p class="slide__note">CLAUDE.md는 200줄 넘기면 신호대잡음비 ↓ — 짧고 명확한 규칙만 적습니다 (이 장 뒤 덱에서 자세히).</p>
     </div>
   </section>
 
@@ -430,10 +431,10 @@
           <div class="content-card content-card--compact">
             <h3 class="content-card__title">ESC 두 번이 하는 일</h3>
             <ul class="content-card__list">
-              <li>claude 대화 중 <strong>ESC를 두 번</strong> 누르기</li>
-              <li>Claude가 편집한 파일이 <strong>편집 직전 상태로 복원</strong></li>
-              <li>대화는 그대로 — 코드만 되돌아감</li>
-              <li>세션 안의 가장 빠른 되돌리기</li>
+              <li>입력창이 빈 상태에서 <strong>ESC를 두 번</strong> 누르기</li>
+              <li><strong>되돌리기 메뉴(rewind)</strong>가 열림 — 돌아갈 시점 선택</li>
+              <li>코드만 · 대화만 · 둘 다 — <strong>복원 범위도 선택</strong></li>
+              <li><code>/rewind</code> 명령으로도 같은 메뉴</li>
             </ul>
           </div>
         </div>
@@ -469,9 +470,9 @@
           <p class="promise-card__body">파일을 가리키고, 셸 명령을 즉석 호출하는 두 도구.</p>
         </div>
         <div class="promise-card">
-          <div class="promise-card__num">#</div>
+          <div class="promise-card__num">✎</div>
           <h3 class="promise-card__title">메모리</h3>
-          <p class="promise-card__body">한국어로 답하는 규칙 등 CLAUDE.md에 기록 시작.</p>
+          <p class="promise-card__body">"기억해줘" 한마디 — 규칙이 CLAUDE.md에 기록 시작.</p>
         </div>
         <div class="promise-card">
           <div class="promise-card__num">ESC</div>

@@ -1,0 +1,280 @@
+/* _practice.css — 실습 공용 컴포넌트 (4:3 vibe-coding 덱용)
+   deck-89.css의 prompt-card / img-frame / photo-slot 계열을 4:3 스테이지에 맞게 이식.
+   로드 순서: tokens.css → deck.css → _os-toggle.css → _practice.css
+   필요 스크립트: scripts/prompt-copy.js (복사 버튼) · scripts/slide-modify.js (이미지 드롭존) */
+
+/* =============================
+   prompt-card — 복사 가능한 프롬프트 블록
+   (head: 라벨 좌 · "복사" 버튼 항상 우상단)
+   pre.prompt-card__body 에 data-no-nav — 내부 클릭이 슬라이드 넘김을 트리거하지 않게
+   ============================= */
+.prompt-card {
+  margin: 0.35rem 0;
+  border: 2px solid var(--color-outline-strong);
+  border-radius: var(--rounded-md);
+  background: var(--color-surface-elevated);
+  overflow: hidden;
+  box-shadow: var(--shadow-subtle);
+}
+.prompt-card__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;   /* 라벨 좌 / 버튼 우 */
+  gap: 0.6rem;
+  padding: 0.42rem 0.55rem 0.42rem 0.85rem;
+  background: var(--color-surface-soft);
+  border-bottom: 1.5px solid var(--color-outline);
+}
+.prompt-card__label {
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-primary-strong);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  white-space: nowrap;
+}
+.prompt-card__copy {
+  appearance: none;
+  cursor: pointer;
+  flex-shrink: 0;
+  border: 1.5px solid var(--color-outline-strong);
+  background: var(--color-surface-elevated);
+  color: var(--color-on-surface);
+  font-family: var(--font-sans);
+  font-size: 0.74rem;
+  font-weight: 700;
+  line-height: 1;
+  padding: 0.36rem 0.7rem;
+  border-radius: var(--rounded-sm);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  transition: background var(--motion-fast), border-color var(--motion-fast), color var(--motion-fast), transform var(--motion-fast);
+}
+.prompt-card__copy::before { content: "⧉"; font-size: 0.86rem; line-height: 1; }
+.prompt-card__copy:hover { border-color: var(--color-primary); color: var(--color-primary-strong); }
+.prompt-card__copy:active { transform: scale(0.95); }
+.prompt-card__copy.is-copied {
+  background: var(--color-success);
+  border-color: var(--color-success);
+  color: #fff;
+}
+.prompt-card__copy.is-copied::before { content: "✓"; }
+.prompt-card__body {
+  margin: 0;
+  padding: 0.75rem 0.95rem;
+  font-family: var(--font-sans);            /* 한글 지시문 — sans, pre는 mono라 덮어씀 */
+  font-size: 0.84rem;
+  line-height: 1.5;
+  color: var(--color-on-surface);
+  white-space: pre-wrap;                     /* 줄바꿈 보존 + 한글 wrap */
+  word-break: keep-all;
+  overflow-wrap: break-word;
+  tab-size: 2;
+}
+/* 본문 안 인라인 강조 */
+.prompt-card__body .ph { color: var(--color-primary-strong); font-weight: 700; }  /* [채울 칸] 플레이스홀더 */
+/* 명령어형 프롬프트(터미널에 붙여넣기) — mono로 */
+.prompt-card--cmd .prompt-card__body { font-family: var(--font-mono); font-size: 0.8rem; }
+
+/* 작은 변형 — 한 슬라이드에 프롬프트 3개 이상일 때만 사용 */
+.prompt-card--compact .prompt-card__body { font-size: 0.78rem; line-height: 1.45; padding: 0.6rem 0.8rem; }
+.prompt-card--compact .prompt-card__head { padding: 0.34rem 0.45rem 0.34rem 0.7rem; }
+
+/* 프롬프트 짝 — 여러 개를 세로로 묶는 컨테이너 */
+.prompt-pair { display: flex; flex-direction: column; gap: 0.45rem; }
+.prompt-pair > .prompt-card { margin: 0; }
+
+/* =============================
+   img-frame — 실제 이미지 액자 (흰 배경 + 외곽선)
+   ============================= */
+.img-frame {
+  display: flex; align-items: center; justify-content: center;
+  background: #fff;
+  border: 2px solid var(--color-outline-strong);
+  border-radius: var(--rounded-md);
+  padding: 0.5rem;
+  width: fit-content;            /* 액자가 이미지 크기에 딱 맞게 */
+  max-width: 100%;
+  margin-left: auto; margin-right: auto;
+  overflow: hidden;              /* 어떤 경우에도 프레임 밖으로 안 나감 */
+  box-shadow: var(--shadow-subtle);
+}
+.img-frame img { max-width: 100%; max-height: 14rem; width: auto; height: auto; display: block; border-radius: calc(var(--rounded-md) - 4px); }
+
+/* =============================
+   photo-slot — 아직 캡처 안 한 화면 자리 (드롭존)
+   이미지가 들어오면(.has-img) 사진 표시, placeholder(__ph) 숨김.
+   modify-mode(?mode=modify) 또는 이미지 매칭 실패 시 업로드 활성.
+   ============================= */
+.photo-slot {
+  position: relative;
+  margin: 0;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: 0.3rem;
+  border: 2px dashed var(--color-outline-strong);
+  border-radius: var(--rounded-md);
+  background: var(--color-surface-soft);
+  color: var(--color-on-surface-muted);
+  text-align: center;
+  padding: 1rem;
+  width: 100%;
+  overflow: hidden;
+}
+.photo-slot--portrait { aspect-ratio: 3 / 4; max-height: 13rem; }
+.photo-slot--landscape { aspect-ratio: 16 / 10; max-height: 12rem; }
+.photo-slot--square { aspect-ratio: 1 / 1; max-height: 12rem; }
+.photo-slot__icon { font-size: 1.8rem; line-height: 1; }
+.photo-slot__label { font-size: 0.78rem; font-weight: 700; color: var(--color-on-surface); }
+.photo-slot__hint { font-size: 0.66rem; color: var(--color-on-surface-muted); }
+.photo-slot__ph { display: flex; flex-direction: column; align-items: center; gap: 0.3rem; margin: 0; }
+.photo-slot__img { display: none; width: 100%; height: 100%; object-fit: contain; }
+/* 이미지가 실제로 로드되면 — 사진 표시, placeholder 숨김, 테두리 실선 */
+.photo-slot.has-img {
+  padding: 0.4rem;
+  border-style: solid;
+  background: #fff;
+  aspect-ratio: auto;            /* 들어온 이미지 비율을 존중 */
+  max-height: none;
+  width: fit-content;            /* 박스가 이미지를 감싸는 액자로 */
+  max-width: 100%;
+  margin-left: auto; margin-right: auto;
+  box-shadow: var(--shadow-subtle);
+}
+.photo-slot.has-img .photo-slot__img {
+  display: block;
+  width: auto; height: auto;
+  max-width: 100%; max-height: 13rem;   /* 세로 사진도 본문을 밀어내지 않게 */
+  object-fit: contain;
+  border-radius: calc(var(--rounded-md) - 4px);
+}
+.photo-slot.has-img .photo-slot__ph { display: none; }
+
+/* ---- modify-mode (?mode=modify) ---- */
+body.modify-mode .photo-slot[data-img] { cursor: copy; outline: 2px solid transparent; }
+body.modify-mode .photo-slot[data-img]:hover { border-color: var(--color-primary); }
+.photo-slot.is-drop { border-color: var(--color-primary); border-style: solid; background: color-mix(in srgb, var(--color-primary) 12%, #fff); }
+.photo-slot.is-active {
+  outline: 3px solid var(--color-primary);
+  outline-offset: 3px;
+  border-color: var(--color-primary);
+}
+.photo-slot.is-active::after {
+  content: "Ctrl+V";
+  position: absolute;
+  top: 0.4rem; right: 0.4rem;
+  background: var(--color-primary);
+  color: #fff;
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  padding: 0.18rem 0.45rem;
+  border-radius: var(--rounded-sm);
+  pointer-events: none;
+  z-index: 4;
+}
+/* 클릭을 슬롯이 직접 잡도록 — img/figcaption이 클릭을 가로채면 deck.js의 좌·우 슬라이드 넘김으로 가버림 */
+body.modify-mode .photo-slot[data-img] .photo-slot__img,
+body.modify-mode .photo-slot[data-img] .photo-slot__ph,
+body.modify-mode .photo-slot[data-img] .photo-slot__ph * { pointer-events: none; }
+body.modify-mode .photo-slot.has-img { cursor: pointer; }
+
+/* 삭제 버튼 — modify-mode + (hover 또는 active) 시 우상단 표시 */
+.photo-slot__delete {
+  position: absolute;
+  top: 0.45rem;
+  right: 0.45rem;
+  z-index: 6;
+  width: 1.9rem;
+  height: 1.9rem;
+  border-radius: var(--rounded-pill);
+  border: 2px solid var(--color-danger);
+  background: rgba(255, 255, 255, 0.96);
+  color: var(--color-danger);
+  font-family: var(--font-sans);
+  font-size: 1.05rem;
+  font-weight: 700;
+  line-height: 1;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  pointer-events: auto;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.18);
+  transition: background var(--motion-fast), color var(--motion-fast), transform var(--motion-fast);
+}
+.photo-slot__delete:hover {
+  background: var(--color-danger);
+  color: #fff;
+  transform: scale(1.08);
+}
+.photo-slot__delete:active { transform: scale(0.94); }
+body.modify-mode .photo-slot.has-img:hover .photo-slot__delete,
+body.modify-mode .photo-slot.has-img.is-active .photo-slot__delete {
+  display: inline-flex;
+}
+/* active 상태에서 Ctrl+V 뱃지(::after)와 자리 안 겹치게 */
+body.modify-mode .photo-slot.has-img.is-active::after { right: 2.8rem; }
+body.modify-mode .photo-slot.has-img:hover {
+  outline: 2px dashed var(--color-primary);
+  outline-offset: 2px;
+}
+body.modify-mode .photo-slot.has-img:hover::before {
+  content: "클릭 → Ctrl+V 로 교체";
+  position: absolute;
+  left: 50%; bottom: 0.5rem; transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.78);
+  color: #fff;
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 0.28rem 0.6rem;
+  border-radius: var(--rounded-pill);
+  white-space: nowrap;
+  pointer-events: none;
+  z-index: 4;
+}
+/* 활성화 + 이미지 있음 — 이미지 위에 옅은 오버레이로 "교체 모드" 명확히 */
+body.modify-mode .photo-slot.has-img.is-active::before {
+  content: "교체하려면 Ctrl+V";
+  position: absolute;
+  inset: 0;
+  background: color-mix(in srgb, var(--color-primary) 28%, transparent);
+  color: #fff;
+  font-size: 0.95rem;
+  font-weight: 700;
+  display: flex; align-items: center; justify-content: center;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
+  pointer-events: none;
+  z-index: 3;
+  left: auto; right: auto; bottom: auto; transform: none;
+  border-radius: var(--rounded-md);
+}
+.photo-slot__toast {
+  position: absolute; left: 50%; bottom: 0.5rem; transform: translateX(-50%);
+  background: var(--color-on-surface); color: #fff;
+  font-size: 0.66rem; font-weight: 700; padding: 0.25rem 0.6rem; border-radius: var(--rounded-pill);
+  white-space: nowrap; z-index: 5;
+}
+.modify-bar {
+  position: fixed; top: 0; left: 50%; transform: translateX(-50%);
+  z-index: 100;
+  display: inline-flex; align-items: center; gap: 0.6rem;
+  background: var(--color-on-surface); color: #fff;
+  padding: 0.3rem 0.5rem 0.3rem 0.7rem; border-radius: 0 0 var(--rounded-md) var(--rounded-md);
+  font-size: 0.72rem; box-shadow: var(--shadow-raised);
+}
+.modify-bar__tag { font-family: var(--font-mono); font-size: 0.6rem; font-weight: 700; letter-spacing: 0.08em; color: var(--color-primary-warm); }
+.modify-bar__btn {
+  appearance: none; cursor: pointer; border: 1px solid rgba(255,255,255,0.3);
+  background: rgba(255,255,255,0.08); color: #fff; font-weight: 700;
+  font-size: 0.7rem; padding: 0.25rem 0.6rem; border-radius: var(--rounded-sm);
+}
+.modify-bar__btn:hover { background: rgba(255,255,255,0.18); }
+.modify-bar__btn[disabled] { opacity: 0.5; cursor: not-allowed; }
+.modify-bar.is-connected .modify-bar__btn { background: var(--color-success); border-color: var(--color-success); }
+.modify-bar__hint { opacity: 0.75; font-size: 0.66rem; }

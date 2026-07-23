@@ -7,11 +7,14 @@
   <meta name="author" content="이일규">
   <meta name="copyright" content="© 2026 이일규 · 본 강의자료는 저작권법으로 보호되는 저작물입니다. 무단 복제·배포 금지.">
   <script defer src="../../scripts/protect.js"></script>
-  <title>8장 · 1. MCP 연결</title>
+  <title>6장 · 1. MCP 연결</title>
   <link rel="stylesheet" href="../../styles/tokens.css">
   <link rel="stylesheet" href="../../styles/deck.css">
   <link rel="stylesheet" href="../../styles/_os-toggle.css">
+  <link rel="stylesheet" href="../../styles/_practice.css">
   <script defer src="../../scripts/os-toggle.js"></script>
+  <script defer src="../../scripts/prompt-copy.js"></script>
+  <script defer src="../../scripts/slide-modify.js"></script>
 </head>
 <body>
 
@@ -20,14 +23,14 @@
   <header class="deck-chrome">
   <span class="deck-chrome__brand">바이브코딩 · CLAUDE CODE</span>
   <span class="deck-chrome__divider">·</span>
-  <span class="deck-chrome__day">8장 · 1 MCP 연결</span>
+  <span class="deck-chrome__day">6장 · 1 MCP 연결</span>
   <span class="deck-chrome__spacer"></span>
   <span class="deck-chrome__counter">— / —</span>
 </header>
 
   <!-- 1 · Chapter intro -->
   <section class="slide is-section is-standard">
-    <div class="section-eyebrow">8장 · MCP</div>
+    <div class="section-eyebrow">6장 · MCP</div>
     <h2 class="section-title">MCP — 외부 세계와 <span class="accent">연결</span>하는 표준 포트</h2>
     <p class="section-caption">Claude는 기본적으로 내 프로젝트 폴더 안만 봅니다. MCP는 파일·GitHub·브라우저 같은 외부 도구를 꽂는 "표준 포트"입니다. 이 덱에서 MCP 개념과 연결을 익히고 — 다음 덱에서 브라우저 MCP로 웹을 직접 크롤링합니다.</p>
     <div class="section-meta">
@@ -120,19 +123,20 @@
             <h3 class="content-card__title">내가 할 일은 "연결" 한 줄</h3>
             <p class="content-card__body">도구를 한 번 꽂아 두면 — 쓰는 법은 Claude가 알아서. 명령을 외울 필요 없이 Claude에게 물어보면 됩니다.</p>
             <ul class="content-card__list">
-              <li><code>claude mcp add &lt;도구&gt;</code> — 한 줄로 연결</li>
+              <li><code>claude mcp add &lt;이름&gt; -- &lt;실행 명령&gt;</code> — 한 줄로 연결</li>
               <li><code>claude mcp list</code> — 연결 상태 확인</li>
               <li>안 쓰면 <code>claude mcp remove</code>로 뺀다</li>
             </ul>
           </div>
         </div>
         <div>
-          <div class="code-block">
-            <div class="code-block__header">
-              <span class="code-block__dot" style="background:#fb2c36"></span><span class="code-block__dot" style="background:#edb200"></span><span class="code-block__dot" style="background:#00c758"></span>
-              <span class="code-block__title"><span class="os-win">PowerShell</span><span class="os-mac">Terminal (zsh)</span> · MCP 연결</span>
+          <div class="prompt-card prompt-card--cmd">
+            <div class="prompt-card__head">
+              <span class="prompt-card__label"><span class="os-win">PowerShell</span><span class="os-mac">터미널</span> · MCP 연결</span>
+              <button class="prompt-card__copy" type="button" data-copy>복사</button>
             </div>
-            <div class="code-block__body"><span class="code-block__line"><span class="code-block__prompt" data-auto-os></span> <span class="code-block__cmd">claude mcp add &lt;도구&gt;</span></span><span class="code-block__line"><span class="code-block__out">  ✓ 연결됨</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__prompt" data-auto-os></span> <span class="code-block__cmd">claude mcp list</span></span><span class="code-block__line"><span class="code-block__out">  연결된 MCP 목록…</span></span></div>
+            <pre class="prompt-card__body" data-no-nav>claude mcp add <span class="ph">&lt;이름&gt;</span> -- <span class="ph">&lt;실행 명령&gt;</span>
+claude mcp list</pre>
           </div>
         </div>
       </div>
@@ -153,7 +157,7 @@
         <div class="content-card content-card--compact"><h3 class="content-card__title">데이터베이스</h3><p class="content-card__body">Supabase·SQLite 같은 DB를 조회·질의.</p></div>
         <div class="content-card content-card--compact"><h3 class="content-card__title">Slack · Notion</h3><p class="content-card__body">팀 채널·문서를 읽고 쓰기.</p></div>
       </div>
-      <p class="slide__note">전부 꽂을 필요 없습니다 — <strong>지금 일에 필요한 것만</strong>. 정리 원칙은 9장에서 한 번 더.</p>
+      <p class="slide__note">전부 꽂을 필요 없습니다 — <strong>지금 일에 필요한 것만</strong>. 정리 원칙은 7장에서 한 번 더.</p>
     </div>
   </section>
 
@@ -196,7 +200,7 @@
     <div class="slide__body">
       <div class="compare-2">
         <div class="compare-side compare-side--soft">
-          <div class="compare-side__label">서브에이전트 · 7장</div>
+          <div class="compare-side__label">서브에이전트 · 5장</div>
           <h3 class="compare-side__title">역할을 맡는 도우미</h3>
           <ul class="compare-side__list">
             <li>여전히 Claude — 역할·규칙만 따로</li>

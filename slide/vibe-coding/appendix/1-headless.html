@@ -11,7 +11,10 @@
   <link rel="stylesheet" href="../../styles/tokens.css">
   <link rel="stylesheet" href="../../styles/deck.css">
   <link rel="stylesheet" href="../../styles/_os-toggle.css">
+  <link rel="stylesheet" href="../../styles/_practice.css">
   <script defer src="../../scripts/os-toggle.js"></script>
+  <script defer src="../../scripts/prompt-copy.js"></script>
+  <script defer src="../../scripts/slide-modify.js"></script>
   <style>
     /* 부록 — 작업 스케줄러 동작 칸 폼 */
     .sched-lead { font-size: 0.84rem; color: var(--color-on-surface-muted); margin: 0 0 0.8rem 0; }
@@ -164,7 +167,7 @@
               <li><strong>동작</strong> — 무엇을: PowerShell로 claude 실행</li>
               <li><strong>시작 위치</strong> — 어디서: 위 headless 폴더</li>
             </ul>
-            <p class="content-card__body">윈도우 기본 도구 "작업 스케줄러"를 검색해 엽니다.</p>
+            <p class="content-card__body">시작 옆 검색창에 <strong>작업 스케줄러</strong>를 입력해 열고 → 오른쪽 <strong>작업 만들기…</strong>를 클릭합니다.</p>
           </div>
           <div class="content-card content-card--compact os-mac is-block">
             <h3 class="content-card__title">launchd 또는 crontab에 등록할 3가지</h3>
@@ -177,8 +180,48 @@
           </div>
         </div>
       </div>
-      <p class="slide__note">4장의 Hooks가 "이벤트가 일어나면" 자동이었다면 — <span class="os-win">작업 스케줄러</span><span class="os-mac">launchd · cron</span>는 <strong>"정해둔 시각이 되면"</strong> 자동입니다.</p>
+      <p class="slide__note">2장의 Hooks가 "이벤트가 일어나면" 자동이었다면 — <span class="os-win">작업 스케줄러</span><span class="os-mac">launchd · cron</span>는 <strong>"정해둔 시각이 되면"</strong> 자동입니다.</p>
     </div>
+  </section>
+
+  <!-- 작업 스케줄러 화면 — 트리거·동작 -->
+  <section class="slide is-standard">
+    <div class="slide__eyebrow">SCREENS · <span class="os-win">작업 스케줄러 두 탭</span><span class="os-mac">Mac은 화면 없이</span></div>
+    <h2 class="slide__title os-win is-block">두 개의 탭 — <span class="accent">트리거·동작</span>을 채운다</h2>
+    <h2 class="slide__title os-mac is-block">Mac은 화면 없이 — <span class="accent">crontab 한 줄</span></h2>
+    <div class="slide__body">
+      <div class="os-win is-block">
+        <div class="two-col">
+          <div>
+            <figure class="photo-slot photo-slot--landscape" data-img="vc-apx-headless-trigger.png">
+              <img class="photo-slot__img" src="../../imgs/vc-apx-headless-trigger.png" alt="작업 스케줄러 트리거 탭 — 5분마다 반복 설정 화면">
+              <figcaption class="photo-slot__ph">
+                <span class="photo-slot__icon">◧</span>
+                <span class="photo-slot__label">① 트리거 탭 — 5분마다</span>
+                <span class="photo-slot__hint">새로 만들기 → <strong>작업 반복 간격</strong>을 5분으로</span>
+              </figcaption>
+            </figure>
+          </div>
+          <div>
+            <figure class="photo-slot photo-slot--landscape" data-img="vc-apx-headless-action.png">
+              <img class="photo-slot__img" src="../../imgs/vc-apx-headless-action.png" alt="작업 스케줄러 동작 탭 — 프로그램 시작 새 동작 화면">
+              <figcaption class="photo-slot__ph">
+                <span class="photo-slot__icon">◧</span>
+                <span class="photo-slot__label">② 동작 탭 — 프로그램 시작</span>
+                <span class="photo-slot__hint">새로 만들기 → 동작 <strong>프로그램 시작</strong> → 다음 화면 세 칸</span>
+              </figcaption>
+            </figure>
+          </div>
+        </div>
+      </div>
+      <div class="os-mac is-block">
+        <div class="content-card content-card--compact">
+          <h3 class="content-card__title">Mac엔 이 화면이 없습니다</h3>
+          <p class="content-card__body">작업 스케줄러는 윈도우 전용 GUI예요. Mac은 다음 화면의 <code>crontab -e</code> 한 줄이 등록의 전부 — 넘겨볼 화면이 따로 없습니다.</p>
+        </div>
+      </div>
+    </div>
+    <p class="slide__note os-win is-block">화면이 낯설면 — 그 화면을 그대로 캡처해 Claude에게 <strong>"여기서 5분마다 반복은 어디서 켜?"</strong>라고 물어보세요.</p>
   </section>
 
   <!-- 5 · 새 동작 만들기 — 세 칸 -->
@@ -205,12 +248,15 @@
           <div class="sched-row__hint">여기서 claude가 실행되고 — <code>log.txt</code> 기록도 이 폴더에 쌓입니다. 따옴표 없이 경로만.</div>
         </div>
       </div>
-      <div class="sched-form os-mac is-block">
-        <div class="sched-row">
-          <div class="sched-row__label">crontab 한 줄</div>
-          <div class="sched-row__input">*/5 * * * * cd ~/lecture/headless && claude -p '오후 5시까지 몇 분 남았는지 알려주고 log.txt에 한 줄 기록해줘' &gt;&gt; log.txt 2&gt;&amp;1</div>
-          <div class="sched-row__hint"><code>*/5 * * * *</code> = 5분마다. <code>cd</code>로 폴더 이동 후 claude 실행. 결과는 <code>log.txt</code>에 append. 첫 등록 시 시스템 환경설정 → 개인정보 → 전체 디스크 접근 허용이 한 번 떠요.</div>
+      <div class="os-mac is-block">
+        <div class="prompt-card prompt-card--cmd">
+          <div class="prompt-card__head">
+            <span class="prompt-card__label">터미널 · crontab -e</span>
+            <button class="prompt-card__copy" type="button" data-copy>복사</button>
+          </div>
+          <pre class="prompt-card__body" data-no-nav>*/5 * * * * cd ~/lecture/headless &amp;&amp; claude -p '오후 5시까지 몇 분 남았는지 알려주고 log.txt에 한 줄 기록해줘' &gt;&gt; log.txt 2&gt;&amp;1</pre>
         </div>
+        <p class="sched-lead" style="margin:0.55rem 0 0;"><code>*/5 * * * *</code> = 5분마다. <code>cd</code>로 폴더 이동 후 claude 실행, 결과는 <code>log.txt</code>에 append. 첫 등록 시 <strong>개인정보 → 전체 디스크 접근</strong> 허용이 한 번 떠요.</p>
       </div>
     </div>
     <p class="slide__note os-win is-block">세 칸을 다 채웠으면 — "확인"으로 저장. 막히는 부분이 있으면 화면을 캡처해 Claude에게 보여주며 물어보세요.</p>

@@ -10,7 +10,10 @@
   <link rel="stylesheet" href="../../styles/tokens.css">
   <link rel="stylesheet" href="../../styles/deck.css">
   <link rel="stylesheet" href="../../styles/_os-toggle.css">
+  <link rel="stylesheet" href="../../styles/_practice.css">
   <script defer src="../../scripts/os-toggle.js"></script>
+  <script defer src="../../scripts/prompt-copy.js"></script>
+  <script defer src="../../scripts/slide-modify.js"></script>
 </head>
 <body>
 
@@ -29,7 +32,7 @@
   <section class="slide is-section is-standard">
     <div class="section-eyebrow">2장 · INTRO PAGE</div>
     <h2 class="section-title">자기소개 <span class="accent">워밍업</span></h2>
-    <p class="section-caption">셋업한 Claude Code로 첫 결과물을 만들어봅니다. 인터뷰 → 자기소개 대본 → HTML 페이지. 여기서 만든 결과물은 강의 내내 재활용 (9장에서 PPTX·PDF로 변환).</p>
+    <p class="section-caption">셋업한 Claude Code로 첫 결과물을 만들어봅니다. 인터뷰 → 자기소개 대본 → HTML 페이지. 여기서 만든 결과물은 강의 내내 재활용 (7장에서 PPTX·PDF로 변환).</p>
     <div class="section-meta">
       <div class="section-meta__item"><span class="section-meta__num">2</span><span>미션</span></div>
     </div>
@@ -63,6 +66,13 @@
           </div>
         </div>
       </div>
+      <div class="prompt-card">
+        <div class="prompt-card__head">
+          <span class="prompt-card__label">프롬프트 · 인터뷰 시작</span>
+          <button class="prompt-card__copy" type="button" data-copy>복사</button>
+        </div>
+        <pre class="prompt-card__body" data-no-nav>나를 인터뷰해서 자기소개 대본을 만들어줘.</pre>
+      </div>
       <p class="slide__note">막막하면 Claude에게 <strong>"먼저 어떻게 진행할지 계획부터 세워줘"</strong>라고 물어봐도 됩니다 — 메타 프롬프트.</p>
     </div>
   </section>
@@ -92,7 +102,7 @@
       <div class="code-block">
         <div class="code-block__header">
           <span class="code-block__dot" style="background:#fb2c36"></span><span class="code-block__dot" style="background:#edb200"></span><span class="code-block__dot" style="background:#00c758"></span>
-          <span class="code-block__title">claude — Day1/</span>
+          <span class="code-block__title">claude — my-intro/</span>
         </div>
         <div class="code-block__body"><span class="code-block__line"><span class="code-block__cmd">&gt; 나를 인터뷰해서 자기소개 대본을 만들어줘</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__out">  안녕하세요! 자기소개 대본을 만들기 위해 몇 가지 여쭤볼게요.</span></span><span class="code-block__line"><span class="code-block__out">  1. 이름은 어떻게 되시나요?</span></span><span class="code-block__line"><span class="code-block__out">  2. 어떤 분야의 일을 하시나요?</span></span><span class="code-block__line"><span class="code-block__out">  3. 본인의 강점은 무엇인가요?</span></span><span class="code-block__line"><span class="code-block__out">  4. 어떤 청중 앞에서 발표하실 건가요?</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__cmd">&gt; (답변하면서 진행)</span></span><span class="code-block__line"><span class="code-block__out">  ✓ 자기소개 대본이 작성되었습니다.</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__cmd">&gt; 좋은데, <span class="code-block__hi">조금 더 짧게</span> 만들어줘</span></span></div>
       </div>
@@ -181,6 +191,15 @@
           </div>
         </div>
       </div>
+      <div class="prompt-card">
+        <div class="prompt-card__head">
+          <span class="prompt-card__label">프롬프트 · HTML 만들기</span>
+          <button class="prompt-card__copy" type="button" data-copy>복사</button>
+        </div>
+        <pre class="prompt-card__body" data-no-nav>방금 만든 자기소개로 HTML 한 페이지 만들어줘.
+디자인은 모던하게, 한 페이지에 다 들어가게.
+결과는 index.html로 저장해줘.</pre>
+      </div>
       <p class="slide__note">결과물이 매번 새로 생성됩니다 — <strong>브라우저를 새로고침</strong>해서 변화 확인.</p>
     </div>
   </section>
@@ -193,10 +212,27 @@
       <div class="code-block">
         <div class="code-block__header">
           <span class="code-block__dot" style="background:#fb2c36"></span><span class="code-block__dot" style="background:#edb200"></span><span class="code-block__dot" style="background:#00c758"></span>
-          <span class="code-block__title">claude — Day1/</span>
+          <span class="code-block__title">claude — my-intro/</span>
         </div>
-        <div class="code-block__body"><span class="code-block__line"><span class="code-block__cmd">&gt; 방금 만든 자기소개로 HTML 한 페이지 만들어줘</span></span><span class="code-block__line"><span class="code-block__cmd">&gt; 디자인은 <span class="code-block__hi">모던하게</span>, 한 페이지에 다 들어가게</span></span><span class="code-block__line"><span class="code-block__cmd">&gt; 결과는 Day1 폴더에 index.html로 저장</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__out">  ✓ index.html 생성 (140 lines)</span></span><span class="code-block__line"><span class="code-block__out">  ✓ style.css 생성 (95 lines)</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__cmd">&gt; 좋은데 <span class="code-block__hi">색을 더 따뜻하게</span> 바꿔줘</span></span><span class="code-block__line"><span class="code-block__out">  ✓ style.css 수정</span></span><span class="code-block__line"><span class="code-block__cmd">&gt; <span class="code-block__hi">상단에 사진 자리</span>도 만들어줘</span></span><span class="code-block__line"><span class="code-block__out">  ✓ index.html 수정</span></span></div>
+        <div class="code-block__body"><span class="code-block__line"><span class="code-block__cmd">&gt; 방금 만든 자기소개로 HTML 한 페이지 만들어줘</span></span><span class="code-block__line"><span class="code-block__cmd">&gt; 디자인은 <span class="code-block__hi">모던하게</span>, 한 페이지에 다 들어가게</span></span><span class="code-block__line"><span class="code-block__cmd">&gt; 결과는 my-intro 폴더에 index.html로 저장</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__out">  ✓ index.html 생성 (140 lines)</span></span><span class="code-block__line"><span class="code-block__out">  ✓ style.css 생성 (95 lines)</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__cmd">&gt; 좋은데 <span class="code-block__hi">색을 더 따뜻하게</span> 바꿔줘</span></span><span class="code-block__line"><span class="code-block__out">  ✓ style.css 수정</span></span><span class="code-block__line"><span class="code-block__cmd">&gt; <span class="code-block__hi">상단에 사진 자리</span>도 만들어줘</span></span><span class="code-block__line"><span class="code-block__out">  ✓ index.html 수정</span></span></div>
       </div>
+    </div>
+  </section>
+
+  <!-- 8b · 완성 예시 (photo) -->
+  <section class="slide is-standard">
+    <div class="slide__eyebrow">RESULT · 완성 예시</div>
+    <h2 class="slide__title">이 정도면 <span class="accent">첫 결과물</span>로 충분</h2>
+    <div class="slide__body">
+      <figure class="photo-slot photo-slot--landscape" data-img="vc-ch02-intro-result.png">
+        <img class="photo-slot__img" src="../../imgs/vc-ch02-intro-result.png" alt="완성된 자기소개 HTML 페이지 예시">
+        <figcaption class="photo-slot__ph">
+          <span class="photo-slot__icon">◧</span>
+          <span class="photo-slot__label">완성 자기소개 페이지</span>
+          <span class="photo-slot__hint">브라우저로 연 index.html 화면</span>
+        </figcaption>
+      </figure>
+      <p class="slide__note">완벽할 필요 없습니다 — <strong>직접 만들어 본 것</strong>이 오늘의 목표. 마음에 안 드는 부분은 다음 슬라이드에서 한 줄씩 바꿉니다.</p>
     </div>
   </section>
 
@@ -327,7 +363,7 @@
   <!-- 13 · 마무리 -->
   <section class="slide is-standard">
     <div class="slide__eyebrow">WRAP-UP · 다음 덱으로</div>
-    <h2 class="slide__title">다음 — <span class="accent">4대 문법(/ @ ! #)</span>으로 Claude를 손에 익힙니다</h2>
+    <h2 class="slide__title">다음 — <span class="accent">4대 문법(/ @ ! Esc)</span>으로 Claude를 손에 익힙니다</h2>
     <div class="slide__body">
       <div class="preview-grid">
         <div class="preview-item"><div class="preview-item__symbol">/</div><div class="preview-item__name">슬래시 커맨드</div><div class="preview-item__desc">Claude 자체 기능 호출</div></div>

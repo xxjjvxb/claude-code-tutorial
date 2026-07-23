@@ -7,11 +7,14 @@
   <meta name="author" content="이일규">
   <meta name="copyright" content="© 2026 이일규 · 본 강의자료는 저작권법으로 보호되는 저작물입니다. 무단 복제·배포 금지.">
   <script defer src="../../scripts/protect.js"></script>
-  <title>8장 · 2. 브라우저 크롤링</title>
+  <title>6장 · 2. 브라우저 크롤링</title>
   <link rel="stylesheet" href="../../styles/tokens.css">
   <link rel="stylesheet" href="../../styles/deck.css">
   <link rel="stylesheet" href="../../styles/_os-toggle.css">
+  <link rel="stylesheet" href="../../styles/_practice.css">
   <script defer src="../../scripts/os-toggle.js"></script>
+  <script defer src="../../scripts/prompt-copy.js"></script>
+  <script defer src="../../scripts/slide-modify.js"></script>
 </head>
 <body>
 
@@ -20,14 +23,14 @@
   <header class="deck-chrome">
   <span class="deck-chrome__brand">바이브코딩 · CLAUDE CODE</span>
   <span class="deck-chrome__divider">·</span>
-  <span class="deck-chrome__day">8장 · 2 브라우저 크롤링</span>
+  <span class="deck-chrome__day">6장 · 2 브라우저 크롤링</span>
   <span class="deck-chrome__spacer"></span>
   <span class="deck-chrome__counter">— / —</span>
 </header>
 
   <!-- 1 · Chapter intro -->
   <section class="slide is-section is-standard">
-    <div class="section-eyebrow">8장 · CRAWLING</div>
+    <div class="section-eyebrow">6장 · CRAWLING</div>
     <h2 class="section-title">브라우저 크롤링 — Claude가 <span class="accent">웹을 직접</span> 돌아다닌다</h2>
     <p class="section-caption">앞 덱에서 MCP 연결을 배웠다면 — 이제 브라우저 MCP(Playwright)를 꽂아 진짜 웹을 긁어옵니다. 먼저 다 같이 <strong>이 강의 사이트</strong>를 크롤링해 복습 치트시트를 만들고, 그다음 각자 관심 소재로 한 번 더.</p>
     <div class="section-meta">
@@ -56,12 +59,13 @@
           </div>
         </div>
         <div>
-          <div class="code-block">
-            <div class="code-block__header">
-              <span class="code-block__dot" style="background:#fb2c36"></span><span class="code-block__dot" style="background:#edb200"></span><span class="code-block__dot" style="background:#00c758"></span>
-              <span class="code-block__title"><span class="os-win">PowerShell</span><span class="os-mac">Terminal (zsh)</span> · MCP 연결</span>
+          <div class="prompt-card prompt-card--cmd">
+            <div class="prompt-card__head">
+              <span class="prompt-card__label"><span class="os-win">PowerShell</span><span class="os-mac">터미널</span> · MCP 연결</span>
+              <button class="prompt-card__copy" type="button" data-copy>복사</button>
             </div>
-            <div class="code-block__body"><span class="code-block__line"><span class="code-block__prompt" data-auto-os></span> <span class="code-block__cmd">claude mcp add playwright</span></span><span class="code-block__line"><span class="code-block__out">  ✓ playwright 연결됨</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__prompt" data-auto-os></span> <span class="code-block__cmd">claude mcp list</span></span><span class="code-block__line"><span class="code-block__out">  playwright · 연결됨</span></span></div>
+            <pre class="prompt-card__body" data-no-nav>claude mcp add playwright -- npx @playwright/mcp@latest
+claude mcp list</pre>
           </div>
         </div>
       </div>
@@ -171,7 +175,7 @@
             <rect x="54" y="178" width="122" height="18" rx="4"/>
             <rect x="54" y="202" width="122" height="18" rx="4"/>
           </g>
-          <text x="115" y="238" font-family="ui-sans-serif, system-ui" font-size="9" fill="#cc5a14" text-anchor="middle">11챕터 + 부록 카드</text>
+          <text x="115" y="238" font-family="ui-sans-serif, system-ui" font-size="9" fill="#cc5a14" text-anchor="middle">9챕터 + 부록 카드</text>
           <text x="212" y="166" font-family="ui-monospace, monospace" font-size="22" fill="#cc5a14">→</text>
           <rect x="248" y="88" width="172" height="144" rx="10" fill="white" stroke="#fe6e00" stroke-width="2.5"/>
           <g stroke="#ffd2ab" stroke-width="2"><line x1="248" y1="112" x2="420" y2="112"/><line x1="306" y1="88" x2="306" y2="232"/></g>
@@ -210,12 +214,22 @@
           </div>
         </div>
         <div>
-          <div class="code-block">
-            <div class="code-block__header">
-              <span class="code-block__dot" style="background:#fb2c36"></span><span class="code-block__dot" style="background:#edb200"></span><span class="code-block__dot" style="background:#00c758"></span>
-              <span class="code-block__title">claude · 브라우저 MCP</span>
+          <div class="prompt-pair">
+            <div class="prompt-card prompt-card--compact">
+              <div class="prompt-card__head">
+                <span class="prompt-card__label">프롬프트 ① 크롤 지시</span>
+                <button class="prompt-card__copy" type="button" data-copy>복사</button>
+              </div>
+              <pre class="prompt-card__body" data-no-nav><span class="ph">https://…(강사 제공 주소)</span> 목차를 열어서,
+각 챕터의 제목·다루는 도구·슬라이드 수를 표로 정리해줘</pre>
             </div>
-            <div class="code-block__body"><span class="code-block__line"><span class="code-block__prompt">&gt;</span> <span class="code-block__cmd">https://…(강사 제공) 목차를 열어서,</span></span><span class="code-block__line"><span class="code-block__cmd">  각 챕터 제목·도구·슬라이드 수를</span></span><span class="code-block__line"><span class="code-block__cmd">  표로 정리해줘</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__out">  ✓ 브라우저로 목차 페이지 열람</span></span><span class="code-block__line"><span class="code-block__out">  ✓ 11챕터 + 부록 카드 12개 수집</span></span><span class="code-block__line"><span class="code-block__out">  → 표로 정리했습니다</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__prompt">&gt;</span> <span class="code-block__cmd">markdown 표로 저장해줘</span></span></div>
+            <div class="prompt-card prompt-card--compact">
+              <div class="prompt-card__head">
+                <span class="prompt-card__label">프롬프트 ② 저장</span>
+                <button class="prompt-card__copy" type="button" data-copy>복사</button>
+              </div>
+              <pre class="prompt-card__body" data-no-nav>markdown 표로 저장해줘</pre>
+            </div>
           </div>
         </div>
       </div>
@@ -233,13 +247,40 @@
           <span class="code-block__dot" style="background:#fb2c36"></span><span class="code-block__dot" style="background:#edb200"></span><span class="code-block__dot" style="background:#00c758"></span>
           <span class="code-block__title">cheatsheet.md — 크롤링 결과</span>
         </div>
-        <div class="code-block__body"><span class="code-block__line"><span class="code-block__cmt"># 이 과정 한눈에</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__out">| 챕터 | 제목 | 다루는 도구 | 슬라이드 |</span></span><span class="code-block__line"><span class="code-block__out">|---|---|---|---|</span></span><span class="code-block__line"><span class="code-block__out">| 1 | 바이브코딩 세팅 | VS Code·Git·Claude Code | 58 |</span></span><span class="code-block__line"><span class="code-block__out">| 2 | 자기 홈페이지 | 4대 문법·모드 | 63 |</span></span><span class="code-block__line"><span class="code-block__out">| 3 | 홈페이지 배포 | Git·GitHub·Vercel | 28 |</span></span><span class="code-block__line"><span class="code-block__out">| 4 | Claude 길들이기 | CLAUDE.md·슬래시·Hooks | 49 |</span></span><span class="code-block__line"><span class="code-block__out">| … | … | … | … |</span></span></div>
+        <div class="code-block__body"><span class="code-block__line"><span class="code-block__cmt"># 이 과정 한눈에</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__out">| 챕터 | 제목 | 다루는 도구 | 슬라이드 |</span></span><span class="code-block__line"><span class="code-block__out">|---|---|---|---|</span></span><span class="code-block__line"><span class="code-block__out">| 1 | 바이브코딩 세팅 | VS Code·Git·Claude Code | 59 |</span></span><span class="code-block__line"><span class="code-block__out">| 2 | 홈페이지·길들이기 | 4대 문법·CLAUDE.md·Hooks | 117 |</span></span><span class="code-block__line"><span class="code-block__out">| 3 | 홈페이지 배포 | Git·GitHub·Vercel | 30 |</span></span><span class="code-block__line"><span class="code-block__out">| 4 | API 이해와 활용 | 공개 API·Plan Mode | 17 |</span></span><span class="code-block__line"><span class="code-block__out">| … | … | … | … |</span></span></div>
       </div>
       <p class="slide__note">시험 전 훑기 좋고, "어디서 뭘 배웠지?" 할 때 바로 — <strong>내가 만든, 나를 위한 요약본</strong>. 도구 칼럼만 뽑으면 "이 과정 도구 총정리"도 됩니다.</p>
     </div>
   </section>
 
-  <!-- 8 · 자유 소재 -->
+  <!-- 8 · 실제 화면 (사진 자리) -->
+  <section class="slide is-standard">
+    <div class="slide__eyebrow">SCREEN · 실제로는 이렇게</div>
+    <h2 class="slide__title">브라우저가 <span class="accent">저절로</span> 열리고 — 표가 남는다</h2>
+    <div class="slide__body">
+      <div class="two-col">
+        <figure class="photo-slot photo-slot--landscape" data-img="vc-ch06-crawling-browser.png">
+          <img class="photo-slot__img" src="../../imgs/vc-ch06-crawling-browser.png" alt="Playwright가 자동으로 조작하는 브라우저 화면">
+          <figcaption class="photo-slot__ph">
+            <span class="photo-slot__icon">◧</span>
+            <span class="photo-slot__label">브라우저 — 저절로 움직이는 화면</span>
+            <span class="photo-slot__hint">Playwright가 목차 페이지를 열어 훑는 중</span>
+          </figcaption>
+        </figure>
+        <figure class="photo-slot photo-slot--landscape" data-img="vc-ch06-crawling-cheatsheet.png">
+          <img class="photo-slot__img" src="../../imgs/vc-ch06-crawling-cheatsheet.png" alt="완성된 복습 치트시트 마크다운 표">
+          <figcaption class="photo-slot__ph">
+            <span class="photo-slot__icon">◧</span>
+            <span class="photo-slot__label">완성된 치트시트</span>
+            <span class="photo-slot__hint">cheatsheet.md — 챕터·도구·슬라이드 표</span>
+          </figcaption>
+        </figure>
+      </div>
+    </div>
+    <p class="slide__note">강사 시연 화면 — 브라우저가 <strong>사람 손 없이</strong> 페이지를 넘기고, 그 결과가 <strong>표 한 장</strong>으로 남습니다.</p>
+  </section>
+
+  <!-- 9 · 자유 소재 -->
   <section class="slide is-standard">
     <div class="slide__eyebrow">IDEAS · 이번엔 각자</div>
     <h2 class="slide__title">자유 소재 — <span class="accent">끌리는 것</span> 하나 골라</h2>
@@ -256,7 +297,7 @@
     </div>
   </section>
 
-  <!-- 9 · 실습 진행 -->
+  <!-- 10 · 실습 진행 -->
   <section class="slide is-standard">
     <div class="slide__eyebrow">실습 · 진행</div>
     <h2 class="slide__title">크롤링 — <span class="accent">공통 하나 + 자유 하나</span></h2>
@@ -283,10 +324,10 @@
     </div>
   </section>
 
-  <!-- 10 · Wrap -->
+  <!-- 11 · Wrap -->
   <section class="slide is-feature">
     <div class="feature-head">
-      <div class="slide__eyebrow">WRAP · 8장 끝</div>
+      <div class="slide__eyebrow">WRAP · 6장 끝</div>
       <h2 class="feature-head__title">Claude가 — <span class="accent">웹을 직접 긁어온다</span></h2>
     </div>
     <div class="feature-body">
@@ -295,7 +336,7 @@
         <div class="statement__points">
           <div class="statement__point"><span class="statement__point-num">연결</span><span>Playwright — 브라우저를 한 줄로</span></div>
           <div class="statement__point"><span class="statement__point-num">산출물</span><span>흩어진 웹 정보 → 표 / 치트시트</span></div>
-          <div class="statement__point"><span class="statement__point-num">다음</span><span>9장 문서와 디자인 — 스킬부터</span></div>
+          <div class="statement__point"><span class="statement__point-num">다음</span><span>7장 문서와 디자인 — 스킬부터</span></div>
         </div>
       </div>
       <div class="feature-visual">

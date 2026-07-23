@@ -11,7 +11,10 @@
   <link rel="stylesheet" href="../../styles/tokens.css">
   <link rel="stylesheet" href="../../styles/deck.css">
   <link rel="stylesheet" href="../../styles/_os-toggle.css">
+  <link rel="stylesheet" href="../../styles/_practice.css">
   <script defer src="../../scripts/os-toggle.js"></script>
+  <script defer src="../../scripts/prompt-copy.js"></script>
+  <script defer src="../../scripts/slide-modify.js"></script>
 </head>
 <body>
 
@@ -66,26 +69,46 @@
           <div class="install-detail__logo"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 4v24L8 16 22 4z"/><path d="M4 14l3-2 15 12-15 12-3-2v-4l3-2-3-2v-12z"/></svg></div>
           <div class="install-detail__where"><div class="install-detail__where-label">받는 곳</div><div class="install-detail__where-value">Microsoft Store → "Visual Studio Code"</div></div>
         </div>
-        <ol class="install-detail__steps">
-          <li><strong>Windows 키</strong>를 눌러 시작 메뉴 검색 → <code>store</code> 입력 → 결과에 뜨는 <strong>"Microsoft Store"</strong> 앱 실행</li>
-          <li>검색창에 <code>Visual Studio Code</code> → 첫 번째 결과 (<strong>Microsoft Corporation</strong>) 클릭</li>
-          <li><strong>"받기"</strong>(Get/Install) 클릭 → 자동 다운로드 + 설치 (약 30초~1분)</li>
-          <li>완료 후 <strong>"열기"</strong> 또는 시작 메뉴에서 "Visual Studio Code" 실행</li>
-          <li>(선택) Extensions → "Korean" 검색 → 언어팩 설치하면 한국어 메뉴</li>
-        </ol>
+        <div class="two-col">
+          <ol class="install-detail__steps">
+            <li><strong>Windows 키</strong>를 눌러 시작 메뉴 검색 → <code>store</code> 입력 → 결과에 뜨는 <strong>"Microsoft Store"</strong> 앱 실행</li>
+            <li>검색창에 <code>Visual Studio Code</code> → 첫 번째 결과 (<strong>Microsoft Corporation</strong>) 클릭</li>
+            <li><strong>"받기"</strong>(Get/Install) 클릭 → 자동 다운로드 + 설치 (약 30초~1분)</li>
+            <li>완료 후 <strong>"열기"</strong> 또는 시작 메뉴에서 "Visual Studio Code" 실행</li>
+            <li>(선택) Extensions → "Korean" 검색 → 언어팩 설치하면 한국어 메뉴</li>
+          </ol>
+          <figure class="photo-slot photo-slot--landscape" data-img="vc-ch01-setup-vscode-msstore.png">
+            <img class="photo-slot__img" src="../../imgs/vc-ch01-setup-vscode-msstore.png" alt="Microsoft Store — Visual Studio Code 페이지">
+            <figcaption class="photo-slot__ph">
+              <span class="photo-slot__icon">◧</span>
+              <span class="photo-slot__label">Microsoft Store — VS Code "받기" 버튼</span>
+              <span class="photo-slot__hint">제작사 Microsoft Corporation 확인 · 파란 "받기" 클릭</span>
+            </figcaption>
+          </figure>
+        </div>
       </div>
       <div class="install-detail os-mac is-block">
         <div class="install-detail__header">
           <div class="install-detail__logo"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 4v24L8 16 22 4z"/><path d="M4 14l3-2 15 12-15 12-3-2v-4l3-2-3-2v-12z"/></svg></div>
           <div class="install-detail__where"><div class="install-detail__where-label">받는 곳</div><div class="install-detail__where-value">code.visualstudio.com → "Download for Mac"</div></div>
         </div>
-        <ol class="install-detail__steps">
-          <li><strong>code.visualstudio.com</strong> 접속 → 가운데 <strong>"Download for Mac"</strong> 버튼 (Apple Silicon / Intel 자동 감지)</li>
-          <li>다운로드된 <code>VSCode-darwin-*.zip</code> 더블클릭 → 자동 압축 풀림 → <strong>"Visual Studio Code.app"</strong> 생성</li>
-          <li><strong>응용 프로그램(Applications) 폴더로 드래그</strong>해 이동 — Launchpad에서 검색 가능해짐</li>
-          <li>첫 실행 시 Gatekeeper 경고 → <strong>"열기"</strong> 클릭 (App Store 외부 앱 1회 승인)</li>
-          <li>(선택) Extensions → "Korean" 검색 → 언어팩 설치하면 한국어 메뉴</li>
-        </ol>
+        <div class="two-col">
+          <ol class="install-detail__steps">
+            <li><strong>code.visualstudio.com</strong> 접속 → 가운데 <strong>"Download for Mac"</strong> 버튼 (Apple Silicon / Intel 자동 감지)</li>
+            <li>다운로드된 <code>VSCode-darwin-*.zip</code> 더블클릭 → 자동 압축 풀림 → <strong>"Visual Studio Code.app"</strong> 생성</li>
+            <li><strong>응용 프로그램(Applications) 폴더로 드래그</strong>해 이동 — Launchpad에서 검색 가능해짐</li>
+            <li>첫 실행 시 Gatekeeper 경고 → <strong>"열기"</strong> 클릭 (App Store 외부 앱 1회 승인)</li>
+            <li>(선택) Extensions → "Korean" 검색 → 언어팩 설치하면 한국어 메뉴</li>
+          </ol>
+          <figure class="photo-slot photo-slot--landscape" data-img="vc-ch01-setup-vscode-download.png">
+            <img class="photo-slot__img" src="../../imgs/vc-ch01-setup-vscode-download.png" alt="code.visualstudio.com — Download for Mac 페이지">
+            <figcaption class="photo-slot__ph">
+              <span class="photo-slot__icon">◧</span>
+              <span class="photo-slot__label">code.visualstudio.com — "Download for Mac"</span>
+              <span class="photo-slot__hint">가운데 큰 파란 버튼 · 칩(Apple/Intel) 자동 감지</span>
+            </figcaption>
+          </figure>
+        </div>
       </div>
       <p class="slide__note">설치 후 <strong>다음 슬라이드</strong>에서 <span class="os-win">PowerShell</span><span class="os-mac">터미널</span>로 정상 동작 확인 + PATH 트러블슈팅.</p>
     </div>
@@ -98,7 +121,7 @@
     <div class="slide__body">
       <div class="install-detail__verify" style="margin-top:0">
         <span class="install-detail__verify-label">정상 출력 화면</span>
-        <span class="accent-cmd"><span class="os-win">PS&gt;</span><span class="os-mac">$</span></span> code --version &nbsp;→&nbsp; 1.95.x · <span class="os-win">x64</span><span class="os-mac">arm64</span>
+        <span class="accent-cmd"><span class="os-win">PS&gt;</span><span class="os-mac">$</span></span> code --version &nbsp;→&nbsp; 1.9x.x · <span class="os-win">x64</span><span class="os-mac">arm64</span>
       </div>
       <div class="content-card">
         <h3 class="content-card__title">"<span class="os-win">인식되지 않습니다</span><span class="os-mac">command not found</span>" 가 뜨면</h3>
@@ -203,7 +226,7 @@
               <span class="code-block__dot" style="background:#fb2c36"></span><span class="code-block__dot" style="background:#edb200"></span><span class="code-block__dot" style="background:#00c758"></span>
               <span class="code-block__title"><span class="os-win">PowerShell</span><span class="os-mac">Terminal (zsh)</span> — 새 창에서</span>
             </div>
-            <div class="code-block__body"><span class="code-block__line"><span class="code-block__cmt"># 설치가 됐는지 — 버전 확인</span></span><span class="code-block__line"><span class="code-block__prompt" data-auto-os></span> <span class="code-block__cmd">git --version</span></span><span class="code-block__line"><span class="code-block__hi">  git version 2.49.x</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__cmt"># 커밋에 남길 신원 — 최초 1회만</span></span><span class="code-block__line"><span class="code-block__prompt" data-auto-os></span> <span class="code-block__cmd">git config --global user.name "<span class="code-block__hi">홍길동</span>"</span></span><span class="code-block__line"><span class="code-block__prompt" data-auto-os></span> <span class="code-block__cmd">git config --global user.email "<span class="code-block__hi">hong@example.com</span>"</span></span></div>
+            <div class="code-block__body"><span class="code-block__line"><span class="code-block__cmt"># 설치가 됐는지 — 버전 확인</span></span><span class="code-block__line"><span class="code-block__prompt" data-auto-os></span> <span class="code-block__cmd">git --version</span></span><span class="code-block__line"><span class="code-block__hi">  git version 2.x.x</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__cmt"># 커밋에 남길 신원 — 최초 1회만</span></span><span class="code-block__line"><span class="code-block__prompt" data-auto-os></span> <span class="code-block__cmd">git config --global user.name "<span class="code-block__hi">홍길동</span>"</span></span><span class="code-block__line"><span class="code-block__prompt" data-auto-os></span> <span class="code-block__cmd">git config --global user.email "<span class="code-block__hi">hong@example.com</span>"</span></span></div>
           </div>
         </div>
       </div>
@@ -219,8 +242,14 @@
       <div class="install-methods os-win is-block">
         <div class="install-method install-method--primary">
           <div class="install-method__label">방법 1 · PowerShell 한 줄 — 이번 강의 메인</div>
-          <div class="install-method__cmd"><span class="accent-cmd">PS&gt;</span> irm https://claude.ai/install.ps1 | iex</div>
-          <div class="install-method__note"><code>irm</code>(다운로드) | <code>iex</code>(실행). <strong>Node.js 없이 한 줄로 끝</strong>.</div>
+          <div class="prompt-card prompt-card--cmd prompt-card--compact">
+            <div class="prompt-card__head">
+              <span class="prompt-card__label">PowerShell · 붙여넣기</span>
+              <button class="prompt-card__copy" type="button" data-copy>복사</button>
+            </div>
+            <pre class="prompt-card__body" data-no-nav>irm https://claude.ai/install.ps1 | iex</pre>
+          </div>
+          <div class="install-method__note"><code>irm</code> 다운로드 · <code>iex</code> 실행 — Node.js 없이 한 줄.</div>
         </div>
         <div class="install-method">
           <div class="install-method__label">방법 2 · cmd 한 줄</div>
@@ -236,8 +265,14 @@
       <div class="install-methods os-mac is-block">
         <div class="install-method install-method--primary">
           <div class="install-method__label">방법 1 · 터미널 한 줄 — 이번 강의 메인</div>
-          <div class="install-method__cmd"><span class="accent-cmd">$</span> curl -fsSL https://claude.ai/install.sh | bash</div>
-          <div class="install-method__note">다운로드 후 즉시 실행. <strong>Node.js 없이 한 줄로 끝</strong>.</div>
+          <div class="prompt-card prompt-card--cmd prompt-card--compact">
+            <div class="prompt-card__head">
+              <span class="prompt-card__label">터미널 · 붙여넣기</span>
+              <button class="prompt-card__copy" type="button" data-copy>복사</button>
+            </div>
+            <pre class="prompt-card__body" data-no-nav>curl -fsSL https://claude.ai/install.sh | bash</pre>
+          </div>
+          <div class="install-method__note">다운로드 후 즉시 실행 — Node.js 없이 한 줄.</div>
         </div>
         <div class="install-method">
           <div class="install-method__label">방법 2 · Homebrew (이미 brew 쓰는 분)</div>
@@ -266,6 +301,14 @@
         </div>
         <div class="code-block__body"><span class="code-block__line"><span class="code-block__prompt" data-auto-os></span> <span class="code-block__cmd">claude --version</span></span><span class="code-block__line"><span class="code-block__hi">1.x.x</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__cmt"># 위처럼 버전 숫자가 나오면 PATH 통과 ✓</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__cmt"># "<span class="os-win">인식되지 않습니다</span><span class="os-mac">command not found</span>" 가 뜨면:</span></span><span class="code-block__line"><span class="code-block__cmt">#   1. <span class="os-win">PowerShell</span><span class="os-mac">터미널</span>을 완전히 닫고 새로 열기 (PATH 갱신)</span></span><span class="code-block__line"><span class="code-block__cmt">#   2. <span class="os-win">시작 메뉴에서 "PowerShell" 다시 검색해 실행</span><span class="os-mac">Spotlight(⌘+Space)에서 "Terminal" 다시 실행</span></span></span><span class="code-block__line"><span class="code-block__cmt">#   3. 그래도 안 되면 → TA 호출</span></span></div>
       </div>
+      <figure class="photo-slot photo-slot--landscape" data-img="vc-ch01-setup-install-success.png">
+        <img class="photo-slot__img" src="../../imgs/vc-ch01-setup-install-success.png" alt="claude --version 통과 화면">
+        <figcaption class="photo-slot__ph">
+          <span class="photo-slot__icon">◧</span>
+          <span class="photo-slot__label"><span class="os-win">PowerShell</span><span class="os-mac">터미널</span> — 설치 성공 · claude --version 통과 화면</span>
+          <span class="photo-slot__hint">버전 숫자가 찍히면 PATH 통과 — 이 화면이 목표입니다</span>
+        </figcaption>
+      </figure>
     </div>
   </section>
 
@@ -296,8 +339,8 @@
             <h3 class="content-card__title">쉬운 방법 · 마우스 우클릭</h3>
             <ol class="content-card__list content-card__list--ol">
               <li><strong>바탕화면 빈 공간 우클릭</strong> → 새로 만들기 → 폴더</li>
-              <li>폴더 이름 <code>Day1</code> 입력</li>
-              <li>Day1 폴더 안 빈 공간 우클릭 → <strong>"터미널에서 열기"</strong></li>
+              <li>폴더 이름 <code>my-intro</code> 입력</li>
+              <li>my-intro 폴더 안 빈 공간 우클릭 → <strong>"터미널에서 열기"</strong></li>
               <li>열린 PowerShell에 <code>claude</code> 입력</li>
               <li>처음이면 <strong>브라우저 로그인</strong> 창 → 교육 팀 계정 메일로 로그인</li>
             </ol>
@@ -306,8 +349,8 @@
             <h3 class="content-card__title">쉬운 방법 · Finder에서</h3>
             <ol class="content-card__list content-card__list--ol">
               <li><strong>Finder → 데스크탑</strong>에서 빈 공간 우클릭 → 새로운 폴더</li>
-              <li>폴더 이름 <code>Day1</code> 입력</li>
-              <li>Day1 폴더를 <strong>우클릭 → "폴더에 있는 새로운 터미널"</strong> (서비스 메뉴)</li>
+              <li>폴더 이름 <code>my-intro</code> 입력</li>
+              <li>my-intro 폴더를 <strong>우클릭 → "폴더에 있는 새로운 터미널"</strong> (서비스 메뉴)</li>
               <li>열린 터미널에 <code>claude</code> 입력</li>
               <li>처음이면 <strong>브라우저 로그인</strong> 창 → 교육 팀 계정 메일로 로그인</li>
             </ol>
@@ -317,14 +360,41 @@
           <div class="code-block">
             <div class="code-block__header">
               <span class="code-block__dot" style="background:#fb2c36"></span><span class="code-block__dot" style="background:#edb200"></span><span class="code-block__dot" style="background:#00c758"></span>
-              <span class="code-block__title">claude — Day1/</span>
+              <span class="code-block__title">claude — my-intro/</span>
             </div>
             <div class="code-block__body"><span class="code-block__line"><span class="code-block__prompt" data-auto-os></span> <span class="code-block__cmd">claude</span></span><span class="code-block__line"><span class="code-block__out">  ✓ Claude Code ready.</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__cmd">&gt; 안녕하세요</span></span><span class="code-block__line"><span class="code-block__out">  안녕하세요!</span></span><span class="code-block__line"><span class="code-block__out">  무엇을 도와드릴까요?</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__cmd">&gt; /help</span></span><span class="code-block__line"><span class="code-block__out">  Available commands:</span></span><span class="code-block__line"><span class="code-block__out">  /clear  /usage  /model  /resume ...</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__cmd">&gt; /exit</span></span><span class="code-block__line"><span class="code-block__out">  Goodbye 👋</span></span></div>
           </div>
         </div>
       </div>
-      <p class="slide__note os-win is-block">Windows 10이라면 <strong>Shift + 우클릭</strong> → "여기에서 PowerShell 창 열기". 또는 <code>cd C:\Users\<em>본인계정</em>\Desktop\Day1</code>.</p>
-      <p class="slide__note os-mac is-block">우클릭 메뉴에 "폴더에 있는 새로운 터미널"이 없으면 <strong>시스템 환경설정 → 키보드 → 단축키 → 서비스</strong>에서 활성화. 또는 <code>cd ~/Desktop/Day1</code>.</p>
+      <p class="slide__note os-win is-block">Windows 10이라면 <strong>Shift + 우클릭</strong> → "여기에서 PowerShell 창 열기". 또는 <code>cd C:\Users\<em>본인계정</em>\Desktop\my-intro</code>.</p>
+      <p class="slide__note os-mac is-block">우클릭 메뉴에 "폴더에 있는 새로운 터미널"이 없으면 <strong>시스템 환경설정 → 키보드 → 단축키 → 서비스</strong>에서 활성화. 또는 <code>cd ~/Desktop/my-intro</code>.</p>
+    </div>
+  </section>
+
+  <!-- 10.5 · 첫 로그인 화면 -->
+  <section class="slide is-standard">
+    <div class="slide__eyebrow">STEP 07 (첫 로그인) · 브라우저 인증</div>
+    <h2 class="slide__title">처음 <code>claude</code> 실행 → <span class="accent">브라우저 로그인</span> 한 번</h2>
+    <div class="slide__body">
+      <div class="two-col">
+        <figure class="photo-slot photo-slot--landscape" data-img="vc-ch01-setup-login-terminal.png">
+          <img class="photo-slot__img" src="../../imgs/vc-ch01-setup-login-terminal.png" alt="claude 첫 실행 시 로그인 안내 터미널 화면">
+          <figcaption class="photo-slot__ph">
+            <span class="photo-slot__icon">◧</span>
+            <span class="photo-slot__label">① <span class="os-win">PowerShell</span><span class="os-mac">터미널</span> — 로그인 안내</span>
+            <span class="photo-slot__hint">브라우저가 자동으로 열림 · 안 열리면 표시된 URL 복사</span>
+          </figcaption>
+        </figure>
+        <figure class="photo-slot photo-slot--landscape" data-img="vc-ch01-setup-login-browser.png">
+          <img class="photo-slot__img" src="../../imgs/vc-ch01-setup-login-browser.png" alt="브라우저 로그인 페이지">
+          <figcaption class="photo-slot__ph">
+            <span class="photo-slot__icon">◧</span>
+            <span class="photo-slot__label">② 브라우저 — 교육 팀 계정으로 로그인</span>
+            <span class="photo-slot__hint">등록한 메일로 로그인 → 승인 → 터미널로 자동 복귀</span>
+          </figcaption>
+        </figure>
+      </div>
+      <p class="slide__note">브라우저가 안 열리면 터미널에 표시되는 <strong>URL을 직접 복사</strong>해 붙여넣으세요. 로그인은 <strong>최초 1회</strong>만 — 이후엔 <code>claude</code> 입력만으로 바로 시작됩니다.</p>
     </div>
   </section>
 
@@ -338,7 +408,7 @@
           <div class="content-card content-card--compact">
             <h3 class="content-card__title">3가지만 하면 끝</h3>
             <ol class="content-card__list content-card__list--ol">
-              <li><strong>VS Code 실행</strong> → File → Open Folder → Day1</li>
+              <li><strong>VS Code 실행</strong> → File → Open Folder → my-intro</li>
               <li><strong><span class="os-win">Ctrl + `</span><span class="os-mac">⌘ + J</span></strong> 로 통합 터미널 띄우기 (<span class="os-win">PowerShell</span><span class="os-mac">zsh</span> 모드)</li>
               <li>거기서 <strong>claude</strong> 입력</li>
             </ol>
@@ -348,7 +418,7 @@
           <svg class="os-win is-block" viewBox="0 0 460 280" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" style="width:100%;height:auto;border-radius:12px;box-shadow:0 12px 32px rgba(0,0,0,0.18)">
             <rect x="0" y="0" width="460" height="280" rx="12" fill="#1e1e1e"/>
             <rect x="0" y="0" width="460" height="28" fill="#252526"/>
-            <text x="14" y="18" font-family="ui-sans-serif, system-ui" font-size="11" fill="rgba(255,255,255,0.5)">VS Code — Day1</text>
+            <text x="14" y="18" font-family="ui-sans-serif, system-ui" font-size="11" fill="rgba(255,255,255,0.5)">VS Code — my-intro</text>
             <rect x="0" y="28" width="140" height="252" fill="#252526"/>
             <text x="14" y="54" font-family="ui-monospace, monospace" font-size="10" fill="rgba(255,255,255,0.45)">EXPLORER</text>
             <text x="14" y="78" font-family="ui-monospace, monospace" font-size="11" fill="rgba(255,255,255,0.85)">▾ DAY1</text>
@@ -366,7 +436,7 @@
           <svg class="os-mac is-block" viewBox="0 0 460 280" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" style="width:100%;height:auto;border-radius:12px;box-shadow:0 12px 32px rgba(0,0,0,0.18)">
             <rect x="0" y="0" width="460" height="280" rx="12" fill="#1e1e1e"/>
             <rect x="0" y="0" width="460" height="28" fill="#252526"/>
-            <text x="14" y="18" font-family="ui-sans-serif, system-ui" font-size="11" fill="rgba(255,255,255,0.5)">VS Code — Day1</text>
+            <text x="14" y="18" font-family="ui-sans-serif, system-ui" font-size="11" fill="rgba(255,255,255,0.5)">VS Code — my-intro</text>
             <rect x="0" y="28" width="140" height="252" fill="#252526"/>
             <text x="14" y="54" font-family="ui-monospace, monospace" font-size="10" fill="rgba(255,255,255,0.45)">EXPLORER</text>
             <text x="14" y="78" font-family="ui-monospace, monospace" font-size="11" fill="rgba(255,255,255,0.85)">▾ DAY1</text>
@@ -399,9 +469,9 @@
         </div>
         <ol class="install-detail__steps">
           <li><strong>nodejs.org</strong> 접속 → <strong>"LTS"</strong> 큰 버튼 클릭 (Windows .msi 자동 다운로드)</li>
-          <li><code>node-v20.x.x-x64.msi</code> 더블클릭 → 보안 경고 "예" → 설치 마법사 Next 따라 진행</li>
+          <li><code>node-v22.x.x-x64.msi</code>(LTS 버전 숫자는 다를 수 있음) 더블클릭 → 보안 경고 "예" → 설치 마법사 Next 따라 진행</li>
           <li><strong>Custom Setup에서 "Add to PATH" 체크 확인</strong> → Install → UAC 승인 → 1~2분 대기</li>
-          <li>완료 후 <strong>새 PowerShell</strong>에서 <code>node --version</code> → <code>v20.x.x</code> 출력되면 OK</li>
+          <li>완료 후 <strong>새 PowerShell</strong>에서 <code>node --version</code> → <code>v22.x.x</code> 처럼 버전 숫자가 나오면 OK</li>
         </ol>
       </div>
       <div class="install-detail os-mac is-block">
@@ -412,7 +482,7 @@
         <ol class="install-detail__steps">
           <li><strong>Homebrew</strong>가 설치돼 있으면 <code>brew install node</code> 한 줄 — 30초~1분</li>
           <li>Brew가 없으면 <strong>nodejs.org</strong> → "LTS" 버튼 → <code>.pkg</code> 다운로드 → 더블클릭 → 설치 마법사</li>
-          <li>설치 후 <strong>새 터미널</strong>에서 <code>node --version</code> → <code>v20.x.x</code> 출력되면 OK</li>
+          <li>설치 후 <strong>새 터미널</strong>에서 <code>node --version</code> → <code>v22.x.x</code> 처럼 버전 숫자가 나오면 OK</li>
           <li>Homebrew 자체 설치는 <code>/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"</code></li>
         </ol>
       </div>

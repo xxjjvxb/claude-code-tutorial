@@ -7,11 +7,14 @@
   <meta name="author" content="이일규">
   <meta name="copyright" content="© 2026 이일규 · 본 강의자료는 저작권법으로 보호되는 저작물입니다. 무단 복제·배포 금지.">
   <script defer src="../../scripts/protect.js"></script>
-  <title>7장 · 2. 서브에이전트 + 나만의 메모장</title>
+  <title>5장 · 3. 서브에이전트 + 나만의 메모장</title>
   <link rel="stylesheet" href="../../styles/tokens.css">
   <link rel="stylesheet" href="../../styles/deck.css">
   <link rel="stylesheet" href="../../styles/_os-toggle.css">
+  <link rel="stylesheet" href="../../styles/_practice.css">
   <script defer src="../../scripts/os-toggle.js"></script>
+  <script defer src="../../scripts/prompt-copy.js"></script>
+  <script defer src="../../scripts/slide-modify.js"></script>
 </head>
 <body>
 
@@ -20,16 +23,16 @@
   <header class="deck-chrome">
   <span class="deck-chrome__brand">바이브코딩 · CLAUDE CODE</span>
   <span class="deck-chrome__divider">·</span>
-  <span class="deck-chrome__day">7장 · 2 서브에이전트·메모장</span>
+  <span class="deck-chrome__day">5장 · 3 서브에이전트·메모장</span>
   <span class="deck-chrome__spacer"></span>
   <span class="deck-chrome__counter">— / —</span>
 </header>
 
   <!-- 1 · Chapter intro -->
   <section class="slide is-section is-standard">
-    <div class="section-eyebrow">7장 · SUBAGENT &amp; MEMO APP</div>
+    <div class="section-eyebrow">5장 · SUBAGENT &amp; MEMO APP</div>
     <h2 class="section-title">서브에이전트로 — <span class="accent">나만의 메모장</span>을 만든다</h2>
-    <p class="section-caption">이번에 진짜 앱 하나를 완성합니다. 일을 나눠 맡는 도우미(서브에이전트)를 익히고 — 6장의 Supabase, 앞 덱의 구글 로그인, 3장의 GitHub·Vercel을 모두 써서 "나만의 메모장"을 직접 배포합니다.</p>
+    <p class="section-caption">이번에 진짜 앱 하나를 완성합니다. 일을 나눠 맡는 도우미(서브에이전트)를 익히고 — 덱 1의 Supabase, 덱 2의 구글 로그인, 3장의 GitHub·Vercel을 모두 써서 "나만의 메모장"을 직접 배포합니다.</p>
     <div class="section-meta">
       <div class="section-meta__item"><span class="section-meta__num">4</span><span>쓰는 도구 (GitHub·Supabase·구글·Vercel)</span></div>
       <div class="section-meta__item"><span class="section-meta__num">3</span><span>도우미 에이전트</span></div>
@@ -64,7 +67,7 @@
           </div>
         </div>
       </div>
-      <p class="slide__note">CLAUDE.md·슬래시를 써본 그 감각 그대로 — <strong>사람 말로 역할을 적으면</strong> 도우미가 됩니다. <code>/agents</code>로 만듭니다.</p>
+      <p class="slide__note">CLAUDE.md·슬래시를 써본 그 감각 그대로 — <strong>사람 말로 역할을 적으면</strong> 도우미가 됩니다. Claude에게 부탁해 만들고 <code>/agents</code>로 확인합니다.</p>
     </div>
   </section>
 
@@ -125,32 +128,24 @@
 
   <!-- 10 · /agents 만드는 흐름 -->
   <section class="slide is-standard">
-    <div class="slide__eyebrow">HOW · /agents 흐름</div>
-    <h2 class="slide__title">/agents — 에이전트 만드는 <span class="accent">다섯 걸음</span></h2>
+    <div class="slide__eyebrow">HOW · 에이전트 만들기</div>
+    <h2 class="slide__title">에이전트 만들기 — <span class="accent">말로 부탁하면 끝</span></h2>
     <div class="slide__body">
-      <div class="step-list step-list--compact">
+      <div class="step-list">
         <div class="step-list__item">
           <div class="step-list__num">1</div>
-          <div class="step-list__content"><p class="step-list__title"><code>/agents</code> 입력 <span class="step-list__desc" style="display:inline">— 에이전트 관리 화면이 열린다</span></p></div>
+          <div class="step-list__content"><p class="step-list__title">Claude에게 부탁 <span class="step-list__desc" style="display:inline">— "ui-helper라는 서브에이전트를 만들어줘. 역할은 아래와 같아." + 역할 설명(describe) 붙여넣기</span></p></div>
         </div>
         <div class="step-list__item">
           <div class="step-list__num">2</div>
-          <div class="step-list__content"><p class="step-list__title">좌우 화살표(← →)로 이동 <span class="step-list__desc" style="display:inline">— 에이전트 라이브러리(만들기) 화면으로</span></p></div>
+          <div class="step-list__content"><p class="step-list__title">파일 확인 <span class="step-list__desc" style="display:inline">— <code>.claude/agents/ui-helper.md</code>가 생겼는지, 역할 설명이 그대로 들어갔는지</span></p></div>
         </div>
         <div class="step-list__item">
           <div class="step-list__num">3</div>
-          <div class="step-list__content"><p class="step-list__title">새 에이전트 만들기 + 이름 <span class="step-list__desc" style="display:inline">— "Create new agent" 선택, 이름 입력 (예: ui-helper)</span></p></div>
-        </div>
-        <div class="step-list__item">
-          <div class="step-list__num">4</div>
-          <div class="step-list__content"><p class="step-list__title">describe — 할 일을 설명 <span class="step-list__desc" style="display:inline">— 이 도우미가 무슨 일을 하는지 사람 말로 (가장 중요)</span></p></div>
-        </div>
-        <div class="step-list__item">
-          <div class="step-list__num">5</div>
-          <div class="step-list__content"><p class="step-list__title">쓸 도구(권한) 고르고 → 저장 <span class="step-list__desc" style="display:inline">— 모델은 Sonnet으로</span></p></div>
+          <div class="step-list__content"><p class="step-list__title"><code>/agents</code>로 확인 <span class="step-list__desc" style="display:inline">— 목록에 ui-helper가 보이면 등록 완료</span></p></div>
         </div>
       </div>
-      <p class="slide__note">핵심은 4번 <strong>describe</strong>와 5번 <strong>권한</strong> — describe는 도우미별로 뒤 세 장에서, 권한은 바로 다음 장에서 자세히 봅니다.</p>
+      <p class="slide__note">핵심은 <strong>역할 설명(describe)</strong> — 도우미별 설명문은 뒤 세 장에서 그대로 복사해 쓰고, 도구 권한은 바로 다음 장에서 봅니다.</p>
     </div>
   </section>
 
@@ -164,21 +159,21 @@
           <div class="code-block">
             <div class="code-block__header">
               <span class="code-block__dot" style="background:#fb2c36"></span><span class="code-block__dot" style="background:#edb200"></span><span class="code-block__dot" style="background:#00c758"></span>
-              <span class="code-block__title">에이전트 만들기 · 쓸 도구</span>
+              <span class="code-block__title">.claude/agents/ui-helper.md</span>
             </div>
-            <div class="code-block__body"><span class="code-block__line"><span class="code-block__out">[✓] All tools        전체</span></span><span class="code-block__line"><span class="code-block__out">[✓] Read-only tools  읽기</span></span><span class="code-block__line"><span class="code-block__out">[✓] Edit tools       편집</span></span><span class="code-block__line"><span class="code-block__out">[✓] Execution tools  실행</span></span><span class="code-block__line"><span class="code-block__out">[✓] MCP tools        외부 도구</span></span><span class="code-block__line"><span class="code-block__out">[✓] Other tools      기타</span></span><span class="code-block__line"><span class="code-block__cmt">  [ Show advanced options ]</span></span></div>
+            <div class="code-block__body"><span class="code-block__line"><span class="code-block__cmd">---</span></span><span class="code-block__line"><span class="code-block__cmd">name: ui-helper</span></span><span class="code-block__line"><span class="code-block__cmd">description: 화면(HTML·CSS) 담당 도우미</span></span><span class="code-block__line"><span class="code-block__cmt"># tools: 줄이 없으면 → 모든 도구 사용</span></span><span class="code-block__line"><span class="code-block__cmd">---</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__out">(아래에 역할 설명 본문)</span></span></div>
           </div>
         </div>
         <div>
           <div class="content-card content-card--compact">
             <h3 class="content-card__title">어떻게 대응할까</h3>
-            <p class="content-card__body">에이전트를 만들면 — 이 도우미가 쓸 수 있는 도구를 고르는 화면이 나옵니다.</p>
+            <p class="content-card__body">도우미가 쓸 도구는 .md 파일 머리(frontmatter)의 <code>tools:</code> 줄로 정합니다.</p>
             <ul class="content-card__list">
               <li>메모장 도우미는 화면을 만들고(편집)·실행하고·읽어야 함</li>
-              <li>그러니 <strong>All tools(전체)</strong>를 켜 두면 막힘없이 일함</li>
-              <li>익숙해지면 — 도우미별로 필요한 것만 좁히기</li>
+              <li>그러니 <strong><code>tools:</code> 줄 없이(=전체 허용)</strong> 두면 막힘없이 일함</li>
+              <li>익숙해지면 — <code>tools: Read, Edit</code>처럼 필요한 것만 좁히기</li>
             </ul>
-            <p class="content-card__body"><code>Show advanced options</code>는 더 세밀한 설정 — 지금은 건너뜁니다.</p>
+            <p class="content-card__body">Claude에게 부탁하면 이 파일도 알아서 만들어 줍니다 — 확인만 하면 됩니다.</p>
           </div>
         </div>
       </div>
@@ -204,12 +199,15 @@
           </div>
         </div>
         <div>
-          <div class="code-block">
-            <div class="code-block__header">
-              <span class="code-block__dot" style="background:#fb2c36"></span><span class="code-block__dot" style="background:#edb200"></span><span class="code-block__dot" style="background:#00c758"></span>
-              <span class="code-block__title">ui-helper · describe</span>
+          <div class="prompt-card">
+            <div class="prompt-card__head">
+              <span class="prompt-card__label">ui-helper · describe</span>
+              <button class="prompt-card__copy" type="button" data-copy>복사</button>
             </div>
-            <div class="code-block__body"><span class="code-block__line"><span class="code-block__cmd">너는 메모장 앱의 화면만 담당한다.</span></span><span class="code-block__line"><span class="code-block__cmd">메모 입력칸, 저장된 메모 목록,</span></span><span class="code-block__line"><span class="code-block__cmd">수정·삭제 버튼을 만든다.</span></span><span class="code-block__line"><span class="code-block__cmd">화면은 단순하고 깔끔하게 —</span></span><span class="code-block__line"><span class="code-block__cmd">한눈에 보이게.</span></span><span class="code-block__line"><span class="code-block__cmd">데이터 저장·로그인은 다른 도우미</span></span><span class="code-block__line"><span class="code-block__cmd">몫 — 건드리지 않는다.</span></span></div>
+            <pre class="prompt-card__body" data-no-nav>너는 메모장 앱의 화면만 담당한다.
+메모 입력칸, 저장된 메모 목록, 수정·삭제 버튼을 만든다.
+화면은 단순하고 깔끔하게 — 한눈에 보이게.
+데이터 저장·로그인은 다른 도우미 몫 — 건드리지 않는다.</pre>
           </div>
         </div>
       </div>
@@ -235,12 +233,15 @@
           </div>
         </div>
         <div>
-          <div class="code-block">
-            <div class="code-block__header">
-              <span class="code-block__dot" style="background:#fb2c36"></span><span class="code-block__dot" style="background:#edb200"></span><span class="code-block__dot" style="background:#00c758"></span>
-              <span class="code-block__title">data-helper · describe</span>
+          <div class="prompt-card">
+            <div class="prompt-card__head">
+              <span class="prompt-card__label">data-helper · describe</span>
+              <button class="prompt-card__copy" type="button" data-copy>복사</button>
             </div>
-            <div class="code-block__body"><span class="code-block__line"><span class="code-block__cmd">너는 메모장의 데이터 저장을</span></span><span class="code-block__line"><span class="code-block__cmd">담당한다. Supabase에 메모를</span></span><span class="code-block__line"><span class="code-block__cmd">저장·조회·수정·삭제(CRUD)한다.</span></span><span class="code-block__line"><span class="code-block__cmd">메모를 쓰면 Supabase에 저장하고,</span></span><span class="code-block__line"><span class="code-block__cmd">앱을 열면 저장된 메모를 불러온다.</span></span><span class="code-block__line"><span class="code-block__cmd">Supabase 키는 환경변수로 —</span></span><span class="code-block__line"><span class="code-block__cmd">코드에 직접 적지 않는다.</span></span></div>
+            <pre class="prompt-card__body" data-no-nav>너는 메모장의 데이터 저장을 담당한다.
+Supabase에 메모를 저장·조회·수정·삭제(CRUD)한다.
+메모를 쓰면 Supabase에 저장하고, 앱을 열면 저장된 메모를 불러온다.
+Supabase 키는 환경변수로 — 코드에 직접 적지 않는다.</pre>
           </div>
         </div>
       </div>
@@ -266,16 +267,53 @@
           </div>
         </div>
         <div>
-          <div class="code-block">
-            <div class="code-block__header">
-              <span class="code-block__dot" style="background:#fb2c36"></span><span class="code-block__dot" style="background:#edb200"></span><span class="code-block__dot" style="background:#00c758"></span>
-              <span class="code-block__title">login-helper · describe</span>
+          <div class="prompt-card">
+            <div class="prompt-card__head">
+              <span class="prompt-card__label">login-helper · describe</span>
+              <button class="prompt-card__copy" type="button" data-copy>복사</button>
             </div>
-            <div class="code-block__body"><span class="code-block__line"><span class="code-block__cmd">너는 메모장의 구글 로그인을</span></span><span class="code-block__line"><span class="code-block__cmd">담당한다.</span></span><span class="code-block__line"><span class="code-block__cmd">"구글로 로그인" 버튼을 만들고,</span></span><span class="code-block__line"><span class="code-block__cmd">로그인 안 하면 메모를 못 보게</span></span><span class="code-block__line"><span class="code-block__cmd">막는다. 로그인한 사람은 자기</span></span><span class="code-block__line"><span class="code-block__cmd">메모만 보이게 한다.</span></span><span class="code-block__line"><span class="code-block__cmd">로그인은 Supabase 기능을 쓴다.</span></span></div>
+            <pre class="prompt-card__body" data-no-nav>너는 메모장의 구글 로그인을 담당한다.
+"구글로 로그인" 버튼을 만들고, 로그인 안 하면 메모를 못 보게 막는다.
+로그인한 사람은 자기 메모만 보이게 한다.
+로그인은 Supabase 기능을 쓴다.</pre>
           </div>
         </div>
       </div>
-      <p class="slide__note">로그인 도우미는 — "구글로, Supabase 기능으로, 로그인 전엔 차단"을 분명히. 앞 덱에서 만든 구글 로그인과 같은 개념입니다.</p>
+      <p class="slide__note">로그인 도우미는 — "구글로, Supabase 기능으로, 로그인 전엔 차단"을 분명히. 이번엔 로그인 처리를 <strong>Supabase에 맡기므로</strong>, 덱 2에서 발급한 구글 클라이언트 ID·시크릿을 Supabase(Authentication → Providers → Google)에 등록해 둡니다 — Claude에게 부탁하면 절차를 안내해 줍니다.</p>
+    </div>
+  </section>
+
+  <!-- 14b · Supabase 표 준비 -->
+  <section class="slide is-standard">
+    <div class="slide__eyebrow">SETUP · 데이터 담을 표</div>
+    <h2 class="slide__title">시작 전 하나 — <span class="accent">메모 담을 표</span>를 만든다</h2>
+    <div class="slide__body">
+      <div class="two-col">
+        <div>
+          <div class="content-card content-card--compact">
+            <h3 class="content-card__title">왜 먼저</h3>
+            <p class="content-card__body">메모를 저장하려면 — Supabase에 <strong>메모를 담을 표</strong>가 있어야 합니다. 데이터 도우미가 이 표에 넣고 꺼냅니다.</p>
+            <ul class="content-card__list">
+              <li>표에 담을 것 — 내용 · 작성 시각 · 작성한 사람</li>
+              <li>SQL을 직접 몰라도 됨 — Claude가 만들어 줌</li>
+              <li>받은 SQL은 <strong>Supabase → SQL Editor</strong>에 붙여넣기</li>
+            </ul>
+          </div>
+        </div>
+        <div>
+          <div class="prompt-card">
+            <div class="prompt-card__head">
+              <span class="prompt-card__label">프롬프트 · 표 만들기</span>
+              <button class="prompt-card__copy" type="button" data-copy>복사</button>
+            </div>
+            <pre class="prompt-card__body" data-no-nav>Supabase에 메모를 저장할 표를 하나 만들어줘.
+- 담을 것: 메모 내용, 작성 시각, 작성한 사람
+- 로그인한 사람은 자기 메모만 보이게 (다른 사람 메모는 안 보이게)
+- 표 만드는 SQL도 같이 알려주고, 어디에 붙여넣는지도 설명해줘</pre>
+          </div>
+        </div>
+      </div>
+      <p class="slide__note">Supabase <strong>SQL Editor</strong>에서 이 표를 만들어 두면 — 데이터 도우미가 곧바로 메모를 저장·조회할 수 있습니다.</p>
     </div>
   </section>
 
@@ -297,12 +335,20 @@
           </div>
         </div>
         <div>
-          <div class="code-block">
-            <div class="code-block__header">
-              <span class="code-block__dot" style="background:#fb2c36"></span><span class="code-block__dot" style="background:#edb200"></span><span class="code-block__dot" style="background:#00c758"></span>
-              <span class="code-block__title">claude · my-notes</span>
+          <div class="prompt-card">
+            <div class="prompt-card__head">
+              <span class="prompt-card__label">프롬프트 · 감독에게 통째로</span>
+              <button class="prompt-card__copy" type="button" data-copy>복사</button>
             </div>
-            <div class="code-block__body"><span class="code-block__line"><span class="code-block__prompt">&gt;</span> <span class="code-block__cmd">ui-helper · data-helper · login-helper —</span></span><span class="code-block__line"><span class="code-block__cmd">  세 도우미와 "나만의 메모장" 앱을 만들어줘.</span></span><span class="code-block__line"><span class="code-block__cmd">  네가 감독이 되어 — 일을 나눠 맡겨줘.</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__hi">  [목표]</span><span class="code-block__cmd"> 로그인하면 — 내 메모를</span></span><span class="code-block__line"><span class="code-block__cmd">         쓰고·보고·고치고·지우는 앱</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__hi">  [진행]</span><span class="code-block__cmd"> 순서는 네가 정해 — 동시에 되는</span></span><span class="code-block__line"><span class="code-block__cmd">         건 병렬로, 합치는 건 차례로</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__hi">  [규칙]</span><span class="code-block__cmd"> · 큰 결정은 나에게 먼저 물어봐</span></span><span class="code-block__line"><span class="code-block__cmd">         · 키는 환경변수로 — 코드에 쓰지 마</span></span><span class="code-block__line"><span class="code-block__cmd">         · 단계마다 한 일을 3줄로 알려줘</span></span></div>
+            <pre class="prompt-card__body" data-no-nav>ui-helper · data-helper · login-helper 세 도우미와 "나만의 메모장" 앱을 만들어줘.
+네가 감독이 되어 일을 나눠 맡겨줘.
+
+[목표] 로그인하면 — 내 메모를 쓰고·보고·고치고·지우는 앱
+[진행] 순서는 네가 정해 — 동시에 되는 건 병렬로, 합치는 건 차례로
+[규칙]
+· 큰 결정은 나에게 먼저 물어봐
+· 키는 환경변수로 — 코드에 직접 쓰지 마
+· 단계마다 한 일을 3줄로 알려줘</pre>
           </div>
         </div>
       </div>
@@ -366,7 +412,7 @@
       <div class="statement-text">
         <div class="slide__eyebrow">PROJECT · 이번에 만들 것</div>
         <h2 class="statement__lead">도우미 셋으로 — <span class="accent">나만의 메모장</span></h2>
-        <p class="statement__caption">로그인하면 내 메모를 쓰고·보고·고치고·지울 수 있는 진짜 앱. 3장에서 써본 GitHub·Vercel과 앞 덱의 구글 로그인에 — 6장에서 배운 Supabase를 더해, 네 가지를 모두 써서 각자 완성합니다.</p>
+        <p class="statement__caption">로그인하면 내 메모를 쓰고·보고·고치고·지울 수 있는 진짜 앱. 3장에서 써본 GitHub·Vercel과 앞 덱의 구글 로그인에 — 덱 1에서 배운 Supabase를 더해, 네 가지를 모두 써서 각자 완성합니다.</p>
         <div class="statement__points">
           <div class="statement__point"><span class="statement__point-num">GitHub</span><span>코드를 담아두는 저장소</span></div>
           <div class="statement__point"><span class="statement__point-num">Supabase</span><span>메모를 저장하는 데이터베이스</span></div>
@@ -410,7 +456,7 @@
         </g>
         <rect x="258" y="22" width="204" height="58" rx="12" fill="#fe6e00"/>
         <text x="360" y="46" font-family="ui-sans-serif, system-ui" font-size="13" font-weight="700" fill="#fff" text-anchor="middle">준비</text>
-        <text x="360" y="66" font-family="ui-monospace, monospace" font-size="10" fill="rgba(255,255,255,0.85)" text-anchor="middle">/agents — 도우미 셋 만들기</text>
+        <text x="360" y="66" font-family="ui-monospace, monospace" font-size="10" fill="rgba(255,255,255,0.85)" text-anchor="middle">도우미 셋 만들기 — .claude/agents/</text>
         <text x="360" y="116" font-family="ui-sans-serif, system-ui" font-size="12" font-weight="700" fill="#cc5a14" text-anchor="middle">셋이 동시에 — 병렬로</text>
         <g font-family="ui-sans-serif, system-ui" text-anchor="middle">
           <rect x="22" y="128" width="206" height="110" rx="10" fill="#fff" stroke="#cc5a14" stroke-width="2"/>
@@ -431,6 +477,36 @@
         <text x="360" y="344" font-family="ui-sans-serif, system-ui" font-size="10" fill="#797067" text-anchor="middle">GitHub → Vercel</text>
       </svg>
       <p class="slide__note">화면·데이터·로그인은 서로 크게 안 엮인 부분 — 감독이 셋을 <strong>동시에(병렬)</strong> 진행시킵니다. 다 되면 GitHub에 올려 Vercel로 배포 — 합치는 단계만 맨 끝에. (GitHub·Supabase·구글·Vercel 네 도구가 한 앱에)</p>
+    </div>
+  </section>
+
+  <!-- 19b · 완성 화면 -->
+  <section class="slide is-standard">
+    <div class="slide__eyebrow">RESULT · 완성한 메모장</div>
+    <h2 class="slide__title">도우미 셋이 만든 — <span class="accent">진짜 내 메모장</span></h2>
+    <div class="slide__body">
+      <div class="two-col">
+        <figure class="photo-slot photo-slot--portrait" data-img="vc-ch05-memo-app.png">
+          <img class="photo-slot__img" src="../../imgs/vc-ch05-memo-app.png" alt="완성된 나만의 메모장 앱 화면">
+          <figcaption class="photo-slot__ph">
+            <span class="photo-slot__icon">◧</span>
+            <span class="photo-slot__label">완성된 메모장 화면</span>
+            <span class="photo-slot__hint">구글 로그인 → 메모 쓰기 · 목록 · 수정 · 삭제</span>
+          </figcaption>
+        </figure>
+        <div>
+          <div class="content-card content-card--compact">
+            <h3 class="content-card__title">여기까지 왔다면</h3>
+            <ul class="content-card__list">
+              <li>구글 로그인 통과 — 내 메모만 보임</li>
+              <li>메모 쓰기·목록·수정·삭제가 전부 동작</li>
+              <li>Vercel 주소로 — 휴대폰에서도 열림</li>
+            </ul>
+            <p class="content-card__body">화면·데이터·로그인을 <strong>도우미 셋이 나눠</strong> 만든 결과입니다.</p>
+          </div>
+        </div>
+      </div>
+      <p class="slide__note">완성 화면을 캡처해 채팅방에 공유해 보세요 — 옆 사람 것과 비교하며 서로 다른 확장을 구경하는 재미가 있습니다.</p>
     </div>
   </section>
 
@@ -457,7 +533,7 @@
       <div class="step-list step-list--compact">
         <div class="step-list__item">
           <div class="step-list__num">1</div>
-          <div class="step-list__content"><p class="step-list__title">작업 폴더에서 도우미 3개 만들기 <span class="step-list__desc" style="display:inline">— c:\lecture\day3\my-notes 폴더에서 /agents로 화면·데이터·로그인 담당</span></p></div>
+          <div class="step-list__content"><p class="step-list__title">작업 폴더에서 도우미 3개 만들기 <span class="step-list__desc" style="display:inline">— c:\lecture\my-notes 폴더에서 Claude에게 부탁해 화면·데이터·로그인 담당 생성</span></p></div>
         </div>
         <div class="step-list__item">
           <div class="step-list__num">2</div>
@@ -483,16 +559,16 @@
   <!-- 22 · Wrap -->
   <section class="slide is-feature">
     <div class="feature-head">
-      <div class="slide__eyebrow">WRAP · 7장 끝</div>
+      <div class="slide__eyebrow">WRAP · 5장 끝</div>
       <h2 class="feature-head__title">도우미 셋이 만든 — <span class="accent">진짜 내 앱</span></h2>
     </div>
     <div class="feature-body">
       <div class="feature-text">
-        <p class="statement__caption">데이터를 담는 법(6장 데이터베이스)과 나눠 맡기는 법(서브에이전트)을 익혀 — GitHub·Supabase·구글 로그인·Vercel을 모두 쓴 진짜 앱을 완성했습니다.</p>
+        <p class="statement__caption">데이터를 담는 법(덱 1 데이터베이스)과 나눠 맡기는 법(서브에이전트)을 익혀 — GitHub·Supabase·구글 로그인·Vercel을 모두 쓴 진짜 앱을 완성했습니다.</p>
         <div class="statement__points">
           <div class="statement__point"><span class="statement__point-num">데이터</span><span>CRUD · SQL · Supabase로 저장</span></div>
           <div class="statement__point"><span class="statement__point-num">도우미</span><span>역할을 셋으로 나눠 — 작은 멀티에이전트</span></div>
-          <div class="statement__point"><span class="statement__point-num">다음</span><span>8장 — MCP와 브라우저 크롤링</span></div>
+          <div class="statement__point"><span class="statement__point-num">다음</span><span>6장 — MCP와 브라우저 크롤링</span></div>
         </div>
       </div>
       <div class="feature-visual">

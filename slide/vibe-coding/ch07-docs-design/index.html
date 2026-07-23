@@ -7,7 +7,7 @@
   <meta name="author" content="이일규">
   <meta name="copyright" content="© 2026 이일규 · 본 강의자료는 저작권법으로 보호되는 저작물입니다. 무단 복제·배포 금지.">
   <script defer src="../../scripts/protect.js"></script>
-  <title>10장 · 윈도우/맥 프로그램</title>
+  <title>7장 · 문서와 디자인</title>
   <link rel="stylesheet" href="../../styles/tokens.css">
   <link rel="stylesheet" href="../../styles/deck.css">
   <link rel="stylesheet" href="../../styles/_os-toggle.css">
@@ -18,7 +18,7 @@
     .day-header__title { font-size: 1.5rem; font-weight: 700; line-height: 1.1; letter-spacing: -0.025em; margin: 0.05rem 0 0.2rem 0; color: var(--color-on-surface); }
     .day-header__caption { font-size: 0.68rem; line-height: 1.45; color: var(--color-on-surface-muted); margin: 0; max-width: 42rem; }
 
-    .block-grid { display: grid; grid-template-columns: 1fr; grid-auto-rows: 1fr; gap: 0.6rem; flex: 1; min-height: 0; }
+    .block-grid { display: grid; grid-template-columns: repeat(2, 1fr); grid-auto-rows: 1fr; gap: 0.6rem; flex: 1; min-height: 0; }
     .block-card { background: var(--color-surface-elevated); border: 2px solid var(--color-outline-strong); border-radius: var(--rounded-md); padding: 0.85rem 0.95rem; text-decoration: none; color: var(--color-on-surface); display: flex; flex-direction: column; gap: 0.3rem; transition: transform var(--motion-fast) var(--easing-standard), border-color var(--motion-fast), box-shadow var(--motion-fast); min-height: 0; overflow: hidden; }
     .block-card:hover { transform: translateY(-2px); border-color: var(--color-primary); box-shadow: var(--shadow-raised); }
     .block-card__time { font-family: var(--font-mono); font-size: 0.62rem; color: var(--color-primary-strong); font-weight: 700; letter-spacing: 0.06em; }
@@ -33,22 +33,28 @@
   <header class="deck-chrome">
     <span class="deck-chrome__brand">바이브코딩 · CLAUDE CODE</span>
     <span class="deck-chrome__divider">·</span>
-    <span class="deck-chrome__day">10장 · 목차</span>
+    <span class="deck-chrome__day">7장 · 목차</span>
     <span class="deck-chrome__spacer"></span>
   </header>
 
   <header class="day-header">
-    <div class="day-header__brand">클로드코드 실습으로 배우는 바이브코딩 · 10장</div>
-    <h1 class="day-header__title">10장 — 윈도우/맥 프로그램 개발</h1>
-    <p class="day-header__caption">브라우저 밖으로 — 내 PC에서 더블클릭으로 도는 진짜 실행 파일(<span class="os-win">.exe</span><span class="os-mac">.app</span>)을 만듭니다. 도구: Python · PySide6 · PyInstaller.</p>
+    <div class="day-header__brand">클로드코드 실습으로 배우는 바이브코딩 · 7장</div>
+    <h1 class="day-header__title">7장 — 문서와 디자인</h1>
+    <p class="day-header__caption">코드 한 줄 없이 — 진짜 PPT·PDF 문서와 클릭되는 디자인 프로토타입을 만듭니다. 도구: 스킬(PPTX·DOCX·PDF) · DESIGN.md · Claude Design.</p>
   </header>
 
   <div class="block-grid">
-    <a class="block-card" href="1-desktop-program.html">
+    <a class="block-card" href="1-skills.html">
       <div class="block-card__time">DECK 1</div>
-      <h2 class="block-card__title">데스크톱 프로그램</h2>
-      <p class="block-card__desc">파일 정리기·이미지 리사이저·뽀모도로 타이머 등 8가지 중 하나를 골라 — PySide6로 .py 프로그램을 만들어 돌려보고, PyInstaller로 얼려 <span class="os-win">.exe</span><span class="os-mac">.app</span>로. 보안 경고 대처와 자주 걸리는 함정 5가지까지.</p>
-      <div class="block-card__count">17 슬라이드 →</div>
+      <h2 class="block-card__title">스킬 + DESIGN.md</h2>
+      <p class="block-card__desc">공식 문서 스킬을 /plugin 두 줄로 설치 — 2장 자기소개를 진짜 PPT·PDF로 변환. DESIGN.md 파일 하나로 웹·문서에 통일된 테마를 입히고, 도구 다이어트 원칙까지.</p>
+      <div class="block-card__count">14 슬라이드 →</div>
+    </a>
+    <a class="block-card" href="2-design-prototype.html">
+      <div class="block-card__time">DECK 2</div>
+      <h2 class="block-card__title">디자인 프로토타입</h2>
+      <p class="block-card__desc">Claude Design으로 아이디어를 몇 분 만에 클릭되는 프로토타입으로 — 랜딩 페이지·슬라이드·원페이저 9가지 주제 중 골라 반복 다듬기, 공유·내보내기까지.</p>
+      <div class="block-card__count">13 슬라이드 →</div>
     </a>
   </div>
 </main>
