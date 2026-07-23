@@ -7,7 +7,7 @@
   <meta name="author" content="이일규">
   <meta name="copyright" content="© 2026 이일규 · 본 강의자료는 저작권법으로 보호되는 저작물입니다. 무단 복제·배포 금지.">
   <script defer src="../../scripts/protect.js"></script>
-  <title>5장 · 3. 서브에이전트 + 나만의 메모장</title>
+  <title>5장 · 2. 서브에이전트 + 나만의 메모장</title>
   <link rel="stylesheet" href="../../styles/tokens.css">
   <link rel="stylesheet" href="../../styles/deck.css">
   <link rel="stylesheet" href="../../styles/_os-toggle.css">
@@ -23,7 +23,7 @@
   <header class="deck-chrome">
   <span class="deck-chrome__brand">바이브코딩 · CLAUDE CODE</span>
   <span class="deck-chrome__divider">·</span>
-  <span class="deck-chrome__day">5장 · 3 서브에이전트·메모장</span>
+  <span class="deck-chrome__day">5장 · 2 서브에이전트·메모장</span>
   <span class="deck-chrome__spacer"></span>
   <span class="deck-chrome__counter">— / —</span>
 </header>
@@ -32,7 +32,7 @@
   <section class="slide is-section is-standard">
     <div class="section-eyebrow">5장 · SUBAGENT &amp; MEMO APP</div>
     <h2 class="section-title">서브에이전트로 — <span class="accent">나만의 메모장</span>을 만든다</h2>
-    <p class="section-caption">이번에 진짜 앱 하나를 완성합니다. 일을 나눠 맡는 도우미(서브에이전트)를 익히고 — 덱 1의 Supabase, 덱 2의 구글 로그인, 3장의 GitHub·Vercel을 모두 써서 "나만의 메모장"을 직접 배포합니다.</p>
+    <p class="section-caption">이번에 진짜 앱 하나를 완성합니다. 일을 나눠 맡는 도우미(서브에이전트)를 익히고 — 덱 1의 Supabase와 구글 로그인(원리는 덱 3에서 깊게), 3장의 GitHub·Vercel을 모두 써서 "나만의 메모장"을 직접 배포합니다.</p>
     <div class="section-meta">
       <div class="section-meta__item"><span class="section-meta__num">4</span><span>쓰는 도구 (GitHub·Supabase·구글·Vercel)</span></div>
       <div class="section-meta__item"><span class="section-meta__num">3</span><span>도우미 에이전트</span></div>
@@ -67,7 +67,7 @@
           </div>
         </div>
       </div>
-      <p class="slide__note">CLAUDE.md·슬래시를 써본 그 감각 그대로 — <strong>사람 말로 역할을 적으면</strong> 도우미가 됩니다. Claude에게 부탁해 만들고 <code>/agents</code>로 확인합니다.</p>
+      <p class="slide__note">CLAUDE.md·슬래시를 써본 그 감각 그대로 — <strong>사람 말로 역할을 적으면</strong> 도우미가 됩니다. Claude에게 부탁해 만들고, 입력창에 <code>@</code>를 쳐서 목록으로 확인합니다.</p>
     </div>
   </section>
 
@@ -142,7 +142,7 @@
         </div>
         <div class="step-list__item">
           <div class="step-list__num">3</div>
-          <div class="step-list__content"><p class="step-list__title"><code>/agents</code>로 확인 <span class="step-list__desc" style="display:inline">— 목록에 ui-helper가 보이면 등록 완료</span></p></div>
+          <div class="step-list__content"><p class="step-list__title"><code>@</code>로 확인 <span class="step-list__desc" style="display:inline">— 입력창에 @를 치면 뜨는 목록에 ui-helper가 보이면 등록 완료. 파일 저장 후 몇 초 안에 자동 반영(재시작 불필요)</span></p></div>
         </div>
       </div>
       <p class="slide__note">핵심은 <strong>역할 설명(describe)</strong> — 도우미별 설명문은 뒤 세 장에서 그대로 복사해 쓰고, 도구 권한은 바로 다음 장에서 봅니다.</p>
@@ -279,7 +279,7 @@ Supabase 키는 환경변수로 — 코드에 직접 적지 않는다.</pre>
           </div>
         </div>
       </div>
-      <p class="slide__note">로그인 도우미는 — "구글로, Supabase 기능으로, 로그인 전엔 차단"을 분명히. 이번엔 로그인 처리를 <strong>Supabase에 맡기므로</strong>, 덱 2에서 발급한 구글 클라이언트 ID·시크릿을 Supabase(Authentication → Providers → Google)에 등록해 둡니다 — Claude에게 부탁하면 절차를 안내해 줍니다.</p>
+      <p class="slide__note">로그인 도우미는 — "구글로, Supabase 기능으로, 로그인 전엔 차단"을 분명히. 이번엔 로그인 처리를 <strong>Supabase에 맡기므로</strong>, 구글 클라이언트 ID·시크릿 발급 → Supabase(Authentication → Providers → Google) 등록까지 Claude에게 부탁하면 차례로 안내해 줍니다. OAuth가 실제로 어떻게 도는지는 덱 3에서 깊게.</p>
     </div>
   </section>
 
@@ -412,7 +412,7 @@ Supabase 키는 환경변수로 — 코드에 직접 적지 않는다.</pre>
       <div class="statement-text">
         <div class="slide__eyebrow">PROJECT · 이번에 만들 것</div>
         <h2 class="statement__lead">도우미 셋으로 — <span class="accent">나만의 메모장</span></h2>
-        <p class="statement__caption">로그인하면 내 메모를 쓰고·보고·고치고·지울 수 있는 진짜 앱. 3장에서 써본 GitHub·Vercel과 앞 덱의 구글 로그인에 — 덱 1에서 배운 Supabase를 더해, 네 가지를 모두 써서 각자 완성합니다.</p>
+        <p class="statement__caption">로그인하면 내 메모를 쓰고·보고·고치고·지울 수 있는 진짜 앱. 3장에서 써본 GitHub·Vercel과 구글 로그인에 — 덱 1에서 배운 Supabase를 더해, 네 가지를 모두 써서 각자 완성합니다.</p>
         <div class="statement__points">
           <div class="statement__point"><span class="statement__point-num">GitHub</span><span>코드를 담아두는 저장소</span></div>
           <div class="statement__point"><span class="statement__point-num">Supabase</span><span>메모를 저장하는 데이터베이스</span></div>
@@ -559,7 +559,7 @@ Supabase 키는 환경변수로 — 코드에 직접 적지 않는다.</pre>
   <!-- 22 · Wrap -->
   <section class="slide is-feature">
     <div class="feature-head">
-      <div class="slide__eyebrow">WRAP · 5장 끝</div>
+      <div class="slide__eyebrow">WRAP · 덱 2 끝</div>
       <h2 class="feature-head__title">도우미 셋이 만든 — <span class="accent">진짜 내 앱</span></h2>
     </div>
     <div class="feature-body">
@@ -568,7 +568,7 @@ Supabase 키는 환경변수로 — 코드에 직접 적지 않는다.</pre>
         <div class="statement__points">
           <div class="statement__point"><span class="statement__point-num">데이터</span><span>CRUD · SQL · Supabase로 저장</span></div>
           <div class="statement__point"><span class="statement__point-num">도우미</span><span>역할을 셋으로 나눠 — 작은 멀티에이전트</span></div>
-          <div class="statement__point"><span class="statement__point-num">다음</span><span>6장 — MCP와 브라우저 크롤링</span></div>
+          <div class="statement__point"><span class="statement__point-num">다음</span><span>구글 로그인 깊게 — 덱 3</span></div>
         </div>
       </div>
       <div class="feature-visual">
