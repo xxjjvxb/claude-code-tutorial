@@ -9,6 +9,18 @@ export default async function middleware(request) {
   if (!GATE_ENABLED) return;
 
   const url = new URL(request.url);
+
+  // 목차는 공개 — 로그인 없이 과정 구성까지는 볼 수 있게.
+  // 덱 본문(챕터 html)·이미지·자료 파일은 아래에서 계속 검증한다.
+  const path = url.pathname;
+  const isPublic =
+    path === '/slide' ||
+    path.endsWith('/') ||
+    path.endsWith('/index.html') ||
+    path.startsWith('/slide/styles/') ||
+    path.startsWith('/slide/scripts/');
+  if (isPublic) return;
+
   const cookie = request.headers.get('cookie') || '';
   const m = /(?:^|;\s*)sb-access-token=([^;]+)/.exec(cookie);
   const token = m ? decodeURIComponent(m[1]) : null;
