@@ -1,5 +1,5 @@
 -- 강의자료 열람 게이트 — Supabase SQL Editor에 붙여넣어 실행하세요.
--- 관리자 이메일이 다르면 아래 두 정책의 이메일을 수정한 뒤 실행합니다.
+-- 관리자: xxjjvxb@gmail.com — 다르면 아래 두 정책의 이메일을 수정한 뒤 실행합니다.
 
 create table if not exists public.access_requests (
   user_id      uuid primary key references auth.users (id) on delete cascade,
@@ -21,8 +21,8 @@ create policy "own_select" on public.access_requests
 
 -- 관리자: 전체 조회 + 승인/거절
 create policy "admin_select" on public.access_requests
-  for select using ((auth.jwt() ->> 'email') = 'minkyu.ast@gmail.com');
+  for select using ((auth.jwt() ->> 'email') = 'xxjjvxb@gmail.com');
 
 create policy "admin_update" on public.access_requests
-  for update using ((auth.jwt() ->> 'email') = 'minkyu.ast@gmail.com')
-  with check ((auth.jwt() ->> 'email') = 'minkyu.ast@gmail.com');
+  for update using ((auth.jwt() ->> 'email') = 'xxjjvxb@gmail.com')
+  with check ((auth.jwt() ->> 'email') = 'xxjjvxb@gmail.com');
