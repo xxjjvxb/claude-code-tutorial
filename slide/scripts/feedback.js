@@ -27,6 +27,7 @@
     '.fbq-tab .n{display:inline-block;background:#fe6e00;color:#fff;border-radius:999px;padding:0.35rem 0.15rem;margin-top:0.4rem;font-size:0.72rem}',
     '.fbq-tab.pulse{animation:fbqPulse 1s ease 3}',
     '@keyframes fbqPulse{0%,100%{transform:none}50%{transform:translateX(-4px);background:#fff7ed}}',
+    '.fbq-panel[hidden],.fbq-tab[hidden]{display:none !important}',
     '.fbq-panel{position:fixed;right:0.9rem;top:3.4rem;bottom:3.2rem;z-index:905;width:min(21rem,calc(100vw - 2rem));display:flex;flex-direction:column;background:#fff;border:2px solid #262220;border-radius:14px;box-shadow:0 16px 40px rgba(0,0,0,0.22);overflow:hidden;font-family:"Pretendard","Malgun Gothic",system-ui,sans-serif;word-break:keep-all}',
     '.fbq-head{display:flex;align-items:center;gap:0.5rem;padding:0.6rem 0.8rem;background:#f6f1e9;border-bottom:1.5px solid #e5ddd2;font-size:0.82rem;font-weight:800}',
     '.fbq-head .sp{flex:1}',

@@ -33,11 +33,11 @@
   <section class="slide is-section is-standard">
     <div class="section-eyebrow">CHAPTER 8 · SKILL &amp; DESIGN.md</div>
     <h2 class="section-title">스킬과 DESIGN.md — <span class="accent">가져다 쓰는</span> 능력과 디자인</h2>
-    <p class="section-caption">2장에서 만든 자기소개를 다시 꺼냅니다. 공식 "스킬"로 코드 한 줄 없이 진짜 PPT·PDF로 바꾸고 — designmd.ai의 DESIGN.md로 웹·문서에 통일된 테마를 입힙니다. 끝으로 지금까지 모은 도구를 정리합니다.</p>
+    <p class="section-caption">2장에서 만든 자기소개를 다시 꺼냅니다. 공식 "스킬"로 코드 한 줄 없이 진짜 PPT·PDF로 바꾸고 — designmd.ai의 DESIGN.md로 웹·문서에 통일된 테마를 입히고, 내 컴포넌트 킷(부품 카탈로그)을 만들어 웹·PPT에 재사용합니다. 끝으로 지금까지 모은 도구를 정리합니다.</p>
     <div class="section-meta">
       <div class="section-meta__item"><span class="section-meta__num">4</span><span>공식 문서 스킬 (PPTX·PDF·DOCX·XLSX)</span></div>
       <div class="section-meta__item"><span class="section-meta__num">1</span><span>자기소개 → PPT·PDF 변환</span></div>
-      <div class="section-meta__item"><span class="section-meta__num">1</span><span>DESIGN.md로 테마 통일</span></div>
+      <div class="section-meta__item"><span class="section-meta__num">2</span><span>DESIGN.md · 컴포넌트 킷</span></div>
     </div>
   </section>
 
@@ -357,6 +357,106 @@
         </div>
       </div>
       <p class="slide__note">DESIGN.md는 본래 웹 화면용 디자인 명세지만 — Claude가 이를 기준으로 PPT·PDF에도 같은 색·글꼴을 입혀, 흩어진 결과물이 "한 브랜드"처럼 보이게 됩니다. 이게 <strong>템플릿 통일성</strong>입니다.</p>
+    </div>
+  </section>
+
+  <!-- 10b · 컴포넌트 킷 — 개념 -->
+  <section class="slide is-statement">
+    <div class="statement-grid">
+      <div class="statement-text">
+        <div class="slide__eyebrow">COMPONENT KIT · 부품 상자</div>
+        <h2 class="statement__lead">규칙 다음은 — <span class="accent">부품을 미리 만들어</span> 두는 것.</h2>
+        <p class="statement__caption">DESIGN.md가 "색·글꼴 규칙"이라면, 컴포넌트 킷은 그 규칙으로 미리 만들어 둔 <strong>완성 부품</strong>입니다 — 버튼·카드·제목·인용 상자. 한 번 만들어 두면 웹페이지든 PPT든 "이 부품으로"라고만 하면 됩니다.</p>
+        <div class="statement__points">
+          <div class="statement__point"><span class="statement__point-num">부품</span><span>버튼 · 카드 · 제목 · 인용 상자 · 구분선</span></div>
+          <div class="statement__point"><span class="statement__point-num">진열장</span><span>components.html 한 파일 — 브라우저로 열어 눈으로 확인</span></div>
+          <div class="statement__point"><span class="statement__point-num">재사용</span><span>새 페이지·PPT 만들 때 @로 참조 — 늘 같은 모양</span></div>
+        </div>
+      </div>
+      <div class="statement-visual">
+        <svg viewBox="0 0 460 320" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <rect x="0" y="0" width="460" height="320" rx="16" fill="#fff5ec"/>
+          <rect x="30" y="30" width="220" height="260" rx="12" fill="#fff" stroke="#cc5a14" stroke-width="2.5"/>
+          <text x="140" y="58" font-family="ui-monospace, monospace" font-size="12" font-weight="700" fill="#cc5a14" text-anchor="middle">components.html</text>
+          <rect x="50" y="76" width="80" height="26" rx="13" fill="#fe6e00"/>
+          <text x="90" y="93" font-family="ui-sans-serif, system-ui" font-size="11" fill="#fff" text-anchor="middle">버튼</text>
+          <rect x="142" y="76" width="80" height="26" rx="13" fill="#fff" stroke="#fe6e00" stroke-width="2"/>
+          <text x="182" y="93" font-family="ui-sans-serif, system-ui" font-size="11" fill="#cc5a14" text-anchor="middle">버튼 2</text>
+          <rect x="50" y="116" width="172" height="58" rx="8" fill="#faf7f2" stroke="#e5ddd2" stroke-width="1.5"/>
+          <text x="136" y="142" font-family="ui-sans-serif, system-ui" font-size="11" fill="#797067" text-anchor="middle">카드</text>
+          <rect x="50" y="188" width="172" height="40" rx="6" fill="#fff7ed" stroke="#fe6e00" stroke-width="1.5" stroke-dasharray="4 3"/>
+          <text x="136" y="212" font-family="ui-sans-serif, system-ui" font-size="11" fill="#cc5a14" text-anchor="middle">인용 상자</text>
+          <g font-family="ui-sans-serif, system-ui" font-size="10" fill="#797067">
+            <circle cx="62" cy="252" r="9" fill="#fe6e00"/><circle cx="86" cy="252" r="9" fill="#262220"/><circle cx="110" cy="252" r="9" fill="#e5ddd2"/>
+            <text x="132" y="256">색 팔레트</text>
+          </g>
+          <text x="288" y="140" font-family="ui-monospace, monospace" font-size="20" fill="#cc5a14">→</text>
+          <g font-family="ui-sans-serif, system-ui" text-anchor="middle">
+            <rect x="320" y="70" width="110" height="70" rx="8" fill="#fff" stroke="#cc5a14" stroke-width="2"/>
+            <text x="375" y="102" font-size="11" font-weight="700" fill="#cc5a14">웹페이지</text>
+            <text x="375" y="122" font-size="9" fill="#797067">같은 부품으로</text>
+            <rect x="320" y="170" width="110" height="70" rx="8" fill="#fff" stroke="#cc5a14" stroke-width="2"/>
+            <text x="375" y="202" font-size="11" font-weight="700" fill="#cc5a14">PPT</text>
+            <text x="375" y="222" font-size="9" fill="#797067">같은 색·글꼴로</text>
+          </g>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- 10c · 컴포넌트 킷 만들기 -->
+  <section class="slide is-standard">
+    <div class="slide__eyebrow">HANDS-ON · 킷 만들기</div>
+    <h2 class="slide__title">내 <span class="accent">컴포넌트 킷</span> — 말 한 번이면 생깁니다</h2>
+    <div class="slide__body">
+      <div class="two-col">
+        <div>
+          <div class="prompt-card">
+            <div class="prompt-card__head">
+              <span class="prompt-card__label">프롬프트</span>
+              <button class="prompt-card__copy" type="button" data-copy>복사</button>
+            </div>
+            <pre class="prompt-card__body" data-no-nav>@DESIGN.md 규칙으로 내 컴포넌트 킷을 만들어줘.
+components.html 한 파일에 — 색 팔레트(주색 1 + 보조색 2), 제목·본문 글꼴, 버튼 2종(기본·강조), 카드, 인용 상자, 구분선을 실제 모양으로 보여주고, 부품마다 언제 쓰는지 한 줄씩 적어줘.</pre>
+          </div>
+        </div>
+        <div>
+          <figure class="photo-slot photo-slot--landscape" data-img="vc-ch07-components-kit.png">
+            <img class="photo-slot__img" src="../../imgs/vc-ch07-components-kit.png" alt="브라우저로 연 components.html 부품 카탈로그">
+            <figcaption class="photo-slot__ph">
+              <span class="photo-slot__icon">◧</span>
+              <span class="photo-slot__label">components.html — 부품 진열장</span>
+              <span class="photo-slot__hint">브라우저로 열면 내 부품들이 한눈에</span>
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+      <p class="slide__note">완성되면 <strong>브라우저로 components.html을 열어</strong> 부품들을 구경하세요 — 마음에 안 드는 부품은 "버튼을 더 둥글게" 식으로 그 자리에서 고치면 됩니다.</p>
+    </div>
+  </section>
+
+  <!-- 10d · 컴포넌트 킷 재사용 — 웹 + PPT -->
+  <section class="slide is-standard">
+    <div class="slide__eyebrow">REUSE · 부품으로 조립</div>
+    <h2 class="slide__title">이제 뭘 만들든 — <span class="accent">"이 부품으로"</span> 한마디</h2>
+    <div class="slide__body">
+      <div class="prompt-pair">
+        <div class="prompt-card prompt-card--compact">
+          <div class="prompt-card__head">
+            <span class="prompt-card__label">웹페이지 — 부품 재사용</span>
+            <button class="prompt-card__copy" type="button" data-copy>복사</button>
+          </div>
+          <pre class="prompt-card__body" data-no-nav>@components.html 의 부품과 @DESIGN.md 규칙을 그대로 써서 <span class="ph">[스터디 모임 안내]</span> 페이지를 만들어줘. 새 스타일을 만들지 말고 킷에 있는 부품만 조립해줘.</pre>
+        </div>
+        <div class="prompt-card prompt-card--compact">
+          <div class="prompt-card__head">
+            <span class="prompt-card__label">PPT — 같은 테마로</span>
+            <button class="prompt-card__copy" type="button" data-copy>복사</button>
+          </div>
+          <pre class="prompt-card__body" data-no-nav>@DESIGN.md 의 색·글꼴 규칙을 적용해서 자기소개 PPT를 다시 만들어줘. 컴포넌트 킷의 카드 느낌을 슬라이드 레이아웃에도 살려줘.</pre>
+        </div>
+      </div>
+      <p class="slide__note">핵심은 <strong>"새로 만들지 말고 킷에서 꺼내 쓰기"</strong> — 웹과 PPT가 같은 브랜드로 보이기 시작합니다. 9장 미니프로젝트 발표 PPT에서 이 킷을 그대로 다시 씁니다.</p>
     </div>
   </section>
 
