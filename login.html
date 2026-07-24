@@ -1,0 +1,154 @@
+<!doctype html>
+<!-- © 2026 이일규 (Ilkyu Lee). All rights reserved. -->
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>강의자료 열람 — 로그인</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; }
+    body { font-family: "Pretendard", "Malgun Gothic", system-ui, sans-serif; background: #faf7f2; color: #262220;
+           min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 1.5rem; word-break: keep-all; }
+    .card { width: 100%; max-width: 26rem; background: #fff; border: 2px solid #e5ddd2; border-radius: 16px;
+            padding: 2rem 1.8rem; box-shadow: 0 12px 32px rgba(0,0,0,0.06); text-align: center; }
+    .brand { font-size: 0.72rem; letter-spacing: 0.16em; text-transform: uppercase; font-weight: 700; color: #cc5a14; margin-bottom: 0.5rem; }
+    h1 { font-size: 1.25rem; line-height: 1.35; margin-bottom: 0.4rem; }
+    p.desc { font-size: 0.86rem; line-height: 1.6; color: #797067; margin-bottom: 1.4rem; }
+    .btn { appearance: none; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem;
+           width: 100%; padding: 0.8rem 1rem; border-radius: 10px; border: 2px solid #262220; background: #fff;
+           font-size: 0.95rem; font-weight: 700; color: #262220; transition: transform 0.12s, box-shadow 0.12s; }
+    .btn:hover { transform: translateY(-1px); box-shadow: 0 6px 16px rgba(0,0,0,0.1); }
+    .btn--primary { background: #fe6e00; border-color: #fe6e00; color: #fff; }
+    .btn--ghost { border-color: #e5ddd2; color: #797067; font-weight: 600; font-size: 0.82rem; padding: 0.55rem 1rem; margin-top: 0.7rem; }
+    .status { border-radius: 10px; padding: 0.9rem 1rem; font-size: 0.88rem; line-height: 1.55; margin-bottom: 1rem; text-align: left; }
+    .status--wait { background: #fff7ed; border: 1.5px solid #fed7aa; color: #9a3412; }
+    .status--ok { background: #f0fdf4; border: 1.5px solid #bbf7d0; color: #166534; }
+    .status--no { background: #fef2f2; border: 1.5px solid #fecaca; color: #991b1b; }
+    .who { font-size: 0.78rem; color: #797067; margin-bottom: 1rem; }
+    .hidden { display: none; }
+    .g-icon { width: 1.1rem; height: 1.1rem; }
+    footer { margin-top: 1.4rem; font-size: 0.68rem; color: #b0a79c; }
+  </style>
+</head>
+<body>
+  <main class="card">
+    <div class="brand">클로드코드 실습으로 배우는 바이브코딩</div>
+    <h1>강의자료 열람</h1>
+    <p class="desc">승인된 분만 열람할 수 있습니다.<br>구글로 로그인한 뒤 열람을 신청해 주세요.</p>
+
+    <div id="view-loading"><p class="desc">확인 중…</p></div>
+
+    <div id="view-signin" class="hidden">
+      <button class="btn" id="btn-google">
+        <svg class="g-icon" viewBox="0 0 48 48"><path fill="#FFC107" d="M43.6 20.1H42V20H24v8h11.3C33.7 32.7 29.2 36 24 36c-6.6 0-12-5.4-12-12s5.4-12 12-12c3.1 0 5.9 1.2 8 3l5.7-5.7C34.3 6.1 29.4 4 24 4 13 4 4 13 4 24s9 20 20 20 20-9 20-20c0-1.3-.1-2.6-.4-3.9z"/><path fill="#FF3D00" d="m6.3 14.7 6.6 4.8C14.7 15.1 19 12 24 12c3.1 0 5.9 1.2 8 3l5.7-5.7C34.3 6.1 29.4 4 24 4 16.3 4 9.7 8.3 6.3 14.7z"/><path fill="#4CAF50" d="M24 44c5.2 0 9.9-2 13.4-5.2l-6.2-5.2C29.2 35.1 26.7 36 24 36c-5.2 0-9.6-3.3-11.3-8l-6.5 5C9.5 39.6 16.2 44 24 44z"/><path fill="#1976D2" d="M43.6 20.1H42V20H24v8h11.3c-.8 2.2-2.2 4.2-4.1 5.6l6.2 5.2C36.9 40.4 44 35 44 24c0-1.3-.1-2.6-.4-3.9z"/></svg>
+        구글로 로그인
+      </button>
+    </div>
+
+    <div id="view-user" class="hidden">
+      <p class="who" id="who"></p>
+      <div id="state-none" class="hidden">
+        <button class="btn btn--primary" id="btn-request">열람 신청하기</button>
+        <p class="desc" style="margin-top:0.7rem;margin-bottom:0">신청하면 관리자 승인 후 열람할 수 있습니다.</p>
+      </div>
+      <div id="state-pending" class="hidden">
+        <div class="status status--wait"><strong>승인 대기 중입니다.</strong><br>관리자가 승인하면 이 페이지에서 바로 입장할 수 있어요. 잠시 후 새로고침해 보세요.</div>
+        <button class="btn btn--ghost" id="btn-refresh">상태 새로고침</button>
+      </div>
+      <div id="state-approved" class="hidden">
+        <div class="status status--ok"><strong>승인 완료!</strong> 강의자료를 열람할 수 있습니다.</div>
+        <a class="btn btn--primary" id="btn-enter" href="/slide/">강의자료 보러가기</a>
+      </div>
+      <div id="state-rejected" class="hidden">
+        <div class="status status--no">열람 신청이 승인되지 않았습니다. 문의는 강사에게 직접 해주세요.</div>
+      </div>
+      <button class="btn btn--ghost" id="btn-signout">로그아웃</button>
+    </div>
+
+    <footer>© 2026 이일규 · 본 강의자료는 저작권법으로 보호되는 저작물입니다.</footer>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script type="module">
+    import { SUPABASE_URL, SUPABASE_ANON_KEY, ADMIN_EMAIL, GATE_ENABLED } from '/auth-config.js';
+    const $ = (id) => document.getElementById(id);
+    const show = (id) => { for (const v of ['view-loading','view-signin','view-user']) $(v).classList.toggle('hidden', v !== id); };
+    const state = (id) => { for (const s of ['state-none','state-pending','state-approved','state-rejected']) $(s).classList.toggle('hidden', s !== id); };
+    const nextPath = new URLSearchParams(location.search).get('next') || '/slide/';
+
+    if (!GATE_ENABLED) {
+      // 게이트 미설정 상태 — 그냥 슬라이드로
+      location.replace(nextPath);
+      throw new Error('gate disabled');
+    }
+
+    const sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+    function setTokenCookie(session) {
+      if (!session) return;
+      const maxAge = Math.max(60, (session.expires_at || 0) - Math.floor(Date.now() / 1000));
+      document.cookie = 'sb-access-token=' + encodeURIComponent(session.access_token)
+        + '; Path=/; Max-Age=' + maxAge + '; SameSite=Lax' + (location.protocol === 'https:' ? '; Secure' : '');
+    }
+    function clearTokenCookie() {
+      document.cookie = 'sb-access-token=; Path=/; Max-Age=0; SameSite=Lax';
+    }
+
+    sb.auth.onAuthStateChange((event, session) => {
+      if (event === 'TOKEN_REFRESHED' && session) setTokenCookie(session);
+    });
+
+    async function render() {
+      const { data: { session } } = await sb.auth.getSession();
+      if (!session) { show('view-signin'); return; }
+      const user = session.user;
+      $('who').textContent = (user.user_metadata?.full_name || '') + ' · ' + (user.email || '');
+      show('view-user');
+
+      if (user.email && user.email.toLowerCase() === ADMIN_EMAIL.toLowerCase()) {
+        setTokenCookie(session);
+        state('state-approved');
+        $('btn-enter').href = nextPath;
+        return;
+      }
+
+      const { data: rows, error } = await sb.from('access_requests').select('status').eq('user_id', user.id).limit(1);
+      if (error) { alert('상태 확인 실패: ' + error.message); state('state-none'); return; }
+      const status = rows && rows[0] ? rows[0].status : null;
+      if (status === 'approved') {
+        setTokenCookie(session);
+        state('state-approved');
+        $('btn-enter').href = nextPath;
+      } else if (status === 'pending') {
+        state('state-pending');
+      } else if (status === 'rejected') {
+        state('state-rejected');
+      } else {
+        state('state-none');
+      }
+    }
+
+    $('btn-google').addEventListener('click', async () => {
+      const redirectTo = location.origin + '/login.html' + (nextPath !== '/slide/' ? '?next=' + encodeURIComponent(nextPath) : '');
+      const { error } = await sb.auth.signInWithOAuth({ provider: 'google', options: { redirectTo } });
+      if (error) alert('로그인 실패: ' + error.message);
+    });
+
+    $('btn-request').addEventListener('click', async () => {
+      const { data: { session } } = await sb.auth.getSession();
+      if (!session) return;
+      const u = session.user;
+      const { error } = await sb.from('access_requests').insert({
+        user_id: u.id, email: u.email, name: u.user_metadata?.full_name || null,
+      });
+      if (error && !String(error.message).includes('duplicate')) { alert('신청 실패: ' + error.message); return; }
+      render();
+    });
+
+    $('btn-refresh').addEventListener('click', render);
+    $('btn-signout').addEventListener('click', async () => { await sb.auth.signOut(); clearTokenCookie(); render(); });
+
+    render();
+  </script>
+</body>
+</html>
