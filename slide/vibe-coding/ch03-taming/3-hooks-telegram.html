@@ -7,7 +7,7 @@
   <meta name="author" content="이일규">
   <meta name="copyright" content="© 2026 이일규 · 본 강의자료는 저작권법으로 보호되는 저작물입니다. 무단 복제·배포 금지.">
   <script defer src="../../scripts/protect.js"></script>
-  <title>2장 · 6. Hooks + 텔레그램</title>
+  <title>3장 · 3. Hooks + 텔레그램</title>
   <link rel="stylesheet" href="../../styles/tokens.css">
   <link rel="stylesheet" href="../../styles/deck.css">
   <link rel="stylesheet" href="../../styles/_os-toggle.css">
@@ -24,14 +24,14 @@
   <header class="deck-chrome">
   <span class="deck-chrome__brand">바이브코딩 · CLAUDE CODE</span>
   <span class="deck-chrome__divider">·</span>
-  <span class="deck-chrome__day">2장 · 6 Hooks·텔레그램</span>
+  <span class="deck-chrome__day">3장 · 3 Hooks·텔레그램</span>
   <span class="deck-chrome__spacer"></span>
   <span class="deck-chrome__counter">— / —</span>
 </header>
 
   <!-- 1 · Part B intro -->
   <section class="slide is-section is-standard">
-    <div class="section-eyebrow">2장 · HOOKS</div>
+    <div class="section-eyebrow">3장 · HOOKS</div>
     <h2 class="section-title">Hooks — <span class="accent">자동화의 첫 경험</span></h2>
     <p class="section-caption">규칙(CLAUDE.md)·명령(슬래시)으로 길들였다면 — 이제 Claude가 먼저 말을 걸게 할 차례. "이런 일이 일어나면, 자동으로 이걸 실행" — 이벤트 기반 자동화. 이벤트 종류는 여러 가지지만 이번 덱에서는 Stop 한 개만.</p>
     <div class="section-meta">
@@ -273,8 +273,8 @@
     <div class="slide__body">
       <div class="two-col">
         <div>
-          <figure class="photo-slot photo-slot--portrait" data-img="vc-ch02-hooks-botfather.png">
-            <img class="photo-slot__img" src="../../imgs/vc-ch02-hooks-botfather.png" alt="BotFather와 /newbot 주고받는 대화 화면">
+          <figure class="photo-slot photo-slot--portrait" data-img="vc-ch03-hooks-botfather.png">
+            <img class="photo-slot__img" src="../../imgs/vc-ch03-hooks-botfather.png" alt="BotFather와 /newbot 주고받는 대화 화면">
             <figcaption class="photo-slot__ph">
               <span class="photo-slot__icon">◧</span>
               <span class="photo-slot__label">BotFather · /newbot 대화</span>
@@ -283,8 +283,8 @@
           </figure>
         </div>
         <div>
-          <figure class="photo-slot photo-slot--portrait" data-img="vc-ch02-hooks-token.png">
-            <img class="photo-slot__img" src="../../imgs/vc-ch02-hooks-token.png" alt="봇 토큰이 발급된 메시지 화면">
+          <figure class="photo-slot photo-slot--portrait" data-img="vc-ch03-hooks-token.png">
+            <img class="photo-slot__img" src="../../imgs/vc-ch03-hooks-token.png" alt="봇 토큰이 발급된 메시지 화면">
             <figcaption class="photo-slot__ph">
               <span class="photo-slot__icon">◧</span>
               <span class="photo-slot__label">토큰 발급 메시지</span>
@@ -335,8 +335,8 @@
     <div class="slide__body">
       <div class="two-col">
         <div>
-          <figure class="photo-slot photo-slot--landscape" data-img="vc-ch02-hooks-chatid.png">
-            <img class="photo-slot__img" src="../../imgs/vc-ch02-hooks-chatid.png" alt="브라우저 getUpdates JSON 결과 화면">
+          <figure class="photo-slot photo-slot--landscape" data-img="vc-ch03-hooks-chatid.png">
+            <img class="photo-slot__img" src="../../imgs/vc-ch03-hooks-chatid.png" alt="브라우저 getUpdates JSON 결과 화면">
             <figcaption class="photo-slot__ph">
               <span class="photo-slot__icon">◧</span>
               <span class="photo-slot__label">브라우저 · getUpdates 결과</span>
@@ -413,8 +413,8 @@
     <div class="slide__body">
       <div class="two-col">
         <div>
-          <figure class="photo-slot photo-slot--portrait" data-img="vc-ch02-hooks-notify.png">
-            <img class="photo-slot__img" src="../../imgs/vc-ch02-hooks-notify.png" alt="휴대폰 텔레그램에 Claude Done 알림이 도착한 화면">
+          <figure class="photo-slot photo-slot--portrait" data-img="vc-ch03-hooks-notify.png">
+            <img class="photo-slot__img" src="../../imgs/vc-ch03-hooks-notify.png" alt="휴대폰 텔레그램에 Claude Done 알림이 도착한 화면">
             <figcaption class="photo-slot__ph">
               <span class="photo-slot__icon">◧</span>
               <span class="photo-slot__label">휴대폰 · 텔레그램 알림</span>
@@ -603,7 +603,7 @@
           <p class="diff-card__body">MCP·Skill·Hook을 하나로 묶어 <code>/plugin install</code>로 설치 — 가장 큰 단위.</p>
         </div>
       </div>
-      <p class="slide__note"><strong>Plugin이 가장 큰 단위</strong> — 그 안에 MCP·Skill이 들어 있습니다. 방금 설치한 <code>telegram</code>도 Plugin — 텔레그램 연결(MCP) + <code>/telegram:configure</code>(Skill)가 한 묶음이었습니다. <strong>MCP는 6장, Skill은 7장</strong>에서 직접 체험합니다. 다음 — <strong>3장 홈페이지 외부 배포</strong>: 길들인 Claude와 함께, 이 홈페이지를 인터넷 실주소로.</p>
+      <p class="slide__note"><strong>Plugin이 가장 큰 단위</strong> — 그 안에 MCP·Skill이 들어 있습니다. 방금 설치한 <code>telegram</code>도 Plugin — 텔레그램 연결(MCP) + <code>/telegram:configure</code>(Skill)가 한 묶음이었습니다. <strong>MCP는 6장, Skill은 7장</strong>에서 직접 체험합니다. 다음 — <strong>4장 API와 반응형 웹페이지 개발</strong>: 길들인 Claude와 함께, 진짜 데이터가 흐르는 페이지를 만듭니다.</p>
     </div>
   </section>
 

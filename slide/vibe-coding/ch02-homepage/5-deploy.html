@@ -7,7 +7,7 @@
   <meta name="author" content="이일규">
   <meta name="copyright" content="© 2026 이일규 · 본 강의자료는 저작권법으로 보호되는 저작물입니다. 무단 복제·배포 금지.">
   <script defer src="../../scripts/protect.js"></script>
-  <title>3장 · 2. Vercel 배포</title>
+  <title>2장 · 5. Vercel 배포</title>
   <link rel="stylesheet" href="../../styles/tokens.css">
   <link rel="stylesheet" href="../../styles/deck.css">
   <link rel="stylesheet" href="../../styles/_os-toggle.css">
@@ -24,20 +24,72 @@
   <header class="deck-chrome">
   <span class="deck-chrome__brand">바이브코딩 · CLAUDE CODE</span>
   <span class="deck-chrome__divider">·</span>
-  <span class="deck-chrome__day">3장 · 2 Vercel 배포</span>
+  <span class="deck-chrome__day">2장 · 5 Vercel 배포</span>
   <span class="deck-chrome__spacer"></span>
   <span class="deck-chrome__counter">— / —</span>
 </header>
 
   <!-- 1 · 섹션 인트로 -->
   <section class="slide is-section is-standard">
-    <div class="section-eyebrow">3장 · 배포</div>
+    <div class="section-eyebrow">2장 · 배포</div>
     <h2 class="section-title">자기소개 페이지를 <span class="accent">세상에 공개</span></h2>
-    <p class="section-caption">2장에서 만든 자기소개 페이지는 아직 내 컴퓨터 안에만 있습니다. GitHub와 Vercel로 인터넷에 올려, 링크 하나로 누구에게나 공유합니다 — 전부 무료.</p>
+    <p class="section-caption">앞 덱들에서 만든 자기소개 페이지는 아직 내 컴퓨터 안에만 있습니다. GitHub와 Vercel로 인터넷에 올려, 링크 하나로 누구에게나 공유합니다 — 전부 무료.</p>
     <div class="section-meta">
       <div class="section-meta__item"><span class="section-meta__num">6</span><span>단계</span></div>
       <div class="section-meta__item"><span class="section-meta__num">0원</span><span>비용</span></div>
       <div class="section-meta__item"><span class="section-meta__num">1</span><span>링크로 공유</span></div>
+    </div>
+  </section>
+
+  <!-- 1b · 서버 · localhost · 포트 -->
+  <section class="slide is-standard">
+    <div class="slide__eyebrow">CONCEPT · 서버가 뭐길래</div>
+    <h2 class="slide__title">내 화면의 페이지 — 남에겐 왜 <span class="accent">안 보일까</span></h2>
+    <div class="slide__body">
+      <div class="grid-3">
+        <div class="content-card content-card--compact">
+          <h3 class="content-card__title">서버</h3>
+          <p class="content-card__body">"페이지 주세요" 요청이 오면 파일을 내어주는, <strong>늘 켜져 있는 컴퓨터</strong>. 모든 웹사이트 뒤에는 서버가 있습니다.</p>
+        </div>
+        <div class="content-card content-card--compact">
+          <h3 class="content-card__title">localhost</h3>
+          <p class="content-card__body"><strong>"내 컴퓨터 자신"을 부르는 주소</strong>(127.0.0.1). 그래서 localhost 주소는 오직 내 컴퓨터에서만 통합니다.</p>
+        </div>
+        <div class="content-card content-card--compact">
+          <h3 class="content-card__title">포트(:3000)</h3>
+          <p class="content-card__body">한 컴퓨터에 있는 <strong>여러 창구의 번호</strong>. <code>localhost:3000</code> = 내 컴퓨터의 3000번 창구.</p>
+        </div>
+      </div>
+      <p class="slide__note">흔한 사고 — <code>localhost:3000</code> 링크를 친구에게 보내면, 친구는 <strong>자기 컴퓨터의 3000번</strong>을 열게 됩니다. 당연히 아무것도 없죠. 내 페이지를 세상에 보이려면 <strong>인터넷에 늘 켜져 있는 서버</strong>에 올려야 합니다.</p>
+    </div>
+  </section>
+
+  <!-- 1c · 왜 Vercel인가 -->
+  <section class="slide is-standard">
+    <div class="slide__eyebrow">WHY · 왜 Vercel인가</div>
+    <h2 class="slide__title">서버를 직접 차리는 대신 — <span class="accent">빌려 쓴다</span></h2>
+    <div class="slide__body">
+      <div class="bg-compare">
+        <div class="bg-compare__side bg-compare__side--bad">
+          <div class="bg-compare__label">× 내 컴퓨터를 서버로</div>
+          <div class="bg-compare__quote">
+            <div>24시간 켜 둬야 함 — 끄면 사이트도 꺼짐</div>
+            <div>고정 주소·도메인 직접 마련</div>
+            <div>보안·트래픽 폭주 다 내 책임</div>
+            <div>전기세·소음은 덤</div>
+          </div>
+        </div>
+        <div class="bg-compare__side bg-compare__side--good">
+          <div class="bg-compare__label">○ Vercel에 맡기면</div>
+          <div class="bg-compare__quote">
+            <div>파일만 올리면 — 전 세계에서 접속되는 주소 발급</div>
+            <div>24시간 무중단 · 서버 관리 0</div>
+            <div>push하면 자동 반영 (배포 파이프라인)</div>
+            <div>개인·학습용은 무료</div>
+          </div>
+        </div>
+      </div>
+      <p class="slide__note">Vercel 같은 서비스를 <strong>"호스팅"</strong>이라 부릅니다 — 서버 운영을 통째로 대신해주는 것. 우리는 만들기에만 집중하고, 서버는 빌려 씁니다.</p>
     </div>
   </section>
 
@@ -129,8 +181,8 @@ git commit -m "<span class="ph">자기소개 페이지</span>"</pre>
     <div class="slide__body">
       <div class="two-col">
         <div>
-          <figure class="photo-slot photo-slot--landscape" data-img="vc-ch03-deploy-new-repo.png">
-            <img class="photo-slot__img" src="../../imgs/vc-ch03-deploy-new-repo.png" alt="GitHub New repository 화면">
+          <figure class="photo-slot photo-slot--landscape" data-img="vc-ch02-deploy-new-repo.png">
+            <img class="photo-slot__img" src="../../imgs/vc-ch02-deploy-new-repo.png" alt="GitHub New repository 화면">
             <figcaption class="photo-slot__ph">
               <span class="photo-slot__icon">◧</span>
               <span class="photo-slot__label">GitHub — New repository 화면</span>
@@ -258,24 +310,24 @@ git push -u origin main</pre>
     <h2 class="slide__title">Vercel — <span class="accent">Import 한 번</span>에 배포까지</h2>
     <div class="slide__body">
       <div class="grid-3">
-        <figure class="photo-slot photo-slot--landscape" data-img="vc-ch03-deploy-vercel-import.png">
-          <img class="photo-slot__img" src="../../imgs/vc-ch03-deploy-vercel-import.png" alt="Vercel 저장소 Import 화면">
+        <figure class="photo-slot photo-slot--landscape" data-img="vc-ch02-deploy-vercel-import.png">
+          <img class="photo-slot__img" src="../../imgs/vc-ch02-deploy-vercel-import.png" alt="Vercel 저장소 Import 화면">
           <figcaption class="photo-slot__ph">
             <span class="photo-slot__icon">◧</span>
             <span class="photo-slot__label">① Import 화면</span>
             <span class="photo-slot__hint">저장소 선택 → Import → Deploy</span>
           </figcaption>
         </figure>
-        <figure class="photo-slot photo-slot--landscape" data-img="vc-ch03-deploy-congrats.png">
-          <img class="photo-slot__img" src="../../imgs/vc-ch03-deploy-congrats.png" alt="Vercel 배포 완료 Congratulations 화면">
+        <figure class="photo-slot photo-slot--landscape" data-img="vc-ch02-deploy-congrats.png">
+          <img class="photo-slot__img" src="../../imgs/vc-ch02-deploy-congrats.png" alt="Vercel 배포 완료 Congratulations 화면">
           <figcaption class="photo-slot__ph">
             <span class="photo-slot__icon">◧</span>
             <span class="photo-slot__label">② 배포 완료</span>
             <span class="photo-slot__hint">Congratulations 축하 화면</span>
           </figcaption>
         </figure>
-        <figure class="photo-slot photo-slot--landscape" data-img="vc-ch03-deploy-live-url.png">
-          <img class="photo-slot__img" src="../../imgs/vc-ch03-deploy-live-url.png" alt="배포된 내 자기소개 페이지 화면">
+        <figure class="photo-slot photo-slot--landscape" data-img="vc-ch02-deploy-live-url.png">
+          <img class="photo-slot__img" src="../../imgs/vc-ch02-deploy-live-url.png" alt="배포된 내 자기소개 페이지 화면">
           <figcaption class="photo-slot__ph">
             <span class="photo-slot__icon">◧</span>
             <span class="photo-slot__label">③ 내 페이지</span>
@@ -339,13 +391,13 @@ git push -u origin main</pre>
   <section class="slide is-statement">
     <div class="statement-grid">
       <div class="statement-text">
-        <div class="slide__eyebrow">RECAP · 3장 마무리</div>
+        <div class="slide__eyebrow">RECAP · 2장 마무리</div>
         <h2 class="statement__lead">이제 내 자기소개는 <span class="accent">인터넷에</span> 있습니다</h2>
         <p class="statement__caption">내 컴퓨터 안 파일이 링크 하나로 세상과 연결됐습니다. 9장에서 만들 미니프로젝트도 똑같은 방법으로 배포할 수 있습니다.</p>
         <div class="statement__points">
           <div class="statement__point"><span class="statement__point-num">이번 장</span><span>GitHub → Vercel 연결, 자기소개 페이지 공개</span></div>
           <div class="statement__point"><span class="statement__point-num">앞으로</span><span><code>git push</code> 한 줄이면 어떤 변경도 자동 반영</span></div>
-          <div class="statement__point"><span class="statement__point-num">다음</span><span>2장 Claude 길들이기 — CLAUDE.md · 커스텀 슬래시</span></div>
+          <div class="statement__point"><span class="statement__point-num">다음</span><span>3장 Claude 길들이기 — CLAUDE.md · 커스텀 슬래시</span></div>
         </div>
       </div>
       <div class="statement-visual">
