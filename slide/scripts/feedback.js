@@ -11,6 +11,9 @@
     '.fb-btn{appearance:none;cursor:pointer;display:inline-flex;align-items:center;gap:0.4rem;border:2px solid rgba(38,34,32,0.85);background:rgba(255,255,255,0.95);color:#262220;font-size:0.78rem;font-weight:700;padding:0.5rem 0.85rem;border-radius:999px;box-shadow:0 6px 18px rgba(0,0,0,0.14);transition:transform .12s}',
     '.fb-btn:hover{transform:translateY(-2px)}',
     '.fb-btn--report{border-color:#fe6e00;color:#cc5a14}',
+    '.fb-btn--submit{border-color:#166534;color:#166534}',
+    '.fb-panel input[type=url]{width:100%;border:1.5px solid #e5ddd2;border-radius:8px;padding:0.55rem;font:inherit;font-size:0.84rem;margin-bottom:0.45rem}',
+    '.fb-panel input[type=url]:focus{outline:2px solid #166534;border-color:#166534}',
     '.fb-panel{width:min(21rem,calc(100vw - 2.4rem));background:#fff;border:2px solid #262220;border-radius:14px;box-shadow:0 16px 40px rgba(0,0,0,0.22);padding:1rem;text-align:left}',
     '.fb-panel h3{margin:0 0 0.25rem;font-size:0.95rem}',
     '.fb-loc{font-size:0.72rem;color:#797067;margin-bottom:0.6rem}',
@@ -40,6 +43,7 @@
     '.fbq-ty{font-weight:800;border-radius:999px;padding:0.1rem 0.45rem;font-size:0.66rem}',
     '.fbq-ty-question{background:#eff6ff;color:#1d4ed8}',
     '.fbq-ty-report{background:#fef2f2;color:#991b1b}',
+    '.fbq-ty-submission{background:#f0fdf4;color:#166534}',
     '.fbq-content{font-size:0.82rem;line-height:1.5;white-space:pre-wrap;margin-bottom:0.45rem}',
     '.fbq-row{display:flex;gap:0.35rem;justify-content:flex-end}',
     '.fbq-go{appearance:none;cursor:pointer;border:1.5px solid #e5ddd2;background:#fff;border-radius:6px;font-size:0.7rem;font-weight:700;padding:0.28rem 0.6rem;color:#cc5a14;text-decoration:none}',
@@ -76,7 +80,8 @@
     root.innerHTML =
       '<div class="fb-panel" hidden></div>' +
       '<button type="button" class="fb-btn" data-type="question">💬 질문</button>' +
-      '<button type="button" class="fb-btn fb-btn--report" data-type="report">🚨 신고</button>';
+      '<button type="button" class="fb-btn fb-btn--report" data-type="report">🚨 신고</button>' +
+      '<button type="button" class="fb-btn fb-btn--submit" data-type="submission">📤 제출</button>';
     document.body.appendChild(root);
 
     var panel = root.querySelector('.fb-panel');
@@ -93,22 +98,33 @@
         return;
       }
       var isQ = type === 'question';
+      var isSub = type === 'submission';
       var no = slideNo();
       panel.hidden = false;
       panel.innerHTML =
-        '<h3>' + (isQ ? '💬 질문 보내기' : '🚨 잘못된 내용 신고') + '</h3>' +
-        '<div class="fb-loc">' + document.title + (no ? ' · 슬라이드 ' + no : '') + ' — 위치가 함께 기록됩니다</div>' +
-        '<textarea placeholder="' + (isQ ? '궁금한 점을 적어주세요.' : '어떤 내용이 잘못됐는지 적어주세요. (오타·낡은 정보·안 되는 명령 등)') + '"></textarea>' +
+        '<h3>' + (isSub ? '📤 내 작품 제출' : (isQ ? '💬 질문 보내기' : '🚨 잘못된 내용 신고')) + '</h3>' +
+        (isSub
+          ? '<div class="fb-loc">배포한 작품 링크를 제출하세요 — 발표 대신/발표와 함께, 부담 없이!</div>' +
+            '<input type="url" placeholder="https://내작품주소.vercel.app">' +
+            '<textarea placeholder="한 줄 소개 — 무엇을 만들었나요? (선택)"></textarea>'
+          : '<div class="fb-loc">' + document.title + (no ? ' · 슬라이드 ' + no : '') + ' — 위치가 함께 기록됩니다</div>' +
+            '<textarea placeholder="' + (isQ ? '궁금한 점을 적어주세요.' : '어떤 내용이 잘못됐는지 적어주세요. (오타·낡은 정보·안 되는 명령 등)') + '"></textarea>') +
         '<div class="fb-err" hidden></div>' +
-        '<div class="fb-row"><button type="button" class="fb-cancel">닫기</button><button type="button" class="fb-send">보내기</button></div>';
+        '<div class="fb-row"><button type="button" class="fb-cancel">닫기</button><button type="button" class="fb-send">' + (isSub ? '제출하기' : '보내기') + '</button></div>';
 
       var ta = panel.querySelector('textarea');
       var err = panel.querySelector('.fb-err');
       ta.focus();
       panel.querySelector('.fb-cancel').addEventListener('click', function () { panel.hidden = true; });
+      var urlInput = panel.querySelector('input[type=url]');
+      if (urlInput) urlInput.focus();
       panel.querySelector('.fb-send').addEventListener('click', function () {
         var content = ta.value.trim();
-        if (!content) { ta.focus(); return; }
+        if (isSub) {
+          var u = (urlInput.value || '').trim();
+          if (!u) { urlInput.focus(); return; }
+          content = '링크: ' + u + (content ? '\n' + content : '');
+        } else if (!content) { ta.focus(); return; }
         var tk = getCookieToken();
         var p = tk && jwtPayload(tk);
         if (!p || !p.sub) {
@@ -136,9 +152,11 @@
           })
         }).then(function (res) {
           if (!res.ok) throw new Error('HTTP ' + res.status);
-          panel.innerHTML = '<div class="fb-done">' + (type === 'question'
-            ? '질문이 전달됐습니다 — 강의 중이라면 바로 확인하고 답변드려요!'
-            : '신고 접수됐습니다 — 확인 후 바로잡을게요. 감사합니다!') + '</div>';
+          panel.innerHTML = '<div class="fb-done">' + (type === 'submission'
+            ? '제출 완료! 멋진 작품 잘 받았습니다 👏'
+            : (type === 'question'
+              ? '질문이 전달됐습니다 — 강의 중이라면 바로 확인하고 답변드려요!'
+              : '신고 접수됐습니다 — 확인 후 바로잡을게요. 감사합니다!')) + '</div>';
           setTimeout(function () { panel.hidden = true; }, 1800);
         }).catch(function (e2) {
           btn.disabled = false;
@@ -214,7 +232,7 @@
           var here = r.deck_path === location.pathname;
           var loc = (r.page_title || r.deck_path) + (r.slide_no ? ' · ' + r.slide_no : '');
           el.innerHTML =
-            '<div class="fbq-meta"><span class="fbq-ty fbq-ty-' + r.type + '">' + (r.type === 'report' ? '🚨 신고' : '💬 질문') + '</span>' +
+            '<div class="fbq-meta"><span class="fbq-ty fbq-ty-' + r.type + '">' + (r.type === 'report' ? '🚨 신고' : (r.type === 'submission' ? '📤 제출' : '💬 질문')) + '</span>' +
             '<span>' + esc(r.email) + '</span><span>' + when + '</span></div>' +
             '<div class="fbq-content">' + esc(r.content) + '</div>' +
             '<div class="fbq-row">' +
