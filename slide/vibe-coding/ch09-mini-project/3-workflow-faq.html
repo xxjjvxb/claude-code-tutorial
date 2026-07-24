@@ -33,8 +33,8 @@
   <!-- 1 · Section cover -->
   <section class="slide is-section is-standard">
     <div class="section-eyebrow">PART 03 · 이론</div>
-    <h2 class="section-title">실전 패턴 + VS Code 깊게 + <span class="accent">FAQ</span></h2>
-    <p class="section-caption">과정이 끝난 뒤 본인 일터에서 쓸 수 있는 실전 패턴들. VS Code 깊게 + API 비용 운영 + 자주 부딪히는 문제 FAQ까지.</p>
+    <h2 class="section-title">실전 패턴 + 작업 환경 깊게 + <span class="accent">FAQ</span></h2>
+    <p class="section-caption">과정이 끝난 뒤 본인 일터에서 쓸 수 있는 실전 패턴들. Orca·터미널 깊게 + API 비용 운영 + 자주 부딪히는 문제 FAQ까지.</p>
     <div class="section-meta">
       <div class="section-meta__item"><span class="section-meta__num">3</span><span>토픽</span></div>
       <div class="section-meta__item"><span class="section-meta__num">덱 4</span><span>발표 + 회고</span></div>
@@ -54,7 +54,7 @@
         </div>
         <div class="diff-card">
           <div class="diff-card__rank">02</div>
-          <h3 class="diff-card__title">VS Code 깊게</h3>
+          <h3 class="diff-card__title">작업 환경 깊게</h3>
           <p class="diff-card__body">인라인 편집 · 세션 재개 · 멀티폴더 워크스페이스.</p>
         </div>
         <div class="diff-card">
@@ -169,40 +169,33 @@
     </div>
   </section>
 
-  <!-- 6 · VS Code: 인라인 편집 -->
+  <!-- 6 · Orca: 워크트리 병렬 -->
   <section class="slide is-statement">
     <div class="statement-grid">
       <div class="statement-text">
-        <div class="slide__eyebrow">VS CODE · 인라인 편집</div>
-        <h2 class="statement__lead">파일 안에서 <span class="accent">바로 수정 요청</span>.</h2>
-        <p class="statement__caption">VS Code에서 코드 일부 선택 → 우클릭 → "Ask Claude" → 수정 요청. 컨텍스트가 한정되어 정확.</p>
+        <div class="slide__eyebrow">ORCA · 에이전트 여러 개</div>
+        <h2 class="statement__lead">에이전트를 <span class="accent">나란히</span> 돌린다 — 워크트리.</h2>
+        <p class="statement__caption">Orca의 대표 기능 — 프로젝트의 <strong>격리된 복사본(워크트리)</strong>을 여러 개 만들어, 각 에이전트가 서로 방해 없이 동시에 일하게 합니다. "A안·B안을 동시에 시켜보고 마음에 드는 쪽만 채택"이 가능해집니다.</p>
         <div class="statement__points">
-          <div class="statement__point"><span class="statement__point-num">선택</span><span>수정할 코드 블록만 드래그 선택</span></div>
-          <div class="statement__point"><span class="statement__point-num">호출</span><span>우클릭 → "Ask Claude" 또는 단축키</span></div>
-          <div class="statement__point"><span class="statement__point-num">결과</span><span>Diff로 표시 → Accept / Reject</span></div>
+          <div class="statement__point"><span class="statement__point-num">격리</span><span>워크트리마다 파일이 분리 — 서로 안 덮어씀</span></div>
+          <div class="statement__point"><span class="statement__point-num">병렬</span><span>기능 A와 버그 수정 B를 동시에 진행</span></div>
+          <div class="statement__point"><span class="statement__point-num">채택</span><span>결과를 비교해 좋은 쪽만 합치기</span></div>
         </div>
       </div>
       <div class="statement-visual">
-        <svg viewBox="0 0 460 320" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <rect x="0" y="0" width="460" height="320" rx="14" fill="#1e1e1e"/>
-          <rect x="0" y="0" width="460" height="32" fill="#252526"/>
-          <text x="14" y="20" font-family="ui-sans-serif, system-ui" font-size="11" fill="rgba(255,255,255,0.5)">VS Code · transactions.py</text>
-          <rect x="40" y="60" width="380" height="80" rx="4" fill="rgba(254,110,0,0.15)" stroke="#fe6e00" stroke-width="2"/>
-          <text x="55" y="85" font-family="ui-monospace, monospace" font-size="11" fill="white">def add(amount, cat):</text>
-          <text x="55" y="103" font-family="ui-monospace, monospace" font-size="11" fill="white">  if amount &lt; 0:</text>
-          <text x="55" y="121" font-family="ui-monospace, monospace" font-size="11" fill="white">    raise ValueError</text>
-          <rect x="40" y="160" width="380" height="120" rx="6" fill="rgba(255,255,255,0.05)"/>
-          <text x="55" y="185" font-family="ui-sans-serif, system-ui" font-size="11" fill="rgba(255,255,255,0.85)">Ask Claude:</text>
-          <text x="55" y="208" font-family="ui-monospace, monospace" font-size="11" fill="rgba(255,255,255,0.65)">"카테고리도 검증 추가"</text>
-          <line x1="55" y1="224" x2="405" y2="224" stroke="rgba(255,255,255,0.15)"/>
-          <text x="55" y="248" font-family="ui-monospace, monospace" font-size="10" fill="#00c758">+ if not cat or cat not in CATEGORIES:</text>
-          <text x="55" y="266" font-family="ui-monospace, monospace" font-size="10" fill="#00c758">+   raise ValueError("invalid cat")</text>
-        </svg>
+        <figure class="photo-slot photo-slot--landscape" data-img="vc-ch09-orca-worktrees.png">
+          <img class="photo-slot__img" src="../../imgs/vc-ch09-orca-worktrees.png" alt="Orca에서 워크트리 여러 개에 에이전트가 나란히 도는 화면">
+          <figcaption class="photo-slot__ph">
+            <span class="photo-slot__icon">◧</span>
+            <span class="photo-slot__label">Orca — 에이전트 나란히 실행</span>
+            <span class="photo-slot__hint">워크트리 2개에서 각자 작업 중인 화면</span>
+          </figcaption>
+        </figure>
       </div>
     </div>
   </section>
 
-  <!-- 7 · VS Code: 세션 재개 -->
+  <!-- 7 · 세션 재개 -->
   <section class="slide is-standard">
     <div class="slide__eyebrow">VS CODE · 세션 재개</div>
     <h2 class="slide__title">통합 터미널 닫혀도 — <span class="accent">--continue</span> 한 줄</h2>
@@ -212,7 +205,7 @@
           <div class="content-card content-card--compact">
             <h3 class="content-card__title">상황</h3>
             <ul class="content-card__list">
-              <li>VS Code 종료 후 다시 켰음</li>
+              <li>Orca 종료 후 다시 켰음</li>
               <li>또는 <span class="os-win">Ctrl + `</span><span class="os-mac">⌘ + J</span> 통합 터미널 닫혔음</li>
               <li>"지난 대화 이어서" 하고 싶음</li>
             </ul>
@@ -234,13 +227,13 @@
     </div>
   </section>
 
-  <!-- 8 · VS Code: 멀티폴더 -->
+  <!-- 8 · 폴더 여러 개 -->
   <section class="slide is-statement">
     <div class="statement-grid">
       <div class="statement-text">
         <div class="slide__eyebrow">VS CODE · 멀티 워크스페이스</div>
         <h2 class="statement__lead">여러 프로젝트 동시 열고 <span class="accent">한 Claude</span>.</h2>
-        <p class="statement__caption">VS Code 워크스페이스에 폴더 여러 개 추가하면, claude는 그중 한 폴더에서 실행. 다른 폴더는 @ 멘션으로 참조.</p>
+        <p class="statement__caption">폴더 여러 개를 오가며 작업해도, claude는 켠 폴더 하나가 기준. 다른 폴더는 @ 멘션으로 참조.</p>
         <div class="statement__points">
           <div class="statement__point"><span class="statement__point-num">추가</span><span>File → Add Folder to Workspace</span></div>
           <div class="statement__point"><span class="statement__point-num">실행</span><span>주 폴더의 통합 터미널에서 claude</span></div>

@@ -34,7 +34,7 @@
   <section class="slide is-section is-standard">
     <div class="section-eyebrow">PART 2 · SETUP</div>
     <h2 class="section-title">0부터 Claude Code <span class="accent">셋업</span></h2>
-    <p class="section-caption"><span class="os-win is-inline">VS Code 설치 → Git 설치 → Claude Code 설치(PowerShell 한 줄)</span><span class="os-mac is-inline">VS Code 설치 → Git 설치 → Claude Code 설치(터미널 한 줄)</span> → 교육 팀 계정 초대 → 첫 실행. Node.js는 나중에 프론트엔드 만들 때만.</p>
+    <p class="section-caption"><span class="os-win is-inline">Orca 설치 → Git 설치 → Claude Code 설치(PowerShell 한 줄)</span><span class="os-mac is-inline">Orca 설치 → Git 설치 → Claude Code 설치(터미널 한 줄)</span> → 교육 팀 계정 초대 → 첫 실행. Node.js는 나중에 프론트엔드 만들 때만.</p>
     <div class="section-meta">
       <div class="section-meta__item"><span class="section-meta__num">8</span><span>핵심 단계</span></div>
     </div>
@@ -47,114 +47,74 @@
     <h2 class="slide__title">셋업 흐름, <span class="accent">한눈에</span></h2>
     <div class="slide__body">
       <div class="setup-grid">
-        <div class="setup-step"><div class="setup-step__num">01</div><h3 class="setup-step__title">VS Code 설치</h3><p class="setup-step__desc"><span class="os-win">Microsoft Store</span><span class="os-mac">Homebrew / 공식 사이트</span>에서 검색</p></div>
+        <div class="setup-step"><div class="setup-step__num">01</div><h3 class="setup-step__title">Orca 설치</h3><p class="setup-step__desc">onorca.dev에서 다운로드 — AI 에이전트 전용 작업실</p></div>
         <div class="setup-step"><div class="setup-step__num">02</div><h3 class="setup-step__title">환경변수 · PATH</h3><p class="setup-step__desc">왜 <span class="os-win">PowerShell</span><span class="os-mac">터미널</span> 새로 열어야 하나</p></div>
         <div class="setup-step"><div class="setup-step__num">03</div><h3 class="setup-step__title">Git 설치 + 신원</h3><p class="setup-step__desc">claude가 git을 자주 호출 — 먼저 깔아둠</p></div>
         <div class="setup-step"><div class="setup-step__num">04</div><h3 class="setup-step__title">Claude Code 설치</h3><p class="setup-step__desc"><span class="os-win">irm https://claude.ai/install.ps1 | iex</span><span class="os-mac">curl -fsSL https://claude.ai/install.sh | bash</span></p></div>
         <div class="setup-step"><div class="setup-step__num">05</div><h3 class="setup-step__title">PATH 확인</h3><p class="setup-step__desc">claude --version 통과</p></div>
         <div class="setup-step"><div class="setup-step__num">06</div><h3 class="setup-step__title">강의 계정</h3><p class="setup-step__desc">팀 초대 또는 본인 가입</p></div>
         <div class="setup-step"><div class="setup-step__num">07</div><h3 class="setup-step__title">claude → "안녕"</h3><p class="setup-step__desc">첫 응답 확인</p></div>
-        <div class="setup-step"><div class="setup-step__num">08</div><h3 class="setup-step__title">VS Code 통합</h3><p class="setup-step__desc">통합 터미널에서 claude</p></div>
+        <div class="setup-step"><div class="setup-step__num">08</div><h3 class="setup-step__title">Orca에서 실행</h3><p class="setup-step__desc">내장 터미널에서 claude</p></div>
       </div>
       <p class="slide__note">선택: <strong>Node.js</strong>는 나중에 프론트엔드 만들 때만, <strong>트러블슈팅 5가지</strong>는 막혔을 때만 — 별도 슬라이드로 다룹니다.</p>
     </div>
   </section>
 
-  <!-- 3 · VS Code 설치 단계 -->
+  <!-- 3 · Orca 설치 -->
   <section class="slide is-standard">
-    <div class="slide__eyebrow">STEP 01 (1/2) · VS Code 설치</div>
-    <h2 class="slide__title">VS Code · <span class="os-win"><span class="accent">Microsoft Store</span>로 설치</span><span class="os-mac"><span class="accent">공식 사이트</span>에서 설치</span></h2>
+    <div class="slide__eyebrow">STEP 01 (1/2) · Orca 설치</div>
+    <h2 class="slide__title">Orca · <span class="accent">onorca.dev</span>에서 설치</h2>
     <div class="slide__body">
-      <div class="install-detail os-win is-block">
+      <div class="install-detail">
         <div class="install-detail__header">
-          <div class="install-detail__logo"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 4v24L8 16 22 4z"/><path d="M4 14l3-2 15 12-15 12-3-2v-4l3-2-3-2v-12z"/></svg></div>
-          <div class="install-detail__where"><div class="install-detail__where-label">받는 곳</div><div class="install-detail__where-value">Microsoft Store → "Visual Studio Code"</div></div>
+          <div class="install-detail__logo"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 20c0-8 5-14 10-14s10 6 10 14c0 4-3 8-10 8S6 24 6 20z"/><circle cx="12" cy="18" r="1.5" fill="currentColor"/><path d="M16 26v3"/></svg></div>
+          <div class="install-detail__where"><div class="install-detail__where-label">받는 곳</div><div class="install-detail__where-value">onorca.dev → <span class="os-win">Download for Windows</span><span class="os-mac">Download for Mac</span></div></div>
         </div>
         <div class="two-col">
           <ol class="install-detail__steps">
-            <li><strong>Windows 키</strong>를 눌러 시작 메뉴 검색 → <code>store</code> 입력 → 결과에 뜨는 <strong>"Microsoft Store"</strong> 앱 실행</li>
-            <li>검색창에 <code>Visual Studio Code</code> → 첫 번째 결과 (<strong>Microsoft Corporation</strong>) 클릭</li>
-            <li><strong>"받기"</strong>(Get/Install) 클릭 → 자동 다운로드 + 설치 (약 30초~1분)</li>
-            <li>완료 후 <strong>"열기"</strong> 또는 시작 메뉴에서 "Visual Studio Code" 실행</li>
-            <li>(선택) Extensions → "Korean" 검색 → 언어팩 설치하면 한국어 메뉴</li>
+            <li>브라우저로 <strong>onorca.dev</strong> 접속</li>
+            <li><span class="os-win"><strong>Windows용 Download</strong> 버튼 클릭 → 설치 파일 다운로드</span><span class="os-mac"><strong>Download for Mac</strong> 클릭 (Apple Silicon / Intel 맞는 것)</span></li>
+            <li><span class="os-win">받은 설치 파일 실행 → 안내 따라 설치 (1~2분)</span><span class="os-mac">받은 파일 열기 → <strong>응용 프로그램 폴더로 드래그</strong></span></li>
+            <li><span class="os-win">완료 후 시작 메뉴에서 <strong>"Orca"</strong> 실행</span><span class="os-mac">첫 실행 시 Gatekeeper 경고 → <strong>"열기"</strong> (1회 승인)</span></li>
           </ol>
-          <figure class="photo-slot photo-slot--landscape" data-img="vc-ch01-setup-vscode-msstore.png">
-            <img class="photo-slot__img" src="../../imgs/vc-ch01-setup-vscode-msstore.png" alt="Microsoft Store — Visual Studio Code 페이지">
+          <figure class="photo-slot photo-slot--landscape" data-img="vc-ch01-setup-orca-download.png">
+            <img class="photo-slot__img" src="../../imgs/vc-ch01-setup-orca-download.png" alt="onorca.dev 다운로드 페이지">
             <figcaption class="photo-slot__ph">
               <span class="photo-slot__icon">◧</span>
-              <span class="photo-slot__label">Microsoft Store — VS Code "받기" 버튼</span>
-              <span class="photo-slot__hint">제작사 Microsoft Corporation 확인 · 파란 "받기" 클릭</span>
+              <span class="photo-slot__label">onorca.dev — Download 버튼</span>
+              <span class="photo-slot__hint">본인 OS용 버튼 클릭</span>
             </figcaption>
           </figure>
         </div>
       </div>
-      <div class="install-detail os-mac is-block">
-        <div class="install-detail__header">
-          <div class="install-detail__logo"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 4v24L8 16 22 4z"/><path d="M4 14l3-2 15 12-15 12-3-2v-4l3-2-3-2v-12z"/></svg></div>
-          <div class="install-detail__where"><div class="install-detail__where-label">받는 곳</div><div class="install-detail__where-value">code.visualstudio.com → "Download for Mac"</div></div>
-        </div>
-        <div class="two-col">
-          <ol class="install-detail__steps">
-            <li><strong>code.visualstudio.com</strong> 접속 → 가운데 <strong>"Download for Mac"</strong> 버튼 (Apple Silicon / Intel 자동 감지)</li>
-            <li>다운로드된 <code>VSCode-darwin-*.zip</code> 더블클릭 → 자동 압축 풀림 → <strong>"Visual Studio Code.app"</strong> 생성</li>
-            <li><strong>응용 프로그램(Applications) 폴더로 드래그</strong>해 이동 — Launchpad에서 검색 가능해짐</li>
-            <li>첫 실행 시 Gatekeeper 경고 → <strong>"열기"</strong> 클릭 (App Store 외부 앱 1회 승인)</li>
-            <li>(선택) Extensions → "Korean" 검색 → 언어팩 설치하면 한국어 메뉴</li>
-          </ol>
-          <figure class="photo-slot photo-slot--landscape" data-img="vc-ch01-setup-vscode-download.png">
-            <img class="photo-slot__img" src="../../imgs/vc-ch01-setup-vscode-download.png" alt="code.visualstudio.com — Download for Mac 페이지">
-            <figcaption class="photo-slot__ph">
-              <span class="photo-slot__icon">◧</span>
-              <span class="photo-slot__label">code.visualstudio.com — "Download for Mac"</span>
-              <span class="photo-slot__hint">가운데 큰 파란 버튼 · 칩(Apple/Intel) 자동 감지</span>
-            </figcaption>
-          </figure>
-        </div>
-      </div>
-      <p class="slide__note">설치 후 <strong>다음 슬라이드</strong>에서 <span class="os-win">PowerShell</span><span class="os-mac">터미널</span>로 정상 동작 확인 + PATH 트러블슈팅.</p>
+      <p class="slide__note"><strong>무료·오픈소스</strong>라 결제·회원가입 없이 바로 씁니다. 설치가 끝나면 <strong>다음 슬라이드</strong>에서 Orca가 어떤 도구인지 30초 소개.</p>
     </div>
   </section>
 
-  <!-- 4 · VS Code 검증 + PATH 트러블 -->
+  <!-- 4 · Orca 소개 + 첫 실행 확인 -->
   <section class="slide is-standard">
-    <div class="slide__eyebrow">STEP 01 (2/2) · 검증</div>
-    <h2 class="slide__title">VS Code 설치 — <span class="accent">정상 동작 확인</span></h2>
+    <div class="slide__eyebrow">STEP 01 (2/2) · Orca가 뭐길래</div>
+    <h2 class="slide__title">Orca — <span class="accent">AI 에이전트 전용 작업실</span></h2>
     <div class="slide__body">
-      <div class="install-detail__verify" style="margin-top:0">
-        <span class="install-detail__verify-label">정상 출력 화면</span>
-        <span class="accent-cmd"><span class="os-win">PS&gt;</span><span class="os-mac">$</span></span> code --version &nbsp;→&nbsp; 1.9x.x · <span class="os-win">x64</span><span class="os-mac">arm64</span>
-      </div>
-      <div class="content-card">
-        <h3 class="content-card__title">"<span class="os-win">인식되지 않습니다</span><span class="os-mac">command not found</span>" 가 뜨면</h3>
-        <div class="step-list step-list--compact">
-          <div class="step-list__item">
-            <div class="step-list__num">1</div>
-            <div class="step-list__content">
-              <p class="step-list__title"><span class="os-win">PowerShell</span><span class="os-mac">터미널</span> 새로 열기 <span class="step-list__desc" style="display:inline">— PATH 갱신, 90% 해결</span></p>
-            </div>
-          </div>
-          <div class="step-list__item">
-            <div class="step-list__num">2</div>
-            <div class="step-list__content">
-              <p class="step-list__title">VS Code → <span class="os-win">Ctrl</span><span class="os-mac">⌘</span>+Shift+P → "Install 'code' command in PATH"</p>
-            </div>
-          </div>
-          <div class="step-list__item">
-            <div class="step-list__num">3</div>
-            <div class="step-list__content">
-              <p class="step-list__title">새 <span class="os-win">PowerShell</span><span class="os-mac">터미널</span>에서 <code>code --version</code> 다시 확인</p>
-            </div>
-          </div>
-          <div class="step-list__item">
-            <div class="step-list__num">4</div>
-            <div class="step-list__content">
-              <p class="step-list__title">그래도 안 되면 → TA 호출</p>
-            </div>
-          </div>
+      <div class="grid-3">
+        <div class="content-card content-card--compact">
+          <h3 class="content-card__title">에이전트를 위한 설계</h3>
+          <p class="content-card__body">일반 편집기가 아니라 — Claude Code 같은 <strong>AI 에이전트를 돌리기 위해</strong> 만들어진 작업 공간(ADE)입니다.</p>
+        </div>
+        <div class="content-card content-card--compact">
+          <h3 class="content-card__title">한 화면에 전부</h3>
+          <p class="content-card__body">파일 편집 + <strong>터미널</strong> + <strong>브라우저 미리보기</strong>가 한 창에 — 만든 페이지를 그 자리에서 바로 봅니다.</p>
+        </div>
+        <div class="content-card content-card--compact">
+          <h3 class="content-card__title">무료 · 오픈소스</h3>
+          <p class="content-card__body">완전 무료(MIT). 나중엔 <strong>에이전트 여러 개를 나란히</strong> 돌리는 것도 — 9장쯤에 탐나게 됩니다.</p>
         </div>
       </div>
-      <p class="slide__note os-win is-block">MS Store 버전은 PATH 자동 등록이지만 가끔 갱신이 늦어요. <strong>새 PowerShell 창</strong>이 거의 모든 경우 해결책.</p>
-      <p class="slide__note os-mac is-block">Mac은 <strong>Cmd+Shift+P → "Install 'code' command in PATH"</strong>를 한 번 실행해야 <code>code</code>가 잡혀요. 그 후 <strong>새 터미널</strong>에서 확인.</p>
+      <div class="install-detail__verify">
+        <span class="install-detail__verify-label">확인</span>
+        Orca를 실행해 첫 화면이 뜨면 성공 — 폴더는 아직 안 열어도 됩니다 (STEP 08에서).
+      </div>
+      <p class="slide__note">실행이 안 되면 — 완전히 종료 후 다시 실행, 그래도 안 되면 onorca.dev에서 재설치 → TA 호출.</p>
     </div>
   </section>
 
@@ -399,18 +359,18 @@
     </div>
   </section>
 
-  <!-- 11 · VS Code 통합 -->
+  <!-- 11 · Orca 통합 -->
   <section class="slide is-standard">
-    <div class="slide__eyebrow">STEP 08 · VS Code 통합</div>
-    <h2 class="slide__title">VS Code 안에서 <span class="accent">claude</span> 실행</h2>
+    <div class="slide__eyebrow">STEP 08 · Orca에서 실행</div>
+    <h2 class="slide__title">Orca 안에서 <span class="accent">claude</span> 실행</h2>
     <div class="slide__body">
       <div class="two-col">
         <div>
           <div class="content-card content-card--compact">
             <h3 class="content-card__title">3가지만 하면 끝</h3>
             <ol class="content-card__list content-card__list--ol">
-              <li><strong>VS Code 실행</strong> → File → Open Folder → my-intro</li>
-              <li><strong><span class="os-win">Ctrl + `</span><span class="os-mac">⌘ + J</span></strong> 로 통합 터미널 띄우기 (<span class="os-win">PowerShell</span><span class="os-mac">zsh</span> 모드)</li>
+              <li><strong>Orca 실행</strong> → <strong>my-intro 폴더 열기</strong></li>
+              <li><strong>내장 터미널</strong> 열기 (<span class="os-win">PowerShell</span><span class="os-mac">zsh</span>)</li>
               <li>거기서 <strong>claude</strong> 입력</li>
             </ol>
           </div>
@@ -419,7 +379,7 @@
           <svg class="os-win is-block" viewBox="0 0 460 280" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" style="width:100%;height:auto;border-radius:12px;box-shadow:0 12px 32px rgba(0,0,0,0.18)">
             <rect x="0" y="0" width="460" height="280" rx="12" fill="#1e1e1e"/>
             <rect x="0" y="0" width="460" height="28" fill="#252526"/>
-            <text x="14" y="18" font-family="ui-sans-serif, system-ui" font-size="11" fill="rgba(255,255,255,0.5)">VS Code — my-intro</text>
+            <text x="14" y="18" font-family="ui-sans-serif, system-ui" font-size="11" fill="rgba(255,255,255,0.5)">Orca — my-intro</text>
             <rect x="0" y="28" width="140" height="252" fill="#252526"/>
             <text x="14" y="54" font-family="ui-monospace, monospace" font-size="10" fill="rgba(255,255,255,0.45)">EXPLORER</text>
             <text x="14" y="78" font-family="ui-monospace, monospace" font-size="11" fill="rgba(255,255,255,0.85)">▾ DAY1</text>
@@ -437,7 +397,7 @@
           <svg class="os-mac is-block" viewBox="0 0 460 280" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" style="width:100%;height:auto;border-radius:12px;box-shadow:0 12px 32px rgba(0,0,0,0.18)">
             <rect x="0" y="0" width="460" height="280" rx="12" fill="#1e1e1e"/>
             <rect x="0" y="0" width="460" height="28" fill="#252526"/>
-            <text x="14" y="18" font-family="ui-sans-serif, system-ui" font-size="11" fill="rgba(255,255,255,0.5)">VS Code — my-intro</text>
+            <text x="14" y="18" font-family="ui-sans-serif, system-ui" font-size="11" fill="rgba(255,255,255,0.5)">Orca — my-intro</text>
             <rect x="0" y="28" width="140" height="252" fill="#252526"/>
             <text x="14" y="54" font-family="ui-monospace, monospace" font-size="10" fill="rgba(255,255,255,0.45)">EXPLORER</text>
             <text x="14" y="78" font-family="ui-monospace, monospace" font-size="11" fill="rgba(255,255,255,0.85)">▾ DAY1</text>
@@ -454,7 +414,7 @@
           </svg>
         </div>
       </div>
-      <p class="slide__note">과정 내내 이 환경에서 작업합니다 — 에디터 + 터미널 + AI가 한 화면.</p>
+      <p class="slide__note">과정 내내 이 환경에서 작업합니다 — 편집기 + 터미널 + AI + 브라우저 미리보기가 한 화면.</p>
     </div>
   </section>
 
@@ -524,8 +484,8 @@
         </div>
         <div class="trouble-item">
           <div class="trouble-item__num">05</div>
-          <div class="trouble-item__problem">VS Code에서 code 명령이 인식 안 됨</div>
-          <div class="trouble-item__solution">VS Code → <span class="os-win">Ctrl</span><span class="os-mac">⌘</span>+Shift+P → <strong>"Install 'code' command in PATH"</strong> → 새 <span class="os-win">PowerShell</span><span class="os-mac">터미널</span> 재시도.</div>
+          <div class="trouble-item__problem">Orca가 안 열리거나 이상하게 동작</div>
+          <div class="trouble-item__solution">완전히 종료 후 다시 실행 → 그래도 안 되면 onorca.dev에서 최신 버전 <strong>재설치</strong>.</div>
         </div>
       </div>
     </div>
