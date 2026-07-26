@@ -1,14 +1,19 @@
-/* feedback.js — 강의자료 우하단 질문·신고 위젯
+/* feedback.js — 질문·신고·제출 드로어 (우측 가장자리, hover/탭으로 슬라이드아웃)
    현재 덱 경로 + 슬라이드 번호(#slide=N)와 함께 Supabase feedback 테이블에 기록한다.
    인증은 열람 게이트의 sb-access-token 쿠키를 그대로 사용 (별도 SDK 불필요).
-   auth-config.js가 미설정(GATE_ENABLED=false)이면 아무것도 렌더하지 않는다. */
+   미설정(GATE_ENABLED=false)이거나 로그인 토큰이 없으면 렌더하지 않는다. */
 
 (function () {
   'use strict';
 
   var CSS = [
-    '.fb-root{position:fixed;right:1.1rem;bottom:1.3rem;z-index:900;display:flex;flex-direction:column;gap:0.5rem;align-items:flex-end;font-family:"Pretendard","Malgun Gothic",system-ui,sans-serif;word-break:keep-all}',
-    '.fb-btn{appearance:none;cursor:pointer;display:inline-flex;align-items:center;gap:0.4rem;border:2px solid rgba(38,34,32,0.85);background:rgba(255,255,255,0.95);color:#262220;font-size:0.78rem;font-weight:700;padding:0.5rem 0.85rem;border-radius:999px;box-shadow:0 6px 18px rgba(0,0,0,0.14);transition:transform .12s}',
+    '.fb-root{position:fixed;right:0;bottom:1.6rem;z-index:900;display:flex;align-items:flex-end;font-family:"Pretendard","Malgun Gothic",system-ui,sans-serif;word-break:keep-all;transform:translateX(calc(100% - 1.4rem));transition:transform .28s ease}',
+    '.fb-root:hover,.fb-root.open{transform:translateX(0)}',
+    '.fb-handle{cursor:pointer;align-self:stretch;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0.35rem;width:1.4rem;background:#fe6e00;color:#fff;border-radius:10px 0 0 10px;box-shadow:-4px 4px 14px rgba(0,0,0,0.18);font-size:0.82rem;font-weight:800;user-select:none}',
+    '.fb-handle .ch{transition:transform .28s ease}',
+    '.fb-root:hover .fb-handle .ch,.fb-root.open .fb-handle .ch{transform:rotate(180deg)}',
+    '.fb-stack{display:flex;flex-direction:column;gap:0.5rem;align-items:flex-end;padding:0 1rem 0 0.6rem;background:transparent}',
+    '.fb-btn{appearance:none;cursor:pointer;display:inline-flex;align-items:center;gap:0.4rem;border:2px solid rgba(38,34,32,0.85);background:rgba(255,255,255,0.97);color:#262220;font-size:0.78rem;font-weight:700;padding:0.5rem 0.85rem;border-radius:999px;box-shadow:0 6px 18px rgba(0,0,0,0.14);transition:transform .12s;white-space:nowrap}',
     '.fb-btn:hover{transform:translateY(-2px)}',
     '.fb-btn--report{border-color:#fe6e00;color:#cc5a14}',
     '.fb-btn--submit{border-color:#166534;color:#166534}',
@@ -69,6 +74,7 @@
 
   import('/auth-config.js').then(function (cfg) {
     if (!cfg.GATE_ENABLED) return;
+    if (!getCookieToken()) return; // 로그인 전에는 표시하지 않음
 
     var style = document.createElement('style');
     style.textContent = CSS;
@@ -78,13 +84,20 @@
     root.className = 'fb-root';
     root.setAttribute('data-no-nav', '');
     root.innerHTML =
+      '<div class="fb-handle" title="질문 · 신고 · 제출"><span class="ch">‹</span></div>' +
+      '<div class="fb-stack">' +
       '<div class="fb-panel" hidden></div>' +
       '<button type="button" class="fb-btn" data-type="question">💬 질문</button>' +
       '<button type="button" class="fb-btn fb-btn--report" data-type="report">🚨 신고</button>' +
-      '<button type="button" class="fb-btn fb-btn--submit" data-type="submission">📤 제출</button>';
+      '<button type="button" class="fb-btn fb-btn--submit" data-type="submission">📤 제출</button>' +
+      '</div>';
     document.body.appendChild(root);
 
     var panel = root.querySelector('.fb-panel');
+    // 터치 기기 대응 — 핸들 탭으로 열고 닫기
+    root.querySelector('.fb-handle').addEventListener('click', function () {
+      root.classList.toggle('open');
+    });
 
     // 패널 안 키 입력이 deck.js 슬라이드 넘김(스페이스·화살표)으로 새지 않게
     ['keydown', 'keyup', 'keypress'].forEach(function (ev) {
@@ -100,6 +113,7 @@
       var isQ = type === 'question';
       var isSub = type === 'submission';
       var no = slideNo();
+      root.classList.add('open');
       panel.hidden = false;
       panel.innerHTML =
         '<h3>' + (isSub ? '📤 내 작품 제출' : (isQ ? '💬 질문 보내기' : '🚨 잘못된 내용 신고')) + '</h3>' +
@@ -115,7 +129,7 @@
       var ta = panel.querySelector('textarea');
       var err = panel.querySelector('.fb-err');
       ta.focus();
-      panel.querySelector('.fb-cancel').addEventListener('click', function () { panel.hidden = true; });
+      panel.querySelector('.fb-cancel').addEventListener('click', function () { panel.hidden = true; root.classList.remove('open'); });
       var urlInput = panel.querySelector('input[type=url]');
       if (urlInput) urlInput.focus();
       panel.querySelector('.fb-send').addEventListener('click', function () {
@@ -157,7 +171,7 @@
             : (type === 'question'
               ? '질문이 전달됐습니다 — 강의 중이라면 바로 확인하고 답변드려요!'
               : '신고 접수됐습니다 — 확인 후 바로잡을게요. 감사합니다!')) + '</div>';
-          setTimeout(function () { panel.hidden = true; }, 1800);
+          setTimeout(function () { panel.hidden = true; root.classList.remove('open'); }, 1800);
         }).catch(function (e2) {
           btn.disabled = false;
           err.hidden = false;

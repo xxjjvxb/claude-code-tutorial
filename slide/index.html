@@ -63,19 +63,33 @@
     </a>
 
     <div style="display: flex; flex-direction: column; gap: 0.8rem; min-height: 0;">
-      <div class="course-card course-card--accent" style="cursor: default; flex: 1.5;">
+      <div class="course-card course-card--accent" id="inst-card" style="cursor: pointer; flex: 1.5;">
         <div class="course-card__eyebrow">INSTRUCTOR · 강사 소개</div>
-        <div style="display: flex; gap: 1rem; align-items: flex-start; min-height: 0;">
-          <img src="imgs/day1-강의자사진.png" alt="강사 이일규" style="width: 6.5rem; max-width: 32%; border-radius: 12px; border: 2px solid var(--color-outline-strong); flex-shrink: 0;" onerror="this.style.display='none'">
-          <div style="min-width: 0;">
-            <h2 class="course-card__title">이일규 <span style="font-size: 0.75rem; font-weight: 600; color: var(--color-on-surface-muted);">Ilkyu Lee</span></h2>
-            <p class="course-card__desc" style="margin-top: 0.35rem;">AI에게 일을 시켜 진짜 결과물을 만드는 법을 가르칩니다. 이 과정의 슬라이드·실습·사이트 전부를 Claude Code로 직접 만들었습니다 — 여러분이 앞으로 배울 방식 그대로.</p>
+        <div id="inst-compact">
+          <h2 class="course-card__title">이일규 <span style="font-size: 0.75rem; font-weight: 600; color: var(--color-on-surface-muted);">Ilkyu Lee</span></h2>
+          <p class="course-card__desc" style="margin-top: 0.35rem;">이 과정을 만들고 진행하는 강사입니다.</p>
+          <div class="course-card__cta" style="margin-top: 0.6rem;">
+            <span class="course-card__meta">자세히 보기</span>
+            <span class="course-card__arrow">→</span>
           </div>
         </div>
-        <div class="course-card__tags">
-          <span class="course-card__tag">바이브코딩</span>
-          <span class="course-card__tag">Claude Code</span>
-          <span class="course-card__tag">실습 중심</span>
+        <div id="inst-detail" hidden>
+          <div style="display: flex; gap: 1rem; align-items: flex-start; min-height: 0;">
+            <img src="imgs/day1-강의자사진.png" alt="강사 이일규" style="width: 6.5rem; max-width: 32%; border-radius: 12px; border: 2px solid var(--color-outline-strong); flex-shrink: 0;" onerror="this.style.display='none'">
+            <div style="min-width: 0;">
+              <h2 class="course-card__title">이일규 <span style="font-size: 0.75rem; font-weight: 600; color: var(--color-on-surface-muted);">Ilkyu Lee</span></h2>
+              <p class="course-card__desc" style="margin-top: 0.35rem;">AI에게 일을 시켜 진짜 결과물을 만드는 법을 가르칩니다. 이 과정의 슬라이드·실습·사이트 전부를 Claude Code로 직접 만들었습니다 — 여러분이 앞으로 배울 방식 그대로.</p>
+            </div>
+          </div>
+          <div class="course-card__tags" style="margin-top: 0.6rem;">
+            <span class="course-card__tag">바이브코딩</span>
+            <span class="course-card__tag">Claude Code</span>
+            <span class="course-card__tag">실습 중심</span>
+          </div>
+          <div class="course-card__cta" style="margin-top: 0.6rem;">
+            <span class="course-card__meta">접기</span>
+            <span class="course-card__arrow">↑</span>
+          </div>
         </div>
       </div>
       <div class="course-card" style="cursor: default; flex: 1;">
@@ -90,6 +104,18 @@
   </div>
 </main>
 
+<script>
+  (function () {
+    var card = document.getElementById('inst-card');
+    var c = document.getElementById('inst-compact');
+    var d = document.getElementById('inst-detail');
+    card.addEventListener('click', function () {
+      var showDetail = d.hidden; // 상세가 숨겨져 있으면 → 펼침
+      d.hidden = !showDetail;
+      c.hidden = showDetail;
+    });
+  })();
+</script>
 <script src="scripts/index-nav.js"></script>
 <script defer src="/slide/scripts/feedback.js"></script>
 <script defer src="/slide/scripts/analytics.js"></script>
