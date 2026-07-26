@@ -121,16 +121,8 @@
     touchStartX = null;
   });
 
-  // Click navigation — 좌측 절반 = 이전 / 우측 절반 = 다음
-  document.addEventListener('click', (e) => {
-    // 인터랙티브 요소(버튼·링크·텍스트 선택 영역) 클릭은 무시
-    if (e.target.closest('a, button, input, textarea, select, .deck-chrome, [data-no-nav]')) return;
-    if (window.getSelection && String(window.getSelection()) !== '') return;
-    const x = e.clientX;
-    const w = window.innerWidth;
-    if (x < w / 2) show(current - 1);
-    else show(current + 1);
-  });
+  // 화면 클릭 넘김은 제거 — 넘기기는 상단 바 ‹ › 버튼 · 키보드 · 터치 스와이프로.
+  // (본문 클릭·드래그가 슬라이드를 넘겨버리는 불편 때문에 삭제)
 
   // Hash navigation (e.g. browser back/forward)
   window.addEventListener('hashchange', () => {
