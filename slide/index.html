@@ -28,6 +28,12 @@
     .course-card__cta { display: flex; align-items: baseline; justify-content: space-between; gap: 0.6rem; }
     .course-card__meta { font-family: var(--font-mono); font-size: 0.66rem; font-weight: 700; color: var(--color-primary-strong); }
     .course-card__arrow { font-size: 1.3rem; color: var(--color-primary-strong); line-height: 1; }
+
+    .cl-list { flex: 1; min-height: 0; overflow-y: auto; display: flex; flex-direction: column; padding-right: 0.3rem; }
+    .cl-item { display: flex; gap: 0.55rem; align-items: baseline; padding: 0.3rem 0; border-bottom: 1px dashed var(--color-outline); }
+    .cl-item:last-child { border-bottom: 0; }
+    .cl-date { font-family: var(--font-mono); font-size: 0.56rem; font-weight: 700; color: var(--color-on-surface-muted); flex-shrink: 0; }
+    .cl-msg { font-size: 0.68rem; line-height: 1.45; color: var(--color-on-surface); min-width: 0; }
   </style>
 </head>
 <body data-index-root="true">
@@ -63,36 +69,23 @@
     </a>
 
     <div style="display: flex; flex-direction: column; gap: 0.8rem; min-height: 0;">
-      <div class="course-card course-card--accent" id="inst-card" style="cursor: pointer; flex: 1.5;">
+      <a class="course-card course-card--accent" href="instructor/index.html" style="flex: 0 0 auto;">
         <div class="course-card__eyebrow">INSTRUCTOR · 강사 소개</div>
-        <div id="inst-compact">
-          <h2 class="course-card__title">이일규 <span style="font-size: 0.75rem; font-weight: 600; color: var(--color-on-surface-muted);">Ilkyu Lee</span></h2>
-          <p class="course-card__desc" style="margin-top: 0.35rem;">이 과정을 만들고 진행하는 강사입니다.</p>
-          <div class="course-card__cta" style="margin-top: 0.6rem;">
-            <span class="course-card__meta">자세히 보기</span>
-            <span class="course-card__arrow">→</span>
-          </div>
+        <h2 class="course-card__title">이일규 <span style="font-size: 0.75rem; font-weight: 600; color: var(--color-on-surface-muted);">Ilkyu Lee</span></h2>
+        <p class="course-card__desc" style="margin-top: 0.35rem;">AI에게 일을 시켜 진짜 결과물을 만드는 법을 가르칩니다. 이 과정 전체를 Claude Code로 직접 만든 사람.</p>
+        <div class="course-card__cta" style="margin-top: 0.5rem;">
+          <span class="course-card__meta">소개 · 이력 보기</span>
+          <span class="course-card__arrow">→</span>
         </div>
-        <div id="inst-detail" hidden>
-          <div style="display: flex; gap: 1rem; align-items: flex-start; min-height: 0;">
-            <img src="imgs/day1-강의자사진.png" alt="강사 이일규" style="width: 6.5rem; max-width: 32%; border-radius: 12px; border: 2px solid var(--color-outline-strong); flex-shrink: 0;" onerror="this.style.display='none'">
-            <div style="min-width: 0;">
-              <h2 class="course-card__title">이일규 <span style="font-size: 0.75rem; font-weight: 600; color: var(--color-on-surface-muted);">Ilkyu Lee</span></h2>
-              <p class="course-card__desc" style="margin-top: 0.35rem;">AI에게 일을 시켜 진짜 결과물을 만드는 법을 가르칩니다. 이 과정의 슬라이드·실습·사이트 전부를 Claude Code로 직접 만들었습니다 — 여러분이 앞으로 배울 방식 그대로.</p>
-            </div>
-          </div>
-          <div class="course-card__tags" style="margin-top: 0.6rem;">
-            <span class="course-card__tag">바이브코딩</span>
-            <span class="course-card__tag">Claude Code</span>
-            <span class="course-card__tag">실습 중심</span>
-          </div>
-          <div class="course-card__cta" style="margin-top: 0.6rem;">
-            <span class="course-card__meta">접기</span>
-            <span class="course-card__arrow">↑</span>
-          </div>
+      </a>
+      <div class="course-card" style="cursor: default; flex: 1.6; min-height: 0;">
+        <div class="course-card__eyebrow">CHANGELOG · 강의노트 업데이트</div>
+        <div class="cl-list" id="cl-list"><p class="course-card__desc">불러오는 중…</p></div>
+        <div class="course-card__cta" style="margin-top: 0.4rem;">
+          <span class="course-card__meta" id="cl-foot">커밋 이력에서 자동 생성됩니다</span>
         </div>
       </div>
-      <div class="course-card" style="cursor: default; flex: 1;">
+      <div class="course-card" style="cursor: default; flex: 0 0 auto;">
         <div class="course-card__eyebrow">CONTACT · 문의하기</div>
         <p class="course-card__desc"><strong>수업 관련</strong> — 우하단 버튼으로 바로: 💬 질문 · 🚨 자료 오류 신고 · 📤 작품 제출 (로그인 후 사용).</p>
         <p class="course-card__desc"><strong>강의·출강 문의</strong> — <a href="mailto:xxjjvxb@gmail.com" style="color: var(--color-primary-strong); font-weight: 700;">xxjjvxb@gmail.com</a></p>
@@ -106,13 +99,17 @@
 
 <script>
   (function () {
-    var card = document.getElementById('inst-card');
-    var c = document.getElementById('inst-compact');
-    var d = document.getElementById('inst-detail');
-    card.addEventListener('click', function () {
-      var showDetail = d.hidden; // 상세가 숨겨져 있으면 → 펼침
-      d.hidden = !showDetail;
-      c.hidden = showDetail;
+    var list = document.getElementById('cl-list');
+    var foot = document.getElementById('cl-foot');
+    fetch('changelog.json').then(function (r) { return r.json(); }).then(function (rows) {
+      if (!rows || !rows.length) return;
+      var esc = function (s) { return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;'); };
+      list.innerHTML = rows.map(function (e) {
+        return '<div class="cl-item"><span class="cl-date">' + esc(e.d) + '</span><span class="cl-msg">' + esc(e.m) + '</span></div>';
+      }).join('');
+      foot.textContent = rows[rows.length - 1].d + ' 시작 · 지금까지 ' + rows.length + '회 업데이트, 계속 다듬는 중';
+    }).catch(function () {
+      list.innerHTML = '<p class="course-card__desc">업데이트 내역을 불러오지 못했습니다.</p>';
     });
   })();
 </script>

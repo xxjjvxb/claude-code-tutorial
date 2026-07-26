@@ -13,10 +13,14 @@ export default async function middleware(request) {
   // 목차는 공개 — 로그인 없이 과정 구성까지는 볼 수 있게.
   // 덱 본문(챕터 html)·이미지·자료 파일은 아래에서 계속 검증한다.
   const path = url.pathname;
+  let decoded = path;
+  try { decoded = decodeURIComponent(path); } catch (e) { /* 잘못된 인코딩은 원본 그대로 */ }
   const isPublic =
     path === '/slide' ||
     path.endsWith('/') ||
     path.endsWith('/index.html') ||
+    path === '/slide/changelog.json' ||
+    decoded === '/slide/imgs/day1-강의자사진.png' || // 공개 강사 소개 페이지의 사진
     path.startsWith('/slide/styles/') ||
     path.startsWith('/slide/scripts/');
   if (isPublic) return;
