@@ -204,7 +204,7 @@
       tab.type = 'button';
       tab.className = 'fbq-tab';
       tab.setAttribute('data-no-nav', '');
-      tab.innerHTML = '질문·신고 <span class="n">0</span>';
+      tab.innerHTML = '질문·제출 <span class="n">0</span>';
       tab.hidden = true;
       document.body.appendChild(tab);
 
@@ -213,7 +213,7 @@
       qp.setAttribute('data-no-nav', '');
       qp.hidden = true;
       qp.innerHTML =
-        '<div class="fbq-head">🔔 실시간 질문·신고<span class="sp"></span>' +
+        '<div class="fbq-head">🔔 실시간 질문·제출<span class="sp"></span>' +
         '<button type="button" class="fbq-close">접기</button></div>' +
         '<div class="fbq-list"></div>';
       document.body.appendChild(qp);
@@ -235,7 +235,7 @@
         var list = qp.querySelector('.fbq-list');
         tab.querySelector('.n').textContent = items.length;
         if (!items.length) {
-          list.innerHTML = '<div class="fbq-empty">미처리 질문·신고가 없습니다 🎉</div>';
+          list.innerHTML = '<div class="fbq-empty">미처리 질문·제출이 없습니다 🎉</div>';
           return;
         }
         list.innerHTML = '';
@@ -292,7 +292,7 @@
         if (document.visibilityState === 'hidden') return;
         var tk = getCookieToken();
         if (!tk) return;
-        fetch(cfg.SUPABASE_URL + '/rest/v1/feedback?status=eq.open&select=id,email,type,deck_path,slide_no,page_title,content,created_at&order=created_at.desc&limit=30', {
+        fetch(cfg.SUPABASE_URL + '/rest/v1/feedback?status=eq.open&type=in.(question,submission)&select=id,email,type,deck_path,slide_no,page_title,content,created_at&order=created_at.desc&limit=30', {
           headers: { apikey: cfg.SUPABASE_ANON_KEY, Authorization: 'Bearer ' + tk }
         }).then(function (res) { return res.ok ? res.json() : null; }).then(function (rows) {
           if (!rows) return;
