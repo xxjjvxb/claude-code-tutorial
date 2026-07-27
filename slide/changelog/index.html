@@ -1,0 +1,69 @@
+<!doctype html>
+<!-- © 2026 이일규 (Ilkyu Lee). All rights reserved. 본 강의자료는 저작권법으로 보호되는 저작물입니다. 무단 복제·배포·재사용을 금합니다. -->
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="author" content="이일규">
+  <meta name="copyright" content="© 2026 이일규 · 본 강의자료는 저작권법으로 보호되는 저작물입니다. 무단 복제·배포 금지.">
+  <script defer src="../scripts/protect.js"></script>
+  <title>강의노트 업데이트 내역 — 실습으로 배우는 바이브코딩 with 클로드코드</title>
+  <link rel="stylesheet" href="../styles/tokens.css">
+  <link rel="stylesheet" href="../styles/deck.css">
+  <style>
+    .clp-head { display: flex; flex-direction: column; gap: 0.3rem; flex-shrink: 0; margin-bottom: 0.9rem; }
+    .clp-eyebrow { font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.18em; text-transform: uppercase; font-weight: 700; color: var(--color-primary-strong); }
+    .clp-title { font-size: 1.7rem; font-weight: 700; line-height: 1.15; letter-spacing: -0.03em; margin: 0.1rem 0 0.2rem 0; color: var(--color-on-surface); }
+    .clp-caption { font-size: 0.8rem; line-height: 1.5; color: var(--color-on-surface-muted); margin: 0; }
+    .clp-card { flex: 1; min-height: 0; background: var(--color-surface-elevated); border: 2px solid var(--color-outline-strong); border-radius: var(--rounded-md); padding: 1rem 1.3rem; display: flex; flex-direction: column; overflow: hidden; }
+    .clp-list { flex: 1; min-height: 0; overflow-y: auto; margin: 0; padding: 0 0.4rem 0 0; list-style: none; display: flex; flex-direction: column; }
+    .clp-list li { display: flex; gap: 0.9rem; align-items: baseline; padding: 0.55rem 0; border-bottom: 1px dashed var(--color-outline); }
+    .clp-list li:last-child { border-bottom: 0; }
+    .clp-date { font-family: var(--font-mono); font-size: 0.66rem; font-weight: 700; color: var(--color-primary-strong); flex-shrink: 0; min-width: 5.6rem; }
+    .clp-msg { font-size: 0.8rem; line-height: 1.55; color: var(--color-on-surface); min-width: 0; }
+    .back-link { font-family: var(--font-mono); font-size: 0.68rem; font-weight: 700; color: var(--color-primary-strong); text-decoration: none; }
+    .back-link:hover { text-decoration: underline; }
+  </style>
+</head>
+<body data-index-root="true">
+
+<main class="index-stage">
+  <header class="deck-chrome">
+    <span class="deck-chrome__brand">CLAUDE 강의</span>
+    <span class="deck-chrome__divider">·</span>
+    <span class="deck-chrome__day">강의노트 업데이트</span>
+    <span class="deck-chrome__spacer"></span>
+    <a class="back-link" href="../index.html">← 과정 소개로</a>
+  </header>
+
+  <section class="clp-head">
+    <div class="clp-eyebrow">CHANGELOG · 업데이트 내역</div>
+    <h1 class="clp-title">계속 다듬어 가는 강의노트입니다.</h1>
+    <p class="clp-caption" id="clp-caption">내역을 불러오는 중…</p>
+  </section>
+
+  <div class="clp-card">
+    <ol class="clp-list" id="clp-list"></ol>
+  </div>
+</main>
+
+<script>
+  (function () {
+    var list = document.getElementById('clp-list');
+    var caption = document.getElementById('clp-caption');
+    fetch('../changelog.json').then(function (r) { return r.json(); }).then(function (rows) {
+      if (!rows || !rows.length) return;
+      var esc = function (s) { return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;'); };
+      list.innerHTML = rows.map(function (e) {
+        return '<li><span class="clp-date">' + esc(e.d) + '</span><span class="clp-msg">' + esc(e.m) + '</span></li>';
+      }).join('');
+      caption.textContent = rows[rows.length - 1].d + ' 개설 · 주요 업데이트 ' + rows.length + '건 — 최근 것이 맨 위에 있습니다.';
+    }).catch(function () {
+      caption.textContent = '업데이트 내역을 불러오지 못했습니다. 잠시 후 새로고침해 주세요.';
+    });
+  })();
+</script>
+<script defer src="/slide/scripts/feedback.js"></script>
+<script defer src="/slide/scripts/analytics.js"></script>
+</body>
+</html>

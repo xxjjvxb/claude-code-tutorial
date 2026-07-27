@@ -80,9 +80,10 @@
       <div class="course-card" style="cursor: default; flex: 1 1 0; min-height: 12rem;">
         <div class="course-card__eyebrow">CHANGELOG · 강의노트 업데이트</div>
         <div class="cl-list" id="cl-list"><p class="course-card__desc">불러오는 중…</p></div>
-        <div class="course-card__cta" style="margin-top: 0.4rem;">
-          <span class="course-card__meta" id="cl-foot">계속 다듬어 가는 강의노트입니다</span>
-        </div>
+        <a class="course-card__cta" href="changelog/index.html" style="margin-top: 0.4rem; text-decoration: none;">
+          <span class="course-card__meta" id="cl-foot">전체 내역 보기</span>
+          <span class="course-card__arrow">→</span>
+        </a>
       </div>
       <div class="course-card" style="cursor: default; flex: 0 0 auto;">
         <div class="course-card__eyebrow">CONTACT · 문의하기</div>
@@ -106,7 +107,7 @@
       list.innerHTML = rows.map(function (e) {
         return '<div class="cl-item"><span class="cl-date">' + esc(e.d) + '</span><span class="cl-msg">' + esc(e.m) + '</span></div>';
       }).join('');
-      foot.textContent = rows[rows.length - 1].d + ' 개설 · 주요 업데이트 ' + rows.length + '건 · 계속 다듬는 중';
+      foot.textContent = '전체 ' + rows.length + '건 보기 · ' + rows[rows.length - 1].d + ' 개설';
     }).catch(function () {
       list.innerHTML = '<p class="course-card__desc">업데이트 내역을 불러오지 못했습니다.</p>';
     });
