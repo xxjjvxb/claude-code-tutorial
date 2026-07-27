@@ -5,6 +5,7 @@
        (b) 관리자 로그인 시 우하단 '🖼 편집' 토글로 켜고 끔 (기본 OFF — 강의 중 비활성)
      이미지 매칭 실패 슬롯의 자동 활성도 편집모드가 켜져 있을 때만 동작.
      연결한 이미지 폴더 핸들은 IndexedDB에 저장해 다음부터 다시 묻지 않음.
+     편집모드 ON이면 좌측에 슬라이드 인덱스 네비게이터 표시 — 클릭으로 바로 이동 (검토용).
      활성 슬롯:
        · 드래그&드롭으로 교체
        · 클릭으로 활성화 → Ctrl+V 로 클립보드 이미지 붙여넣기
@@ -21,6 +22,8 @@
   var bar = null;
   var connectBtn = null;
   var toggleBtn = null;      // 관리자 우하단 '🖼 편집' 토글
+  var navPanel = null;       // 좌측 슬라이드 네비게이터 (편집모드 ON 시)
+  var navItems = [];
 
   // ---- 1) 이미지 로드 상태 표시 (정상 모드 포함) + 매칭 실패 시 슬롯 자동 활성 ----
   function markLoaded(img) { var s = img.closest('.photo-slot'); if (s) s.classList.add('has-img'); }
@@ -58,6 +61,7 @@
       if (bar) bar.style.display = 'none';
       setActive(null);
     }
+    showNav(on);
     if (toggleBtn) {
       toggleBtn.classList.toggle('is-on', on);
       toggleBtn.textContent = on ? '🖼 편집 ON' : '🖼 편집 OFF';
@@ -324,4 +328,98 @@
     dock.appendChild(link);
     document.body.appendChild(dock);
   }).catch(function () { /* auth-config 없음 — 관리자 독 미표시 */ });
+
+  // ---- 9) 슬라이드 네비게이터 (편집모드 ON 시 좌측) — 인덱스 훑어보며 클릭으로 바로 이동 ----
+  function slideText(el) { return el ? el.textContent.replace(/\s+/g, ' ').trim() : ''; }
+
+  function ensureNav() {
+    if (navPanel) return navPanel;
+    var slides = document.querySelectorAll('.slide');
+    if (!slides.length) return null;   // 덱이 아닌 페이지면 미생성
+
+    var st = document.createElement('style');
+    st.textContent = [
+      '.slide-nav{position:fixed;left:0.5rem;top:50%;transform:translateY(-50%);z-index:898;width:11.5rem;max-height:84vh;overflow-y:auto;display:flex;flex-direction:column;gap:0.08rem;background:rgba(255,255,255,0.94);border:1.5px solid rgba(38,34,32,0.18);border-radius:0.55rem;padding:0.32rem;box-shadow:0 8px 28px rgba(38,34,32,0.14);font-family:"Pretendard","Malgun Gothic",system-ui,sans-serif}',
+      '.slide-nav__item{appearance:none;border:0;background:none;cursor:pointer;display:flex;align-items:baseline;gap:0.32rem;width:100%;text-align:left;padding:0.22rem 0.36rem;border-radius:0.38rem;color:#57504a}',
+      '.slide-nav__item:hover{background:rgba(254,110,0,0.08)}',
+      '.slide-nav__item.is-current{background:#fff7ed;color:#cc5a14}',
+      '.slide-nav__num{flex:none;font-size:0.5rem;font-weight:800;color:#b3a89e;font-variant-numeric:tabular-nums}',
+      '.slide-nav__item.is-current .slide-nav__num{color:#fe6e00}',
+      '.slide-nav__txt{display:flex;flex-direction:column;min-width:0}',
+      '.slide-nav__eyebrow{font-size:0.42rem;font-weight:700;letter-spacing:0.04em;color:#b3a89e;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}',
+      '.slide-nav__title{font-size:0.52rem;font-weight:600;line-height:1.3;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}',
+      '.slide-nav__item.is-current .slide-nav__title{font-weight:800}',
+      '@media print{.slide-nav{display:none}}'
+    ].join('\n');
+    document.head.appendChild(st);
+
+    navPanel = document.createElement('nav');
+    navPanel.className = 'slide-nav';
+    navPanel.setAttribute('data-no-nav', '');
+    navPanel.setAttribute('aria-label', '슬라이드 인덱스');
+
+    Array.prototype.forEach.call(slides, function (s, i) {
+      var eyebrow = slideText(s.querySelector('.slide__eyebrow'));
+      var title = slideText(s.querySelector('.slide__title, .feature-head__title, .cover-card__title, h1, h2')) || eyebrow || '슬라이드 ' + (i + 1);
+
+      var btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'slide-nav__item';
+      btn.title = title;
+
+      var num = document.createElement('span');
+      num.className = 'slide-nav__num';
+      num.textContent = (i + 1 < 10 ? '0' : '') + (i + 1);
+
+      var txt = document.createElement('span');
+      txt.className = 'slide-nav__txt';
+      if (eyebrow && eyebrow !== title) {
+        var ey = document.createElement('span');
+        ey.className = 'slide-nav__eyebrow';
+        ey.textContent = eyebrow;
+        txt.appendChild(ey);
+      }
+      var ti = document.createElement('span');
+      ti.className = 'slide-nav__title';
+      ti.textContent = title;
+      txt.appendChild(ti);
+
+      btn.appendChild(num);
+      btn.appendChild(txt);
+      btn.addEventListener('click', function () {
+        location.hash = '#slide=' + (i + 1);   // deck.js의 hashchange 라우팅으로 이동
+        btn.blur();                            // 이후 스페이스(다음 슬라이드)가 버튼을 재클릭하지 않게
+      });
+
+      navItems.push(btn);
+      navPanel.appendChild(btn);
+    });
+    document.body.appendChild(navPanel);
+
+    // 현재 슬라이드 하이라이트 — deck.js가 토글하는 .active 를 관찰
+    var mo = new MutationObserver(updateNavCurrent);
+    Array.prototype.forEach.call(slides, function (s) {
+      mo.observe(s, { attributes: true, attributeFilter: ['class'] });
+    });
+    updateNavCurrent();
+    return navPanel;
+  }
+
+  function updateNavCurrent() {
+    if (!navPanel) return;
+    Array.prototype.forEach.call(document.querySelectorAll('.slide'), function (s, i) {
+      if (!navItems[i]) return;
+      var cur = s.classList.contains('active');
+      navItems[i].classList.toggle('is-current', cur);
+      if (cur && navPanel.style.display !== 'none') navItems[i].scrollIntoView({ block: 'nearest' });
+    });
+  }
+
+  function showNav(on) {
+    if (on) {
+      if (ensureNav()) { navPanel.style.display = ''; updateNavCurrent(); }
+    } else if (navPanel) {
+      navPanel.style.display = 'none';
+    }
+  }
 })();
