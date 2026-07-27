@@ -16,11 +16,9 @@
     .clp-title { font-size: 1.7rem; font-weight: 700; line-height: 1.15; letter-spacing: -0.03em; margin: 0.1rem 0 0.2rem 0; color: var(--color-on-surface); }
     .clp-caption { font-size: 0.8rem; line-height: 1.5; color: var(--color-on-surface-muted); margin: 0; }
     .clp-card { flex: 1; min-height: 0; background: var(--color-surface-elevated); border: 2px solid var(--color-outline-strong); border-radius: var(--rounded-md); padding: 1rem 1.3rem; display: flex; flex-direction: column; overflow: hidden; }
-    .clp-list { flex: 1; min-height: 0; overflow-y: auto; margin: 0; padding: 0 0.4rem 0 0; list-style: none; display: flex; flex-direction: column; }
-    .clp-list li { display: flex; gap: 0.9rem; align-items: baseline; padding: 0.55rem 0; border-bottom: 1px dashed var(--color-outline); }
-    .clp-list li:last-child { border-bottom: 0; }
-    .clp-date { font-family: var(--font-mono); font-size: 0.66rem; font-weight: 700; color: var(--color-primary-strong); flex-shrink: 0; min-width: 5.6rem; }
-    .clp-msg { font-size: 0.8rem; line-height: 1.55; color: var(--color-on-surface); min-width: 0; }
+    .clp-list { flex: 1; min-height: 0; overflow-y: auto; margin: 0; padding: 0 0.4rem 0 1.2rem; list-style: disc; scrollbar-width: thin; }
+    .clp-list li { font-size: 0.8rem; line-height: 1.55; color: var(--color-on-surface); padding: 0.22rem 0; }
+    .clp-list li::marker { color: var(--color-primary-strong); }
     .back-link { font-family: var(--font-mono); font-size: 0.68rem; font-weight: 700; color: var(--color-primary-strong); text-decoration: none; }
     .back-link:hover { text-decoration: underline; }
   </style>
@@ -43,7 +41,7 @@
   </section>
 
   <div class="clp-card">
-    <ol class="clp-list" id="clp-list"></ol>
+    <ul class="clp-list" id="clp-list"></ul>
   </div>
 </main>
 
@@ -55,9 +53,9 @@
       if (!rows || !rows.length) return;
       var esc = function (s) { return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;'); };
       list.innerHTML = rows.map(function (e) {
-        return '<li><span class="clp-date">' + esc(e.d) + '</span><span class="clp-msg">' + esc(e.m) + '</span></li>';
+        return '<li>' + esc(e.m) + '</li>';
       }).join('');
-      caption.textContent = rows[rows.length - 1].d + ' 개설 · 주요 업데이트 ' + rows.length + '건 — 최근 것이 맨 위에 있습니다.';
+      caption.textContent = '2026년 5월 개설 · 주요 업데이트 ' + rows.length + '건 — 최근 것이 맨 위에 있습니다.';
     }).catch(function () {
       caption.textContent = '업데이트 내역을 불러오지 못했습니다. 잠시 후 새로고침해 주세요.';
     });
