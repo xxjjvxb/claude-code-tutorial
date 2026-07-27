@@ -308,9 +308,9 @@
           <div class="content-card content-card--compact">
             <h3 class="content-card__title">단계</h3>
             <ol class="content-card__list content-card__list--ol">
-              <li><span>봇 생성 직후 BotFather 메시지에 뜨는 <code>t.me/claude_notify_bot</code> 링크(= 내 봇 주소) 클릭 → 본인 봇 화면 열림</span></li>
+              <li><span>봇 생성 직후 BotFather 메시지에 뜨는 <code>t.me/<strong>claude_notify_bot</strong></code> 링크(= 내 봇 주소) 클릭 → 본인 봇 화면 열림</span></li>
               <li><span>"+ Start" 버튼 → "안녕" 한 번 보내기</span></li>
-              <li><span>브라우저로 <code>api.telegram.org/bot&lt;TOKEN&gt;/getUpdates</code></span></li>
+              <li><span>브라우저로 <code>api.telegram.org/bot<strong>&lt;TOKEN&gt;</strong>/getUpdates</code></span></li>
               <li><span>JSON에서 <code>"chat":{"id":...}</code> 숫자 복사</span></li>
             </ol>
           </div>
@@ -325,7 +325,7 @@
           </div>
         </div>
       </div>
-      <p class="slide__note">봇과 한 번이라도 대화해야 getUpdates에 chat이 나타납니다 — "안녕" 안 보내면 빈 결과. <code>{"ok":true,"result":[]}</code>처럼 <code>result</code>가 비어 있으면 봇에 채팅을 몇 번 더 보낸 뒤 브라우저에서 <strong>F5</strong>로 새로고침.</p>
+      <p class="slide__note"><code>&lt;TOKEN&gt;</code>은 <strong>부등호 &lt; &gt;까지 통째로</strong> 본인 토큰으로 교체. 봇과 한 번이라도 대화해야 getUpdates에 chat이 나타납니다 — <code>result</code>가 <code>[]</code>로 비어 있으면 봇에 채팅을 몇 번 더 보낸 뒤 브라우저에서 <strong>F5</strong>로 새로고침.</p>
     </div>
   </section>
 
@@ -387,7 +387,7 @@
           <p class="caveat-card__body">메시지는 <code>Claude Done</code>처럼 영문으로 시작하면 무탈. Windows 기본 PowerShell(5.1)에서 한글이 깨져 도착하면 — Claude Code에게 "텔레그램 알림 한글이 깨져요, 고쳐줘"라고 하면 PowerShell 방식 또는 인코딩을 자동으로 잡아 줍니다.</p>
         </div>
       </div>
-      <p class="slide__note">복사 버튼으로 붙여넣고 — <code>&lt;TOKEN&gt;</code>·<code>&lt;CHAT_ID&gt;</code>만 <strong>본인 값</strong>으로 교체하세요. <code>command</code>는 화면에서 접혀 보여도 <strong style="color:var(--color-danger)">실제로는 한 줄</strong>입니다(JSON 문자열엔 줄바꿈 불가).</p>
+      <p class="slide__note">복사 버튼으로 붙여넣고 — <code>&lt;TOKEN&gt;</code>·<code>&lt;CHAT_ID&gt;</code>만 <strong>본인 값</strong>으로 교체하세요(부등호 &lt; &gt;까지 통째로). <code>command</code>는 화면에서 접혀 보여도 <strong style="color:var(--color-danger)">실제로는 한 줄</strong>입니다(JSON 문자열엔 줄바꿈 불가).</p>
     </div>
   </section>
 
