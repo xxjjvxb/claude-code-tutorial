@@ -11,24 +11,39 @@
   <link rel="stylesheet" href="../styles/tokens.css">
   <link rel="stylesheet" href="../styles/deck.css">
   <style>
-    .ct-head { display: flex; flex-direction: column; gap: 0.3rem; flex-shrink: 0; margin-bottom: 0.9rem; }
+    .ct-head { display: flex; flex-direction: column; gap: 0.25rem; flex-shrink: 0; margin-bottom: 0.8rem; }
     .ct-eyebrow { font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.18em; text-transform: uppercase; font-weight: 700; color: var(--color-primary-strong); }
-    .ct-title { font-size: 1.7rem; font-weight: 700; line-height: 1.15; letter-spacing: -0.03em; margin: 0.1rem 0 0.2rem 0; color: var(--color-on-surface); }
-    .ct-caption { font-size: 0.8rem; line-height: 1.5; color: var(--color-on-surface-muted); margin: 0; }
-    .ct-card { flex: 1; min-height: 0; background: var(--color-surface-elevated); border: 2px solid var(--color-outline-strong); border-radius: var(--rounded-md); padding: 1.2rem 1.4rem; display: flex; flex-direction: column; gap: 0.7rem; overflow-y: auto; max-width: 34rem; }
-    .ct-label { font-size: 0.72rem; font-weight: 700; color: var(--color-on-surface); }
+    .ct-title { font-size: 1.6rem; font-weight: 700; line-height: 1.15; letter-spacing: -0.03em; margin: 0.1rem 0 0.15rem 0; color: var(--color-on-surface); }
+    .ct-caption { font-size: 0.78rem; line-height: 1.5; color: var(--color-on-surface-muted); margin: 0; }
+
+    .ct-grid { display: grid; grid-template-columns: 1fr 1.35fr; gap: 0.8rem; flex: 1; min-height: 0; }
+    .ct-col { display: flex; flex-direction: column; gap: 0.8rem; min-height: 0; }
+    .ct-card { background: var(--color-surface-elevated); border: 2px solid var(--color-outline-strong); border-radius: var(--rounded-md); padding: 1.05rem 1.2rem; display: flex; flex-direction: column; gap: 0.55rem; min-height: 0; overflow: hidden; }
+    .ct-card--accent { border-color: var(--color-primary); }
+    .ct-card-eyebrow { font-family: var(--font-mono); font-size: 0.62rem; letter-spacing: 0.08em; text-transform: uppercase; font-weight: 700; color: var(--color-primary-strong); }
+    .ct-desc { font-size: 0.75rem; line-height: 1.55; color: var(--color-on-surface); margin: 0; }
+    .ct-desc--muted { color: var(--color-on-surface-muted); }
+    .ct-list { margin: 0; padding: 0 0 0 1rem; font-size: 0.75rem; line-height: 1.7; color: var(--color-on-surface); }
+    .ct-mail { color: var(--color-primary-strong); font-weight: 700; text-decoration: none; }
+    .ct-mail:hover { text-decoration: underline; }
+
+    .ct-form { flex: 1; }
+    .ct-field { display: flex; flex-direction: column; gap: 0.25rem; }
+    .ct-field--grow { flex: 1; min-height: 0; }
+    .ct-row { display: flex; gap: 0.7rem; }
+    .ct-row .ct-field { flex: 1; }
+    .ct-label { font-size: 0.7rem; font-weight: 700; color: var(--color-on-surface); }
     .ct-label small { font-weight: 600; color: var(--color-on-surface-muted); }
-    .ct-input, .ct-textarea { width: 100%; font: inherit; font-size: 0.82rem; color: var(--color-on-surface); background: var(--color-surface); border: 1.5px solid var(--color-outline); border-radius: var(--rounded-sm); padding: 0.55rem 0.7rem; }
+    .ct-input, .ct-textarea { width: 100%; font: inherit; font-size: 0.8rem; color: var(--color-on-surface); background: var(--color-surface); border: 1.5px solid var(--color-outline); border-radius: var(--rounded-sm); padding: 0.5rem 0.65rem; }
     .ct-input:focus, .ct-textarea:focus { outline: none; border-color: var(--color-primary); }
-    .ct-textarea { min-height: 9rem; resize: vertical; }
-    .ct-submit { appearance: none; cursor: pointer; align-self: flex-start; border: 2px solid var(--color-primary); background: var(--color-primary); color: #fff; font-size: 0.85rem; font-weight: 700; padding: 0.6rem 1.4rem; border-radius: 999px; transition: transform .12s; }
+    .ct-textarea { flex: 1; min-height: 3.5rem; resize: none; }
+    .ct-foot { display: flex; align-items: center; gap: 0.8rem; }
+    .ct-submit { appearance: none; cursor: pointer; border: 2px solid var(--color-primary); background: var(--color-primary); color: #fff; font-size: 0.82rem; font-weight: 700; padding: 0.55rem 1.4rem; border-radius: 999px; transition: transform .12s; flex-shrink: 0; }
     .ct-submit:hover { transform: translateY(-1px); }
     .ct-submit:disabled { opacity: 0.55; cursor: default; transform: none; }
-    .ct-status { font-size: 0.78rem; line-height: 1.5; border-radius: var(--rounded-sm); padding: 0.6rem 0.8rem; }
+    .ct-status { flex: 1; font-size: 0.72rem; line-height: 1.45; border-radius: var(--rounded-sm); padding: 0.45rem 0.7rem; }
     .ct-status--ok { background: #f0fdf4; border: 1.5px solid #bbf7d0; color: #166534; }
     .ct-status--no { background: #fef2f2; border: 1.5px solid #fecaca; color: #991b1b; }
-    .ct-alt { font-size: 0.72rem; color: var(--color-on-surface-muted); margin: 0; }
-    .ct-alt a { color: var(--color-primary-strong); font-weight: 700; }
     .hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
     .back-link { font-family: var(--font-mono); font-size: 0.68rem; font-weight: 700; color: var(--color-primary-strong); text-decoration: none; }
     .back-link:hover { text-decoration: underline; }
@@ -51,24 +66,48 @@
     <p class="ct-caption">로그인 없이 보낼 수 있습니다. 접수 즉시 강사에게 전달되고, 남겨 주신 이메일로 회신드립니다.</p>
   </section>
 
-  <form class="ct-card" id="ct-form">
-    <div>
-      <div class="ct-label">이름 <small>(선택)</small></div>
-      <input class="ct-input" name="name" maxlength="100" autocomplete="name">
+  <div class="ct-grid">
+    <!-- 왼쪽 — 안내 -->
+    <div class="ct-col">
+      <div class="ct-card ct-card--accent">
+        <div class="ct-card-eyebrow">이런 문의를 받아요</div>
+        <ul class="ct-list">
+          <li>기업·기관 <strong>출강, 강의 개설</strong> 문의</li>
+          <li>과정 <strong>수강·열람 신청</strong> 관련 문의</li>
+          <li>커리큘럼·실습 내용 질문, 협업 제안</li>
+        </ul>
+        <p class="ct-desc ct-desc--muted" style="margin-top: auto;">메일이 더 편하시면 — <a class="ct-mail" href="mailto:xxjjvxb@gmail.com">xxjjvxb@gmail.com</a></p>
+      </div>
+      <div class="ct-card">
+        <div class="ct-card-eyebrow">수강 중이라면</div>
+        <p class="ct-desc">수업 관련은 로그인 후 <strong>화면 오른쪽 패널</strong>이 더 빠릅니다 — 💬 질문 · 🚨 자료 오류 신고 · 📤 작품 제출.</p>
+        <p class="ct-desc ct-desc--muted">강의자료 열람 신청 승인은 보통 수업 시작 전 일괄 처리됩니다.</p>
+      </div>
     </div>
-    <div>
-      <div class="ct-label">회신받을 이메일</div>
-      <input class="ct-input" name="email" type="email" required maxlength="200" autocomplete="email" placeholder="you@example.com">
-    </div>
-    <div>
-      <div class="ct-label">내용</div>
-      <textarea class="ct-textarea" name="message" required maxlength="4000" placeholder="문의 내용을 적어 주세요."></textarea>
-    </div>
-    <input class="hp" name="company" tabindex="-1" autocomplete="off" aria-hidden="true">
-    <div class="ct-status" id="ct-status" hidden></div>
-    <button class="ct-submit" type="submit" id="ct-btn">보내기</button>
-    <p class="ct-alt">메일이 더 편하시면 — <a href="mailto:xxjjvxb@gmail.com">xxjjvxb@gmail.com</a></p>
-  </form>
+
+    <!-- 오른쪽 — 폼 -->
+    <form class="ct-card ct-form" id="ct-form">
+      <div class="ct-row">
+        <div class="ct-field">
+          <div class="ct-label">이름 <small>(선택)</small></div>
+          <input class="ct-input" name="name" maxlength="100" autocomplete="name">
+        </div>
+        <div class="ct-field">
+          <div class="ct-label">회신받을 이메일</div>
+          <input class="ct-input" name="email" type="email" required maxlength="200" autocomplete="email" placeholder="you@example.com">
+        </div>
+      </div>
+      <div class="ct-field ct-field--grow">
+        <div class="ct-label">내용</div>
+        <textarea class="ct-textarea" name="message" required maxlength="4000" placeholder="문의 내용을 적어 주세요."></textarea>
+      </div>
+      <input class="hp" name="company" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <div class="ct-foot">
+        <button class="ct-submit" type="submit" id="ct-btn">보내기</button>
+        <div class="ct-status" id="ct-status" hidden></div>
+      </div>
+    </form>
+  </div>
 </main>
 
 <script>
