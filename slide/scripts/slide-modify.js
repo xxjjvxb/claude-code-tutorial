@@ -2,7 +2,9 @@
    - 항상: .photo-slot__img 가 실제 로드되면 슬롯에 .has-img (사진 표시 / placeholder 숨김)
    - 업로드 활성 조건 (둘 중 하나):
        (a) modify-mode ( ?mode=modify 또는 #modify ) — 모든 photo-slot[data-img] 슬롯 활성
-       (b) 이미지 매칭 실패 — 해당 슬롯만 자동 활성 (강사 캡처 작업 편의)
+       (b) 관리자 로그인 시 우하단 '🖼 편집' 토글로 켜고 끔 (기본 OFF — 강의 중 비활성)
+     이미지 매칭 실패 슬롯의 자동 활성도 편집모드가 켜져 있을 때만 동작.
+     연결한 이미지 폴더 핸들은 IndexedDB에 저장해 다음부터 다시 묻지 않음.
      활성 슬롯:
        · 드래그&드롭으로 교체
        · 클릭으로 활성화 → Ctrl+V 로 클립보드 이미지 붙여넣기
@@ -12,11 +14,13 @@
 (function () {
   // ---- 0) 공통 상태 ----
   var isModify = /[?&]mode=modify\b/.test(location.search) || /modify/.test(location.hash);
+  var editEnabled = false;   // 런타임 편집모드 (URL 플래그 또는 관리자 토글로 켜짐)
   var dirHandle = null;
   var supportsFS = typeof window.showDirectoryPicker === 'function';
   var activeSlot = null;
   var bar = null;
   var connectBtn = null;
+  var toggleBtn = null;      // 관리자 우하단 '🖼 편집' 토글
 
   // ---- 1) 이미지 로드 상태 표시 (정상 모드 포함) + 매칭 실패 시 슬롯 자동 활성 ----
   function markLoaded(img) { var s = img.closest('.photo-slot'); if (s) s.classList.add('has-img'); }
@@ -24,8 +28,9 @@
     var s = img.closest('.photo-slot');
     if (!s) return;
     s.classList.remove('has-img');
-    // 매칭 실패한 슬롯은 그 슬롯만 업로드 가능하게 활성화 (modify-mode 아니어도)
-    if (s.hasAttribute('data-img')) registerSlot(s);
+    // 매칭 실패한 슬롯은 그 슬롯만 업로드 가능하게 활성화 — 단, 편집모드가 켜져 있을 때만
+    // (강의 중 이미지가 깨져도 수강생 화면에 UPLOAD 바가 뜨지 않게)
+    if (editEnabled && s.hasAttribute('data-img')) registerSlot(s);
   }
   Array.prototype.forEach.call(document.querySelectorAll('.photo-slot__img'), function (img) {
     // 저장 후 즉시 표시할 경로의 디렉터리를 원본 src에서 기억
@@ -40,12 +45,26 @@
     if (img.complete && img.naturalWidth === 0) markMissing(img);
   });
 
-  // ---- 2) modify-mode면 toolbar + 모든 슬롯 등록 ----
-  if (isModify) {
-    document.body.classList.add('modify-mode');
-    ensureToolbar();
-    Array.prototype.forEach.call(document.querySelectorAll('.photo-slot[data-img]'), registerSlot);
+  // ---- 2) 편집모드 켜기/끄기 ----
+  function setEditMode(on) {
+    editEnabled = on;
+    document.body.classList.toggle('modify-mode', on);
+    if (on) {
+      ensureToolbar();
+      bar.style.display = '';
+      Array.prototype.forEach.call(document.querySelectorAll('.photo-slot[data-img]'), registerSlot);
+      restoreDir(true); // 저장된 폴더 핸들 복원 (토글 클릭 제스처 안이면 권한 재요청까지)
+    } else {
+      if (bar) bar.style.display = 'none';
+      setActive(null);
+    }
+    if (toggleBtn) {
+      toggleBtn.classList.toggle('is-on', on);
+      toggleBtn.textContent = on ? '🖼 편집 ON' : '🖼 편집 OFF';
+    }
   }
+
+  if (isModify) setEditMode(true);
 
   // ---- 3) 툴바 (modify-mode 또는 매칭 실패 슬롯이 생기는 시점에 자동 생성) ----
   function ensureToolbar() {
@@ -63,12 +82,63 @@
     connectBtn.addEventListener('click', function () { connectDir(); });
   }
 
+  function setConnectedUI() {
+    if (!bar) return;
+    bar.classList.add('is-connected');
+    connectBtn.textContent = '폴더 연결됨 ✓';
+  }
+
   function connectDir() {
     if (!supportsFS) return Promise.resolve(null);
     return window.showDirectoryPicker({ id: 'slide-imgs', mode: 'readwrite' }).then(function (h) {
       dirHandle = h;
-      bar.classList.add('is-connected');
-      connectBtn.textContent = '폴더 연결됨 ✓';
+      setConnectedUI();
+      saveHandle(h); // 다음 방문부터 다시 묻지 않게 저장
+      return h;
+    }).catch(function () { return null; });
+  }
+
+  // ---- 3-1) 폴더 핸들 영속화 (IndexedDB) — 매번 폴더 선택창 띄우지 않기 ----
+  function idbOpen() {
+    return new Promise(function (res, rej) {
+      var rq = indexedDB.open('slide-modify', 1);
+      rq.onupgradeneeded = function () { rq.result.createObjectStore('fs'); };
+      rq.onsuccess = function () { res(rq.result); };
+      rq.onerror = function () { rej(rq.error); };
+    });
+  }
+  function saveHandle(h) {
+    idbOpen().then(function (db) {
+      db.transaction('fs', 'readwrite').objectStore('fs').put(h, 'dir');
+    }).catch(function () { /* 저장 실패 — 다음에 다시 선택 */ });
+  }
+  function loadHandle() {
+    return idbOpen().then(function (db) {
+      return new Promise(function (res) {
+        var rq = db.transaction('fs').objectStore('fs').get('dir');
+        rq.onsuccess = function () { res(rq.result || null); };
+        rq.onerror = function () { res(null); };
+      });
+    }).catch(function () { return null; });
+  }
+  /* 저장된 핸들 복원. interactive=true면(사용자 클릭 안) 권한 재요청 프롬프트까지 시도 —
+     크롬에서 "방문할 때마다 허용"을 고르면 이후 완전 무프롬프트. */
+  function restoreDir(interactive) {
+    if (dirHandle) return Promise.resolve(dirHandle);
+    if (!supportsFS) return Promise.resolve(null);
+    return loadHandle().then(function (h) {
+      if (!h) return null;
+      return h.queryPermission({ mode: 'readwrite' }).then(function (st) {
+        if (st === 'granted') return h;
+        if (st === 'prompt' && interactive) {
+          return h.requestPermission({ mode: 'readwrite' }).then(function (st2) {
+            return st2 === 'granted' ? h : null;
+          });
+        }
+        return null;
+      });
+    }).then(function (h) {
+      if (h) { dirHandle = h; setConnectedUI(); }
       return h;
     }).catch(function () { return null; });
   }
@@ -104,7 +174,7 @@
   function handleFile(slot, file) {
     var name = slot.getAttribute('data-img');
     if (supportsFS) {
-      (dirHandle ? Promise.resolve(dirHandle) : connectDir()).then(function (h) {
+      (dirHandle ? Promise.resolve(dirHandle) : restoreDir(true).then(function (h) { return h || connectDir(); })).then(function (h) {
         if (!h) { showInSlot(slot, URL.createObjectURL(file)); downloadAs(file, name); toast(slot, '폴더 미연결 — 다운로드됨'); return; }
         saveToDir(file, name).then(function () {
           showInSlot(slot, (slot.dataset.imgBase || '../imgs/') + name + '?t=' + Date.now());
@@ -143,6 +213,7 @@
 
     slot.setAttribute('data-no-nav', '');  // 슬라이드 넘김 방지
     slot.addEventListener('click', function (e) {
+      if (!editEnabled) return;
       e.preventDefault(); e.stopPropagation();
       setActive(slot);
     });
@@ -155,6 +226,7 @@
     delBtn.setAttribute('aria-label', '이미지 제거');
     delBtn.textContent = '✕';
     delBtn.addEventListener('click', function (e) {
+      if (!editEnabled) return;
       e.preventDefault(); e.stopPropagation();
       var img = slot.querySelector('.photo-slot__img');
       if (img) { img.removeAttribute('src'); }
@@ -165,12 +237,13 @@
     slot.appendChild(delBtn);
 
     ['dragenter', 'dragover'].forEach(function (ev) {
-      slot.addEventListener(ev, function (e) { e.preventDefault(); e.stopPropagation(); slot.classList.add('is-drop'); });
+      slot.addEventListener(ev, function (e) { if (!editEnabled) return; e.preventDefault(); e.stopPropagation(); slot.classList.add('is-drop'); });
     });
     ['dragleave', 'dragend', 'drop'].forEach(function (ev) {
       slot.addEventListener(ev, function () { slot.classList.remove('is-drop'); });
     });
     slot.addEventListener('drop', function (e) {
+      if (!editEnabled) return;
       e.preventDefault(); e.stopPropagation();
       var file = e.dataTransfer && e.dataTransfer.files && e.dataTransfer.files[0];
       if (!file) return;
@@ -181,7 +254,7 @@
 
   // ---- 7) Ctrl+V 페이스트 핸들러 (활성 슬롯 대상) ----
   document.addEventListener('paste', function (e) {
-    if (!activeSlot) return;
+    if (!editEnabled || !activeSlot) return;
     var items = e.clipboardData && e.clipboardData.items;
     if (!items) return;
     for (var i = 0; i < items.length; i++) {
@@ -199,4 +272,56 @@
     // 이미지가 아닌 페이스트는 토스트로 안내
     toast(activeSlot, '이미지가 아님 — 캡처 후 다시 시도');
   });
+
+  // ---- 8) 관리자 독 (우하단) — 이미지 편집모드 토글 + 관리 페이지 링크 ----
+  // 열람 게이트의 sb-access-token 쿠키 JWT 이메일이 ADMIN_EMAIL과 일치할 때만 표시.
+  function getCookieToken() {
+    var m = /(?:^|;\s*)sb-access-token=([^;]+)/.exec(document.cookie || '');
+    return m ? decodeURIComponent(m[1]) : null;
+  }
+  function jwtPayload(token) {
+    try {
+      var part = token.split('.')[1].replace(/-/g, '+').replace(/_/g, '/');
+      return JSON.parse(decodeURIComponent(escape(atob(part))));
+    } catch (e) { return null; }
+  }
+
+  import('/auth-config.js').then(function (cfg) {
+    if (!cfg.GATE_ENABLED || !cfg.ADMIN_EMAIL) return;
+    var tk = getCookieToken();
+    var p = tk && jwtPayload(tk);
+    if (!p || !p.email || p.email.toLowerCase() !== cfg.ADMIN_EMAIL.toLowerCase()) return;
+
+    var st = document.createElement('style');
+    st.textContent = [
+      '.adm-dock{position:fixed;right:0.6rem;bottom:0.2rem;z-index:899;display:flex;gap:0.3rem;font-family:"Pretendard","Malgun Gothic",system-ui,sans-serif}',
+      '.adm-dock a,.adm-dock button{appearance:none;cursor:pointer;display:inline-flex;align-items:center;gap:0.25rem;border:1.5px solid rgba(38,34,32,0.25);background:rgba(255,255,255,0.85);color:#797067;font-size:0.62rem;font-weight:700;padding:0.18rem 0.5rem;border-radius:999px;text-decoration:none;opacity:0.45;transition:opacity .15s}',
+      '.adm-dock a:hover,.adm-dock button:hover{opacity:1}',
+      '.adm-dock button.is-on{opacity:1;border-color:#fe6e00;background:#fff7ed;color:#cc5a14}',
+      '@media print{.adm-dock{display:none}}'
+    ].join('\n');
+    document.head.appendChild(st);
+
+    var dock = document.createElement('div');
+    dock.className = 'adm-dock';
+    dock.setAttribute('data-no-nav', '');
+
+    toggleBtn = document.createElement('button');
+    toggleBtn.type = 'button';
+    toggleBtn.title = '이미지 편집모드 켜기/끄기 — 강의 중엔 OFF';
+    toggleBtn.textContent = editEnabled ? '🖼 편집 ON' : '🖼 편집 OFF';
+    if (editEnabled) toggleBtn.classList.add('is-on');
+    toggleBtn.addEventListener('click', function () { setEditMode(!editEnabled); });
+
+    var link = document.createElement('a');
+    link.href = '/admin.html';
+    link.target = '_blank';
+    link.rel = 'noopener';
+    link.textContent = '⚙ 관리';
+    link.title = '관리 페이지 (새 탭)';
+
+    dock.appendChild(toggleBtn);
+    dock.appendChild(link);
+    document.body.appendChild(dock);
+  }).catch(function () { /* auth-config 없음 — 관리자 독 미표시 */ });
 })();
