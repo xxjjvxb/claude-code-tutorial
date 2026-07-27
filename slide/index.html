@@ -29,11 +29,6 @@
     .course-card__meta { font-family: var(--font-mono); font-size: 0.66rem; font-weight: 700; color: var(--color-primary-strong); }
     .course-card__arrow { font-size: 1.3rem; color: var(--color-primary-strong); line-height: 1; }
 
-    .cl-list { flex: 1; min-height: 0; overflow-y: auto; display: flex; flex-direction: column; padding-right: 0.3rem; }
-    .cl-item { display: flex; gap: 0.55rem; align-items: baseline; padding: 0.3rem 0; border-bottom: 1px dashed var(--color-outline); }
-    .cl-item:last-child { border-bottom: 0; }
-    .cl-date { font-family: var(--font-mono); font-size: 0.56rem; font-weight: 700; color: var(--color-on-surface-muted); flex-shrink: 0; }
-    .cl-msg { font-size: 0.68rem; line-height: 1.45; color: var(--color-on-surface); min-width: 0; }
   </style>
 </head>
 <body data-index-root="true">
@@ -69,7 +64,7 @@
     </a>
 
     <div style="display: flex; flex-direction: column; gap: 0.8rem; min-height: 0;">
-      <a class="course-card course-card--accent" href="instructor/index.html" style="flex: 0 0 auto; gap: 0.3rem;">
+      <a class="course-card course-card--accent" href="instructor/index.html" style="flex: 1 1 auto; gap: 0.3rem;">
         <div class="course-card__eyebrow">INSTRUCTOR · 강사 소개</div>
         <div class="course-card__cta">
           <h2 class="course-card__title" style="font-size: 1.05rem;">이일규 <span style="font-size: 0.72rem; font-weight: 600; color: var(--color-on-surface-muted);">Ilkyu Lee</span></h2>
@@ -77,15 +72,15 @@
         </div>
         <p class="course-card__desc">이 과정을 만들고 진행합니다 — 소개·이력 보기</p>
       </a>
-      <div class="course-card" style="cursor: default; flex: 1 1 0; min-height: 12rem;">
+      <a class="course-card" href="changelog/index.html" style="flex: 1 1 auto;">
         <div class="course-card__eyebrow">CHANGELOG · 강의노트 업데이트</div>
-        <div class="cl-list" id="cl-list"><p class="course-card__desc">불러오는 중…</p></div>
-        <a class="course-card__cta" href="changelog/index.html" style="margin-top: 0.4rem; text-decoration: none;">
-          <span class="course-card__meta" id="cl-foot">전체 내역 보기</span>
+        <p class="course-card__desc">2026-05 개설부터 지금까지 — 언제 무엇이 좋아졌는지 전체 내역을 볼 수 있습니다.</p>
+        <div class="course-card__cta" style="margin-top: auto;">
+          <span class="course-card__meta">업데이트 내역 보기</span>
           <span class="course-card__arrow">→</span>
-        </a>
-      </div>
-      <a class="course-card" href="contact/index.html" style="flex: 0 0 auto;">
+        </div>
+      </a>
+      <a class="course-card" href="contact/index.html" style="flex: 1 1 auto;">
         <div class="course-card__eyebrow">CONTACT · 문의하기</div>
         <p class="course-card__desc"><strong>수업 관련</strong> — 화면 오른쪽 패널에서 💬 질문 · 🚨 신고 · 📤 제출 (로그인 후 사용).</p>
         <p class="course-card__desc"><strong>강의·출강 문의</strong> — 로그인 없이 남기면 강사에게 바로 전달됩니다.</p>
@@ -98,22 +93,6 @@
   </div>
 </main>
 
-<script>
-  (function () {
-    var list = document.getElementById('cl-list');
-    var foot = document.getElementById('cl-foot');
-    fetch('changelog.json').then(function (r) { return r.json(); }).then(function (rows) {
-      if (!rows || !rows.length) return;
-      var esc = function (s) { return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;'); };
-      list.innerHTML = rows.slice(0, 5).map(function (e) {
-        return '<div class="cl-item"><span class="cl-date">' + esc(e.d) + '</span><span class="cl-msg">' + esc(e.m) + '</span></div>';
-      }).join('');
-      foot.textContent = '최근 5건만 표시 · 전체 ' + rows.length + '건 보기';
-    }).catch(function () {
-      list.innerHTML = '<p class="course-card__desc">업데이트 내역을 불러오지 못했습니다.</p>';
-    });
-  })();
-</script>
 <script src="scripts/index-nav.js"></script>
 <script defer src="/slide/scripts/feedback.js"></script>
 <script defer src="/slide/scripts/analytics.js"></script>
