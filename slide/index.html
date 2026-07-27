@@ -105,10 +105,10 @@
     fetch('changelog.json').then(function (r) { return r.json(); }).then(function (rows) {
       if (!rows || !rows.length) return;
       var esc = function (s) { return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;'); };
-      list.innerHTML = rows.map(function (e) {
+      list.innerHTML = rows.slice(0, 5).map(function (e) {
         return '<div class="cl-item"><span class="cl-date">' + esc(e.d) + '</span><span class="cl-msg">' + esc(e.m) + '</span></div>';
       }).join('');
-      foot.textContent = '전체 ' + rows.length + '건 보기 · ' + rows[rows.length - 1].d + ' 개설';
+      foot.textContent = '최근 5건만 표시 · 전체 ' + rows.length + '건 보기';
     }).catch(function () {
       list.innerHTML = '<p class="course-card__desc">업데이트 내역을 불러오지 못했습니다.</p>';
     });
