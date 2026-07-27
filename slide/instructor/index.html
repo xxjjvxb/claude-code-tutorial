@@ -25,18 +25,9 @@
     .inst-tag { font-family: var(--font-mono); font-size: 0.6rem; letter-spacing: 0.03em; color: var(--color-on-surface-muted); border: 1.5px solid var(--color-outline); border-radius: var(--rounded-sm); padding: 0.14rem 0.45rem; }
     .inst-mail { color: var(--color-primary-strong); font-weight: 700; text-decoration: none; }
     .inst-mail:hover { text-decoration: underline; }
-    .cv { display: flex; flex-direction: column; margin: 0; padding: 0; list-style: none; overflow-y: auto; min-height: 0; }
-    .cv li { display: flex; gap: 0.7rem; align-items: baseline; padding: 0.28rem 0; border-bottom: 1px dashed var(--color-outline); }
-    .cv li:last-child { border-bottom: 0; }
-    .cv-when { font-family: var(--font-mono); font-size: 0.62rem; font-weight: 700; color: var(--color-primary-strong); flex-shrink: 0; min-width: 4.6rem; }
-    .cv-what { font-size: 0.74rem; line-height: 1.5; color: var(--color-on-surface); min-width: 0; }
-    .cv-what small { display: block; font-size: 0.66rem; color: var(--color-on-surface-muted); margin-top: 0.1rem; }
-    .cv li.cv--todo { opacity: 0.55; }
-    .cv li.cv--todo .cv-what { font-style: italic; color: var(--color-on-surface-muted); }
-    .stat-row { display: flex; gap: 0.8rem; }
-    .stat { flex: 1; border: 1.5px solid var(--color-outline); border-radius: var(--rounded-sm); padding: 0.5rem 0.7rem; }
-    .stat b { display: block; font-size: 1.05rem; letter-spacing: -0.02em; }
-    .stat span { font-size: 0.62rem; color: var(--color-on-surface-muted); }
+    .inst-list { margin: 0; padding: 0 0 0 1.1rem; list-style: disc; }
+    .inst-list li { font-size: 0.78rem; line-height: 1.65; color: var(--color-on-surface); padding: 0.12rem 0; }
+    .inst-list li::marker { color: var(--color-primary-strong); }
     .back-link { font-family: var(--font-mono); font-size: 0.68rem; font-weight: 700; color: var(--color-primary-strong); text-decoration: none; }
     .back-link:hover { text-decoration: underline; }
   </style>
@@ -61,50 +52,35 @@
         <h1 class="inst-name">이일규 <small>Ilkyu Lee</small></h1>
         <p class="inst-desc">AI에게 일을 시켜 진짜 결과물을 만드는 법을 가르칩니다.</p>
         <div class="inst-tags">
-          <span class="inst-tag">바이브코딩</span>
-          <span class="inst-tag">Claude Code</span>
-          <span class="inst-tag">AI 자동화</span>
-          <span class="inst-tag">실습 중심</span>
+          <span class="inst-tag">AI/ML</span>
+          <span class="inst-tag">데이터</span>
+          <span class="inst-tag">백엔드</span>
+          <span class="inst-tag">창업</span>
         </div>
         <p class="inst-desc inst-desc--muted" style="margin-top: auto;">강의·출강 문의 — <a class="inst-mail" href="mailto:xxjjvxb@gmail.com">xxjjvxb@gmail.com</a></p>
       </div>
     </div>
 
-    <!-- 오른쪽 — 소개 · 이력 -->
+    <!-- 오른쪽 — 현재 · 이력 -->
     <div class="inst-col">
       <div class="inst-card">
-        <div class="inst-eyebrow">ABOUT · 소개</div>
-        <p class="inst-desc">개발자가 아닌 사람도 AI에게 일을 시켜 <strong>배포까지 되는 진짜 결과물</strong>을 만들 수 있다 — 이 과정은 그 믿음을 실습으로 증명하는 커리큘럼입니다. 홈페이지, API 연동, 데이터베이스, 로그인, 데스크톱 프로그램까지 챕터마다 결과물 하나씩을 완성합니다.</p>
-        <p class="inst-desc">이 강의노트의 슬라이드·실습·웹사이트·로그인 시스템·실시간 질문 패널 전부를 <strong>Claude Code로 직접 만들었습니다</strong> — 여러분이 앞으로 배울 방식 그대로. 오른쪽 아래 업데이트 내역이 그 작업 기록입니다.</p>
+        <div class="inst-eyebrow">NOW · 지금 하는 일</div>
+        <ul class="inst-list">
+          <li>Alpha RPA 대표 — 투자 매매기록 분석 플랫폼 <strong>alphanote.io</strong> 기획·개발·운영</li>
+          <li>「실습으로 배우는 바이브코딩 with 클로드코드」 과정 설계·강의</li>
+          <li>AI 모델링 · 금융 데이터 파이프라인 · 백엔드/서비스 개발 전반</li>
+        </ul>
       </div>
 
       <div class="inst-card" style="flex: 1;">
         <div class="inst-eyebrow">CV · 이력</div>
-        <ul class="cv">
-          <li>
-            <span class="cv-when">현재</span>
-            <span class="cv-what">「실습으로 배우는 바이브코딩 with 클로드코드」 과정 설계·강의
-              <small>비개발자 대상 AI 실습 교육 — 9챕터 + 부록, 결과물 중심 커리큘럼</small></span>
-          </li>
-          <li>
-            <span class="cv-when">2026</span>
-            <span class="cv-what">본 과정 강의노트·수강 시스템 전체를 Claude Code로 제작
-              <small>슬라이드 435장 · 열람 승인 게이트 · 실시간 질문 패널 · 자동 배포 파이프라인</small></span>
-          </li>
-          <li class="cv--todo">
-            <span class="cv-when">&nbsp;</span>
-            <span class="cv-what">— 이전 경력·프로젝트는 곧 채워집니다 —</span>
-          </li>
+        <ul class="inst-list">
+          <li>서울대학교 컴퓨터공학 석사 — 최적화·금융공학 연구실</li>
+          <li>(전) AIRI 인공지능연구원 — 금융 AI·컴퓨터 비전·멀티모달 연구</li>
+          <li>(전) BrainSoft — 한국어 음성 인식 AI 리서처</li>
+          <li>정부 R&amp;D 과제 수행 — AI 트레이딩 코칭, 커리어 빅데이터 매칭 등 총 6억+ 유치</li>
+          <li>KOI 동메달 · ACM-ICPC 서울 리저널 · Meta Hacker Cup 등 알고리즘 대회 입상</li>
         </ul>
-      </div>
-
-      <div class="inst-card">
-        <div class="inst-eyebrow">THIS COURSE · 숫자로 보는 과정</div>
-        <div class="stat-row">
-          <div class="stat"><b>9 + 1</b><span>챕터 + 부록</span></div>
-          <div class="stat"><b>435</b><span>슬라이드</span></div>
-          <div class="stat"><b>100%</b><span>Claude Code로 제작</span></div>
-        </div>
       </div>
     </div>
   </div>
