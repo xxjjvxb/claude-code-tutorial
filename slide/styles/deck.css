@@ -1534,15 +1534,16 @@ body.deck-no-chrome .deck-progress { opacity: 0; pointer-events: none; }
 /* =============================
    Stage grid
    ============================= */
-.stage-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 0.7rem; }
+.stage-grid { display: grid; grid-template-columns: 1fr; gap: 0.55rem; }
 .stage-card {
   background: var(--color-surface-elevated);
   border: 2px solid var(--color-outline-strong);
   border-radius: var(--rounded-md);
-  padding: 0.9rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.4rem;
+  padding: 0.6rem 1rem;
+  display: grid;
+  grid-template-columns: 6.8rem 12.5rem 1fr;
+  align-items: center;
+  gap: 0.9rem;
 }
 .stage-card--current { background: var(--color-primary-fill); color: var(--color-on-primary); border-color: transparent; }
 .stage-card__day { font-size: 0.72rem; letter-spacing: 0.05em; font-weight: 700; opacity: 0.7; text-transform: uppercase; }

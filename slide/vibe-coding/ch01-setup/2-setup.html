@@ -35,7 +35,7 @@
   <section class="slide is-section is-standard">
     <div class="section-eyebrow">PART 2 · SETUP</div>
     <h2 class="section-title">0부터 Claude Code <span class="accent">셋업</span></h2>
-    <p class="section-caption"><span class="os-win is-inline">Orca 설치 → Git·GitHub CLI 설치 → Claude Code 설치(PowerShell 한 줄)</span><span class="os-mac is-inline">Orca 설치 → Git·GitHub CLI 설치 → Claude Code 설치(터미널 한 줄)</span> → 교육 팀 계정 초대 → 첫 실행. Node.js는 나중에 프론트엔드 만들 때만.</p>
+    <p class="section-caption"><span class="os-win is-inline">Orca 설치 → Git·GitHub CLI 설치 → Claude Code 설치(PowerShell 한 줄)</span><span class="os-mac is-inline">Orca 설치 → Git·GitHub CLI 설치 → Claude Code 설치(터미널 한 줄)</span> → 교육 팀 계정 초대 → 첫 실행. Node.js까지 깔면 배포 준비 끝.</p>
     <div class="section-meta">
       <div class="section-meta__item"><span class="section-meta__num">8</span><span>핵심 단계</span></div>
     </div>
@@ -57,7 +57,7 @@
         <div class="setup-step"><div class="setup-step__num">07</div><h3 class="setup-step__title">claude → "안녕"</h3><p class="setup-step__desc">첫 응답 확인</p></div>
         <div class="setup-step"><div class="setup-step__num">08</div><h3 class="setup-step__title">Orca에서 실행</h3><p class="setup-step__desc">내장 터미널에서 claude</p></div>
       </div>
-      <p class="slide__note">선택: <strong>Node.js</strong>는 나중에 프론트엔드 만들 때만, <strong>트러블슈팅 5가지</strong>는 막혔을 때만 — 별도 슬라이드로 다룹니다.</p>
+      <p class="slide__note"><strong>Node.js</strong>는 2장 홈페이지 배포까지 가려면 필수 — 뒤 슬라이드에서 함께 설치. <strong>트러블슈팅 5가지</strong>는 막혔을 때만.</p>
     </div>
   </section>
 
@@ -111,11 +111,7 @@
           <p class="content-card__body">완전 무료(MIT). 나중엔 <strong>에이전트 여러 개를 나란히</strong> 돌리는 것도 — 9장쯤에 탐나게 됩니다.</p>
         </div>
       </div>
-      <div class="install-detail__verify">
-        <span class="install-detail__verify-label">확인</span>
-        Orca를 실행해 첫 화면이 뜨면 성공 — 폴더는 아직 안 열어도 됩니다 (STEP 08에서).
-      </div>
-      <p class="slide__note">실행이 안 되면 — 완전히 종료 후 다시 실행, 그래도 안 되면 onorca.dev에서 재설치 → TA 호출.</p>
+      <p class="slide__note">실행이 안 되면 — 완전히 종료 후 다시 실행, 그래도 안 되면 onorca.dev에서 재설치 → 오른쪽 질문 버튼에 올려주세요.</p>
     </div>
   </section>
 
@@ -264,7 +260,7 @@
           <span class="code-block__dot" style="background:#fb2c36"></span><span class="code-block__dot" style="background:#edb200"></span><span class="code-block__dot" style="background:#00c758"></span>
           <span class="code-block__title"><span class="os-win">PowerShell</span><span class="os-mac">Terminal (zsh)</span> — 새 창에서</span>
         </div>
-        <div class="code-block__body"><span class="code-block__line"><span class="code-block__prompt" data-auto-os></span> <span class="code-block__cmd">claude --version</span></span><span class="code-block__line"><span class="code-block__hi">1.x.x</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__cmt"># 위처럼 버전 숫자가 나오면 PATH 통과 ✓</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__cmt"># "<span class="os-win">인식되지 않습니다</span><span class="os-mac">command not found</span>" 가 뜨면:</span></span><span class="code-block__line"><span class="code-block__cmt">#   1. <span class="os-win">PowerShell</span><span class="os-mac">터미널</span>을 완전히 닫고 새로 열기 (PATH 갱신)</span></span><span class="code-block__line"><span class="code-block__cmt">#   2. <span class="os-win">시작 메뉴에서 "PowerShell" 다시 검색해 실행</span><span class="os-mac">Spotlight(⌘+Space)에서 "Terminal" 다시 실행</span></span></span><span class="code-block__line"><span class="code-block__cmt">#   3. 그래도 안 되면 → TA 호출</span></span></div>
+        <div class="code-block__body"><span class="code-block__line"><span class="code-block__prompt" data-auto-os></span> <span class="code-block__cmd">claude --version</span></span><span class="code-block__line"><span class="code-block__hi">1.x.x</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__cmt"># 위처럼 버전 숫자가 나오면 PATH 통과 ✓</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__cmt"># "<span class="os-win">인식되지 않습니다</span><span class="os-mac">command not found</span>" 가 뜨면:</span></span><span class="code-block__line"><span class="code-block__cmt">#   1. <span class="os-win">PowerShell</span><span class="os-mac">터미널</span>을 완전히 닫고 새로 열기 (PATH 갱신)</span></span><span class="code-block__line"><span class="code-block__cmt">#   2. <span class="os-win">시작 메뉴에서 "PowerShell" 다시 검색해 실행</span><span class="os-mac">Spotlight(⌘+Space)에서 "Terminal" 다시 실행</span></span></span><span class="code-block__line"><span class="code-block__cmt">#   3. 그래도 안 되면 → 오른쪽 질문 버튼에 올리기</span></span></div>
       </div>
       <figure class="photo-slot photo-slot--landscape" data-img="vc-ch01-setup-install-success.png">
         <img class="photo-slot__img" src="../../imgs/vc-ch01-setup-install-success.png" alt="claude --version 통과 화면">
@@ -384,37 +380,41 @@
             <rect x="0" y="0" width="460" height="280" rx="12" fill="#1e1e1e"/>
             <rect x="0" y="0" width="460" height="28" fill="#252526"/>
             <text x="14" y="18" font-family="ui-sans-serif, system-ui" font-size="11" fill="rgba(255,255,255,0.5)">Orca — my-intro</text>
-            <rect x="0" y="28" width="140" height="252" fill="#252526"/>
-            <text x="14" y="54" font-family="ui-monospace, monospace" font-size="10" fill="rgba(255,255,255,0.45)">EXPLORER</text>
-            <text x="14" y="78" font-family="ui-monospace, monospace" font-size="11" fill="rgba(255,255,255,0.85)">▾ DAY1</text>
-            <text x="28" y="98" font-family="ui-monospace, monospace" font-size="11" fill="#fe6e00">app.html</text>
-            <text x="28" y="116" font-family="ui-monospace, monospace" font-size="11" fill="rgba(255,255,255,0.7)">style.css</text>
-            <rect x="140" y="28" width="320" height="140" fill="#1e1e1e"/>
-            <text x="158" y="56" font-family="ui-monospace, monospace" font-size="11" fill="#888">1</text>
-            <text x="178" y="56" font-family="ui-monospace, monospace" font-size="11" fill="#569cd6">&lt;!doctype html&gt;</text>
-            <rect x="140" y="168" width="320" height="112" fill="#0d0d0d"/>
-            <text x="158" y="188" font-family="ui-monospace, monospace" font-size="10" fill="rgba(255,255,255,0.4)">TERMINAL — PowerShell</text>
-            <text x="158" y="214" font-family="ui-monospace, monospace" font-size="11" fill="#fe6e00">PS&gt; claude</text>
-            <text x="158" y="232" font-family="ui-monospace, monospace" font-size="10" fill="rgba(255,255,255,0.55)">  ✓ Claude Code ready.</text>
-            <text x="158" y="252" font-family="ui-monospace, monospace" font-size="11" fill="white">&gt; 자기소개 페이지 만들어줘</text>
+            <rect x="0" y="28" width="118" height="252" fill="#252526"/>
+            <text x="14" y="54" font-family="ui-monospace, monospace" font-size="10" fill="rgba(255,255,255,0.45)">PROJECTS</text>
+            <text x="14" y="78" font-family="ui-monospace, monospace" font-size="11" fill="#fe6e00">● my-intro</text>
+            <text x="14" y="98" font-family="ui-monospace, monospace" font-size="11" fill="rgba(255,255,255,0.55)">○ demo</text>
+            <rect x="118" y="28" width="218" height="252" fill="#0d0d0d"/>
+            <text x="132" y="54" font-family="ui-monospace, monospace" font-size="10" fill="rgba(255,255,255,0.4)">TERMINAL — PowerShell</text>
+            <text x="132" y="84" font-family="ui-monospace, monospace" font-size="11" fill="#fe6e00">PS&gt; claude</text>
+            <text x="132" y="104" font-family="ui-monospace, monospace" font-size="10" fill="rgba(255,255,255,0.55)">  ✓ Claude Code ready.</text>
+            <text x="132" y="134" font-family="ui-monospace, monospace" font-size="11" fill="white">&gt; 자기소개 페이지</text>
+            <text x="132" y="152" font-family="ui-monospace, monospace" font-size="11" fill="white">  만들어줘</text>
+            <rect x="336" y="28" width="124" height="252" fill="#252526"/>
+            <text x="350" y="54" font-family="ui-monospace, monospace" font-size="10" fill="rgba(255,255,255,0.45)">FILES</text>
+            <text x="350" y="78" font-family="ui-monospace, monospace" font-size="11" fill="rgba(255,255,255,0.85)">▾ my-intro</text>
+            <text x="362" y="98" font-family="ui-monospace, monospace" font-size="11" fill="#fe6e00">app.html</text>
+            <text x="362" y="116" font-family="ui-monospace, monospace" font-size="11" fill="rgba(255,255,255,0.7)">style.css</text>
           </svg>
           <svg class="os-mac is-block" viewBox="0 0 460 280" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" style="width:100%;height:auto;border-radius:12px;box-shadow:0 12px 32px rgba(0,0,0,0.18)">
             <rect x="0" y="0" width="460" height="280" rx="12" fill="#1e1e1e"/>
             <rect x="0" y="0" width="460" height="28" fill="#252526"/>
             <text x="14" y="18" font-family="ui-sans-serif, system-ui" font-size="11" fill="rgba(255,255,255,0.5)">Orca — my-intro</text>
-            <rect x="0" y="28" width="140" height="252" fill="#252526"/>
-            <text x="14" y="54" font-family="ui-monospace, monospace" font-size="10" fill="rgba(255,255,255,0.45)">EXPLORER</text>
-            <text x="14" y="78" font-family="ui-monospace, monospace" font-size="11" fill="rgba(255,255,255,0.85)">▾ DAY1</text>
-            <text x="28" y="98" font-family="ui-monospace, monospace" font-size="11" fill="#fe6e00">app.html</text>
-            <text x="28" y="116" font-family="ui-monospace, monospace" font-size="11" fill="rgba(255,255,255,0.7)">style.css</text>
-            <rect x="140" y="28" width="320" height="140" fill="#1e1e1e"/>
-            <text x="158" y="56" font-family="ui-monospace, monospace" font-size="11" fill="#888">1</text>
-            <text x="178" y="56" font-family="ui-monospace, monospace" font-size="11" fill="#569cd6">&lt;!doctype html&gt;</text>
-            <rect x="140" y="168" width="320" height="112" fill="#0d0d0d"/>
-            <text x="158" y="188" font-family="ui-monospace, monospace" font-size="10" fill="rgba(255,255,255,0.4)">TERMINAL — zsh</text>
-            <text x="158" y="214" font-family="ui-monospace, monospace" font-size="11" fill="#fe6e00">$ claude</text>
-            <text x="158" y="232" font-family="ui-monospace, monospace" font-size="10" fill="rgba(255,255,255,0.55)">  ✓ Claude Code ready.</text>
-            <text x="158" y="252" font-family="ui-monospace, monospace" font-size="11" fill="white">&gt; 자기소개 페이지 만들어줘</text>
+            <rect x="0" y="28" width="118" height="252" fill="#252526"/>
+            <text x="14" y="54" font-family="ui-monospace, monospace" font-size="10" fill="rgba(255,255,255,0.45)">PROJECTS</text>
+            <text x="14" y="78" font-family="ui-monospace, monospace" font-size="11" fill="#fe6e00">● my-intro</text>
+            <text x="14" y="98" font-family="ui-monospace, monospace" font-size="11" fill="rgba(255,255,255,0.55)">○ demo</text>
+            <rect x="118" y="28" width="218" height="252" fill="#0d0d0d"/>
+            <text x="132" y="54" font-family="ui-monospace, monospace" font-size="10" fill="rgba(255,255,255,0.4)">TERMINAL — zsh</text>
+            <text x="132" y="84" font-family="ui-monospace, monospace" font-size="11" fill="#fe6e00">$ claude</text>
+            <text x="132" y="104" font-family="ui-monospace, monospace" font-size="10" fill="rgba(255,255,255,0.55)">  ✓ Claude Code ready.</text>
+            <text x="132" y="134" font-family="ui-monospace, monospace" font-size="11" fill="white">&gt; 자기소개 페이지</text>
+            <text x="132" y="152" font-family="ui-monospace, monospace" font-size="11" fill="white">  만들어줘</text>
+            <rect x="336" y="28" width="124" height="252" fill="#252526"/>
+            <text x="350" y="54" font-family="ui-monospace, monospace" font-size="10" fill="rgba(255,255,255,0.45)">FILES</text>
+            <text x="350" y="78" font-family="ui-monospace, monospace" font-size="11" fill="rgba(255,255,255,0.85)">▾ my-intro</text>
+            <text x="362" y="98" font-family="ui-monospace, monospace" font-size="11" fill="#fe6e00">app.html</text>
+            <text x="362" y="116" font-family="ui-monospace, monospace" font-size="11" fill="rgba(255,255,255,0.7)">style.css</text>
           </svg>
         </div>
       </div>
@@ -424,8 +424,8 @@
 
   <!-- 12 · (선택) Node.js -->
   <section class="slide is-standard">
-    <div class="slide__eyebrow">선택 A · Node.js · 나중에 프론트엔드 만들 때</div>
-    <h2 class="slide__title">Node.js — <span class="accent">필요할 때 설치</span></h2>
+    <div class="slide__eyebrow">필수 · Node.js · 홈페이지 배포 준비</div>
+    <h2 class="slide__title">Node.js — <span class="accent">지금 설치해 둡니다</span></h2>
     <div class="slide__body">
       <div class="install-detail os-win is-block">
         <div class="install-detail__header">
@@ -451,13 +451,13 @@
           <li>Homebrew 자체 설치는 <code>/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"</code></li>
         </ol>
       </div>
-      <p class="slide__note"><strong>지금 Claude Code 사용에는 필요 없습니다.</strong> Node.js는 나중에 프론트엔드(React·Vue) 또는 npm 패키지 도구 만들 때만.</p>
+      <p class="slide__note"><strong>왜 필요?</strong> 홈페이지를 만들고 배포할 때 쓰는 웹 도구들(로컬 미리보기 서버·배포 도구)이 Node.js 위에서 돌아갑니다 — 2장 배포까지 가려면 필수.</p>
     </div>
   </section>
 
   <!-- 13 · 자주 막히는 5가지 -->
   <section class="slide is-standard">
-    <div class="slide__eyebrow">선택 B · TROUBLESHOOTING · 자주 막히는 5가지</div>
+    <div class="slide__eyebrow">선택 · TROUBLESHOOTING · 자주 막히는 5가지</div>
     <h2 class="slide__title">막혔을 때 <span class="accent">먼저 시도할</span> 것들</h2>
     <div class="slide__body">
       <div class="trouble-list trouble-list--compact">
@@ -495,30 +495,30 @@
     </div>
   </section>
 
-  <!-- 14 · 쉬는 시간 안내 -->
+  <!-- 14 · 준비 완료 체크 -->
   <section class="slide is-statement">
     <div class="statement-grid">
       <div class="statement-text">
-        <div class="slide__eyebrow">쉬는 시간 + 보충</div>
-        <h2 class="statement__lead">못 끝낸 분은<br><span class="accent">TA가 케어</span>합니다</h2>
-        <p class="statement__caption">8단계 핵심을 다 통과한 분은 푹 쉬세요. 아직 막힌 단계가 있으면 쉬는 시간에 TA와 1:1로 끝냅니다 — 다음 덱(터미널) 전에 모두 같은 출발점.</p>
+        <div class="slide__eyebrow">CHECKPOINT · 전원 준비</div>
+        <h2 class="statement__lead">먼저 끝난 분들 —<br><span class="accent">AI로 코딩할 준비 완료</span>!</h2>
+        <p class="statement__caption">8단계를 다 통과했다면 이제는 AI로 코딩을 할 준비가 되었습니다. 아직 막힌 단계가 있어도 괜찮습니다 — 전원 준비되면 본격적으로 AI를 다룹니다.</p>
         <div class="statement__points">
-          <div class="statement__point"><span class="statement__point-num">통과</span><span>8단계 다 됐으면 잠시 쉬고 다음 덱 — 터미널로</span></div>
-          <div class="statement__point"><span class="statement__point-num">막힘</span><span>손드세요. TA가 1:1로 남은 단계 같이 정리</span></div>
-          <div class="statement__point"><span class="statement__point-num">애매</span><span>지금 어디까지 됐는지만 알려주세요. 강사·TA가 우선순위 정함</span></div>
+          <div class="statement__point"><span class="statement__point-num">통과</span><span>8단계 다 됐으면 준비 완료 — 다음 덱(터미널)으로</span></div>
+          <div class="statement__point"><span class="statement__point-num">막힘</span><span>오른쪽 질문 버튼에 올려주세요 — 남은 단계 같이 정리</span></div>
+          <div class="statement__point"><span class="statement__point-num">다음</span><span>전원 준비되면 — 본격적으로 AI에게 일을 시킵니다</span></div>
         </div>
       </div>
       <div class="statement-visual">
         <svg viewBox="0 0 460 320" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
           <rect x="0" y="0" width="460" height="320" rx="16" fill="#fff5ec"/>
-          <text x="230" y="80" font-family="ui-sans-serif, system-ui" font-size="14" fill="#797067" letter-spacing="0.1em" font-weight="700" text-anchor="middle">쉬는 시간</text>
+          <text x="230" y="80" font-family="ui-sans-serif, system-ui" font-size="14" fill="#797067" letter-spacing="0.1em" font-weight="700" text-anchor="middle">CHECKPOINT</text>
           <g transform="translate(130, 130)">
             <rect x="0" y="0" width="200" height="80" rx="12" fill="white" stroke="#fe6e00" stroke-width="2"/>
-            <text x="100" y="34" font-family="ui-sans-serif, system-ui" font-size="14" font-weight="700" fill="#fe6e00" text-anchor="middle">막힘 → TA 호출</text>
-            <text x="100" y="58" font-family="ui-sans-serif, system-ui" font-size="12" fill="#797067" text-anchor="middle">1:1 단계 정리</text>
+            <text x="100" y="34" font-family="ui-sans-serif, system-ui" font-size="14" font-weight="700" fill="#fe6e00" text-anchor="middle">준비 완료!</text>
+            <text x="100" y="58" font-family="ui-sans-serif, system-ui" font-size="12" fill="#797067" text-anchor="middle">이제 AI로 코딩 시작</text>
           </g>
-          <text x="230" y="248" font-family="ui-sans-serif, system-ui" font-size="14" fill="#797067" text-anchor="middle">잠시 쉬고 이어서</text>
-          <text x="230" y="272" font-family="ui-sans-serif, system-ui" font-size="18" fill="#fe6e00" font-weight="700" text-anchor="middle">전원 같은 출발점</text>
+          <text x="230" y="248" font-family="ui-sans-serif, system-ui" font-size="14" fill="#797067" text-anchor="middle">전원 준비되면</text>
+          <text x="230" y="272" font-family="ui-sans-serif, system-ui" font-size="18" fill="#fe6e00" font-weight="700" text-anchor="middle">본격적으로 AI를 다룹니다</text>
         </svg>
       </div>
     </div>
