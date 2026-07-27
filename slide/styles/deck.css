@@ -710,7 +710,7 @@ body.deck-no-chrome .deck-progress { opacity: 0; pointer-events: none; }
   flex-direction: column;
   box-shadow: var(--shadow-raised);
   border: 2px solid rgba(255,255,255,0.08);
-  overflow: auto;
+  overflow: hidden;   /* 스크롤바 금지 — 넘치면 슬라이드 내용을 줄인다 */
   max-height: 100%;
 }
 .code-block__header {
@@ -737,8 +737,8 @@ body.deck-no-chrome .deck-progress { opacity: 0; pointer-events: none; }
 .code-block__line {
   display: block;
   min-height: 1.55em;
-  white-space: pre;
-  overflow-x: auto;
+  white-space: pre-wrap;      /* 긴 명령은 스크롤바 대신 줄바꿈 */
+  overflow-wrap: break-word;
 }
 .code-block__line--blank { min-height: 0.7em; }
 .code-block__prompt { color: var(--color-primary); font-weight: 700; }
@@ -972,6 +972,7 @@ body.deck-no-chrome .deck-progress { opacity: 0; pointer-events: none; }
    ============================= */
 .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 1.3rem; align-items: start; }
 .two-col > * { display: flex; flex-direction: column; gap: 0.8rem; }
+.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; align-items: start; }
 
 /* Alt callout (secondary emphasis) */
 .alt-callout {
@@ -1156,8 +1157,8 @@ body.deck-no-chrome .deck-progress { opacity: 0; pointer-events: none; }
   padding: 0.4rem 0.7rem;
   border-radius: var(--rounded-sm);
   line-height: 1.5;
-  overflow-x: auto;
-  white-space: nowrap;
+  white-space: pre-wrap;      /* 긴 명령은 스크롤바 대신 줄바꿈 */
+  overflow-wrap: break-word;
 }
 .install-method__cmd .accent-cmd { color: var(--color-primary); font-weight: 700; }
 .install-method__note { font-size: 0.74rem; color: var(--color-on-surface-muted); line-height: 1.45; }
