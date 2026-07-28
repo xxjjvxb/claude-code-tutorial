@@ -34,9 +34,9 @@
   <section class="slide is-section is-standard">
     <div class="section-eyebrow">PART 3 · TERMINAL</div>
     <h2 class="section-title">터미널 + Orca + <span class="accent">프롬프팅 첫걸음</span></h2>
-    <p class="section-caption">셋업이 끝났으니 이제 사용법을 익힐 시간. 18가지를 빠르게 훑고 — 다음 2장 자기 홈페이지에서 바로 써먹습니다.</p>
+    <p class="section-caption">셋업이 끝났으니 이제 사용법을 익힐 시간. 19가지를 빠르게 훑고 — 다음 2장 자기 홈페이지에서 바로 써먹습니다.</p>
     <div class="section-meta">
-      <div class="section-meta__item"><span class="section-meta__num">18</span><span>토픽</span></div>
+      <div class="section-meta__item"><span class="section-meta__num">19</span><span>토픽</span></div>
     </div>
   </section>
 
@@ -83,55 +83,85 @@
     </div>
   </section>
 
-  <!-- 4 · cmd vs PowerShell -->
+  <!-- 4 · 우리의 터미널 = Orca 내장 -->
   <section class="slide is-standard">
-    <div class="slide__eyebrow"><span class="os-win">WINDOWS SHELLS</span><span class="os-mac">macOS · 터미널</span></div>
-    <h2 class="slide__title"><span class="os-win">우리는 <span class="accent">PowerShell</span>을 씁니다</span><span class="os-mac"><span class="accent">Terminal.app</span>으로 시작</span></h2>
+    <div class="slide__eyebrow">OUR TERMINAL · Orca 내장</div>
+    <h2 class="slide__title">우리의 터미널은 — <span class="accent">Orca 안</span>에 있습니다</h2>
     <div class="slide__body">
       <!-- Windows 버전 -->
       <div class="compare-2 os-win is-flex">
-        <div class="compare-side compare-side--soft">
-          <div class="compare-side__label">cmd · 전통 Command Prompt</div>
-          <h3 class="compare-side__title">Windows 95부터 있던 옛 셸</h3>
+        <div class="compare-side compare-side--accent">
+          <div class="compare-side__label">Orca 내장 터미널 · 우리의 기본</div>
+          <h3 class="compare-side__title">과정 내내 이것만 씁니다</h3>
           <ul class="compare-side__list">
-            <li>명령어가 Windows 전용 (dir · type · copy)</li>
-            <li>Linux/Mac과 호환 X</li>
-            <li>claude 자체는 작동하지만 권장 X</li>
+            <li>폴더를 열면 <strong>그 위치에서 시작</strong> — 이동할 필요 없음</li>
+            <li>편집기·미리보기와 <strong>한 화면</strong></li>
+            <li>여닫기 — 창 가장자리 버튼 또는 <span class="os-win"><code>Ctrl+Alt+A</code></span><span class="os-mac"><code>⌘⌥A</code></span></li>
           </ul>
         </div>
-        <div class="compare-side compare-side--accent">
-          <div class="compare-side__label">PowerShell · 권장</div>
-          <h3 class="compare-side__title">Windows 11 기본 + Linux 명령어 호환</h3>
+        <div class="compare-side compare-side--soft">
+          <div class="compare-side__label">정체는 PowerShell</div>
+          <h3 class="compare-side__title">독립 창으로 여는 그 프로그램과 동일</h3>
           <ul class="compare-side__list">
+            <li>시작 메뉴 "PowerShell" 검색 = 같은 셸의 독립 창</li>
             <li>pwd · ls · cat 같은 Linux 명령어를 별칭으로 지원</li>
-            <li>Get-Location 같은 정식 PowerShell 명령도 가능</li>
-            <li>Windows + Linux 양쪽 학습 자료 모두 활용 가능</li>
+            <li>cmd라는 옛 셸도 있지만 이 과정에선 안 씀</li>
           </ul>
         </div>
       </div>
       <!-- macOS 버전 -->
       <div class="compare-2 os-mac is-flex">
-        <div class="compare-side compare-side--soft">
-          <div class="compare-side__label">Terminal.app · 기본 내장</div>
-          <h3 class="compare-side__title">Applications → Utilities → Terminal</h3>
+        <div class="compare-side compare-side--accent">
+          <div class="compare-side__label">Orca 내장 터미널 · 우리의 기본</div>
+          <h3 class="compare-side__title">과정 내내 이것만 씁니다</h3>
           <ul class="compare-side__list">
-            <li>Spotlight(⌘+Space) "Terminal" 검색이 가장 빠름</li>
+            <li>폴더를 열면 <strong>그 위치에서 시작</strong> — 이동할 필요 없음</li>
+            <li>편집기·미리보기와 <strong>한 화면</strong></li>
+            <li>여닫기 — 창 가장자리 버튼 또는 <span class="os-win"><code>Ctrl+Alt+A</code></span><span class="os-mac"><code>⌘⌥A</code></span></li>
+          </ul>
+        </div>
+        <div class="compare-side compare-side--soft">
+          <div class="compare-side__label">정체는 zsh · Terminal.app과 동일</div>
+          <h3 class="compare-side__title">독립 창으로 여는 그 프로그램과 동일</h3>
+          <ul class="compare-side__list">
+            <li>Spotlight(⌘+Space) "Terminal" = 같은 셸의 독립 창</li>
             <li>기본 셸은 <code>zsh</code> (macOS Catalina 이후)</li>
             <li>pwd · ls · cat · mkdir 모두 기본 명령</li>
           </ul>
         </div>
-        <div class="compare-side compare-side--accent">
-          <div class="compare-side__label">대안 · iTerm2 (선택)</div>
-          <h3 class="compare-side__title">파워 유저용 — 안 깔아도 됨</h3>
-          <ul class="compare-side__list">
-            <li>탭 분할·검색·테마 등 기능 풍부</li>
-            <li>이 과정 실습은 기본 Terminal로 충분</li>
-            <li>나중에 손에 익으면 시도</li>
-          </ul>
+      </div>
+      <p class="slide__note">실습은 <strong>전부 Orca 내장 터미널 기준</strong> — 독립 창을 따로 열 일은 거의 없습니다. 어쩌다 열려도 당황 X, <strong>같은 프로그램</strong>이라 명령어도 똑같습니다.</p>
+    </div>
+  </section>
+
+  <!-- 4.2 · Orca 단축키 4개 -->
+  <section class="slide is-standard">
+    <div class="slide__eyebrow">ORCA SHORTCUTS · 이것만 4개</div>
+    <h2 class="slide__title">Orca 단축키 — <span class="accent">딱 4개</span>면 충분</h2>
+    <div class="slide__body">
+      <div class="cmd-cards cmd-cards--compact">
+        <div class="cmd-card">
+          <div class="cmd-card__row"><span class="cmd-card__alias"><span class="os-win">Ctrl+Alt+A</span><span class="os-mac">⌘⌥A</span></span><span class="cmd-card__formal">플로팅 터미널</span></div>
+          <div class="cmd-card__etym">"Toggle floating terminal"</div>
+          <div class="cmd-card__desc">터미널 여닫기 — 창 가장자리 버튼과 같은 동작</div>
+        </div>
+        <div class="cmd-card">
+          <div class="cmd-card__row"><span class="cmd-card__alias"><span class="os-win">Ctrl+T</span><span class="os-mac">⌘T</span></span><span class="cmd-card__formal">새 터미널</span></div>
+          <div class="cmd-card__etym">"New terminal tab"</div>
+          <div class="cmd-card__desc">터미널 탭 하나 더 — PATH 갱신하러 새로 열 때도 이걸로</div>
+        </div>
+        <div class="cmd-card">
+          <div class="cmd-card__row"><span class="cmd-card__alias"><span class="os-win">Ctrl+W</span><span class="os-mac">⌘W</span></span><span class="cmd-card__formal">현재 창 닫기</span></div>
+          <div class="cmd-card__etym">"Close current tab"</div>
+          <div class="cmd-card__desc">지금 보고 있는 탭(터미널·편집기) 닫기</div>
+        </div>
+        <div class="cmd-card">
+          <div class="cmd-card__row"><span class="cmd-card__alias"><span class="os-win">Ctrl+,</span><span class="os-mac">⌘,</span></span><span class="cmd-card__formal">설정 열기</span></div>
+          <div class="cmd-card__etym">"Open settings"</div>
+          <div class="cmd-card__desc">테마·폰트·기본 셸 — 설정은 전부 여기서</div>
         </div>
       </div>
-      <p class="slide__note os-win is-block">실습은 <strong>전부 PowerShell 기준</strong>. 시작 메뉴에서 "PowerShell" 검색해 실행 — 그 안에서만 명령어 입력합니다.</p>
-      <p class="slide__note os-mac is-block">실습은 <strong>전부 Terminal 기준</strong>. ⌘+Space → "Terminal" 한 번이면 열립니다 — 그 안에서만 명령어 입력.</p>
+      <p class="slide__note">이 4개면 과정 내내 충분합니다. 전체 키맵은 <strong>설정 → Shortcuts</strong>에서 확인·변경(리매핑) 가능.</p>
     </div>
   </section>
 
@@ -150,14 +180,14 @@
           <p class="content-card__body">화면 우상단 <strong>Win ⇄ Mac</strong> 토글을 누르면 — 이 강의 전체의 프롬프트와 명령어가 본인 OS에 맞게 바뀝니다. 한 번만 누르면 다음 슬라이드부터 끝까지 유지.</p>
         </div>
       </div>
-      <p class="slide__note">앞으로 등장하는 모든 <code><span class="os-win">PS&gt;</span><span class="os-mac">$</span></code>는 같은 의미 — <strong>여기부터 사용자가 친 명령</strong>.</p>
+      <p class="slide__note">앞으로 등장하는 모든 <code><span class="os-win">PS&gt;</span><span class="os-mac">$</span></code>는 같은 의미 — <strong>여기부터 사용자가 친 명령</strong>. Claude가 명령 실행 <strong>승인을 물을 때</strong>도 같은 형태로 보입니다.</p>
     </div>
   </section>
 
   <!-- 5 · 6 명령어 -->
   <section class="slide is-standard">
-    <div class="slide__eyebrow"><span class="os-win">POWERSHELL COMMANDS</span><span class="os-mac">TERMINAL COMMANDS</span> · 자주 쓰는 6개</div>
-    <h2 class="slide__title">알아둘 명령어, <span class="accent">딱 6개</span></h2>
+    <div class="slide__eyebrow"><span class="os-win">POWERSHELL COMMANDS</span><span class="os-mac">TERMINAL COMMANDS</span> · 읽기용 6개</div>
+    <h2 class="slide__title">읽을 줄 알면 되는 명령어, <span class="accent">딱 6개</span></h2>
     <div class="slide__body">
       <!-- Windows · PowerShell -->
       <div class="cmd-cards cmd-cards--compact os-win is-grid">
@@ -237,6 +267,7 @@
           <div class="cmd-card__example"><span class="cmd-card__example-prompt">$</span> touch notes.md</div>
         </div>
       </div>
+      <p class="slide__note"><strong>외울 필요 없습니다</strong> — 치는 건 Claude가 합니다. 대신 <strong>읽을 줄</strong> 알아야 승인 여부를 판단할 수 있어요. 파일·폴더 확인은 Orca <strong>FILES 패널</strong>로도 됩니다.</p>
     </div>
   </section>
 
@@ -396,12 +427,12 @@
   <section class="slide is-statement">
     <div class="statement-grid statement-grid--visual-wide">
       <div class="statement-text">
-        <div class="slide__eyebrow">VS CODE INTEGRATION</div>
+        <div class="slide__eyebrow">ORCA INTEGRATION</div>
         <h2 class="statement__lead">Orca 안에서 <span class="accent">claude</span> 그대로</h2>
         <p class="statement__caption">에디터 · 터미널 · AI가 한 화면. 과정 내내 이 환경에서 작업합니다.</p>
         <div class="statement__points">
-          <div class="statement__point"><span class="statement__point-num">01</span><span><strong>File → Open Folder</strong> 로 작업 폴더 열기</span></div>
-          <div class="statement__point"><span class="statement__point-num">02</span><span><strong><span class="os-win">Ctrl + `</span><span class="os-mac">⌘ + J</span></strong> 로 통합 터미널 띄우기 (<span class="os-win">PowerShell</span><span class="os-mac">zsh</span> 모드)</span></div>
+          <div class="statement__point"><span class="statement__point-num">01</span><span>왼쪽 <strong>Projects의 +</strong> 로 작업 폴더(my-intro) 추가</span></div>
+          <div class="statement__point"><span class="statement__point-num">02</span><span><strong>내장 터미널</strong> 열기 — 가장자리 버튼 또는 <span class="os-win"><code>Ctrl+Alt+A</code></span><span class="os-mac"><code>⌘⌥A</code></span> (<span class="os-win">PowerShell</span><span class="os-mac">zsh</span>)</span></div>
           <div class="statement__point"><span class="statement__point-num">03</span><span>거기서 <code>claude</code> 입력 — 끝</span></div>
         </div>
       </div>
@@ -412,7 +443,7 @@
           <text x="14" y="20" font-family="ui-sans-serif, system-ui" font-size="11" fill="rgba(255,255,255,0.5)">Orca — my-intro</text>
           <rect x="0" y="32" width="160" height="288" fill="#252526"/>
           <text x="14" y="58" font-family="ui-monospace, monospace" font-size="11" fill="rgba(255,255,255,0.45)">EXPLORER</text>
-          <text x="14" y="84" font-family="ui-monospace, monospace" font-size="12" fill="rgba(255,255,255,0.85)">▾ DAY1</text>
+          <text x="14" y="84" font-family="ui-monospace, monospace" font-size="12" fill="rgba(255,255,255,0.85)">▾ my-intro</text>
           <text x="28" y="106" font-family="ui-monospace, monospace" font-size="12" fill="#fe6e00">app.html</text>
           <text x="28" y="124" font-family="ui-monospace, monospace" font-size="12" fill="rgba(255,255,255,0.7)">style.css</text>
           <text x="28" y="142" font-family="ui-monospace, monospace" font-size="12" fill="rgba(255,255,255,0.7)">script.js</text>

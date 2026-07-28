@@ -49,15 +49,15 @@
     <div class="slide__body">
       <div class="setup-grid">
         <div class="setup-step"><div class="setup-step__num">01</div><h3 class="setup-step__title">Orca 설치</h3><p class="setup-step__desc">onorca.dev에서 다운로드 — AI 에이전트 전용 작업실</p></div>
-        <div class="setup-step"><div class="setup-step__num">02</div><h3 class="setup-step__title">환경변수 · PATH</h3><p class="setup-step__desc">왜 <span class="os-win">PowerShell</span><span class="os-mac">터미널</span> 새로 열어야 하나</p></div>
-        <div class="setup-step"><div class="setup-step__num">03</div><h3 class="setup-step__title">Git·gh 설치 + 신원</h3><p class="setup-step__desc">claude가 둘 다 자주 호출 — 먼저 깔아둠</p></div>
-        <div class="setup-step"><div class="setup-step__num">04</div><h3 class="setup-step__title">Claude Code 설치</h3><p class="setup-step__desc"><span class="os-win">irm https://claude.ai/install.ps1 | iex</span><span class="os-mac">curl -fsSL https://claude.ai/install.sh | bash</span></p></div>
-        <div class="setup-step"><div class="setup-step__num">05</div><h3 class="setup-step__title">PATH 확인</h3><p class="setup-step__desc">claude --version 통과</p></div>
-        <div class="setup-step"><div class="setup-step__num">06</div><h3 class="setup-step__title">강의 계정</h3><p class="setup-step__desc">팀 초대 또는 본인 가입</p></div>
-        <div class="setup-step"><div class="setup-step__num">07</div><h3 class="setup-step__title">claude → "안녕"</h3><p class="setup-step__desc">첫 응답 확인</p></div>
-        <div class="setup-step"><div class="setup-step__num">08</div><h3 class="setup-step__title">Orca에서 실행</h3><p class="setup-step__desc">내장 터미널에서 claude</p></div>
+        <div class="setup-step"><div class="setup-step__num">02</div><h3 class="setup-step__title">홈베이스 만들기</h3><p class="setup-step__desc">Orca에서 my-intro 폴더 열기 + 내장 터미널</p></div>
+        <div class="setup-step"><div class="setup-step__num">03</div><h3 class="setup-step__title">환경변수 · PATH</h3><p class="setup-step__desc">왜 터미널을 새로 열어야 하나</p></div>
+        <div class="setup-step"><div class="setup-step__num">04</div><h3 class="setup-step__title">Git·gh 설치 + 신원</h3><p class="setup-step__desc">claude가 둘 다 자주 호출 — 먼저 깔아둠</p></div>
+        <div class="setup-step"><div class="setup-step__num">05</div><h3 class="setup-step__title">Claude Code 설치</h3><p class="setup-step__desc"><span class="os-win">irm https://claude.ai/install.ps1 | iex</span><span class="os-mac">curl -fsSL https://claude.ai/install.sh | bash</span></p></div>
+        <div class="setup-step"><div class="setup-step__num">06</div><h3 class="setup-step__title">PATH 확인</h3><p class="setup-step__desc">claude --version 통과</p></div>
+        <div class="setup-step"><div class="setup-step__num">07</div><h3 class="setup-step__title">강의 계정</h3><p class="setup-step__desc">팀 초대 또는 본인 가입</p></div>
+        <div class="setup-step"><div class="setup-step__num">08</div><h3 class="setup-step__title">claude → "안녕"</h3><p class="setup-step__desc">내장 터미널에서 첫 실행 · 로그인</p></div>
       </div>
-      <p class="slide__note"><strong>Node.js</strong>는 2장 홈페이지 배포까지 가려면 필수 — 뒤 슬라이드에서 함께 설치. <strong>트러블슈팅 5가지</strong>는 막혔을 때만.</p>
+      <p class="slide__note">STEP 02부터는 <strong>전부 Orca 내장 터미널</strong>에서 — 독립 터미널을 따로 열지 않습니다. <strong>Node.js</strong>는 2장 배포까지 가려면 필수 — 뒤 슬라이드에서 함께 설치.</p>
     </div>
   </section>
 
@@ -115,9 +115,64 @@
     </div>
   </section>
 
+  <!-- 4.5 · 홈베이스 — 폴더 열기 + 내장 터미널 -->
+  <section class="slide is-standard">
+    <div class="slide__eyebrow">STEP 02 · 홈베이스 만들기</div>
+    <h2 class="slide__title">Orca에서 <span class="accent">폴더 열기 + 내장 터미널</span></h2>
+    <div class="slide__body">
+      <div class="two-col">
+        <div>
+          <div class="content-card content-card--compact">
+            <h3 class="content-card__title">3가지만 하면 끝</h3>
+            <ol class="content-card__list content-card__list--ol">
+              <li><strong>Orca 실행</strong> → 왼쪽 <strong>Projects의 +</strong> 로 폴더 추가 → 바탕화면에 <strong>새 폴더 <code>my-intro</code></strong> 만들어 선택</li>
+              <li><strong>내장 터미널</strong> 열기 — 창 가장자리 버튼 또는 <span class="os-win"><code>Ctrl+Alt+A</code></span><span class="os-mac"><code>⌘⌥A</code></span></li>
+              <li>끝 — 이 화면이 <strong>과정 내내 홈베이스</strong></li>
+            </ol>
+          </div>
+        </div>
+        <div>
+          <svg class="os-win is-block" viewBox="0 0 460 280" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" style="width:100%;height:auto;border-radius:12px;box-shadow:0 12px 32px rgba(0,0,0,0.18)">
+            <rect x="0" y="0" width="460" height="280" rx="12" fill="#1e1e1e"/>
+            <rect x="0" y="0" width="460" height="28" fill="#252526"/>
+            <text x="14" y="18" font-family="ui-sans-serif, system-ui" font-size="11" fill="rgba(255,255,255,0.5)">Orca — my-intro</text>
+            <rect x="0" y="28" width="118" height="252" fill="#252526"/>
+            <text x="14" y="54" font-family="ui-monospace, monospace" font-size="10" fill="rgba(255,255,255,0.45)">PROJECTS</text>
+            <text x="14" y="78" font-family="ui-monospace, monospace" font-size="11" fill="#fe6e00">● my-intro</text>
+            <rect x="118" y="28" width="218" height="252" fill="#0d0d0d"/>
+            <text x="132" y="54" font-family="ui-monospace, monospace" font-size="10" fill="rgba(255,255,255,0.4)">TERMINAL — PowerShell</text>
+            <text x="132" y="84" font-family="ui-monospace, monospace" font-size="11" fill="#fe6e00">PS&gt;</text>
+            <rect x="160" y="73" width="8" height="13" fill="white"><animate attributeName="opacity" values="1;0;1" dur="1.1s" repeatCount="indefinite"/></rect>
+            <rect x="336" y="28" width="124" height="252" fill="#252526"/>
+            <text x="350" y="54" font-family="ui-monospace, monospace" font-size="10" fill="rgba(255,255,255,0.45)">FILES</text>
+            <text x="350" y="78" font-family="ui-monospace, monospace" font-size="11" fill="rgba(255,255,255,0.85)">▾ my-intro</text>
+            <text x="362" y="98" font-family="ui-monospace, monospace" font-size="11" fill="rgba(255,255,255,0.45)">(비어 있음)</text>
+          </svg>
+          <svg class="os-mac is-block" viewBox="0 0 460 280" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" style="width:100%;height:auto;border-radius:12px;box-shadow:0 12px 32px rgba(0,0,0,0.18)">
+            <rect x="0" y="0" width="460" height="280" rx="12" fill="#1e1e1e"/>
+            <rect x="0" y="0" width="460" height="28" fill="#252526"/>
+            <text x="14" y="18" font-family="ui-sans-serif, system-ui" font-size="11" fill="rgba(255,255,255,0.5)">Orca — my-intro</text>
+            <rect x="0" y="28" width="118" height="252" fill="#252526"/>
+            <text x="14" y="54" font-family="ui-monospace, monospace" font-size="10" fill="rgba(255,255,255,0.45)">PROJECTS</text>
+            <text x="14" y="78" font-family="ui-monospace, monospace" font-size="11" fill="#fe6e00">● my-intro</text>
+            <rect x="118" y="28" width="218" height="252" fill="#0d0d0d"/>
+            <text x="132" y="54" font-family="ui-monospace, monospace" font-size="10" fill="rgba(255,255,255,0.4)">TERMINAL — zsh</text>
+            <text x="132" y="84" font-family="ui-monospace, monospace" font-size="11" fill="#fe6e00">$</text>
+            <rect x="148" y="73" width="8" height="13" fill="white"><animate attributeName="opacity" values="1;0;1" dur="1.1s" repeatCount="indefinite"/></rect>
+            <rect x="336" y="28" width="124" height="252" fill="#252526"/>
+            <text x="350" y="54" font-family="ui-monospace, monospace" font-size="10" fill="rgba(255,255,255,0.45)">FILES</text>
+            <text x="350" y="78" font-family="ui-monospace, monospace" font-size="11" fill="rgba(255,255,255,0.85)">▾ my-intro</text>
+            <text x="362" y="98" font-family="ui-monospace, monospace" font-size="11" fill="rgba(255,255,255,0.45)">(비어 있음)</text>
+          </svg>
+        </div>
+      </div>
+      <p class="slide__note">이후 슬라이드의 <strong>모든 명령은 이 내장 터미널에</strong> 입력합니다 — 독립 <span class="os-win">PowerShell</span><span class="os-mac">터미널</span>을 따로 열 필요 없어요. 편집기 + 터미널 + AI + 미리보기가 한 화면.</p>
+    </div>
+  </section>
+
   <!-- 5 · 환경변수 · PATH 개념 -->
   <section class="slide is-standard">
-    <div class="slide__eyebrow">STEP 02 · CONCEPT · 환경변수 · PATH</div>
+    <div class="slide__eyebrow">STEP 03 · CONCEPT · 환경변수 · PATH</div>
     <h2 class="slide__title">환경변수 — <span class="accent">시스템이 공유하는 설정값</span></h2>
     <div class="slide__body">
       <div class="two-col">
@@ -128,7 +183,7 @@
             <ul class="content-card__list">
               <li><span class="os-win">PowerShell</span><span class="os-mac">셸(zsh)</span>이 <code>claude</code>를 PATH 폴더들에서 검색</li>
               <li>설치 스크립트가 PATH에 자동 추가</li>
-              <li>새로 등록된 PATH는 <strong>새 <span class="os-win">PowerShell</span><span class="os-mac">터미널</span> 창</strong>에서만 적용</li>
+              <li>새로 등록된 PATH는 <strong>새 터미널</strong>에서만 적용 — Orca 내장 터미널도 새로 열면 됨</li>
             </ul>
           </div>
         </div>
@@ -152,13 +207,13 @@
           </div>
         </div>
       </div>
-      <p class="slide__note">"<span class="os-win">인식되지 않습니다</span><span class="os-mac">command not found</span>"는 99% PATH 문제. <strong>새 <span class="os-win">PowerShell</span><span class="os-mac">터미널</span> 창</strong>이 1차 해결책.</p>
+      <p class="slide__note">"<span class="os-win">인식되지 않습니다</span><span class="os-mac">command not found</span>"는 99% PATH 문제. <strong>내장 터미널을 새로 여는 것</strong>이 1차 해결책.</p>
     </div>
   </section>
 
   <!-- 6 · Git 설치 + 신원 등록 (Claude 보다 선행) -->
   <section class="slide is-standard">
-    <div class="slide__eyebrow">STEP 03 · Git + GitHub CLI 설치</div>
+    <div class="slide__eyebrow">STEP 04 · Git + GitHub CLI 설치</div>
     <h2 class="slide__title">먼저 — <span class="accent">git + gh</span> 설치하고 신원 등록</h2>
     <div class="slide__body">
       <div class="two-col">
@@ -166,13 +221,13 @@
           <div class="content-card content-card--compact os-win is-block">
             <h3 class="content-card__title">git-scm.com에서 받기</h3>
             <a class="install-link" href="https://git-scm.com/download/win" target="_blank" rel="noopener">git-scm.com/download/win ↗</a>
-            <p class="content-card__body">노란색 <strong>"Git for Windows/x64 Setup"</strong> 클릭 → 받은 파일 실행 → 옵션은 <strong>전부 기본값</strong>으로 Install. 이어서 <strong>GitHub CLI(gh)</strong>도 — 새 PowerShell에서 한 줄:</p>
+            <p class="content-card__body">노란색 <strong>"Git for Windows/x64 Setup"</strong> 클릭 → 받은 파일 실행 → 옵션은 <strong>전부 기본값</strong>으로 Install. 이어서 <strong>GitHub CLI(gh)</strong>도 — 새 내장 터미널에서 한 줄:</p>
             <div class="install-method__cmd"><span class="accent-cmd">PS&gt;</span> winget install --id GitHub.cli -e</div>
             <p class="content-card__body">winget이 없다는 메시지가 뜨면 — <code class="code-wrap">cli.github.com</code>에서 설치 파일을 받아 실행합니다.</p>
           </div>
           <div class="content-card content-card--compact os-mac is-block">
             <h3 class="content-card__title">Mac은 이미 깔려 있을 가능성 높음</h3>
-            <p class="content-card__body">터미널에서 <code>git --version</code>을 먼저 쳐 보세요.</p>
+            <p class="content-card__body">내장 터미널에서 <code>git --version</code>을 먼저 쳐 보세요.</p>
             <ul class="content-card__list">
               <li>버전이 나오면 <strong>설치 끝</strong> — 신원 등록만 하면 됨</li>
               <li>"command not found"가 뜨면 <strong>Xcode Command Line Tools</strong>가 떠요 → <code>xcode-select --install</code> 후 동의 + 설치 (5~10분)</li>
@@ -185,7 +240,7 @@
           <div class="code-block">
             <div class="code-block__header">
               <span class="code-block__dot" style="background:#fb2c36"></span><span class="code-block__dot" style="background:#edb200"></span><span class="code-block__dot" style="background:#00c758"></span>
-              <span class="code-block__title"><span class="os-win">PowerShell</span><span class="os-mac">Terminal (zsh)</span> — 새 창에서</span>
+              <span class="code-block__title">Orca 내장 터미널 (<span class="os-win">PowerShell</span><span class="os-mac">zsh</span>) — 새로 연 뒤</span>
             </div>
             <div class="code-block__body"><span class="code-block__line"><span class="code-block__cmt"># 설치가 됐는지 — 버전 확인 (둘 다)</span></span><span class="code-block__line"><span class="code-block__prompt" data-auto-os></span> <span class="code-block__cmd">git --version</span></span><span class="code-block__line"><span class="code-block__hi">  git version 2.x.x</span></span><span class="code-block__line"><span class="code-block__prompt" data-auto-os></span> <span class="code-block__cmd">gh --version</span></span><span class="code-block__line"><span class="code-block__hi">  gh version 2.x.x</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__cmt"># 커밋에 남길 신원 — 최초 1회만</span></span><span class="code-block__line"><span class="code-block__prompt" data-auto-os></span> <span class="code-block__cmd">git config --global user.name "<span class="code-block__hi">홍길동</span>"</span></span><span class="code-block__line"><span class="code-block__prompt" data-auto-os></span> <span class="code-block__cmd">git config --global user.email "<span class="code-block__hi">hong@example.com</span>"</span></span></div>
           </div>
@@ -197,15 +252,15 @@
 
   <!-- 7 · Claude Code 설치 (3가지) -->
   <section class="slide is-standard">
-    <div class="slide__eyebrow">STEP 04 · Claude Code 설치</div>
+    <div class="slide__eyebrow">STEP 05 · Claude Code 설치</div>
     <h2 class="slide__title">설치 방법 <span class="accent">3가지</span> — 본인 환경에 맞게</h2>
     <div class="slide__body">
       <div class="install-methods os-win is-block">
         <div class="install-method install-method--primary">
-          <div class="install-method__label">방법 1 · PowerShell 한 줄 — 이번 강의 메인</div>
+          <div class="install-method__label">방법 1 · 내장 터미널 한 줄 — 이번 강의 메인</div>
           <div class="prompt-card prompt-card--cmd prompt-card--compact">
             <div class="prompt-card__head">
-              <span class="prompt-card__label">PowerShell · 붙여넣기</span>
+              <span class="prompt-card__label">Orca 내장 터미널 · 붙여넣기</span>
               <button class="prompt-card__copy" type="button" data-copy>복사</button>
             </div>
             <pre class="prompt-card__body" data-no-nav>irm https://claude.ai/install.ps1 | iex</pre>
@@ -225,10 +280,10 @@
       </div>
       <div class="install-methods os-mac is-block">
         <div class="install-method install-method--primary">
-          <div class="install-method__label">방법 1 · 터미널 한 줄 — 이번 강의 메인</div>
+          <div class="install-method__label">방법 1 · 내장 터미널 한 줄 — 이번 강의 메인</div>
           <div class="prompt-card prompt-card--cmd prompt-card--compact">
             <div class="prompt-card__head">
-              <span class="prompt-card__label">터미널 · 붙여넣기</span>
+              <span class="prompt-card__label">Orca 내장 터미널 · 붙여넣기</span>
               <button class="prompt-card__copy" type="button" data-copy>복사</button>
             </div>
             <pre class="prompt-card__body" data-no-nav>curl -fsSL https://claude.ai/install.sh | bash</pre>
@@ -246,27 +301,27 @@
           <div class="install-method__note"><code>npm update</code>로 업데이트도 한 줄.</div>
         </div>
       </div>
-      <p class="slide__note">설치 직후 <strong><span class="os-win">PowerShell</span><span class="os-mac">터미널</span>을 껐다 새로 열어야</strong> PATH 갱신 → <code>claude</code> 인식. <span class="os-win">실패 시 → 관리자 권한 PowerShell.</span><span class="os-mac">실패 시 → <code>sudo</code> 또는 권한 확인.</span></p>
+      <p class="slide__note">설치 직후 <strong>내장 터미널을 닫고 새로 열어야</strong> PATH 갱신 → <code>claude</code> 인식. <span class="os-win">실패 시 → 관리자 권한 PowerShell.</span><span class="os-mac">실패 시 → <code>sudo</code> 또는 권한 확인.</span></p>
     </div>
   </section>
 
   <!-- 8 · PATH 확인 -->
   <section class="slide is-standard">
-    <div class="slide__eyebrow">STEP 05 · PATH 확인</div>
+    <div class="slide__eyebrow">STEP 06 · PATH 확인</div>
     <h2 class="slide__title">claude 명령어가 <span class="accent">잡혔는지</span> 확인</h2>
     <div class="slide__body">
       <div class="code-block">
         <div class="code-block__header">
           <span class="code-block__dot" style="background:#fb2c36"></span><span class="code-block__dot" style="background:#edb200"></span><span class="code-block__dot" style="background:#00c758"></span>
-          <span class="code-block__title"><span class="os-win">PowerShell</span><span class="os-mac">Terminal (zsh)</span> — 새 창에서</span>
+          <span class="code-block__title">Orca 내장 터미널 (<span class="os-win">PowerShell</span><span class="os-mac">zsh</span>) — 새로 연 뒤</span>
         </div>
-        <div class="code-block__body"><span class="code-block__line"><span class="code-block__prompt" data-auto-os></span> <span class="code-block__cmd">claude --version</span></span><span class="code-block__line"><span class="code-block__hi">1.x.x</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__cmt"># 위처럼 버전 숫자가 나오면 PATH 통과 ✓</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__cmt"># "<span class="os-win">인식되지 않습니다</span><span class="os-mac">command not found</span>" 가 뜨면:</span></span><span class="code-block__line"><span class="code-block__cmt">#   1. <span class="os-win">PowerShell</span><span class="os-mac">터미널</span>을 완전히 닫고 새로 열기 (PATH 갱신)</span></span><span class="code-block__line"><span class="code-block__cmt">#   2. <span class="os-win">시작 메뉴에서 "PowerShell" 다시 검색해 실행</span><span class="os-mac">Spotlight(⌘+Space)에서 "Terminal" 다시 실행</span></span></span><span class="code-block__line"><span class="code-block__cmt">#   3. 그래도 안 되면 → 오른쪽 질문 버튼에 올리기</span></span></div>
+        <div class="code-block__body"><span class="code-block__line"><span class="code-block__prompt" data-auto-os></span> <span class="code-block__cmd">claude --version</span></span><span class="code-block__line"><span class="code-block__hi">1.x.x</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__cmt"># 위처럼 버전 숫자가 나오면 PATH 통과 ✓</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__cmt"># "<span class="os-win">인식되지 않습니다</span><span class="os-mac">command not found</span>" 가 뜨면:</span></span><span class="code-block__line"><span class="code-block__cmt">#   1. 내장 터미널을 닫고 새로 열기 (PATH 갱신)</span></span><span class="code-block__line"><span class="code-block__cmt">#   2. 그래도 안 되면 Orca를 완전히 종료 후 다시 실행</span></span><span class="code-block__line"><span class="code-block__cmt">#   3. 그래도 안 되면 → 오른쪽 질문 버튼에 올리기</span></span></div>
       </div>
       <figure class="photo-slot photo-slot--landscape" data-img="vc-ch01-setup-install-success.png">
         <img class="photo-slot__img" src="../../imgs/vc-ch01-setup-install-success.png" alt="claude --version 통과 화면">
         <figcaption class="photo-slot__ph">
           <span class="photo-slot__icon">◧</span>
-          <span class="photo-slot__label"><span class="os-win">PowerShell</span><span class="os-mac">터미널</span> — 설치 성공 · claude --version 통과 화면</span>
+          <span class="photo-slot__label">Orca 내장 터미널 — 설치 성공 · claude --version 통과 화면</span>
           <span class="photo-slot__hint">버전 숫자가 찍히면 PATH 통과 — 이 화면이 목표입니다</span>
         </figcaption>
       </figure>
@@ -275,7 +330,7 @@
 
   <!-- 9 · 강의 내 제공 (메인) + 본인 계정 (참고) -->
   <section class="slide is-standard">
-    <div class="slide__eyebrow">STEP 06 · 강의 계정</div>
+    <div class="slide__eyebrow">STEP 07 · 강의 계정</div>
     <h2 class="slide__title">강의 계정 — <span class="accent">팀으로 초대받습니다</span></h2>
     <div class="slide__body">
       <div class="centered-block">
@@ -291,29 +346,18 @@
 
   <!-- 10 · 첫 실행 -->
   <section class="slide is-standard">
-    <div class="slide__eyebrow">STEP 07 · 첫 실행</div>
+    <div class="slide__eyebrow">STEP 08 · 첫 실행</div>
     <h2 class="slide__title">claude로 <span class="accent">"안녕하세요"</span></h2>
     <div class="slide__body">
       <div class="two-col">
         <div>
-          <div class="content-card content-card--compact os-win is-block">
-            <h3 class="content-card__title">쉬운 방법 · 마우스 우클릭</h3>
+          <div class="content-card content-card--compact">
+            <h3 class="content-card__title">홈베이스에서 그대로</h3>
             <ol class="content-card__list content-card__list--ol">
-              <li><strong>바탕화면 빈 공간 우클릭</strong> → 새로 만들기 → 폴더</li>
-              <li>폴더 이름 <code>my-intro</code> 입력</li>
-              <li>my-intro 폴더 안 빈 공간 우클릭 → <strong>"터미널에서 열기"</strong></li>
-              <li>열린 PowerShell에 <code>claude</code> 입력</li>
-              <li>처음이면 <strong>브라우저 로그인</strong> 창 → 교육 팀 계정 메일로 로그인</li>
-            </ol>
-          </div>
-          <div class="content-card content-card--compact os-mac is-block">
-            <h3 class="content-card__title">쉬운 방법 · Finder에서</h3>
-            <ol class="content-card__list content-card__list--ol">
-              <li><strong>Finder → 데스크탑</strong>에서 빈 공간 우클릭 → 새로운 폴더</li>
-              <li>폴더 이름 <code>my-intro</code> 입력</li>
-              <li>my-intro 폴더를 <strong>우클릭 → "폴더에 있는 새로운 터미널"</strong> (서비스 메뉴)</li>
-              <li>열린 터미널에 <code>claude</code> 입력</li>
-              <li>처음이면 <strong>브라우저 로그인</strong> 창 → 교육 팀 계정 메일로 로그인</li>
+              <li>Orca에 <strong>my-intro 폴더</strong>가 열려 있는지 확인 (STEP 02에서 열어둔 그대로)</li>
+              <li><strong>내장 터미널</strong>에 <code>claude</code> 입력</li>
+              <li>처음이면 <strong>브라우저 로그인</strong> 창 → 교육 팀 계정 메일로 로그인 (다음 슬라이드)</li>
+              <li>터미널로 돌아오면 <strong>"안녕하세요"</strong> → 첫 응답 확인</li>
             </ol>
           </div>
         </div>
@@ -327,14 +371,13 @@
           </div>
         </div>
       </div>
-      <p class="slide__note os-win is-block">Windows 10이라면 <strong>Shift + 우클릭</strong> → "여기에서 PowerShell 창 열기". 또는 <code>cd C:\Users\<em>본인계정</em>\Desktop\my-intro</code>.</p>
-      <p class="slide__note os-mac is-block">우클릭 메뉴에 "폴더에 있는 새로운 터미널"이 없으면 <strong>시스템 환경설정 → 키보드 → 단축키 → 서비스</strong>에서 활성화. 또는 <code>cd ~/Desktop/my-intro</code>.</p>
+      <p class="slide__note">Orca 없이도 됩니다 (참고) — <span class="os-win">my-intro 폴더 안 우클릭 → "터미널에서 열기"</span><span class="os-mac">my-intro 폴더 우클릭 → "폴더에 있는 새로운 터미널"</span> 후 <code>claude</code>. 어느 쪽이든 <strong>같은 claude</strong>입니다.</p>
     </div>
   </section>
 
   <!-- 10.5 · 첫 로그인 화면 -->
   <section class="slide is-standard">
-    <div class="slide__eyebrow">STEP 07 (첫 로그인) · 브라우저 인증</div>
+    <div class="slide__eyebrow">STEP 08 (첫 로그인) · 브라우저 인증</div>
     <h2 class="slide__title">처음 <code>claude</code> 실행 → <span class="accent">브라우저 로그인</span> 한 번</h2>
     <div class="slide__body">
       <div class="two-col">
@@ -342,7 +385,7 @@
           <img class="photo-slot__img" src="../../imgs/vc-ch01-setup-login-terminal.png" alt="claude 첫 실행 시 로그인 안내 터미널 화면">
           <figcaption class="photo-slot__ph">
             <span class="photo-slot__icon">◧</span>
-            <span class="photo-slot__label">① <span class="os-win">PowerShell</span><span class="os-mac">터미널</span> — 로그인 안내</span>
+            <span class="photo-slot__label">① Orca 내장 터미널 — 로그인 안내</span>
             <span class="photo-slot__hint">브라우저가 자동으로 열림 · 안 열리면 표시된 URL 복사</span>
           </figcaption>
         </figure>
@@ -356,69 +399,6 @@
         </figure>
       </div>
       <p class="slide__note">브라우저가 안 열리면 터미널에 표시되는 <strong>URL을 직접 복사</strong>해 붙여넣으세요. 로그인은 <strong>최초 1회</strong>만 — 이후엔 <code>claude</code> 입력만으로 바로 시작됩니다.</p>
-    </div>
-  </section>
-
-  <!-- 11 · Orca 통합 -->
-  <section class="slide is-standard">
-    <div class="slide__eyebrow">STEP 08 · Orca에서 실행</div>
-    <h2 class="slide__title">Orca 안에서 <span class="accent">claude</span> 실행</h2>
-    <div class="slide__body">
-      <div class="two-col">
-        <div>
-          <div class="content-card content-card--compact">
-            <h3 class="content-card__title">3가지만 하면 끝</h3>
-            <ol class="content-card__list content-card__list--ol">
-              <li><strong>Orca 실행</strong> → <strong>my-intro 폴더 열기</strong></li>
-              <li><strong>내장 터미널</strong> 열기 (<span class="os-win">PowerShell</span><span class="os-mac">zsh</span>)</li>
-              <li>거기서 <strong>claude</strong> 입력</li>
-            </ol>
-          </div>
-        </div>
-        <div>
-          <svg class="os-win is-block" viewBox="0 0 460 280" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" style="width:100%;height:auto;border-radius:12px;box-shadow:0 12px 32px rgba(0,0,0,0.18)">
-            <rect x="0" y="0" width="460" height="280" rx="12" fill="#1e1e1e"/>
-            <rect x="0" y="0" width="460" height="28" fill="#252526"/>
-            <text x="14" y="18" font-family="ui-sans-serif, system-ui" font-size="11" fill="rgba(255,255,255,0.5)">Orca — my-intro</text>
-            <rect x="0" y="28" width="118" height="252" fill="#252526"/>
-            <text x="14" y="54" font-family="ui-monospace, monospace" font-size="10" fill="rgba(255,255,255,0.45)">PROJECTS</text>
-            <text x="14" y="78" font-family="ui-monospace, monospace" font-size="11" fill="#fe6e00">● my-intro</text>
-            <text x="14" y="98" font-family="ui-monospace, monospace" font-size="11" fill="rgba(255,255,255,0.55)">○ demo</text>
-            <rect x="118" y="28" width="218" height="252" fill="#0d0d0d"/>
-            <text x="132" y="54" font-family="ui-monospace, monospace" font-size="10" fill="rgba(255,255,255,0.4)">TERMINAL — PowerShell</text>
-            <text x="132" y="84" font-family="ui-monospace, monospace" font-size="11" fill="#fe6e00">PS&gt; claude</text>
-            <text x="132" y="104" font-family="ui-monospace, monospace" font-size="10" fill="rgba(255,255,255,0.55)">  ✓ Claude Code ready.</text>
-            <text x="132" y="134" font-family="ui-monospace, monospace" font-size="11" fill="white">&gt; 자기소개 페이지</text>
-            <text x="132" y="152" font-family="ui-monospace, monospace" font-size="11" fill="white">  만들어줘</text>
-            <rect x="336" y="28" width="124" height="252" fill="#252526"/>
-            <text x="350" y="54" font-family="ui-monospace, monospace" font-size="10" fill="rgba(255,255,255,0.45)">FILES</text>
-            <text x="350" y="78" font-family="ui-monospace, monospace" font-size="11" fill="rgba(255,255,255,0.85)">▾ my-intro</text>
-            <text x="362" y="98" font-family="ui-monospace, monospace" font-size="11" fill="#fe6e00">app.html</text>
-            <text x="362" y="116" font-family="ui-monospace, monospace" font-size="11" fill="rgba(255,255,255,0.7)">style.css</text>
-          </svg>
-          <svg class="os-mac is-block" viewBox="0 0 460 280" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" style="width:100%;height:auto;border-radius:12px;box-shadow:0 12px 32px rgba(0,0,0,0.18)">
-            <rect x="0" y="0" width="460" height="280" rx="12" fill="#1e1e1e"/>
-            <rect x="0" y="0" width="460" height="28" fill="#252526"/>
-            <text x="14" y="18" font-family="ui-sans-serif, system-ui" font-size="11" fill="rgba(255,255,255,0.5)">Orca — my-intro</text>
-            <rect x="0" y="28" width="118" height="252" fill="#252526"/>
-            <text x="14" y="54" font-family="ui-monospace, monospace" font-size="10" fill="rgba(255,255,255,0.45)">PROJECTS</text>
-            <text x="14" y="78" font-family="ui-monospace, monospace" font-size="11" fill="#fe6e00">● my-intro</text>
-            <text x="14" y="98" font-family="ui-monospace, monospace" font-size="11" fill="rgba(255,255,255,0.55)">○ demo</text>
-            <rect x="118" y="28" width="218" height="252" fill="#0d0d0d"/>
-            <text x="132" y="54" font-family="ui-monospace, monospace" font-size="10" fill="rgba(255,255,255,0.4)">TERMINAL — zsh</text>
-            <text x="132" y="84" font-family="ui-monospace, monospace" font-size="11" fill="#fe6e00">$ claude</text>
-            <text x="132" y="104" font-family="ui-monospace, monospace" font-size="10" fill="rgba(255,255,255,0.55)">  ✓ Claude Code ready.</text>
-            <text x="132" y="134" font-family="ui-monospace, monospace" font-size="11" fill="white">&gt; 자기소개 페이지</text>
-            <text x="132" y="152" font-family="ui-monospace, monospace" font-size="11" fill="white">  만들어줘</text>
-            <rect x="336" y="28" width="124" height="252" fill="#252526"/>
-            <text x="350" y="54" font-family="ui-monospace, monospace" font-size="10" fill="rgba(255,255,255,0.45)">FILES</text>
-            <text x="350" y="78" font-family="ui-monospace, monospace" font-size="11" fill="rgba(255,255,255,0.85)">▾ my-intro</text>
-            <text x="362" y="98" font-family="ui-monospace, monospace" font-size="11" fill="#fe6e00">app.html</text>
-            <text x="362" y="116" font-family="ui-monospace, monospace" font-size="11" fill="rgba(255,255,255,0.7)">style.css</text>
-          </svg>
-        </div>
-      </div>
-      <p class="slide__note">과정 내내 이 환경에서 작업합니다 — 편집기 + 터미널 + AI + 브라우저 미리보기가 한 화면.</p>
     </div>
   </section>
 
@@ -436,7 +416,7 @@
           <li><strong>nodejs.org</strong> 접속 → <strong>"LTS"</strong> 큰 버튼 클릭 (Windows .msi 자동 다운로드)</li>
           <li><code>node-v22.x.x-x64.msi</code>(LTS 버전 숫자는 다를 수 있음) 더블클릭 → 보안 경고 "예" → 설치 마법사 Next 따라 진행</li>
           <li><strong>Custom Setup에서 "Add to PATH" 체크 확인</strong> → Install → UAC 승인 → 1~2분 대기</li>
-          <li>완료 후 <strong>새 PowerShell</strong>에서 <code>node --version</code> → <code>v22.x.x</code> 처럼 버전 숫자가 나오면 OK</li>
+          <li>완료 후 <strong>새 내장 터미널</strong>에서 <code>node --version</code> → <code>v22.x.x</code> 처럼 버전 숫자가 나오면 OK</li>
         </ol>
       </div>
       <div class="install-detail os-mac is-block">
@@ -447,7 +427,7 @@
         <ol class="install-detail__steps">
           <li><strong>Homebrew</strong>가 설치돼 있으면 <code>brew install node</code> 한 줄 — 30초~1분</li>
           <li>Brew가 없으면 <strong>nodejs.org</strong> → "LTS" 버튼 → <code>.pkg</code> 다운로드 → 더블클릭 → 설치 마법사</li>
-          <li>설치 후 <strong>새 터미널</strong>에서 <code>node --version</code> → <code>v22.x.x</code> 처럼 버전 숫자가 나오면 OK</li>
+          <li>설치 후 <strong>새 내장 터미널</strong>에서 <code>node --version</code> → <code>v22.x.x</code> 처럼 버전 숫자가 나오면 OK</li>
           <li>Homebrew 자체 설치는 <code>/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"</code></li>
         </ol>
       </div>
@@ -464,7 +444,7 @@
         <div class="trouble-item">
           <div class="trouble-item__num">01</div>
           <div class="trouble-item__problem">"<span class="os-win">인식되지 않습니다</span><span class="os-mac">command not found</span>"</div>
-          <div class="trouble-item__solution"><strong>새 <span class="os-win">PowerShell</span><span class="os-mac">터미널</span> 창</strong> → PATH 갱신. 안 되면 <span class="os-win">시작 메뉴</span><span class="os-mac">Spotlight</span>에서 다시 검색해 실행.</div>
+          <div class="trouble-item__solution"><strong>내장 터미널 새로 열기</strong> → PATH 갱신. 안 되면 Orca 재시작. 독립 <span class="os-win">PowerShell(시작 메뉴 검색)</span><span class="os-mac">터미널(Spotlight)</span>로도 확인 가능.</div>
         </div>
         <div class="trouble-item os-win is-grid">
           <div class="trouble-item__num">02</div>
