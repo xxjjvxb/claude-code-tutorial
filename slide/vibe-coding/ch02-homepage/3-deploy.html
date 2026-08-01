@@ -143,41 +143,9 @@
   </section>
 
   <!-- 4 · STEP 1 · GitHub 저장소 -->
-  <section class="slide is-standard">
-    <div class="slide__eyebrow">STEP 1 · GitHub 저장소</div>
-    <h2 class="slide__title">자기소개 폴더를 <span class="accent">저장소로</span></h2>
-    <div class="slide__body">
-      <div class="two-col">
-        <div>
-          <div class="content-card content-card--compact">
-            <h3 class="content-card__title">GitHub에서 — 새 저장소</h3>
-            <ol class="content-card__list content-card__list--ol">
-              <li><code>github.com</code> 우측 상단 <strong>+</strong> → New repository</li>
-              <li>이름 입력 (예: <code>my-intro</code>) — 영문·하이픈</li>
-              <li><strong>Public</strong> 선택 → Create repository</li>
-              <li>다음 화면의 주소(<code>...git</code>)를 복사해 둠</li>
-            </ol>
-          </div>
-        </div>
-        <div>
-          <div class="prompt-card prompt-card--cmd">
-            <div class="prompt-card__head">
-              <span class="prompt-card__label"><span class="os-win">PowerShell</span><span class="os-mac">Terminal</span></span>
-              <button class="prompt-card__copy" type="button" data-copy>복사</button>
-            </div>
-            <pre class="prompt-card__body" data-no-nav>git init
-git add .
-git commit -m "<span class="ph">자기소개 페이지</span>"</pre>
-          </div>
-        </div>
-      </div>
-      <p class="slide__note">앞 덱(Git 기초)에서 이미 커밋했다면 오른쪽 3줄은 건너뛰어도 됩니다. 저장소(repository) = GitHub에 올린 프로젝트 폴더 한 칸 — 자기소개 페이지 전용으로 하나 만듭니다.</p>
-    </div>
-  </section>
-
   <!-- 4b · GitHub 저장소 화면 -->
   <section class="slide is-standard">
-    <div class="slide__eyebrow">SCREEN · 새 저장소 만들기</div>
+    <div class="slide__eyebrow">STEP 1 · GitHub 저장소 — 앞 덱에서 완료</div>
     <h2 class="slide__title">GitHub — <span class="accent">New repository</span> 화면</h2>
     <div class="slide__body">
       <div class="two-col">
@@ -203,7 +171,7 @@ git commit -m "<span class="ph">자기소개 페이지</span>"</pre>
           </div>
         </div>
       </div>
-      <p class="slide__note">README를 함께 만들면 첫 <code>push</code>에서 충돌이 날 수 있어요 — 지금은 <strong>빈 저장소</strong>로 만드는 게 편합니다.</p>
+      <p class="slide__note">앞 덱(Git 기초)에서 <strong>이미 만들고 올렸으니 참고만</strong> 하고 넘어갑니다. README 체크박스를 비우는 이유 — 함께 만들면 첫 <code>push</code>에서 충돌이 날 수 있어서.</p>
     </div>
   </section>
 
@@ -235,7 +203,7 @@ git push -u origin main</pre>
           </div>
         </div>
       </div>
-      <p class="slide__note"><code>origin</code> 뒤에는 GitHub 저장소 화면에서 <strong>복사한 주소</strong>(<code>...git</code>)를 붙여넣습니다. 처음 push 전에 1장에서 깔아둔 gh로 <code>gh auth login</code> → 브라우저 승인을 해두면 인증이 매끄럽습니다(로그인 창이 떠도 브라우저에서 승인하면 끝). 막히면 Claude에게 에러를 그대로 붙여넣어 물어보세요.</p>
+      <p class="slide__note">앞 덱에서 Claude에게 "올려줘"로 <strong>이미 push했다면 원리 확인용</strong>입니다. <code>origin</code> 뒤에는 저장소 주소(<code>...git</code>)를 붙여넣고, 인증은 <code>gh auth login</code> → 브라우저 승인 한 번. 막히면 Claude에게 에러를 그대로 붙여넣어 물어보세요.</p>
     </div>
   </section>
 
@@ -247,28 +215,27 @@ git push -u origin main</pre>
       <div class="two-col">
         <div>
           <div class="content-card content-card--compact">
-            <h3 class="content-card__title">왜 GitHub로 로그인하나</h3>
-            <p class="content-card__body">Vercel이 내 GitHub 저장소를 <strong>들여다볼 수 있어야</strong> 코드를 가져가 배포합니다. 그래서 새 회원가입 대신 GitHub 계정을 그대로 연결(연동)합니다.</p>
-            <ul class="content-card__list">
-              <li>계정 하나로 <strong>두 서비스가 연결</strong>됨</li>
-              <li>내가 push하면 → Vercel이 자동 감지 → 재배포</li>
-              <li>새 아이디·비밀번호 만들 필요 없음</li>
-            </ul>
+            <h3 class="content-card__title">가입 · 연동 4단계</h3>
+            <ol class="content-card__list content-card__list--ol">
+              <li><a class="install-link" href="https://vercel.com" target="_blank" rel="noopener"><strong>vercel.com ↗</strong></a> → <strong>Sign Up</strong></li>
+              <li>계정 유형은 <strong>Hobby (개인 · 무료)</strong> 선택 — Pro 아님! 이름 입력 → Continue</li>
+              <li><strong>"Continue with GitHub"</strong> 클릭</li>
+              <li>GitHub 권한 화면 → <strong>Authorize Vercel</strong> (최초 1회) — 내 저장소를 읽어 배포하도록 허락</li>
+            </ol>
           </div>
         </div>
         <div>
-          <div class="content-card content-card--compact">
-            <h3 class="content-card__title">연동 3단계</h3>
-            <ol class="content-card__list content-card__list--ol">
-              <li><code>vercel.com</code> → <strong>Sign Up</strong></li>
-              <li><strong>"Continue with GitHub"</strong> 클릭</li>
-              <li>GitHub 권한 화면 → <strong>Authorize Vercel</strong> (최초 1회)</li>
-            </ol>
-            <p class="content-card__body">"Authorize"는 <strong>Vercel이 내 저장소를 읽고 배포</strong>하도록 허락하는 것 — 코드를 가져가 웹에 올리는 용도라 안전합니다.</p>
-          </div>
+          <figure class="photo-slot photo-slot--landscape" data-img="vc-ch02-deploy-vercel-signup.png">
+            <img class="photo-slot__img" src="../../imgs/vc-ch02-deploy-vercel-signup.png" alt="Vercel 가입 — Hobby 플랜 선택 화면">
+            <figcaption class="photo-slot__ph">
+              <span class="photo-slot__icon">◧</span>
+              <span class="photo-slot__label">Vercel 가입 — Hobby(개인) 선택 화면</span>
+              <span class="photo-slot__hint">"I'm working on personal projects" 쪽 선택</span>
+            </figcaption>
+          </figure>
         </div>
       </div>
-      <p class="slide__note">이미 브라우저에 GitHub 로그인이 돼 있으면 클릭 몇 번으로 끝. 한 번 연동하면 다음부턴 다시 묻지 않습니다.</p>
+      <p class="slide__note">GitHub로 로그인하는 이유 — Vercel이 내 저장소를 <strong>읽을 수 있어야</strong> 코드를 가져가 배포하기 때문. 한 번 연동하면 <strong>push할 때마다 자동 재배포</strong>되고, 다음부턴 다시 묻지 않습니다.</p>
     </div>
   </section>
 

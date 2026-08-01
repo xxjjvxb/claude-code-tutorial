@@ -50,7 +50,7 @@
           <div class="step-list__num">01</div>
           <div class="step-list__content">
             <h3 class="step-list__title">인터뷰 시작</h3>
-            <p class="step-list__desc">"나를 인터뷰해서 자기소개 대본을 만들어줘" — Claude가 질문을 던지기 시작</p>
+            <p class="step-list__desc">"나를 인터뷰해서 자기소개 대본을 만들어서 md 파일로 생성해줘" — Claude가 질문을 던지기 시작</p>
           </div>
         </div>
         <div class="step-list__item">
@@ -73,7 +73,7 @@
           <span class="prompt-card__label">프롬프트 · 인터뷰 시작</span>
           <button class="prompt-card__copy" type="button" data-copy>복사</button>
         </div>
-        <pre class="prompt-card__body" data-no-nav>나를 인터뷰해서 자기소개 대본을 만들어줘.</pre>
+        <pre class="prompt-card__body" data-no-nav>나를 인터뷰해서 자기소개 대본을 만들어서 md 파일로 생성해줘.</pre>
       </div>
       <p class="slide__note">막막하면 Claude에게 <strong>"먼저 어떻게 진행할지 계획부터 세워줘"</strong>라고 물어봐도 됩니다 — 메타 프롬프트.</p>
     </div>
@@ -106,7 +106,7 @@
           <span class="code-block__dot" style="background:#fb2c36"></span><span class="code-block__dot" style="background:#edb200"></span><span class="code-block__dot" style="background:#00c758"></span>
           <span class="code-block__title">claude — my-intro/</span>
         </div>
-        <div class="code-block__body"><span class="code-block__line"><span class="code-block__cmd">&gt; 나를 인터뷰해서 자기소개 대본을 만들어줘</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__out">  안녕하세요! 자기소개 대본을 만들기 위해 몇 가지 여쭤볼게요.</span></span><span class="code-block__line"><span class="code-block__out">  1. 이름은 어떻게 되시나요?</span></span><span class="code-block__line"><span class="code-block__out">  2. 어떤 분야의 일을 하시나요?</span></span><span class="code-block__line"><span class="code-block__out">  3. 본인의 강점은 무엇인가요?</span></span><span class="code-block__line"><span class="code-block__out">  4. 어떤 청중 앞에서 발표하실 건가요?</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__cmd">&gt; (답변하면서 진행)</span></span><span class="code-block__line"><span class="code-block__out">  ✓ 자기소개 대본이 작성되었습니다.</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__cmd">&gt; 좋은데, <span class="code-block__hi">조금 더 짧게</span> 만들어줘</span></span></div>
+        <div class="code-block__body"><span class="code-block__line"><span class="code-block__cmd">&gt; 나를 인터뷰해서 자기소개 대본을 만들어서 md 파일로 생성해줘</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__out">  안녕하세요! 자기소개 대본을 만들기 위해 몇 가지 여쭤볼게요.</span></span><span class="code-block__line"><span class="code-block__out">  1. 이름은 어떻게 되시나요?</span></span><span class="code-block__line"><span class="code-block__out">  2. 어떤 분야의 일을 하시나요?</span></span><span class="code-block__line"><span class="code-block__out">  3. 본인의 강점은 무엇인가요?</span></span><span class="code-block__line"><span class="code-block__out">  4. 어떤 청중 앞에서 발표하실 건가요?</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__cmd">&gt; (답변하면서 진행)</span></span><span class="code-block__line"><span class="code-block__out">  ✓ 자기소개 대본이 작성되었습니다.</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__cmd">&gt; 좋은데, <span class="code-block__hi">조금 더 짧게</span> 만들어줘</span></span></div>
       </div>
     </div>
   </section>
@@ -170,7 +170,9 @@
     <div class="slide__eyebrow">MISSION 2 · 진행 흐름</div>
     <h2 class="slide__title">미션 2 — <span class="accent">자기소개를 HTML로</span></h2>
     <div class="slide__body">
-      <div class="step-list">
+      <div class="two-col">
+        <div>
+          <div class="step-list">
         <div class="step-list__item">
           <div class="step-list__num">01</div>
           <div class="step-list__content">
@@ -193,7 +195,9 @@
           </div>
         </div>
       </div>
-      <div class="prompt-card">
+        </div>
+        <div>
+          <div class="prompt-card">
         <div class="prompt-card__head">
           <span class="prompt-card__label">프롬프트 · HTML 만들기</span>
           <button class="prompt-card__copy" type="button" data-copy>복사</button>
@@ -201,6 +205,8 @@
         <pre class="prompt-card__body" data-no-nav>방금 만든 자기소개로 HTML 한 페이지 만들어줘.
 디자인은 모던하게, 한 페이지에 다 들어가게.
 결과는 index.html로 저장해줘.</pre>
+      </div>
+        </div>
       </div>
       <p class="slide__note">결과물이 매번 새로 생성됩니다 — <strong>브라우저를 새로고침</strong>해서 변화 확인.</p>
     </div>
@@ -310,8 +316,8 @@
         </div>
         <div class="diff-card">
           <div class="diff-card__rank">10초</div>
-          <h3 class="diff-card__title">/usage 결과</h3>
-          <p class="diff-card__body">/usage 한 번 확인 — 토큰·비용 감각의 시작.</p>
+          <h3 class="diff-card__title">하단 사용량 확인</h3>
+          <p class="diff-card__body">Orca 하단바 사용량 흘끗 — 오늘 얼마나 썼나, 비용 감각의 시작.</p>
         </div>
       </div>
       <p class="slide__note">완성도보다 <strong>"직접 시도한 것"</strong>이 중요합니다. 공유는 <strong>원하는 분만</strong> — 부담되면 우하단 📤 제출 버튼으로 링크만 남겨도 충분해요.</p>
@@ -328,7 +334,7 @@
         <div class="statement__points">
           <div class="statement__point"><span class="statement__point-num">차례</span><span>본인 차례 — 화면 띄우고 한 줄 설명</span></div>
           <div class="statement__point"><span class="statement__point-num">+</span><span>강사 코멘트 1줄</span></div>
-          <div class="statement__point"><span class="statement__point-num">/usage</span><span>본인 사용량 한 번 확인 (관심 있으면 단톡방 공유)</span></div>
+          <div class="statement__point"><span class="statement__point-num">하단바</span><span>Orca 하단바에서 본인 사용량 흘끗 확인</span></div>
         </div>
       </div>
       <div class="statement-visual">
@@ -371,7 +377,7 @@
         <div class="preview-item"><div class="preview-item__symbol">/</div><div class="preview-item__name">슬래시 커맨드</div><div class="preview-item__desc">Claude 자체 기능 호출</div></div>
         <div class="preview-item"><div class="preview-item__symbol">@</div><div class="preview-item__name">파일 멘션</div><div class="preview-item__desc">특정 파일을 컨텍스트에</div></div>
         <div class="preview-item"><div class="preview-item__symbol">!</div><div class="preview-item__name">셸 실행</div><div class="preview-item__desc">세션 안에서 <span class="os-win">PowerShell</span><span class="os-mac">셸</span> 명령</div></div>
-        <div class="preview-item"><div class="preview-item__symbol">#</div><div class="preview-item__name">메모리 추가</div><div class="preview-item__desc">CLAUDE.md에 규칙 기록</div></div>
+        <div class="preview-item"><div class="preview-item__symbol">Esc×2</div><div class="preview-item__name">되돌아가기</div><div class="preview-item__desc">이전 메시지로 점프 — 다시 시도</div></div>
       </div>
       <p class="slide__note">방금 만든 자기소개 페이지에 <strong>네 문법을 그대로 적용</strong>합니다 — 잠깐 스트레칭하고 이어갑니다.</p>
     </div>
