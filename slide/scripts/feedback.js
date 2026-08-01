@@ -53,6 +53,11 @@
     '.fbq-row{display:flex;gap:0.35rem;justify-content:flex-end}',
     '.fbq-go{appearance:none;cursor:pointer;border:1.5px solid #e5ddd2;background:#fff;border-radius:6px;font-size:0.7rem;font-weight:700;padding:0.28rem 0.6rem;color:#cc5a14;text-decoration:none}',
     '.fbq-done{appearance:none;cursor:pointer;border:none;background:#fe6e00;color:#fff;border-radius:6px;font-size:0.7rem;font-weight:700;padding:0.3rem 0.65rem}',
+    '.fbq-sec{font-size:0.7rem;font-weight:800;color:#797067;margin:0.6rem 0 0.4rem;padding-top:0.55rem;border-top:1.5px dashed #e5ddd2}',
+    '.fbq-ty-fixed{background:#fff7ed;color:#cc5a14}',
+    '.fbq-fix{font-size:0.72rem;line-height:1.45;color:#166534;background:#f0fdf4;border-radius:6px;padding:0.35rem 0.5rem;margin-bottom:0.45rem;white-space:pre-wrap}',
+    '.fbq-re{appearance:none;cursor:pointer;border:1.5px solid #fca5a5;background:#fff;color:#b91c1c;border-radius:6px;font-size:0.7rem;font-weight:700;padding:0.28rem 0.6rem}',
+    '.fbq-ok{appearance:none;cursor:pointer;border:none;background:#166534;color:#fff;border-radius:6px;font-size:0.7rem;font-weight:700;padding:0.3rem 0.65rem}',
     '@media print{.fb-root,.fbq-tab,.fbq-panel{display:none}}',
     '@media print{.fb-root{display:none}}'
   ].join('\n');
@@ -196,15 +201,17 @@
 
       var POLL_MS = 5000;
       var seen = {};        // id → true (한 번이라도 표시한 항목)
-      var items = [];       // 현재 미처리 항목
+      var items = [];       // 현재 미처리 질문·제출
+      var reviews = [];     // 대응 완료(fixed) — 검수 대기 신고
       var open = false;
       var firstLoad = true;
+      function total() { return items.length + reviews.length; }
 
       var tab = document.createElement('button');
       tab.type = 'button';
       tab.className = 'fbq-tab';
       tab.setAttribute('data-no-nav', '');
-      tab.innerHTML = '질문·제출 <span class="n">0</span>';
+      tab.innerHTML = '질문·검수 <span class="n">0</span>';
       tab.hidden = true;
       document.body.appendChild(tab);
 
@@ -213,7 +220,7 @@
       qp.setAttribute('data-no-nav', '');
       qp.hidden = true;
       qp.innerHTML =
-        '<div class="fbq-head">🔔 실시간 질문·제출<span class="sp"></span>' +
+        '<div class="fbq-head">🔔 질문·제출 · 검수<span class="sp"></span>' +
         '<button type="button" class="fbq-close">접기</button></div>' +
         '<div class="fbq-list"></div>';
       document.body.appendChild(qp);
@@ -226,19 +233,19 @@
       function setOpen(v) {
         open = v;
         qp.hidden = !v;
-        tab.hidden = v || items.length === 0;
+        tab.hidden = v || total() === 0;
       }
       tab.addEventListener('click', function () { setOpen(true); render(); });
       qp.querySelector('.fbq-close').addEventListener('click', function () { setOpen(false); });
 
       function render() {
         var list = qp.querySelector('.fbq-list');
-        tab.querySelector('.n').textContent = items.length;
-        if (!items.length) {
-          list.innerHTML = '<div class="fbq-empty">미처리 질문·제출이 없습니다 🎉</div>';
+        tab.querySelector('.n').textContent = total();
+        list.innerHTML = '';
+        if (!total()) {
+          list.innerHTML = '<div class="fbq-empty">미처리 질문·제출·검수가 없습니다 🎉</div>';
           return;
         }
-        list.innerHTML = '';
         items.forEach(function (r) {
           var el = document.createElement('div');
           el.className = 'fbq-item' + (r._new ? ' new' : '');
@@ -258,13 +265,42 @@
             '<button type="button" class="fbq-done" data-done="' + r.id + '">✓ 해소</button></div>';
           list.appendChild(el);
         });
+        // ---- 검수 대기 (대응 완료된 신고 — 재신고 / 검수완료) ----
+        if (reviews.length) {
+          var sec = document.createElement('div');
+          sec.className = 'fbq-sec';
+          sec.textContent = '🔍 검수 대기 ' + reviews.length + '건 — 확인 후 재신고 / 검수완료';
+          list.appendChild(sec);
+          reviews.forEach(function (r) {
+            var el = document.createElement('div');
+            el.className = 'fbq-item';
+            var when = new Date(r.created_at).toLocaleDateString('ko-KR', { month: 'numeric', day: 'numeric' });
+            var here = r.deck_path === location.pathname;
+            var loc = (r.page_title || r.deck_path) + (r.slide_no ? ' · ' + r.slide_no : '');
+            el.innerHTML =
+              '<div class="fbq-meta"><span class="fbq-ty fbq-ty-fixed">🛠 대응됨 #' + r.id + '</span><span>' + when + ' 신고</span></div>' +
+              '<div class="fbq-content">' + esc(r.content) + '</div>' +
+              (r.fix_note ? '<div class="fbq-fix">↳ 대응: ' + esc(r.fix_note) + '</div>' : '') +
+              '<div class="fbq-row">' +
+              (here
+                ? (r.slide_no ? '<button type="button" class="fbq-go" data-go="' + r.slide_no + '">슬라이드 ' + r.slide_no + '로</button>' : '')
+                : '<a class="fbq-go" target="_blank" rel="noopener" href="' + esc(r.deck_path + (r.slide_no ? '#slide=' + r.slide_no : '')) + '">' + esc(loc) + ' ↗</a>') +
+              '<button type="button" class="fbq-re" data-re="' + r.id + '">🔁 재신고</button>' +
+              '<button type="button" class="fbq-ok" data-ok="' + r.id + '">✅ 검수완료</button></div>';
+            list.appendChild(el);
+          });
+        }
       }
 
       qp.addEventListener('click', function (e) {
         var g = e.target.closest('[data-go]');
         if (g) { location.hash = '#slide=' + g.getAttribute('data-go'); return; }
         var d = e.target.closest('[data-done]');
-        if (d) resolve(parseInt(d.getAttribute('data-done'), 10));
+        if (d) { resolve(parseInt(d.getAttribute('data-done'), 10)); return; }
+        var ok = e.target.closest('[data-ok]');
+        if (ok) { reviewDone(parseInt(ok.getAttribute('data-ok'), 10)); return; }
+        var re = e.target.closest('[data-re]');
+        if (re) reReport(parseInt(re.getAttribute('data-re'), 10));
       });
 
       function resolve(id) {
@@ -283,33 +319,70 @@
           if (!res.ok) return;
           items = items.filter(function (r) { return r.id !== id; });
           render();
-          if (!items.length && open) setTimeout(function () { setOpen(false); }, 600);
-          tab.hidden = open || items.length === 0;
+          if (!total() && open) setTimeout(function () { setOpen(false); }, 600);
+          tab.hidden = open || total() === 0;
         });
+      }
+
+      /* ---- 검수 파이프라인: fixed → 검수완료(resolved) 또는 재신고(open) ---- */
+      function patchReview(id, body) {
+        var tk = getCookieToken();
+        if (!tk) return;
+        fetch(cfg.SUPABASE_URL + '/rest/v1/feedback?id=eq.' + id, {
+          method: 'PATCH',
+          headers: {
+            'Content-Type': 'application/json',
+            apikey: cfg.SUPABASE_ANON_KEY,
+            Authorization: 'Bearer ' + tk,
+            Prefer: 'return=minimal'
+          },
+          body: JSON.stringify(body)
+        }).then(function (res) {
+          if (!res.ok) { alert('처리 실패 (HTTP ' + res.status + ') — supabase/feedback-review-update.sql 실행 여부를 확인하세요.'); return; }
+          reviews = reviews.filter(function (r) { return r.id !== id; });
+          render();
+          if (!total() && open) setTimeout(function () { setOpen(false); }, 600);
+          tab.hidden = open || total() === 0;
+        });
+      }
+      function reviewDone(id) {
+        patchReview(id, { status: 'resolved', resolved_at: new Date().toISOString() });
+      }
+      function reReport(id) {
+        var reason = window.prompt('재신고 사유 (선택 — 빈칸 가능, 취소하면 중단)');
+        if (reason === null) return;
+        patchReview(id, { status: 'open', review_note: reason || null });
       }
 
       function poll() {
         if (document.visibilityState === 'hidden') return;
         var tk = getCookieToken();
         if (!tk) return;
-        fetch(cfg.SUPABASE_URL + '/rest/v1/feedback?status=eq.open&type=in.(question,submission)&select=id,email,type,deck_path,slide_no,page_title,content,created_at&order=created_at.desc&limit=30', {
-          headers: { apikey: cfg.SUPABASE_ANON_KEY, Authorization: 'Bearer ' + tk }
-        }).then(function (res) { return res.ok ? res.json() : null; }).then(function (rows) {
-          if (!rows) return;
-          var hasNew = false;
-          rows.forEach(function (r) {
-            r._new = !seen[r.id] && !firstLoad;
-            if (r._new) hasNew = true;
-            seen[r.id] = true;
-          });
-          items = rows;
-          firstLoad = false;
-          tab.hidden = open || items.length === 0;
-          tab.querySelector('.n').textContent = items.length;
-          if (hasNew) {
-            if (!open) setOpen(true);
-            tab.classList.remove('pulse'); void tab.offsetWidth; tab.classList.add('pulse');
+        var H = { apikey: cfg.SUPABASE_ANON_KEY, Authorization: 'Bearer ' + tk };
+        var q1 = fetch(cfg.SUPABASE_URL + '/rest/v1/feedback?status=eq.open&type=in.(question,submission)&select=id,email,type,deck_path,slide_no,page_title,content,created_at&order=created_at.desc&limit=30', { headers: H })
+          .then(function (res) { return res.ok ? res.json() : null; });
+        // 검수 대기(fixed) — 마이그레이션 전엔 fix_note 컬럼이 없어 실패 → 조용히 빈 목록
+        var q2 = fetch(cfg.SUPABASE_URL + '/rest/v1/feedback?status=eq.fixed&select=id,deck_path,slide_no,page_title,content,fix_note,created_at&order=created_at.asc&limit=50', { headers: H })
+          .then(function (res) { return res.ok ? res.json() : null; }).catch(function () { return null; });
+        Promise.all([q1, q2]).then(function (rs) {
+          var rows = rs[0];
+          reviews = rs[1] || [];
+          if (rows) {
+            var hasNew = false;
+            rows.forEach(function (r) {
+              r._new = !seen[r.id] && !firstLoad;
+              if (r._new) hasNew = true;
+              seen[r.id] = true;
+            });
+            items = rows;
+            firstLoad = false;
+            if (hasNew) {
+              if (!open) setOpen(true);
+              tab.classList.remove('pulse'); void tab.offsetWidth; tab.classList.add('pulse');
+            }
           }
+          tab.hidden = open || total() === 0;
+          tab.querySelector('.n').textContent = total();
           if (open) render();
         }).catch(function () { /* 네트워크 오류 — 다음 폴링에서 재시도 */ });
       }
