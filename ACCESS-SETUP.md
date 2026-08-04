@@ -43,4 +43,5 @@ Supabase → **SQL Editor** → `supabase/access-setup.sql` 내용 붙여넣고 
 - **6장 크롤링 실습 주의**: 공통 예제가 이 강의 사이트를 크롤링하므로, 게이트가 켜진 뒤에는 수강생이 로그인·승인된 브라우저 세션으로 실습해야 합니다. 수업 전 전원 승인해 두세요.
 - **제출 버튼**: 슬라이드 우하단 📤 제출 — 수강생이 작품 링크+한 줄 소개를 제출하면 admin·라이브 패널에 표시됩니다 (발표는 선택, 제출로 공유).
 - **질문·신고 위젯**: 슬라이드 우하단 💬 질문 / 🚨 신고 버튼 — 작성하면 덱 경로+슬라이드 번호와 함께 기록되고, `/admin.html`의 "질문 · 신고" 탭에서 위치 링크로 바로 열어 검토·처리할 수 있습니다.
+- **관리자 원격 이미지 업로드**: 배포 사이트에서 관리자 로그인 → 우하단 🖼 편집 ON → 이미지 슬롯에 붙여넣기 → GitHub에 자동 커밋 → 재배포로 1~2분 뒤 전체 반영. 활성화하려면 ① GitHub Fine-grained 토큰 발급(이 저장소만 · Contents: Read and write) ② Vercel → Settings → Environment Variables에 `GITHUB_TOKEN` 등록 ③ Redeploy. 원격 업로드 커밋이 main에 쌓이므로 로컬에서 푸시하기 전 `git fetch origin` 후 `git merge origin/main` 하세요.
 - 게이트를 잠시 끄려면 `auth-config.js`의 URL 값을 placeholder로 되돌려 푸시하면 됩니다.

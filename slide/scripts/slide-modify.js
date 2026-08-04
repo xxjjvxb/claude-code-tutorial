@@ -24,6 +24,7 @@
   var bar = null;
   var connectBtn = null;
   var toggleBtn = null;      // 관리자 우하단 '🖼 편집' 토글
+  var adminReady = false;    // 관리자 로그인 확인됨 — 폴더 미연결 시 서버 업로드(GitHub 커밋) 사용
   var navPanel = null;       // 좌측 슬라이드 네비게이터 (편집모드 ON 시)
   var navItems = [];
   var navRows = [];
@@ -89,6 +90,15 @@
     connectBtn.textContent = supportsFS ? '이미지 폴더 연결' : '폴더 저장 미지원 — 다운로드 폴백';
     if (!supportsFS) connectBtn.disabled = true;
     connectBtn.addEventListener('click', function () { connectDir(); });
+    updateBarMode();
+  }
+
+  // 관리자 + 폴더 미연결이면 서버 업로드 모드임을 툴바에 표시
+  function updateBarMode() {
+    if (!bar || dirHandle) return;
+    if (adminReady && getCookieToken()) {
+      connectBtn.textContent = '서버 업로드 모드 ✓ — 폴더 연결 시 로컬 저장';
+    }
   }
 
   function setConnectedUI() {
@@ -182,21 +192,59 @@
   // ---- 4) 파일 처리 (드롭·페이스트 공통) ----
   function handleFile(slot, file) {
     var name = slot.getAttribute('data-img');
+    // 1) 로컬 폴더가 연결돼 있으면 — 로컬 저장 (로컬 작업 우선)
+    if (supportsFS && dirHandle) { saveLocal(slot, file, name); return; }
+    // 2) 관리자 로그인 상태 — 서버 업로드 (GitHub 커밋 → 재배포로 전체 반영)
+    if (adminReady && getCookieToken()) { uploadRemote(slot, file, name); return; }
+    // 3) 그 외 — 폴더 연결 시도 / 다운로드 폴백
     if (supportsFS) {
-      (dirHandle ? Promise.resolve(dirHandle) : restoreDir(true).then(function (h) { return h || connectDir(); })).then(function (h) {
+      restoreDir(true).then(function (h) { return h || connectDir(); }).then(function (h) {
         if (!h) { showInSlot(slot, URL.createObjectURL(file)); downloadAs(file, name); toast(slot, '폴더 미연결 — 다운로드됨'); return; }
-        saveToDir(file, name).then(function () {
-          showInSlot(slot, (slot.dataset.imgBase || '../imgs/') + name + '?t=' + Date.now());
-          toast(slot, '저장됨 ✓ ' + name);
-        }).catch(function () {
-          showInSlot(slot, URL.createObjectURL(file)); downloadAs(file, name); toast(slot, '저장 실패 — 다운로드됨');
-        });
+        saveLocal(slot, file, name);
       });
     } else {
       showInSlot(slot, URL.createObjectURL(file));
       downloadAs(file, name);
       toast(slot, '다운로드됨 — imgs 폴더에 넣어주세요');
     }
+  }
+
+  function saveLocal(slot, file, name) {
+    saveToDir(file, name).then(function () {
+      showInSlot(slot, (slot.dataset.imgBase || '../imgs/') + name + '?t=' + Date.now());
+      toast(slot, '저장됨 ✓ ' + name);
+    }).catch(function () {
+      showInSlot(slot, URL.createObjectURL(file)); downloadAs(file, name); toast(slot, '저장 실패 — 다운로드됨');
+    });
+  }
+
+  /* 서버 업로드 — /api/upload-image 가 관리자 JWT 확인 후 GitHub에 커밋.
+     본인 화면엔 blob으로 즉시 미리보기, 전체 반영은 재배포 후(1~2분). */
+  function uploadRemote(slot, file, name) {
+    var tk = getCookieToken();
+    var reader = new FileReader();
+    reader.onload = function () {
+      var b64 = String(reader.result).split(',')[1] || '';
+      toast(slot, '업로드 중...');
+      fetch('/api/upload-image', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Authorization: 'Bearer ' + tk },
+        body: JSON.stringify({ name: name, data: b64 })
+      }).then(function (res) {
+        return res.json().catch(function () { return { ok: false, error: 'HTTP ' + res.status }; });
+      }).then(function (j) {
+        showInSlot(slot, URL.createObjectURL(file));
+        if (j && j.ok) {
+          toast(slot, '업로드됨 ✓ ' + name + ' — 1~2분 후 전체 반영');
+        } else {
+          downloadAs(file, name);
+          toast(slot, '업로드 실패 — ' + ((j && j.error) || '네트워크') + ' · 다운로드됨');
+        }
+      }).catch(function () {
+        showInSlot(slot, URL.createObjectURL(file)); downloadAs(file, name); toast(slot, '업로드 실패 — 다운로드됨');
+      });
+    };
+    reader.readAsDataURL(file);
   }
 
   // ---- 5) 활성 슬롯 토글 ----
@@ -301,6 +349,8 @@
     var tk = getCookieToken();
     var p = tk && jwtPayload(tk);
     if (!p || !p.email || p.email.toLowerCase() !== cfg.ADMIN_EMAIL.toLowerCase()) return;
+    adminReady = true;   // 폴더 미연결 시 handleFile이 서버 업로드 경로 사용
+    updateBarMode();
 
     var st = document.createElement('style');
     st.textContent = [
