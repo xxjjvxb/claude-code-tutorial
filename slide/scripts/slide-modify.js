@@ -93,11 +93,13 @@
     updateBarMode();
   }
 
-  // 관리자 + 폴더 미연결이면 서버 업로드 모드임을 툴바에 표시
+  // 관리자 로그인 상태면 저장은 항상 서버 업로드 — 툴바에 표시하고 폴더 연결 버튼은 잠금
   function updateBarMode() {
-    if (!bar || dirHandle) return;
+    if (!bar) return;
     if (adminReady && getCookieToken()) {
-      connectBtn.textContent = '서버 업로드 모드 ✓ — 폴더 연결 시 로컬 저장';
+      connectBtn.textContent = '서버 업로드 모드 ✓ (GitHub 커밋)';
+      connectBtn.disabled = true;
+      bar.classList.add('is-connected');
     }
   }
 
@@ -207,10 +209,11 @@
   // ---- 4) 파일 처리 (드롭·페이스트 공통) ----
   function handleFile(slot, file) {
     var name = slot.getAttribute('data-img');
-    // 1) 로컬 폴더가 연결돼 있으면 — 로컬 저장 (로컬 작업 우선)
-    if (supportsFS && dirHandle) { saveLocal(slot, file, name); return; }
-    // 2) 관리자 로그인 상태 — 서버 업로드 (GitHub 커밋 → 재배포로 전체 반영)
+    // 1) 관리자 로그인 상태(배포 사이트) — 항상 서버 업로드 (GitHub 커밋 → 재배포로 전체 반영).
+    //    과거에 연결해 둔 로컬 폴더 핸들이 복원돼 있어도 배포 사이트에선 로컬 저장이 화면에 반영되지 않으므로 무시한다.
     if (adminReady && getCookieToken()) { uploadRemote(slot, file, name); return; }
+    // 2) 로컬 작업 — 폴더가 연결돼 있으면 로컬 저장
+    if (supportsFS && dirHandle) { saveLocal(slot, file, name); return; }
     // 3) 그 외 — 폴더 연결 시도 / 다운로드 폴백
     if (supportsFS) {
       restoreDir(true).then(function (h) { return h || connectDir(); }).then(function (h) {
