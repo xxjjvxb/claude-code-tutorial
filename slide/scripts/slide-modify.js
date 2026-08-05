@@ -181,6 +181,21 @@
     setTimeout(function () { URL.revokeObjectURL(url); }, 4000);
   }
 
+  // 슬롯과 무관한 화면 상단 안내 (활성 슬롯이 없거나 세션 문제일 때)
+  var flashEl = null;
+  function flashMsg(msg) {
+    if (!flashEl) {
+      flashEl = document.createElement('div');
+      flashEl.setAttribute('data-no-nav', '');
+      flashEl.style.cssText = 'position:fixed;top:3.2rem;left:50%;transform:translateX(-50%);z-index:950;background:#262220;color:#fff;font-size:0.8rem;font-weight:700;padding:0.5rem 0.9rem;border-radius:8px;box-shadow:0 8px 24px rgba(0,0,0,0.25);transition:opacity .3s;opacity:0;pointer-events:none;white-space:nowrap';
+      document.body.appendChild(flashEl);
+    }
+    flashEl.textContent = msg;
+    flashEl.style.opacity = '1';
+    clearTimeout(flashEl._t);
+    flashEl._t = setTimeout(function () { flashEl.style.opacity = '0'; }, 2600);
+  }
+
   function toast(slot, msg) {
     var t = document.createElement('div');
     t.className = 'photo-slot__toast';
@@ -222,6 +237,11 @@
      본인 화면엔 blob으로 즉시 미리보기, 전체 반영은 재배포 후(1~2분). */
   function uploadRemote(slot, file, name) {
     var tk = getCookieToken();
+    var pl = tk && jwtPayload(tk);
+    if (!pl || (pl.exp && pl.exp * 1000 < Date.now() + 10000)) {
+      flashMsg('로그인 세션 만료 — 페이지를 새로고침한 뒤 다시 붙여넣으세요');
+      return;
+    }
     var reader = new FileReader();
     reader.onload = function () {
       var b64 = String(reader.result).split(',')[1] || '';
@@ -239,6 +259,7 @@
         } else {
           downloadAs(file, name);
           toast(slot, '업로드 실패 — ' + ((j && j.error) || '네트워크') + ' · 다운로드됨');
+          if (j && /로그인|세션/.test(j.error || '')) flashMsg('페이지를 새로고침해 로그인을 연장한 뒤 다시 시도하세요');
         }
       }).catch(function () {
         showInSlot(slot, URL.createObjectURL(file)); downloadAs(file, name); toast(slot, '업로드 실패 — 다운로드됨');
@@ -311,23 +332,31 @@
 
   // ---- 7) Ctrl+V 페이스트 핸들러 (활성 슬롯 대상) ----
   document.addEventListener('paste', function (e) {
-    if (!editEnabled || !activeSlot) return;
+    if (!editEnabled) return;
+    var target = activeSlot;
+    if (!target) {
+      // 활성 슬롯이 없어도 — 현재 슬라이드에 이미지 칸이 하나뿐이면 자동 선택
+      var cur = document.querySelector('.slide.active');
+      var slots = cur ? cur.querySelectorAll('.photo-slot[data-img]') : [];
+      if (slots.length === 1) { setActive(slots[0]); target = slots[0]; }
+    }
     var items = e.clipboardData && e.clipboardData.items;
     if (!items) return;
     for (var i = 0; i < items.length; i++) {
       if (items[i].type && items[i].type.indexOf('image/') === 0) {
+        if (!target) { flashMsg('이미지 칸을 먼저 클릭한 뒤 붙여넣으세요 (이 슬라이드엔 칸이 여러 개)'); return; }
         e.preventDefault();
         var file = items[i].getAsFile();
         if (file) {
           // 클립보드 이미지는 보통 image/png · 이름 없음 — 슬롯의 data-img 사용
           // (확장자 mismatch 가능: data-img가 .png인데 클립보드가 .jpeg면 file 자체는 그대로 저장, 표시는 OK)
-          handleFile(activeSlot, file);
+          handleFile(target, file);
         }
         return;
       }
     }
     // 이미지가 아닌 페이스트는 토스트로 안내
-    toast(activeSlot, '이미지가 아님 — 캡처 후 다시 시도');
+    if (target) toast(target, '이미지가 아님 — 캡처 후 다시 시도');
   });
 
   // ---- 8) 관리자 독 (우하단) — 이미지 편집모드 토글 + 관리 페이지 링크 ----
