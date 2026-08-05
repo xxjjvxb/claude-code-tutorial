@@ -25,6 +25,10 @@
     .status--ok { background: #f0fdf4; border: 1.5px solid #bbf7d0; color: #166534; }
     .status--no { background: #fef2f2; border: 1.5px solid #fecaca; color: #991b1b; }
     .who { font-size: 0.78rem; color: #797067; margin-bottom: 1rem; }
+    .field-label { display: block; text-align: left; font-size: 0.78rem; font-weight: 700; color: #797067; margin-bottom: 0.35rem; }
+    textarea { width: 100%; border: 2px solid #e5ddd2; border-radius: 10px; padding: 0.7rem 0.8rem; font: inherit;
+               font-size: 0.86rem; line-height: 1.5; resize: vertical; min-height: 4.2rem; margin-bottom: 0.8rem; }
+    textarea:focus { outline: none; border-color: #fe6e00; }
     .hidden { display: none; }
     .g-icon { width: 1.1rem; height: 1.1rem; }
     footer { margin-top: 1.4rem; font-size: 0.68rem; color: #b0a79c; }
@@ -34,7 +38,7 @@
   <main class="card">
     <div class="brand">실습으로 배우는 바이브코딩 with 클로드코드</div>
     <h1>강의자료 열람</h1>
-    <p class="desc">승인된 분만 열람할 수 있습니다.<br>구글로 로그인한 뒤 열람을 신청해 주세요.</p>
+    <p class="desc">승인된 분만 열람할 수 있습니다.<br><strong style="color:#cc5a14">평소 쓰는 개인 구글 이메일</strong>로 로그인한 뒤 열람을 신청해 주세요.<br>회사·학교 계정은 확인이 어려울 수 있어요.</p>
 
     <div id="view-loading"><p class="desc">확인 중…</p></div>
 
@@ -48,8 +52,10 @@
     <div id="view-user" class="hidden">
       <p class="who" id="who"></p>
       <div id="state-none" class="hidden">
+        <label class="field-label" for="referral">어떻게 여기로 오셨나요? (선택)</label>
+        <textarea id="referral" maxlength="500" placeholder="예: ○○ 강의 수강생 · 지인 소개 · 검색"></textarea>
         <button class="btn btn--primary" id="btn-request">열람 신청하기</button>
-        <p class="desc" style="margin-top:0.7rem;margin-bottom:0">신청하면 관리자 승인 후 열람할 수 있습니다.</p>
+        <p class="desc" style="margin-top:0.7rem;margin-bottom:0">신청하면 관리자 승인 후 열람할 수 있습니다.<br>신청 전 — 위 계정이 <strong>평소 쓰는 개인 구글 이메일</strong>이 맞는지 확인해 주세요. 아니면 로그아웃 후 다시 로그인.</p>
       </div>
       <div id="state-pending" class="hidden">
         <div class="status status--wait"><strong>승인 대기 중입니다.</strong><br>관리자가 승인하면 이 페이지에서 바로 입장할 수 있어요. 잠시 후 새로고침해 보세요.</div>
@@ -142,10 +148,21 @@
       const { data: { session } } = await sb.auth.getSession();
       if (!session) return;
       const u = session.user;
-      const { error } = await sb.from('access_requests').insert({
-        user_id: u.id, email: u.email, name: u.user_metadata?.full_name || null,
-      });
+      const referral = ($('referral').value || '').trim().slice(0, 500);
+      const row = { user_id: u.id, email: u.email, name: u.user_metadata?.full_name || null };
+      let { error } = await sb.from('access_requests').insert(referral ? { ...row, referral } : row);
+      if (error && /referral/i.test(String(error.message))) {
+        // referral 컬럼 미적용 환경 폴백 — 신청 자체는 막지 않는다
+        ({ error } = await sb.from('access_requests').insert(row));
+      }
       if (error && !String(error.message).includes('duplicate')) { alert('신청 실패: ' + error.message); return; }
+      if (!error) {
+        // 관리자 텔레그램 알림 — 실패해도 신청 흐름에는 영향 없음
+        fetch('/api/notify-request', {
+          method: 'POST', headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email: u.email, name: u.user_metadata?.full_name || '', referral }),
+        }).catch(() => {});
+      }
       render();
     });
 

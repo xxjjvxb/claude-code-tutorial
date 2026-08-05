@@ -5,6 +5,7 @@ create table if not exists public.access_requests (
   user_id      uuid primary key references auth.users (id) on delete cascade,
   email        text not null,
   name         text,
+  referral     text,
   status       text not null default 'pending' check (status in ('pending', 'approved', 'rejected')),
   requested_at timestamptz not null default now(),
   decided_at   timestamptz
