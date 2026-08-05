@@ -74,7 +74,9 @@
     const $ = (id) => document.getElementById(id);
     const show = (id) => { for (const v of ['view-loading','view-signin','view-user']) $(v).classList.toggle('hidden', v !== id); };
     const state = (id) => { for (const s of ['state-none','state-pending','state-approved','state-rejected']) $(s).classList.toggle('hidden', s !== id); };
-    const nextPath = new URLSearchParams(location.search).get('next') || '/slide/';
+    const rawNext = new URLSearchParams(location.search).get('next');
+    // same-origin 경로만 허용 — 아니면 첫화면으로
+    const nextPath = (rawNext && rawNext.startsWith('/') && !rawNext.startsWith('//')) ? rawNext : '/';
 
     if (!GATE_ENABLED) {
       // 게이트 미설정 상태 — 그냥 슬라이드로
@@ -109,6 +111,7 @@
         setTokenCookie(session);
         state('state-approved');
         $('btn-enter').href = nextPath;
+        location.replace(nextPath);
         return;
       }
 
@@ -119,6 +122,7 @@
         setTokenCookie(session);
         state('state-approved');
         $('btn-enter').href = nextPath;
+        location.replace(nextPath);
       } else if (status === 'pending') {
         state('state-pending');
       } else if (status === 'rejected') {
@@ -129,7 +133,7 @@
     }
 
     $('btn-google').addEventListener('click', async () => {
-      const redirectTo = location.origin + '/login.html' + (nextPath !== '/slide/' ? '?next=' + encodeURIComponent(nextPath) : '');
+      const redirectTo = location.origin + '/login.html' + (nextPath !== '/' ? '?next=' + encodeURIComponent(nextPath) : '');
       const { error } = await sb.auth.signInWithOAuth({ provider: 'google', options: { redirectTo } });
       if (error) alert('로그인 실패: ' + error.message);
     });
