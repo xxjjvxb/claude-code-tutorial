@@ -159,7 +159,7 @@
     // ---------- 질문 · 신고 ----------
     async function loadFeedback() {
       const { data: rows, error } = await sb.from('feedback')
-        .select('id, email, type, deck_path, slide_no, page_title, content, status, created_at')
+        .select('*')
         .order('created_at', { ascending: false });
       if (error) { alert('질문·신고 조회 실패: ' + error.message); return; }
       const counts = { report: 0, question: 0, submission: 0, resolved: 0 };
@@ -171,9 +171,15 @@
         const tr = document.createElement('tr');
         if (r.status === 'resolved') tr.className = 'dim';
         const loc = r.deck_path + (r.slide_no ? '#slide=' + r.slide_no : '');
+        const stChip = r.status === 'resolved' ? '<div class="muted" style="font-size:0.72rem;margin-top:0.25rem">✅ 완료</div>'
+          : r.status === 'fixed' ? '<div style="font-size:0.72rem;margin-top:0.25rem;color:#166534;font-weight:700">🔧 검수 대기</div>'
+          : (r.review_note ? '<div style="font-size:0.72rem;margin-top:0.25rem;color:#9a3412;font-weight:700">↩ 재신고</div>'
+                           : '<div class="muted" style="font-size:0.72rem;margin-top:0.25rem">미처리</div>');
         tr.innerHTML =
-          '<td><span class="ty ty-' + r.type + '">' + (r.type === 'report' ? '🚨 신고' : (r.type === 'submission' ? '📤 제출' : '💬 질문')) + '</span></td>' +
-          '<td class="content">' + esc(r.content).replace(/(https?:\/\/[^\s<]+)/g, '<a href="$1" target="_blank" rel="noopener">$1</a>') + '</td>' +
+          '<td><span class="ty ty-' + r.type + '">' + (r.type === 'report' ? '🚨 신고' : (r.type === 'submission' ? '📤 제출' : '💬 질문')) + '</span>' + stChip + '</td>' +
+          '<td class="content">' + esc(r.content).replace(/(https?:\/\/[^\s<]+)/g, '<a href="$1" target="_blank" rel="noopener">$1</a>') +
+            (r.fix_note ? '<div class="muted" style="margin-top:0.35rem;color:#166534">🔧 대응: ' + esc(r.fix_note) + '</div>' : '') +
+            (r.review_note ? '<div style="margin-top:0.35rem;color:#9a3412;font-weight:600">↩ 재신고: ' + esc(r.review_note) + '</div>' : '') + '</td>' +
           '<td><a class="loc" href="' + esc(loc) + '" target="_blank" rel="noopener">' + esc(r.page_title || r.deck_path) +
             (r.slide_no ? ' · 슬라이드 ' + r.slide_no : '') + ' ↗</a></td>' +
           '<td class="muted">' + esc(r.email) + '<br>' + fmt(r.created_at) + '</td>' +

@@ -33,8 +33,8 @@
   <!-- 1 · Chapter intro -->
   <section class="slide is-section is-standard">
     <div class="section-eyebrow">6장 · MCP</div>
-    <h2 class="section-title">MCP — 외부 세계와 <span class="accent">연결</span>하는 표준 포트</h2>
-    <p class="section-caption">Claude는 기본적으로 내 프로젝트 폴더 안만 봅니다. MCP는 파일·GitHub·브라우저 같은 외부 도구를 꽂는 "표준 포트"입니다. 이 덱에서 MCP 개념과 연결을 익힙니다.</p>
+    <h2 class="section-title">MCP — 다른 프로그램과 <span class="accent">교류</span>하는 통로</h2>
+    <p class="section-caption">Claude는 기본적으로 내 프로젝트 폴더 안만 봅니다. MCP는 파일·GitHub·브라우저 같은 다른 프로그램과 교류하는 "통로"입니다. 이 덱에서 MCP 개념과 연결을 익힙니다.</p>
     <div class="section-meta">
       <div class="section-meta__item"><span class="section-meta__num">1</span><span>줄로 연결</span></div>
       <div class="section-meta__item"><span class="section-meta__num">6</span><span>대표 MCP</span></div>
@@ -70,13 +70,13 @@
     </div>
   </section>
 
-  <!-- 3 · WHY & WHAT — 담장 밖으로 잇는 USB 포트 -->
+  <!-- 3 · WHY & WHAT — 다른 프로그램과 교류하는 통로 -->
   <section class="slide is-statement">
     <div class="statement-grid statement-grid--visual-wide">
       <div class="statement-text">
         <div class="slide__eyebrow">WHY & WHAT · MCP가 뭔가</div>
-        <h2 class="statement__lead">담장 밖 도구를 꽂는 <span class="accent">USB 포트</span>.</h2>
-        <p class="statement__caption">Claude Code는 지금 열어둔 프로젝트 폴더 안만 봅니다. 그 밖의 파일·GitHub·웹 페이지엔 닿지 못해요. MCP는 그 바깥 도구를 잇는 "공통 규격" — USB처럼 한 방식만 알면 어떤 도구든 꽂을 수 있습니다.</p>
+        <h2 class="statement__lead">다른 프로그램과 <span class="accent">교류하는 통로</span>.</h2>
+        <p class="statement__caption">Claude Code는 지금 열어둔 프로젝트 폴더 안만 봅니다. 그 밖의 파일·GitHub·웹 페이지엔 닿지 못해요. MCP는 담장 밖 프로그램과 교류하는 "공통 통로" — 연결 방식이 하나로 정해져 있어, 어떤 도구든 같은 방법으로 이을 수 있습니다.</p>
         <div class="statement__points">
           <div class="statement__point"><span class="statement__point-num">한계</span><span>기본은 열어둔 폴더 + 터미널까지</span></div>
           <div class="statement__point"><span class="statement__point-num">규격</span><span>도구마다 다른 방식 X — 하나의 표준</span></div>
@@ -121,14 +121,14 @@
               <span class="prompt-card__label">프롬프트 · MCP 연결 부탁</span>
               <button class="prompt-card__copy" type="button" data-copy>복사</button>
             </div>
-            <pre class="prompt-card__body" data-no-nav>브라우저 MCP 연결 도와줘.</pre>
+            <pre class="prompt-card__body" data-no-nav>Playwright 브라우저 MCP 연결 도와줘.</pre>
           </div>
         </div>
         <div>
           <div class="content-card content-card--compact">
             <h3 class="content-card__title">실제로는 이런 일이 일어납니다</h3>
             <ul class="content-card__list">
-              <li><code>claude mcp add &lt;이름&gt; -- &lt;실행 명령&gt;</code> — 한 줄로 연결</li>
+              <li><code>claude mcp add playwright -- npx @playwright/mcp@latest</code></li>
               <li><code>claude mcp list</code> — 연결 상태 확인</li>
               <li>안 쓰면 <code>claude mcp remove</code>로 뺀다</li>
             </ul>
@@ -145,14 +145,14 @@
     <h2 class="slide__title">자주 쓰이는 MCP — <span class="accent">필요한 것만</span> 골라 꽂기</h2>
     <div class="slide__body">
       <div class="grid-3">
-        <div class="content-card content-card--compact"><h3 class="content-card__title">브라우저 ★</h3><p class="content-card__body">진짜 브라우저를 열어 웹을 보고 정보 수집.</p></div>
+        <div class="content-card content-card--compact"><h3 class="content-card__title">브라우저(Playwright) ★</h3><p class="content-card__body">진짜 브라우저를 열어 웹을 보고 정보 수집.</p></div>
         <div class="content-card content-card--compact"><h3 class="content-card__title">Filesystem</h3><p class="content-card__body">프로젝트 밖 파일·폴더 접근.</p></div>
         <div class="content-card content-card--compact"><h3 class="content-card__title">GitHub</h3><p class="content-card__body">이슈·PR·저장소를 직접 읽고 다루기.</p></div>
         <div class="content-card content-card--compact"><h3 class="content-card__title">웹 검색</h3><p class="content-card__body">최신 정보를 인터넷에서 찾아오기.</p></div>
         <div class="content-card content-card--compact"><h3 class="content-card__title">데이터베이스</h3><p class="content-card__body">Supabase·SQLite 같은 DB를 조회·질의.</p></div>
         <div class="content-card content-card--compact"><h3 class="content-card__title">Slack · Notion</h3><p class="content-card__body">팀 채널·문서를 읽고 쓰기.</p></div>
       </div>
-      <p class="slide__note">전부 꽂을 필요 없습니다 — <strong>지금 일에 필요한 것만</strong>. 정리 원칙은 7장에서 한 번 더.</p>
+      <p class="slide__note">전부 꽂을 필요 없습니다 — <strong>지금 일에 필요한 것만</strong>. 정리 원칙은 문서 스킬 덱에서 한 번 더.</p>
     </div>
   </section>
 
