@@ -1,0 +1,333 @@
+<!doctype html>
+<!-- © 2026 이일규 (Ilkyu Lee). All rights reserved. 본 강의자료는 저작권법으로 보호되는 저작물입니다. 무단 복제·배포·재사용을 금합니다. -->
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="author" content="이일규">
+  <meta name="copyright" content="© 2026 이일규 · 본 강의자료는 저작권법으로 보호되는 저작물입니다. 무단 복제·배포 금지.">
+  <script defer src="../../scripts/protect.js"></script>
+  <title>7장 · 2. design.md + 뷰룸</title>
+  <link rel="stylesheet" href="../../styles/tokens.css">
+  <link rel="stylesheet" href="../../styles/deck.css">
+  <link rel="stylesheet" href="../../styles/_os-toggle.css">
+  <link rel="stylesheet" href="../../styles/_practice.css">
+  <script defer src="../../scripts/os-toggle.js"></script>
+  <script defer src="../../scripts/prompt-copy.js"></script>
+  <script defer src="../../scripts/slide-modify.js"></script>
+  <script defer src="../../scripts/feedback.js"></script>
+  <script defer src="../../scripts/analytics.js"></script>
+</head>
+<body>
+
+<main class="deck">
+
+  <header class="deck-chrome">
+  <span class="deck-chrome__brand">바이브코딩 · CLAUDE CODE</span>
+  <span class="deck-chrome__divider">·</span>
+  <span class="deck-chrome__day">7장 · 2 design.md·뷰룸</span>
+  <span class="deck-chrome__spacer"></span>
+  <span class="deck-chrome__counter">— / —</span>
+</header>
+
+  <!-- 1 · Section cover -->
+  <section class="slide is-section is-standard">
+    <div class="section-eyebrow">7장 · DESIGN.md &amp; 뷰룸</div>
+    <h2 class="section-title">디자인을 — <span class="accent">규칙 → 부품 → 진열장</span>으로</h2>
+    <p class="section-caption">문서를 만들 줄 알게 됐으니 이제 "예쁘게, 일관되게"를 시스템으로 만듭니다. 색·글꼴 규칙을 DESIGN.md 한 파일로 정하고, 그 규칙으로 컴포넌트(부품)를 설계해, 뷰룸(components.html) 한 페이지에 진열합니다 — 뭘 만들든 여기서 꺼내 쓰면 늘 같은 브랜드.</p>
+    <div class="section-meta">
+      <div class="section-meta__item"><span class="section-meta__num">1</span><span>규칙 파일 — DESIGN.md</span></div>
+      <div class="section-meta__item"><span class="section-meta__num">6+</span><span>부품 — 버튼·카드·인용…</span></div>
+      <div class="section-meta__item"><span class="section-meta__num">1</span><span>뷰룸 — components.html</span></div>
+    </div>
+  </section>
+
+  <!-- 2 · DESIGN.md 란 -->
+  <section class="slide is-statement">
+    <div class="statement-grid statement-grid--visual-wide">
+      <div class="statement-text">
+        <div class="slide__eyebrow">WHAT · DESIGN.md</div>
+        <h2 class="statement__lead">디자인을 — <span class="accent">파일 하나</span>로 통째로.</h2>
+        <p class="statement__caption">색·글꼴·간격 같은 "디자인 규칙"을 <code>DESIGN.md</code> 마크다운 파일 하나로 모아둔 것. 이 파일을 Claude가 읽으면 — 결과물이 그 디자인대로 통일됩니다. 잘 만든 DESIGN.md는 무료로 받아 쓸 수도 있습니다.</p>
+        <div class="statement__points">
+          <div class="statement__point"><span class="statement__point-num">정체</span><span>색·글꼴·간격 규칙을 한 파일에 정리한 것</span></div>
+          <div class="statement__point"><span class="statement__point-num">동작</span><span>Claude가 읽고 — 그 규칙대로 만들어 줌</span></div>
+          <div class="statement__point"><span class="statement__point-num">공용</span><span>웹·문서 어디에 쓰든 — 같은 한 파일</span></div>
+        </div>
+      </div>
+      <div class="statement-visual">
+        <svg viewBox="0 0 460 320" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <rect x="0" y="0" width="460" height="320" rx="16" fill="#fff5ec"/>
+          <rect x="40" y="104" width="128" height="112" rx="10" fill="#fff" stroke="#cc5a14" stroke-width="2.5"/>
+          <text x="104" y="92" font-family="ui-monospace, monospace" font-size="12" font-weight="700" fill="#cc5a14" text-anchor="middle">DESIGN.md</text>
+          <g stroke="#ffd2ab" stroke-width="6" stroke-linecap="round">
+            <line x1="62" y1="134" x2="146" y2="134"/>
+            <line x1="62" y1="156" x2="128" y2="156"/>
+            <line x1="62" y1="178" x2="146" y2="178"/>
+            <line x1="62" y1="200" x2="118" y2="200"/>
+          </g>
+          <text x="200" y="166" font-family="ui-monospace, monospace" font-size="22" fill="#cc5a14" text-anchor="middle">→</text>
+          <g font-family="ui-sans-serif, system-ui" font-size="11" font-weight="700" fill="#cc5a14" text-anchor="middle">
+            <rect x="240" y="74" width="176" height="44" rx="9" fill="#fff" stroke="#fe6e00" stroke-width="2.5"/>
+            <text x="328" y="101">자기소개 웹페이지</text>
+            <rect x="240" y="132" width="176" height="44" rx="9" fill="#fff" stroke="#fe6e00" stroke-width="2.5"/>
+            <text x="328" y="159">발표 PPT</text>
+            <rect x="240" y="190" width="176" height="44" rx="9" fill="#fff" stroke="#fe6e00" stroke-width="2.5"/>
+            <text x="328" y="217">PDF 문서</text>
+          </g>
+          <text x="230" y="276" font-family="ui-sans-serif, system-ui" font-size="13" fill="#797067" text-anchor="middle">한 파일 → 어디에 쓰든 같은 디자인</text>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3 · 받는 곳 두 군데 -->
+  <section class="slide is-standard">
+    <div class="slide__eyebrow">GET · 어디서 받나</div>
+    <h2 class="slide__title">잘 만든 DESIGN.md — <span class="accent">두 곳에서 무료</span>로</h2>
+    <div class="slide__body">
+      <div class="two-col">
+        <div>
+          <div class="content-card content-card--compact">
+            <h3 class="content-card__title">🇰🇷 getdesign.kr</h3>
+            <p class="content-card__body">한국어로 구경하고 받는 design.md 갤러리. 미리보기를 보며 마음에 드는 테마를 고르면 됩니다.</p>
+            <ul class="content-card__list">
+              <li>링크 — <a href="https://getdesign.kr/" target="_blank" rel="noopener" data-no-nav style="color: var(--color-primary-strong); text-decoration: underline;">getdesign.kr</a></li>
+              <li>한국어 · 미리보기로 고르기</li>
+            </ul>
+          </div>
+        </div>
+        <div>
+          <div class="content-card content-card--compact">
+            <h3 class="content-card__title">🌐 designmd.ai</h3>
+            <p class="content-card__body">DESIGN.md의 오리지널 저장소 — 수백 개 디자인이 올라와 있습니다. 골라서 다운로드하면 끝.</p>
+            <ul class="content-card__list">
+              <li>링크 — <a href="https://designmd.ai/" target="_blank" rel="noopener" data-no-nav style="color: var(--color-primary-strong); text-decoration: underline;">designmd.ai</a></li>
+              <li>영어 · 수백 개 테마</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <p class="slide__note">받기만 하는 게 아니라 — 받은 파일을 열어 <strong>내 취향대로 고쳐도</strong> 됩니다. 색상 코드 하나만 바꿔도 전체 테마가 달라집니다.</p>
+    </div>
+  </section>
+
+  <!-- 4 · DESIGN.md 4단계 -->
+  <section class="slide is-standard">
+    <div class="slide__eyebrow">HOW · DESIGN.md 쓰는 법</div>
+    <h2 class="slide__title">받아서 → 폴더에 두고 → <span class="accent">"이걸로 꾸며줘"</span></h2>
+    <div class="slide__body">
+      <div class="cycle">
+        <div class="cycle__step"><div class="cycle__num">01</div><div class="cycle__title">고르기</div><div class="cycle__desc">getdesign.kr · designmd.ai에서 구경</div><div class="cycle__example">미리보기</div></div>
+        <div class="cycle__step"><div class="cycle__num">02</div><div class="cycle__title">받기</div><div class="cycle__desc">마음에 드는 디자인을 다운로드</div><div class="cycle__example">DESIGN.md</div></div>
+        <div class="cycle__step"><div class="cycle__num">03</div><div class="cycle__title">폴더에 두기</div><div class="cycle__desc">작업 폴더 안에 그 파일을 넣기</div><div class="cycle__example">my-intro\DESIGN.md</div></div>
+        <div class="cycle__step"><div class="cycle__num">04</div><div class="cycle__title">적용</div><div class="cycle__desc">"이 디자인으로 꾸며줘"라고 요청</div><div class="cycle__example">@DESIGN.md</div></div>
+      </div>
+      <div class="prompt-card prompt-card--compact" style="margin-top:0.7rem;">
+        <div class="prompt-card__head">
+          <span class="prompt-card__label">프롬프트 · 적용</span>
+          <button class="prompt-card__copy" type="button" data-copy>복사</button>
+        </div>
+        <pre class="prompt-card__body" data-no-nav>@DESIGN.md 대로 자기소개 페이지를 다시 꾸며줘</pre>
+      </div>
+      <p class="slide__note">적용은 한 줄이면 끝 — <code>@</code>로 파일을 콕 집어주면 Claude가 그 규칙을 그대로 따릅니다.</p>
+    </div>
+  </section>
+
+  <!-- 5 · 통일성 -->
+  <section class="slide is-standard">
+    <div class="slide__eyebrow">CONSISTENCY · 통일성</div>
+    <h2 class="slide__title">DESIGN.md 하나로 — <span class="accent">전부 같은 테마</span></h2>
+    <div class="slide__body">
+      <div class="grid-3">
+        <div class="diff-card">
+          <div class="diff-card__rank">한 곳에서</div>
+          <h3 class="diff-card__title">색·글꼴을 한 파일에</h3>
+          <p class="diff-card__body">색·글꼴·간격을 DESIGN.md에서만 정합니다. 디자인 결정이 한 곳에 모입니다.</p>
+        </div>
+        <div class="diff-card">
+          <div class="diff-card__rank">모두 같게</div>
+          <h3 class="diff-card__title">웹·PPT·PDF 한 세트</h3>
+          <p class="diff-card__body">Claude가 같은 DESIGN.md를 기준 삼아 — 자기소개 페이지도, PPT도, PDF도 같은 톤으로.</p>
+        </div>
+        <div class="diff-card">
+          <div class="diff-card__rank">바꾸기 쉽게</div>
+          <h3 class="diff-card__title">한 번 고치면 전부</h3>
+          <p class="diff-card__body">테마를 바꾸고 싶으면 DESIGN.md만 — 결과물 전체가 새 테마로 따라옵니다.</p>
+        </div>
+      </div>
+      <p class="slide__note">DESIGN.md는 본래 웹 화면용 디자인 명세지만 — Claude가 이를 기준으로 PPT·PDF에도 같은 색·글꼴을 입혀, 흩어진 결과물이 "한 브랜드"처럼 보이게 됩니다. 이게 <strong>템플릿 통일성</strong>입니다.</p>
+    </div>
+  </section>
+
+  <!-- 6 · 컴포넌트 설계 — 개념 -->
+  <section class="slide is-statement">
+    <div class="statement-grid">
+      <div class="statement-text">
+        <div class="slide__eyebrow">COMPONENT · 부품 설계</div>
+        <h2 class="statement__lead">규칙 다음은 — <span class="accent">부품을 미리 만들어</span> 두는 것.</h2>
+        <p class="statement__caption">DESIGN.md가 "색·글꼴 규칙"이라면, 컴포넌트는 그 규칙으로 미리 만들어 둔 <strong>완성 부품</strong>입니다 — 버튼·카드·제목·인용 상자. 부품들을 한 페이지에 진열한 것이 <strong>뷰룸(components.html)</strong> — 브라우저로 열면 내 디자인 시스템이 한눈에 보입니다.</p>
+        <div class="statement__points">
+          <div class="statement__point"><span class="statement__point-num">부품</span><span>버튼 · 카드 · 제목 · 인용 상자 · 구분선</span></div>
+          <div class="statement__point"><span class="statement__point-num">뷰룸</span><span>components.html 한 파일 — 브라우저로 열어 눈으로 확인</span></div>
+          <div class="statement__point"><span class="statement__point-num">재사용</span><span>새 페이지·PPT 만들 때 @로 참조 — 늘 같은 모양</span></div>
+        </div>
+      </div>
+      <div class="statement-visual">
+        <svg viewBox="0 0 460 320" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <rect x="0" y="0" width="460" height="320" rx="16" fill="#fff5ec"/>
+          <rect x="30" y="30" width="220" height="260" rx="12" fill="#fff" stroke="#cc5a14" stroke-width="2.5"/>
+          <text x="140" y="58" font-family="ui-monospace, monospace" font-size="12" font-weight="700" fill="#cc5a14" text-anchor="middle">components.html</text>
+          <rect x="50" y="76" width="80" height="26" rx="13" fill="#fe6e00"/>
+          <text x="90" y="93" font-family="ui-sans-serif, system-ui" font-size="11" fill="#fff" text-anchor="middle">버튼</text>
+          <rect x="142" y="76" width="80" height="26" rx="13" fill="#fff" stroke="#fe6e00" stroke-width="2"/>
+          <text x="182" y="93" font-family="ui-sans-serif, system-ui" font-size="11" fill="#cc5a14" text-anchor="middle">버튼 2</text>
+          <rect x="50" y="116" width="172" height="58" rx="8" fill="#faf7f2" stroke="#e5ddd2" stroke-width="1.5"/>
+          <text x="136" y="142" font-family="ui-sans-serif, system-ui" font-size="11" fill="#797067" text-anchor="middle">카드</text>
+          <rect x="50" y="188" width="172" height="40" rx="6" fill="#fff7ed" stroke="#fe6e00" stroke-width="1.5" stroke-dasharray="4 3"/>
+          <text x="136" y="212" font-family="ui-sans-serif, system-ui" font-size="11" fill="#cc5a14" text-anchor="middle">인용 상자</text>
+          <g font-family="ui-sans-serif, system-ui" font-size="10" fill="#797067">
+            <circle cx="62" cy="252" r="9" fill="#fe6e00"/><circle cx="86" cy="252" r="9" fill="#262220"/><circle cx="110" cy="252" r="9" fill="#e5ddd2"/>
+            <text x="132" y="256">색 팔레트</text>
+          </g>
+          <text x="288" y="140" font-family="ui-monospace, monospace" font-size="20" fill="#cc5a14">→</text>
+          <g font-family="ui-sans-serif, system-ui" text-anchor="middle">
+            <rect x="320" y="70" width="110" height="70" rx="8" fill="#fff" stroke="#cc5a14" stroke-width="2"/>
+            <text x="375" y="102" font-size="11" font-weight="700" fill="#cc5a14">웹페이지</text>
+            <text x="375" y="122" font-size="9" fill="#797067">같은 부품으로</text>
+            <rect x="320" y="170" width="110" height="70" rx="8" fill="#fff" stroke="#cc5a14" stroke-width="2"/>
+            <text x="375" y="202" font-size="11" font-weight="700" fill="#cc5a14">PPT</text>
+            <text x="375" y="222" font-size="9" fill="#797067">같은 색·글꼴로</text>
+          </g>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7 · 뷰룸 만들기 -->
+  <section class="slide is-standard">
+    <div class="slide__eyebrow">HANDS-ON · 뷰룸 만들기</div>
+    <h2 class="slide__title">내 <span class="accent">뷰룸</span> — 말 한 번이면 생깁니다</h2>
+    <div class="slide__body">
+      <div class="two-col">
+        <div>
+          <div class="prompt-card">
+            <div class="prompt-card__head">
+              <span class="prompt-card__label">프롬프트</span>
+              <button class="prompt-card__copy" type="button" data-copy>복사</button>
+            </div>
+            <pre class="prompt-card__body" data-no-nav>@DESIGN.md 규칙으로 내 컴포넌트 뷰룸을 만들어줘.
+components.html 한 파일에 — 색 팔레트(주색 1 + 보조색 2), 제목·본문 글꼴, 버튼 2종(기본·강조), 카드, 인용 상자, 구분선을 실제 모양으로 보여주고, 부품마다 언제 쓰는지 한 줄씩 적어줘.</pre>
+          </div>
+        </div>
+        <div>
+          <figure class="photo-slot photo-slot--landscape" data-img="vc-ch07-components-kit.png">
+            <img class="photo-slot__img" src="../../imgs/vc-ch07-components-kit.png" alt="브라우저로 연 components.html 부품 뷰룸">
+            <figcaption class="photo-slot__ph">
+              <span class="photo-slot__icon">◧</span>
+              <span class="photo-slot__label">components.html — 부품 뷰룸</span>
+              <span class="photo-slot__hint">브라우저로 열면 내 부품들이 한눈에</span>
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+      <p class="slide__note">완성되면 <strong>브라우저로 components.html을 열어</strong> 부품들을 구경하세요 — 마음에 안 드는 부품은 "버튼을 더 둥글게" 식으로 그 자리에서 고치면 됩니다.</p>
+    </div>
+  </section>
+
+  <!-- 8 · 부품으로 조립 -->
+  <section class="slide is-standard">
+    <div class="slide__eyebrow">REUSE · 부품으로 조립</div>
+    <h2 class="slide__title">이제 뭘 만들든 — <span class="accent">"이 부품으로"</span> 한마디</h2>
+    <div class="slide__body">
+      <div class="prompt-pair">
+        <div class="prompt-card prompt-card--compact">
+          <div class="prompt-card__head">
+            <span class="prompt-card__label">웹페이지 — 부품 재사용</span>
+            <button class="prompt-card__copy" type="button" data-copy>복사</button>
+          </div>
+          <pre class="prompt-card__body" data-no-nav>@components.html 의 부품과 @DESIGN.md 규칙을 그대로 써서 <span class="ph">[스터디 모임 안내]</span> 페이지를 만들어줘. 새 스타일을 만들지 말고 뷰룸에 있는 부품만 조립해줘.</pre>
+        </div>
+        <div class="prompt-card prompt-card--compact">
+          <div class="prompt-card__head">
+            <span class="prompt-card__label">자기소개 — 새 테마로</span>
+            <button class="prompt-card__copy" type="button" data-copy>복사</button>
+          </div>
+          <pre class="prompt-card__body" data-no-nav>@DESIGN.md 와 @components.html 의 부품 느낌으로 자기소개 페이지를 다시 꾸며줘.</pre>
+        </div>
+      </div>
+      <p class="slide__note">핵심은 <strong>"새로 만들지 말고 뷰룸에서 꺼내 쓰기"</strong> — 뭘 만들어도 같은 브랜드로 보이기 시작합니다. 9장 미니프로젝트에서 이 뷰룸을 그대로 다시 씁니다.</p>
+    </div>
+  </section>
+
+  <!-- 9 · 한 걸음 더 — Claude Design -->
+  <section class="slide is-statement">
+    <div class="statement-grid">
+      <div class="statement-text">
+        <div class="slide__eyebrow">ONE MORE · 말로 그리는 화면</div>
+        <h2 class="statement__lead">아이디어 스케치는 — <span class="accent">Claude Design</span>으로.</h2>
+        <p class="statement__caption">아직 규칙도 부품도 없는 새 아이디어라면 — 웹의 <code>claude.ai/design</code>에서 말 몇 마디로 화면을 먼저 그려볼 수 있습니다. "투두 앱 화면, 깔끔하고 밝게" 한 줄 → 보이는 화면. 마음에 들면 Claude Code로 이어받아 진짜로 만듭니다.</p>
+        <div class="statement__points">
+          <div class="statement__point"><span class="statement__point-num">Design</span><span>웹에서 — 화면 모양을 빠르게 시각화</span></div>
+          <div class="statement__point"><span class="statement__point-num">Code</span><span>내 폴더에 — 진짜 파일·서비스로 제작</span></div>
+          <div class="statement__point"><span class="statement__point-num">흐름</span><span>모양은 Design → 완성은 Code</span></div>
+        </div>
+      </div>
+      <div class="statement-visual">
+        <svg viewBox="0 0 460 320" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <rect x="0" y="0" width="460" height="320" rx="16" fill="#fff5ec"/>
+          <rect x="70" y="40" width="320" height="92" rx="12" fill="white" stroke="#fe6e00" stroke-width="2.5"/>
+          <text x="90" y="70" font-family="ui-sans-serif, system-ui" font-size="14" fill="#fe6e00" font-weight="700">Claude Design</text>
+          <text x="90" y="94" font-family="ui-sans-serif, system-ui" font-size="12" fill="#423d38">웹에서 — 화면 모양을 빠르게</text>
+          <text x="90" y="116" font-family="ui-monospace, monospace" font-size="11" fill="#797067">claude.ai/design</text>
+          <text x="230" y="166" font-family="ui-monospace, monospace" font-size="22" fill="#cc5a14" text-anchor="middle">↓</text>
+          <text x="230" y="186" font-family="ui-sans-serif, system-ui" font-size="11" fill="#797067" text-anchor="middle">마음에 들면 — 이어받기</text>
+          <rect x="70" y="200" width="320" height="92" rx="12" fill="rgba(0,0,0,0.92)"/>
+          <text x="90" y="230" font-family="ui-sans-serif, system-ui" font-size="14" fill="#fe6e00" font-weight="700">Claude Code</text>
+          <text x="90" y="254" font-family="ui-sans-serif, system-ui" font-size="12" fill="rgba(255,255,255,0.85)">내 폴더에 — 진짜 파일·서비스로</text>
+          <text x="90" y="276" font-family="ui-monospace, monospace" font-size="11" fill="rgba(255,255,255,0.5)">&gt; claude</text>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- 10 · Wrap -->
+  <section class="slide is-feature">
+    <div class="feature-head">
+      <div class="slide__eyebrow">WRAP · design.md·뷰룸 끝</div>
+      <h2 class="feature-head__title">내 디자인 시스템이 — <span class="accent">파일 두 개</span>로 생겼다</h2>
+    </div>
+    <div class="feature-body">
+      <div class="feature-text">
+        <p class="statement__caption">DESIGN.md(규칙)와 components.html(뷰룸)을 갖췄습니다 — 이제 뭘 만들든 이 두 파일을 @로 물려주면 늘 같은 브랜드로 나옵니다.</p>
+        <div class="statement__points">
+          <div class="statement__point"><span class="statement__point-num">규칙</span><span>DESIGN.md — 색·글꼴·간격 한 파일</span></div>
+          <div class="statement__point"><span class="statement__point-num">뷰룸</span><span>components.html — 부품 진열장</span></div>
+        </div>
+      </div>
+      <div class="feature-visual">
+        <svg viewBox="0 0 460 320" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <rect x="0" y="0" width="460" height="320" rx="16" fill="#fff5ec"/>
+          <text x="230" y="46" font-family="ui-sans-serif, system-ui" font-size="13" fill="#797067" font-weight="700" text-anchor="middle">규칙 + 부품 = 내 디자인 시스템</text>
+          <g font-family="ui-monospace, monospace" font-size="12" font-weight="700" text-anchor="middle">
+            <rect x="60" y="80" width="160" height="52" rx="10" fill="#fff" stroke="#cc5a14" stroke-width="2.5"/>
+            <text x="140" y="112" fill="#cc5a14">DESIGN.md</text>
+            <rect x="240" y="80" width="160" height="52" rx="10" fill="#fff" stroke="#cc5a14" stroke-width="2.5"/>
+            <text x="320" y="112" fill="#cc5a14">components.html</text>
+          </g>
+          <g stroke="#cc5a14" stroke-width="2">
+            <line x1="140" y1="132" x2="230" y2="188"/><line x1="320" y1="132" x2="230" y2="188"/>
+          </g>
+          <rect x="130" y="188" width="200" height="52" rx="10" fill="#fe6e00"/>
+          <text x="230" y="220" font-family="ui-sans-serif, system-ui" font-size="13" fill="#fff" font-weight="700" text-anchor="middle">뭘 만들든 같은 브랜드</text>
+          <text x="230" y="284" font-family="ui-sans-serif, system-ui" font-size="15" fill="#cc5a14" font-weight="700" text-anchor="middle">규칙 → 부품 → 진열장</text>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <div class="deck-progress"><div class="deck-progress__bar"></div></div>
+</main>
+<script src="../../scripts/deck.js"></script>
+</body>
+</html>

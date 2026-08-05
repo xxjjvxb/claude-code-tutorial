@@ -61,17 +61,23 @@
           </div>
         </div>
         <div>
-          <div class="prompt-card prompt-card--cmd">
+          <div class="prompt-card">
             <div class="prompt-card__head">
-              <span class="prompt-card__label"><span class="os-win">PowerShell</span><span class="os-mac">터미널</span> · MCP 연결</span>
+              <span class="prompt-card__label">프롬프트 · 연결 부탁</span>
               <button class="prompt-card__copy" type="button" data-copy>복사</button>
             </div>
-            <pre class="prompt-card__body" data-no-nav>claude mcp add playwright -- npx @playwright/mcp@latest
-claude mcp list</pre>
+            <pre class="prompt-card__body" data-no-nav>playwright MCP 연결 도와줘.</pre>
+          </div>
+          <div class="content-card content-card--compact">
+            <h3 class="content-card__title">실제로는 이런 일이 일어납니다</h3>
+            <ul class="content-card__list">
+              <li><code>claude mcp add playwright -- npx @playwright/mcp@latest</code></li>
+              <li><code>claude mcp list</code> — playwright 보이면 성공</li>
+            </ul>
           </div>
         </div>
       </div>
-      <p class="slide__note">정확한 연결 명령은 도구마다 다르니, Claude에게 <strong>"playwright MCP 연결 도와줘"</strong>라고 물어 받으세요.</p>
+      <p class="slide__note">부탁 한 마디면 명령 찾기부터 연결 확인까지 Claude가 대신합니다 — <strong>직접 치고 싶을 때만</strong> 오른쪽 명령을 그대로.</p>
     </div>
   </section>
 
@@ -239,26 +245,10 @@ claude mcp list</pre>
     </div>
   </section>
 
-  <!-- 7 · 결과 예시 -->
+  <!-- 7 · 결과 — 시연 화면 + 치트시트 -->
   <section class="slide is-standard">
-    <div class="slide__eyebrow">RESULT · 나온 치트시트</div>
-    <h2 class="slide__title">이게 곧 — <span class="accent">내 복습 치트시트</span></h2>
-    <div class="slide__body">
-      <div class="code-block">
-        <div class="code-block__header">
-          <span class="code-block__dot" style="background:#fb2c36"></span><span class="code-block__dot" style="background:#edb200"></span><span class="code-block__dot" style="background:#00c758"></span>
-          <span class="code-block__title">cheatsheet.md — 크롤링 결과</span>
-        </div>
-        <div class="code-block__body"><span class="code-block__line"><span class="code-block__cmt"># 이 과정 한눈에</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__out">| 챕터 | 제목 | 다루는 도구 | 슬라이드 |</span></span><span class="code-block__line"><span class="code-block__out">|---|---|---|---|</span></span><span class="code-block__line"><span class="code-block__out">| 1 | 바이브코딩 세팅 | Orca·Git·Claude Code | 59 |</span></span><span class="code-block__line"><span class="code-block__out">| 2 | 홈페이지·배포 | Git·GitHub·Vercel | 46 |</span></span><span class="code-block__line"><span class="code-block__out">| 3 | Claude 길들이기 | 4대 문법·CLAUDE.md·Hooks | 103 |</span></span><span class="code-block__line"><span class="code-block__out">| 4 | API와 반응형 웹페이지 | 공개 API·Plan Mode | 17 |</span></span><span class="code-block__line"><span class="code-block__out">| … | … | … | … |</span></span></div>
-      </div>
-      <p class="slide__note">시험 전 훑기 좋고, "어디서 뭘 배웠지?" 할 때 바로 — <strong>내가 만든, 나를 위한 요약본</strong>. 도구 칼럼만 뽑으면 "이 과정 도구 총정리"도 됩니다.</p>
-    </div>
-  </section>
-
-  <!-- 8 · 실제 화면 (사진 자리) -->
-  <section class="slide is-standard">
-    <div class="slide__eyebrow">SCREEN · 실제로는 이렇게</div>
-    <h2 class="slide__title">브라우저가 <span class="accent">저절로</span> 열리고 — 표가 남는다</h2>
+    <div class="slide__eyebrow">RESULT · 실제로는 이렇게</div>
+    <h2 class="slide__title">브라우저가 <span class="accent">저절로</span> 움직이고 — <span class="accent">치트시트</span>가 남는다</h2>
     <div class="slide__body">
       <div class="two-col">
         <figure class="photo-slot photo-slot--landscape" data-img="vc-ch06-crawling-browser.png">
@@ -269,37 +259,36 @@ claude mcp list</pre>
             <span class="photo-slot__hint">Playwright가 목차 페이지를 열어 훑는 중</span>
           </figcaption>
         </figure>
-        <figure class="photo-slot photo-slot--landscape" data-img="vc-ch06-crawling-cheatsheet.png">
-          <img class="photo-slot__img" src="../../imgs/vc-ch06-crawling-cheatsheet.png" alt="완성된 복습 치트시트 마크다운 표">
-          <figcaption class="photo-slot__ph">
-            <span class="photo-slot__icon">◧</span>
-            <span class="photo-slot__label">완성된 치트시트</span>
-            <span class="photo-slot__hint">cheatsheet.md — 챕터·도구·슬라이드 표</span>
-          </figcaption>
-        </figure>
+        <div class="code-block">
+          <div class="code-block__header">
+            <span class="code-block__dot" style="background:#fb2c36"></span><span class="code-block__dot" style="background:#edb200"></span><span class="code-block__dot" style="background:#00c758"></span>
+            <span class="code-block__title">cheatsheet.md — 크롤링 결과</span>
+          </div>
+          <div class="code-block__body"><span class="code-block__line"><span class="code-block__cmt"># 이 과정 한눈에</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__out">| 챕터 | 제목 | 도구 | 슬라이드 |</span></span><span class="code-block__line"><span class="code-block__out">|---|---|---|---|</span></span><span class="code-block__line"><span class="code-block__out">| 1 | 세팅 | Orca·Git·Claude | 59 |</span></span><span class="code-block__line"><span class="code-block__out">| 2 | 홈페이지·배포 | GitHub·Vercel | 46 |</span></span><span class="code-block__line"><span class="code-block__out">| 3 | 길들이기 | 4대 문법·Hooks | 103 |</span></span><span class="code-block__line"><span class="code-block__out">| … | … | … | … |</span></span></div>
+        </div>
       </div>
+      <p class="slide__note">브라우저가 <strong>사람 손 없이</strong> 페이지를 넘기고 — 결과가 <strong>표 한 장</strong>으로. "어디서 뭘 배웠지?" 할 때 바로 꺼내 보는 <strong>내가 만든 요약본</strong>입니다.</p>
     </div>
-    <p class="slide__note">강사 시연 화면 — 브라우저가 <strong>사람 손 없이</strong> 페이지를 넘기고, 그 결과가 <strong>표 한 장</strong>으로 남습니다.</p>
   </section>
 
-  <!-- 9 · 자유 소재 -->
+  <!-- 8 · 자유 소재 -->
   <section class="slide is-standard">
     <div class="slide__eyebrow">IDEAS · 이번엔 각자</div>
     <h2 class="slide__title">자유 소재 — <span class="accent">끌리는 것</span> 하나 골라</h2>
     <div class="slide__body">
       <div class="grid-3">
-        <div class="diff-card"><div class="diff-card__rank">가격</div><h3 class="diff-card__title">가격 비교</h3><p class="diff-card__body">여러 쇼핑몰의 같은 상품 가격을 한 표로.</p></div>
-        <div class="diff-card"><div class="diff-card__rank">뉴스</div><h3 class="diff-card__title">관심 뉴스 모으기</h3><p class="diff-card__body">키워드로 여러 사이트의 헤드라인을 수집.</p></div>
-        <div class="diff-card"><div class="diff-card__rank">공고</div><h3 class="diff-card__title">채용·공고 목록</h3><p class="diff-card__body">조건에 맞는 공고만 골라 목록으로.</p></div>
-        <div class="diff-card"><div class="diff-card__rank">후기</div><h3 class="diff-card__title">평점·후기 정리</h3><p class="diff-card__body">흩어진 리뷰를 모아 한눈에 비교.</p></div>
-        <div class="diff-card"><div class="diff-card__rank">매물</div><h3 class="diff-card__title">중고·부동산 목록</h3><p class="diff-card__body">관심 매물 목록을 긁어 표로.</p></div>
-        <div class="diff-card"><div class="diff-card__rank">화면</div><h3 class="diff-card__title">스크린샷 모으기</h3><p class="diff-card__body">여러 페이지의 화면을 한 번에 캡처.</p></div>
+        <div class="diff-card"><div class="diff-card__rank">가격</div><h3 class="diff-card__title">가격 비교</h3><p class="diff-card__body">여러 쇼핑몰의 같은 상품 가격을 한 표로. 예: <code>danawa.com</code></p></div>
+        <div class="diff-card"><div class="diff-card__rank">뉴스</div><h3 class="diff-card__title">관심 뉴스 모으기</h3><p class="diff-card__body">키워드로 여러 사이트의 헤드라인을 수집. 예: <code>news.naver.com</code></p></div>
+        <div class="diff-card"><div class="diff-card__rank">공고</div><h3 class="diff-card__title">채용·지원사업 공고</h3><p class="diff-card__body">조건에 맞는 공고만 골라 목록으로. 예: <code>k-startup.go.kr</code> · <code>wanted.co.kr</code></p></div>
+        <div class="diff-card"><div class="diff-card__rank">후기</div><h3 class="diff-card__title">평점·후기 정리</h3><p class="diff-card__body">흩어진 리뷰를 모아 한눈에 비교. 예: <code>yes24.com</code> 도서 리뷰</p></div>
+        <div class="diff-card"><div class="diff-card__rank">매물</div><h3 class="diff-card__title">중고·부동산 목록</h3><p class="diff-card__body">관심 매물 목록을 긁어 표로. 예: <code>joongna.com</code></p></div>
+        <div class="diff-card"><div class="diff-card__rank">화면</div><h3 class="diff-card__title">스크린샷 모으기</h3><p class="diff-card__body">여러 페이지의 화면을 한 번에 캡처. 예: 자주 가는 사이트 3곳.</p></div>
       </div>
       <p class="slide__note">공통 예제를 해봤다면 — 이제 <strong>"내가 평소 손으로 찾아보던 것"</strong>으로 한 번 더. 그게 가장 좋은 소재입니다.</p>
     </div>
   </section>
 
-  <!-- 10 · 실습 진행 -->
+  <!-- 9 · 실습 진행 -->
   <section class="slide is-standard">
     <div class="slide__eyebrow">실습 · 진행</div>
     <h2 class="slide__title">크롤링 — <span class="accent">공통 하나 + 자유 하나</span></h2>
@@ -326,7 +315,7 @@ claude mcp list</pre>
     </div>
   </section>
 
-  <!-- 11 · Wrap -->
+  <!-- 10 · Wrap -->
   <section class="slide is-feature">
     <div class="feature-head">
       <div class="slide__eyebrow">WRAP · 6장 끝</div>
@@ -338,7 +327,6 @@ claude mcp list</pre>
         <div class="statement__points">
           <div class="statement__point"><span class="statement__point-num">연결</span><span>Playwright — 브라우저를 한 줄로</span></div>
           <div class="statement__point"><span class="statement__point-num">산출물</span><span>흩어진 웹 정보 → 표 / 치트시트</span></div>
-          <div class="statement__point"><span class="statement__point-num">다음</span><span>7장 문서와 디자인 — 스킬부터</span></div>
         </div>
       </div>
       <div class="feature-visual">

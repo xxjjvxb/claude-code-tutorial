@@ -87,8 +87,8 @@
     <h2 class="slide__title">기호 <span class="accent">하나에 한 가지</span> 역할</h2>
     <div class="slide__body">
       <div class="preview-grid">
-        <div class="preview-item"><div class="preview-item__symbol">/</div><div class="preview-item__name">슬래시 커맨드</div><div class="preview-item__desc">Claude 자체 기능 호출 — /init /clear /usage 등</div></div>
-        <div class="preview-item"><div class="preview-item__symbol">@</div><div class="preview-item__name">파일 · 폴더 멘션</div><div class="preview-item__desc">@app.html @tests/ 로 컨텍스트에 끼워 넣기</div></div>
+        <div class="preview-item"><div class="preview-item__symbol">/</div><div class="preview-item__name">슬래시 커맨드</div><div class="preview-item__desc">Claude 자체 기능 호출 — /init /clear /model 등</div></div>
+        <div class="preview-item"><div class="preview-item__symbol">@</div><div class="preview-item__name">파일 · 폴더 멘션</div><div class="preview-item__desc">@index.html @tests/ 로 컨텍스트에 끼워 넣기</div></div>
         <div class="preview-item"><div class="preview-item__symbol">!</div><div class="preview-item__name">셸 명령 실행</div><div class="preview-item__desc"><span class="os-win">!dir</span><span class="os-mac">!ls</span> 처럼 <span class="os-win">PowerShell</span><span class="os-mac">셸</span>을 즉석 호출</div></div>
         <div class="preview-item"><div class="preview-item__symbol">Esc</div><div class="preview-item__name">멈춤 · 되돌리기</div><div class="preview-item__desc">한 번 = 멈춤 · 빈 입력에서 두 번 = 되돌리기 메뉴</div></div>
       </div>
@@ -103,13 +103,13 @@
     <div class="slide__body">
       <div class="slash-grid">
         <div class="slash-card"><div class="slash-card__cmd">/init</div><div class="slash-card__desc">현재 폴더 분석 → CLAUDE.md 자동 초안 생성</div></div>
-        <div class="slash-card"><div class="slash-card__cmd">/agents</div><div class="slash-card__desc">서브 에이전트 안내 — 만들기는 말로 부탁, 5장에서 본격</div></div>
+        <div class="slash-card"><div class="slash-card__cmd">/agents</div><div class="slash-card__desc">서브 에이전트 안내 — 만들기는 말로 부탁</div></div>
         <div class="slash-card"><div class="slash-card__cmd">/model</div><div class="slash-card__desc">Haiku · Sonnet · Opus 전환 — 한 명령</div></div>
         <div class="slash-card"><div class="slash-card__cmd">/memory</div><div class="slash-card__desc">CLAUDE.md 직접 보기 · 편집 진입</div></div>
-        <div class="slash-card"><div class="slash-card__cmd">/compact</div><div class="slash-card__desc">컨텍스트 요약 — /clear보다 부드러움 (다음 덱)</div></div>
-        <div class="slash-card"><div class="slash-card__cmd">/permissions</div><div class="slash-card__desc">권한 설정 보기 · 편집 (다음 덱)</div></div>
+        <div class="slash-card"><div class="slash-card__cmd">/compact</div><div class="slash-card__desc">컨텍스트 요약 — /clear보다 부드러움</div></div>
+        <div class="slash-card"><div class="slash-card__cmd">/permissions</div><div class="slash-card__desc">권한 설정 보기 · 편집</div></div>
       </div>
-      <p class="slide__note">1장에서 <code>/help · /clear · /usage · /resume</code> 4개를 익혔고, 여기서 6개 추가 → <strong>총 10개</strong>가 손에 들어옵니다.</p>
+      <p class="slide__note">1장에서 <code>/help · /clear · /model · /resume · /login · /exit</code> 6개를 익혔고, 여기서 5개가 새로 추가(/model은 복습) → <strong>총 11개</strong>가 손에 들어옵니다.</p>
     </div>
   </section>
 
@@ -255,32 +255,6 @@
         </div>
         <div class="code-block__body"><span class="code-block__line"><span class="code-block__cmt"># 1) 폴더 분석부터</span></span><span class="code-block__line"><span class="code-block__cmd">&gt; <span class="code-block__hi">/init</span></span></span><span class="code-block__line"><span class="code-block__out">  ✓ CLAUDE.md 자동 생성</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__cmt"># 2) 답변 규칙 추가</span></span><span class="code-block__line"><span class="code-block__cmd">&gt; <span class="code-block__hi">항상 한국어로 답해줘 — 기억해줘</span></span></span><span class="code-block__line"><span class="code-block__out">  ✓ CLAUDE.md에 추가</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__cmt"># 3) 방금 만든 파일 분석 시키기</span></span><span class="code-block__line"><span class="code-block__cmd">&gt; <span class="code-block__hi">@index.html</span> 의 디자인 분석해줘</span></span><span class="code-block__line"><span class="code-block__out">  ✓ index.html 읽고 분석 보고</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__cmt"># 4) 셸 명령 즉석 호출</span></span><span class="code-block__line"><span class="code-block__cmd">&gt; <span class="code-block__hi"><span class="os-win">!dir</span><span class="os-mac">!ls</span></span></span></span><span class="code-block__line"><span class="code-block__out">  $ <span class="os-win">dir</span><span class="os-mac">ls</span> → 폴더 파일 목록 출력</span></span></div>
       </div>
-    </div>
-  </section>
-
-  <!-- 10 · 실습 미리보기 -->
-  <section class="slide is-standard">
-    <div class="slide__eyebrow">NEXT · 손풀이 실습</div>
-    <h2 class="slide__title">이제 <span class="accent">손풀이</span>로 들어갑니다</h2>
-    <div class="slide__body">
-      <div class="grid-3">
-        <div class="diff-card">
-          <div class="diff-card__rank">STEP 1</div>
-          <h3 class="diff-card__title">/ 슬래시</h3>
-          <p class="diff-card__body">/model로 모델을 바꿔보고 응답 속도를 체감. /init·/memory도 눌러본다.</p>
-        </div>
-        <div class="diff-card">
-          <div class="diff-card__rank">STEP 2</div>
-          <h3 class="diff-card__title">@ 멘션 + ! 셸</h3>
-          <p class="diff-card__body">@index.html로 방금 만든 홈페이지 분석, <span class="os-win">!dir</span><span class="os-mac">!ls</span>로 셸 즉석 호출.</p>
-        </div>
-        <div class="diff-card">
-          <div class="diff-card__rank">STEP 3</div>
-          <h3 class="diff-card__title">메모리 + Esc</h3>
-          <p class="diff-card__body">"기억해줘"로 한국어 규칙을 CLAUDE.md에 남기고, Esc 두 번 되돌리기까지 체험.</p>
-        </div>
-      </div>
-      <p class="slide__note">잠깐 쉬고 이어서. 막히면 오른쪽 질문 버튼에 올려주세요.</p>
     </div>
   </section>
 
@@ -446,7 +420,7 @@
             <ul class="content-card__list">
               <li><strong>Claude가 편집한 파일만</strong> 되돌림</li>
               <li>본인이 직접 고친 것 · 터미널 명령 결과는 대상 아님</li>
-              <li>더 강력한 되돌리기(어떤 변경이든 시점 복원)는 <strong>3장 Git</strong>에서 배웁니다</li>
+              <li>더 강력한 되돌리기(어떤 변경이든 시점 복원)는 <strong>2장에서 배운 Git</strong>이 담당</li>
             </ul>
           </div>
         </div>
@@ -482,7 +456,6 @@
           <p class="promise-card__body">AI가 망쳐도 ESC 두 번 — 겁내지 않고 시킬 수 있다.</p>
         </div>
       </div>
-      <p class="slide__note">다음 덱에서 <strong>모드·권한·비용·컨텍스트</strong> 운영 감각으로 들어갑니다.</p>
     </div>
   </section>
 

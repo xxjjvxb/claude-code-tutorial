@@ -48,9 +48,9 @@
     <h2 class="slide__title">실습 흐름 — <span class="accent">3 활동</span></h2>
     <div class="slide__body">
       <div class="setup-grid">
-        <div class="setup-step"><div class="setup-step__num">A</div><h3 class="setup-step__title">미니 빌드 마무리</h3><p class="setup-step__desc">Plan + 모든 도구 활용 — 동작하는 1차 완성</p></div>
-        <div class="setup-step"><div class="setup-step__num">B</div><h3 class="setup-step__title">design.md + PPTX v2</h3><p class="setup-step__desc">디자인 룰 작성 + 7장 PPTX에 적용</p></div>
-        <div class="setup-step"><div class="setup-step__num">C</div><h3 class="setup-step__title">발표자 노트</h3><p class="setup-step__desc">Claude로 4분 대본 자동 생성 + 통독</p></div>
+        <div class="setup-step"><div class="setup-step__num">A</div><h3 class="setup-step__title">미니 빌드 마무리 (~40분)</h3><p class="setup-step__desc">Plan + 모든 도구 활용 — 동작하는 1차 완성</p></div>
+        <div class="setup-step"><div class="setup-step__num">B</div><h3 class="setup-step__title">design.md + PPTX v2 (~25분)</h3><p class="setup-step__desc">디자인 룰 작성 + 발표 PPT에 적용 — 7장 파이프라인</p></div>
+        <div class="setup-step"><div class="setup-step__num">C</div><h3 class="setup-step__title">발표자 노트 (~10분)</h3><p class="setup-step__desc">Claude로 4분 대본 자동 생성 + 통독</p></div>
       </div>
       <p class="slide__note">A에 시간 가장 많이 — 미니가 발표 핵심. B·C는 마무리.</p>
     </div>
@@ -77,19 +77,13 @@
         <div class="step-list__item">
           <div class="step-list__num">3</div>
           <div class="step-list__content">
-            <p class="step-list__title">test-writer 호출 — 새 기능에 테스트 자동 작성</p>
+            <p class="step-list__title">실제 동작 확인 — 본인 손으로 한 번 (검증은 사람)</p>
           </div>
         </div>
         <div class="step-list__item">
           <div class="step-list__num">4</div>
           <div class="step-list__content">
-            <p class="step-list__title">실제 동작 확인 — 본인 손으로 한 번 (검증은 사람)</p>
-          </div>
-        </div>
-        <div class="step-list__item">
-          <div class="step-list__num">5</div>
-          <div class="step-list__content">
-            <p class="step-list__title">git commit + /usage 캡처</p>
+            <p class="step-list__title">git commit + Orca 좌하단 사용량 확인</p>
           </div>
         </div>
       </div>
@@ -107,7 +101,7 @@
           <span class="code-block__dot" style="background:#fb2c36"></span><span class="code-block__dot" style="background:#edb200"></span><span class="code-block__dot" style="background:#00c758"></span>
           <span class="code-block__title">claude · my-budget/ — 전 과정 도구 종합</span>
         </div>
-        <div class="code-block__body"><span class="code-block__line"><span class="code-block__cmt"># 1) CLAUDE.md 자동 주입 (3장)</span></span><span class="code-block__line"><span class="code-block__out">  ✓ 한국어 답변 룰 적용</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__cmt"># 2) Plan 모드 (4장)</span></span><span class="code-block__line"><span class="code-block__hi">  [plan]</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__cmt"># 3) @ 멘션 (3장)</span></span><span class="code-block__line"><span class="code-block__cmd">&gt; @routes/transactions.py 페이지네이션 추가</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__cmt"># 4) Sub-agent (5장)</span></span><span class="code-block__line"><span class="code-block__hi">  → @test-writer 호출 자동</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__cmt"># 5) MCP filesystem (6장)</span></span><span class="code-block__line"><span class="code-block__hi">  → tests/ 폴더 스캔</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__cmt"># 6) 응답 끝 → Stop Hook (3장)</span></span><span class="code-block__line"><span class="code-block__hi">  → Telegram 알림 발송</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__cmt"># 7) /review 슬래시 (3장)</span></span><span class="code-block__line"><span class="code-block__cmd">&gt; /review</span></span></div>
+        <div class="code-block__body"><span class="code-block__line"><span class="code-block__cmt"># 1) CLAUDE.md 자동 주입 (3장)</span></span><span class="code-block__line"><span class="code-block__out">  ✓ 한국어 답변 룰 적용</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__cmt"># 2) Plan 모드 (4장)</span></span><span class="code-block__line"><span class="code-block__hi">  [plan]</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__cmt"># 3) @ 멘션 (3장)</span></span><span class="code-block__line"><span class="code-block__cmd">&gt; @routes/transactions.py 페이지네이션 추가</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__cmt"># 4) Sub-agent (5장)</span></span><span class="code-block__line"><span class="code-block__hi">  → 본인이 만든 도우미 호출 (5장 방식)</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__cmt"># 5) MCP filesystem (6장)</span></span><span class="code-block__line"><span class="code-block__hi">  → tests/ 폴더 스캔</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__cmt"># 6) 응답 끝 → Stop Hook (3장)</span></span><span class="code-block__line"><span class="code-block__hi">  → Telegram 알림 발송</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__cmt"># 7) 커스텀 슬래시 (3장)</span></span><span class="code-block__line"><span class="code-block__cmd">&gt; /asdf</span></span></div>
       </div>
       <p class="slide__note">한 작업에 5~7 도구가 자연스럽게 결합. <strong>"군단 + 도구 + 자동화"의 진가</strong>.</p>
     </div>
@@ -191,7 +185,7 @@
           </figcaption>
         </figure>
       </div>
-      <p class="slide__note">같은 내용, 다른 옷 — <strong>design.md 한 파일</strong>이 4장 전체의 톤을 한 번에 통일합니다.</p>
+      <p class="slide__note">같은 내용, 다른 옷 — <strong>design.md 한 파일</strong>이 5장 전체의 톤을 한 번에 통일합니다.</p>
     </div>
   </section>
 
@@ -213,7 +207,7 @@
         </div>
         <div class="promise-card">
           <div class="promise-card__num">✓</div>
-          <h3 class="promise-card__title">4장 구성</h3>
+          <h3 class="promise-card__title">5장 구성</h3>
           <p class="promise-card__body">표지·무엇·어떻게·데모·마무리 의도대로.</p>
         </div>
         <div class="promise-card">
@@ -274,8 +268,8 @@
         </div>
         <div class="promise-card">
           <div class="promise-card__num">git</div>
-          <h3 class="promise-card__title">commit + /usage</h3>
-          <p class="promise-card__body">"발표 자료 준비" commit + /usage 확인.</p>
+          <h3 class="promise-card__title">commit + 사용량</h3>
+          <p class="promise-card__body">"발표 자료 준비" commit + Orca 좌하단 확인.</p>
         </div>
       </div>
       <p class="slide__note">막혔으면 실습 끝나기 전에 오른쪽 질문 버튼에 올려주세요. <strong>발표 직전 사고 방지</strong> 위해 일찍 정리.</p>
@@ -340,7 +334,6 @@
           <p class="promise-card__body">4분 분량 — 외우지 않아도 흐름 파악 가능.</p>
         </div>
       </div>
-      <p class="slide__note">다음은 덱 3 — <strong>실전 패턴 + 작업 환경 깊게 + FAQ</strong>. 발표 전 마지막 정리.</p>
     </div>
   </section>
 

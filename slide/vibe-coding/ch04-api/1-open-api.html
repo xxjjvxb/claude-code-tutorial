@@ -88,7 +88,7 @@
             <div>API — 인터넷의 데이터 창구 이해</div>
             <div>공개 API 데이터로 반응형 페이지 제작</div>
             <div>Plan Mode 심화 — 계획을 읽고 다듬기</div>
-            <div>3장에서 해본 배포 그대로 Vercel까지</div>
+            <div>2장에서 해본 배포 그대로 Vercel까지</div>
           </div>
           <p class="bg-compare__note">내 컴퓨터 밖의 <strong>진짜 데이터</strong>를 다루기 시작합니다.</p>
         </div>
@@ -115,7 +115,7 @@
         <div class="diff-card">
           <div class="diff-card__rank">STEP 3</div>
           <h3 class="diff-card__title">제작 → 배포</h3>
-          <p class="diff-card__body">반응형 데이터 페이지를 만들어 3장에서 해본 대로 Vercel 배포.</p>
+          <p class="diff-card__body">반응형 데이터 페이지를 만들어 2장에서 해본 대로 Vercel 배포.</p>
         </div>
       </div>
       <p class="slide__note">공개 API 데이터로 페이지를 만듭니다 — Plan Mode를 쓰면서, 앞 장들에서 익힌 "만들고 배포"를 진짜 데이터로 한 바퀴 더.</p>
@@ -283,7 +283,7 @@
           </div>
         </div>
       </div>
-      <p class="slide__note">바탕화면 대신 <code><span class="os-win">c:\lecture\api-page</span><span class="os-mac">~/lecture/api-page</span></code> — 경로가 짧고 찾기 쉬워 실습 내내 편합니다.</p>
+      <p class="slide__note">1장 my-intro와 같은 <code><span class="os-win">c:\lecture</span><span class="os-mac">~/lecture</span></code> 폴더 규약 — 프로젝트마다 이 밑에 하나씩. 경로가 짧고 찾기 쉬워 실습 내내 편합니다.</p>
     </div>
   </section>
 
@@ -295,7 +295,7 @@
       <div class="two-col">
         <div>
           <div class="content-card content-card--compact">
-            <h3 class="content-card__title">3장에서 해본 그 흐름</h3>
+            <h3 class="content-card__title">2장에서 해본 그 흐름</h3>
             <ol class="content-card__list content-card__list--ol">
               <li><code>github.com</code> 좌측 상단 <strong>+</strong> → New repository</li>
               <li>저장소 이름 입력 (예: <code>api-page</code>)</li>
@@ -309,7 +309,7 @@
             <h3 class="content-card__title">왜 먼저 만드나</h3>
             <ul class="content-card__list">
               <li>나중에 Vercel이 이 저장소를 보고 자동 배포</li>
-              <li>3장 자기소개 배포 때와 <strong>같은 패턴</strong></li>
+              <li>2장 자기소개 배포 때와 <strong>같은 패턴</strong></li>
               <li>잘 기억 안 나면 — Claude Code와 대화하며</li>
             </ul>
           </div>
@@ -364,37 +364,6 @@
         <div class="cycle__step"><div class="cycle__num">05</div><div class="cycle__title">실행</div><div class="cycle__desc">Approve / Edit / Reject 중 선택</div><div class="cycle__example">→ Approve</div></div>
       </div>
       <p class="slide__note">04에서 의도 어긋난 부분 발견하면 <strong>"Edit"</strong> → 메시지로 수정 요청 → 새 계획 → 다시 검토.</p>
-    </div>
-  </section>
-
-  <!-- 12 · 진입 단축키 -->
-  <section class="slide is-statement">
-    <div class="statement-grid">
-      <div class="statement-text">
-        <div class="slide__eyebrow">ENTRY · 진입은 단축키로</div>
-        <h2 class="statement__lead"><span class="accent">Shift+Tab</span> 두 번이면 됩니다.</h2>
-        <p class="statement__caption">3장에서 본 모드 순환 단축키. Interactive → Auto → Plan 순서이므로, 기본 상태에서 <strong>두 번</strong> 누르면 Plan.</p>
-        <div class="statement__points">
-          <div class="statement__point"><span class="statement__point-num">한 번</span><span>Interactive → Auto (accept-edits)</span></div>
-          <div class="statement__point"><span class="statement__point-num">두 번</span><span>Auto → <strong>Plan</strong></span></div>
-          <div class="statement__point"><span class="statement__point-num">세 번</span><span>Plan → Interactive (복귀)</span></div>
-        </div>
-      </div>
-      <div class="statement-visual">
-        <svg viewBox="0 0 460 320" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <rect x="0" y="0" width="460" height="320" rx="14" fill="rgba(0,0,0,0.92)"/>
-          <rect x="0" y="0" width="460" height="32" fill="rgba(255,255,255,0.06)"/>
-          <text x="14" y="20" font-family="ui-monospace, monospace" font-size="11" fill="rgba(255,255,255,0.5)">claude · 모드 표시</text>
-          <text x="20" y="60" fill="rgba(255,255,255,0.5)" font-family="ui-monospace, monospace" font-size="13">[interactive]</text>
-          <text x="20" y="84" fill="rgba(255,255,255,0.5)" font-family="ui-monospace, monospace" font-size="11">  ↓ Shift+Tab</text>
-          <text x="20" y="120" fill="rgba(255,255,255,0.7)" font-family="ui-monospace, monospace" font-size="13">[auto]</text>
-          <text x="20" y="144" fill="rgba(255,255,255,0.5)" font-family="ui-monospace, monospace" font-size="11">  ↓ Shift+Tab</text>
-          <rect x="14" y="170" width="430" height="50" rx="8" fill="rgba(254,110,0,0.15)" stroke="#fe6e00" stroke-width="2"/>
-          <text x="20" y="200" fill="#fe6e00" font-family="ui-monospace, monospace" font-size="16" font-weight="700">[plan] ← 큰 변경 시 여기</text>
-          <text x="20" y="244" fill="rgba(255,255,255,0.5)" font-family="ui-monospace, monospace" font-size="11">  ↓ Shift+Tab (한 번 더)</text>
-          <text x="20" y="278" fill="rgba(255,255,255,0.5)" font-family="ui-monospace, monospace" font-size="13">[interactive] (순환 복귀)</text>
-        </svg>
-      </div>
     </div>
   </section>
 
@@ -535,15 +504,15 @@ PC·태블릿·스마트폰 어디서 봐도 배치가 자연스럽게 바뀌게
           <p class="content-card__body">2장에서 해본 대로, vercel.com에서 <strong>"Continue with GitHub"</strong>를 누르세요. GitHub 로그인을 쓰면 방금 만든 레포가 자동으로 보입니다. <code>Import</code> 한 번이면 배포 끝 — 기억 안 나면 Claude에게 물어보세요.</p>
         </div>
         <figure style="margin: 0; display: flex; align-items: center; justify-content: center; height: 8.5rem; border: 2px dashed var(--color-outline-strong); border-radius: var(--rounded-md); background: var(--color-surface-soft); color: var(--color-on-surface-muted); text-align: center; padding: 1rem; overflow: hidden;">
-          <img src="../../imgs/day2-vercel-github-login.png" alt="Vercel 가입 화면 — Continue with GitHub 버튼" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" style="max-width: 100%; max-height: 100%; object-fit: contain; border-radius: calc(var(--rounded-md) - 4px);">
+          <img src="../../imgs/vc-ch04-vercel-github-login.png" alt="Vercel 가입 화면 — Continue with GitHub 버튼" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" style="max-width: 100%; max-height: 100%; object-fit: contain; border-radius: calc(var(--rounded-md) - 4px);">
           <figcaption style="display: none; flex-direction: column; gap: 0.3rem; align-items: center;">
             <span style="font-size: 1.8rem; line-height: 1;">◧</span>
             <span style="font-size: 0.78rem; font-weight: 700; color: var(--color-on-surface);">Vercel 가입 · GitHub 로그인</span>
-            <span style="font-size: 0.66rem;">곧 부착 — slide/imgs/day2-vercel-github-login.png</span>
+            <span style="font-size: 0.66rem;">곧 부착 — slide/imgs/vc-ch04-vercel-github-login.png</span>
           </figcaption>
         </figure>
       </div>
-      <p class="slide__note">여기까지 하면 이번 장 완주 — 앞 장들에서 익힌 "만들고 배포"가 손에 붙었는지 확인하는 과정입니다. 다음 — 5장 홈페이지 방명록 (데이터베이스 이해부터).</p>
+      <p class="slide__note">여기까지 하면 이번 장 완주 — 앞 장들에서 익힌 "만들고 배포"가 손에 붙었는지 확인하는 과정입니다.</p>
     </div>
   </section>
 

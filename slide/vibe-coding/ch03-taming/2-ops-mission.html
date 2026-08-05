@@ -60,7 +60,7 @@
         <div class="diff-card">
           <div class="diff-card__rank">03</div>
           <h3 class="diff-card__title">비용 감각</h3>
-          <p class="diff-card__body">/usage 자주. 모델별 단가 차이 + 작은 단위 분할.</p>
+          <p class="diff-card__body">Orca 좌하단 자주 확인. 모델별 단가 차이 + 작은 단위 분할.</p>
         </div>
         <div class="diff-card">
           <div class="diff-card__rank">04</div>
@@ -68,7 +68,7 @@
           <p class="diff-card__body">/clear · /compact · /resume · --continue 네 도구로 세션 다루기.</p>
         </div>
       </div>
-      <p class="slide__note">실습에서 <strong>매 미션 끝 <code>/usage</code> 의무</strong>화. 비용 감각은 손에 익혀야 진짜.</p>
+      <p class="slide__note">실습에서 <strong>매 미션 끝 Orca 좌하단 확인 의무</strong>화. 비용 감각은 손에 익혀야 진짜.</p>
     </div>
   </section>
 
@@ -186,11 +186,11 @@
     </div>
   </section>
 
-  <!-- 6 · Plan 모드 (4장 예고) -->
+  <!-- 6 · Plan 모드 -->
   <section class="slide is-statement">
     <div class="statement-grid">
       <div class="statement-text">
-        <div class="slide__eyebrow">MODE · Plan (4장 본격)</div>
+        <div class="slide__eyebrow">MODE · Plan</div>
         <h2 class="statement__lead">실행 전에 <span class="accent">계획</span>부터 본다</h2>
         <p class="statement__caption">큰 작업에 들어가기 전 — 무엇을 어떻게 할지 Claude가 먼저 계획서를 제시. 사람이 읽고 승인해야 실행.</p>
         <div class="statement__points">
@@ -249,45 +249,13 @@
     </div>
   </section>
 
-  <!-- 8 · 권한 확인 -->
-  <section class="slide is-standard">
-    <div class="slide__eyebrow">TOPIC 02 · PERMISSIONS</div>
-    <h2 class="slide__title">권한 prompt — <span class="accent">한 줄은 읽고</span> 승인</h2>
-    <div class="slide__body">
-      <div class="two-col">
-        <div>
-          <div class="content-card content-card--compact">
-            <h3 class="content-card__title">언제 prompt가 뜨나</h3>
-            <ul class="content-card__list">
-              <li><strong>파일 쓰기·삭제</strong> — 내용 변경</li>
-              <li><strong>셸 명령</strong> — git, npm, curl 등</li>
-              <li><strong>네트워크</strong> — 외부 API · 다운로드</li>
-              <li><strong>새 의존성</strong> — npm install 등</li>
-            </ul>
-          </div>
-        </div>
-        <div>
-          <div class="content-card content-card--compact">
-            <h3 class="content-card__title">3가지 옵션</h3>
-            <ul class="content-card__list">
-              <li><strong>Allow once</strong> — 이번 한 번만 (권장 default)</li>
-              <li><strong>Always allow</strong> — 이 명령은 앞으로 자동</li>
-              <li><strong>Deny</strong> — 거절</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-      <p class="slide__note">새 명령은 <strong>Allow once</strong>로 시작 — 신뢰 쌓이면 always로. 처음부터 always는 사고의 시작.</p>
-    </div>
-  </section>
-
-  <!-- 9 · always allow 무지성 금지 -->
+  <!-- 8 · 권한 — always allow 무지성 금지 -->
   <section class="slide is-statement">
     <div class="statement-grid">
       <div class="statement-text">
-        <div class="slide__eyebrow">RULE · 1줄로 끝</div>
+        <div class="slide__eyebrow">TOPIC 02 · PERMISSIONS</div>
         <h2 class="statement__lead">"<span class="accent">always allow 무지성 금지</span>"</h2>
-        <p class="statement__caption">이 한 줄이 강의 내내 사고를 막는다. always allow는 그 명령을 다음부턴 묻지 않겠다는 약속 — 어떤 명령에 약속할지 신중히.</p>
+        <p class="statement__caption">1장에서 본 권한 prompt의 옵션은 셋 — <strong>Allow once</strong>(이번 한 번, 권장 기본) · <strong>Always allow</strong>(다음부턴 안 물음) · <strong>Deny</strong>. 새 명령은 Allow once로 시작하고, 어떤 명령에 always를 약속할지는 한 줄 읽고 신중히 — 이 습관이 강의 내내 사고를 막는다.</p>
         <div class="statement__points">
           <div class="statement__point"><span class="statement__point-num">OK</span><span><code>git status</code> · <code>ls</code> · <code>cat</code> — 읽기만 하는 명령</span></div>
           <div class="statement__point"><span class="statement__point-num">주의</span><span><code>git add</code> · <code>git commit</code> — 변경은 가능</span></div>
@@ -339,33 +307,30 @@
     </div>
   </section>
 
-  <!-- 11 · /usage 자주 보기 -->
+  <!-- 11 · 사용량 자주 보기 -->
   <section class="slide is-statement">
     <div class="statement-grid">
       <div class="statement-text">
-        <div class="slide__eyebrow">/USAGE — 매 미션 끝마다</div>
+        <div class="slide__eyebrow">USAGE · 매 미션 끝마다</div>
         <h2 class="statement__lead">사용량이 <span class="accent">손에 익을</span> 때까지 자주.</h2>
-        <p class="statement__caption">실습 중 매 미션이 끝날 때마다 <code>/usage</code>를 한 번씩. 본인 누적이 어느 정도인지 한 번씩 확인하는 습관.</p>
+        <p class="statement__caption">실습 중 매 미션이 끝날 때마다 <strong>Orca 좌하단</strong>을 한 번씩. 본인 누적이 어느 정도인지 확인하는 습관 — 명령 칠 필요 없습니다.</p>
         <div class="statement__points">
-          <div class="statement__point"><span class="statement__point-num">표시</span><span>입력 / 출력 토큰 + 달러 환산 + 현재 모델</span></div>
-          <div class="statement__point"><span class="statement__point-num">습관</span><span>매 미션 끝 → /usage 한 번씩 확인</span></div>
-          <div class="statement__point"><span class="statement__point-num">감각</span><span>"이 정도면 ${가격}"이 머리에 들어옴 = 운영 시작</span></div>
+          <div class="statement__point"><span class="statement__point-num">표시</span><span>사용량 % + 리셋까지 남은 시간 — 좌하단에 상시</span></div>
+          <div class="statement__point"><span class="statement__point-num">습관</span><span>매 미션 끝 → 좌하단 한 번씩 흘끗</span></div>
+          <div class="statement__point"><span class="statement__point-num">감각</span><span>"이 정도면 이만큼"이 머리에 들어옴 = 운영 시작</span></div>
         </div>
       </div>
       <div class="statement-visual">
         <svg viewBox="0 0 460 320" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
           <rect x="0" y="0" width="460" height="320" rx="14" fill="rgba(0,0,0,0.92)"/>
           <rect x="0" y="0" width="460" height="32" fill="rgba(255,255,255,0.06)"/>
-          <text x="14" y="20" font-family="ui-monospace, monospace" font-size="11" fill="rgba(255,255,255,0.5)">claude · /usage</text>
-          <text x="20" y="68" fill="#fe6e00" font-family="ui-monospace, monospace" font-size="13">&gt; /usage</text>
-          <text x="20" y="100" fill="rgba(255,255,255,0.85)" font-family="ui-monospace, monospace" font-size="12">  Session usage:</text>
-          <text x="20" y="128" fill="rgba(255,255,255,0.65)" font-family="ui-monospace, monospace" font-size="11">  Model       sonnet</text>
-          <text x="20" y="148" fill="rgba(255,255,255,0.65)" font-family="ui-monospace, monospace" font-size="11">  Input       42,180 tokens</text>
-          <text x="20" y="168" fill="rgba(255,255,255,0.65)" font-family="ui-monospace, monospace" font-size="11">  Output       8,420 tokens</text>
-          <line x1="20" y1="188" x2="440" y2="188" stroke="rgba(255,255,255,0.15)"/>
-          <text x="20" y="216" fill="#fe6e00" font-family="ui-monospace, monospace" font-size="14" font-weight="700">  Total cost  $0.252</text>
-          <text x="20" y="248" fill="rgba(255,255,255,0.5)" font-family="ui-monospace, monospace" font-size="10">  Today total: $1.34 · This week: $4.20</text>
-          <text x="20" y="280" fill="#00c758" font-family="ui-monospace, monospace" font-size="11">  → 본인 사용량 확인</text>
+          <text x="14" y="20" font-family="ui-monospace, monospace" font-size="11" fill="rgba(255,255,255,0.5)">Orca</text>
+          <rect x="20" y="52" width="420" height="180" rx="8" fill="rgba(255,255,255,0.04)"/>
+          <text x="230" y="145" fill="rgba(255,255,255,0.35)" font-family="ui-sans-serif, system-ui" font-size="12" text-anchor="middle">작업 화면</text>
+          <rect x="0" y="270" width="460" height="50" fill="rgba(255,255,255,0.08)"/>
+          <rect x="14" y="284" width="150" height="22" rx="6" fill="#fe6e00"/>
+          <text x="24" y="300" fill="white" font-family="ui-monospace, monospace" font-size="12" font-weight="700">▦ 42% · 리셋 2h 14m</text>
+          <text x="180" y="300" fill="rgba(255,255,255,0.6)" font-family="ui-monospace, monospace" font-size="11">← 좌하단 — 매 미션 끝 여기 흘끗</text>
         </svg>
       </div>
     </div>
@@ -534,7 +499,7 @@
   <section class="slide is-feature">
     <div class="feature-head">
       <div class="slide__eyebrow">SYNTHESIS · 운영자의 한 줄</div>
-      <h2 class="feature-head__title">"<span class="accent">commit 자주 · 권한 한 번 읽고 · /usage 자주 · 작은 단위로</span>"</h2>
+      <h2 class="feature-head__title">"<span class="accent">commit 자주 · 권한 한 번 읽고 · 사용량 자주 · 작은 단위로</span>"</h2>
     </div>
     <div class="feature-body">
       <div class="feature-text">
@@ -542,7 +507,7 @@
         <div class="statement__points">
           <div class="statement__point"><span class="statement__point-num">commit</span><span>큰 작업 전후로 무조건 — 안전벨트</span></div>
           <div class="statement__point"><span class="statement__point-num">권한</span><span>prompt 한 줄 읽고 승인 — 무지성 X</span></div>
-          <div class="statement__point"><span class="statement__point-num">/usage</span><span>매 미션 끝 → 한 번씩 확인</span></div>
+          <div class="statement__point"><span class="statement__point-num">사용량</span><span>매 미션 끝 → Orca 좌하단 흘끗</span></div>
           <div class="statement__point"><span class="statement__point-num">한 입</span><span>큰 일을 작게 잘라서 — 검증 + 비용 ↓</span></div>
         </div>
       </div>
@@ -556,7 +521,7 @@
             <circle cx="150" cy="0" r="36" fill="white" stroke="#cc5a14" stroke-width="2"/>
             <text x="150" y="6" font-family="ui-sans-serif, system-ui" font-size="14" font-weight="700" fill="#cc5a14" text-anchor="middle">권한</text>
             <circle cx="300" cy="0" r="36" fill="white" stroke="#cc5a14" stroke-width="2"/>
-            <text x="300" y="6" font-family="ui-sans-serif, system-ui" font-size="13" font-weight="700" fill="#cc5a14" text-anchor="middle">/usage</text>
+            <text x="300" y="6" font-family="ui-sans-serif, system-ui" font-size="13" font-weight="700" fill="#cc5a14" text-anchor="middle">사용량</text>
             <circle cx="150" cy="120" r="44" fill="#cc5a14"/>
             <text x="150" y="116" font-family="ui-sans-serif, system-ui" font-size="14" font-weight="700" fill="white" text-anchor="middle">한 입</text>
             <text x="150" y="135" font-family="ui-sans-serif, system-ui" font-size="11" fill="rgba(255,255,255,0.85)" text-anchor="middle">거리</text>
@@ -566,35 +531,6 @@
       </div>
     </div>
   </section>
-
-  <!-- 18 · 미션 미리보기 -->
-  <section class="slide is-standard">
-    <div class="slide__eyebrow">NEXT · 미션 미리보기</div>
-    <h2 class="slide__title">이제 <span class="accent">미션 2개</span>로 손에 익힙니다</h2>
-    <div class="slide__body">
-      <div class="grid-3">
-        <div class="diff-card">
-          <div class="diff-card__rank">미션 1</div>
-          <h3 class="diff-card__title">가위바위보 CLI</h3>
-          <p class="diff-card__body">뼈대 → 입력 → 기록 — 3단계로 분할 빌드. 작은 단위 분할 첫 적용.</p>
-        </div>
-        <div class="diff-card">
-          <div class="diff-card__rank">미션 2</div>
-          <h3 class="diff-card__title">단위 변환기</h3>
-          <p class="diff-card__body">cm↔inch · kg↔lb. 본인 손으로 명세 → Claude에게 시키기.</p>
-        </div>
-        <div class="diff-card">
-          <div class="diff-card__rank">보너스</div>
-          <h3 class="diff-card__title">먼저 끝낸 사람</h3>
-          <p class="diff-card__body">5판 통계+그래프 또는 변환기 GUI — 시간 남으면 도전.</p>
-        </div>
-      </div>
-      <p class="slide__note">매 미션 끝마다 <strong>git commit + /usage 캡처</strong>. 잠깐 휴식 후 시작.</p>
-    </div>
-  </section>
-
-
-
 
   <!-- 19 · Section cover -->
   <section class="slide is-section is-standard">
@@ -618,7 +554,7 @@
         <div class="setup-step"><div class="setup-step__num">보너스</div><h3 class="setup-step__title">먼저 끝낸 사람</h3><p class="setup-step__desc">통계+그래프 또는 GUI</p></div>
         <div class="setup-step"><div class="setup-step__num">결과물 공유</div><h3 class="setup-step__title">공유 (선택)</h3><p class="setup-step__desc">원하는 분만 1분 — 또는 📤 제출 버튼으로</p></div>
       </div>
-      <p class="slide__note">매 미션 끝마다 <strong>git commit + /usage 한 번 확인</strong> — 운영 습관 손에 박는 시간.</p>
+      <p class="slide__note">매 미션 끝마다 <strong>git commit + Orca 좌하단 한 번 확인</strong> — 운영 습관 손에 박는 시간.</p>
     </div>
   </section>
 
@@ -776,11 +712,11 @@ game.py 한 파일로.</pre>
               <span class="code-block__dot" style="background:#fb2c36"></span><span class="code-block__dot" style="background:#edb200"></span><span class="code-block__dot" style="background:#00c758"></span>
               <span class="code-block__title">실행 — 5판 + 통계</span>
             </div>
-            <div class="code-block__body"><span class="code-block__line"><span class="code-block__cmt"># [1/5] [2/5] ... [5/5] 진행</span></span><span class="code-block__line"><span class="code-block__out">  ─── 결과 ───</span></span><span class="code-block__line"><span class="code-block__out">  승: 2 · 무: 1 · 패: 2</span></span><span class="code-block__line"><span class="code-block__out">  더 하시겠어요? (y/n): n</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__prompt" data-auto-os></span> <span class="code-block__cmd">git commit -am "<span class="code-block__hi">5판 + 통계 추가</span>"</span></span><span class="code-block__line"><span class="code-block__prompt" data-auto-os></span> <span class="code-block__cmd">claude</span></span><span class="code-block__line"><span class="code-block__cmd">&gt; /usage</span></span></div>
+            <div class="code-block__body"><span class="code-block__line"><span class="code-block__cmt"># [1/5] [2/5] ... [5/5] 진행</span></span><span class="code-block__line"><span class="code-block__out">  ─── 결과 ───</span></span><span class="code-block__line"><span class="code-block__out">  승: 2 · 무: 1 · 패: 2</span></span><span class="code-block__line"><span class="code-block__out">  더 하시겠어요? (y/n): n</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__prompt" data-auto-os></span> <span class="code-block__cmd">git commit -am "<span class="code-block__hi">5판 + 통계 추가</span>"</span></span><span class="code-block__line"><span class="code-block__cmt"># Orca 좌하단에서 사용량 확인</span></span></div>
           </div>
         </div>
       </div>
-      <p class="slide__note">미션 1 끝 → <code>/usage</code> 한 번 확인. <strong>작은 단위 분할의 첫 완주</strong>입니다.</p>
+      <p class="slide__note">미션 1 끝 → Orca 좌하단 사용량 한 번 확인. <strong>작은 단위 분할의 첫 완주</strong>입니다.</p>
     </div>
   </section>
 
@@ -801,9 +737,9 @@ game.py 한 파일로.</pre>
           <p class="promise-card__body">뼈대 · 입력 · 5판 — 단계별 커밋이 git log에 보임.</p>
         </div>
         <div class="promise-card">
-          <div class="promise-card__num">/usage</div>
+          <div class="promise-card__num">사용량</div>
           <h3 class="promise-card__title">캡처 + 공유</h3>
-          <p class="promise-card__body">/usage 한 번 확인 — 매일의 약속 04.</p>
+          <p class="promise-card__body">Orca 좌하단 한 번 확인 — 매일의 약속 04.</p>
         </div>
         <div class="promise-card">
           <div class="promise-card__num">→</div>
@@ -882,7 +818,7 @@ convert.py 한 파일로.</pre>
         <div class="step-list__item">
           <div class="step-list__num">5</div>
           <div class="step-list__content">
-            <p class="step-list__title">/usage 한 번 확인 → 보너스 또는 결과물 공유 준비</p>
+            <p class="step-list__title">Orca 좌하단 사용량 확인 → 보너스 또는 결과물 공유 준비</p>
           </div>
         </div>
       </div>
@@ -912,47 +848,21 @@ convert.py 한 파일로.</pre>
           <p class="diff-card__body">미션 1·2 어느 쪽이든 본인 아이디어로. 단, 30분 안에 끝나는 분량으로.</p>
         </div>
       </div>
-      <p class="slide__note">보너스도 끝났으면 <strong>공유 준비(선택)</strong>로 — 4문법 중 어떤 걸 가장 많이 썼는지, /usage 합계 등.</p>
+      <p class="slide__note">보너스도 끝났으면 <strong>공유 준비(선택)</strong>로 — 4문법 중 어떤 걸 가장 많이 썼는지, 사용량 합계 등.</p>
     </div>
   </section>
 
-  <!-- 30 · 결과물 공유 발표 가이드 -->
-  <section class="slide is-standard">
-    <div class="slide__eyebrow">SHARE TIME · 발표 가이드</div>
-    <h2 class="slide__title">1분 안에 <span class="accent">3가지</span>만</h2>
-    <div class="slide__body">
-      <div class="grid-3">
-        <div class="diff-card">
-          <div class="diff-card__rank">20초</div>
-          <h3 class="diff-card__title">뭘 만들었나</h3>
-          <p class="diff-card__body">가위바위보 5판 + 변환기. 화면 한 번 돌리거나 git log 한 번 보여주기.</p>
-        </div>
-        <div class="diff-card">
-          <div class="diff-card__rank">30초</div>
-          <h3 class="diff-card__title">제일 좋았던 4문법</h3>
-          <p class="diff-card__body">/ @ ! Esc 중에 어떤 게 손에 잘 박혔나? 어떤 상황에 썼나?</p>
-        </div>
-        <div class="diff-card">
-          <div class="diff-card__rank">10초</div>
-          <h3 class="diff-card__title">/usage 결과</h3>
-          <p class="diff-card__body">지금까지 합계 얼마? 한 번 확인 — 비용 감각 시작.</p>
-        </div>
-      </div>
-      <p class="slide__note">완성도 X · <strong>직접 시도한 것</strong>이 평가 기준. 막혀서 포기한 부분도 솔직히 말하면 가장 좋은 발표.</p>
-    </div>
-  </section>
-
-  <!-- 31 · 결과물 공유 -->
+  <!-- 30 · 결과물 공유 -->
   <section class="slide is-statement">
     <div class="statement-grid">
       <div class="statement-text">
         <div class="slide__eyebrow">SHARE TIME · 결과물 공유</div>
         <h2 class="statement__lead">1인 1분, <span class="accent">git log + 4문법</span> 결과물 공유</h2>
-        <p class="statement__caption">화면 + git log 한 번 + 한 줄 코멘트. 막혔어도 OK — 어디서 막혔는지가 가장 좋은 데이터.</p>
+        <p class="statement__caption">20초 뭘 만들었나 · 30초 제일 좋았던 문법 · 10초 사용량. 완성도 X — <strong>직접 시도한 것</strong>이 평가 기준. 막혔어도 어디서 막혔는지가 가장 좋은 데이터.</p>
         <div class="statement__points">
           <div class="statement__point"><span class="statement__point-num">화면</span><span>가위바위보 또는 변환기 한 판 시연</span></div>
           <div class="statement__point"><span class="statement__point-num">log</span><span><code>git log --oneline</code> — 단계별 commit 보여주기</span></div>
-          <div class="statement__point"><span class="statement__point-num">/usage</span><span>본인 사용량 한 번 확인</span></div>
+          <div class="statement__point"><span class="statement__point-num">사용량</span><span>Orca 좌하단 — 본인 누적 한 번 확인</span></div>
         </div>
       </div>
       <div class="statement-visual">
@@ -977,21 +887,6 @@ convert.py 한 파일로.</pre>
           <rect x="135" y="266" width="10" height="15" fill="white"><animate attributeName="opacity" values="1;0;1" dur="1.1s" repeatCount="indefinite"/></rect>
         </svg>
       </div>
-    </div>
-  </section>
-
-  <!-- 32 · 마무리 + 다음 길들이기 본편 -->
-  <section class="slide is-standard">
-    <div class="slide__eyebrow">RECAP · 미션 마무리 + 다음</div>
-    <h2 class="slide__title">다음 — 진짜 <span class="accent">길들이기 본편</span> (덱 3~5)</h2>
-    <div class="slide__body">
-      <div class="preview-grid">
-        <div class="preview-item"><div class="preview-item__symbol">📏</div><div class="preview-item__name">CLAUDE.md — 내 규칙</div><div class="preview-item__desc">매번 다시 말하던 규칙을 파일로 — 늘 기억하게</div></div>
-        <div class="preview-item"><div class="preview-item__symbol">⚡</div><div class="preview-item__name">커스텀 슬래시 — 내 명령</div><div class="preview-item__desc">자주 시키는 일을 /명령 하나로</div></div>
-        <div class="preview-item"><div class="preview-item__symbol">🔔</div><div class="preview-item__name">Hooks + 텔레그램</div><div class="preview-item__desc">"작업 끝나면 폰으로 알림" 자동화</div></div>
-        <div class="preview-item"><div class="preview-item__symbol">🏠</div><div class="preview-item__name">같은 프로젝트로</div><div class="preview-item__desc">2장에서 배포한 홈페이지를 계속 다듬으며</div></div>
-      </div>
-      <p class="slide__note">잠깐 쉬고 — 홈페이지 폴더 그대로, 이제 <strong>Claude를 내 방식대로</strong> 길들입니다.</p>
     </div>
   </section>
 

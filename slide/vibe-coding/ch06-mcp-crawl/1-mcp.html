@@ -34,25 +34,53 @@
   <section class="slide is-section is-standard">
     <div class="section-eyebrow">6장 · MCP</div>
     <h2 class="section-title">MCP — 외부 세계와 <span class="accent">연결</span>하는 표준 포트</h2>
-    <p class="section-caption">Claude는 기본적으로 내 프로젝트 폴더 안만 봅니다. MCP는 파일·GitHub·브라우저 같은 외부 도구를 꽂는 "표준 포트"입니다. 이 덱에서 MCP 개념과 연결을 익히고 — 다음 덱에서 브라우저 MCP로 웹을 직접 크롤링합니다.</p>
+    <p class="section-caption">Claude는 기본적으로 내 프로젝트 폴더 안만 봅니다. MCP는 파일·GitHub·브라우저 같은 외부 도구를 꽂는 "표준 포트"입니다. 이 덱에서 MCP 개념과 연결을 익힙니다.</p>
     <div class="section-meta">
       <div class="section-meta__item"><span class="section-meta__num">1</span><span>줄로 연결</span></div>
       <div class="section-meta__item"><span class="section-meta__num">6</span><span>대표 MCP</span></div>
-      <div class="section-meta__item"><span class="section-meta__num">→</span><span>다음 덱 크롤링</span></div>
     </div>
   </section>
 
-  <!-- 2 · WHY MCP -->
+  <!-- 2 · 이미 MCP를 쓰고 있었다 -->
+  <section class="slide is-standard">
+    <div class="slide__eyebrow">ALREADY · 사실 우리는</div>
+    <h2 class="slide__title">우리는 이미 <span class="accent">MCP를 쓰고 있었다!</span></h2>
+    <div class="slide__body">
+      <div class="compare-2">
+        <div class="compare-side compare-side--soft">
+          <div class="compare-side__label">3장에서 한 일</div>
+          <h3 class="compare-side__title">작업 끝나면 폰으로 알림</h3>
+          <ul class="compare-side__list">
+            <li><code>/plugin install telegram</code>으로 설치</li>
+            <li>긴 작업이 끝나면 — 텔레그램 메시지 도착</li>
+            <li>어떻게 연결되는지는 몰라도 잘 됐다</li>
+          </ul>
+        </div>
+        <div class="compare-side compare-side--accent">
+          <div class="compare-side__label">그 정체</div>
+          <h3 class="compare-side__title">플러그인 속 텔레그램 MCP</h3>
+          <ul class="compare-side__list">
+            <li>플러그인 안에 <strong>텔레그램 연결(MCP)</strong>이 있었다</li>
+            <li>Claude가 담장 밖 텔레그램에 닿은 통로</li>
+            <li>이번 덱에선 이 통로를 <strong>직접</strong> 꽂아본다</li>
+          </ul>
+        </div>
+      </div>
+      <p class="slide__note">낯선 개념이 아닙니다 — <strong>이미 한 번 써본 것</strong>에 이름을 붙이는 시간입니다.</p>
+    </div>
+  </section>
+
+  <!-- 3 · WHY & WHAT — 담장 밖으로 잇는 USB 포트 -->
   <section class="slide is-statement">
     <div class="statement-grid statement-grid--visual-wide">
       <div class="statement-text">
-        <div class="slide__eyebrow">WHY · 왜 필요한가</div>
-        <h2 class="statement__lead">Claude 혼자선 — <span class="accent">담장 안</span>만 본다.</h2>
-        <p class="statement__caption">Claude Code는 지금 열어둔 프로젝트 폴더를 다룹니다. 그 밖의 파일, GitHub 이슈, 인터넷 페이지는 — 연결해 주기 전엔 닿지 못합니다.</p>
+        <div class="slide__eyebrow">WHY & WHAT · MCP가 뭔가</div>
+        <h2 class="statement__lead">담장 밖 도구를 꽂는 <span class="accent">USB 포트</span>.</h2>
+        <p class="statement__caption">Claude Code는 지금 열어둔 프로젝트 폴더 안만 봅니다. 그 밖의 파일·GitHub·웹 페이지엔 닿지 못해요. MCP는 그 바깥 도구를 잇는 "공통 규격" — USB처럼 한 방식만 알면 어떤 도구든 꽂을 수 있습니다.</p>
         <div class="statement__points">
-          <div class="statement__point"><span class="statement__point-num">기본</span><span>열어둔 폴더 + 터미널까지</span></div>
-          <div class="statement__point"><span class="statement__point-num">한계</span><span>외부 서비스·웹 페이지는 못 봄</span></div>
-          <div class="statement__point"><span class="statement__point-num">MCP</span><span>그 바깥 도구를 Claude에 연결해 준다</span></div>
+          <div class="statement__point"><span class="statement__point-num">한계</span><span>기본은 열어둔 폴더 + 터미널까지</span></div>
+          <div class="statement__point"><span class="statement__point-num">규격</span><span>도구마다 다른 방식 X — 하나의 표준</span></div>
+          <div class="statement__point"><span class="statement__point-num">교체</span><span>필요한 도구만 꽂고 — 안 쓰면 뺀다</span></div>
         </div>
       </div>
       <div class="statement-visual">
@@ -77,53 +105,28 @@
     </div>
   </section>
 
-  <!-- 3 · MCP란 — USB 비유 -->
-  <section class="slide is-statement">
-    <div class="statement-grid">
-      <div class="statement-text">
-        <div class="slide__eyebrow">WHAT · MCP가 뭔가</div>
-        <h2 class="statement__lead">MCP — 외부 도구를 꽂는 <span class="accent">USB 포트</span>.</h2>
-        <p class="statement__caption">예전엔 기기마다 다른 케이블이 필요했지만 USB 하나로 통일됐듯 — MCP는 "외부 도구를 AI에 연결하는 공통 규격"입니다. 한 방식만 알면 어떤 도구든 꽂을 수 있습니다.</p>
-        <div class="statement__points">
-          <div class="statement__point"><span class="statement__point-num">규격</span><span>도구마다 다른 방식 X — 하나의 표준</span></div>
-          <div class="statement__point"><span class="statement__point-num">교체</span><span>필요한 도구만 꽂고 — 안 쓰면 뺀다</span></div>
-          <div class="statement__point"><span class="statement__point-num">내가 할 일</span><span>"연결" 한 줄 — 쓰는 법은 Claude가</span></div>
-        </div>
-      </div>
-      <div class="statement-visual">
-        <svg viewBox="0 0 460 320" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <rect x="0" y="0" width="460" height="320" rx="16" fill="#fff5ec"/>
-          <rect x="150" y="64" width="160" height="58" rx="10" fill="#fe6e00"/>
-          <text x="230" y="99" font-family="ui-sans-serif, system-ui" font-size="14" fill="#fff" font-weight="700" text-anchor="middle">Claude + MCP</text>
-          <g stroke="#cc5a14" stroke-width="2.5">
-            <line x1="190" y1="122" x2="120" y2="178"/>
-            <line x1="230" y1="122" x2="230" y2="178"/>
-            <line x1="270" y1="122" x2="340" y2="178"/>
-          </g>
-          <g font-family="ui-sans-serif, system-ui" font-size="12" font-weight="700" fill="#cc5a14" text-anchor="middle">
-            <rect x="84" y="178" width="72" height="64" rx="10" fill="white" stroke="#cc5a14" stroke-width="2"/>
-            <text x="120" y="215">파일</text>
-            <rect x="194" y="178" width="72" height="64" rx="10" fill="white" stroke="#cc5a14" stroke-width="2"/>
-            <text x="230" y="215">GitHub</text>
-            <rect x="304" y="178" width="72" height="64" rx="10" fill="white" stroke="#cc5a14" stroke-width="2"/>
-            <text x="340" y="215">브라우저</text>
-          </g>
-          <text x="230" y="280" font-family="ui-sans-serif, system-ui" font-size="13" fill="#797067" text-anchor="middle">하나의 포트 — 여러 도구를 번갈아 꽂는다</text>
-        </svg>
-      </div>
-    </div>
-  </section>
-
-  <!-- 4 · claude mcp add -->
+  <!-- 4 · 연결은 부탁 한 마디 -->
   <section class="slide is-standard">
-    <div class="slide__eyebrow">HOW · 연결은 한 줄</div>
-    <h2 class="slide__title">연결은 한 줄 — <span class="accent">claude mcp add</span></h2>
+    <div class="slide__eyebrow">HOW · 연결하기</div>
+    <h2 class="slide__title">연결도 — <span class="accent">Claude에게 부탁</span>하면 끝</h2>
     <div class="slide__body">
       <div class="two-col">
         <div>
           <div class="content-card content-card--compact">
-            <h3 class="content-card__title">내가 할 일은 "연결" 한 줄</h3>
-            <p class="content-card__body">도구를 한 번 꽂아 두면 — 쓰는 법은 Claude가 알아서. 명령을 외울 필요 없이 Claude에게 물어보면 됩니다.</p>
+            <h3 class="content-card__title">내가 할 일은 부탁 한 마디</h3>
+            <p class="content-card__body">연결 명령을 외울 필요 없습니다 — <strong>"○○ MCP 연결 도와줘"</strong>라고 말하면, 명령 찾기부터 연결 확인까지 Claude가 대신합니다.</p>
+          </div>
+          <div class="prompt-card">
+            <div class="prompt-card__head">
+              <span class="prompt-card__label">프롬프트 · MCP 연결 부탁</span>
+              <button class="prompt-card__copy" type="button" data-copy>복사</button>
+            </div>
+            <pre class="prompt-card__body" data-no-nav>브라우저 MCP 연결 도와줘.</pre>
+          </div>
+        </div>
+        <div>
+          <div class="content-card content-card--compact">
+            <h3 class="content-card__title">실제로는 이런 일이 일어납니다</h3>
             <ul class="content-card__list">
               <li><code>claude mcp add &lt;이름&gt; -- &lt;실행 명령&gt;</code> — 한 줄로 연결</li>
               <li><code>claude mcp list</code> — 연결 상태 확인</li>
@@ -131,18 +134,8 @@
             </ul>
           </div>
         </div>
-        <div>
-          <div class="prompt-card prompt-card--cmd">
-            <div class="prompt-card__head">
-              <span class="prompt-card__label"><span class="os-win">PowerShell</span><span class="os-mac">터미널</span> · MCP 연결</span>
-              <button class="prompt-card__copy" type="button" data-copy>복사</button>
-            </div>
-            <pre class="prompt-card__body" data-no-nav>claude mcp add <span class="ph">&lt;이름&gt;</span> -- <span class="ph">&lt;실행 명령&gt;</span>
-claude mcp list</pre>
-          </div>
-        </div>
       </div>
-      <p class="slide__note">정확한 연결 명령은 도구마다 다릅니다 — Claude에게 <strong>"○○ MCP 연결 도와줘"</strong>라고 물으면 명령까지 대신 알려줍니다. 브라우저(Playwright) 연결은 <strong>다음 덱</strong>에서 직접.</p>
+      <p class="slide__note">직접 치고 싶으면 오른쪽 명령 그대로 — 정확한 명령은 도구마다 달라서, <strong>부탁이 가장 빠릅니다</strong>.</p>
     </div>
   </section>
 
@@ -152,7 +145,7 @@ claude mcp list</pre>
     <h2 class="slide__title">자주 쓰이는 MCP — <span class="accent">필요한 것만</span> 골라 꽂기</h2>
     <div class="slide__body">
       <div class="grid-3">
-        <div class="content-card content-card--compact"><h3 class="content-card__title">브라우저 ★</h3><p class="content-card__body">진짜 브라우저를 열어 웹을 보고 정보 수집. 다음 덱 크롤링 프로젝트.</p></div>
+        <div class="content-card content-card--compact"><h3 class="content-card__title">브라우저 ★</h3><p class="content-card__body">진짜 브라우저를 열어 웹을 보고 정보 수집.</p></div>
         <div class="content-card content-card--compact"><h3 class="content-card__title">Filesystem</h3><p class="content-card__body">프로젝트 밖 파일·폴더 접근.</p></div>
         <div class="content-card content-card--compact"><h3 class="content-card__title">GitHub</h3><p class="content-card__body">이슈·PR·저장소를 직접 읽고 다루기.</p></div>
         <div class="content-card content-card--compact"><h3 class="content-card__title">웹 검색</h3><p class="content-card__body">최신 정보를 인터넷에서 찾아오기.</p></div>
@@ -220,46 +213,7 @@ claude mcp list</pre>
           </ul>
         </div>
       </div>
-      <p class="slide__note">둘은 함께 쓰입니다 — <strong>도우미(에이전트)가 도구(MCP)를 들고 일하는</strong> 그림. 다음 덱에서 브라우저 도구를 꽂아 크롤링합니다.</p>
-    </div>
-  </section>
-
-  <!-- 8 · Wrap -->
-  <section class="slide is-feature">
-    <div class="feature-head">
-      <div class="slide__eyebrow">WRAP · MCP 연결 끝</div>
-      <h2 class="feature-head__title">필요한 도구를 — <span class="accent">한 줄로 꽂는다</span></h2>
-    </div>
-    <div class="feature-body">
-      <div class="feature-text">
-        <p class="statement__caption">MCP는 Claude의 손이 닿는 범위를 넓히는 표준 포트입니다. 연결은 한 줄 — 다음 덱에서 브라우저를 꽂아 웹을 직접 크롤링합니다.</p>
-        <div class="statement__points">
-          <div class="statement__point"><span class="statement__point-num">정의</span><span>외부 도구를 잇는 USB 포트</span></div>
-          <div class="statement__point"><span class="statement__point-num">연결</span><span>claude mcp add — 한 줄</span></div>
-          <div class="statement__point"><span class="statement__point-num">다음</span><span>다음 덱 — 브라우저 크롤링 실습</span></div>
-        </div>
-      </div>
-      <div class="feature-visual">
-        <svg viewBox="0 0 460 320" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <rect x="0" y="0" width="460" height="320" rx="16" fill="#fff5ec"/>
-          <rect x="150" y="70" width="160" height="56" rx="10" fill="#fe6e00"/>
-          <text x="230" y="104" font-family="ui-sans-serif, system-ui" font-size="14" fill="#fff" font-weight="700" text-anchor="middle">Claude</text>
-          <g stroke="#cc5a14" stroke-width="2.5">
-            <line x1="190" y1="126" x2="120" y2="184"/>
-            <line x1="230" y1="126" x2="230" y2="184"/>
-            <line x1="270" y1="126" x2="340" y2="184"/>
-          </g>
-          <g font-family="ui-sans-serif, system-ui" font-size="11" font-weight="700" fill="#cc5a14" text-anchor="middle">
-            <rect x="78" y="184" width="84" height="50" rx="9" fill="white" stroke="#cc5a14" stroke-width="2"/>
-            <text x="120" y="214">파일</text>
-            <rect x="188" y="184" width="84" height="50" rx="9" fill="white" stroke="#cc5a14" stroke-width="2"/>
-            <text x="230" y="214">GitHub</text>
-            <rect x="298" y="184" width="84" height="50" rx="9" fill="#fff" stroke="#fe6e00" stroke-width="2.5"/>
-            <text x="340" y="214">브라우저</text>
-          </g>
-          <text x="230" y="276" font-family="ui-sans-serif, system-ui" font-size="14" fill="#797067" text-anchor="middle">담장 밖으로 — 손이 닿는 범위가 넓어진다</text>
-        </svg>
-      </div>
+      <p class="slide__note">둘은 함께 쓰입니다 — <strong>도우미(에이전트)가 도구(MCP)를 들고 일하는</strong> 그림.</p>
     </div>
   </section>
 

@@ -323,7 +323,7 @@
             <h3 class="content-card__title">절대 경로 (Absolute)</h3>
             <p class="content-card__body">최상위부터 적는 길 — 어디서든 같은 위치.</p>
             <ul class="content-card__list">
-              <li><code><span class="os-win">C:\Users\you\Desktop\my-intro\app.html</span><span class="os-mac">/Users/you/Desktop/my-intro/app.html</span></code></li>
+              <li><code><span class="os-win">C:\lecture\my-intro\app.html</span><span class="os-mac">/Users/you/lecture/my-intro/app.html</span></code></li>
               <li><span class="os-win">드라이브 문자(C:)부터 시작</span><span class="os-mac">루트(/)부터 시작</span> · 길지만 명확</li>
             </ul>
           </div>
@@ -340,19 +340,19 @@
         </div>
       </div>
       <div class="path-tree os-win is-block">
-        <span class="path-tree__line">C:\Users\you\Desktop\</span>
+        <span class="path-tree__line">C:\lecture\</span>
         <span class="path-tree__line path-tree__line--cur">  └── <span class="path-tree__line--hi">my-intro\</span>  ← 현재 위치 (pwd)</span>
         <span class="path-tree__line">      ├── app.html      ← 상대: "app.html"</span>
         <span class="path-tree__line">      └── style.css     ← 절대: "C:\...\my-intro\style.css"</span>
       </div>
       <div class="path-tree os-mac is-block">
-        <span class="path-tree__line">/Users/you/Desktop/</span>
+        <span class="path-tree__line">/Users/you/lecture/</span>
         <span class="path-tree__line path-tree__line--cur">  └── <span class="path-tree__line--hi">my-intro/</span>  ← 현재 위치 (pwd)</span>
         <span class="path-tree__line">      ├── app.html      ← 상대: "app.html"</span>
         <span class="path-tree__line">      └── style.css     ← 절대: "/Users/.../my-intro/style.css"</span>
       </div>
       <p class="slide__note os-win is-block">한글 Windows에서 <code>\</code>와 <code>₩</code>는 <strong>같은 문자</strong>. PowerShell은 <code>/</code>도 동일 인식 → <code>cd C:/Users/you/my-intro</code> OK.</p>
-      <p class="slide__note os-mac is-block">Mac은 <code>/</code> 슬래시만 쓰고, 홈 폴더 줄임 <code>~</code> 이 자주 등장 — <code>~/Desktop/my-intro</code> = <code>/Users/you/Desktop/my-intro</code>. 한글 macOS의 Finder는 "데스크탑"으로 보여도 <strong>실제 경로는 영문 <code>Desktop</code></strong>.</p>
+      <p class="slide__note os-mac is-block">Mac은 <code>/</code> 슬래시만 쓰고, 홈 폴더 줄임 <code>~</code> 이 자주 등장 — <code>~/lecture/my-intro</code> = <code>/Users/you/lecture/my-intro</code>.</p>
     </div>
   </section>
 
@@ -378,7 +378,7 @@
             <rect x="0" y="0" width="460" height="320" rx="12" fill="rgba(0,0,0,0.92)"/>
             <rect x="0" y="0" width="460" height="36" fill="rgba(255,255,255,0.06)"/>
             <text x="14" y="22" font-family="ui-monospace, monospace" font-size="11" fill="#fe6e00" font-weight="700">claude · sonnet</text>
-            <text x="320" y="22" font-family="ui-monospace, monospace" font-size="10" fill="rgba(255,255,255,0.5)">~/Desktop/my-intro</text>
+            <text x="320" y="22" font-family="ui-monospace, monospace" font-size="10" fill="rgba(255,255,255,0.5)">~/lecture/my-intro</text>
             <text x="20" y="68" fill="white" font-family="ui-monospace, monospace" font-size="11">&gt; 안녕</text>
             <text x="20" y="92" fill="rgba(255,255,255,0.7)" font-family="ui-monospace, monospace" font-size="10">  안녕하세요! 무엇을 도와드릴까요?</text>
             <text x="20" y="124" fill="white" font-family="ui-monospace, monospace" font-size="11">&gt; 자기소개 페이지 만들어줘</text>
@@ -420,40 +420,6 @@
         </div>
       </div>
       <p class="slide__note">응답이 길어지면 <strong>Esc</strong>(또는 Ctrl+C)로 중단. 마음에 안 들면 다시 더 명확하게 시키면 됩니다.</p>
-    </div>
-  </section>
-
-  <!-- 10 · Orca + Claude -->
-  <section class="slide is-statement">
-    <div class="statement-grid statement-grid--visual-wide">
-      <div class="statement-text">
-        <div class="slide__eyebrow">ORCA INTEGRATION</div>
-        <h2 class="statement__lead">Orca 안에서 <span class="accent">claude</span> 그대로</h2>
-        <p class="statement__caption">폴더를 추가하면 오른쪽이 곧 터미널. 과정 내내 이 환경에서 작업합니다.</p>
-        <div class="statement__points">
-          <div class="statement__point"><span class="statement__point-num">01</span><span>왼쪽 <strong>Projects의 +</strong> 로 작업 폴더(my-intro) 추가</span></div>
-          <div class="statement__point"><span class="statement__point-num">02</span><span>오른쪽 <strong>터미널</strong>에 <code>claude</code> 입력 — 끝</span></div>
-          <div class="statement__point"><span class="statement__point-num">03</span><span>편집기·미리보기는 필요할 때 탭으로 — 화면 대부분이 터미널이어도 정상</span></div>
-        </div>
-      </div>
-      <div class="statement-visual">
-        <svg viewBox="0 0 460 320" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <rect x="0" y="0" width="460" height="320" rx="14" fill="#1e1e1e"/>
-          <rect x="0" y="0" width="130" height="320" fill="#252526"/>
-          <text x="14" y="30" font-family="ui-monospace, monospace" font-size="11" fill="rgba(255,255,255,0.45)">Projects  ＋</text>
-          <text x="14" y="60" font-family="ui-monospace, monospace" font-size="12" fill="#fe6e00">● my-intro</text>
-          <text x="24" y="80" font-family="ui-monospace, monospace" font-size="11" fill="rgba(255,255,255,0.5)">main</text>
-          <rect x="130" y="0" width="330" height="320" fill="#0d0d0d"/>
-          <text x="148" y="30" font-family="ui-monospace, monospace" font-size="10" fill="rgba(255,255,255,0.4)">TERMINAL — <tspan class="os-win">PowerShell</tspan><tspan class="os-mac">zsh</tspan> · my-intro</text>
-          <text x="148" y="66" font-family="ui-monospace, monospace" font-size="11" fill="#fe6e00"><tspan class="os-win">PS&gt;</tspan><tspan class="os-mac">$</tspan> claude</text>
-          <text x="148" y="90" font-family="ui-monospace, monospace" font-size="10" fill="rgba(255,255,255,0.55)">  ✓ Claude Code ready.</text>
-          <text x="148" y="122" font-family="ui-monospace, monospace" font-size="11" fill="white">&gt; 자기소개 페이지 만들어줘</text>
-          <text x="148" y="146" font-family="ui-monospace, monospace" font-size="10" fill="rgba(255,255,255,0.55)">  계획을 세우는 중...</text>
-          <text x="148" y="166" font-family="ui-monospace, monospace" font-size="10" fill="rgba(255,255,255,0.55)">  ✓ app.html 생성</text>
-          <text x="148" y="290" font-family="ui-monospace, monospace" font-size="11" fill="white">&gt; </text>
-          <rect x="164" y="279" width="7" height="11" fill="white"><animate attributeName="opacity" values="1;0;1" dur="1.1s" repeatCount="indefinite"/></rect>
-        </svg>
-      </div>
     </div>
   </section>
 
@@ -584,12 +550,12 @@
         <div class="impact-card">
           <div class="impact-card__num">하루 $1~5</div>
           <div class="impact-card__label">일반 사용 비용 범위</div>
-          <p class="impact-card__desc">Sonnet 기준 — 입력 $3/1M, 출력 $15/1M 토큰. 코드 작업 많은 날은 $10+ 까지. <code>/clear</code>로 자주 끊어 쓰면 절약.</p>
+          <p class="impact-card__desc">코드 작업 많은 날은 $10+ 까지. <code>/clear</code>로 자주 끊어 쓰면 절약. (모델별 단가는 3장에서)</p>
         </div>
         <div class="impact-card">
-          <div class="impact-card__num">하단바</div>
+          <div class="impact-card__num">좌하단</div>
           <div class="impact-card__label">Orca가 사용량 상시 표시</div>
-          <p class="impact-card__desc">화면 아래 상태바에 사용량 %·리셋 시간이 항상 떠 있음 — 명령 없이 페이스 확인.</p>
+          <p class="impact-card__desc">화면 왼쪽 아래에 사용량 %·리셋 시간이 항상 떠 있음 — 명령 없이 페이스 확인.</p>
         </div>
       </div>
       <p class="slide__note">컨텍스트(이전 대화 + 파일)가 길어질수록 매 요청마다 토큰이 비례해서 늘어납니다. <strong>긴 세션 = 큰 비용.</strong> 끊어 쓰는 게 절약.</p>
@@ -604,102 +570,12 @@
       <div class="slash-grid">
         <div class="slash-card"><div class="slash-card__cmd">/help</div><div class="slash-card__desc">사용 가능한 명령어 모음 — 막히면 가장 먼저</div></div>
         <div class="slash-card"><div class="slash-card__cmd">/clear</div><div class="slash-card__desc">컨텍스트 초기화 — 비용 · 집중력 절약</div></div>
-        <div class="slash-card"><div class="slash-card__cmd">/model</div><div class="slash-card__desc">모델 변경 (Haiku · Sonnet · Opus)</div></div>
+        <div class="slash-card"><div class="slash-card__cmd">/model</div><div class="slash-card__desc">모델 변경 (Haiku · Sonnet · Opus — 플랜에 따라 Fable 5도 표시)</div></div>
         <div class="slash-card"><div class="slash-card__cmd">/resume</div><div class="slash-card__desc">이전 세션 이어가기 — 작업 끊겼을 때</div></div>
         <div class="slash-card"><div class="slash-card__cmd">/login</div><div class="slash-card__desc">계정 다시 로그인 — 인증 에러 때</div></div>
         <div class="slash-card"><div class="slash-card__cmd">/exit</div><div class="slash-card__desc">claude 종료 — 터미널로 복귀</div></div>
       </div>
-      <p class="slide__note">사용량 확인은 명령이 따로 없습니다 — <strong>Orca 하단바가 상시 표시</strong>. 이어지는 두 슬라이드에서 핵심 명령을 더 자세히 봅니다.</p>
-    </div>
-  </section>
-
-  <!-- 17 · /help · /clear 자세히 -->
-  <section class="slide is-standard">
-    <div class="slide__eyebrow">SLASH DEEP · /help · /clear</div>
-    <h2 class="slide__title">막혔을 때 / 새로 시작하고 싶을 때</h2>
-    <div class="slide__body">
-      <div class="two-col">
-        <div>
-          <div class="content-card content-card--compact">
-            <h3 class="content-card__title">/help — 명령어 모음</h3>
-            <p class="content-card__body">현재 세션의 모든 슬래시 · 단축키를 보여준다.</p>
-            <ul class="content-card__list">
-              <li>버전 올라가면 새 명령 추가 — 가끔 확인</li>
-              <li>특정 명령 도움말: <code>/help /usage</code></li>
-            </ul>
-          </div>
-        </div>
-        <div>
-          <div class="content-card content-card--compact">
-            <h3 class="content-card__title">/clear — 컨텍스트 초기화</h3>
-            <p class="content-card__body">현재 대화를 모두 지우고 새 세션처럼 시작.</p>
-            <ul class="content-card__list">
-              <li>이전 대화 빠짐 → 다음 요청부터 토큰 ↓</li>
-              <li>대화가 엉켰을 때 가장 빠른 회복</li>
-              <li>CLAUDE.md는 /clear 후에도 자동 주입 유지</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- 18 · /usage · /resume 자세히 -->
-  <section class="slide is-standard">
-    <div class="slide__eyebrow">SLASH DEEP · 사용량 · /resume</div>
-    <h2 class="slide__title">사용량 확인 / 끊어진 작업 이어가기</h2>
-    <div class="slide__body">
-      <div class="two-col">
-        <div>
-          <div class="content-card content-card--compact">
-            <h3 class="content-card__title">사용량 — Orca 하단바 상시 표시</h3>
-            <p class="content-card__body">따로 명령 칠 필요 없이 화면 아래에서 바로.</p>
-            <ul class="content-card__list">
-              <li>사용량 %와 리셋까지 남은 시간이 항상 표시</li>
-              <li>실습 중엔 여기만 흘끗 — 페이스 조절 끝</li>
-              <li>(참고) Orca 밖 터미널에서는 <code>/usage</code></li>
-            </ul>
-          </div>
-        </div>
-        <div>
-          <div class="content-card content-card--compact">
-            <h3 class="content-card__title">/resume — 이전 세션 복귀</h3>
-            <p class="content-card__body">세션 종료 후 다시 켰을 때 이전 대화 이어가기.</p>
-            <ul class="content-card__list">
-              <li>같은 폴더에서 <code>claude</code> 재실행 → <code>/resume</code></li>
-              <li>네트워크·노트북 잠김으로 끊겼을 때 유용</li>
-              <li>여러 세션 중 선택 가능</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-      <p class="slide__note">/clear와 /resume은 <strong>반대 방향의 도구</strong>. /clear = 깨끗이 시작, /resume = 이어 가기.</p>
-    </div>
-  </section>
-
-  <!-- 19 · 다음 장 미리보기 -->
-  <section class="slide is-standard">
-    <div class="slide__eyebrow">NEXT · 다음 — 2장 자기 홈페이지</div>
-    <h2 class="slide__title">이제 <span class="accent">자기소개 워밍업</span>으로 들어갑니다</h2>
-    <div class="slide__body">
-      <div class="grid-3">
-        <div class="diff-card">
-          <div class="diff-card__rank">미션 1</div>
-          <h3 class="diff-card__title">자기소개 인터뷰</h3>
-          <p class="diff-card__body">Claude에게 인터뷰 받기 → 대본 작성. 톤 변형 5가지로 점진적 구체화 첫 경험.</p>
-        </div>
-        <div class="diff-card">
-          <div class="diff-card__rank">미션 2</div>
-          <h3 class="diff-card__title">HTML 페이지로 변환</h3>
-          <p class="diff-card__body">자기소개 → 웹 페이지. 디자인 톤 변형하면서 결과물 다듬기.</p>
-        </div>
-        <div class="diff-card">
-          <div class="diff-card__rank">마무리</div>
-          <h3 class="diff-card__title">저장하고 한숨 돌리기</h3>
-          <p class="diff-card__body">만든 페이지는 my-intro 폴더에 잘 저장 — 2장에서 진짜 홈페이지로 확장합니다.</p>
-        </div>
-      </div>
-      <p class="slide__note">지금까지 배운 것을 2장 자기 홈페이지에서 손으로 써먹습니다. 실습 슬라이드는 가이드 카드 형태 — 자세한 단계는 화면에서.</p>
+      <p class="slide__note">사용량은 <strong>Orca 좌하단에 상시 표시</strong> — 명령 없이 흘끗 확인하는 습관 (<code>/usage</code> 명령도 있지만 쓸 일이 없습니다). /clear 후에도 CLAUDE.md는 자동 유지 — 자세한 사용 구분은 3장에서 다룹니다.</p>
     </div>
   </section>
 

@@ -107,8 +107,8 @@
       <div class="feature-text">
         <p class="statement__caption">완성도가 아니라 "과정 내내 본인이 갔다 온 길"을 보여주는 발표. 시연 후 전체 회고로 마무리합니다.</p>
         <div class="statement__points">
-          <div class="statement__point"><span class="statement__point-num">덱 1</span><span>워크플로우 복습 + 장애 복구 + 발표 준비 (design.md · 발표자 노트)</span></div>
-          <div class="statement__point"><span class="statement__point-num">덱 2</span><span>미니프로젝트 빌드 + 발표 슬라이드 디자인 적용</span></div>
+          <div class="statement__point"><span class="statement__point-num">덱 1</span><span>워크플로우 + 장애 복구 + design.md</span></div>
+          <div class="statement__point"><span class="statement__point-num">덱 2</span><span>미니프로젝트 빌드 + 발표 슬라이드 디자인 · 발표자 노트</span></div>
           <div class="statement__point"><span class="statement__point-num">덱 3</span><span>실전 패턴 + Orca 깊게 + 비용 운영 + FAQ</span></div>
           <div class="statement__point"><span class="statement__point-num">덱 4</span><span>빌드 마무리 → 1인 4분 발표 → 회고</span></div>
         </div>
@@ -131,13 +131,13 @@
 
   <!-- 4 · 덱 1의 4 토픽 -->
   <section class="slide is-standard">
-    <div class="slide__eyebrow">OVERVIEW · 덱 1의 4축</div>
-    <h2 class="slide__title">발표 직전 — <span class="accent">4가지 정리</span></h2>
+    <div class="slide__eyebrow">OVERVIEW · 덱 1의 3축</div>
+    <h2 class="slide__title">발표 직전 — <span class="accent">3가지 정리</span></h2>
     <div class="slide__body">
-      <div class="grid-4">
+      <div class="grid-3">
         <div class="diff-card">
           <div class="diff-card__rank">01</div>
-          <h3 class="diff-card__title">4단계 복습</h3>
+          <h3 class="diff-card__title">작업 4단계</h3>
           <p class="diff-card__body">탐색 → 계획 → 실행 → <strong>검증</strong>. 검증은 사람의 몫.</p>
         </div>
         <div class="diff-card">
@@ -148,21 +148,16 @@
         <div class="diff-card">
           <div class="diff-card__rank">03</div>
           <h3 class="diff-card__title">design.md</h3>
-          <p class="diff-card__body">발표 슬라이드 디자인 통일. 7장에서 만든 PPTX 위에 입히기.</p>
-        </div>
-        <div class="diff-card">
-          <div class="diff-card__rank">04</div>
-          <h3 class="diff-card__title">발표자 노트</h3>
-          <p class="diff-card__body">본인 4분 발표용 대본. Claude가 슬라이드 보고 자동 생성.</p>
+          <p class="diff-card__body">발표 슬라이드 디자인 통일 — 7장 PPT 파이프라인 그대로.</p>
         </div>
       </div>
-      <p class="slide__note">덱 2 실습(~75분 권장)으로 바로 적용. <strong>이론 → 즉시 실습</strong>이 과정 내내 그랬듯.</p>
+      <p class="slide__note">덱 2 실습(~75분 권장)으로 바로 적용 — 발표자 노트(4분 대본)도 실습에서 함께. <strong>이론 → 즉시 실습</strong>이 과정 내내 그랬듯.</p>
     </div>
   </section>
 
-  <!-- 5 · 4단계 복습 -->
+  <!-- 5 · 작업 4단계 -->
   <section class="slide is-standard">
-    <div class="slide__eyebrow">REVIEW · 4단계 사이클</div>
+    <div class="slide__eyebrow">WORKFLOW · 작업 4단계</div>
     <h2 class="slide__title">탐색 → 계획 → 실행 → <span class="accent">검증</span></h2>
     <div class="slide__body">
       <div class="cycle">
@@ -171,37 +166,7 @@
         <div class="cycle__step"><div class="cycle__num">03</div><div class="cycle__title">실행</div><div class="cycle__desc">승인 → 작업 시작</div><div class="cycle__example">Approve</div></div>
         <div class="cycle__step"><div class="cycle__num">04</div><div class="cycle__title">검증</div><div class="cycle__desc">사람 직접 확인 — 위임 X</div><div class="cycle__example">실행 + 테스트</div></div>
       </div>
-      <p class="slide__note">한 번 더 강조: <strong>검증은 사람의 몫</strong>. Claude가 "잘 됐다"고 해도 직접 돌려보기.</p>
-    </div>
-  </section>
-
-  <!-- 6 · 검증 위임 금지 -->
-  <section class="slide is-statement">
-    <div class="statement-grid">
-      <div class="statement-text">
-        <div class="slide__eyebrow">RULE · 과정 내내 강조</div>
-        <h2 class="statement__lead">"<span class="accent">검증은 사람</span>" — 절대 위임 X.</h2>
-        <p class="statement__caption">1장부터 강조한 한 줄. AI가 "성공이라" 해도 그게 본인 코드의 검증을 대체할 수는 없습니다.</p>
-        <div class="statement__points">
-          <div class="statement__point"><span class="statement__point-num">실행</span><span>코드를 본인 손으로 한 번 돌리기</span></div>
-          <div class="statement__point"><span class="statement__point-num">테스트</span><span>pytest 통과 — 본인 눈으로 ✓ 확인</span></div>
-          <div class="statement__point"><span class="statement__point-num">결과</span><span>UI라면 브라우저 열어 직접 클릭</span></div>
-        </div>
-      </div>
-      <div class="statement-visual">
-        <svg viewBox="0 0 460 320" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <rect x="0" y="0" width="460" height="320" rx="16" fill="#fff5ec"/>
-          <rect x="40" y="80" width="380" height="80" rx="10" fill="white" stroke="#fb2c36" stroke-width="2"/>
-          <text x="55" y="108" font-family="ui-sans-serif, system-ui" font-size="13" font-weight="700" fill="#fb2c36">× 위임 ("Claude가 잘 됐다 했음")</text>
-          <text x="55" y="132" font-family="ui-monospace, monospace" font-size="11" fill="#797067">→ 실제로 안 돌아가는 경우 발생</text>
-          <text x="55" y="148" font-family="ui-monospace, monospace" font-size="11" fill="#797067">→ 사고로 이어짐</text>
-          <rect x="40" y="180" width="380" height="100" rx="10" fill="#cc5a14"/>
-          <text x="55" y="208" font-family="ui-sans-serif, system-ui" font-size="13" font-weight="700" fill="white">✓ 사람의 검증</text>
-          <text x="55" y="232" font-family="ui-monospace, monospace" font-size="11" fill="rgba(255,255,255,0.85)">→ 본인이 실행해서 결과 확인</text>
-          <text x="55" y="250" font-family="ui-monospace, monospace" font-size="11" fill="rgba(255,255,255,0.85)">→ 테스트 통과 ✓ 본인 눈으로</text>
-          <text x="55" y="268" font-family="ui-monospace, monospace" font-size="11" fill="rgba(255,255,255,0.85)">→ UI는 브라우저로 직접</text>
-        </svg>
-      </div>
+      <p class="slide__note">한 번 더 강조: <strong>검증은 사람의 몫 — 절대 위임 X</strong>. Claude가 "잘 됐다"고 해도 본인이 직접 실행하고, UI라면 브라우저 열어 직접 클릭.</p>
     </div>
   </section>
 
@@ -224,38 +189,7 @@
           <p class="content-card__body">직전 commit도 되돌림. <strong>주의</strong> — 이미 push했으면 X.</p>
         </div>
       </div>
-      <p class="slide__note">자주 commit하면 — 망쳐도 손해 작음. 2장의 "작은 단위 + 매번 commit"이 여기서 빛납니다.</p>
-    </div>
-  </section>
-
-  <!-- 8 · 잘못된 자동 편집 회복 -->
-  <section class="slide is-standard">
-    <div class="slide__eyebrow">RECOVERY · Claude 편집 회복</div>
-    <h2 class="slide__title">Claude가 망친 건 — <span class="accent">git이 답</span></h2>
-    <div class="slide__body">
-      <div class="bg-compare">
-        <div class="bg-compare__side bg-compare__side--bad">
-          <div class="bg-compare__label">× 손으로 풀려고 시도</div>
-          <div class="bg-compare__quote">
-            <div>"여기 좀 잘못 됐는데..."</div>
-            <div>"아 이 부분도..."</div>
-            <div>"Claude야 다시 고쳐줘"</div>
-            <div>...상황이 더 꼬임</div>
-          </div>
-          <p class="bg-compare__note">손으로 풀려다 더 망가짐.</p>
-        </div>
-        <div class="bg-compare__side bg-compare__side--good">
-          <div class="bg-compare__label">✓ git restore .</div>
-          <div class="bg-compare__quote">
-            <div>git status — 변경 확인</div>
-            <div>git restore .</div>
-            <div>→ 이전 commit 상태로 즉시 복귀</div>
-            <div>다시 시도 (이번엔 더 작은 단위로)</div>
-          </div>
-          <p class="bg-compare__note">5초 만에 깨끗 → 다시 출발.</p>
-        </div>
-      </div>
-      <p class="slide__note">2장부터 강조한 <strong>"commit 자주"</strong>가 이 순간을 위한 것 — 안전벨트는 사고 직전에 진가.</p>
+      <p class="slide__note">자주 commit하면 — 망쳐도 손해 작음. 2장의 "작은 단위 + 매번 commit"이 여기서 빛납니다. Claude가 망친 것도 손으로 풀지 말고 <strong>git restore .</strong> — 5초 만에 깨끗, 다시 작은 단위로.</p>
     </div>
   </section>
 
@@ -269,7 +203,7 @@
         <div class="cycle__step"><div class="cycle__num">02</div><div class="cycle__title">로그 추가</div><div class="cycle__desc">"print 박아서 추적해줘"</div><div class="cycle__example">print 5개</div></div>
         <div class="cycle__step"><div class="cycle__num">03</div><div class="cycle__title">가설 분리</div><div class="cycle__desc">"3개 후보 + 검증 방법"</div><div class="cycle__example">A · B · C</div></div>
       </div>
-      <p class="slide__note">앞서 복구 훈련에서 익힌 패턴. <strong>그래도 막히면 think hard 추가 → 그래도 안 되면 다른 사람</strong>.</p>
+      <p class="slide__note">앞서 복구 훈련에서 익힌 패턴. <strong>그래도 막히면 ultrathink 추가(3장) → 그래도 안 되면 다른 사람</strong>.</p>
     </div>
   </section>
 
@@ -277,7 +211,7 @@
   <section class="slide is-section is-standard">
     <div class="section-eyebrow">PRESENTATION · DESIGN.md</div>
     <h2 class="section-title">발표 슬라이드 — <span class="accent">디자인 통일</span></h2>
-    <p class="section-caption">7장에서 만든 PPTX는 기능만 동작. 이제 design.md로 디자인 일관성 부여 — Claude에게 한 줄 시키기.</p>
+    <p class="section-caption">발표 슬라이드는 7장에서 익힌 파이프라인(초안 → 무디자인 → 디자인)으로. 이번엔 <strong>내 프로젝트의 design.md</strong>를 직접 써서 디자인 일관성 부여 — Claude에게 한 줄 시키기.</p>
     <div class="section-meta">
       <div class="section-meta__item"><span class="section-meta__num">design.md</span><span>디자인 룰북</span></div>
       <div class="section-meta__item"><span class="section-meta__num">한 줄</span><span>"이 디자인 적용해줘"</span></div>
@@ -290,7 +224,7 @@
       <div class="statement-text">
         <div class="slide__eyebrow">DEFINITION · design.md</div>
         <h2 class="statement__lead">CLAUDE.md의 <span class="accent">디자인 버전</span>.</h2>
-        <p class="statement__caption">본인 디자인 톤·컬러·폰트·여백 룰을 마크다운에 적어두고, Claude가 슬라이드/UI 만들 때 자동 적용하게 합니다.</p>
+        <p class="statement__caption">본인 디자인 톤·컬러·폰트·여백 룰을 마크다운에 적어두고, Claude가 슬라이드/UI 만들 때 자동 적용하게 합니다. 7장 DESIGN.md의 <strong>내 프로젝트 버전</strong>입니다.</p>
         <div class="statement__points">
           <div class="statement__point"><span class="statement__point-num">위치</span><span>프로젝트 루트의 <code>design.md</code></span></div>
           <div class="statement__point"><span class="statement__point-num">내용</span><span>컬러 코드 · 폰트 패밀리 · 여백 토큰 · 컴포넌트 예시</span></div>
@@ -312,179 +246,6 @@
           <text x="20" y="236" fill="rgba(255,255,255,0.65)" font-family="ui-monospace, monospace" font-size="10">- 16:9 비율</text>
           <text x="20" y="254" fill="rgba(255,255,255,0.65)" font-family="ui-monospace, monospace" font-size="10">- 한 슬라이드 1 메시지</text>
           <text x="20" y="290" fill="#fe6e00" font-family="ui-monospace, monospace" font-size="11">28줄 · 신호만</text>
-        </svg>
-      </div>
-    </div>
-  </section>
-
-  <!-- 12 · design.md 적용 시연 -->
-  <section class="slide is-standard">
-    <div class="slide__eyebrow">USAGE · 디자인 적용</div>
-    <h2 class="slide__title">"<span class="accent">@design.md 적용해서</span>" 한 줄</h2>
-    <div class="slide__body">
-      <div class="code-block">
-        <div class="code-block__header">
-          <span class="code-block__dot" style="background:#fb2c36"></span><span class="code-block__dot" style="background:#edb200"></span><span class="code-block__dot" style="background:#00c758"></span>
-          <span class="code-block__title">claude · 디자인 적용 한 사이클</span>
-        </div>
-        <div class="code-block__body"><span class="code-block__line"><span class="code-block__cmt"># 1) 7장에서 만든 PPTX 확인</span></span><span class="code-block__line"><span class="code-block__cmd">&gt; @about.pptx 디자인 분석해줘</span></span><span class="code-block__line"><span class="code-block__out">  · 기본 흰 배경 + 검정 텍스트</span></span><span class="code-block__line"><span class="code-block__out">  · Calibri 폰트 (한글은 시스템 기본)</span></span><span class="code-block__line"><span class="code-block__out">  · 일관성 X — 슬라이드마다 레이아웃 다름</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__cmt"># 2) design.md 적용 한 줄</span></span><span class="code-block__line"><span class="code-block__cmd">&gt; <span class="code-block__hi">@design.md 적용해서 about.pptx 다시 만들어줘</span></span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__hi">  [skill: pptx-builder]</span></span><span class="code-block__line"><span class="code-block__out">  ✓ 컬러 #fe6e00 적용</span></span><span class="code-block__line"><span class="code-block__out">  ✓ Pretendard 폰트 임베드</span></span><span class="code-block__line"><span class="code-block__out">  ✓ 16:9 비율 통일</span></span><span class="code-block__line"><span class="code-block__out">  ✓ about_v2.pptx 생성</span></span></div>
-      </div>
-      <p class="slide__note">v2 파일을 따로 만들면 — <strong>v1과 비교해서</strong> 디자인 차이가 한눈에. 결과물 공유에 나란히 보여주기.</p>
-    </div>
-  </section>
-
-  <!-- 13 · 발표자 노트 -->
-  <section class="slide is-statement">
-    <div class="statement-grid statement-grid--visual-wide">
-      <div class="statement-text">
-        <div class="slide__eyebrow">SPEAKER NOTES · 발표자 노트</div>
-        <h2 class="statement__lead">슬라이드 보고 <span class="accent">4분 대본</span> 자동.</h2>
-        <p class="statement__caption">Claude에게 본인 슬라이드를 보여주고 "4분 발표용 대본"을 시키면 — 슬라이드별 멘트 + 시간 배분이 자동으로.</p>
-        <div class="statement__points">
-          <div class="statement__point"><span class="statement__point-num">시키기</span><span>"@about_v2.pptx 보고 4분 발표 대본 작성"</span></div>
-          <div class="statement__point"><span class="statement__point-num">결과</span><span>슬라이드별 1분씩 멘트 + 전환 문장</span></div>
-          <div class="statement__point"><span class="statement__point-num">활용</span><span>외우지 말고 — 발표 직전 한 번 읽기</span></div>
-        </div>
-      </div>
-      <div class="statement-visual">
-        <svg viewBox="0 0 460 320" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <rect x="0" y="0" width="460" height="320" rx="14" fill="rgba(0,0,0,0.92)"/>
-          <text x="20" y="40" fill="rgba(255,255,255,0.5)" font-family="ui-monospace, monospace" font-size="11">발표 대본 — 4분</text>
-          <line x1="20" y1="50" x2="440" y2="50" stroke="rgba(255,255,255,0.15)"/>
-          <text x="20" y="80" fill="#fe6e00" font-family="ui-monospace, monospace" font-size="11">[표지 · 30초]</text>
-          <text x="20" y="100" fill="rgba(255,255,255,0.65)" font-family="ui-monospace, monospace" font-size="10">"안녕하세요, 김OO입니다.</text>
-          <text x="20" y="118" fill="rgba(255,255,255,0.65)" font-family="ui-monospace, monospace" font-size="10">이번 과정에서 가계부 앱을..."</text>
-          <text x="20" y="148" fill="#fe6e00" font-family="ui-monospace, monospace" font-size="11">[기능 시연 · 90초]</text>
-          <text x="20" y="168" fill="rgba(255,255,255,0.65)" font-family="ui-monospace, monospace" font-size="10">"먼저 거래 추가부터 시연..."</text>
-          <text x="20" y="198" fill="#fe6e00" font-family="ui-monospace, monospace" font-size="11">[배운 점 · 60초]</text>
-          <text x="20" y="218" fill="rgba(255,255,255,0.65)" font-family="ui-monospace, monospace" font-size="10">"Plan Mode가 가장 인상..."</text>
-          <text x="20" y="248" fill="#fe6e00" font-family="ui-monospace, monospace" font-size="11">[Q&A 안내 · 30초]</text>
-          <text x="20" y="268" fill="rgba(255,255,255,0.65)" font-family="ui-monospace, monospace" font-size="10">"질문 있으시면..."</text>
-        </svg>
-      </div>
-    </div>
-  </section>
-
-  <!-- 14 · 4분 발표 포맷 -->
-  <section class="slide is-standard">
-    <div class="slide__eyebrow">FORMAT · 1인 4분</div>
-    <h2 class="slide__title">발표 포맷 (하고 싶은 분) — <span class="accent">3 파트</span></h2>
-    <div class="slide__body">
-      <div class="grid-3">
-        <div class="diff-card">
-          <div class="diff-card__rank">1분</div>
-          <h3 class="diff-card__title">무엇을</h3>
-          <p class="diff-card__body">미니프로젝트 한 줄 소개 + 핵심 화면 1~2장. "가계부 + 카테고리 합계".</p>
-        </div>
-        <div class="diff-card">
-          <div class="diff-card__rank">1.5분</div>
-          <h3 class="diff-card__title">어떻게</h3>
-          <p class="diff-card__body">과정 중 어떤 도구가 가장 효과적이었나. Plan? CLAUDE.md? Sub-agent? 한 가지 깊게.</p>
-        </div>
-        <div class="diff-card">
-          <div class="diff-card__rank">1.5분</div>
-          <h3 class="diff-card__title">Q&A</h3>
-          <p class="diff-card__body">청중 질문 받기. 다른 수강생·강사 한 마디씩.</p>
-        </div>
-      </div>
-      <p class="slide__note">기억할 한 줄: <strong>"완성도보다 시도가 평가"</strong> — 1장부터 그랬듯 마지막 발표도 같은 기준.</p>
-    </div>
-  </section>
-
-  <!-- 15 · 발표 준비 흐름 -->
-  <section class="slide is-standard">
-    <div class="slide__eyebrow">PREP · 덱 2 실습 흐름</div>
-    <h2 class="slide__title">~75분 — <span class="accent">빌드 + 디자인 + 노트</span></h2>
-    <div class="slide__body">
-      <div class="step-list step-list--compact">
-        <div class="step-list__item">
-          <div class="step-list__num">1</div>
-          <div class="step-list__content">
-            <p class="step-list__title">미니프로젝트 폴더 → 빌드 마무리 (~40분) — Plan · CLAUDE.md · Sub-agent · MCP 다 활용</p>
-          </div>
-        </div>
-        <div class="step-list__item">
-          <div class="step-list__num">2</div>
-          <div class="step-list__content">
-            <p class="step-list__title">design.md 작성 (~10분) — 본인 톤·컬러 마크다운 한 파일</p>
-          </div>
-        </div>
-        <div class="step-list__item">
-          <div class="step-list__num">3</div>
-          <div class="step-list__content">
-            <p class="step-list__title">PPTX에 design.md 적용 (~15분) — 7장 PPTX → v2</p>
-          </div>
-        </div>
-        <div class="step-list__item">
-          <div class="step-list__num">4</div>
-          <div class="step-list__content">
-            <p class="step-list__title">발표자 노트 자동 생성 (~10분) — Claude에게 4분 대본 시키기</p>
-          </div>
-        </div>
-      </div>
-      <p class="slide__note">덱 2 실습 후 → 덱 3 (실전 패턴 + FAQ) → 덱 4 (빌드 마무리 + 발표).</p>
-    </div>
-  </section>
-
-  <!-- 16 · 발표 직전 체크리스트 -->
-  <section class="slide is-standard">
-    <div class="slide__eyebrow">CHECKLIST · 발표 직전</div>
-    <h2 class="slide__title">발표 시작 전 <span class="accent">4 체크 + 1 호흡</span></h2>
-    <div class="slide__body">
-      <div class="grid-4">
-        <div class="promise-card">
-          <div class="promise-card__num">1</div>
-          <h3 class="promise-card__title">미니 동작</h3>
-          <p class="promise-card__body">화면 띄우면 작동하는지 한 번 더. 발표 중 깨지면 당황.</p>
-        </div>
-        <div class="promise-card">
-          <div class="promise-card__num">2</div>
-          <h3 class="promise-card__title">PPT v2</h3>
-          <p class="promise-card__body">design.md 적용된 슬라이드 — 본인 노트북에서 열림.</p>
-        </div>
-        <div class="promise-card">
-          <div class="promise-card__num">3</div>
-          <h3 class="promise-card__title">대본 읽기</h3>
-          <p class="promise-card__body">Claude가 만든 발표자 노트 한 번 통독.</p>
-        </div>
-        <div class="promise-card">
-          <div class="promise-card__num">4</div>
-          <h3 class="promise-card__title">/usage</h3>
-          <p class="promise-card__body">과정 전체 합계 한 번 확인 — 발표에 활용.</p>
-        </div>
-      </div>
-      <p class="slide__note">+ 1 호흡: <strong>심호흡 한 번</strong>. 과정을 완주한 본인을 한 번 인정하기.</p>
-    </div>
-  </section>
-
-  <!-- 17 · 회고 미리보기 -->
-  <section class="slide is-statement">
-    <div class="statement-grid">
-      <div class="statement-text">
-        <div class="slide__eyebrow">RETRO · 전체 회고</div>
-        <h2 class="statement__lead">회고 — <span class="accent">시작할 때의 나 vs 지금의 나</span></h2>
-        <p class="statement__caption">데모 공유가 끝나면 ~30분 회고 시간. 단톡방에 본인의 변화를 한 줄로 적습니다 — 본인 기록용 + 다른 사람 영감.</p>
-        <div class="statement__points">
-          <div class="statement__point"><span class="statement__point-num">시작</span><span>"claude 명령어 처음 들음"</span></div>
-          <div class="statement__point"><span class="statement__point-num">지금</span><span>"본인 미니 시연 + 7 도구 활용"</span></div>
-          <div class="statement__point"><span class="statement__point-num">차이</span><span>한 줄로 — 가장 인상 깊은 도구 1개</span></div>
-        </div>
-      </div>
-      <div class="statement-visual">
-        <svg viewBox="0 0 460 320" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <rect x="0" y="0" width="460" height="320" rx="16" fill="#fff5ec"/>
-          <rect x="40" y="80" width="170" height="160" rx="10" fill="white" stroke="#797067" stroke-width="2"/>
-          <text x="125" y="110" font-family="ui-sans-serif, system-ui" font-size="14" font-weight="700" fill="#797067" text-anchor="middle">시작할 때</text>
-          <text x="125" y="155" font-family="ui-monospace, monospace" font-size="11" fill="#797067" text-anchor="middle">claude?</text>
-          <text x="125" y="180" font-family="ui-monospace, monospace" font-size="11" fill="#797067" text-anchor="middle">처음 들어봄</text>
-          <text x="125" y="205" font-family="ui-monospace, monospace" font-size="11" fill="#797067" text-anchor="middle">셋업 못 함</text>
-          <text x="240" y="170" font-family="ui-monospace, monospace" font-size="20" fill="#cc5a14" text-anchor="middle">→</text>
-          <rect x="265" y="80" width="170" height="160" rx="10" fill="#cc5a14"/>
-          <text x="350" y="110" font-family="ui-sans-serif, system-ui" font-size="14" font-weight="700" fill="white" text-anchor="middle">지금</text>
-          <text x="350" y="155" font-family="ui-monospace, monospace" font-size="11" fill="white" text-anchor="middle">미니 시연</text>
-          <text x="350" y="180" font-family="ui-monospace, monospace" font-size="11" fill="white" text-anchor="middle">7 도구 활용</text>
-          <text x="350" y="205" font-family="ui-monospace, monospace" font-size="11" fill="white" text-anchor="middle">/usage 감각</text>
-          <text x="240" y="285" font-family="ui-sans-serif, system-ui" font-size="13" fill="#797067" text-anchor="middle">이 과정 = 도구 사용자 → 운영자</text>
         </svg>
       </div>
     </div>
@@ -513,32 +274,6 @@
         </div>
       </div>
       <p class="slide__note">강의는 끝났지만 도구는 본인 폴더에 남습니다 — <strong>이 과정이 만들어낸 자산</strong>.</p>
-    </div>
-  </section>
-
-  <!-- 19 · 실습 미리보기 -->
-  <section class="slide is-standard">
-    <div class="slide__eyebrow">NEXT · 덱 2 실습</div>
-    <h2 class="slide__title">~75분 — <span class="accent">빌드 + 디자인 + 노트</span></h2>
-    <div class="slide__body">
-      <div class="grid-3">
-        <div class="diff-card">
-          <div class="diff-card__rank">~40분</div>
-          <h3 class="diff-card__title">미니 빌드 마무리</h3>
-          <p class="diff-card__body">Plan + Sub-agent + MCP 다 활용. 동작 확인 + commit 1~2개.</p>
-        </div>
-        <div class="diff-card">
-          <div class="diff-card__rank">~25분</div>
-          <h3 class="diff-card__title">design.md + PPTX v2</h3>
-          <p class="diff-card__body">본인 디자인 룰 작성 + 7장 PPTX에 적용 → v2 생성.</p>
-        </div>
-        <div class="diff-card">
-          <div class="diff-card__rank">~10분</div>
-          <h3 class="diff-card__title">발표자 노트</h3>
-          <p class="diff-card__body">Claude에게 4분 대본 자동 생성 → 한 번 통독 + 다듬기.</p>
-        </div>
-      </div>
-      <p class="slide__note">잠깐 휴식 후 실습 시작. 발표 전에 미니 동작 한 번 더 확인 (발표 직전 사고 방지).</p>
     </div>
   </section>
 

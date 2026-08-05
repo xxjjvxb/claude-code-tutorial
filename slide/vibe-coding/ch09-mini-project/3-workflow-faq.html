@@ -196,80 +196,13 @@
     </div>
   </section>
 
-  <!-- 7 · 세션 재개 -->
-  <section class="slide is-standard">
-    <div class="slide__eyebrow">VS CODE · 세션 재개</div>
-    <h2 class="slide__title">통합 터미널 닫혀도 — <span class="accent">--continue</span> 한 줄</h2>
-    <div class="slide__body">
-      <div class="two-col">
-        <div>
-          <div class="content-card content-card--compact">
-            <h3 class="content-card__title">상황</h3>
-            <ul class="content-card__list">
-              <li>Orca 종료 후 다시 켰음</li>
-              <li>또는 <span class="os-win">Ctrl + `</span><span class="os-mac">⌘ + J</span> 통합 터미널 닫혔음</li>
-              <li>"지난 대화 이어서" 하고 싶음</li>
-            </ul>
-          </div>
-        </div>
-        <div>
-          <div class="content-card content-card--compact">
-            <h3 class="content-card__title">해법</h3>
-            <ul class="content-card__list">
-              <li>같은 폴더 열기 (File → Open Folder)</li>
-              <li><span class="os-win">Ctrl + `</span><span class="os-mac">⌘ + J</span> → 새 터미널</li>
-              <li><code>claude --continue</code></li>
-              <li>이전 세션 그대로 복원</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-      <p class="slide__note">3장에서 본 <code>--continue</code>의 실전 활용. <strong>매일 첫 명령</strong>이 됩니다.</p>
-    </div>
-  </section>
-
-  <!-- 8 · 폴더 여러 개 -->
-  <section class="slide is-statement">
-    <div class="statement-grid">
-      <div class="statement-text">
-        <div class="slide__eyebrow">VS CODE · 멀티 워크스페이스</div>
-        <h2 class="statement__lead">여러 프로젝트 동시 열고 <span class="accent">한 Claude</span>.</h2>
-        <p class="statement__caption">폴더 여러 개를 오가며 작업해도, claude는 켠 폴더 하나가 기준. 다른 폴더는 @ 멘션으로 참조.</p>
-        <div class="statement__points">
-          <div class="statement__point"><span class="statement__point-num">추가</span><span>File → Add Folder to Workspace</span></div>
-          <div class="statement__point"><span class="statement__point-num">실행</span><span>주 폴더의 통합 터미널에서 claude</span></div>
-          <div class="statement__point"><span class="statement__point-num">참조</span><span>@../other-project/file.py — 다른 폴더 멘션</span></div>
-        </div>
-      </div>
-      <div class="statement-visual">
-        <svg viewBox="0 0 460 320" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <rect x="0" y="0" width="460" height="320" rx="14" fill="#1e1e1e"/>
-          <rect x="0" y="0" width="180" height="320" fill="#252526"/>
-          <text x="20" y="40" font-family="ui-monospace, monospace" font-size="10" fill="rgba(255,255,255,0.45)">EXPLORER</text>
-          <text x="20" y="68" font-family="ui-monospace, monospace" font-size="11" fill="rgba(255,255,255,0.85)">▾ MY-BUDGET</text>
-          <text x="34" y="88" font-family="ui-monospace, monospace" font-size="10" fill="rgba(255,255,255,0.7)">app.py</text>
-          <text x="34" y="106" font-family="ui-monospace, monospace" font-size="10" fill="rgba(255,255,255,0.7)">routes/</text>
-          <text x="34" y="124" font-family="ui-monospace, monospace" font-size="10" fill="#fe6e00">CLAUDE.md ★</text>
-          <text x="20" y="156" font-family="ui-monospace, monospace" font-size="11" fill="rgba(255,255,255,0.85)">▾ DAY1 (참조)</text>
-          <text x="34" y="176" font-family="ui-monospace, monospace" font-size="10" fill="rgba(255,255,255,0.55)">about.html</text>
-          <text x="34" y="194" font-family="ui-monospace, monospace" font-size="10" fill="rgba(255,255,255,0.55)">style.css</text>
-          <rect x="190" y="200" width="260" height="100" rx="6" fill="rgba(0,0,0,0.5)"/>
-          <text x="205" y="225" font-family="ui-monospace, monospace" font-size="10" fill="rgba(255,255,255,0.5)">TERMINAL</text>
-          <text x="205" y="248" font-family="ui-monospace, monospace" font-size="11" fill="#fe6e00">PS my-budget&gt; claude</text>
-          <text x="205" y="270" font-family="ui-monospace, monospace" font-size="10" fill="rgba(255,255,255,0.7)">&gt; @../day1/about.html 참고해서</text>
-          <text x="205" y="286" font-family="ui-monospace, monospace" font-size="10" fill="rgba(255,255,255,0.7)">  자기소개 페이지 다시 만들어줘</text>
-        </svg>
-      </div>
-    </div>
-  </section>
-
   <!-- 9 · 비용 운영 -->
   <section class="slide is-section is-standard">
     <div class="section-eyebrow">COST · 비용 운영</div>
     <h2 class="section-title">실무에서의 <span class="accent">비용 관리</span></h2>
     <p class="section-caption">개인은 한 달 $50–200, 팀은 $500–2K. 운영자에게 보고할 때 알아둘 점.</p>
     <div class="section-meta">
-      <div class="section-meta__item"><span class="section-meta__num">/usage</span><span>자주 한 번</span></div>
+      <div class="section-meta__item"><span class="section-meta__num">사용량</span><span>Orca 좌하단 자주</span></div>
       <div class="section-meta__item"><span class="section-meta__num">2 트랙</span><span>Pro vs API</span></div>
     </div>
   </section>
@@ -296,7 +229,7 @@
           <ul class="compare-side__list">
             <li>입력 $3 / 출력 $15 (Sonnet 1M)</li>
             <li>한도 X — 쓰는 만큼 청구</li>
-            <li>월 $50+ 가능 — /usage 필수</li>
+            <li>월 $50+ 가능 — 사용량 확인 필수</li>
             <li>처음엔 추천 X</li>
           </ul>
         </div>
@@ -323,13 +256,13 @@
         </div>
         <div class="trouble-item">
           <div class="trouble-item__num">03</div>
-          <div class="trouble-item__problem">/usage 비용이 갑자기 ↑</div>
+          <div class="trouble-item__problem">좌하단 사용량이 갑자기 ↑</div>
           <div class="trouble-item__solution">컨텍스트 길어진 것. /clear 또는 /compact.</div>
         </div>
         <div class="trouble-item">
           <div class="trouble-item__num">04</div>
           <div class="trouble-item__problem">Plan 모드 진입 안 됨</div>
-          <div class="trouble-item__solution">Shift+Tab을 두 번 — 한 번이 아닌. 또는 4장 영상 다시 보기.</div>
+          <div class="trouble-item__solution">Shift+Tab을 두 번 — 한 번이 아닌. 헷갈리면 4장 Plan 덱 다시 보기.</div>
         </div>
         <div class="trouble-item">
           <div class="trouble-item__num">05</div>
@@ -400,8 +333,8 @@
         <div class="statement__points">
           <div class="statement__point"><span class="statement__point-num">commit</span><span>망쳐도 괜찮은 안전벨트 — 3장</span></div>
           <div class="statement__point"><span class="statement__point-num">검증</span><span>"잘 됐다" 위임 X — 1장·9장</span></div>
-          <div class="statement__point"><span class="statement__point-num">신호</span><span>CLAUDE.md 30줄 · 잡음 빼기 — 2장</span></div>
-          <div class="statement__point"><span class="statement__point-num">매주</span><span>도구 다이어트 + 사용 빈도 — 2장</span></div>
+          <div class="statement__point"><span class="statement__point-num">신호</span><span>CLAUDE.md 30줄 · 잡음 빼기 — 3장</span></div>
+          <div class="statement__point"><span class="statement__point-num">매주</span><span>도구 다이어트 + 사용 빈도 — 7장</span></div>
         </div>
       </div>
       <div class="feature-visual">
@@ -413,34 +346,6 @@
           <text x="230" y="235" font-family="ui-sans-serif, system-ui" font-size="18" fill="#423d38" font-weight="700" text-anchor="middle">매주 5번+</text>
           <line x1="100" y1="270" x2="360" y2="270" stroke="#cc5a14" stroke-width="2"/>
           <text x="230" y="295" font-family="ui-sans-serif, system-ui" font-size="14" fill="#cc5a14" font-weight="700" text-anchor="middle">과정의 핵심</text>
-        </svg>
-      </div>
-    </div>
-  </section>
-
-  <!-- 17 · 회고 트리거 -->
-  <section class="slide is-statement">
-    <div class="statement-grid">
-      <div class="statement-text">
-        <div class="slide__eyebrow">RETRO · 회고 준비</div>
-        <h2 class="statement__lead">회고 — <span class="accent">한 줄 미리 생각</span>해 두기.</h2>
-        <p class="statement__caption">덱 4 끝에 회고 ~30분. "시작할 때의 나 vs 지금의 나" — 한 줄로 적으면 됩니다. 미리 생각해두면 회고 정리가 쉬움.</p>
-        <div class="statement__points">
-          <div class="statement__point"><span class="statement__point-num">시작</span><span>"~~한 상태였다"</span></div>
-          <div class="statement__point"><span class="statement__point-num">지금</span><span>"~~할 수 있게 됐다"</span></div>
-          <div class="statement__point"><span class="statement__point-num">차이</span><span>가장 인상 깊은 도구·순간 1가지</span></div>
-        </div>
-      </div>
-      <div class="statement-visual">
-        <svg viewBox="0 0 460 320" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <rect x="0" y="0" width="460" height="320" rx="16" fill="#fff5ec"/>
-          <text x="230" y="60" font-family="ui-sans-serif, system-ui" font-size="13" fill="#797067" letter-spacing="0.1em" font-weight="700" text-anchor="middle">회고 한 줄 예시</text>
-          <rect x="40" y="90" width="380" height="50" rx="8" fill="white" stroke="#797067" stroke-width="2"/>
-          <text x="55" y="120" font-family="ui-monospace, monospace" font-size="12" fill="#797067">"시작: claude도 모름 →</text>
-          <rect x="40" y="160" width="380" height="50" rx="8" fill="#cc5a14"/>
-          <text x="55" y="190" font-family="ui-monospace, monospace" font-size="12" fill="white">지금: 미니 시연 + 발표"</text>
-          <rect x="40" y="230" width="380" height="50" rx="8" fill="white" stroke="#cc5a14" stroke-width="2" stroke-dasharray="4 4"/>
-          <text x="55" y="260" font-family="ui-monospace, monospace" font-size="12" fill="#cc5a14">"가장 인상: ~~"</text>
         </svg>
       </div>
     </div>
@@ -470,7 +375,7 @@
         <div class="promise-card">
           <div class="promise-card__num">STEP 4</div>
           <h3 class="promise-card__title">회고 시작</h3>
-          <p class="promise-card__body">회고 ~30분 + Q&A로 마무리.</p>
+          <p class="promise-card__body">회고 ~30분 + Q&A — "시작 vs 지금" 한 줄 미리 생각해 두기.</p>
         </div>
       </div>
       <p class="slide__note">발표는 <strong>자원자만 — 부담 없이</strong>. 발표 안 하는 분은 우하단 📤 제출 버튼으로 작품 링크만 공유해도 충분합니다. 본인 차례에 노트북 미리 준비.</p>

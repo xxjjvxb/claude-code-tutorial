@@ -107,7 +107,7 @@
           </div>
         </div>
       </div>
-      <p class="slide__note">아직 비어 있거나 몇 줄뿐이어도 정상 — <strong>이 덱이 끝나면 두 파일을 내 손으로 채울 수 있게</strong> 됩니다. 프로젝트 = 이 폴더 전용, 유저(글로벌) = 어디서든 적용.</p>
+      <p class="slide__note">아직 비어 있거나 몇 줄뿐이어도 정상 — <strong>이 덱이 끝나면 두 파일을 내 손으로 채울 수 있게</strong> 됩니다. 프로젝트 = 이 폴더 전용, 유저(글로벌) = 어디서든 적용. 지금 뭐가 로딩됐는지는 <code>/context</code>로 확인.</p>
     </div>
   </section>
 
@@ -304,7 +304,7 @@
       <div class="statement-text">
         <div class="slide__eyebrow">META · 프롬프트도 AI에게</div>
         <h2 class="statement__lead">"<span class="accent">먼저 어떻게 시킬지 계획부터</span>"</h2>
-        <p class="statement__caption">2장에서 본 메타 프롬프트의 확장 — 막힌 작업 앞에서 Claude에게 "<strong>이걸 어떻게 시켜야 잘 될까</strong>"부터 물어봅니다.</p>
+        <p class="statement__caption">1장에서 본 메타 프롬프트의 확장 — 막힌 작업 앞에서 Claude에게 "<strong>이걸 어떻게 시켜야 잘 될까</strong>"부터 물어봅니다.</p>
         <div class="statement__points">
           <div class="statement__point"><span class="statement__point-num">예시 1</span><span>"이 작업 잘 진행하려면 어떤 프롬프트가 좋을까?"</span></div>
           <div class="statement__point"><span class="statement__point-num">예시 2</span><span>"이걸 작은 단위로 자르면 몇 단계?"</span></div>
@@ -368,7 +368,7 @@
       <div class="statement-text">
         <div class="slide__eyebrow">TOPIC 03 · .claude 폴더 구조</div>
         <h2 class="statement__lead">프로젝트 안 <span class="accent">.claude</span> 폴더가 모든 설정의 중심.</h2>
-        <p class="statement__caption">이 장 뒤에서 배울 Hooks 설정(settings.json)도 여기 들어갑니다. 강의가 진행되며 이 폴더에 파일이 하나씩 추가됩니다.</p>
+        <p class="statement__caption">Hooks 설정(settings.json)도 여기 들어갑니다. 강의가 진행되며 이 폴더에 파일이 하나씩 추가됩니다.</p>
         <div class="statement__points">
           <div class="statement__point"><span class="statement__point-num">생성</span><span><code>/init</code> 또는 <code>git clone</code> 시 자동 생성</span></div>
           <div class="statement__point"><span class="statement__point-num">git</span><span>팀과 공유 — git에 같이 commit</span></div>
@@ -409,23 +409,23 @@
           <p class="content-card__body">프로젝트 룰북. 매 세션 자동 주입. 200줄 이하 권장.</p>
         </div>
         <div class="content-card content-card--compact">
-          <h3 class="content-card__title">settings.json (2장)</h3>
+          <h3 class="content-card__title">settings.json</h3>
           <p class="content-card__body">Hook 정의 + 권한 설정. 이 장에서 만들 Telegram 알림이 여기.</p>
         </div>
         <div class="content-card content-card--compact">
-          <h3 class="content-card__title">commands/ (다음 덱)</h3>
+          <h3 class="content-card__title">commands/</h3>
           <p class="content-card__body">커스텀 슬래시 — <code>/myslash</code> 같은 본인 명령. 마크다운 한 파일씩.</p>
         </div>
         <div class="content-card content-card--compact">
-          <h3 class="content-card__title">agents/ (5장)</h3>
+          <h3 class="content-card__title">agents/</h3>
           <p class="content-card__body">Sub-agent 정의 — 테스트 작성 전담 등 역할별 분리. 마크다운 한 파일씩.</p>
         </div>
         <div class="content-card content-card--compact">
-          <h3 class="content-card__title">hooks/ (2장)</h3>
+          <h3 class="content-card__title">hooks/</h3>
           <p class="content-card__body">Hook 스크립트 — settings.json에서 호출하는 .ps1 등.</p>
         </div>
         <div class="content-card content-card--compact">
-          <h3 class="content-card__title">skills/ (7장)</h3>
+          <h3 class="content-card__title">skills/</h3>
           <p class="content-card__body">공식 Skill (PPTX·DOCX 등) 또는 커스텀. <code>anthropic/skills</code> 참고.</p>
         </div>
       </div>
@@ -546,32 +546,6 @@
         </div>
       </div>
       <p class="slide__note">의심되면 한 번 빼보고 — 빼도 작업이 잘 되면 그건 군더더기였던 것. <strong>다이어트가 답</strong>.</p>
-    </div>
-  </section>
-
-  <!-- 16 · /memory · /init 실용 -->
-  <section class="slide is-standard">
-    <div class="slide__eyebrow">TOOLS · 작성 도구</div>
-    <h2 class="slide__title">CLAUDE.md 만질 때 <span class="accent">3가지 도구</span></h2>
-    <div class="slide__body">
-      <div class="grid-3">
-        <div class="diff-card">
-          <div class="diff-card__rank">/init</div>
-          <h3 class="diff-card__title">자동 초안</h3>
-          <p class="diff-card__body">새 프로젝트 → /init → Claude가 폴더 분석해서 CLAUDE.md 자동 생성. 첫 시작.</p>
-        </div>
-        <div class="diff-card">
-          <div class="diff-card__rank">/memory</div>
-          <h3 class="diff-card__title">열기 · 편집</h3>
-          <p class="diff-card__body">유저/프로젝트 CLAUDE.md 목록에서 골라 바로 편집. 지금 뭐가 로딩됐는지 확인은 <code>/context</code>.</p>
-        </div>
-        <div class="diff-card">
-          <div class="diff-card__rank">기억해줘</div>
-          <h3 class="diff-card__title">한 줄 추가</h3>
-          <p class="diff-card__body">대화 중 <code>"한국어로 답해줘. 기억해줘"</code> → Claude가 CLAUDE.md에 추가. 이 장 문법 덱에서 한 그것.</p>
-        </div>
-      </div>
-      <p class="slide__note">새 프로젝트엔 <strong>/init부터</strong>. 진행하면서 "기억해줘"로 한 줄씩 추가. 가끔 /memory로 열어 정리.</p>
     </div>
   </section>
 

@@ -138,40 +138,7 @@
         <div class="setup-step"><div class="setup-step__num">05</div><h3 class="setup-step__title">링크 공유</h3><p class="setup-step__desc">*.vercel.app 주소를 공유</p></div>
         <div class="setup-step"><div class="setup-step__num">06</div><h3 class="setup-step__title">수정 → 재배포</h3><p class="setup-step__desc">git push만으로 자동 갱신</p></div>
       </div>
-      <p class="slide__note">한 번 연결해두면 — 이후엔 <code>git push</code>만 하면 Vercel이 알아서 다시 배포합니다.</p>
-    </div>
-  </section>
-
-  <!-- 4 · STEP 1 · GitHub 저장소 -->
-  <!-- 4b · GitHub 저장소 화면 -->
-  <section class="slide is-standard">
-    <div class="slide__eyebrow">STEP 1 · GitHub 저장소 — 앞 덱에서 완료</div>
-    <h2 class="slide__title">GitHub — <span class="accent">New repository</span> 화면</h2>
-    <div class="slide__body">
-      <div class="two-col">
-        <div>
-          <figure class="photo-slot photo-slot--landscape" data-img="vc-ch02-deploy-new-repo.png">
-            <img class="photo-slot__img" src="../../imgs/vc-ch02-deploy-new-repo.png" alt="GitHub New repository 화면">
-            <figcaption class="photo-slot__ph">
-              <span class="photo-slot__icon">◧</span>
-              <span class="photo-slot__label">GitHub — New repository 화면</span>
-              <span class="photo-slot__hint">우측 상단 + → New repository → 이름 입력 → Create</span>
-            </figcaption>
-          </figure>
-        </div>
-        <div>
-          <div class="content-card content-card--compact">
-            <h3 class="content-card__title">이 화면에서 확인할 것</h3>
-            <ul class="content-card__list">
-              <li><strong>Repository name</strong>만 채우면 됩니다 — 나머지는 기본값</li>
-              <li>공개 범위는 <strong>Public</strong> (무료로 누구나 볼 수 있음)</li>
-              <li><code>Add a README</code>·<code>.gitignore</code> 체크박스는 <strong>모두 비워둠</strong></li>
-            </ul>
-            <p class="content-card__body">초록색 <strong>Create repository</strong>를 누르면 나오는 <code>...git</code> 주소를 다음 STEP에서 붙여넣습니다.</p>
-          </div>
-        </div>
-      </div>
-      <p class="slide__note">앞 덱(Git 기초)에서 <strong>이미 만들고 올렸으니 참고만</strong> 하고 넘어갑니다. README 체크박스를 비우는 이유 — 함께 만들면 첫 <code>push</code>에서 충돌이 날 수 있어서.</p>
+      <p class="slide__note">한 번 연결해두면 — 이후엔 <code>git push</code>만 하면 Vercel이 알아서 다시 배포합니다. 01·02(저장소·push)는 <strong>앞 덱에서 이미 완료</strong> — 오늘의 새 작업은 03부터.</p>
     </div>
   </section>
 
@@ -361,11 +328,10 @@ git push -u origin main</pre>
       <div class="statement-text">
         <div class="slide__eyebrow">RECAP · 2장 마무리</div>
         <h2 class="statement__lead">이제 내 자기소개는 <span class="accent">인터넷에</span> 있습니다</h2>
-        <p class="statement__caption">내 컴퓨터 안 파일이 링크 하나로 세상과 연결됐습니다. 9장에서 만들 미니프로젝트도 똑같은 방법으로 배포할 수 있습니다.</p>
+        <p class="statement__caption">내 컴퓨터 안 파일이 링크 하나로 세상과 연결됐습니다. 앞으로 어떤 프로젝트든 똑같은 방법으로 배포할 수 있습니다.</p>
         <div class="statement__points">
           <div class="statement__point"><span class="statement__point-num">이번 장</span><span>GitHub → Vercel 연결, 자기소개 페이지 공개</span></div>
           <div class="statement__point"><span class="statement__point-num">앞으로</span><span><code>git push</code> 한 줄이면 어떤 변경도 자동 반영</span></div>
-          <div class="statement__point"><span class="statement__point-num">다음</span><span>3장 Claude 길들이기 — 4대 문법 · CLAUDE.md · 알림</span></div>
         </div>
       </div>
       <div class="statement-visual">

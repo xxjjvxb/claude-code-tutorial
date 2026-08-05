@@ -1,0 +1,311 @@
+<!doctype html>
+<!-- © 2026 이일규 (Ilkyu Lee). All rights reserved. 본 강의자료는 저작권법으로 보호되는 저작물입니다. 무단 복제·배포·재사용을 금합니다. -->
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="author" content="이일규">
+  <meta name="copyright" content="© 2026 이일규 · 본 강의자료는 저작권법으로 보호되는 저작물입니다. 무단 복제·배포 금지.">
+  <script defer src="../../scripts/protect.js"></script>
+  <title>7장 · 3. PPT 파이프라인</title>
+  <link rel="stylesheet" href="../../styles/tokens.css">
+  <link rel="stylesheet" href="../../styles/deck.css">
+  <link rel="stylesheet" href="../../styles/_os-toggle.css">
+  <link rel="stylesheet" href="../../styles/_practice.css">
+  <script defer src="../../scripts/os-toggle.js"></script>
+  <script defer src="../../scripts/prompt-copy.js"></script>
+  <script defer src="../../scripts/slide-modify.js"></script>
+  <script defer src="../../scripts/feedback.js"></script>
+  <script defer src="../../scripts/analytics.js"></script>
+</head>
+<body>
+
+<main class="deck">
+
+  <header class="deck-chrome">
+  <span class="deck-chrome__brand">바이브코딩 · CLAUDE CODE</span>
+  <span class="deck-chrome__divider">·</span>
+  <span class="deck-chrome__day">7장 · 3 PPT 파이프라인</span>
+  <span class="deck-chrome__spacer"></span>
+  <span class="deck-chrome__counter">— / —</span>
+</header>
+
+  <!-- 1 · Section cover -->
+  <section class="slide is-section is-standard">
+    <div class="section-eyebrow">7장 · PPT PIPELINE</div>
+    <h2 class="section-title">PPT는 — <span class="accent">한 번에 만들지 않는다</span></h2>
+    <p class="section-caption">"PPT 만들어줘" 한 방이 아니라 — ① 마크다운 초안으로 내용을 확정하고 ② 디자인 없는 PPT로 배치를 확인한 뒤 ③ DESIGN.md를 입혀 완성합니다. 내용과 디자인을 분리하면 고치기도, 다시 만들기도 쉬워집니다. 소재는 2장 자기소개.</p>
+    <div class="section-meta">
+      <div class="section-meta__item"><span class="section-meta__num">3</span><span>단계 — 초안 · 무디자인 · 디자인</span></div>
+      <div class="section-meta__item"><span class="section-meta__num">1</span><span>결과 — 내 브랜드 발표 자료</span></div>
+    </div>
+  </section>
+
+  <!-- 2 · 왜 단계별인가 -->
+  <section class="slide is-statement">
+    <div class="statement-grid statement-grid--visual-wide">
+      <div class="statement-text">
+        <div class="slide__eyebrow">WHY · 내용과 디자인 분리</div>
+        <h2 class="statement__lead">내용 따로, 디자인 따로 — <span class="accent">그래서 빠르다</span>.</h2>
+        <p class="statement__caption">한 방에 만들면 내용을 고칠 때마다 디자인이 흔들리고, 디자인을 고치면 내용이 밀립니다. 초안(md) 단계에서 내용을 끝내고, 디자인은 마지막에 한 번 — 파워포인트를 오래 만져본 사람들의 방식 그대로입니다.</p>
+        <div class="statement__points">
+          <div class="statement__point"><span class="statement__point-num">초안</span><span>md는 텍스트 — 고치기가 제일 쉬운 형태</span></div>
+          <div class="statement__point"><span class="statement__point-num">확인</span><span>무디자인 PPT — 내용·배치만 먼저 검증</span></div>
+          <div class="statement__point"><span class="statement__point-num">완성</span><span>DESIGN.md 한 번 — 전체가 내 브랜드로</span></div>
+        </div>
+      </div>
+      <div class="statement-visual">
+        <svg viewBox="0 0 460 320" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <rect x="0" y="0" width="460" height="320" rx="16" fill="#fff5ec"/>
+          <g font-family="ui-sans-serif, system-ui" font-size="12" font-weight="700" text-anchor="middle">
+            <rect x="40" y="60" width="110" height="60" rx="10" fill="#fff" stroke="#cc5a14" stroke-width="2.5"/>
+            <text x="95" y="86" fill="#423d38">① 초안</text>
+            <text x="95" y="106" font-size="10" fill="#797067" font-weight="400">slides.md</text>
+            <rect x="175" y="60" width="110" height="60" rx="10" fill="#fff" stroke="#cc5a14" stroke-width="2.5"/>
+            <text x="230" y="86" fill="#423d38">② 무디자인</text>
+            <text x="230" y="106" font-size="10" fill="#797067" font-weight="400">흰 배경 .pptx</text>
+            <rect x="310" y="60" width="110" height="60" rx="10" fill="#fe6e00"/>
+            <text x="365" y="86" fill="#fff">③ 디자인</text>
+            <text x="365" y="106" font-size="10" fill="rgba(255,255,255,0.85)" font-weight="400">v2 .pptx</text>
+          </g>
+          <g stroke="#cc5a14" stroke-width="2">
+            <line x1="150" y1="90" x2="175" y2="90"/><line x1="285" y1="90" x2="310" y2="90"/>
+          </g>
+          <text x="230" y="170" font-family="ui-sans-serif, system-ui" font-size="12" fill="#797067" text-anchor="middle">내용이 바뀌면 → ①만 고쳐 다시</text>
+          <text x="230" y="196" font-family="ui-sans-serif, system-ui" font-size="12" fill="#797067" text-anchor="middle">디자인이 바뀌면 → DESIGN.md만 고쳐 다시</text>
+          <text x="230" y="256" font-family="ui-sans-serif, system-ui" font-size="15" fill="#cc5a14" font-weight="700" text-anchor="middle">각 단계는 — 언제든 다시 돌릴 수 있다</text>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3 · STEP 1 · md 초안 -->
+  <section class="slide is-standard">
+    <div class="slide__eyebrow">STEP 1 · 마크다운 초안</div>
+    <h2 class="slide__title">먼저 — <span class="accent">slides.md</span>에 내용부터</h2>
+    <div class="slide__body">
+      <div class="two-col">
+        <div>
+          <div class="content-card content-card--compact">
+            <h3 class="content-card__title">내용을 텍스트로 확정</h3>
+            <p class="content-card__body">PPT를 바로 만들지 않고 — 슬라이드 구성을 마크다운 한 파일로 먼저 씁니다. 슬라이드 한 장 = 소제목 하나.</p>
+            <ul class="content-card__list">
+              <li>5장 구성 — 표지 · 소개 · 경험 · 강점 · 마무리</li>
+              <li>장당 3~4줄 — 길면 발표에서 못 읽습니다</li>
+              <li>자기소개(index.html)가 재료</li>
+            </ul>
+          </div>
+        </div>
+        <div>
+          <div class="prompt-card">
+            <div class="prompt-card__head">
+              <span class="prompt-card__label">프롬프트 · 초안 만들기</span>
+              <button class="prompt-card__copy" type="button" data-copy>복사</button>
+            </div>
+            <pre class="prompt-card__body" data-no-nav>index.html 내용으로 자기소개 발표 초안을 slides.md 파일로 만들어줘.
+슬라이드 5장 구성 — 표지 · 소개 · 경험 · 강점 · 마무리.
+슬라이드마다 소제목 + 3~4줄 요점만.</pre>
+          </div>
+        </div>
+      </div>
+      <p class="slide__note">아직 PPT가 아닙니다 — <strong>일부러</strong> 텍스트 파일에서 멈춥니다. 여기서 내용을 끝내야 뒤가 편합니다.</p>
+    </div>
+  </section>
+
+  <!-- 4 · STEP 1.5 · 초안 다듬기 -->
+  <section class="slide is-standard">
+    <div class="slide__eyebrow">STEP 1.5 · 초안 다듬기</div>
+    <h2 class="slide__title">md에서 — <span class="accent">내용을 끝낸다</span></h2>
+    <div class="slide__body">
+      <div class="two-col">
+        <div>
+          <div class="content-card content-card--compact">
+            <h3 class="content-card__title">읽어보고 — 말로 고치기</h3>
+            <ul class="content-card__list">
+              <li><code>slides.md</code>를 열어 소리 내어 읽어보기</li>
+              <li>"경험 슬라이드를 프로젝트 중심으로 바꿔줘"</li>
+              <li>"강점을 3개에서 2개로 줄여줘"</li>
+              <li>마음에 들 때까지 — 텍스트라 몇 초면 반영</li>
+            </ul>
+          </div>
+        </div>
+        <div>
+          <div class="code-block">
+            <div class="code-block__header">
+              <span class="code-block__dot" style="background:#fb2c36"></span><span class="code-block__dot" style="background:#edb200"></span><span class="code-block__dot" style="background:#00c758"></span>
+              <span class="code-block__title">slides.md — 초안 예시</span>
+            </div>
+            <div class="code-block__body"><span class="code-block__line"><span class="code-block__cmt"># 1. 표지</span></span><span class="code-block__line"><span class="code-block__out">안녕하세요, OOO입니다</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__cmt"># 2. 소개</span></span><span class="code-block__line"><span class="code-block__out">- 하는 일 · 관심사</span></span><span class="code-block__line"><span class="code-block__out">- 요즘 배우는 것</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__cmt"># 3. 경험 ...</span></span></div>
+          </div>
+        </div>
+      </div>
+      <p class="slide__note">이 단계의 목표 — <strong>"내용은 더 고칠 게 없다"</strong>고 말할 수 있는 상태. 디자인 생각은 아직 금지.</p>
+    </div>
+  </section>
+
+  <!-- 5 · STEP 2 · 무디자인 PPT -->
+  <section class="slide is-standard">
+    <div class="slide__eyebrow">STEP 2 · 무디자인 PPT</div>
+    <h2 class="slide__title">그대로 — <span class="accent">흰 배경 PPT</span>로 뽑는다</h2>
+    <div class="slide__body">
+      <div class="two-col">
+        <div>
+          <div class="content-card content-card--compact">
+            <h3 class="content-card__title">디자인 없이 — 배치만 확인</h3>
+            <p class="content-card__body">1덱에서 설치한 문서 스킬이 여기서 일합니다. 색·장식 없이 내용 배치만 된 PPT를 먼저 뽑아 — 슬라이드 나눔과 분량이 적절한지 확인합니다.</p>
+            <ul class="content-card__list">
+              <li>흰 배경 · 기본 글꼴 — 일부러 밋밋하게</li>
+              <li>PowerPoint로 열어 — 장수·분량 확인</li>
+              <li>어색하면 <strong>md로 돌아가</strong> 고치고 다시</li>
+            </ul>
+          </div>
+        </div>
+        <div>
+          <div class="prompt-card">
+            <div class="prompt-card__head">
+              <span class="prompt-card__label">프롬프트 · 무디자인 변환</span>
+              <button class="prompt-card__copy" type="button" data-copy>복사</button>
+            </div>
+            <pre class="prompt-card__body" data-no-nav>@slides.md 를 그대로 presentation.pptx로 만들어줘.
+디자인은 넣지 말고 — 흰 배경에 검정 글씨, 내용 배치만.</pre>
+          </div>
+        </div>
+      </div>
+      <p class="slide__note">여기서 잘 나오면 — 내용은 검증 끝. 이제 남은 건 <strong>옷 입히기</strong>뿐입니다.</p>
+    </div>
+  </section>
+
+  <!-- 6 · STEP 3 · 디자인 적용 -->
+  <section class="slide is-standard">
+    <div class="slide__eyebrow">STEP 3 · 디자인 적용</div>
+    <h2 class="slide__title">"<span class="accent">@DESIGN.md 적용해서</span>" — 한 줄로 완성</h2>
+    <div class="slide__body">
+      <div class="two-col">
+        <div>
+          <div class="content-card content-card--compact">
+            <h3 class="content-card__title">앞 덱의 디자인 시스템 투입</h3>
+            <p class="content-card__body">앞 덱에서 만든 DESIGN.md(규칙)와 뷰룸의 톤을 그대로 PPT에 입힙니다 — 색·글꼴·레이아웃이 한 번에 내 브랜드로.</p>
+            <ul class="content-card__list">
+              <li>원본은 두고 <strong>v2 파일</strong>로 — 전후 비교 가능</li>
+              <li>아쉬우면 "표지만 더 진하게" 식으로 다듬기</li>
+              <li>테마를 통째로 바꾸려면 DESIGN.md만 교체</li>
+            </ul>
+          </div>
+        </div>
+        <div>
+          <div class="prompt-card">
+            <div class="prompt-card__head">
+              <span class="prompt-card__label">프롬프트 · 디자인 적용</span>
+              <button class="prompt-card__copy" type="button" data-copy>복사</button>
+            </div>
+            <pre class="prompt-card__body" data-no-nav>@DESIGN.md 규칙을 적용해서 presentation.pptx를 presentation_v2.pptx로 다시 만들어줘.
+@components.html 부품의 카드 느낌을 슬라이드 레이아웃에도 살려줘.</pre>
+          </div>
+        </div>
+      </div>
+      <p class="slide__note">PPT에 디자인을 "그리는" 게 아니라 — <strong>규칙 파일을 물려주는</strong> 것. 그래서 언제든 같은 품질로 다시 나옵니다.</p>
+    </div>
+  </section>
+
+  <!-- 7 · RESULT · 전후 비교 -->
+  <section class="slide is-standard">
+    <div class="slide__eyebrow">RESULT · 전 → 후</div>
+    <h2 class="slide__title">같은 내용 — <span class="accent">다른 옷</span></h2>
+    <div class="slide__body">
+      <div class="two-col">
+        <figure class="photo-slot photo-slot--landscape" data-img="vc-ch07-pptx-plain.png">
+          <img class="photo-slot__img" src="../../imgs/vc-ch07-pptx-plain.png" alt="무디자인 presentation.pptx 화면">
+          <figcaption class="photo-slot__ph">
+            <span class="photo-slot__icon">◧</span>
+            <span class="photo-slot__label">전 — 무디자인 (STEP 2)</span>
+            <span class="photo-slot__hint">흰 배경 · 내용 배치만</span>
+          </figcaption>
+        </figure>
+        <figure class="photo-slot photo-slot--landscape" data-img="vc-ch07-pptx-designed.png">
+          <img class="photo-slot__img" src="../../imgs/vc-ch07-pptx-designed.png" alt="DESIGN.md 적용된 presentation_v2.pptx 화면">
+          <figcaption class="photo-slot__ph">
+            <span class="photo-slot__icon">◧</span>
+            <span class="photo-slot__label">후 — DESIGN.md 적용 (STEP 3)</span>
+            <span class="photo-slot__hint">같은 내용이 내 브랜드로</span>
+          </figcaption>
+        </figure>
+      </div>
+      <p class="slide__note">내용은 한 글자도 안 바뀌었습니다 — <strong>규칙 파일 하나</strong>가 인상을 통째로 바꿉니다.</p>
+    </div>
+  </section>
+
+  <!-- 8 · 실습 한 바퀴 -->
+  <section class="slide is-standard">
+    <div class="slide__eyebrow">실습 · 한 바퀴</div>
+    <h2 class="slide__title">자기소개 PPT — <span class="accent">3단계로 완주</span></h2>
+    <div class="slide__body">
+      <div class="step-list step-list--compact">
+        <div class="step-list__item">
+          <div class="step-list__num">1</div>
+          <div class="step-list__content"><p class="step-list__title">자기소개 폴더에서 claude 실행 <span class="step-list__desc" style="display:inline">— index.html·DESIGN.md가 있는 그 폴더</span></p></div>
+        </div>
+        <div class="step-list__item">
+          <div class="step-list__num">2</div>
+          <div class="step-list__content"><p class="step-list__title">slides.md 초안 생성 <span class="step-list__desc" style="display:inline">— 5장 구성, 장당 3~4줄</span></p></div>
+        </div>
+        <div class="step-list__item">
+          <div class="step-list__num">3</div>
+          <div class="step-list__content"><p class="step-list__title">읽고 다듬기 <span class="step-list__desc" style="display:inline">— 내용은 여기서 끝낸다</span></p></div>
+        </div>
+        <div class="step-list__item">
+          <div class="step-list__num">4</div>
+          <div class="step-list__content"><p class="step-list__title">무디자인 PPT 변환 <span class="step-list__desc" style="display:inline">— 열어서 장수·분량 확인, 어색하면 2번으로</span></p></div>
+        </div>
+        <div class="step-list__item">
+          <div class="step-list__num">5</div>
+          <div class="step-list__content"><p class="step-list__title">DESIGN.md 적용 → v2 <span class="step-list__desc" style="display:inline">— 전후 비교하며 마음에 들 때까지</span></p></div>
+        </div>
+      </div>
+      <p class="slide__note">막히면 — 화면을 캡처해 Claude에게 보여주거나, 에러를 그대로 붙여넣기. 완성한 v2는 채팅방에 자랑해 주세요.</p>
+    </div>
+  </section>
+
+  <!-- 9 · Wrap · 7장 끝 -->
+  <section class="slide is-feature">
+    <div class="feature-head">
+      <div class="slide__eyebrow">WRAP · 7장 끝</div>
+      <h2 class="feature-head__title">문서 · 디자인 · PPT — <span class="accent">파이프라인이 손에</span></h2>
+    </div>
+    <div class="feature-body">
+      <div class="feature-text">
+        <p class="statement__caption">스킬로 워드·엑셀을 만들고, DESIGN.md와 뷰룸으로 내 디자인 시스템을 세우고, PPT를 초안→무디자인→디자인 3단계로 조립했습니다. 이 파이프라인은 9장 미니프로젝트 발표에서 그대로 다시 돌립니다.</p>
+        <div class="statement__points">
+          <div class="statement__point"><span class="statement__point-num">스킬</span><span>DOCX · XLSX · PDF — 문서 능력 장착</span></div>
+          <div class="statement__point"><span class="statement__point-num">시스템</span><span>DESIGN.md + 뷰룸 — 내 브랜드 파일 2개</span></div>
+          <div class="statement__point"><span class="statement__point-num">파이프라인</span><span>초안 → 무디자인 → 디자인 — 언제든 재생성</span></div>
+        </div>
+      </div>
+      <div class="feature-visual">
+        <svg viewBox="0 0 460 320" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <rect x="0" y="0" width="460" height="320" rx="16" fill="#fff5ec"/>
+          <text x="230" y="46" font-family="ui-sans-serif, system-ui" font-size="13" fill="#797067" font-weight="700" text-anchor="middle">7장에서 손에 들어온 것</text>
+          <g font-family="ui-monospace, monospace" font-size="11" font-weight="700" text-anchor="middle">
+            <rect x="45" y="70" width="120" height="46" rx="9" fill="#fff" stroke="#cc5a14" stroke-width="2"/>
+            <text x="105" y="98" fill="#423d38">문서 스킬 4종</text>
+            <rect x="170" y="70" width="120" height="46" rx="9" fill="#fff" stroke="#cc5a14" stroke-width="2"/>
+            <text x="230" y="98" fill="#423d38">DESIGN.md</text>
+            <rect x="295" y="70" width="120" height="46" rx="9" fill="#fff" stroke="#cc5a14" stroke-width="2"/>
+            <text x="355" y="98" fill="#423d38">뷰룸</text>
+          </g>
+          <g stroke="#cc5a14" stroke-width="2">
+            <line x1="105" y1="116" x2="230" y2="176"/><line x1="230" y1="116" x2="230" y2="176"/><line x1="355" y1="116" x2="230" y2="176"/>
+          </g>
+          <rect x="110" y="176" width="240" height="56" rx="10" fill="#fe6e00"/>
+          <text x="230" y="202" font-family="ui-sans-serif, system-ui" font-size="13" fill="#fff" font-weight="700" text-anchor="middle">초안 → 무디자인 → 디자인</text>
+          <text x="230" y="222" font-family="ui-sans-serif, system-ui" font-size="11" fill="rgba(255,255,255,0.85)" text-anchor="middle">언제든 다시 돌릴 수 있는 PPT 파이프라인</text>
+          <text x="230" y="284" font-family="ui-sans-serif, system-ui" font-size="15" fill="#cc5a14" font-weight="700" text-anchor="middle">만드는 법이 아니라 — 시스템을 가졌다</text>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <div class="deck-progress"><div class="deck-progress__bar"></div></div>
+</main>
+<script src="../../scripts/deck.js"></script>
+</body>
+</html>

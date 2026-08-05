@@ -61,7 +61,7 @@
         <div class="cover-card">
           <div class="cover-card__day">2장 · 홈페이지 배포</div>
           <h2 class="cover-card__title">Git —<br>코드의 안전벨트</h2>
-          <p class="cover-card__subtitle">AI가 마음대로 고치는 시대일수록 버전 관리가 안전벨트.<br>GitHub 계정까지 만들어 — 다음 덱에서 바로 배포합니다.</p>
+          <p class="cover-card__subtitle">AI가 마음대로 고치는 시대일수록 버전 관리가 안전벨트.<br>GitHub 계정까지 만듭니다.</p>
         </div>
       </div>
     </div>
@@ -70,9 +70,9 @@
   <!-- 2 · 로드맵 -->
   <section class="slide is-standard">
     <div class="slide__eyebrow">2장 · 로드맵</div>
-    <h2 class="slide__title">이 덱의 흐름 — <span class="accent">Git 개념 → 손풀이 → 배포</span></h2>
+    <h2 class="slide__title">이 덱의 흐름 — <span class="accent">Git 개념 → 손풀이</span></h2>
     <div class="slide__body">
-      <div class="grid-3">
+      <div class="grid-2">
         <div class="diff-card">
           <div class="diff-card__rank">개념</div>
           <h3 class="diff-card__title">Git 안전벨트</h3>
@@ -82,11 +82,6 @@
           <div class="diff-card__rank">손풀이</div>
           <h3 class="diff-card__title">직접 커밋까지</h3>
           <p class="diff-card__body">앞 덱에서 만든 홈페이지 폴더에 git init → 첫 커밋 → <strong>AI에게 커밋 시키기</strong>까지.</p>
-        </div>
-        <div class="diff-card">
-          <div class="diff-card__rank">→ 다음 덱</div>
-          <h3 class="diff-card__title">GitHub · Vercel 배포</h3>
-          <p class="diff-card__body">커밋이 쌓인 폴더를 GitHub에 올리고 — Vercel로 <strong>인터넷에 공개</strong>합니다.</p>
         </div>
       </div>
       <p class="slide__note">이론은 카탈로그처럼 빠르게 훑고, <strong>손은 손풀이에서</strong> 익힙니다.</p>
@@ -200,7 +195,7 @@
           </ul>
         </div>
       </div>
-      <p class="slide__note">이 덱에서는 <strong>Git과 GitHub 가입</strong>까지 — 바로 다음 덱에서 GitHub에 push해 배포합니다.</p>
+      <p class="slide__note">이 덱에서는 <strong>Git과 GitHub 가입</strong>까지 다룹니다.</p>
     </div>
   </section>
 
@@ -270,13 +265,13 @@
             <div class="step-list__item">
               <div class="step-list__num">2</div>
               <div class="step-list__content">
-                <p class="step-list__title">이름 <code>my-intro</code> 입력 → 나머지 그대로 → <strong>"Create repository"</strong></p>
+                <p class="step-list__title">이름 <code>my-intro</code> 입력 → <strong>Private 선택 (중요!</strong> 안 하면 내 소스코드가 <strong>모두에게 공개</strong>됨) → README·.gitignore 체크는 <strong>비워둠</strong> → <strong>"Create repository"</strong></p>
               </div>
             </div>
             <div class="step-list__item">
               <div class="step-list__num">3</div>
               <div class="step-list__content">
-                <p class="step-list__title">만들어진 페이지의 <strong>주소를 복사</strong> (https://github.com/내아이디/my-intro)</p>
+                <p class="step-list__title">만들어진 페이지의 <strong>주소를 복사</strong> (https://github.com/<strong>내아이디</strong>/my-intro)</p>
               </div>
             </div>
             <div class="step-list__item">
@@ -294,7 +289,7 @@
               <button class="prompt-card__copy" type="button" data-copy>복사</button>
             </div>
             <pre class="prompt-card__body" data-no-nav>나 깃허브 가입했는데 레포지토리 만들었어.
-주소는 https://github.com/내아이디/my-intro 여기야. 올려줘.</pre>
+주소는 https://github.com/<strong>내아이디</strong>/my-intro 여기야. 올려줘.</pre>
           </div>
         </div>
       </div>
@@ -339,7 +334,7 @@
               <span class="code-block__dot" style="background:#fb2c36"></span><span class="code-block__dot" style="background:#edb200"></span><span class="code-block__dot" style="background:#00c758"></span>
               <span class="code-block__title"><span class="os-win">PowerShell</span><span class="os-mac">Terminal (zsh)</span> — my-intro/</span>
             </div>
-            <div class="code-block__body"><span class="code-block__line"><span class="code-block__prompt" data-auto-os></span> <span class="code-block__cmd">git init</span></span><span class="code-block__line"><span class="code-block__out">  Initialized empty Git repository in</span></span><span class="code-block__line"><span class="code-block__out">  <span class="os-win">C:\Users\you\Desktop\my-intro\.git\</span><span class="os-mac">/Users/you/Desktop/my-intro/.git/</span></span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__prompt" data-auto-os></span> <span class="code-block__cmd">git status</span></span><span class="code-block__line"><span class="code-block__out">  On branch main</span></span><span class="code-block__line"><span class="code-block__out">  No commits yet</span></span><span class="code-block__line"><span class="code-block__hi">  Untracked files:</span></span><span class="code-block__line"><span class="code-block__out">    index.html</span></span><span class="code-block__line"><span class="code-block__out">    style.css</span></span></div>
+            <div class="code-block__body"><span class="code-block__line"><span class="code-block__prompt" data-auto-os></span> <span class="code-block__cmd">git init</span></span><span class="code-block__line"><span class="code-block__out">  Initialized empty Git repository in</span></span><span class="code-block__line"><span class="code-block__out">  <span class="os-win">C:\lecture\my-intro\.git\</span><span class="os-mac">/Users/you/lecture/my-intro/.git/</span></span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__prompt" data-auto-os></span> <span class="code-block__cmd">git status</span></span><span class="code-block__line"><span class="code-block__out">  On branch main</span></span><span class="code-block__line"><span class="code-block__out">  No commits yet</span></span><span class="code-block__line"><span class="code-block__hi">  Untracked files:</span></span><span class="code-block__line"><span class="code-block__out">    index.html</span></span><span class="code-block__line"><span class="code-block__out">    style.css</span></span></div>
           </div>
         </div>
       </div>
@@ -476,7 +471,7 @@
               <span class="code-block__dot" style="background:#fb2c36"></span><span class="code-block__dot" style="background:#edb200"></span><span class="code-block__dot" style="background:#00c758"></span>
               <span class="code-block__title"><span class="os-win">PowerShell</span><span class="os-mac">Terminal (zsh)</span> — 점검 2줄</span>
             </div>
-            <div class="code-block__body"><span class="code-block__line"><span class="code-block__cmt"># 1) 설치 확인</span></span><span class="code-block__line"><span class="code-block__prompt" data-auto-os></span> <span class="code-block__cmd">git --version</span></span><span class="code-block__line"><span class="code-block__hi">  git version 2.49.x</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__cmt"># 2) 신원 등록 확인</span></span><span class="code-block__line"><span class="code-block__prompt" data-auto-os></span> <span class="code-block__cmd">git config --global user.name</span></span><span class="code-block__line"><span class="code-block__hi">  홍길동</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__cmt"># 안 됐으면 — 1장 셋업 STEP 03 다시</span></span><span class="code-block__line"><span class="code-block__cmt">#   git config --global user.name "이름"</span></span><span class="code-block__line"><span class="code-block__cmt">#   git config --global user.email "메일"</span></span></div>
+            <div class="code-block__body"><span class="code-block__line"><span class="code-block__cmt"># 1) 설치 확인</span></span><span class="code-block__line"><span class="code-block__prompt" data-auto-os></span> <span class="code-block__cmd">git --version</span></span><span class="code-block__line"><span class="code-block__hi">  git version 2.49.x</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__cmt"># 2) 신원 등록 확인</span></span><span class="code-block__line"><span class="code-block__prompt" data-auto-os></span> <span class="code-block__cmd">git config --global user.name</span></span><span class="code-block__line"><span class="code-block__hi">  홍길동</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__cmt"># 안 됐으면 — 1장 셋업 STEP 05 다시</span></span><span class="code-block__line"><span class="code-block__cmt">#   git config --global user.name "이름"</span></span><span class="code-block__line"><span class="code-block__cmt">#   git config --global user.email "메일"</span></span></div>
           </div>
         </div>
       </div>
@@ -506,7 +501,7 @@
               <span class="code-block__dot" style="background:#fb2c36"></span><span class="code-block__dot" style="background:#edb200"></span><span class="code-block__dot" style="background:#00c758"></span>
               <span class="code-block__title"><span class="os-win">PowerShell</span><span class="os-mac">Terminal (zsh)</span> — my-intro/</span>
             </div>
-            <div class="code-block__body"><span class="code-block__line"><span class="code-block__prompt" data-auto-os></span> <span class="code-block__cmd">git init</span></span><span class="code-block__line"><span class="code-block__out">  Initialized empty Git repository</span></span><span class="code-block__line"><span class="code-block__out">  in <span class="os-win">C:\Users\you\Desktop\my-intro\.git\</span><span class="os-mac">/Users/you/Desktop/my-intro/.git/</span></span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__cmt"># 폴더에 숨김 .git 폴더가 생성됨</span></span><span class="code-block__line"><span class="code-block__cmt"># Orca에서 좌측 사이드바에 변화</span></span></div>
+            <div class="code-block__body"><span class="code-block__line"><span class="code-block__prompt" data-auto-os></span> <span class="code-block__cmd">git init</span></span><span class="code-block__line"><span class="code-block__out">  Initialized empty Git repository</span></span><span class="code-block__line"><span class="code-block__out">  in <span class="os-win">C:\lecture\my-intro\.git\</span><span class="os-mac">/Users/you/lecture/my-intro/.git/</span></span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__cmt"># 폴더에 숨김 .git 폴더가 생성됨</span></span><span class="code-block__line"><span class="code-block__cmt"># Orca에서 좌측 사이드바에 변화</span></span></div>
           </div>
         </div>
       </div>
@@ -580,7 +575,6 @@
           <p class="promise-card__body">가입 완료 — 코드를 인터넷에 올릴 준비가 됐다.</p>
         </div>
       </div>
-      <p class="slide__note">다음 덱에서 <strong>GitHub에 올리고 Vercel로 배포</strong> — 홈페이지가 진짜 인터넷 주소를 갖게 됩니다.</p>
     </div>
   </section>
 
