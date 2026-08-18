@@ -89,7 +89,7 @@
       <div class="preview-grid">
         <div class="preview-item"><div class="preview-item__symbol">/</div><div class="preview-item__name">슬래시 커맨드</div><div class="preview-item__desc">Claude 자체 기능 호출 — /init /clear /model 등</div></div>
         <div class="preview-item"><div class="preview-item__symbol">@</div><div class="preview-item__name">파일 · 폴더 멘션</div><div class="preview-item__desc">@index.html @tests/ 로 컨텍스트에 끼워 넣기</div></div>
-        <div class="preview-item"><div class="preview-item__symbol">!</div><div class="preview-item__name">셸 명령 실행</div><div class="preview-item__desc"><span class="os-win">!dir</span><span class="os-mac">!ls</span> 처럼 <span class="os-win">PowerShell</span><span class="os-mac">셸</span>을 즉석 호출</div></div>
+        <div class="preview-item"><div class="preview-item__symbol">!</div><div class="preview-item__name">셸 명령 실행</div><div class="preview-item__desc"><span class="os-win">!start .</span><span class="os-mac">!open .</span> 처럼 <span class="os-win">PowerShell</span><span class="os-mac">셸</span>을 즉석 호출</div></div>
         <div class="preview-item"><div class="preview-item__symbol">Esc</div><div class="preview-item__name">멈춤 · 되돌리기</div><div class="preview-item__desc">한 번 = 멈춤 · 빈 입력에서 두 번 = 되돌리기 메뉴</div></div>
       </div>
       <p class="slide__note">/ @ !는 <strong>입력 첫 글자에서</strong>, Esc는 언제든 — 넷 다 저절로 손이 가야 합니다.</p>
@@ -103,7 +103,7 @@
     <div class="slide__body">
       <div class="slash-grid">
         <div class="slash-card"><div class="slash-card__cmd">/init</div><div class="slash-card__desc">현재 폴더 분석 → CLAUDE.md 자동 초안 생성</div></div>
-        <div class="slash-card"><div class="slash-card__cmd">/agents</div><div class="slash-card__desc">서브 에이전트 안내 — 만들기는 말로 부탁</div></div>
+        <div class="slash-card"><div class="slash-card__cmd">/context</div><div class="slash-card__desc">지금 컨텍스트에 뭐가 실렸나 — CLAUDE.md·대화 크기 확인</div></div>
         <div class="slash-card"><div class="slash-card__cmd">/model</div><div class="slash-card__desc">Haiku · Sonnet · Opus 전환 — 한 명령</div></div>
         <div class="slash-card"><div class="slash-card__cmd">/memory</div><div class="slash-card__desc">CLAUDE.md 직접 보기 · 편집 진입</div></div>
         <div class="slash-card"><div class="slash-card__cmd">/compact</div><div class="slash-card__desc">컨텍스트 요약 — /clear보다 부드러움</div></div>
@@ -187,7 +187,7 @@
         <h2 class="statement__lead">claude를 <span class="accent">나가지 않고</span> <span class="os-win">PowerShell</span><span class="os-mac">셸 명령</span>.</h2>
         <p class="statement__caption">대화 중간에 셸 명령을 한 번 돌리고 싶을 때. <code>!</code>로 시작하면 그 줄은 <span class="os-win">PowerShell이</span><span class="os-mac">셸이</span> 직접 실행. 결과는 다음 응답에 자동 포함됩니다.</p>
         <div class="statement__points">
-          <div class="statement__point"><span class="statement__point-num">자주</span><span><code><span class="os-win">!dir</span><span class="os-mac">!ls</span></code> · <code>!code --version</code></span></div>
+          <div class="statement__point"><span class="statement__point-num">자주</span><span><code><span class="os-win">!start .</span><span class="os-mac">!open .</span></code> — 지금 폴더가 <span class="os-win">탐색기</span><span class="os-mac">Finder</span>로 · <code><span class="os-win">!dir</span><span class="os-mac">!ls</span></code></span></div>
           <div class="statement__point"><span class="statement__point-num">주의</span><span>처음 쓸 땐 <strong>권한 prompt</strong> — 한 번 read해보고 승인</span></div>
           <div class="statement__point"><span class="statement__point-num">결과 활용</span><span>"방금 실행한 결과 보고 분석해줘" 가능</span></div>
         </div>
@@ -197,15 +197,16 @@
           <rect x="0" y="0" width="460" height="320" rx="14" fill="rgba(0,0,0,0.92)"/>
           <rect x="0" y="0" width="460" height="32" fill="rgba(255,255,255,0.06)"/>
           <text x="14" y="20" font-family="ui-monospace, monospace" font-size="11" fill="rgba(255,255,255,0.5)">claude — my-intro/</text>
-          <text x="20" y="68" fill="white" font-family="ui-monospace, monospace" font-size="13">&gt; <tspan fill="#fe6e00"><tspan class="os-win">!dir</tspan><tspan class="os-mac">!ls</tspan></tspan></text>
-          <text x="20" y="98" fill="rgba(255,255,255,0.55)" font-family="ui-monospace, monospace" font-size="11">  $ <tspan class="os-win">dir</tspan><tspan class="os-mac">ls</tspan></text>
-          <text x="20" y="118" fill="rgba(255,255,255,0.7)" font-family="ui-monospace, monospace" font-size="10">  index.html</text>
-          <text x="20" y="136" fill="rgba(255,255,255,0.7)" font-family="ui-monospace, monospace" font-size="10">  style.css</text>
-          <text x="20" y="154" fill="rgba(255,255,255,0.7)" font-family="ui-monospace, monospace" font-size="10">  photo.jpg</text>
-          <line x1="20" y1="178" x2="440" y2="178" stroke="rgba(255,255,255,0.15)"/>
-          <text x="20" y="208" fill="white" font-family="ui-monospace, monospace" font-size="13">&gt; 방금 목록 보고 빠진 파일 있나 봐줘</text>
-          <text x="20" y="240" fill="rgba(255,255,255,0.7)" font-family="ui-monospace, monospace" font-size="10">  홈페이지 기본 구성은 다 있습니다.</text>
-          <text x="20" y="258" fill="rgba(255,255,255,0.7)" font-family="ui-monospace, monospace" font-size="10">  · favicon이 없네요 — 만들어 드릴까요?</text>
+          <text x="20" y="56" fill="white" font-family="ui-monospace, monospace" font-size="13">&gt; <tspan fill="#fe6e00"><tspan class="os-win">!start .</tspan><tspan class="os-mac">!open .</tspan></tspan></text>
+          <text x="20" y="82" fill="rgba(255,255,255,0.55)" font-family="ui-monospace, monospace" font-size="11">  $ <tspan class="os-win">start .</tspan><tspan class="os-mac">open .</tspan></text>
+          <text x="20" y="102" fill="#00c758" font-family="ui-monospace, monospace" font-size="10">  → <tspan class="os-win">탐색기</tspan><tspan class="os-mac">Finder</tspan> 창이 열림 — my-intro가 눈앞에</text>
+          <line x1="20" y1="122" x2="440" y2="122" stroke="rgba(255,255,255,0.15)"/>
+          <text x="20" y="150" fill="white" font-family="ui-monospace, monospace" font-size="13">&gt; <tspan fill="#fe6e00"><tspan class="os-win">!dir</tspan><tspan class="os-mac">!ls</tspan></tspan></text>
+          <text x="20" y="172" fill="rgba(255,255,255,0.7)" font-family="ui-monospace, monospace" font-size="10">  index.html · style.css · photo.jpg</text>
+          <line x1="20" y1="192" x2="440" y2="192" stroke="rgba(255,255,255,0.15)"/>
+          <text x="20" y="220" fill="white" font-family="ui-monospace, monospace" font-size="13">&gt; 방금 목록 보고 빠진 파일 있나 봐줘</text>
+          <text x="20" y="246" fill="rgba(255,255,255,0.7)" font-family="ui-monospace, monospace" font-size="10">  홈페이지 기본 구성은 다 있습니다.</text>
+          <text x="20" y="264" fill="rgba(255,255,255,0.7)" font-family="ui-monospace, monospace" font-size="10">  · favicon이 없네요 — 만들어 드릴까요?</text>
         </svg>
       </div>
     </div>
@@ -253,7 +254,7 @@
           <span class="code-block__dot" style="background:#fb2c36"></span><span class="code-block__dot" style="background:#edb200"></span><span class="code-block__dot" style="background:#00c758"></span>
           <span class="code-block__title">claude — my-intro/ — 강사 라이브 시연</span>
         </div>
-        <div class="code-block__body"><span class="code-block__line"><span class="code-block__cmt"># 1) 폴더 분석부터</span></span><span class="code-block__line"><span class="code-block__cmd">&gt; <span class="code-block__hi">/init</span></span></span><span class="code-block__line"><span class="code-block__out">  ✓ CLAUDE.md 자동 생성</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__cmt"># 2) 답변 규칙 추가</span></span><span class="code-block__line"><span class="code-block__cmd">&gt; <span class="code-block__hi">항상 한국어로 답해줘 — 기억해줘</span></span></span><span class="code-block__line"><span class="code-block__out">  ✓ CLAUDE.md에 추가</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__cmt"># 3) 방금 만든 파일 분석 시키기</span></span><span class="code-block__line"><span class="code-block__cmd">&gt; <span class="code-block__hi">@index.html</span> 의 디자인 분석해줘</span></span><span class="code-block__line"><span class="code-block__out">  ✓ index.html 읽고 분석 보고</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__cmt"># 4) 셸 명령 즉석 호출</span></span><span class="code-block__line"><span class="code-block__cmd">&gt; <span class="code-block__hi"><span class="os-win">!dir</span><span class="os-mac">!ls</span></span></span></span><span class="code-block__line"><span class="code-block__out">  $ <span class="os-win">dir</span><span class="os-mac">ls</span> → 폴더 파일 목록 출력</span></span></div>
+        <div class="code-block__body"><span class="code-block__line"><span class="code-block__cmt"># 1) 폴더 분석부터</span></span><span class="code-block__line"><span class="code-block__cmd">&gt; <span class="code-block__hi">/init</span></span></span><span class="code-block__line"><span class="code-block__out">  ✓ CLAUDE.md 자동 생성</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__cmt"># 2) 답변 규칙 추가</span></span><span class="code-block__line"><span class="code-block__cmd">&gt; <span class="code-block__hi">항상 한국어로 답해줘 — 기억해줘</span></span></span><span class="code-block__line"><span class="code-block__out">  ✓ CLAUDE.md에 추가</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__cmt"># 3) 방금 만든 파일 분석 시키기</span></span><span class="code-block__line"><span class="code-block__cmd">&gt; <span class="code-block__hi">@index.html</span> 의 디자인 분석해줘</span></span><span class="code-block__line"><span class="code-block__out">  ✓ index.html 읽고 분석 보고</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__cmt"># 4) 셸 명령 즉석 호출 — 폴더를 눈앞에</span></span><span class="code-block__line"><span class="code-block__cmd">&gt; <span class="code-block__hi"><span class="os-win">!start .</span><span class="os-mac">!open .</span></span></span></span><span class="code-block__line"><span class="code-block__out">  $ <span class="os-win">start .</span><span class="os-mac">open .</span> → <span class="os-win">탐색기</span><span class="os-mac">Finder</span> 창이 열림</span></span></div>
       </div>
     </div>
   </section>
@@ -276,7 +277,7 @@
       <div class="setup-grid">
         <div class="setup-step"><div class="setup-step__num">01</div><h3 class="setup-step__title">/model</h3><p class="setup-step__desc">슬래시로 모델 바꿔보기</p></div>
         <div class="setup-step"><div class="setup-step__num">02</div><h3 class="setup-step__title">@ 멘션</h3><p class="setup-step__desc">@index.html 분석 시키기</p></div>
-        <div class="setup-step"><div class="setup-step__num">03</div><h3 class="setup-step__title">! 셸 실행</h3><p class="setup-step__desc"><span class="os-win">!dir</span><span class="os-mac">!ls</span> · !code --version</p></div>
+        <div class="setup-step"><div class="setup-step__num">03</div><h3 class="setup-step__title">! 셸 실행</h3><p class="setup-step__desc"><span class="os-win">!start .</span><span class="os-mac">!open .</span> — 폴더가 눈앞에 열림</p></div>
         <div class="setup-step"><div class="setup-step__num">04</div><h3 class="setup-step__title">"기억해줘" 메모</h3><p class="setup-step__desc">CLAUDE.md에 한국어 규칙</p></div>
         <div class="setup-step"><div class="setup-step__num">05</div><h3 class="setup-step__title">ESC 두 번</h3><p class="setup-step__desc">AI 편집 직전으로 되돌리기</p></div>
       </div>
@@ -358,7 +359,7 @@
           <span class="code-block__dot" style="background:#fb2c36"></span><span class="code-block__dot" style="background:#edb200"></span><span class="code-block__dot" style="background:#00c758"></span>
           <span class="code-block__title">claude — my-intro/</span>
         </div>
-        <div class="code-block__body"><span class="code-block__line"><span class="code-block__cmt"># 1) 셸 명령 즉석 실행</span></span><span class="code-block__line"><span class="code-block__cmd">&gt; <span class="code-block__hi"><span class="os-win">!dir</span><span class="os-mac">!ls</span></span></span></span><span class="code-block__line"><span class="code-block__hi">  ⚠ Claude wants to run: <span class="os-win">dir</span><span class="os-mac">ls</span></span></span><span class="code-block__line"><span class="code-block__out">  [ Allow once / Always allow / Deny ]</span></span><span class="code-block__line"><span class="code-block__out">  → "Allow once" 선택</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__out">  $ <span class="os-win">dir</span><span class="os-mac">ls</span></span></span><span class="code-block__line"><span class="code-block__out">  index.html   style.css   CLAUDE.md</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__cmt"># 2) 그 결과 활용</span></span><span class="code-block__line"><span class="code-block__cmd">&gt; 방금 목록 보고, 다음 작업 제안해줘</span></span><span class="code-block__line"><span class="code-block__out">  홈페이지 기본 파일은 다 있습니다. 다음으로:</span></span><span class="code-block__line"><span class="code-block__out">  · style.css에 hover 효과 추가</span></span><span class="code-block__line"><span class="code-block__out">  · 사진(photo.jpg) 최적화</span></span></div>
+        <div class="code-block__body"><span class="code-block__line"><span class="code-block__cmt"># 1) 폴더를 눈앞에 — 셸 명령 즉석 실행</span></span><span class="code-block__line"><span class="code-block__cmd">&gt; <span class="code-block__hi"><span class="os-win">!start .</span><span class="os-mac">!open .</span></span></span></span><span class="code-block__line"><span class="code-block__hi">  ⚠ Claude wants to run: <span class="os-win">start .</span><span class="os-mac">open .</span></span></span><span class="code-block__line"><span class="code-block__out">  [ Allow once / Always allow / Deny ]</span></span><span class="code-block__line"><span class="code-block__out">  → "Allow once" 선택 → <span class="os-win">탐색기</span><span class="os-mac">Finder</span> 창이 열림</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__cmt"># 2) 목록도 즉석에서</span></span><span class="code-block__line"><span class="code-block__cmd">&gt; <span class="code-block__hi"><span class="os-win">!dir</span><span class="os-mac">!ls</span></span></span></span><span class="code-block__line"><span class="code-block__out">  index.html   style.css   CLAUDE.md</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__cmt"># 3) 그 결과 활용</span></span><span class="code-block__line"><span class="code-block__cmd">&gt; 방금 목록 보고, 다음 작업 제안해줘</span></span><span class="code-block__line"><span class="code-block__out">  홈페이지 기본 파일은 다 있습니다. 다음으로:</span></span><span class="code-block__line"><span class="code-block__out">  · style.css에 hover 효과 추가</span></span><span class="code-block__line"><span class="code-block__out">  · 사진(photo.jpg) 최적화</span></span></div>
       </div>
       <p class="slide__note">처음 <code>!</code>를 쓰면 <strong>권한 prompt</strong>가 뜹니다 — "Allow once"가 가장 안전. "Always allow"는 나중에 신뢰가 쌓인 명령에만.</p>
     </div>

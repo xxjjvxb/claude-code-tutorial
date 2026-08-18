@@ -61,7 +61,7 @@
         <div class="cover-card">
           <div class="cover-card__day">2장 · 홈페이지 배포</div>
           <h2 class="cover-card__title">Git —<br>코드의 안전벨트</h2>
-          <p class="cover-card__subtitle">AI가 마음대로 고치는 시대일수록 버전 관리가 안전벨트.<br>GitHub 계정까지 만듭니다.</p>
+          <p class="cover-card__subtitle">AI가 마음대로 고치는 시대일수록 버전 관리가 안전벨트.<br>커밋부터 GitHub 업로드까지 손에 익힙니다.</p>
         </div>
       </div>
     </div>
@@ -76,7 +76,7 @@
         <div class="diff-card">
           <div class="diff-card__rank">개념</div>
           <h3 class="diff-card__title">Git 안전벨트</h3>
-          <p class="diff-card__body">왜 Git · GitHub 가입 · init/status/add/commit · restore. <strong>망쳐도 되돌릴 수 있다</strong>는 감각 형성.</p>
+          <p class="diff-card__body">왜 Git · init/status/add/commit · restore. <strong>망쳐도 되돌릴 수 있다</strong>는 감각 형성.</p>
         </div>
         <div class="diff-card">
           <div class="diff-card__rank">손풀이</div>
@@ -195,56 +195,7 @@
           </ul>
         </div>
       </div>
-      <p class="slide__note">이 덱에서는 <strong>Git과 GitHub 가입</strong>까지 다룹니다.</p>
-    </div>
-  </section>
-
-  <!-- 7 · GitHub 가입 -->
-  <section class="slide is-standard">
-    <div class="slide__eyebrow">SIGN UP · GitHub 가입 (지금)</div>
-    <h2 class="slide__title">github.com — <span class="accent">3분</span>이면 끝</h2>
-    <div class="slide__body">
-      <div class="two-col">
-        <div>
-          <div class="step-list step-list--compact">
-            <div class="step-list__item">
-              <div class="step-list__num">1</div>
-              <div class="step-list__content">
-                <p class="step-list__title">브라우저로 <code>github.com</code> 접속 → 우측 상단 <strong>"Sign up"</strong> 클릭</p>
-              </div>
-            </div>
-            <div class="step-list__item">
-              <div class="step-list__num">2</div>
-              <div class="step-list__content">
-                <p class="step-list__title">이메일 · 비밀번호 · 사용자명 입력 → 인증코드 메일로 받아 입력</p>
-              </div>
-            </div>
-            <div class="step-list__item">
-              <div class="step-list__num">3</div>
-              <div class="step-list__content">
-                <p class="step-list__title">"무료 플랜" 선택 → 본인 정보 설문은 <strong>"Skip"</strong> OK</p>
-              </div>
-            </div>
-            <div class="step-list__item">
-              <div class="step-list__num">4</div>
-              <div class="step-list__content">
-                <p class="step-list__title">로그인 후 우측 상단 본인 아이콘 보이면 → 가입 완료</p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div>
-          <figure class="photo-slot photo-slot--landscape" data-img="vc-ch02-git-github-signup.png">
-            <img class="photo-slot__img" src="../../imgs/vc-ch02-git-github-signup.png" alt="GitHub 가입 화면">
-            <figcaption class="photo-slot__ph">
-              <span class="photo-slot__icon">◧</span>
-              <span class="photo-slot__label">GitHub — 가입(Sign up) 화면</span>
-              <span class="photo-slot__hint">우측 상단 Sign up → 이메일·비밀번호·사용자명</span>
-            </figcaption>
-          </figure>
-        </div>
-      </div>
-      <p class="slide__note">사용자명은 한 번 정하면 바꾸기 번거로우니 <strong>실명 또는 평소 닉</strong>으로. 과정 내내 그대로 갑니다.</p>
+      <p class="slide__note">GitHub 가입은 <strong>1장 셋업(STEP 05)에서 이미 완료</strong> — 이 덱에서는 바로 저장소를 만들고 올립니다.</p>
     </div>
   </section>
 
@@ -471,7 +422,7 @@
               <span class="code-block__dot" style="background:#fb2c36"></span><span class="code-block__dot" style="background:#edb200"></span><span class="code-block__dot" style="background:#00c758"></span>
               <span class="code-block__title"><span class="os-win">PowerShell</span><span class="os-mac">Terminal (zsh)</span> — 점검 2줄</span>
             </div>
-            <div class="code-block__body"><span class="code-block__line"><span class="code-block__cmt"># 1) 설치 확인</span></span><span class="code-block__line"><span class="code-block__prompt" data-auto-os></span> <span class="code-block__cmd">git --version</span></span><span class="code-block__line"><span class="code-block__hi">  git version 2.49.x</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__cmt"># 2) 신원 등록 확인</span></span><span class="code-block__line"><span class="code-block__prompt" data-auto-os></span> <span class="code-block__cmd">git config --global user.name</span></span><span class="code-block__line"><span class="code-block__hi">  홍길동</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__cmt"># 안 됐으면 — 1장 셋업 STEP 05 다시</span></span><span class="code-block__line"><span class="code-block__cmt">#   git config --global user.name "이름"</span></span><span class="code-block__line"><span class="code-block__cmt">#   git config --global user.email "메일"</span></span></div>
+            <div class="code-block__body"><span class="code-block__line"><span class="code-block__cmt"># 1) 설치 확인</span></span><span class="code-block__line"><span class="code-block__prompt" data-auto-os></span> <span class="code-block__cmd">git --version</span></span><span class="code-block__line"><span class="code-block__hi">  git version 2.49.x</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__cmt"># 2) 신원 등록 확인</span></span><span class="code-block__line"><span class="code-block__prompt" data-auto-os></span> <span class="code-block__cmd">git config --global user.name</span></span><span class="code-block__line"><span class="code-block__hi">  홍길동</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__cmt"># 안 됐으면 — 1장 셋업 STEP 06 다시</span></span><span class="code-block__line"><span class="code-block__cmt">#   git config --global user.name "이름"</span></span><span class="code-block__line"><span class="code-block__cmt">#   git config --global user.email "메일"</span></span></div>
           </div>
         </div>
       </div>
@@ -572,7 +523,7 @@
         <div class="promise-card">
           <div class="promise-card__num">GH</div>
           <h3 class="promise-card__title">GitHub 계정</h3>
-          <p class="promise-card__body">가입 완료 — 코드를 인터넷에 올릴 준비가 됐다.</p>
+          <p class="promise-card__body">1장에서 가입한 계정으로 — 코드를 인터넷에 올렸다.</p>
         </div>
       </div>
     </div>
