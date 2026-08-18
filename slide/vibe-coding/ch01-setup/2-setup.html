@@ -35,9 +35,9 @@
   <section class="slide is-section is-standard">
     <div class="section-eyebrow">PART 2 · SETUP</div>
     <h2 class="section-title">0부터 Claude Code <span class="accent">셋업</span></h2>
-    <p class="section-caption">git 설치 → Claude Code 설치(한 줄) → Orca 설치 → GitHub 가입 → git 신원 등록 → gh 설치 → Claude 계정 등록 → 첫 실행. Node.js까지 깔면 배포 준비 끝.</p>
+    <p class="section-caption">GitHub 가입 → git 설치 → Claude Code 설치(한 줄) → Orca 설치·홈베이스·테마 → git 신원 등록 → gh 설치 → Claude 계정 등록 → 첫 실행. Node.js까지 깔면 배포 준비 끝.</p>
     <div class="section-meta">
-      <div class="section-meta__item"><span class="section-meta__num">9</span><span>핵심 단계</span></div>
+      <div class="section-meta__item"><span class="section-meta__num">8</span><span>핵심 단계</span></div>
     </div>
     <p class="section-caption" style="margin-top:0.6rem;font-size:0.72rem;color:var(--color-on-surface-muted)"><strong>Mac이세요?</strong> 우상단 <code>🪟 Win ⇄ 🍎 Mac</code> 토글 클릭 — 명령어·경로·단축키가 즉시 Mac으로 바뀝니다.</p>
   </section>
@@ -48,24 +48,72 @@
     <h2 class="slide__title">셋업 흐름, <span class="accent">한눈에</span></h2>
     <div class="slide__body">
       <div class="setup-grid">
-        <div class="setup-step"><div class="setup-step__num">01</div><h3 class="setup-step__title">git 설치</h3><p class="setup-step__desc">git-scm.com 내려받아 전부 기본값 설치</p></div>
-        <div class="setup-step"><div class="setup-step__num">02</div><h3 class="setup-step__title">Claude Code 설치</h3><p class="setup-step__desc"><span class="os-win">irm https://claude.ai/install.ps1 | iex</span><span class="os-mac">curl -fsSL https://claude.ai/install.sh | bash</span></p></div>
-        <div class="setup-step"><div class="setup-step__num">03</div><h3 class="setup-step__title">Orca 설치</h3><p class="setup-step__desc">onorca.dev에서 다운로드 — AI 에이전트 전용 작업실</p></div>
-        <div class="setup-step"><div class="setup-step__num">04</div><h3 class="setup-step__title">홈베이스 만들기</h3><p class="setup-step__desc">Projects + 로 my-intro 폴더 추가</p></div>
-        <div class="setup-step"><div class="setup-step__num">05</div><h3 class="setup-step__title">GitHub 가입</h3><p class="setup-step__desc">github.com — 평소 쓰는 개인 이메일로</p></div>
-        <div class="setup-step"><div class="setup-step__num">06</div><h3 class="setup-step__title">확인 + git 신원</h3><p class="setup-step__desc">claude --version · git config 두 줄</p></div>
-        <div class="setup-step"><div class="setup-step__num">07</div><h3 class="setup-step__title">gh 설치</h3><p class="setup-step__desc">cli.github.com 설치 파일 — 로그인은 2장에서</p></div>
-        <div class="setup-step"><div class="setup-step__num">08</div><h3 class="setup-step__title">Claude 계정</h3><p class="setup-step__desc">첫 로그인이 곧 등록 — Orca가 자동 인식</p></div>
-        <div class="setup-step"><div class="setup-step__num">09</div><h3 class="setup-step__title">claude → "안녕"</h3><p class="setup-step__desc">Orca 터미널에서 첫 실행 · 로그인</p></div>
+        <div class="setup-step"><div class="setup-step__num">01</div><h3 class="setup-step__title">GitHub 가입</h3><p class="setup-step__desc">github.com — 평소 쓰는 개인 이메일로</p></div>
+        <div class="setup-step"><div class="setup-step__num">02</div><h3 class="setup-step__title">git 설치</h3><p class="setup-step__desc">git-scm.com 내려받아 전부 기본값 설치</p></div>
+        <div class="setup-step"><div class="setup-step__num">03</div><h3 class="setup-step__title">Claude Code 설치</h3><p class="setup-step__desc"><span class="os-win">irm https://claude.ai/install.ps1 | iex</span><span class="os-mac">curl -fsSL https://claude.ai/install.sh | bash</span></p></div>
+        <div class="setup-step"><div class="setup-step__num">04</div><h3 class="setup-step__title">Orca 설치 · 홈베이스 · 테마</h3><p class="setup-step__desc">onorca.dev 다운로드 → my-intro 추가 → 테마 설정</p></div>
+        <div class="setup-step"><div class="setup-step__num">05</div><h3 class="setup-step__title">확인 + git 신원</h3><p class="setup-step__desc">claude --version · git config 두 줄</p></div>
+        <div class="setup-step"><div class="setup-step__num">06</div><h3 class="setup-step__title">gh 설치</h3><p class="setup-step__desc">cli.github.com 설치 파일 — 로그인은 2장에서</p></div>
+        <div class="setup-step"><div class="setup-step__num">07</div><h3 class="setup-step__title">Claude 계정</h3><p class="setup-step__desc">첫 로그인이 곧 등록 — Orca가 자동 인식</p></div>
+        <div class="setup-step"><div class="setup-step__num">08</div><h3 class="setup-step__title">claude → "안녕"</h3><p class="setup-step__desc">Orca 터미널에서 첫 실행 · 로그인</p></div>
       </div>
-      <p class="slide__note">터미널에 뭔가 치는 건 <strong>STEP 02 설치 한 줄</strong>과 <strong>Orca 터미널 몇 줄</strong>뿐 — 나머지는 내려받아 설치하거나 브라우저에서 가입. <strong>Node.js</strong>는 마지막에 함께 설치합니다.</p>
+      <p class="slide__note">터미널에 뭔가 치는 건 <strong>STEP 03 설치 한 줄</strong>과 <strong>Orca 터미널 몇 줄</strong>뿐 — 나머지는 내려받아 설치하거나 브라우저에서 가입. <strong>Node.js</strong>는 마지막에 함께 설치합니다.</p>
     </div>
   </section>
 
-  <!-- 2.5 · STEP 01 git 설치 -->
+  <!-- 2.4 · STEP 01 GitHub 가입 -->
   <section class="slide is-standard">
-    <div class="slide__eyebrow">STEP 01 · git 설치</div>
-    <h2 class="slide__title">먼저 — <span class="accent">git</span>부터 설치</h2>
+    <div class="slide__eyebrow">STEP 01 · GitHub 가입</div>
+    <h2 class="slide__title">먼저 — <span class="accent">github.com 가입</span>부터 (3분)</h2>
+    <div class="slide__body">
+      <div class="two-col">
+        <div>
+          <div class="step-list step-list--compact">
+            <div class="step-list__item">
+              <div class="step-list__num">1</div>
+              <div class="step-list__content">
+                <p class="step-list__title">브라우저로 <code>github.com</code> 접속 → 우측 상단 <strong>"Sign up"</strong> 클릭</p>
+              </div>
+            </div>
+            <div class="step-list__item">
+              <div class="step-list__num">2</div>
+              <div class="step-list__content">
+                <p class="step-list__title"><strong>평소 쓰는 개인 이메일</strong> · 비밀번호 · 사용자명 입력 → 인증코드 메일로 받아 입력</p>
+              </div>
+            </div>
+            <div class="step-list__item">
+              <div class="step-list__num">3</div>
+              <div class="step-list__content">
+                <p class="step-list__title">"무료 플랜" 선택 → 본인 정보 설문은 <strong>"Skip"</strong> OK</p>
+              </div>
+            </div>
+            <div class="step-list__item">
+              <div class="step-list__num">4</div>
+              <div class="step-list__content">
+                <p class="step-list__title">로그인 후 우측 상단 본인 아이콘 보이면 → 가입 완료</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <figure class="photo-slot photo-slot--landscape" data-img="vc-ch01-setup-github-signup.png">
+            <img class="photo-slot__img" src="../../imgs/vc-ch01-setup-github-signup.png" alt="GitHub 가입 화면">
+            <figcaption class="photo-slot__ph">
+              <span class="photo-slot__icon">◧</span>
+              <span class="photo-slot__label">GitHub — 가입(Sign up) 화면</span>
+              <span class="photo-slot__hint">우측 상단 Sign up → 이메일·비밀번호·사용자명</span>
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+      <p class="slide__note"><strong>여기서 쓴 이메일이 기준</strong> — STEP 05의 git 신원 등록부터 2장의 Vercel 로그인까지 전부 이 메일 하나로 갑니다. 사용자명은 바꾸기 번거로우니 <strong>실명 또는 평소 닉</strong>으로.</p>
+    </div>
+  </section>
+
+  <!-- 2.5 · STEP 02 git 설치 -->
+  <section class="slide is-standard">
+    <div class="slide__eyebrow">STEP 02 · git 설치</div>
+    <h2 class="slide__title">이어서 — <span class="accent">git</span> 설치</h2>
     <div class="slide__body">
       <div class="two-col">
         <div>
@@ -75,13 +123,13 @@
             <ol class="content-card__list content-card__list--ol">
               <li>노란색 <strong>"Git for Windows/x64 Setup"</strong> 클릭 → 설치 파일 다운로드</li>
               <li>받은 파일 실행 → 옵션 화면이 여러 번 떠도 <strong>전부 기본값</strong> 그대로 Next → Install</li>
-              <li>설치 확인·신원 등록은 <strong>STEP 06</strong>에서 한 번에</li>
+              <li>설치 확인·신원 등록은 <strong>STEP 05</strong>에서 한 번에</li>
             </ol>
           </div>
           <div class="content-card content-card--compact os-mac is-block">
             <h3 class="content-card__title">Mac — 대부분 이미 설치돼 있음</h3>
             <ul class="content-card__list">
-              <li>따로 설치할 것 없음 — <strong>STEP 06</strong>에서 <code>git --version</code>으로 확인만</li>
+              <li>따로 설치할 것 없음 — <strong>STEP 05</strong>에서 <code>git --version</code>으로 확인만</li>
               <li>버전 숫자가 찍히면 그대로 끝 (대부분 여기서 통과)</li>
               <li>없다는 메시지가 뜨면 — 자동으로 뜨는 <strong>"개발자 도구 설치"</strong> 창에서 설치 동의 (5~10분). 안 되면 질문 버튼</li>
             </ul>
@@ -104,7 +152,7 @@
 
   <!-- 2.6 · STEP 02 Claude Code 설치 -->
   <section class="slide is-standard">
-    <div class="slide__eyebrow">STEP 02 · Claude Code 설치</div>
+    <div class="slide__eyebrow">STEP 03 · Claude Code 설치</div>
     <h2 class="slide__title">설치 방법 <span class="accent">3가지</span> — 본인 환경에 맞게</h2>
     <div class="slide__body">
       <div class="install-methods os-win is-block">
@@ -153,7 +201,7 @@
           <div class="install-method__note"><code>npm update</code>로 업데이트도 한 줄.</div>
         </div>
       </div>
-      <p class="slide__note">설치가 끝나면 그 창은 닫아도 됩니다 — 확인(<code>claude --version</code>)은 <strong>STEP 06에서 Orca 터미널</strong>로. 왜 새 터미널이어야 하는지는 다음 슬라이드에서.</p>
+      <p class="slide__note">설치가 끝나면 그 창은 닫아도 됩니다 — 확인(<code>claude --version</code>)은 <strong>STEP 05에서 Orca 터미널</strong>로. 왜 새 터미널이어야 하는지는 다음 슬라이드에서.</p>
     </div>
   </section>
 
@@ -200,7 +248,7 @@
 
   <!-- 3 · Orca 설치 -->
   <section class="slide is-standard">
-    <div class="slide__eyebrow">STEP 03 (1/2) · Orca 설치</div>
+    <div class="slide__eyebrow">STEP 04 (1/3) · Orca 설치</div>
     <h2 class="slide__title">Orca · <span class="accent">onorca.dev</span>에서 설치</h2>
     <div class="slide__body">
       <div class="install-detail">
@@ -231,7 +279,7 @@
 
   <!-- 4 · Orca 소개 + 첫 실행 확인 -->
   <section class="slide is-standard">
-    <div class="slide__eyebrow">STEP 03 (2/2) · Orca가 뭐길래</div>
+    <div class="slide__eyebrow">STEP 04 (2/3) · Orca가 뭐길래</div>
     <h2 class="slide__title">Orca — <span class="accent">AI 에이전트 전용 작업실</span></h2>
     <div class="slide__body">
       <div class="grid-3">
@@ -254,16 +302,17 @@
 
   <!-- 4.5 · 홈베이스 — 폴더 열기 + 내장 터미널 -->
   <section class="slide is-standard">
-    <div class="slide__eyebrow">STEP 04 · 홈베이스 만들기</div>
+    <div class="slide__eyebrow">STEP 04 (3/3) · 홈베이스 + 테마</div>
     <h2 class="slide__title">Orca에 <span class="accent">my-intro 폴더</span> 추가</h2>
     <div class="slide__body">
       <div class="two-col">
         <div>
           <div class="content-card content-card--compact">
-            <h3 class="content-card__title">2가지만 하면 끝</h3>
+            <h3 class="content-card__title">3가지로 끝</h3>
             <ol class="content-card__list content-card__list--ol">
               <li><strong>Orca 실행</strong> → 왼쪽 <strong>Projects의 +</strong> 로 폴더 추가 → <strong>새 폴더 <code><span class="os-win">c:\lecture\my-intro</span><span class="os-mac">~/lecture/my-intro</span></code></strong> 만들어 선택 (lecture 폴더가 없으면 같이 생성)</li>
-              <li>끝 — 오른쪽에 <strong>터미널이 바로 보입니다</strong>. 이 화면이 <strong>과정 내내 홈베이스</strong></li>
+              <li>오른쪽에 <strong>터미널이 바로 보입니다</strong>. 이 화면이 <strong>과정 내내 홈베이스</strong></li>
+              <li>화면이 눈에 안 맞으면 — <strong>Settings(⚙)</strong>에서 <strong>테마(Dark/Light)</strong>를 바꿔 두세요</li>
             </ol>
           </div>
         </div>
@@ -296,58 +345,10 @@
     </div>
   </section>
 
-  <!-- 5.5 · STEP 05 GitHub 가입 -->
-  <section class="slide is-standard">
-    <div class="slide__eyebrow">STEP 05 · GitHub 가입</div>
-    <h2 class="slide__title">github.com — <span class="accent">3분</span>이면 끝</h2>
-    <div class="slide__body">
-      <div class="two-col">
-        <div>
-          <div class="step-list step-list--compact">
-            <div class="step-list__item">
-              <div class="step-list__num">1</div>
-              <div class="step-list__content">
-                <p class="step-list__title">브라우저로 <code>github.com</code> 접속 → 우측 상단 <strong>"Sign up"</strong> 클릭</p>
-              </div>
-            </div>
-            <div class="step-list__item">
-              <div class="step-list__num">2</div>
-              <div class="step-list__content">
-                <p class="step-list__title"><strong>평소 쓰는 개인 이메일</strong> · 비밀번호 · 사용자명 입력 → 인증코드 메일로 받아 입력</p>
-              </div>
-            </div>
-            <div class="step-list__item">
-              <div class="step-list__num">3</div>
-              <div class="step-list__content">
-                <p class="step-list__title">"무료 플랜" 선택 → 본인 정보 설문은 <strong>"Skip"</strong> OK</p>
-              </div>
-            </div>
-            <div class="step-list__item">
-              <div class="step-list__num">4</div>
-              <div class="step-list__content">
-                <p class="step-list__title">로그인 후 우측 상단 본인 아이콘 보이면 → 가입 완료</p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div>
-          <figure class="photo-slot photo-slot--landscape" data-img="vc-ch01-setup-github-signup.png">
-            <img class="photo-slot__img" src="../../imgs/vc-ch01-setup-github-signup.png" alt="GitHub 가입 화면">
-            <figcaption class="photo-slot__ph">
-              <span class="photo-slot__icon">◧</span>
-              <span class="photo-slot__label">GitHub — 가입(Sign up) 화면</span>
-              <span class="photo-slot__hint">우측 상단 Sign up → 이메일·비밀번호·사용자명</span>
-            </figcaption>
-          </figure>
-        </div>
-      </div>
-      <p class="slide__note"><strong>여기서 쓴 이메일이 기준</strong> — 바로 다음 git 신원 등록부터 2장의 Vercel 로그인까지 전부 이 메일 하나로 갑니다. 사용자명은 바꾸기 번거로우니 <strong>실명 또는 평소 닉</strong>으로.</p>
-    </div>
-  </section>
 
   <!-- 6 · Git 확인 + 신원 등록 -->
   <section class="slide is-standard">
-    <div class="slide__eyebrow">STEP 06 · 확인 + git 신원</div>
+    <div class="slide__eyebrow">STEP 05 · 확인 + git 신원</div>
     <h2 class="slide__title">Orca 터미널에서 — <span class="accent">확인 + 신원 등록</span></h2>
     <div class="slide__body">
       <div class="two-col">
@@ -357,7 +358,7 @@
               <span class="code-block__dot" style="background:#fb2c36"></span><span class="code-block__dot" style="background:#edb200"></span><span class="code-block__dot" style="background:#00c758"></span>
               <span class="code-block__title">Orca 터미널 (<span class="os-win">PowerShell</span><span class="os-mac">zsh</span>)</span>
             </div>
-            <div class="code-block__body"><span class="code-block__line"><span class="code-block__cmt"># STEP 01·02에서 깐 게 잡히는지 확인</span></span><span class="code-block__line"><span class="code-block__prompt" data-auto-os></span> <span class="code-block__cmd">claude --version</span></span><span class="code-block__line"><span class="code-block__hi">  1.x.x</span></span><span class="code-block__line"><span class="code-block__prompt" data-auto-os></span> <span class="code-block__cmd">git --version</span></span><span class="code-block__line"><span class="code-block__hi">  git version 2.x.x</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__cmt"># 커밋에 남길 신원 — 방금 STEP 05에서 가입한 GitHub 메일로!</span></span><span class="code-block__line"><span class="code-block__prompt" data-auto-os></span> <span class="code-block__cmd">git config --global user.name "<span class="code-block__hi">홍길동</span>"</span></span><span class="code-block__line"><span class="code-block__prompt" data-auto-os></span> <span class="code-block__cmd">git config --global user.email "<span class="code-block__hi">hong@example.com</span>"</span></span></div>
+            <div class="code-block__body"><span class="code-block__line"><span class="code-block__cmt"># STEP 01·02에서 깐 게 잡히는지 확인</span></span><span class="code-block__line"><span class="code-block__prompt" data-auto-os></span> <span class="code-block__cmd">claude --version</span></span><span class="code-block__line"><span class="code-block__hi">  1.x.x</span></span><span class="code-block__line"><span class="code-block__prompt" data-auto-os></span> <span class="code-block__cmd">git --version</span></span><span class="code-block__line"><span class="code-block__hi">  git version 2.x.x</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__cmt"># 커밋에 남길 신원 — STEP 01에서 가입한 GitHub 메일로!</span></span><span class="code-block__line"><span class="code-block__prompt" data-auto-os></span> <span class="code-block__cmd">git config --global user.name "<span class="code-block__hi">홍길동</span>"</span></span><span class="code-block__line"><span class="code-block__prompt" data-auto-os></span> <span class="code-block__cmd">git config --global user.email "<span class="code-block__hi">hong@example.com</span>"</span></span></div>
           </div>
         </div>
         <div>
@@ -377,7 +378,7 @@
 
   <!-- 8 · gh 설치 -->
   <section class="slide is-standard">
-    <div class="slide__eyebrow">STEP 07 · gh 설치</div>
+    <div class="slide__eyebrow">STEP 06 · gh 설치</div>
     <h2 class="slide__title">GitHub CLI(<span class="accent">gh</span>) — 내려받아 설치</h2>
     <div class="slide__body">
       <div class="two-col">
@@ -416,7 +417,7 @@
 
   <!-- 9 · 강의 내 제공 (메인) + 본인 계정 (참고) -->
   <section class="slide is-standard">
-    <div class="slide__eyebrow">STEP 08 · Claude 계정</div>
+    <div class="slide__eyebrow">STEP 07 · Claude 계정</div>
     <h2 class="slide__title">계정 — <span class="accent">첫 로그인이 곧 등록</span>입니다</h2>
     <div class="slide__body">
       <div class="centered-block">
@@ -432,7 +433,7 @@
 
   <!-- 10 · 첫 실행 -->
   <section class="slide is-standard">
-    <div class="slide__eyebrow">STEP 09 · 첫 실행</div>
+    <div class="slide__eyebrow">STEP 08 · 첫 실행</div>
     <h2 class="slide__title">claude로 <span class="accent">"안녕하세요"</span></h2>
     <div class="slide__body">
       <div class="two-col">
@@ -463,7 +464,7 @@
 
   <!-- 10.5 · 첫 로그인 화면 -->
   <section class="slide is-standard">
-    <div class="slide__eyebrow">STEP 09 (첫 로그인) · 브라우저 인증</div>
+    <div class="slide__eyebrow">STEP 08 (첫 로그인) · 브라우저 인증</div>
     <h2 class="slide__title">처음 <code>claude</code> 실행 → <span class="accent">브라우저 로그인</span> 한 번</h2>
     <div class="slide__body">
       <div class="two-col">
@@ -567,9 +568,9 @@
       <div class="statement-text">
         <div class="slide__eyebrow">CHECKPOINT · 전원 준비</div>
         <h2 class="statement__lead">먼저 끝난 분들 —<br><span class="accent">AI로 코딩할 준비 완료</span>!</h2>
-        <p class="statement__caption">9단계를 다 통과했다면 이제는 AI로 코딩을 할 준비가 되었습니다. 아직 막힌 단계가 있어도 괜찮습니다 — 전원 준비되면 본격적으로 AI를 다룹니다.</p>
+        <p class="statement__caption">8단계를 다 통과했다면 이제는 AI로 코딩을 할 준비가 되었습니다. 아직 막힌 단계가 있어도 괜찮습니다 — 전원 준비되면 본격적으로 AI를 다룹니다.</p>
         <div class="statement__points">
-          <div class="statement__point"><span class="statement__point-num">통과</span><span>9단계 다 됐으면 준비 완료</span></div>
+          <div class="statement__point"><span class="statement__point-num">통과</span><span>8단계 다 됐으면 준비 완료</span></div>
           <div class="statement__point"><span class="statement__point-num">막힘</span><span>오른쪽 질문 버튼에 올려주세요 — 남은 단계 같이 정리</span></div>
         </div>
       </div>
