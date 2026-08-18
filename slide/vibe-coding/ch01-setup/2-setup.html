@@ -35,7 +35,7 @@
   <section class="slide is-section is-standard">
     <div class="section-eyebrow">PART 2 · SETUP</div>
     <h2 class="section-title">0부터 Claude Code <span class="accent">셋업</span></h2>
-    <p class="section-caption">GitHub 가입 → git 설치 → Claude Code 설치(한 줄) → Orca 설치·홈베이스·테마 → git 신원 등록 → gh 설치 → Claude 계정 등록 → 첫 실행. Node.js까지 깔면 배포 준비 끝.</p>
+    <p class="section-caption">GitHub 가입 → git 설치 → Claude Code 설치(한 줄) → gh 설치 → Orca 설치·홈베이스·테마 → git 신원 등록 → Claude 계정 등록 → 첫 실행. Node.js까지 깔면 배포 준비 끝.</p>
     <div class="section-meta">
       <div class="section-meta__item"><span class="section-meta__num">8</span><span>핵심 단계</span></div>
     </div>
@@ -51,9 +51,9 @@
         <div class="setup-step"><div class="setup-step__num">01</div><h3 class="setup-step__title">GitHub 가입</h3><p class="setup-step__desc">github.com — 평소 쓰는 개인 이메일로</p></div>
         <div class="setup-step"><div class="setup-step__num">02</div><h3 class="setup-step__title">git 설치</h3><p class="setup-step__desc">git-scm.com 내려받아 전부 기본값 설치</p></div>
         <div class="setup-step"><div class="setup-step__num">03</div><h3 class="setup-step__title">Claude Code 설치</h3><p class="setup-step__desc"><span class="os-win">irm https://claude.ai/install.ps1 | iex</span><span class="os-mac">curl -fsSL https://claude.ai/install.sh | bash</span></p></div>
-        <div class="setup-step"><div class="setup-step__num">04</div><h3 class="setup-step__title">Orca 설치 · 홈베이스 · 테마</h3><p class="setup-step__desc">onorca.dev 다운로드 → my-intro 추가 → 다크 테마 세팅</p></div>
-        <div class="setup-step"><div class="setup-step__num">05</div><h3 class="setup-step__title">확인 + git 신원</h3><p class="setup-step__desc">claude --version · git config 두 줄</p></div>
-        <div class="setup-step"><div class="setup-step__num">06</div><h3 class="setup-step__title">gh 설치</h3><p class="setup-step__desc">cli.github.com 설치 파일 — 로그인은 2장에서</p></div>
+        <div class="setup-step"><div class="setup-step__num">04</div><h3 class="setup-step__title">gh 설치</h3><p class="setup-step__desc">cli.github.com 설치 파일 — 로그인은 2장에서</p></div>
+        <div class="setup-step"><div class="setup-step__num">05</div><h3 class="setup-step__title">Orca 설치 · 홈베이스 · 테마</h3><p class="setup-step__desc">onorca.dev 다운로드 → my-intro 추가 → 다크 테마 세팅</p></div>
+        <div class="setup-step"><div class="setup-step__num">06</div><h3 class="setup-step__title">확인 + git 신원</h3><p class="setup-step__desc">claude · git · gh 확인 + git config 두 줄</p></div>
         <div class="setup-step"><div class="setup-step__num">07</div><h3 class="setup-step__title">Claude 계정</h3><p class="setup-step__desc">첫 로그인이 곧 등록 — Orca가 자동 인식</p></div>
         <div class="setup-step"><div class="setup-step__num">08</div><h3 class="setup-step__title">claude → "안녕"</h3><p class="setup-step__desc">Orca 터미널에서 첫 실행 · 로그인</p></div>
       </div>
@@ -106,7 +106,7 @@
           </figure>
         </div>
       </div>
-      <p class="slide__note"><strong>여기서 쓴 이메일이 기준</strong> — STEP 05의 git 신원 등록부터 2장의 Vercel 로그인까지 전부 이 메일 하나로 갑니다. 사용자명은 바꾸기 번거로우니 <strong>실명 또는 평소 닉</strong>으로.</p>
+      <p class="slide__note"><strong>여기서 쓴 이메일이 기준</strong> — STEP 06의 git 신원 등록부터 2장의 Vercel 로그인까지 전부 이 메일 하나로 갑니다. 사용자명은 바꾸기 번거로우니 <strong>실명 또는 평소 닉</strong>으로.</p>
     </div>
   </section>
 
@@ -123,13 +123,13 @@
             <ol class="content-card__list content-card__list--ol">
               <li>노란색 <strong>"Git for Windows/x64 Setup"</strong> 클릭 → 설치 파일 다운로드</li>
               <li>받은 파일 실행 → 옵션 화면이 여러 번 떠도 <strong>전부 기본값</strong> 그대로 Next → Install</li>
-              <li>설치 확인·신원 등록은 <strong>STEP 05</strong>에서 한 번에</li>
+              <li>설치 확인·신원 등록은 <strong>STEP 06</strong>에서 한 번에</li>
             </ol>
           </div>
           <div class="content-card content-card--compact os-mac is-block">
             <h3 class="content-card__title">Mac — 대부분 이미 설치돼 있음</h3>
             <ul class="content-card__list">
-              <li>따로 설치할 것 없음 — <strong>STEP 05</strong>에서 <code>git --version</code>으로 확인만</li>
+              <li>따로 설치할 것 없음 — <strong>STEP 06</strong>에서 <code>git --version</code>으로 확인만</li>
               <li>버전 숫자가 찍히면 그대로 끝 (대부분 여기서 통과)</li>
               <li>없다는 메시지가 뜨면 — 자동으로 뜨는 <strong>"개발자 도구 설치"</strong> 창에서 설치 동의 (5~10분). 안 되면 질문 버튼</li>
             </ul>
@@ -150,7 +150,7 @@
     </div>
   </section>
 
-  <!-- 2.6 · STEP 02 Claude Code 설치 -->
+  <!-- 2.6 · STEP 03 Claude Code 설치 -->
   <section class="slide is-standard">
     <div class="slide__eyebrow">STEP 03 · Claude Code 설치</div>
     <h2 class="slide__title">설치 방법 <span class="accent">3가지</span> — 본인 환경에 맞게</h2>
@@ -201,13 +201,52 @@
           <div class="install-method__note"><code>npm update</code>로 업데이트도 한 줄.</div>
         </div>
       </div>
-      <p class="slide__note">설치가 끝나면 그 창은 닫아도 됩니다 — 확인(<code>claude --version</code>)은 <strong>STEP 05에서 Orca 터미널</strong>로. 설치 직후의 창은 claude를 못 찾을 수 있어요 — <strong>새 터미널</strong>(곧 깔 Orca의 터미널)에서 확인하면 됩니다.</p>
+      <p class="slide__note">설치가 끝나면 그 창은 닫아도 됩니다 — 확인(<code>claude --version</code>)은 <strong>STEP 06에서 Orca 터미널</strong>로. 설치 직후의 창은 claude를 못 찾을 수 있어요 — <strong>새 터미널</strong>(곧 깔 Orca의 터미널)에서 확인하면 됩니다.</p>
+    </div>
+  </section>
+
+  <!-- 2.8 · STEP 04 gh 설치 -->
+  <section class="slide is-standard">
+    <div class="slide__eyebrow">STEP 04 · gh 설치</div>
+    <h2 class="slide__title">GitHub CLI(<span class="accent">gh</span>) — 내려받아 설치</h2>
+    <div class="slide__body">
+      <div class="two-col">
+        <div>
+          <div class="content-card content-card--compact os-win is-block">
+            <h3 class="content-card__title">cli.github.com에서 받기</h3>
+            <a class="install-link" href="https://cli.github.com" target="_blank" rel="noopener">cli.github.com ↗</a>
+            <ol class="content-card__list content-card__list--ol">
+              <li><strong>"Download for Windows"</strong> 클릭 → <code>.msi</code> 설치 파일 다운로드</li>
+              <li>받은 파일 실행 → <strong>전부 기본값</strong>으로 Install</li>
+              <li>확인은 <strong>STEP 06</strong>에서 <code>gh --version</code>으로 한 번에</li>
+            </ol>
+          </div>
+          <div class="content-card content-card--compact os-mac is-block">
+            <h3 class="content-card__title">Homebrew 또는 다운로드</h3>
+            <ul class="content-card__list">
+              <li>Homebrew 사용자: <code>brew install gh</code> 한 줄</li>
+              <li>아니면 <a class="install-link" href="https://cli.github.com" target="_blank" rel="noopener">cli.github.com ↗</a>에서 다운로드 → 설치</li>
+              <li>확인은 <strong>STEP 06</strong>에서 <code>gh --version</code>으로 한 번에</li>
+            </ul>
+          </div>
+        </div>
+        <div>
+          <div class="code-block">
+            <div class="code-block__header">
+              <span class="code-block__dot" style="background:#fb2c36"></span><span class="code-block__dot" style="background:#edb200"></span><span class="code-block__dot" style="background:#00c758"></span>
+              <span class="code-block__title">STEP 06에서 확인 — Orca 터미널</span>
+            </div>
+            <div class="code-block__body"><span class="code-block__line"><span class="code-block__prompt" data-auto-os></span> <span class="code-block__cmd">gh --version</span></span><span class="code-block__line"><span class="code-block__hi">  gh version 2.x.x</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__cmt"># 버전 숫자가 나오면 설치 완료 ✓</span></span><span class="code-block__line"><span class="code-block__cmt"># 안 나오면 — 새 터미널(<span class="os-win">Ctrl+T</span><span class="os-mac">⌘T</span>) 먼저</span></span></div>
+          </div>
+        </div>
+      </div>
+      <p class="slide__note"><strong>gh = GitHub 명령 도구</strong> — claude가 저장소 만들기·올리기 같은 GitHub 작업에 씁니다. <strong>로그인은 지금 안 합니다</strong> — 2장에서 GitHub에 올릴 때 함께.</p>
     </div>
   </section>
 
   <!-- 3 · Orca 설치 -->
   <section class="slide is-standard">
-    <div class="slide__eyebrow">STEP 04 (1/3) · Orca 설치</div>
+    <div class="slide__eyebrow">STEP 05 (1/3) · Orca 설치</div>
     <h2 class="slide__title">Orca · <span class="accent">onorca.dev</span>에서 설치</h2>
     <div class="slide__body">
       <div class="install-detail">
@@ -238,7 +277,7 @@
 
   <!-- 4 · Orca 소개 + 첫 실행 확인 -->
   <section class="slide is-standard">
-    <div class="slide__eyebrow">STEP 04 (2/3) · Orca가 뭐길래</div>
+    <div class="slide__eyebrow">STEP 05 (2/3) · Orca가 뭐길래</div>
     <h2 class="slide__title">Orca — <span class="accent">AI 에이전트 전용 작업실</span></h2>
     <div class="slide__body">
       <div class="grid-3">
@@ -248,7 +287,7 @@
         </div>
         <div class="content-card content-card--compact">
           <h3 class="content-card__title">한 화면에 전부</h3>
-          <p class="content-card__body">파일 편집 + <strong>터미널</strong> + <strong>브라우저 미리보기</strong>가 한 창에 — 만든 페이지를 그 자리에서 바로 봅니다.</p>
+          <p class="content-card__body">파일 편집 + <strong>터미널</strong>이 한 창에 — 만든 페이지는 <strong>평소 쓰는 브라우저</strong>로 엽니다.</p>
         </div>
         <div class="content-card content-card--compact">
           <h3 class="content-card__title">무료 · 오픈소스</h3>
@@ -261,7 +300,7 @@
 
   <!-- 4.5 · 홈베이스 — 폴더 열기 + 내장 터미널 -->
   <section class="slide is-standard">
-    <div class="slide__eyebrow">STEP 04 (3/3) · 홈베이스 + 테마</div>
+    <div class="slide__eyebrow">STEP 05 (3/3) · 홈베이스 + 테마</div>
     <h2 class="slide__title">Orca에 <span class="accent">my-intro 폴더</span> 추가</h2>
     <div class="slide__body">
       <div class="two-col">
@@ -300,14 +339,14 @@
           </svg>
         </div>
       </div>
-      <p class="slide__note">이후 슬라이드의 <strong>모든 명령은 이 내장 터미널에</strong> 입력합니다 — 독립 <span class="os-win">PowerShell</span><span class="os-mac">터미널</span>을 따로 열 필요 없어요. 편집기 + 터미널 + AI + 미리보기가 한 화면.</p>
+      <p class="slide__note">이후 슬라이드의 <strong>모든 명령은 이 내장 터미널에</strong> 입력합니다 — 독립 <span class="os-win">PowerShell</span><span class="os-mac">터미널</span>을 따로 열 필요 없어요. 편집기 + 터미널 + AI가 한 화면.</p>
     </div>
   </section>
 
 
   <!-- 6 · Git 확인 + 신원 등록 -->
   <section class="slide is-standard">
-    <div class="slide__eyebrow">STEP 05 · 확인 + git 신원</div>
+    <div class="slide__eyebrow">STEP 06 · 확인 + git 신원</div>
     <h2 class="slide__title">Orca 터미널에서 — <span class="accent">확인 + 신원 등록</span></h2>
     <div class="slide__body">
       <div class="two-col">
@@ -317,7 +356,7 @@
               <span class="code-block__dot" style="background:#fb2c36"></span><span class="code-block__dot" style="background:#edb200"></span><span class="code-block__dot" style="background:#00c758"></span>
               <span class="code-block__title">Orca 터미널 (<span class="os-win">PowerShell</span><span class="os-mac">zsh</span>)</span>
             </div>
-            <div class="code-block__body"><span class="code-block__line"><span class="code-block__cmt"># STEP 01·02에서 깐 게 잡히는지 확인</span></span><span class="code-block__line"><span class="code-block__prompt" data-auto-os></span> <span class="code-block__cmd">claude --version</span></span><span class="code-block__line"><span class="code-block__hi">  1.x.x</span></span><span class="code-block__line"><span class="code-block__prompt" data-auto-os></span> <span class="code-block__cmd">git --version</span></span><span class="code-block__line"><span class="code-block__hi">  git version 2.x.x</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__cmt"># 커밋에 남길 신원 — STEP 01에서 가입한 GitHub 메일로!</span></span><span class="code-block__line"><span class="code-block__prompt" data-auto-os></span> <span class="code-block__cmd">git config --global user.name "<span class="code-block__hi">홍길동</span>"</span></span><span class="code-block__line"><span class="code-block__prompt" data-auto-os></span> <span class="code-block__cmd">git config --global user.email "<span class="code-block__hi">hong@example.com</span>"</span></span></div>
+            <div class="code-block__body"><span class="code-block__line"><span class="code-block__cmt"># STEP 02~04에서 깐 게 잡히는지 확인</span></span><span class="code-block__line"><span class="code-block__prompt" data-auto-os></span> <span class="code-block__cmd">claude --version</span></span><span class="code-block__line"><span class="code-block__hi">  1.x.x</span></span><span class="code-block__line"><span class="code-block__prompt" data-auto-os></span> <span class="code-block__cmd">git --version</span></span><span class="code-block__line"><span class="code-block__hi">  git version 2.x.x</span></span><span class="code-block__line"><span class="code-block__prompt" data-auto-os></span> <span class="code-block__cmd">gh --version</span></span><span class="code-block__line"><span class="code-block__hi">  gh version 2.x.x</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__cmt"># 커밋에 남길 신원 — STEP 01에서 가입한 GitHub 메일로!</span></span><span class="code-block__line"><span class="code-block__prompt" data-auto-os></span> <span class="code-block__cmd">git config --global user.name "<span class="code-block__hi">홍길동</span>"</span></span><span class="code-block__line"><span class="code-block__prompt" data-auto-os></span> <span class="code-block__cmd">git config --global user.email "<span class="code-block__hi">hong@example.com</span>"</span></span></div>
           </div>
         </div>
         <div>
@@ -335,44 +374,6 @@
     </div>
   </section>
 
-  <!-- 8 · gh 설치 -->
-  <section class="slide is-standard">
-    <div class="slide__eyebrow">STEP 06 · gh 설치</div>
-    <h2 class="slide__title">GitHub CLI(<span class="accent">gh</span>) — 내려받아 설치</h2>
-    <div class="slide__body">
-      <div class="two-col">
-        <div>
-          <div class="content-card content-card--compact os-win is-block">
-            <h3 class="content-card__title">cli.github.com에서 받기</h3>
-            <a class="install-link" href="https://cli.github.com" target="_blank" rel="noopener">cli.github.com ↗</a>
-            <ol class="content-card__list content-card__list--ol">
-              <li><strong>"Download for Windows"</strong> 클릭 → <code>.msi</code> 설치 파일 다운로드</li>
-              <li>받은 파일 실행 → <strong>전부 기본값</strong>으로 Install</li>
-              <li><code>Ctrl+T</code>로 <strong>새 Orca 터미널</strong> → <code>gh --version</code> 확인</li>
-            </ol>
-          </div>
-          <div class="content-card content-card--compact os-mac is-block">
-            <h3 class="content-card__title">Homebrew 또는 다운로드</h3>
-            <ul class="content-card__list">
-              <li>Homebrew 사용자: <code>brew install gh</code> 한 줄</li>
-              <li>아니면 <a class="install-link" href="https://cli.github.com" target="_blank" rel="noopener">cli.github.com ↗</a>에서 다운로드 → 설치</li>
-              <li><code>⌘T</code>로 <strong>새 Orca 터미널</strong> → <code>gh --version</code> 확인</li>
-            </ul>
-          </div>
-        </div>
-        <div>
-          <div class="code-block">
-            <div class="code-block__header">
-              <span class="code-block__dot" style="background:#fb2c36"></span><span class="code-block__dot" style="background:#edb200"></span><span class="code-block__dot" style="background:#00c758"></span>
-              <span class="code-block__title">Orca 터미널 — 새로 연 뒤</span>
-            </div>
-            <div class="code-block__body"><span class="code-block__line"><span class="code-block__prompt" data-auto-os></span> <span class="code-block__cmd">gh --version</span></span><span class="code-block__line"><span class="code-block__hi">  gh version 2.x.x</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__cmt"># 버전 숫자가 나오면 설치 완료 ✓</span></span><span class="code-block__line"><span class="code-block__cmt"># 안 나오면 — 새 터미널(<span class="os-win">Ctrl+T</span><span class="os-mac">⌘T</span>) 먼저</span></span></div>
-          </div>
-        </div>
-      </div>
-      <p class="slide__note"><strong>gh = GitHub 명령 도구</strong> — claude가 저장소 만들기·올리기 같은 GitHub 작업에 씁니다. <strong>로그인은 지금 안 합니다</strong> — 2장에서 GitHub 계정을 만들 때 함께.</p>
-    </div>
-  </section>
 
   <!-- 9 · 강의 내 제공 (메인) + 본인 계정 (참고) -->
   <section class="slide is-standard">
@@ -400,7 +401,7 @@
           <div class="content-card content-card--compact">
             <h3 class="content-card__title">홈베이스에서 그대로</h3>
             <ol class="content-card__list content-card__list--ol">
-              <li>Orca에 <strong>my-intro 폴더</strong>가 열려 있는지 확인 (STEP 04에서 열어둔 그대로)</li>
+              <li>Orca에 <strong>my-intro 폴더</strong>가 열려 있는지 확인 (STEP 05에서 열어둔 그대로)</li>
               <li>오른쪽 <strong>터미널</strong>에 <code>claude</code> 입력</li>
               <li>처음이면 <strong>브라우저 로그인</strong> 창 → 본인 Claude 계정으로 로그인 (다음 슬라이드)</li>
               <li>터미널로 돌아오면 <strong>"안녕하세요"</strong> → 첫 응답 확인</li>
