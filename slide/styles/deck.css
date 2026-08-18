@@ -1090,21 +1090,22 @@ body.deck-no-chrome .deck-progress { opacity: 0; pointer-events: none; }
 .content-card__list--ol { counter-reset: clist; }
 .content-card__list--ol li {
   counter-increment: clist;
-  padding-left: 0;
-  display: flex;
-  align-items: baseline;
-  gap: 0.7rem;
+  /* flex 금지 — li 안의 텍스트·<strong>·<code>가 각각 플렉스 아이템으로 쪼개져 다단처럼 깨짐 */
+  display: block;
+  padding-left: 1.6rem;
+  position: relative;
 }
 .content-card__list--ol li::before {
   content: counter(clist) ".";
-  position: static;
+  position: absolute;
+  left: 0;
+  top: 0;
   font-family: var(--font-mono);
   font-size: 0.9em;
   font-weight: 700;
   color: var(--color-primary-strong);
   width: 1.3rem;
   text-align: right;
-  flex-shrink: 0;
 }
 
 /* =============================

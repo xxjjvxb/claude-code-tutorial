@@ -79,11 +79,11 @@
             </ol>
           </div>
           <div class="content-card content-card--compact os-mac is-block">
-            <h3 class="content-card__title">Mac은 이미 깔려 있을 가능성 높음</h3>
+            <h3 class="content-card__title">Mac — 대부분 이미 설치돼 있음</h3>
             <ul class="content-card__list">
-              <li>확인은 <strong>STEP 06</strong>에서 <code>git --version</code>으로</li>
-              <li>그때 "command not found"가 뜨면 → <code>xcode-select --install</code> 동의 + 설치 (5~10분)</li>
-              <li>Homebrew 사용자는 <code>brew install git</code> 한 줄</li>
+              <li>따로 설치할 것 없음 — <strong>STEP 06</strong>에서 <code>git --version</code>으로 확인만</li>
+              <li>버전 숫자가 찍히면 그대로 끝 (대부분 여기서 통과)</li>
+              <li>없다는 메시지가 뜨면 — 자동으로 뜨는 <strong>"개발자 도구 설치"</strong> 창에서 설치 동의 (5~10분). 안 되면 질문 버튼</li>
             </ul>
           </div>
         </div>
@@ -371,7 +371,7 @@
           </figure>
         </div>
       </div>
-      <p class="slide__note">"<span class="os-win">인식되지 않습니다</span><span class="os-mac">command not found</span>"가 뜨면 — <span class="os-win"><code>Ctrl+T</code></span><span class="os-mac"><code>⌘T</code></span>로 <strong>새 터미널</strong>(PATH 갱신) → 안 되면 Orca 재시작. <span class="os-mac">git이 없으면 <code>xcode-select --install</code> 동의 + 설치.</span> <code>git config</code> 두 줄은 평생 한 번만 — 이메일은 <strong>GitHub 가입 메일과 동일하게</strong>(뒤의 Vercel 연동까지 하나로).</p>
+      <p class="slide__note">"<span class="os-win">인식되지 않습니다</span><span class="os-mac">command not found</span>"가 뜨면 — <span class="os-win"><code>Ctrl+T</code></span><span class="os-mac"><code>⌘T</code></span>로 <strong>새 터미널</strong>(PATH 갱신) → 안 되면 Orca 재시작. <span class="os-mac">git이 없으면 자동으로 뜨는 "개발자 도구 설치" 창에서 동의 + 설치.</span> <code>git config</code> 두 줄은 평생 한 번만 — 이메일은 <strong>GitHub 가입 메일과 동일하게</strong>(뒤의 Vercel 연동까지 하나로).</p>
     </div>
   </section>
 
