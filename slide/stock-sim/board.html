@@ -1,0 +1,265 @@
+<!doctype html>
+<!-- © 2026 이일규 (Ilkyu Lee). All rights reserved. -->
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>주식 시뮬 — 라이브 보드</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; }
+    html, body { height: 100%; }
+    body { font-family: "Pretendard", "Malgun Gothic", system-ui, sans-serif; background: #14110e; color: #f3ede4;
+           display: flex; flex-direction: column; padding: 0.8rem 1rem; gap: 0.7rem; overflow: hidden; }
+    header { display: flex; align-items: center; gap: 1.2rem; flex-shrink: 0; }
+    .title { font-size: 1.15rem; font-weight: 800; letter-spacing: -0.02em; }
+    .title .accent { color: #fe6e00; }
+    .ticker { display: flex; gap: 1rem; font-family: ui-monospace, Consolas, monospace; font-size: 0.95rem; }
+    .tk { display: flex; gap: 0.45rem; align-items: baseline; }
+    .tk__sym { color: #b0a79c; font-weight: 700; }
+    .tk__price { font-weight: 800; }
+    .up { color: #4ade80; } .down { color: #f87171; } .flat { color: #f3ede4; }
+    .spacer { flex: 1; }
+    .reset { display: none; appearance: none; cursor: pointer; border: 1.5px solid #7f1d1d; background: #2a1212; color: #fca5a5;
+             border-radius: 8px; padding: 0.4rem 0.9rem; font-weight: 700; font-size: 0.78rem; }
+    main { flex: 1; display: grid; grid-template-columns: 11fr 9fr; gap: 0.7rem; min-height: 0; }
+    .col { display: flex; flex-direction: column; gap: 0.7rem; min-height: 0; }
+    .panel { background: #1d1915; border: 1.5px solid #322b24; border-radius: 12px; padding: 0.55rem 0.7rem;
+             display: flex; flex-direction: column; min-height: 0; }
+    .panel__head { display: flex; align-items: baseline; gap: 0.6rem; font-size: 0.78rem; color: #b0a79c; font-weight: 700; margin-bottom: 0.25rem; flex-shrink: 0; }
+    .panel__head .big { font-size: 0.95rem; color: #f3ede4; }
+    .chart-panel { flex: 1; }
+    canvas { width: 100%; height: 100%; display: block; }
+    .canvas-wrap { flex: 1; min-height: 0; position: relative; }
+    .bottom { display: grid; grid-template-columns: 1fr 1fr; gap: 0.7rem; flex: 1; min-height: 0; }
+    table { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
+    th, td { text-align: left; padding: 0.28rem 0.4rem; border-bottom: 1px solid #2a251f; white-space: nowrap; }
+    th { color: #797067; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.06em; }
+    td.num, th.num { text-align: right; font-family: ui-monospace, Consolas, monospace; }
+    .rank { color: #797067; font-family: ui-monospace, Consolas, monospace; }
+    .scroll { overflow-y: auto; min-height: 0; flex: 1; }
+    .feed { list-style: none; padding: 0; font-size: 0.82rem; font-family: ui-monospace, Consolas, monospace; }
+    .feed li { padding: 0.24rem 0.2rem; border-bottom: 1px solid #2a251f; display: flex; gap: 0.5rem; }
+    .feed .t { color: #6b6157; }
+    .feed .buy { color: #4ade80; } .feed .sell { color: #f87171; }
+    .legend { display: flex; flex-wrap: wrap; gap: 0.3rem 0.8rem; font-size: 0.72rem; margin-top: 0.2rem; flex-shrink: 0; }
+    .legend span { display: inline-flex; align-items: center; gap: 0.3rem; color: #b0a79c; }
+    .legend i { width: 0.7rem; height: 3px; border-radius: 2px; display: inline-block; }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="title">📈 주식 시뮬 <span class="accent">LIVE</span></div>
+    <div class="ticker" id="ticker"></div>
+    <div class="spacer"></div>
+    <button class="reset" id="btn-reset">라운드 리셋</button>
+  </header>
+
+  <main>
+    <div class="col">
+      <div class="panel chart-panel"><div class="panel__head"><span class="big">종목 A</span><span id="ph-A"></span></div><div class="canvas-wrap"><canvas id="ch-A"></canvas></div></div>
+      <div class="panel chart-panel"><div class="panel__head"><span class="big">종목 B</span><span id="ph-B"></span></div><div class="canvas-wrap"><canvas id="ch-B"></canvas></div></div>
+      <div class="panel chart-panel"><div class="panel__head"><span class="big">종목 C</span><span id="ph-C"></span></div><div class="canvas-wrap"><canvas id="ch-C"></canvas></div></div>
+    </div>
+    <div class="col">
+      <div class="panel" style="flex: 5;">
+        <div class="panel__head"><span class="big">참여자 수익률</span><span>최근 1시간 · %</span></div>
+        <div class="canvas-wrap"><canvas id="ch-pnl"></canvas></div>
+        <div class="legend" id="pnl-legend"></div>
+      </div>
+      <div class="bottom" style="flex: 4;">
+        <div class="panel">
+          <div class="panel__head"><span class="big">리더보드</span></div>
+          <div class="scroll"><table><thead><tr><th>#</th><th>이름</th><th class="num">평가액</th><th class="num">수익률</th></tr></thead><tbody id="lb"></tbody></table></div>
+        </div>
+        <div class="panel">
+          <div class="panel__head"><span class="big">체결</span></div>
+          <div class="scroll"><ul class="feed" id="feed"></ul></div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script type="module">
+    import { SUPABASE_URL, SUPABASE_ANON_KEY, ADMIN_EMAIL } from '/auth-config.js';
+    const SYMS = ['A', 'B', 'C'];
+    const SYM_COLOR = { A: '#fe6e00', B: '#60a5fa', C: '#facc15' };
+    const $ = (id) => document.getElementById(id);
+    const fmt = (n, d) => Number(n).toLocaleString(undefined, { maximumFractionDigits: d == null ? 0 : d });
+
+    async function j(url) { const r = await fetch(url); if (!r.ok) throw new Error(url); return r.json(); }
+
+    // ---------- 티커 ----------
+    let prevPrice = {};
+    async function ticker() {
+      try {
+        const { quotes } = await j('/api/stock/price');
+        $('ticker').innerHTML = quotes.map(q => {
+          const cls = prevPrice[q.symbol] == null ? 'flat' : q.price > prevPrice[q.symbol] ? 'up' : q.price < prevPrice[q.symbol] ? 'down' : 'flat';
+          prevPrice[q.symbol] = q.price;
+          return `<span class="tk"><span class="tk__sym">${q.symbol}</span><span class="tk__price ${cls}">${fmt(q.price, 1)}</span></span>`;
+        }).join('');
+      } catch (e) {}
+    }
+
+    // ---------- 가격 차트 ----------
+    let tradesCache = [];
+    function drawPrice(canvas, series, trades, color) {
+      const ctx = canvas.getContext('2d');
+      const W = canvas.width = canvas.clientWidth * devicePixelRatio;
+      const H = canvas.height = canvas.clientHeight * devicePixelRatio;
+      ctx.clearRect(0, 0, W, H);
+      if (!series || series.length < 2) return;
+      const prices = series.map(p => +p.price);
+      const vols = series.map(p => +p.volume);
+      let lo = Math.min(...prices), hi = Math.max(...prices);
+      if (hi - lo < hi * 0.002) { const m = hi * 0.001; lo -= m; hi += m; }
+      const vHi = Math.max(...vols, 1);
+      const t0 = new Date(series[0].t).getTime(), t1 = new Date(series[series.length - 1].t).getTime();
+      const X = t => ((t - t0) / Math.max(1, t1 - t0)) * (W - 60 * devicePixelRatio) + 4;
+      const Y = p => (1 - (p - lo) / (hi - lo)) * (H * 0.72) + 4;
+      // 거래량 바 (하단 22%)
+      ctx.fillStyle = 'rgba(255,255,255,0.10)';
+      const bw = Math.max(1, (W - 64 * devicePixelRatio) / series.length - 1);
+      series.forEach((p, i) => {
+        const vh = (vols[i] / vHi) * (H * 0.2);
+        ctx.fillRect(X(new Date(p.t).getTime()), H - vh - 2, bw, vh);
+      });
+      // 가격 라인
+      ctx.beginPath(); ctx.strokeStyle = color; ctx.lineWidth = 2 * devicePixelRatio;
+      series.forEach((p, i) => { const x = X(new Date(p.t).getTime()), y = Y(+p.price); i ? ctx.lineTo(x, y) : ctx.moveTo(x, y); });
+      ctx.stroke();
+      // 체결 마커
+      trades.forEach(tr => {
+        const tm = new Date(tr.t).getTime(); if (tm < t0 || tm > t1) return;
+        const x = X(tm), y = Y(+tr.price);
+        ctx.beginPath(); ctx.fillStyle = tr.side === 'buy' ? '#4ade80' : '#f87171';
+        const s = 5 * devicePixelRatio;
+        if (tr.side === 'buy') { ctx.moveTo(x, y - s); ctx.lineTo(x - s, y + s); ctx.lineTo(x + s, y + s); }
+        else { ctx.moveTo(x, y + s); ctx.lineTo(x - s, y - s); ctx.lineTo(x + s, y - s); }
+        ctx.closePath(); ctx.fill();
+      });
+      // 우측 라벨
+      ctx.fillStyle = '#b0a79c'; ctx.font = `${11 * devicePixelRatio}px ui-monospace, monospace`; ctx.textAlign = 'right';
+      ctx.fillText(fmt(hi, 0), W - 4, 12 * devicePixelRatio);
+      ctx.fillText(fmt(lo, 0), W - 4, H * 0.72);
+      ctx.fillStyle = color; ctx.font = `bold ${12 * devicePixelRatio}px ui-monospace, monospace`;
+      ctx.fillText(fmt(prices[prices.length - 1], 1), W - 4, Y(prices[prices.length - 1]) - 6);
+    }
+
+    async function charts() {
+      try {
+        const rs = await Promise.all(SYMS.map(s => j('/api/stock/history?symbol=' + s + '&seconds=900')));
+        rs.forEach(({ symbol, series }) => {
+          const tr = tradesCache.filter(t => t.symbol === symbol);
+          drawPrice($('ch-' + symbol), series, tr, SYM_COLOR[symbol]);
+          if (series.length) {
+            const first = +series[0].price, last = +series[series.length - 1].price;
+            const chg = ((last - first) / first) * 100;
+            $('ph-' + symbol).innerHTML = `<span class="${chg >= 0 ? 'up' : 'down'}">${chg >= 0 ? '+' : ''}${chg.toFixed(2)}% (15분)</span>`;
+          }
+        });
+      } catch (e) {}
+    }
+
+    // ---------- 리더보드 · 체결 피드 ----------
+    let namesFromBoard = [];
+    async function board() {
+      try {
+        const [{ rows: lb }, { rows: tr }] = await Promise.all([j('/api/stock/leaderboard'), j('/api/stock/trades?seconds=3600')]);
+        tradesCache = tr || [];
+        namesFromBoard = (lb || []).map(r => r.name);
+        $('lb').innerHTML = (lb || []).map((r, i) =>
+          `<tr><td class="rank">${i + 1}</td><td>${esc(r.name)}</td><td class="num">${fmt(r.value)}</td>` +
+          `<td class="num ${r.pnl_pct >= 0 ? 'up' : 'down'}">${r.pnl_pct >= 0 ? '+' : ''}${fmt(r.pnl_pct, 2)}%</td></tr>`).join('') || '<tr><td colspan="4" style="color:#6b6157">아직 참여자가 없습니다</td></tr>';
+        $('feed').innerHTML = (tr || []).slice(0, 60).map(x => {
+          const tm = new Date(x.t);
+          return `<li><span class="t">${String(tm.getHours()).padStart(2, '0')}:${String(tm.getMinutes()).padStart(2, '0')}:${String(tm.getSeconds()).padStart(2, '0')}</span>` +
+            `<span>${esc(x.name)}</span><span class="${x.side}">${x.side === 'buy' ? '매수' : '매도'} ${x.symbol}×${x.qty}</span><span class="t">@${fmt(x.price, 1)}</span></li>`;
+        }).join('');
+      } catch (e) {}
+    }
+    function esc(s) { return String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c])); }
+
+    // ---------- 수익률 곡선 ----------
+    function nameColor(name) {
+      let h = 0; for (const ch of name) h = (h * 31 + ch.charCodeAt(0)) % 360;
+      return `hsl(${h} 75% 62%)`;
+    }
+    async function pnl() {
+      try {
+        const hs = await Promise.all(SYMS.map(s => j('/api/stock/history?symbol=' + s + '&seconds=3600')));
+        const grid = hs[0].series.map(p => new Date(p.t).getTime());
+        const priceAt = {}; SYMS.forEach((s, si) => priceAt[s] = hs[si].series.map(p => +p.price));
+        const names = [...new Set([...namesFromBoard, ...tradesCache.map(t => t.name)])];
+        const byName = {};
+        names.forEach(n => byName[n] = tradesCache.filter(t => t.name === n).slice().reverse()); // 오래된 것부터
+        const curves = names.map(n => {
+          let cash = 1000000; const pos = { A: 0, B: 0, C: 0 }; let ti = 0; const trs = byName[n];
+          const ys = grid.map((gt, gi) => {
+            while (ti < trs.length && new Date(trs[ti].t).getTime() <= gt) {
+              const tr = trs[ti];
+              if (tr.side === 'buy') { cash -= tr.qty * +tr.price; pos[tr.symbol] += tr.qty; }
+              else { cash += tr.qty * +tr.price; pos[tr.symbol] -= tr.qty; }
+              ti++;
+            }
+            const v = cash + SYMS.reduce((a, s) => a + pos[s] * (priceAt[s][gi] ?? priceAt[s][priceAt[s].length - 1]), 0);
+            return ((v - 1000000) / 1000000) * 100;
+          });
+          return { name: n, color: nameColor(n), ys };
+        });
+        drawPnl($('ch-pnl'), grid, curves);
+        $('pnl-legend').innerHTML = curves.slice(0, 12).map(c => `<span><i style="background:${c.color}"></i>${esc(c.name)}</span>`).join('');
+      } catch (e) {}
+    }
+    function drawPnl(canvas, grid, curves) {
+      const ctx = canvas.getContext('2d');
+      const W = canvas.width = canvas.clientWidth * devicePixelRatio;
+      const H = canvas.height = canvas.clientHeight * devicePixelRatio;
+      ctx.clearRect(0, 0, W, H);
+      if (!grid.length) return;
+      let lo = -1, hi = 1;
+      curves.forEach(c => c.ys.forEach(y => { if (y < lo) lo = y; if (y > hi) hi = y; }));
+      const pad = (hi - lo) * 0.1; lo -= pad; hi += pad;
+      const X = i => (i / Math.max(1, grid.length - 1)) * (W - 50 * devicePixelRatio) + 4;
+      const Y = v => (1 - (v - lo) / (hi - lo)) * (H - 8) + 4;
+      // 0% 기준선
+      ctx.strokeStyle = 'rgba(255,255,255,0.18)'; ctx.setLineDash([4, 4]); ctx.lineWidth = devicePixelRatio;
+      ctx.beginPath(); ctx.moveTo(0, Y(0)); ctx.lineTo(W, Y(0)); ctx.stroke(); ctx.setLineDash([]);
+      curves.forEach(c => {
+        ctx.beginPath(); ctx.strokeStyle = c.color; ctx.lineWidth = 1.8 * devicePixelRatio;
+        c.ys.forEach((y, i) => { i ? ctx.lineTo(X(i), Y(y)) : ctx.moveTo(X(i), Y(y)); });
+        ctx.stroke();
+        const lastY = c.ys[c.ys.length - 1];
+        ctx.fillStyle = c.color; ctx.font = `${10 * devicePixelRatio}px ui-monospace, monospace`; ctx.textAlign = 'left';
+        ctx.fillText((lastY >= 0 ? '+' : '') + lastY.toFixed(1) + '%', W - 46 * devicePixelRatio, Y(lastY));
+      });
+      ctx.fillStyle = '#b0a79c'; ctx.font = `${10 * devicePixelRatio}px ui-monospace, monospace`; ctx.textAlign = 'right';
+      ctx.fillText('+' + hi.toFixed(1) + '%', W - 4, 12 * devicePixelRatio);
+      ctx.fillText(lo.toFixed(1) + '%', W - 4, H - 6);
+    }
+
+    // ---------- 관리자 리셋 ----------
+    const sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+    (async () => {
+      const { data: { session } } = await sb.auth.getSession();
+      if (session && session.user.email && session.user.email.toLowerCase() === ADMIN_EMAIL.toLowerCase()) {
+        $('btn-reset').style.display = 'inline-flex';
+      }
+    })();
+    $('btn-reset').addEventListener('click', async () => {
+      if (!confirm('라운드를 리셋할까요? 전원 잔고 초기화 + 새 시세 시드')) return;
+      const { error } = await sb.rpc('stock_reset');
+      alert(error ? '리셋 실패: ' + error.message : '리셋 완료 — 새 라운드 시작!');
+    });
+
+    // ---------- 루프 ----------
+    ticker(); charts(); board().then(pnl);
+    setInterval(ticker, 1000);
+    setInterval(charts, 2000);
+    setInterval(board, 3000);
+    setInterval(pnl, 10000);
+    addEventListener('resize', () => { charts(); pnl(); });
+  </script>
+</body>
+</html>

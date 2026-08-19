@@ -1,0 +1,85 @@
+<!doctype html>
+<!-- © 2026 이일규 (Ilkyu Lee). All rights reserved. -->
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>주식 시뮬 — 내 API 키</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; }
+    body { font-family: "Pretendard", "Malgun Gothic", system-ui, sans-serif; background: #faf7f2; color: #262220;
+           min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 1.5rem; word-break: keep-all; }
+    .card { width: 100%; max-width: 34rem; background: #fff; border: 2px solid #e5ddd2; border-radius: 16px;
+            padding: 2rem 1.8rem; box-shadow: 0 12px 32px rgba(0,0,0,0.06); }
+    .brand { font-size: 0.72rem; letter-spacing: 0.16em; text-transform: uppercase; font-weight: 700; color: #cc5a14; margin-bottom: 0.5rem; }
+    h1 { font-size: 1.25rem; line-height: 1.35; margin-bottom: 0.4rem; }
+    p.desc { font-size: 0.86rem; line-height: 1.6; color: #797067; margin-bottom: 1.2rem; }
+    .btn { appearance: none; cursor: pointer; display: inline-flex; align-items: center; justify-content: center;
+           width: 100%; padding: 0.8rem 1rem; border-radius: 10px; border: 2px solid #fe6e00; background: #fe6e00;
+           font-size: 0.95rem; font-weight: 700; color: #fff; }
+    .btn:hover { filter: brightness(1.05); }
+    .keybox { display: none; margin-top: 1.2rem; }
+    .keybox.on { display: block; }
+    .key-line { display: flex; gap: 0.5rem; align-items: center; }
+    .key-value { flex: 1; font-family: ui-monospace, Consolas, monospace; font-size: 0.85rem; background: #262220; color: #7CFC98;
+                 border-radius: 8px; padding: 0.7rem 0.8rem; overflow-x: auto; white-space: nowrap; }
+    .copy { appearance: none; cursor: pointer; border: 2px solid #e5ddd2; background: #fff; border-radius: 8px; padding: 0.55rem 0.8rem; font-weight: 700; font-size: 0.8rem; }
+    .meta { font-size: 0.8rem; color: #797067; margin-top: 0.6rem; line-height: 1.6; }
+    .spec { margin-top: 1.2rem; background: #fff7ed; border: 1.5px solid #fed7aa; border-radius: 10px; padding: 0.9rem 1rem; font-size: 0.8rem; line-height: 1.7; }
+    .spec code { background: #fff; border: 1px solid #fed7aa; border-radius: 5px; padding: 0.05rem 0.35rem; font-size: 0.76rem; }
+    .err { display: none; margin-top: 0.8rem; background: #fef2f2; border: 1.5px solid #fecaca; color: #991b1b; border-radius: 8px; padding: 0.7rem 0.9rem; font-size: 0.82rem; }
+  </style>
+</head>
+<body>
+  <main class="card">
+    <div class="brand">실습으로 배우는 바이브코딩 · 주식 시뮬</div>
+    <h1>내 API 키 발급</h1>
+    <p class="desc">7장 데스크톱 실습에서 내 트레이딩 앱이 시장 서버와 통신할 때 쓰는 열쇠입니다.<br>버튼 한 번 — 이미 발급했다면 같은 키를 다시 보여줍니다.</p>
+
+    <button class="btn" id="btn-issue">API 키 발급 / 보기</button>
+    <p class="err" id="err"></p>
+
+    <div class="keybox" id="keybox">
+      <div class="key-line">
+        <div class="key-value" id="key-value">—</div>
+        <button class="copy" id="btn-copy" type="button">복사</button>
+      </div>
+      <p class="meta" id="meta"></p>
+      <div class="spec">
+        <strong>API 사용법 (요청 헤더에 키 포함)</strong><br>
+        Base URL: <code>https://vibecoding-cc.vercel.app/api/stock</code><br>
+        헤더: <code>X-API-Key: 내키</code><br>
+        현재가 <code>GET /price</code> · 히스토리 <code>GET /history?symbol=A&amp;seconds=600</code><br>
+        주문 <code>POST /order</code> 본문 <code>{"symbol":"A","side":"buy","qty":10}</code> (키당 1초 1회)<br>
+        내 계좌 <code>GET /portfolio</code> · 순위 <code>GET /leaderboard</code><br>
+        종목: A · B · C — 시작 자금 1,000,000 · 수수료 없음 · 공매도 없음
+      </div>
+    </div>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script type="module">
+    import { SUPABASE_URL, SUPABASE_ANON_KEY } from '/auth-config.js';
+    const sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+    const $ = (id) => document.getElementById(id);
+
+    async function issue() {
+      $('err').style.display = 'none';
+      const { data: { session } } = await sb.auth.getSession();
+      if (!session) { location.href = '/login.html?next=' + encodeURIComponent(location.pathname); return; }
+      const { data, error } = await sb.rpc('stock_issue_key');
+      if (error) { $('err').textContent = '발급 실패: ' + error.message; $('err').style.display = 'block'; return; }
+      const row = Array.isArray(data) ? data[0] : data;
+      if (!row) { $('err').textContent = '발급 실패: 응답이 비어 있습니다.'; $('err').style.display = 'block'; return; }
+      $('key-value').textContent = row.key;
+      $('meta').textContent = row.name + ' · 가상 자금 ' + Number(row.cash).toLocaleString() + '원 — 키는 비밀번호처럼, 다른 사람과 공유하지 마세요.';
+      $('keybox').classList.add('on');
+    }
+
+    $('btn-issue').addEventListener('click', issue);
+    $('btn-copy').addEventListener('click', async () => {
+      try { await navigator.clipboard.writeText($('key-value').textContent); $('btn-copy').textContent = '복사됨'; setTimeout(() => $('btn-copy').textContent = '복사', 1500); } catch (e) {}
+    });
+  </script>
+</body>
+</html>
