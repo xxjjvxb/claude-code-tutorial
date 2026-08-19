@@ -287,6 +287,39 @@
     </div>
   </section>
 
+  <!-- 8.5 · Node.js 설치 -->
+  <section class="slide is-standard">
+    <div class="slide__eyebrow">SETUP · Node.js</div>
+    <h2 class="slide__title">Node.js — <span class="accent">지금 설치해 둡니다</span></h2>
+    <div class="slide__body">
+      <div class="install-detail os-win is-block">
+        <div class="install-detail__header">
+          <div class="install-detail__logo"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 3l11 6.5v13L16 29 5 22.5v-13L16 3z"/><path d="M16 11v9M11 14v3M21 14v6"/></svg></div>
+          <div class="install-detail__where"><div class="install-detail__where-label">받는 곳</div><div class="install-detail__where-value"><a class="install-link" href="https://nodejs.org" target="_blank" rel="noopener">nodejs.org ↗</a></div></div>
+        </div>
+        <ol class="install-detail__steps">
+          <li><strong>nodejs.org</strong> 접속 → <strong>"LTS"</strong> 큰 버튼 클릭 (Windows .msi 자동 다운로드)</li>
+          <li><code>node-v22.x.x-x64.msi</code>(LTS 버전 숫자는 다를 수 있음) 더블클릭 → 보안 경고 "예" → 설치 마법사 Next 따라 진행</li>
+          <li><strong>Custom Setup에서 "Add to PATH" 체크 확인</strong> → Install → UAC 승인 → 1~2분 대기</li>
+          <li>완료 후 <strong>새 내장 터미널</strong>에서 <code>node --version</code> → <code>v22.x.x</code> 처럼 버전 숫자가 나오면 OK</li>
+        </ol>
+      </div>
+      <div class="install-detail os-mac is-block">
+        <div class="install-detail__header">
+          <div class="install-detail__logo"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 3l11 6.5v13L16 29 5 22.5v-13L16 3z"/><path d="M16 11v9M11 14v3M21 14v6"/></svg></div>
+          <div class="install-detail__where"><div class="install-detail__where-label">받는 곳</div><div class="install-detail__where-value">Homebrew · <a class="install-link" href="https://nodejs.org" target="_blank" rel="noopener">nodejs.org ↗</a></div></div>
+        </div>
+        <ol class="install-detail__steps">
+          <li><strong>Homebrew</strong>가 설치돼 있으면 <code>brew install node</code> 한 줄 — 30초~1분</li>
+          <li>Brew가 없으면 <strong>nodejs.org</strong> → "LTS" 버튼 → <code>.pkg</code> 다운로드 → 더블클릭 → 설치 마법사</li>
+          <li>설치 후 <strong>새 내장 터미널</strong>에서 <code>node --version</code> → <code>v22.x.x</code> 처럼 버전 숫자가 나오면 OK</li>
+          <li>Homebrew 자체 설치는 <code>/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"</code></li>
+        </ol>
+      </div>
+      <p class="slide__note"><strong>왜 필요?</strong> 웹페이지를 만들 때 쓰는 도구들(로컬 미리보기 서버 등)이 Node.js 위에서 돌아갑니다 — 이번 장부터 종종 쓰이니 지금 깔아둡니다. 뒤의 MCP(6장)에서도 그대로 씁니다.</p>
+    </div>
+  </section>
+
   <!-- 9 · GitHub 저장소 만들기 -->
   <section class="slide is-standard">
     <div class="slide__eyebrow">SETUP · GitHub 저장소</div>

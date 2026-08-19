@@ -72,7 +72,7 @@
         <div class="cover-card">
           <div class="cover-card__day">7장 · 윈도우/맥 프로그램</div>
           <h2 class="cover-card__title">내 PC에서 도는 —<br>진짜 프로그램(<span class="os-win">.exe</span><span class="os-mac">.app</span>)</h2>
-          <p class="cover-card__subtitle">PySide로 창을 그리고, PyInstaller로 굳혀 —<br>더블클릭하면 열리는 나만의 프로그램.</p>
+          <p class="cover-card__subtitle">PySide로 창을 그리고, PyInstaller로 묶어 —<br>더블클릭하면 열리는 나만의 프로그램.</p>
         </div>
       </div>
     </div>
@@ -99,7 +99,7 @@
           <div class="bg-compare__quote">
             <div>창·버튼·입력칸 있는</div>
             <div><span class="os-win">윈도우</span><span class="os-mac">데스크톱</span> 프로그램을 만들고</div>
-            <div><span class="os-win">.exe</span><span class="os-mac">.app</span> 파일 하나로 굳혀</div>
+            <div><span class="os-win">.exe</span><span class="os-mac">.app</span> 파일 하나로 묶어</div>
             <div>— 더블클릭으로 실행.</div>
           </div>
           <p class="bg-compare__note">이번엔 — <strong>내 <span class="os-win">PC</span><span class="os-mac">Mac</span>에 사는</strong> 프로그램.</p>
@@ -184,7 +184,7 @@
   <!-- 5 · 두 도구 -->
   <section class="slide is-standard">
     <div class="slide__eyebrow">TOOLS · 두 도구</div>
-    <h2 class="slide__title">PySide로 <span class="accent">창을 그리고</span>, PyInstaller로 <span class="accent">굳힌다</span></h2>
+    <h2 class="slide__title">PySide로 <span class="accent">창을 그리고</span>, PyInstaller로 <span class="accent">묶는다</span></h2>
     <div class="slide__body">
       <div class="two-col">
         <div>
@@ -200,11 +200,11 @@
         </div>
         <div>
           <div class="content-card">
-            <h3 class="content-card__title">PyInstaller — <span class="os-win">.exe</span><span class="os-mac">.app</span>로 굳힌다</h3>
+            <h3 class="content-card__title">PyInstaller — <span class="os-win">.exe</span><span class="os-mac">.app</span>로 묶는다</h3>
             <p class="content-card__body">파이썬으로 만든 .py 파일을 <strong><span class="os-win">.exe</span><span class="os-mac">.app</span> 한 덩어리</strong>로 묶어줍니다. 파이썬이 없는 PC에서도 그대로 동작.</p>
             <ul class="content-card__list">
               <li>명령 한 줄 — <code>pyinstaller --onefile --windowed</code></li>
-              <li>1~2분이면 <span class="os-win">.exe</span><span class="os-mac">.app</span> 완성</li>
+              <li>한 번 묶는 데 1~2분 — 시간이 좀 걸림</li>
               <li>파일 하나로 친구한테 보내기 (같은 OS끼리)</li>
             </ul>
           </div>
@@ -226,7 +226,7 @@
             <p class="content-card__body">3장에서 깐 <strong>Python</strong>을 그대로 씁니다. 새 <span class="os-win">PowerShell</span><span class="os-mac">터미널</span> 창에서 <code><span class="os-win">python</span><span class="os-mac">python3</span> --version</code> — <code>3.x</code> 버전 숫자가 뜨면 OK.</p>
             <ul class="content-card__list">
               <li>안 뜨면 — 3장 Python 설치 슬라이드의 PATH 점검</li>
-              <li>pip는 파이썬과 함께 — 따로 설치 불필요</li>
+              <li>두 도구 설치도 claude에게 — 부탁 한 줄이면 끝</li>
               <li>claude는 1장 그대로 — 로그인돼 있으면 준비 끝</li>
             </ul>
           </div>
@@ -239,17 +239,17 @@
             </div>
             <div class="code-block__body"><span class="code-block__line"><span class="code-block__prompt" data-auto-os></span> <span class="code-block__cmd"><span class="os-win">python</span><span class="os-mac">python3</span> --version</span></span><span class="code-block__line"><span class="code-block__out">  Python 3.x — 버전 숫자가 뜨면 OK</span></span></div>
           </div>
-          <div class="prompt-card prompt-card--cmd" style="margin-top:0.55rem">
+          <div class="prompt-card" style="margin-top:0.55rem">
             <div class="prompt-card__head">
-              <span class="prompt-card__label"><span class="os-win">PowerShell</span><span class="os-mac">터미널</span> · 한 줄 설치</span>
+              <span class="prompt-card__label">claude에게 · 설치 부탁</span>
               <button class="prompt-card__copy" type="button" data-copy>복사</button>
             </div>
-            <pre class="prompt-card__body" data-no-nav><span class="os-win">pip</span><span class="os-mac">pip3</span> install pyside6 pyinstaller</pre>
+            <pre class="prompt-card__body" data-no-nav>PySide6랑 PyInstaller 설치해줘. 끝나면 잘 깔렸는지 확인까지 해줘.</pre>
           </div>
         </div>
       </div>
     </div>
-    <p class="slide__note">PySide6는 다운로드가 좀 큽니다(수십 MB) — 와이파이가 약하면 3~5분. 설치 끝에 <code>Successfully installed</code>가 뜨면 완료입니다. <code>pip</code>는 인터넷에서 도구를 받아오는 명령입니다.</p>
+    <p class="slide__note">이때 claude가 실제로 치는 명령은 <code><span class="os-win">pip</span><span class="os-mac">pip3</span> install pyside6 pyinstaller</code> 한 줄(참고). PySide6는 다운로드가 좀 커서(수십 MB) 3~5분 — 끝에 <code>Successfully installed</code>가 뜨면 완료입니다.</p>
   </section>
 
   <!-- 7 · 공통 프로젝트 — 클로드 데스크톱 펫 -->
@@ -305,7 +305,7 @@
         </div>
         <div class="step-list__item">
           <div class="step-list__num">4</div>
-          <div class="step-list__content"><p class="step-list__title">PyInstaller로 <span class="os-win">.exe</span><span class="os-mac">.app</span>로 굳히기 <span class="step-list__desc" style="display:inline">— dist 폴더에 pet<span class="os-win">.exe</span><span class="os-mac">.app</span> 한 덩어리</span></p></div>
+          <div class="step-list__content"><p class="step-list__title">PyInstaller로 <span class="os-win">.exe</span><span class="os-mac">.app</span>로 묶기 <span class="step-list__desc" style="display:inline">— dist 폴더에 pet<span class="os-win">.exe</span><span class="os-mac">.app</span> 한 덩어리</span></p></div>
         </div>
         <div class="step-list__item">
           <div class="step-list__num">5</div>
@@ -313,7 +313,7 @@
         </div>
       </div>
     </div>
-    <p class="slide__note"><span class="os-win">.exe</span><span class="os-mac">.app</span>로 굳히는 건 <strong>마지막 단계</strong>. 먼저 .py로 동작이 다 맞춰져야 합니다 — 80%는 .py에서 끝납니다.</p>
+    <p class="slide__note"><span class="os-win">.exe</span><span class="os-mac">.app</span>로 묶는 건 <strong>마지막 단계</strong> — 한 번 묶는 데 1~2분씩 걸립니다. 먼저 .py로 동작이 다 맞춰져야 합니다 — 80%는 .py에서 끝납니다.</p>
   </section>
 
   <!-- 9 · Claude에게 부탁하는 법 -->
@@ -328,7 +328,7 @@
             <p class="content-card__body">프롬프팅에서 익힌 목표·제약·수준 3문장. 데스크톱 프로그램에도 그대로 — 매뉴얼이 없어도 시작이 됩니다.</p>
             <ul class="content-card__list">
               <li><strong>목표</strong> — 무엇을 만들지</li>
-              <li><strong>제약</strong> — PySide6로, <span class="os-win">.exe</span><span class="os-mac">.app</span>로 굳힐 것</li>
+              <li><strong>제약</strong> — PySide6로, <span class="os-win">.exe</span><span class="os-mac">.app</span>로 묶을 것</li>
               <li><strong>내 수준</strong> — "처음이니 설명하며"</li>
             </ul>
           </div>
@@ -341,7 +341,7 @@
             </div>
             <pre class="prompt-card__body" data-no-nav>바탕화면 위에 항상 떠 있는 작은 펫을 만들어줘. 동그란 캐릭터를 클릭하면 터미널 명령 claude -p "성격대로 한마디 해줘"를 백그라운드로 실행해서, 대답을 말풍선으로 보여줘. 성격은 같은 폴더의 CLAUDE.md에서 읽어줘.
 
-PySide6로 만들고, 대답을 기다리는 동안 창이 얼지 않게 해줘. 마지막에 PyInstaller로 <span class="os-win">.exe</span><span class="os-mac">.app</span>로 굳힐 거야.
+PySide6로 만들고, 대답을 기다리는 동안 창이 얼지 않게 해줘. 마지막에 PyInstaller로 <span class="os-win">.exe</span><span class="os-mac">.app</span>로 묶을 거야.
 
 나는 PySide 처음이니까 설명하며 진행해줘.</pre>
           </div>
@@ -354,16 +354,16 @@ PySide6로 만들고, 대답을 기다리는 동안 창이 얼지 않게 해줘.
   <!-- 10 · 먼저 .py로 -->
   <section class="slide is-standard">
     <div class="slide__eyebrow">RUN · 먼저 .py로</div>
-    <h2 class="slide__title"><span class="os-win">.exe</span><span class="os-mac">.app</span>로 굳히기 전 — <span class="accent">python으로 띄워보기</span></h2>
+    <h2 class="slide__title"><span class="os-win">.exe</span><span class="os-mac">.app</span>로 묶기 전 — <span class="accent">python으로 띄워보기</span></h2>
     <div class="slide__body">
       <div class="two-col">
         <div>
           <div class="content-card content-card--compact">
             <h3 class="content-card__title">왜 먼저 .py?</h3>
             <ul class="content-card__list">
-              <li><span class="os-win">.exe</span><span class="os-mac">.app</span> 빌드는 1~2분 — 매번 굳히면 느림</li>
+              <li><span class="os-win">.exe</span><span class="os-mac">.app</span> 생성은 1~2분 — 매번 묶으면 느림</li>
               <li>.py로 띄우면 <strong>즉시 실행</strong></li>
-              <li>동작·모양이 다 맞춰진 뒤에 굳힌다</li>
+              <li>동작·모양이 다 맞춰진 뒤에 묶는다</li>
             </ul>
             <p class="content-card__body">대부분의 시간은 이 단계 — Claude와 대화하며 다듬는 시간.</p>
           </div>
@@ -408,16 +408,16 @@ PySide6로 만들고, 대답을 기다리는 동안 창이 얼지 않게 해줘.
     <p class="slide__note">한 번에 다 안 짜도 됩니다 — "생각 중 표시랑 실패했을 때 문구도 넣어줘"라고 Claude에게 한 줄 부탁하면 알아서 붙습니다.</p>
   </section>
 
-  <!-- 12 · .exe로 굳히기 -->
+  <!-- 12 · .exe로 묶기 -->
   <section class="slide is-standard">
-    <div class="slide__eyebrow">BUILD · <span class="os-win">.exe</span><span class="os-mac">.app</span>로 굳히기</div>
+    <div class="slide__eyebrow">BUILD · <span class="os-win">.exe</span><span class="os-mac">.app</span>로 묶기</div>
     <h2 class="slide__title">PyInstaller — <span class="accent">한 줄로</span> <span class="os-win">.exe</span><span class="os-mac">.app</span> 완성</h2>
     <div class="slide__body">
       <div class="two-col">
         <div>
           <div class="content-card content-card--compact">
-            <h3 class="content-card__title">명령 한 줄</h3>
-            <p class="content-card__body"><code>pyinstaller --onefile --windowed pet.py</code> — 진행 메시지가 쏟아져도 가만히 1~2분.</p>
+            <h3 class="content-card__title">실제로 일어나는 일 (참고)</h3>
+            <p class="content-card__body">claude가 대신 치는 명령은 <code>pyinstaller --onefile --windowed pet.py</code> — 진행 메시지가 쏟아져도 가만히 1~2분.</p>
             <ul class="content-card__list">
               <li>결과는 <code><span class="os-win">dist\pet.exe</span><span class="os-mac">dist/pet.app</span></code> 하나 — <strong>성격 파일(CLAUDE.md)도 옆에 복사</strong></li>
               <li>같은 OS의 다른 PC에 옮겨도 동작 — 파이썬 없어도. (Win↔Mac은 따로 빌드)</li>
@@ -426,21 +426,17 @@ PySide6로 만들고, 대답을 기다리는 동안 창이 얼지 않게 해줘.
           </div>
         </div>
         <div>
-          <div class="prompt-card prompt-card--cmd">
+          <div class="prompt-card">
             <div class="prompt-card__head">
-              <span class="prompt-card__label"><span class="os-win">PowerShell</span><span class="os-mac">터미널</span> · 빌드 → 실행</span>
+              <span class="prompt-card__label">claude에게 · <span class="os-win">.exe</span><span class="os-mac">.app</span> 만들기 부탁</span>
               <button class="prompt-card__copy" type="button" data-copy>복사</button>
             </div>
-            <pre class="prompt-card__body" data-no-nav>pyinstaller --onefile --windowed pet.py
-
-<span class="os-win">copy CLAUDE.md dist\
-.\dist\pet.exe</span><span class="os-mac">cp CLAUDE.md dist/
-open dist/pet.app</span></pre>
+            <pre class="prompt-card__body" data-no-nav>pet.py를 PyInstaller로 더블클릭해 실행되는 <span class="os-win">.exe</span><span class="os-mac">.app</span> 한 덩어리로 만들어줘. 성격 파일 CLAUDE.md도 결과물 옆에 복사해줘. 끝나면 실행해서 보여줘.</pre>
           </div>
         </div>
       </div>
     </div>
-    <p class="slide__note">옵션을 외울 필요 없습니다 — "이 .py를 <span class="os-win">.exe</span><span class="os-mac">.app</span> 한 덩어리로 만들어줘"라고 Claude에게 부탁하면 명령까지 대신 칩니다.<span class="os-mac"> Mac은 본인이 만든 앱이라 자체 서명 한 줄을 같이 시키면 깔끔 — <code>codesign --deep --force --sign - dist/pet.app</code>.</span></p>
+    <p class="slide__note">명령·옵션은 외울 필요 없습니다 — 왼쪽 카드는 claude가 대신 쳐 주는 <strong>실제 명령</strong>(참고)입니다.<span class="os-mac"> Mac은 본인이 만든 앱이라 자체 서명 한 줄을 같이 시키면 깔끔 — <code>codesign --deep --force --sign - dist/pet.app</code>.</span></p>
   </section>
 
   <!-- 13 · "Windows의 PC 보호" 경고 -->
