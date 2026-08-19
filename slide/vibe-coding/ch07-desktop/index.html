@@ -40,15 +40,27 @@
   <header class="day-header">
     <div class="day-header__brand">실습으로 배우는 바이브코딩 with 클로드코드 · 7장</div>
     <h1 class="day-header__title">7장 — 윈도우/맥 프로그램 개발</h1>
-    <p class="day-header__caption">브라우저 밖으로 — 내 PC에서 더블클릭으로 도는 진짜 실행 파일(<span class="os-win">.exe</span><span class="os-mac">.app</span>)을 만듭니다. 도구: Python · PySide6 · PyInstaller.</p>
+    <p class="day-header__caption">브라우저 밖으로 — 내 PC에서 더블클릭으로 도는 진짜 실행 파일(<span class="os-win">.exe</span><span class="os-mac">.app</span>) 3개를 만듭니다. 로컬(투두) → 연습 API(주식 시뮬) → 진짜 API(업비트)로 점점 세상과 연결. 도구: Python · PySide6 · PyInstaller · API.</p>
   </header>
 
   <div class="block-grid">
-    <a class="block-card" href="1-desktop-program.html">
+    <a class="block-card" href="1-todo-app.html">
       <div class="block-card__time">DECK 1</div>
-      <h2 class="block-card__title">데스크톱 프로그램</h2>
-      <p class="block-card__desc">바탕화면에 항상 떠 있는 <strong>클로드 펫</strong>을 다 같이 만든다 — 클릭하면 내가 길들인 Claude가 말풍선으로 한마디. PySide6로 .py를 돌려보고, PyInstaller로 얼려 <span class="os-win">.exe</span><span class="os-mac">.app</span>로. 방명록 알리미·날씨 브리핑 등 확장 6종과 함정 5가지까지.</p>
-      <div class="block-card__count">18 슬라이드 →</div>
+      <h2 class="block-card__title">투두리스트 — 첫 프로그램</h2>
+      <p class="block-card__desc">입력·체크·삭제·자동 저장까지 되는 투두리스트를 PySide6로 만들고, PyInstaller로 묶어 <span class="os-win">.exe</span><span class="os-mac">.app</span>로 — 데스크톱 프로그램의 기본기 전부. 경고창 대처와 함정 4가지까지.</p>
+      <div class="block-card__count">16 슬라이드 →</div>
+    </a>
+    <a class="block-card" href="2-stock-trader.html">
+      <div class="block-card__time">DECK 2</div>
+      <h2 class="block-card__title">주식 트레이딩 앱 — API 통신</h2>
+      <p class="block-card__desc">강의 제공 가상 주식 시장(3종목·1초 변동·슬리피지)에 내 앱을 접속 — API 키 발급, 시세 폴링, 차트, 매수·매도 주문까지. 전원이 같은 리더보드에서 경쟁하고 자동매매 전략 4종도 실험.</p>
+      <div class="block-card__count">15 슬라이드 →</div>
+    </a>
+    <a class="block-card" href="3-coin-chart.html">
+      <div class="block-card__time">DECK 3</div>
+      <h2 class="block-card__title">코인 시세 차트 — 진짜 공개 API</h2>
+      <p class="block-card__desc">업비트 공개 API(무인증)로 진짜 코인 시세를 — 코인을 클릭해 고르면 한 차트에 %로 겹쳐 보이는 상황판. 쇼핑몰은 왜 API를 안 주는지, 그럴 땐 6장 Playwright로 사람처럼 들어간다는 것까지.</p>
+      <div class="block-card__count">11 슬라이드 →</div>
     </a>
   </div>
 </main>

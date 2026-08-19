@@ -7,7 +7,7 @@
   <meta name="author" content="이일규">
   <meta name="copyright" content="© 2026 이일규 · 본 강의자료는 저작권법으로 보호되는 저작물입니다. 무단 복제·배포 금지.">
   <script defer src="../../scripts/protect.js"></script>
-  <title>7장 · 1. 데스크톱 프로그램 — PySide + PyInstaller</title>
+  <title>7장 · 1. 투두리스트 — PySide 첫 프로그램</title>
   <link rel="stylesheet" href="../../styles/tokens.css">
   <link rel="stylesheet" href="../../styles/deck.css">
   <link rel="stylesheet" href="../../styles/_os-toggle.css">
@@ -17,16 +17,6 @@
   <script defer src="../../scripts/slide-modify.js"></script>
   <script defer src="../../scripts/feedback.js"></script>
   <script defer src="../../scripts/analytics.js"></script>
-  <style>
-    /* 7장 — 프로그램 메뉴 그룹 (A · 파일 / B · 데스크톱) */
-    .menu-group { display: flex; flex-direction: column; gap: 0.4rem; }
-    .menu-group + .menu-group { margin-top: 0.55rem; }
-    .menu-group__label { font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.08em;
-      color: var(--color-primary-strong); font-weight: 700; text-transform: uppercase; }
-    .menu-group__label-desc { font-family: var(--font-sans, inherit); font-size: 0.66rem;
-      color: var(--color-on-surface-muted); font-weight: 500; letter-spacing: 0; text-transform: none;
-      margin-left: 0.4rem; }
-  </style>
 </head>
 <body>
 
@@ -35,7 +25,7 @@
   <header class="deck-chrome">
     <span class="deck-chrome__brand">바이브코딩 · CLAUDE CODE</span>
     <span class="deck-chrome__divider">·</span>
-    <span class="deck-chrome__day">7장 · 1 데스크톱 프로그램</span>
+    <span class="deck-chrome__day">7장 · 1 투두리스트</span>
     <span class="deck-chrome__spacer"></span>
     <span class="deck-chrome__counter">— / —</span>
   </header>
@@ -48,19 +38,23 @@
         <div class="cover-illustration">
           <svg class="cover-terminal" viewBox="0 0 460 280" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
             <rect x="0" y="0" width="460" height="280" rx="14" fill="#fff5ec"/>
-            <rect x="140" y="34" width="180" height="52" rx="14" fill="#fff" stroke="#cc5a14" stroke-width="2"/>
-            <text x="230" y="65" font-family="ui-sans-serif, system-ui" font-size="13" fill="#3d372f" text-anchor="middle" font-weight="700">오늘도 왔네? 화이팅.</text>
-            <ellipse cx="196" cy="118" rx="13" ry="16" fill="#fe6e00"/>
-            <ellipse cx="264" cy="118" rx="13" ry="16" fill="#fe6e00"/>
-            <ellipse cx="230" cy="160" rx="60" ry="54" fill="#fe6e00"/>
-            <ellipse cx="230" cy="184" rx="34" ry="26" fill="#fff2e6"/>
-            <circle cx="212" cy="146" r="12" fill="#fff"/>
-            <circle cx="248" cy="146" r="12" fill="#fff"/>
-            <circle cx="215" cy="149" r="5" fill="#3d372f"/>
-            <circle cx="245" cy="149" r="5" fill="#3d372f"/>
-            <path d="M 222 172 Q 230 180 238 172" stroke="#3d372f" stroke-width="3" fill="none" stroke-linecap="round"/>
-            <text x="230" y="248" font-family="ui-monospace, monospace" font-size="10" fill="#cc5a14" text-anchor="middle">pet<tspan class="os-win">.exe</tspan><tspan class="os-mac">.app</tspan> — 더블클릭하면 바탕화면에 산다</text>
-            <text x="230" y="266" font-family="ui-sans-serif, system-ui" font-size="9" fill="#797067" text-anchor="middle">클릭하면 — 내가 길들인 Claude가 한마디</text>
+            <rect x="110" y="36" width="240" height="208" rx="10" fill="#fff" stroke="#cc5a14" stroke-width="2.5"/>
+            <rect x="110" y="36" width="240" height="30" rx="10" fill="#fe6e00"/>
+            <rect x="110" y="52" width="240" height="14" fill="#fe6e00"/>
+            <text x="230" y="57" font-family="ui-sans-serif, system-ui" font-size="12" fill="#fff" text-anchor="middle" font-weight="700">나의 투두리스트</text>
+            <rect x="126" y="80" width="150" height="22" rx="5" fill="#faf5ee" stroke="#e5ddd2" stroke-width="1.5"/>
+            <rect x="284" y="80" width="52" height="22" rx="5" fill="#fe6e00"/>
+            <text x="310" y="95" font-family="ui-sans-serif, system-ui" font-size="10" fill="#fff" text-anchor="middle" font-weight="700">추가</text>
+            <g font-family="ui-sans-serif, system-ui" font-size="11" fill="#3d372f">
+              <rect x="126" y="116" width="12" height="12" rx="3" fill="#fe6e00"/>
+              <text x="146" y="126" text-decoration="line-through" fill="#a39a8a">강의 자료 훑어보기</text>
+              <rect x="126" y="144" width="12" height="12" rx="3" fill="#fff" stroke="#cc5a14" stroke-width="2"/>
+              <text x="146" y="154">투두 앱 만들기</text>
+              <rect x="126" y="172" width="12" height="12" rx="3" fill="#fff" stroke="#cc5a14" stroke-width="2"/>
+              <text x="146" y="182">.exe로 묶어 자랑하기</text>
+            </g>
+            <text x="230" y="228" font-family="ui-monospace, monospace" font-size="10" fill="#cc5a14" text-anchor="middle">todo<tspan class="os-win">.exe</tspan><tspan class="os-mac">.app</tspan> — 껐다 켜도 목록이 남는다</text>
+            <text x="230" y="264" font-family="ui-sans-serif, system-ui" font-size="9" fill="#797067" text-anchor="middle">더블클릭하면 열리는 내 첫 데스크톱 프로그램</text>
           </svg>
         </div>
         <div class="cover-foot">
@@ -108,45 +102,29 @@
     </div>
   </section>
 
-  <!-- 3 · 이번에 만들 것 -->
-  <section class="slide is-statement">
-    <div class="statement-grid">
-      <div class="statement-text">
-        <div class="slide__eyebrow">이번에 만들 것</div>
-        <h2 class="statement__lead">더블클릭하면 — <span class="accent">내 캐릭터가 산다</span>.</h2>
-        <p class="statement__caption">이번에 만들 건 웹페이지가 아닙니다. 바탕화면 위에 항상 떠 있는 진짜 프로그램(<span class="os-win">.exe</span><span class="os-mac">.app</span>) — 클릭하면 <strong>내가 길들인 Claude</strong>가 말풍선으로 한마디 건넵니다. 파일 하나로 친구한테 보낼 수도 있습니다.</p>
-        <div class="statement__points">
-          <div class="statement__point"><span class="statement__point-num">모양</span><span>어떤 창 위에도 떠 있는 캐릭터 + 말풍선</span></div>
-          <div class="statement__point"><span class="statement__point-num">두뇌</span><span>클릭하면 Claude가 — 내가 정한 성격으로 한마디</span></div>
-          <div class="statement__point"><span class="statement__point-num">형태</span><span><span class="os-win">.exe</span><span class="os-mac">.app</span> 파일 하나 — 같은 OS끼리 보내면 끝 (Win↔Mac은 따로 빌드)</span></div>
+  <!-- 3 · 이번 장의 흐름 (3덱) -->
+  <section class="slide is-standard">
+    <div class="slide__eyebrow">OVERVIEW · 이번 장의 흐름</div>
+    <h2 class="slide__title">프로그램 3개 — <span class="accent">점점 세상과 연결</span>됩니다</h2>
+    <div class="slide__body">
+      <div class="grid-3">
+        <div class="diff-card">
+          <div class="diff-card__rank">덱 1</div>
+          <h3 class="diff-card__title">투두리스트</h3>
+          <p class="diff-card__body">내 PC 안에서만 도는 로컬 프로그램. 창·버튼·저장 — 데스크톱의 기본기.</p>
+        </div>
+        <div class="diff-card">
+          <div class="diff-card__rank">덱 2</div>
+          <h3 class="diff-card__title">주식 트레이딩 앱</h3>
+          <p class="diff-card__body">강의 제공 가상 시장 서버와 <strong>API 통신</strong> — 시세 조회·매수매도·리더보드 경쟁.</p>
+        </div>
+        <div class="diff-card">
+          <div class="diff-card__rank">덱 3</div>
+          <h3 class="diff-card__title">코인 시세 차트</h3>
+          <p class="diff-card__body">업비트의 <strong>진짜 공개 API</strong>로 실시간 코인 시세를 한 차트에.</p>
         </div>
       </div>
-      <div class="statement-visual">
-        <svg viewBox="0 0 460 320" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <rect x="0" y="0" width="460" height="320" rx="16" fill="#fff5ec"/>
-          <text x="230" y="46" font-family="ui-sans-serif, system-ui" font-size="12" fill="#797067" font-weight="700" letter-spacing="0.08em" text-anchor="middle">웹페이지 vs 데스크톱 프로그램</text>
-          <rect x="40" y="80" width="170" height="160" rx="10" fill="#fff" stroke="#d9cfc1" stroke-width="2"/>
-          <rect x="40" y="80" width="170" height="22" rx="10" fill="#f3ece1"/>
-          <rect x="40" y="92" width="170" height="10" fill="#f3ece1"/>
-          <text x="125" y="96" font-family="ui-monospace, monospace" font-size="8" fill="#797067" text-anchor="middle">https://my-site.vercel.app</text>
-          <text x="125" y="160" font-family="ui-sans-serif, system-ui" font-size="11" fill="#797067" text-anchor="middle">웹페이지 (지금까지)</text>
-          <text x="125" y="180" font-family="ui-sans-serif, system-ui" font-size="9" fill="#a39a8a" text-anchor="middle">브라우저 + 인터넷 필요</text>
-          <rect x="250" y="80" width="170" height="160" rx="10" fill="#fff" stroke="#cc5a14" stroke-width="2"/>
-          <rect x="285" y="96" width="100" height="26" rx="8" fill="#fff5ec" stroke="#cc5a14" stroke-width="1.5"/>
-          <text x="335" y="113" font-family="ui-sans-serif, system-ui" font-size="9" fill="#3d372f" text-anchor="middle" font-weight="700">뭐, 왔어?</text>
-          <ellipse cx="320" cy="140" rx="6" ry="8" fill="#fe6e00"/>
-          <ellipse cx="350" cy="140" rx="6" ry="8" fill="#fe6e00"/>
-          <ellipse cx="335" cy="160" rx="27" ry="24" fill="#fe6e00"/>
-          <circle cx="327" cy="154" r="5.5" fill="#fff"/>
-          <circle cx="343" cy="154" r="5.5" fill="#fff"/>
-          <circle cx="328.5" cy="155.5" r="2.5" fill="#3d372f"/>
-          <circle cx="341.5" cy="155.5" r="2.5" fill="#3d372f"/>
-          <path d="M 331 168 Q 335 172 339 168" stroke="#3d372f" stroke-width="2" fill="none" stroke-linecap="round"/>
-          <text x="335" y="205" font-family="ui-sans-serif, system-ui" font-size="11" fill="#cc5a14" text-anchor="middle" font-weight="700">클로드 펫<tspan class="os-win">.exe</tspan><tspan class="os-mac">.app</tspan></text>
-          <text x="335" y="222" font-family="ui-sans-serif, system-ui" font-size="9" fill="#cc5a14" text-anchor="middle">더블클릭 — 브라우저 불필요</text>
-          <text x="230" y="280" font-family="ui-sans-serif, system-ui" font-size="13" fill="#797067" text-anchor="middle">손에 잡히는 — 파일 한 개</text>
-        </svg>
-      </div>
+      <p class="slide__note">로컬에서만 → 연습용 서버와 통신 → 진짜 세상 데이터. <strong>같은 앱 구조에 통신만 한 겹씩</strong> 늘어납니다.</p>
     </div>
   </section>
 
@@ -157,7 +135,7 @@
     <div class="slide__body">
       <div class="bg-compare">
         <div class="bg-compare__side bg-compare__side--soft">
-          <div class="bg-compare__label">1~3장 · 터미널 속 claude</div>
+          <div class="bg-compare__label">1~3장 · 터미널 속 프로그램</div>
           <div class="bg-compare__quote">
             <div>검은 터미널 창</div>
             <div>글자로 묻고 — 글자로 답한다</div>
@@ -167,18 +145,18 @@
           <p class="bg-compare__note">CLI — 터미널 그대로.</p>
         </div>
         <div class="bg-compare__side bg-compare__side--good">
-          <div class="bg-compare__label">이번 장 · 창을 입힌 claude</div>
+          <div class="bg-compare__label">이번 장 · 창을 입힌 프로그램</div>
           <div class="bg-compare__quote">
-            <div>화면에 뜬 캐릭터를</div>
-            <div>마우스로 클릭하면</div>
-            <div>같은 claude가 — 말풍선으로 대답</div>
+            <div>입력칸에 타이핑하고</div>
+            <div>버튼을 마우스로 클릭하면</div>
+            <div>목록이 바로 바뀐다</div>
             <div>파일 하나(<span class="os-win">.exe</span><span class="os-mac">.app</span>)로 공유</div>
           </div>
-          <p class="bg-compare__note">GUI — 같은 claude에 <strong>창을 입힌</strong> 것.</p>
+          <p class="bg-compare__note">GUI — 같은 파이썬에 <strong>창을 입힌</strong> 것.</p>
         </div>
       </div>
     </div>
-    <p class="slide__note">3장의 가위바위보·변환기도, 매일 쓰던 claude도 — 전부 검은 터미널이었습니다. 이번엔 거기에 <strong>캐릭터와 말풍선</strong>을 입힙니다.</p>
+    <p class="slide__note">3장의 가위바위보·변환기도 전부 검은 터미널이었습니다. 이번엔 거기에 <strong>창·버튼·목록</strong>을 입힙니다.</p>
   </section>
 
   <!-- 5 · 두 도구 -->
@@ -252,37 +230,44 @@
     <p class="slide__note">이때 claude가 실제로 치는 명령은 <code><span class="os-win">pip</span><span class="os-mac">pip3</span> install pyside6 pyinstaller</code> 한 줄(참고). PySide6는 다운로드가 좀 커서(수십 MB) 3~5분 — 끝에 <code>Successfully installed</code>가 뜨면 완료입니다.</p>
   </section>
 
-  <!-- 7 · 공통 프로젝트 — 클로드 데스크톱 펫 -->
-  <section class="slide is-standard">
-    <div class="slide__eyebrow">PROJECT · 클로드 데스크톱 펫</div>
-    <h2 class="slide__title">이번엔 다 같이 — <span class="accent">클로드 펫</span>을 만든다</h2>
-    <div class="slide__body">
-      <div class="two-col">
-        <div>
-          <div class="content-card">
-            <h3 class="content-card__title">무엇을 만드나</h3>
-            <p class="content-card__body">바탕화면 위에 항상 떠 있는 작은 캐릭터. 클릭하면 <strong>내가 길들인 Claude</strong>가 한마디 건넵니다.</p>
-            <ul class="content-card__list">
-              <li><strong>항상 위</strong> — 어떤 창 위에도 떠 있음</li>
-              <li><strong>클릭 → 말풍선</strong> — "…생각 중" 뒤 한마디</li>
-              <li><strong>성격은 CLAUDE.md</strong> — 츤데레 고양이든, 존댓말 비서든</li>
-            </ul>
-          </div>
-        </div>
-        <div>
-          <div class="content-card">
-            <h3 class="content-card__title">두뇌는 — <code>claude -p</code> 한 줄</h3>
-            <p class="content-card__body">1장부터 쓰던 claude를 <strong>대화창 없이 한 줄로 부르는 스위치</strong>가 있습니다. 펫이 클릭될 때마다 이걸 눌러줍니다.</p>
-            <ul class="content-card__list">
-              <li>클릭 → <code>claude -p "성격대로 한마디 해줘"</code></li>
-              <li>대답이 돌아오면 — 말풍선에 표시</li>
-              <li>터미널에 치던 것과 완전히 같은 claude</li>
-            </ul>
-          </div>
+  <!-- 7 · 만들 것 — 투두리스트 -->
+  <section class="slide is-statement">
+    <div class="statement-grid">
+      <div class="statement-text">
+        <div class="slide__eyebrow">PROJECT · 이 덱에서 만들 것</div>
+        <h2 class="statement__lead">껐다 켜도 남아 있는 — <span class="accent">내 투두리스트</span>.</h2>
+        <p class="statement__caption">입력칸에 할 일을 적고 버튼을 누르면 목록에 쌓이고, 체크하면 줄이 그어지는 프로그램. 닫았다 다시 열어도 목록이 그대로 — 데스크톱 프로그램의 기본기가 전부 들어 있습니다.</p>
+        <div class="statement__points">
+          <div class="statement__point"><span class="statement__point-num">추가</span><span>입력칸 + "추가" 버튼 → 목록에 쌓임</span></div>
+          <div class="statement__point"><span class="statement__point-num">정리</span><span>체크하면 완료(줄긋기) · 삭제 버튼</span></div>
+          <div class="statement__point"><span class="statement__point-num">저장</span><span>종료해도 유지 — 옆의 todo.json에 자동 저장</span></div>
         </div>
       </div>
+      <div class="statement-visual">
+        <svg viewBox="0 0 460 320" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <rect x="0" y="0" width="460" height="320" rx="16" fill="#fff5ec"/>
+          <rect x="120" y="34" width="220" height="220" rx="10" fill="#fff" stroke="#cc5a14" stroke-width="2.5"/>
+          <rect x="120" y="34" width="220" height="28" rx="10" fill="#fe6e00"/>
+          <rect x="120" y="48" width="220" height="14" fill="#fe6e00"/>
+          <text x="230" y="54" font-family="ui-sans-serif, system-ui" font-size="11" fill="#fff" text-anchor="middle" font-weight="700">나의 투두리스트</text>
+          <rect x="134" y="74" width="136" height="22" rx="5" fill="#faf5ee" stroke="#e5ddd2" stroke-width="1.5"/>
+          <text x="142" y="89" font-family="ui-sans-serif, system-ui" font-size="9" fill="#a39a8a">할 일 입력…</text>
+          <rect x="278" y="74" width="48" height="22" rx="5" fill="#fe6e00"/>
+          <text x="302" y="89" font-family="ui-sans-serif, system-ui" font-size="9" fill="#fff" text-anchor="middle" font-weight="700">추가</text>
+          <g font-family="ui-sans-serif, system-ui" font-size="10" fill="#3d372f">
+            <rect x="134" y="110" width="11" height="11" rx="3" fill="#fe6e00"/>
+            <text x="152" y="119" text-decoration="line-through" fill="#a39a8a">우유 사기</text>
+            <rect x="134" y="136" width="11" height="11" rx="3" fill="#fff" stroke="#cc5a14" stroke-width="2"/>
+            <text x="152" y="145">과제 제출하기</text>
+            <rect x="134" y="162" width="11" height="11" rx="3" fill="#fff" stroke="#cc5a14" stroke-width="2"/>
+            <text x="152" y="171">투두 앱 완성하기</text>
+          </g>
+          <rect x="134" y="196" width="192" height="1.5" fill="#e5ddd2"/>
+          <text x="230" y="222" font-family="ui-monospace, monospace" font-size="9" fill="#797067" text-anchor="middle">종료 → todo.json에 저장 → 다시 열면 복원</text>
+          <text x="230" y="288" font-family="ui-sans-serif, system-ui" font-size="13" fill="#797067" text-anchor="middle">기능 3개면 — 진짜 쓰는 프로그램</text>
+        </svg>
+      </div>
     </div>
-    <p class="slide__note">베이스 펫은 <strong>전원이 같이</strong> 만듭니다 — 내 마음대로 바꾸는 확장은 실습 뒤에 따로.</p>
   </section>
 
   <!-- 8 · 만드는 흐름 -->
@@ -293,7 +278,7 @@
       <div class="step-list step-list--compact">
         <div class="step-list__item">
           <div class="step-list__num">1</div>
-          <div class="step-list__content"><p class="step-list__title">기본 폴더 만들기 <span class="step-list__desc" style="display:inline">— <span class="os-win">c:\lecture\pet</span><span class="os-mac">~/lecture/pet</span> (이름은 자유)</span></p></div>
+          <div class="step-list__content"><p class="step-list__title">기본 폴더 만들기 <span class="step-list__desc" style="display:inline">— <span class="os-win">c:\lecture\todo</span><span class="os-mac">~/lecture/todo</span></span></p></div>
         </div>
         <div class="step-list__item">
           <div class="step-list__num">2</div>
@@ -301,11 +286,11 @@
         </div>
         <div class="step-list__item">
           <div class="step-list__num">3</div>
-          <div class="step-list__content"><p class="step-list__title"><span class="os-win">python</span><span class="os-mac">python3</span> pet.py — 띄워 보기 <span class="step-list__desc" style="display:inline">— 막히면 화면 보여주며 다시 대화</span></p></div>
+          <div class="step-list__content"><p class="step-list__title"><span class="os-win">python</span><span class="os-mac">python3</span> todo.py — 띄워 보기 <span class="step-list__desc" style="display:inline">— 막히면 화면 보여주며 다시 대화</span></p></div>
         </div>
         <div class="step-list__item">
           <div class="step-list__num">4</div>
-          <div class="step-list__content"><p class="step-list__title">PyInstaller로 <span class="os-win">.exe</span><span class="os-mac">.app</span>로 묶기 <span class="step-list__desc" style="display:inline">— dist 폴더에 pet<span class="os-win">.exe</span><span class="os-mac">.app</span> 한 덩어리</span></p></div>
+          <div class="step-list__content"><p class="step-list__title">PyInstaller로 <span class="os-win">.exe</span><span class="os-mac">.app</span>로 묶기 <span class="step-list__desc" style="display:inline">— dist 폴더에 todo<span class="os-win">.exe</span><span class="os-mac">.app</span> 한 덩어리</span></p></div>
         </div>
         <div class="step-list__item">
           <div class="step-list__num">5</div>
@@ -316,7 +301,7 @@
     <p class="slide__note"><span class="os-win">.exe</span><span class="os-mac">.app</span>로 묶는 건 <strong>마지막 단계</strong> — 한 번 묶는 데 1~2분씩 걸립니다. 먼저 .py로 동작이 다 맞춰져야 합니다 — 80%는 .py에서 끝납니다.</p>
   </section>
 
-  <!-- 9 · Claude에게 부탁하는 법 -->
+  <!-- 9 · 3문장 프롬프트 -->
   <section class="slide is-standard">
     <div class="slide__eyebrow">PROMPT · 부탁하는 법</div>
     <h2 class="slide__title">앞서 익힌 — <span class="accent">3문장</span>이면 시작한다</h2>
@@ -325,9 +310,9 @@
         <div>
           <div class="content-card content-card--compact">
             <h3 class="content-card__title">목표 · 제약 · 내 수준</h3>
-            <p class="content-card__body">프롬프팅에서 익힌 목표·제약·수준 3문장. 데스크톱 프로그램에도 그대로 — 매뉴얼이 없어도 시작이 됩니다.</p>
+            <p class="content-card__body">프롬프팅에서 익힌 3문장. 데스크톱 프로그램에도 그대로 — 매뉴얼이 없어도 시작이 됩니다.</p>
             <ul class="content-card__list">
-              <li><strong>목표</strong> — 무엇을 만들지</li>
+              <li><strong>목표</strong> — 무엇을 만들지 (기능까지)</li>
               <li><strong>제약</strong> — PySide6로, <span class="os-win">.exe</span><span class="os-mac">.app</span>로 묶을 것</li>
               <li><strong>내 수준</strong> — "처음이니 설명하며"</li>
             </ul>
@@ -336,19 +321,19 @@
         <div>
           <div class="prompt-card">
             <div class="prompt-card__head">
-              <span class="prompt-card__label">프롬프트 예시 — 클로드 펫</span>
+              <span class="prompt-card__label">프롬프트 — 투두리스트</span>
               <button class="prompt-card__copy" type="button" data-copy>복사</button>
             </div>
-            <pre class="prompt-card__body" data-no-nav>바탕화면 위에 항상 떠 있는 작은 펫을 만들어줘. 동그란 캐릭터를 클릭하면 터미널 명령 claude -p "성격대로 한마디 해줘"를 백그라운드로 실행해서, 대답을 말풍선으로 보여줘. 성격은 같은 폴더의 CLAUDE.md에서 읽어줘.
+            <pre class="prompt-card__body" data-no-nav>투두리스트 데스크톱 앱을 todo.py로 만들어줘. 입력칸에 할 일을 적고 추가 버튼(엔터도)으로 목록에 쌓고, 체크하면 줄이 그어지고, 삭제 버튼도 있어. 종료해도 목록이 유지되게 같은 폴더의 todo.json에 자동 저장해줘.
 
-PySide6로 만들고, 대답을 기다리는 동안 창이 얼지 않게 해줘. 마지막에 PyInstaller로 <span class="os-win">.exe</span><span class="os-mac">.app</span>로 묶을 거야.
+PySide6로 만들고, 나중에 PyInstaller로 <span class="os-win">.exe</span><span class="os-mac">.app</span>로 묶을 거야.
 
 나는 PySide 처음이니까 설명하며 진행해줘.</pre>
           </div>
         </div>
       </div>
     </div>
-    <p class="slide__note">3장에서 배운 <strong>CLAUDE.md</strong> — 앱 폴더에 성격을 적어두면 그게 그대로 펫의 말투가 됩니다. 뼈대는 늘 같음: <strong>"무엇을 / PySide6+<span class="os-win">.exe</span><span class="os-mac">.app</span> / 처음이니 설명하며"</strong>.</p>
+    <p class="slide__note">뼈대는 늘 같음: <strong>"무엇을 / PySide6+<span class="os-win">.exe</span><span class="os-mac">.app</span> / 처음이니 설명하며"</strong> — 덱 2·3에서도 이 뼈대를 그대로 씁니다.</p>
   </section>
 
   <!-- 10 · 먼저 .py로 -->
@@ -374,38 +359,38 @@ PySide6로 만들고, 대답을 기다리는 동안 창이 얼지 않게 해줘.
               <span class="code-block__dot" style="background:#fb2c36"></span><span class="code-block__dot" style="background:#edb200"></span><span class="code-block__dot" style="background:#00c758"></span>
               <span class="code-block__title"><span class="os-win">PowerShell</span><span class="os-mac">Terminal (zsh)</span> · .py 실행</span>
             </div>
-            <div class="code-block__body"><span class="code-block__line"><span class="code-block__prompt" data-auto-os></span> <span class="code-block__cmd"><span class="os-win">cd c:\lecture\pet</span><span class="os-mac">cd ~/lecture/pet</span></span></span><span class="code-block__line"><span class="code-block__prompt" data-auto-os></span> <span class="code-block__cmd"><span class="os-win">python</span><span class="os-mac">python3</span> pet.py</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__out">  # 캐릭터가 뜬다 — 클릭해 보기</span></span><span class="code-block__line"><span class="code-block__out">  # "…생각 중" 뒤 말풍선 한마디</span></span><span class="code-block__line"><span class="code-block__cmt"># 80%는 이 단계에서 다듬는다</span></span></div>
+            <div class="code-block__body"><span class="code-block__line"><span class="code-block__prompt" data-auto-os></span> <span class="code-block__cmd"><span class="os-win">cd c:\lecture\todo</span><span class="os-mac">cd ~/lecture/todo</span></span></span><span class="code-block__line"><span class="code-block__prompt" data-auto-os></span> <span class="code-block__cmd"><span class="os-win">python</span><span class="os-mac">python3</span> todo.py</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__out">  # 창이 뜬다 — 할 일 넣고, 체크하고, 껐다 켜보기</span></span><span class="code-block__line"><span class="code-block__cmt"># 80%는 이 단계에서 다듬는다</span></span></div>
           </div>
         </div>
       </div>
     </div>
-    <p class="slide__note">첫 클릭은 <strong>5~20초</strong> 걸립니다 — "…생각 중"이 뜨면 정상. 동작이 이상하면 그 화면을 캡처해 Claude에게 "여기가 이상해"라고 그대로 보여주면 됩니다.</p>
+    <p class="slide__note">꼭 <strong>껐다 다시 켜보세요</strong> — 목록이 살아 있으면 저장 성공. 동작이 이상하면 그 화면을 캡처해 Claude에게 "여기가 이상해"라고 그대로 보여주면 됩니다.</p>
   </section>
 
-  <!-- 11 · 프로그램답게의 한 끗 -->
+  <!-- 11 · 다듬기 -->
   <section class="slide is-standard">
-    <div class="slide__eyebrow">POLISH · 프로그램답게</div>
-    <h2 class="slide__title">남이 써도 안 헤매게 — <span class="accent">한 끗</span></h2>
+    <div class="slide__eyebrow">POLISH · 한 줄씩 다듬기</div>
+    <h2 class="slide__title">한 번에 하나씩 — <span class="accent">내 것으로</span> 만든다</h2>
     <div class="slide__body">
       <div class="grid-3">
         <div class="diff-card">
-          <div class="diff-card__rank">즉시 반응</div>
-          <h3 class="diff-card__title">"…생각 중"을 먼저</h3>
-          <p class="diff-card__body">대답까지 5~20초 — 그동안 말풍선에 "…생각 중"부터 띄웁니다. 반응 없는 프로그램은 고장처럼 보입니다.</p>
+          <div class="diff-card__rank">모양</div>
+          <h3 class="diff-card__title">"다크모드로 바꿔줘"</h3>
+          <p class="diff-card__body">색·글꼴·크기 — 보이는 대로 일상어로 부탁하면 됩니다.</p>
         </div>
         <div class="diff-card">
-          <div class="diff-card__rank">실패 대비</div>
-          <h3 class="diff-card__title">실패해도 한마디</h3>
-          <p class="diff-card__body">인터넷이 끊기거나 claude 로그인이 풀려도 침묵하지 않게 — "오늘은 말이 안 나오네…" 같은 대체 문구를 넣습니다.</p>
+          <div class="diff-card__rank">기능</div>
+          <h3 class="diff-card__title">"마감일도 넣어줘"</h3>
+          <p class="diff-card__body">마감일·중요 표시·완료 항목 아래로 정렬 — 하나씩 추가.</p>
         </div>
         <div class="diff-card">
-          <div class="diff-card__rank">정체성</div>
-          <h3 class="diff-card__title">항상 위 + 트레이</h3>
-          <p class="diff-card__body">펫답게 어떤 창 위에도 떠 있게, 종료는 <span class="os-win">작업표시줄 트레이</span><span class="os-mac">메뉴 막대</span> 우클릭으로 — 이름·아이콘까지 붙이면 한 끗 더.</p>
+          <div class="diff-card__rank">디테일</div>
+          <h3 class="diff-card__title">"창 크기 기억해줘"</h3>
+          <p class="diff-card__body">시작 위치·크기 기억, 빈 입력 방지 — 프로그램다움의 한 끗.</p>
         </div>
       </div>
+      <p class="slide__note">한 줄 부탁 → 실행해 확인 → 다음 한 줄. <strong>2~3바퀴</strong>면 꽤 내 것 같아집니다.</p>
     </div>
-    <p class="slide__note">한 번에 다 안 짜도 됩니다 — "생각 중 표시랑 실패했을 때 문구도 넣어줘"라고 Claude에게 한 줄 부탁하면 알아서 붙습니다.</p>
   </section>
 
   <!-- 12 · .exe로 묶기 -->
@@ -417,11 +402,11 @@ PySide6로 만들고, 대답을 기다리는 동안 창이 얼지 않게 해줘.
         <div>
           <div class="content-card content-card--compact">
             <h3 class="content-card__title">실제로 일어나는 일 (참고)</h3>
-            <p class="content-card__body">claude가 대신 치는 명령은 <code>pyinstaller --onefile --windowed pet.py</code> — 진행 메시지가 쏟아져도 가만히 1~2분.</p>
+            <p class="content-card__body">claude가 대신 치는 명령은 <code>pyinstaller --onefile --windowed todo.py</code> — 진행 메시지가 쏟아져도 가만히 1~2분.</p>
             <ul class="content-card__list">
-              <li>결과는 <code><span class="os-win">dist\pet.exe</span><span class="os-mac">dist/pet.app</span></code> 하나 — <strong>성격 파일(CLAUDE.md)도 옆에 복사</strong></li>
+              <li>결과는 <code><span class="os-win">dist\todo.exe</span><span class="os-mac">dist/todo.app</span></code> 하나</li>
               <li>같은 OS의 다른 PC에 옮겨도 동작 — 파이썬 없어도. (Win↔Mac은 따로 빌드)</li>
-              <li><code>--onefile</code> = 한 덩어리, <code>--onedir</code> = 폴더로 분산(더 빠른 실행) · <code>--windowed</code> = 실행 시 검은 콘솔 창 안 뜨게 (완성본은 켜기)</li>
+              <li><code>--onefile</code> = 한 덩어리 · <code>--windowed</code> = 실행 시 검은 콘솔 창 안 뜨게</li>
             </ul>
           </div>
         </div>
@@ -431,15 +416,15 @@ PySide6로 만들고, 대답을 기다리는 동안 창이 얼지 않게 해줘.
               <span class="prompt-card__label">claude에게 · <span class="os-win">.exe</span><span class="os-mac">.app</span> 만들기 부탁</span>
               <button class="prompt-card__copy" type="button" data-copy>복사</button>
             </div>
-            <pre class="prompt-card__body" data-no-nav>pet.py를 PyInstaller로 더블클릭해 실행되는 <span class="os-win">.exe</span><span class="os-mac">.app</span> 한 덩어리로 만들어줘. 성격 파일 CLAUDE.md도 결과물 옆에 복사해줘. 끝나면 실행해서 보여줘.</pre>
+            <pre class="prompt-card__body" data-no-nav>todo.py를 PyInstaller로 더블클릭해 실행되는 <span class="os-win">.exe</span><span class="os-mac">.app</span> 한 덩어리로 만들어줘. 끝나면 실행해서 보여줘.</pre>
           </div>
         </div>
       </div>
     </div>
-    <p class="slide__note">명령·옵션은 외울 필요 없습니다 — 왼쪽 카드는 claude가 대신 쳐 주는 <strong>실제 명령</strong>(참고)입니다.<span class="os-mac"> Mac은 본인이 만든 앱이라 자체 서명 한 줄을 같이 시키면 깔끔 — <code>codesign --deep --force --sign - dist/pet.app</code>.</span></p>
+    <p class="slide__note">명령·옵션은 외울 필요 없습니다 — 왼쪽 카드는 claude가 대신 쳐 주는 <strong>실제 명령</strong>(참고)입니다. 할 일 데이터(todo.json)는 실행 파일 옆에 생깁니다.<span class="os-mac"> Mac은 자체 서명 한 줄을 같이 시키면 깔끔 — <code>codesign --deep --force --sign - dist/todo.app</code>.</span></p>
   </section>
 
-  <!-- 13 · "Windows의 PC 보호" 경고 -->
+  <!-- 13 · 경고창 -->
   <section class="slide is-statement">
     <div class="statement-grid">
       <div class="statement-text">
@@ -455,7 +440,7 @@ PySide6로 만들고, 대답을 기다리는 동안 창이 얼지 않게 해줘.
         <div class="statement__points os-mac is-block">
           <div class="statement__point"><span class="statement__point-num">왜</span><span>서명·공증 없는 앱은 Gatekeeper가 차단</span></div>
           <div class="statement__point"><span class="statement__point-num">풀기</span><span>Finder에서 <strong>우클릭 → 열기</strong> (첫 실행 1회만)</span></div>
-          <div class="statement__point"><span class="statement__point-num">옵션</span><span>자체 서명: <code>codesign --deep --force --sign - dist/pet.app</code></span></div>
+          <div class="statement__point"><span class="statement__point-num">옵션</span><span>자체 서명: <code>codesign --deep --force --sign - dist/todo.app</code></span></div>
         </div>
       </div>
       <div class="statement-visual">
@@ -468,7 +453,7 @@ PySide6로 만들고, 대답을 기다리는 동안 창이 얼지 않게 해줘.
           <text x="230" y="138" font-family="ui-sans-serif, system-ui" font-size="11" fill="#797067" text-anchor="middle">Microsoft Defender SmartScreen에서</text>
           <text x="230" y="156" font-family="ui-sans-serif, system-ui" font-size="11" fill="#797067" text-anchor="middle">인식할 수 없는 앱의 시작을 차단했습니다.</text>
           <text x="100" y="190" font-family="ui-sans-serif, system-ui" font-size="11" fill="#cc5a14" font-weight="700">앱:</text>
-          <text x="140" y="190" font-family="ui-monospace, monospace" font-size="11" fill="#797067">pet.exe</text>
+          <text x="140" y="190" font-family="ui-monospace, monospace" font-size="11" fill="#797067">todo.exe</text>
           <text x="100" y="208" font-family="ui-sans-serif, system-ui" font-size="11" fill="#cc5a14" font-weight="700">게시자:</text>
           <text x="160" y="208" font-family="ui-sans-serif, system-ui" font-size="11" fill="#797067">알 수 없는 게시자</text>
           <rect x="90" y="226" width="120" height="20" rx="4" fill="none" stroke="#cc5a14" stroke-width="1.5"/>
@@ -482,11 +467,11 @@ PySide6로 만들고, 대답을 기다리는 동안 창이 얼지 않게 해줘.
           <rect x="60" y="60" width="340" height="200" rx="10" fill="#fff" stroke="#cc5a14" stroke-width="2"/>
           <rect x="60" y="60" width="340" height="44" rx="10" fill="#fe6e00"/>
           <rect x="60" y="80" width="340" height="24" fill="#fe6e00"/>
-          <text x="230" y="88" font-family="ui-sans-serif, system-ui" font-size="13" fill="#fff" text-anchor="middle" font-weight="700">"pet.app"을(를) 열 수 없습니다</text>
+          <text x="230" y="88" font-family="ui-sans-serif, system-ui" font-size="13" fill="#fff" text-anchor="middle" font-weight="700">"todo.app"을(를) 열 수 없습니다</text>
           <text x="230" y="138" font-family="ui-sans-serif, system-ui" font-size="11" fill="#797067" text-anchor="middle">개발자를 확인할 수 없기 때문에</text>
           <text x="230" y="156" font-family="ui-sans-serif, system-ui" font-size="11" fill="#797067" text-anchor="middle">macOS가 이 소프트웨어를 열 수 없습니다.</text>
           <text x="100" y="190" font-family="ui-sans-serif, system-ui" font-size="11" fill="#cc5a14" font-weight="700">앱:</text>
-          <text x="140" y="190" font-family="ui-monospace, monospace" font-size="11" fill="#797067">pet.app</text>
+          <text x="140" y="190" font-family="ui-monospace, monospace" font-size="11" fill="#797067">todo.app</text>
           <text x="100" y="208" font-family="ui-sans-serif, system-ui" font-size="11" fill="#cc5a14" font-weight="700">상태:</text>
           <text x="140" y="208" font-family="ui-sans-serif, system-ui" font-size="11" fill="#797067">검증되지 않음 (Gatekeeper)</text>
           <rect x="90" y="226" width="120" height="20" rx="4" fill="none" stroke="#cc5a14" stroke-width="1.5"/>
@@ -499,93 +484,37 @@ PySide6로 만들고, 대답을 기다리는 동안 창이 얼지 않게 해줘.
     </div>
   </section>
 
-  <!-- 13.5 · 완성된 모습 (photo-slot) -->
+  <!-- 14 · 완성된 모습 -->
   <section class="slide is-standard">
     <div class="slide__eyebrow">DONE · 완성된 모습</div>
     <h2 class="slide__title">더블클릭하면 — <span class="accent">이런 창이 뜬다</span></h2>
     <div class="slide__body">
       <div class="two-col">
-        <figure class="photo-slot photo-slot--landscape" data-img="vc-ch07-desktop-pet-run.png">
-          <img class="photo-slot__img" src="../../imgs/vc-ch07-desktop-pet-run.png" alt="python pet.py로 띄운 클로드 펫 — 말풍선 한마디">
+        <figure class="photo-slot photo-slot--landscape" data-img="vc-ch07-todo-run.png">
+          <img class="photo-slot__img" src="../../imgs/vc-ch07-todo-run.png" alt="python todo.py로 띄운 투두리스트">
           <figcaption class="photo-slot__ph">
             <span class="photo-slot__icon">◧</span>
-            <span class="photo-slot__label">1 · python pet.py — 먼저 .py로</span>
-            <span class="photo-slot__hint">클릭하면 말풍선으로 한마디</span>
+            <span class="photo-slot__label">1 · python todo.py — 먼저 .py로</span>
+            <span class="photo-slot__hint">추가·체크·삭제 — 껐다 켜도 유지</span>
           </figcaption>
         </figure>
-        <figure class="photo-slot photo-slot--landscape" data-img="vc-ch07-desktop-pet-exe.png">
-          <img class="photo-slot__img" src="../../imgs/vc-ch07-desktop-pet-exe.png" alt="dist의 pet.exe를 더블클릭해 띄운 클로드 펫">
+        <figure class="photo-slot photo-slot--landscape" data-img="vc-ch07-todo-exe.png">
+          <img class="photo-slot__img" src="../../imgs/vc-ch07-todo-exe.png" alt="dist의 todo.exe를 더블클릭해 띄운 투두리스트">
           <figcaption class="photo-slot__ph">
             <span class="photo-slot__icon">◧</span>
-            <span class="photo-slot__label">2 · dist의 pet<span class="os-win">.exe</span><span class="os-mac">.app</span> — 더블클릭</span>
-            <span class="photo-slot__hint">같은 펫 — 이제 파이썬 없이도 돈다</span>
+            <span class="photo-slot__label">2 · dist의 todo<span class="os-win">.exe</span><span class="os-mac">.app</span> — 더블클릭</span>
+            <span class="photo-slot__hint">같은 앱 — 이제 파이썬 없이도 돈다</span>
           </figcaption>
         </figure>
       </div>
     </div>
-    <p class="slide__note">성격이 다르면 말도 다릅니다 — <strong>옆자리 펫과 비교</strong>해보세요. <span class="os-win">경고창이 뜨면 "추가 정보 → 실행"</span><span class="os-mac">첫 실행은 우클릭 → 열기</span>.</p>
+    <p class="slide__note">여기까지 하면 — <strong>내 PC에 사는 첫 프로그램</strong> 완성. 막히면 에러·화면을 그대로 캡처해 Claude에게.</p>
   </section>
 
-  <!-- 14 · 실습 -->
-  <section class="slide is-standard">
-    <div class="slide__eyebrow">실습 · 내 펫 만들기</div>
-    <h2 class="slide__title">성격부터 정하고 — <span class="accent">.py → <span class="os-win">.exe</span><span class="os-mac">.app</span></span>까지</h2>
-    <div class="slide__body">
-      <div class="step-list step-list--compact">
-        <div class="step-list__item">
-          <div class="step-list__num">1</div>
-          <div class="step-list__content"><p class="step-list__title">폴더 만들고 — 성격 3줄 <span class="step-list__desc" style="display:inline">— <span class="os-win">c:\lecture\pet</span><span class="os-mac">~/lecture/pet</span>의 CLAUDE.md에 (3장 방식 그대로)</span></p></div>
-        </div>
-        <div class="step-list__item">
-          <div class="step-list__num">2</div>
-          <div class="step-list__content"><p class="step-list__title">3문장 프롬프트로 pet.py <span class="step-list__desc" style="display:inline">— 목표·제약·내 수준 (앞 슬라이드에서 복사)</span></p></div>
-        </div>
-        <div class="step-list__item">
-          <div class="step-list__num">3</div>
-          <div class="step-list__content"><p class="step-list__title">.py로 띄워 다듬기 (2~3바퀴) <span class="step-list__desc" style="display:inline">— 클릭해 말풍선 확인, 어색한 곳을 그대로 말해 고친다</span></p></div>
-        </div>
-        <div class="step-list__item">
-          <div class="step-list__num">4</div>
-          <div class="step-list__content"><p class="step-list__title">pyinstaller --onefile --windowed <span class="step-list__desc" style="display:inline">— 끝나면 CLAUDE.md를 dist에 복사, <span class="os-win">dist\pet.exe</span><span class="os-mac">dist/pet.app</span> 완성</span></p></div>
-        </div>
-        <div class="step-list__item">
-          <div class="step-list__num">5</div>
-          <div class="step-list__content"><p class="step-list__title">더블클릭 + 옆자리와 비교 <span class="step-list__desc" style="display:inline">— 경고창은 <span class="os-win">"추가 정보 → 실행"</span><span class="os-mac">우클릭 → 열기</span></span></p></div>
-        </div>
-      </div>
-    </div>
-    <p class="slide__note">막히면 — 에러 메시지나 이상한 화면을 <strong>그대로 캡처</strong>해 Claude에게 보여주세요. 80%는 그 자리에서 풀립니다.</p>
-  </section>
-
-  <!-- 15 · 확장 메뉴 -->
-  <section class="slide is-standard">
-    <div class="slide__eyebrow">EXTEND · 내 마음대로 확장</div>
-    <h2 class="slide__title">베이스는 같아도 — <span class="accent">내 펫은 다르게</span> 큰다</h2>
-    <div class="slide__body">
-      <div class="menu-group">
-        <div class="menu-group__label">A · 펫을 살아있게<span class="menu-group__label-desc">— 혼자서도 노는 펫 3종</span></div>
-        <div class="grid-3">
-          <div class="content-card content-card--compact"><h3 class="content-card__title">혼자 말하기</h3><p class="content-card__body">30분마다 스스로 한마디 — "타이머로 주기적으로 말하게 해줘" 한 줄.</p></div>
-          <div class="content-card content-card--compact"><h3 class="content-card__title">스킨·표정</h3><p class="content-card__body">색·모양·눈 깜빡임 — 내 캐릭터로 다시 그리기.</p></div>
-          <div class="content-card content-card--compact"><h3 class="content-card__title">성격 여러 벌</h3><p class="content-card__body">CLAUDE.md를 갈아끼우면 다른 펫 — 우클릭 메뉴로 전환.</p></div>
-        </div>
-      </div>
-      <div class="menu-group">
-        <div class="menu-group__label">B · 배운 것과 연결<span class="menu-group__label-desc">— 내 결과물이 펫의 재료 3종</span></div>
-        <div class="grid-3">
-          <div class="content-card content-card--compact"><h3 class="content-card__title">방명록 알리미</h3><p class="content-card__body">5장 방명록에 새 글이 오면 펫이 알려준다 (Supabase).</p></div>
-          <div class="content-card content-card--compact"><h3 class="content-card__title">날씨·시세 한마디</h3><p class="content-card__body">4장 공개 API를 읽어와 "우산 챙겨" — 아침 브리핑 펫.</p></div>
-          <div class="content-card content-card--compact"><h3 class="content-card__title">내 작업 리모컨</h3><p class="content-card__body">6장 크롤링 스크립트를 펫 클릭 메뉴에서 실행.</p></div>
-        </div>
-      </div>
-    </div>
-    <p class="slide__note">방명록 알리미는 5장을 완성한 사람용 — 아니면 날씨부터. 확장도 늘 <strong>한 번에 하나씩</strong>, 2~3바퀴 다듬으며.</p>
-  </section>
-
-  <!-- 16 · 막힐 때 체크 -->
+  <!-- 15 · 트러블슈팅 -->
   <section class="slide is-standard">
     <div class="slide__eyebrow">TROUBLE · 막힐 때 체크</div>
-    <h2 class="slide__title">자주 걸리는 — <span class="accent">5가지 + 해법</span></h2>
+    <h2 class="slide__title">자주 걸리는 — <span class="accent">4가지 + 해법</span></h2>
     <div class="slide__body">
       <div class="trouble-list trouble-list--compact">
         <div class="trouble-item">
@@ -595,51 +524,46 @@ PySide6로 만들고, 대답을 기다리는 동안 창이 얼지 않게 해줘.
         </div>
         <div class="trouble-item">
           <div class="trouble-item__num">02</div>
-          <div class="trouble-item__problem">펫을 눌러도 말이 없다</div>
-          <div class="trouble-item__solution">첫 마디는 <strong>5~20초</strong> — "…생각 중"이면 기다리면 됩니다. 계속 조용하면 <span class="os-win">PowerShell</span><span class="os-mac">터미널</span>에서 <code>claude -p "안녕"</code>부터 — 로그인·인터넷 문제면 여기서 걸립니다.</div>
-        </div>
-        <div class="trouble-item">
-          <div class="trouble-item__num">03</div>
           <div class="trouble-item__problem">.py가 안 뜨거나 — 빌드 에러</div>
-          <div class="trouble-item__solution"><code><span class="os-win">python</span><span class="os-mac">python3</span> pet.py</code>를 <span class="os-win">PowerShell</span><span class="os-mac">터미널</span>에서 직접 실행하면 에러가 남음 → 빨간 줄을 <strong>통째로</strong> 복사해 Claude에게. 빌드 에러도 같은 방법.</div>
+          <div class="trouble-item__solution"><code><span class="os-win">python</span><span class="os-mac">python3</span> todo.py</code>를 <span class="os-win">PowerShell</span><span class="os-mac">터미널</span>에서 직접 실행하면 에러가 남음 → 빨간 줄을 <strong>통째로</strong> 복사해 Claude에게. 빌드 에러도 같은 방법.</div>
         </div>
         <div class="trouble-item os-win is-grid">
-          <div class="trouble-item__num">04</div>
+          <div class="trouble-item__num">03</div>
           <div class="trouble-item__problem">.exe 더블클릭했더니 "Windows의 PC 보호"</div>
-          <div class="trouble-item__solution">정상. "추가 정보 → 실행". 슬라이드 13 참고.</div>
+          <div class="trouble-item__solution">정상. "추가 정보 → 실행". 앞 슬라이드 참고.</div>
         </div>
         <div class="trouble-item os-mac is-grid">
-          <div class="trouble-item__num">04</div>
+          <div class="trouble-item__num">03</div>
           <div class="trouble-item__problem">.app 더블클릭했더니 Gatekeeper 차단</div>
-          <div class="trouble-item__solution">정상. Finder에서 <strong>우클릭 → 열기</strong>(1회). 또는 자체 서명: <code>codesign --deep --force --sign - dist/pet.app</code>. 슬라이드 13 참고.</div>
+          <div class="trouble-item__solution">정상. Finder에서 <strong>우클릭 → 열기</strong>(1회). 또는 자체 서명: <code>codesign --deep --force --sign - dist/todo.app</code>.</div>
         </div>
         <div class="trouble-item os-win is-grid">
-          <div class="trouble-item__num">05</div>
+          <div class="trouble-item__num">04</div>
           <div class="trouble-item__problem">.exe가 백신에 격리됐다</div>
           <div class="trouble-item__solution">서명 없는 새 파일이라 가끔 오탐. Windows 보안 → 보호 기록 → 복원. 작업 폴더를 Defender 예외에 추가해두면 재발 방지.</div>
         </div>
         <div class="trouble-item os-mac is-grid">
-          <div class="trouble-item__num">05</div>
+          <div class="trouble-item__num">04</div>
           <div class="trouble-item__problem">"손상된 파일이라 열 수 없습니다"</div>
-          <div class="trouble-item__solution">실제 손상이 아니라 격리 속성 때문. <code>xattr -dr com.apple.quarantine dist/pet.app</code> 한 줄로 풀림. (다운로드한 앱에 macOS가 붙이는 속성)</div>
+          <div class="trouble-item__solution">실제 손상이 아니라 격리 속성 때문. <code>xattr -dr com.apple.quarantine dist/todo.app</code> 한 줄로 풀림.</div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- 17 · Wrap -->
+  <!-- 16 · Wrap -->
   <section class="slide is-feature">
     <div class="feature-head">
-      <div class="slide__eyebrow">WRAP · 7장 끝</div>
-      <h2 class="feature-head__title">내 PC에 — <span class="accent">진짜 프로그램</span>이 생겼다</h2>
+      <div class="slide__eyebrow">WRAP · 투두리스트 끝</div>
+      <h2 class="feature-head__title">내 PC에 — <span class="accent">첫 프로그램</span>이 생겼다</h2>
     </div>
     <div class="feature-body">
       <div class="feature-text">
-        <p class="statement__caption">웹페이지는 인터넷에 살지만, 펫은 내 컴퓨터에 삽니다. 파일로 친구에게 보낼 수도, <span class="os-win">작업표시줄</span><span class="os-mac">Dock</span>에 고정할 수도 있습니다.</p>
+        <p class="statement__caption">웹페이지는 인터넷에 살지만, 투두리스트는 내 컴퓨터에 삽니다. 창을 그리고(PySide) 한 덩어리로 묶는(PyInstaller) 기본기 — 이 덱의 앱 구조가 이 장 나머지 두 앱의 뼈대입니다.</p>
         <div class="statement__points">
-          <div class="statement__point"><span class="statement__point-num">PySide</span><span>창·캐릭터·말풍선을 파이썬으로</span></div>
+          <div class="statement__point"><span class="statement__point-num">PySide</span><span>창 · 입력칸 · 버튼 · 목록을 파이썬으로</span></div>
+          <div class="statement__point"><span class="statement__point-num">저장</span><span>todo.json — 껐다 켜도 남는 데이터</span></div>
           <div class="statement__point"><span class="statement__point-num">PyInstaller</span><span>.py를 <span class="os-win">.exe</span><span class="os-mac">.app</span> 한 덩어리로</span></div>
-          <div class="statement__point"><span class="statement__point-num">claude -p</span><span>터미널의 Claude에 — 창을 입혔다</span></div>
         </div>
       </div>
       <div class="feature-visual">
@@ -657,7 +581,7 @@ PySide6로 만들고, 대답을 기다리는 동안 창이 얼지 않게 해줘.
           <text x="322" y="160" font-family="ui-sans-serif, system-ui" font-size="10" fill="rgba(255,255,255,0.85)" text-anchor="middle">한 덩어리</text>
           <text x="322" y="180" font-family="ui-sans-serif, system-ui" font-size="14" fill="#fff" text-anchor="middle">↓</text>
           <rect x="160" y="222" width="140" height="44" rx="8" fill="#fff" stroke="#cc5a14" stroke-width="2"/>
-          <text x="230" y="248" font-family="ui-monospace, monospace" font-size="13" fill="#cc5a14" text-anchor="middle" font-weight="700">pet<tspan class="os-win">.exe</tspan><tspan class="os-mac">.app</tspan></text>
+          <text x="230" y="248" font-family="ui-monospace, monospace" font-size="13" fill="#cc5a14" text-anchor="middle" font-weight="700">todo<tspan class="os-win">.exe</tspan><tspan class="os-mac">.app</tspan></text>
           <text x="230" y="290" font-family="ui-sans-serif, system-ui" font-size="13" fill="#797067" text-anchor="middle">더블클릭으로 — 내 <tspan class="os-win">PC</tspan><tspan class="os-mac">Mac</tspan>에서 실행</text>
         </svg>
       </div>

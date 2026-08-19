@@ -1,0 +1,490 @@
+<!doctype html>
+<!-- © 2026 이일규 (Ilkyu Lee). All rights reserved. 본 강의자료는 저작권법으로 보호되는 저작물입니다. 무단 복제·배포·재사용을 금합니다. -->
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="author" content="이일규">
+  <meta name="copyright" content="© 2026 이일규 · 본 강의자료는 저작권법으로 보호되는 저작물입니다. 무단 복제·배포 금지.">
+  <script defer src="../../scripts/protect.js"></script>
+  <title>7장 · 2. 주식 트레이딩 앱 — API 통신</title>
+  <link rel="stylesheet" href="../../styles/tokens.css">
+  <link rel="stylesheet" href="../../styles/deck.css">
+  <link rel="stylesheet" href="../../styles/_os-toggle.css">
+  <link rel="stylesheet" href="../../styles/_practice.css">
+  <script defer src="../../scripts/os-toggle.js"></script>
+  <script defer src="../../scripts/prompt-copy.js"></script>
+  <script defer src="../../scripts/slide-modify.js"></script>
+  <script defer src="../../scripts/feedback.js"></script>
+  <script defer src="../../scripts/analytics.js"></script>
+  <style>
+    .api-table { width: 100%; border-collapse: collapse; font-size: 0.8rem; }
+    .api-table th, .api-table td { text-align: left; padding: 0.42rem 0.55rem; border-bottom: 1.5px solid var(--color-outline); }
+    .api-table th { font-size: 0.66rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--color-on-surface-muted); }
+    .api-table code { font-size: 0.74rem; }
+    .api-method { font-family: var(--font-mono); font-weight: 700; font-size: 0.7rem; color: var(--color-primary-strong); }
+  </style>
+</head>
+<body>
+
+<main class="deck">
+
+  <header class="deck-chrome">
+    <span class="deck-chrome__brand">바이브코딩 · CLAUDE CODE</span>
+    <span class="deck-chrome__divider">·</span>
+    <span class="deck-chrome__day">7장 · 2 주식 트레이딩</span>
+    <span class="deck-chrome__spacer"></span>
+    <span class="deck-chrome__counter">— / —</span>
+  </header>
+
+  <!-- 1 · Section cover -->
+  <section class="slide is-section is-standard">
+    <div class="section-eyebrow">7장 · STOCK TRADER</div>
+    <h2 class="section-title">이번엔 내 앱이 — <span class="accent">서버와 통신</span>한다</h2>
+    <p class="section-caption">투두리스트는 내 PC 안에서만 돌았습니다. 이번엔 강의가 제공하는 "가상 주식 시장" 서버에 내 앱을 접속시켜 — 시세를 받아오고, 매수·매도를 쏘고, 전원이 같은 리더보드에서 경쟁합니다. 프로그램이 세상과 대화하는 법, API입니다.</p>
+    <div class="section-meta">
+      <div class="section-meta__item"><span class="section-meta__num">3</span><span>종목 — A · B · C</span></div>
+      <div class="section-meta__item"><span class="section-meta__num">100만</span><span>시작 자금 (가상)</span></div>
+      <div class="section-meta__item"><span class="section-meta__num">1</span><span>리더보드 — 전원 경쟁</span></div>
+    </div>
+  </section>
+
+  <!-- 2 · 왜 API인가 -->
+  <section class="slide is-standard">
+    <div class="slide__eyebrow">CONCEPT · 앱 ↔ 서버</div>
+    <h2 class="slide__title">혼자 놀던 앱이 — <span class="accent">세상과 대화</span>하려면</h2>
+    <div class="slide__body">
+      <div class="bg-compare">
+        <div class="bg-compare__side bg-compare__side--soft">
+          <div class="bg-compare__label">덱 1 · 투두리스트</div>
+          <div class="bg-compare__quote">
+            <div>데이터가 내 PC 안(todo.json)</div>
+            <div>인터넷 없어도 동작</div>
+            <div>다른 사람과 상호작용 없음</div>
+          </div>
+          <p class="bg-compare__note">로컬 프로그램 — 혼자 논다.</p>
+        </div>
+        <div class="bg-compare__side bg-compare__side--good">
+          <div class="bg-compare__label">덱 2 · 트레이딩 앱</div>
+          <div class="bg-compare__quote">
+            <div>데이터가 서버에 — 시세·잔고·순위</div>
+            <div>앱은 API로 묻고(GET) 쏜다(POST)</div>
+            <div>전원이 <strong>같은 시장</strong>에서 경쟁</div>
+          </div>
+          <p class="bg-compare__note">4장에서 웹페이지가 API를 썼다면 — 이번엔 <strong>내 프로그램</strong>이 씁니다.</p>
+        </div>
+      </div>
+    </div>
+    <p class="slide__note">API = 서버가 정해둔 <strong>정식 창구</strong>. 스펙(주소·형식·규칙)만 알면 어떤 프로그램이든 대화할 수 있습니다.</p>
+  </section>
+
+  <!-- 3 · 시장 소개 -->
+  <section class="slide is-standard">
+    <div class="slide__eyebrow">MARKET · 가상 주식 시장</div>
+    <h2 class="slide__title">1초마다 움직이는 — <span class="accent">우리만의 시장</span></h2>
+    <div class="slide__body">
+      <div class="two-col">
+        <div>
+          <div class="content-card content-card--compact">
+            <h3 class="content-card__title">규칙</h3>
+            <ul class="content-card__list">
+              <li>종목 <strong>A · B · C</strong> — 1초마다 시세 변동 (현실 하루 장세를 몇 분에)</li>
+              <li>시작 자금 <strong>가상 100만원</strong> · 수수료 없음 · 공매도 없음</li>
+              <li><strong>여러분의 매수·매도가 가격을 밀고 당깁니다</strong> — 큰 주문일수록 크게</li>
+              <li>강의 화면에 실시간 차트·리더보드·체결이 계속 표시</li>
+            </ul>
+          </div>
+        </div>
+        <div>
+          <figure class="photo-slot photo-slot--landscape" data-img="vc-ch07-stock-board.png">
+            <img class="photo-slot__img" src="../../imgs/vc-ch07-stock-board.png" alt="주식 시뮬 라이브 보드 — 차트·리더보드·체결 피드">
+            <figcaption class="photo-slot__ph">
+              <span class="photo-slot__icon">◧</span>
+              <span class="photo-slot__label">라이브 보드 — 강의 화면</span>
+              <span class="photo-slot__hint">3종목 차트 · 수익률 곡선 · 리더보드 · 체결 피드</span>
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+      <p class="slide__note">가짜 돈, 진짜 통신 — 시장은 가상이지만 여러분의 앱이 하는 API 통신은 실무 그대로입니다.</p>
+    </div>
+  </section>
+
+  <!-- 4 · 슬리피지 예고 -->
+  <section class="slide is-statement">
+    <div class="statement-grid">
+      <div class="statement-text">
+        <div class="slide__eyebrow">RULE · 슬리피지</div>
+        <h2 class="statement__lead">많이 살수록 — <span class="accent">비싸게 사진다</span>.</h2>
+        <p class="statement__caption">주문 수량이 클수록 체결가가 나에게 불리해집니다(수량 × 0.05%, 최대 5%). 그리고 큰 주문은 시장 가격 자체를 밀어올리거나 끌어내립니다 — 진짜 시장의 "슬리피지"를 흉내낸 규칙.</p>
+        <div class="statement__points">
+          <div class="statement__point"><span class="statement__point-num">체결</span><span>매수는 현재가보다 조금 비싸게 · 매도는 조금 싸게</span></div>
+          <div class="statement__point"><span class="statement__point-num">임팩트</span><span>내 주문이 가격을 움직임 — 몇 분에 걸쳐 원위치</span></div>
+          <div class="statement__point"><span class="statement__point-num">교훈</span><span>몰빵 한 방보다 — 나눠서 사고파는 쪽이 유리</span></div>
+        </div>
+      </div>
+      <div class="statement-visual">
+        <svg viewBox="0 0 460 320" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <rect x="0" y="0" width="460" height="320" rx="16" fill="#fff5ec"/>
+          <text x="230" y="46" font-family="ui-sans-serif, system-ui" font-size="13" fill="#797067" font-weight="700" text-anchor="middle">100주 몰빵 vs 10주씩 10번</text>
+          <rect x="50" y="80" width="170" height="130" rx="10" fill="#fff" stroke="#fb2c36" stroke-width="2"/>
+          <text x="135" y="110" font-family="ui-sans-serif, system-ui" font-size="12" fill="#fb2c36" font-weight="700" text-anchor="middle">한 번에 100주</text>
+          <text x="135" y="140" font-family="ui-monospace, monospace" font-size="11" fill="#797067" text-anchor="middle">슬리피지 5%</text>
+          <text x="135" y="164" font-family="ui-monospace, monospace" font-size="11" fill="#797067" text-anchor="middle">10,000원 → 10,500원에</text>
+          <text x="135" y="192" font-family="ui-sans-serif, system-ui" font-size="11" fill="#fb2c36" text-anchor="middle" font-weight="700">사자마자 −5%</text>
+          <rect x="240" y="80" width="170" height="130" rx="10" fill="#fff" stroke="#016630" stroke-width="2"/>
+          <text x="325" y="110" font-family="ui-sans-serif, system-ui" font-size="12" fill="#016630" font-weight="700" text-anchor="middle">10주씩 나눠서</text>
+          <text x="325" y="140" font-family="ui-monospace, monospace" font-size="11" fill="#797067" text-anchor="middle">슬리피지 0.5%씩</text>
+          <text x="325" y="164" font-family="ui-monospace, monospace" font-size="11" fill="#797067" text-anchor="middle">거의 시장가 그대로</text>
+          <text x="325" y="192" font-family="ui-sans-serif, system-ui" font-size="11" fill="#016630" text-anchor="middle" font-weight="700">천천히, 그러나 싸게</text>
+          <text x="230" y="262" font-family="ui-sans-serif, system-ui" font-size="14" fill="#cc5a14" font-weight="700" text-anchor="middle">수업 중에 직접 실험해 봅니다</text>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5 · API 스펙 -->
+  <section class="slide is-standard">
+    <div class="slide__eyebrow">SPEC · API 명세서 ★</div>
+    <h2 class="slide__title">이 표가 — <span class="accent">내 앱의 설계도</span>입니다</h2>
+    <div class="slide__body">
+      <div class="content-card content-card--compact">
+        <p class="content-card__body">Base URL <code>https://vibecoding-cc.vercel.app/api/stock</code> · 모든 요청에 헤더 <code>X-API-Key: 내키</code></p>
+        <table class="api-table">
+          <thead><tr><th>메서드</th><th>경로</th><th>설명</th><th>응답(요약)</th></tr></thead>
+          <tbody>
+            <tr><td class="api-method">GET</td><td><code>/price</code></td><td>3종목 현재가·거래량</td><td><code>{"quotes":[{"symbol":"A","price":10234.5,…}]}</code></td></tr>
+            <tr><td class="api-method">GET</td><td><code>/history?symbol=A&amp;seconds=600</code></td><td>최근 N초 시세 (최대 3600)</td><td><code>{"series":[{"t":…,"price":…,"volume":…}]}</code></td></tr>
+            <tr><td class="api-method">POST</td><td><code>/order</code></td><td>시장가 주문 — 본문 <code>{"symbol":"A","side":"buy","qty":10}</code></td><td><code>{"filled":10,"exec_price":…,"cash":…}</code></td></tr>
+            <tr><td class="api-method">GET</td><td><code>/portfolio</code></td><td>내 현금·보유·수익률·체결 내역</td><td><code>{"cash":…,"pnl_pct":…,"trades":[…]}</code></td></tr>
+            <tr><td class="api-method">GET</td><td><code>/leaderboard</code></td><td>수익률 순위</td><td><code>{"rows":[{"name":…,"pnl_pct":…}]}</code></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="slide__note"><strong>규칙</strong>: 시세 조회는 1초에 한 번 정도(그보다 빨라도 서버가 같은 값), <strong>주문은 키당 1초 1회</strong> — 넘기면 <code>429</code> 에러. 이 슬라이드를 Claude에게 그대로 보여주면 앱이 나옵니다.</p>
+    </div>
+  </section>
+
+  <!-- 6 · 키 발급 -->
+  <section class="slide is-standard">
+    <div class="slide__eyebrow">KEY · 내 API 키</div>
+    <h2 class="slide__title">강의자료 사이트에서 — <span class="accent">버튼 한 번</span></h2>
+    <div class="slide__body">
+      <div class="two-col">
+        <div>
+          <div class="content-card content-card--compact">
+            <h3 class="content-card__title">발급 = 내 계좌 개설</h3>
+            <ul class="content-card__list">
+              <li>강의자료 사이트의 <code>/slide/stock-sim/key.html</code> 접속</li>
+              <li><strong>"API 키 발급 / 보기"</strong> 클릭 → 키 복사</li>
+              <li>키 발급과 동시에 <strong>가상 100만원</strong> 지급 — 이름은 열람 신청 이름 그대로</li>
+              <li>키는 비밀번호처럼 — <strong>공유 금지</strong> (남이 내 계좌로 몰빵할 수 있음)</li>
+            </ul>
+          </div>
+        </div>
+        <div>
+          <figure class="photo-slot photo-slot--landscape" data-img="vc-ch07-stock-key.png">
+            <img class="photo-slot__img" src="../../imgs/vc-ch07-stock-key.png" alt="API 키 발급 화면">
+            <figcaption class="photo-slot__ph">
+              <span class="photo-slot__icon">◧</span>
+              <span class="photo-slot__label">키 발급 화면</span>
+              <span class="photo-slot__hint">버튼 한 번 — 키 + 사용법이 같이 나옴</span>
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+      <p class="slide__note">로그인된 수강생만 발급됩니다. 다시 누르면 <strong>같은 키</strong>를 보여주니 잃어버려도 걱정 없음.</p>
+    </div>
+  </section>
+
+  <!-- 7 · v1 시세 뷰어 -->
+  <section class="slide is-standard">
+    <div class="slide__eyebrow">v1 · 시세 뷰어</div>
+    <h2 class="slide__title">먼저 — <span class="accent">시세가 흐르는 창</span>부터</h2>
+    <div class="slide__body">
+      <div class="two-col">
+        <div>
+          <div class="content-card content-card--compact">
+            <h3 class="content-card__title">가장 작은 통신</h3>
+            <ul class="content-card__list">
+              <li>1초마다 <code>GET /price</code> 폴링</li>
+              <li>3종목 현재가를 큰 글씨로 표시</li>
+              <li>오르면 빨강↑ · 내리면 파랑↓ (한국식)</li>
+            </ul>
+            <p class="content-card__body">폴더는 <code><span class="os-win">c:\lecture\trader</span><span class="os-mac">~/lecture/trader</span></code> — 새로 만들어 시작합니다.</p>
+          </div>
+        </div>
+        <div>
+          <div class="prompt-card">
+            <div class="prompt-card__head">
+              <span class="prompt-card__label">프롬프트 · v1 (API 스펙 포함)</span>
+              <button class="prompt-card__copy" type="button" data-copy>복사</button>
+            </div>
+            <pre class="prompt-card__body" data-no-nav>주식 시세 뷰어를 trader.py로 만들어줘. 1초마다 https://vibecoding-cc.vercel.app/api/stock/price 를 GET으로 호출하면(헤더 X-API-Key: <span class="ph">[내키]</span>) {"quotes":[{"symbol":"A","price":...,"volume":...},...]} 형태로 3종목이 와. 종목별 현재가를 큰 글씨로 보여주고, 직전보다 오르면 빨강, 내리면 파랑으로 표시해줘.
+
+PySide6로 만들고, 통신 중에 창이 얼지 않게 해줘. 나는 처음이니까 설명하며 진행해줘.</pre>
+          </div>
+        </div>
+      </div>
+      <p class="slide__note"><span class="ph">[내키]</span> 자리에 방금 발급받은 키를 붙여넣으세요. 숫자가 1초마다 바뀌기 시작하면 — <strong>내 앱이 서버와 대화하는 중</strong>입니다.</p>
+    </div>
+  </section>
+
+  <!-- 8 · v1 결과 -->
+  <section class="slide is-standard">
+    <div class="slide__eyebrow">v1 · RESULT</div>
+    <h2 class="slide__title">숫자가 뛰기 시작하면 — <span class="accent">통신 성공</span></h2>
+    <div class="slide__body">
+      <div class="two-col">
+        <figure class="photo-slot photo-slot--landscape" data-img="vc-ch07-stock-v1.png">
+          <img class="photo-slot__img" src="../../imgs/vc-ch07-stock-v1.png" alt="시세 뷰어 v1 — 3종목 현재가">
+          <figcaption class="photo-slot__ph">
+            <span class="photo-slot__icon">◧</span>
+            <span class="photo-slot__label">v1 — 3종목 현재가</span>
+            <span class="photo-slot__hint">1초마다 갱신 · 등락 색</span>
+          </figcaption>
+        </figure>
+        <div>
+          <div class="content-card content-card--compact">
+            <h3 class="content-card__title">확인 포인트</h3>
+            <ul class="content-card__list">
+              <li>강의 화면(라이브 보드)과 <strong>같은 가격</strong>인가? — 같은 서버니까 같아야 정상</li>
+              <li>창을 움직여도 숫자가 계속 뛰는가? — 통신이 창을 안 얼리는지</li>
+              <li>키를 지우면? — 401 에러. <strong>키가 곧 신분증</strong>임을 확인</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <p class="slide__note">에러가 나면 메시지를 통째로 Claude에게 — "401 unauthorized"는 키 오타, "timeout"은 인터넷 문제입니다.</p>
+    </div>
+  </section>
+
+  <!-- 9 · v2 차트 -->
+  <section class="slide is-standard">
+    <div class="slide__eyebrow">v2 · 차트</div>
+    <h2 class="slide__title">히스토리 API로 — <span class="accent">차트를 그린다</span></h2>
+    <div class="slide__body">
+      <div class="two-col">
+        <div>
+          <div class="content-card content-card--compact">
+            <h3 class="content-card__title">추가되는 것</h3>
+            <ul class="content-card__list">
+              <li><code>GET /history?symbol=A&amp;seconds=300</code> — 최근 5분 시세 배열</li>
+              <li>종목 선택 버튼(A/B/C) + 라인 차트</li>
+              <li>차트도 몇 초마다 갱신</li>
+            </ul>
+          </div>
+        </div>
+        <div>
+          <div class="prompt-card">
+            <div class="prompt-card__head">
+              <span class="prompt-card__label">프롬프트 · v2</span>
+              <button class="prompt-card__copy" type="button" data-copy>복사</button>
+            </div>
+            <pre class="prompt-card__body" data-no-nav>trader.py에 차트를 추가해줘. 종목 버튼(A/B/C)을 누르면 https://vibecoding-cc.vercel.app/api/stock/history?symbol=A&seconds=300 (헤더 동일)에서 최근 5분 시세를 받아 라인 차트로 그려줘. 3초마다 갱신하고, 외부 차트 라이브러리 없이 PySide 기본 기능으로 그려줘.</pre>
+          </div>
+        </div>
+      </div>
+      <p class="slide__note">차트가 강의 화면과 같은 모양으로 흐르면 성공 — <strong>같은 데이터, 내가 만든 화면</strong>입니다.</p>
+    </div>
+  </section>
+
+  <!-- 10 · v3 매수/매도 -->
+  <section class="slide is-standard">
+    <div class="slide__eyebrow">v3 · 매수/매도</div>
+    <h2 class="slide__title">이제 — <span class="accent">주문을 쏜다</span></h2>
+    <div class="slide__body">
+      <div class="two-col">
+        <div>
+          <div class="content-card content-card--compact">
+            <h3 class="content-card__title">추가되는 것</h3>
+            <ul class="content-card__list">
+              <li>수량 입력 + <strong>매수/매도 버튼</strong> → <code>POST /order</code></li>
+              <li><code>GET /portfolio</code> — 내 현금·보유·수익률 표시</li>
+              <li>체결 결과(체결가·슬리피지)를 화면에</li>
+            </ul>
+          </div>
+        </div>
+        <div>
+          <div class="prompt-card">
+            <div class="prompt-card__head">
+              <span class="prompt-card__label">프롬프트 · v3</span>
+              <button class="prompt-card__copy" type="button" data-copy>복사</button>
+            </div>
+            <pre class="prompt-card__body" data-no-nav>trader.py에 매매 기능을 추가해줘. 수량 입력칸과 매수/매도 버튼을 만들고, 누르면 https://vibecoding-cc.vercel.app/api/stock/order 에 POST로 {"symbol":"선택 종목","side":"buy 또는 sell","qty":수량}을 보내줘(헤더 X-API-Key 동일). 응답의 체결가와 슬리피지를 표시하고, 5초마다 /portfolio를 불러 내 현금·보유 수량·수익률도 보여줘. 주문은 1초에 1회 제한이 있으니 버튼 연타를 막아줘.</pre>
+          </div>
+        </div>
+      </div>
+      <p class="slide__note">첫 주문이 체결되는 순간 — 강의 화면 체결 피드에 <strong>내 이름</strong>이 올라옵니다. 리더보드 경쟁 시작.</p>
+    </div>
+  </section>
+
+  <!-- 11 · v3 결과 -->
+  <section class="slide is-standard">
+    <div class="slide__eyebrow">v3 · RESULT</div>
+    <h2 class="slide__title">완성 — <span class="accent">내 트레이딩 단말기</span></h2>
+    <div class="slide__body">
+      <div class="two-col">
+        <figure class="photo-slot photo-slot--landscape" data-img="vc-ch07-stock-v3.png">
+          <img class="photo-slot__img" src="../../imgs/vc-ch07-stock-v3.png" alt="트레이딩 앱 v3 — 차트·매수매도·수익률">
+          <figcaption class="photo-slot__ph">
+            <span class="photo-slot__icon">◧</span>
+            <span class="photo-slot__label">v3 — 차트 + 매매 + 수익률</span>
+            <span class="photo-slot__hint">시세·주문·계좌가 한 창에</span>
+          </figcaption>
+        </figure>
+        <figure class="photo-slot photo-slot--landscape" data-img="vc-ch07-stock-board-live.png">
+          <img class="photo-slot__img" src="../../imgs/vc-ch07-stock-board-live.png" alt="라이브 보드에 표시된 체결과 리더보드">
+          <figcaption class="photo-slot__ph">
+            <span class="photo-slot__icon">◧</span>
+            <span class="photo-slot__label">강의 화면 — 내 체결이 보인다</span>
+            <span class="photo-slot__hint">차트 위 ▲▼ 마커 + 리더보드</span>
+          </figcaption>
+        </figure>
+      </div>
+      <p class="slide__note">전원의 주문이 하나의 시장을 움직입니다 — 차트가 출렁이면 누군가 몰빵한 겁니다.</p>
+    </div>
+  </section>
+
+  <!-- 12 · 슬리피지 체험 -->
+  <section class="slide is-statement">
+    <div class="statement-grid">
+      <div class="statement-text">
+        <div class="slide__eyebrow">EXPERIMENT · 몰빵 실험</div>
+        <h2 class="statement__lead">일부러 — <span class="accent">몰빵해 보세요</span>.</h2>
+        <p class="statement__caption">전 재산으로 한 종목을 최대 수량 매수 → 체결가를 보세요. 시장가보다 한참 비싸게 사졌고, 그 순간 차트가 튀어오르며 — 다른 사람들이 여러분 덕에 비싸게 사게 됩니다. 그리고 바로 팔면? 이번엔 싸게 팔립니다.</p>
+        <div class="statement__points">
+          <div class="statement__point"><span class="statement__point-num">관찰 1</span><span>체결가와 시장가의 차이 — 슬리피지 %</span></div>
+          <div class="statement__point"><span class="statement__point-num">관찰 2</span><span>강의 화면 차트가 내 주문에 출렁이는 순간</span></div>
+          <div class="statement__point"><span class="statement__point-num">결론</span><span>사고팔기만 반복하면 — 수수료 없어도 녹는다</span></div>
+        </div>
+      </div>
+      <div class="statement-visual">
+        <svg viewBox="0 0 460 320" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <rect x="0" y="0" width="460" height="320" rx="14" fill="rgba(0,0,0,0.92)"/>
+          <text x="14" y="20" font-family="ui-monospace, monospace" font-size="11" fill="rgba(255,255,255,0.5)">체결 결과</text>
+          <text x="20" y="60" fill="white" font-family="ui-monospace, monospace" font-size="12">시장가         10,000원</text>
+          <text x="20" y="88" fill="#f87171" font-family="ui-monospace, monospace" font-size="12">체결가(97주)   10,485원  (+4.85%)</text>
+          <line x1="20" y1="110" x2="440" y2="110" stroke="rgba(255,255,255,0.15)"/>
+          <text x="20" y="140" fill="rgba(255,255,255,0.7)" font-family="ui-monospace, monospace" font-size="11">→ 사자마자 평가손 −4.85%</text>
+          <text x="20" y="164" fill="rgba(255,255,255,0.7)" font-family="ui-monospace, monospace" font-size="11">→ 차트가 위로 출렁 (내 임팩트)</text>
+          <text x="20" y="188" fill="rgba(255,255,255,0.7)" font-family="ui-monospace, monospace" font-size="11">→ 바로 팔면 또 싸게 팔림</text>
+          <line x1="20" y1="212" x2="440" y2="212" stroke="rgba(255,255,255,0.15)"/>
+          <text x="20" y="244" fill="#4ade80" font-family="ui-monospace, monospace" font-size="12">교훈: 나눠서, 천천히, 신호를 보고</text>
+          <text x="20" y="284" fill="rgba(255,255,255,0.5)" font-family="ui-monospace, monospace" font-size="11"># 진짜 시장도 똑같이 움직입니다</text>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- 13 · 전략 붙이기 -->
+  <section class="slide is-standard">
+    <div class="slide__eyebrow">STRATEGY · 자동 전략</div>
+    <h2 class="slide__title">전략 버튼 — <span class="accent">골라서 실험</span>해 보세요</h2>
+    <div class="slide__body">
+      <div class="grid-4">
+        <div class="diff-card">
+          <div class="diff-card__rank">모멘텀</div>
+          <h3 class="diff-card__title">오르면 산다</h3>
+          <p class="diff-card__body">최근 30초 +0.5% 이상이면 매수, −0.5% 이하면 매도.</p>
+        </div>
+        <div class="diff-card">
+          <div class="diff-card__rank">역추세</div>
+          <h3 class="diff-card__title">떨어지면 줍는다</h3>
+          <p class="diff-card__body">급락하면 매수, 급등하면 매도 — 모멘텀과 정반대.</p>
+        </div>
+        <div class="diff-card">
+          <div class="diff-card__rank">거래량</div>
+          <h3 class="diff-card__title">거래량이 신호</h3>
+          <p class="diff-card__body">거래량 급증 + 상승이면 매수, 급증 + 하락이면 청산.</p>
+        </div>
+        <div class="diff-card">
+          <div class="diff-card__rank">손절·익절</div>
+          <h3 class="diff-card__title">기계적으로 끊는다</h3>
+          <p class="diff-card__body">진입가 대비 +3% 익절 · −2% 손절 자동 청산.</p>
+        </div>
+      </div>
+      <div class="prompt-card prompt-card--compact" style="margin-top:0.7rem;">
+        <div class="prompt-card__head">
+          <span class="prompt-card__label">프롬프트 · 전략 추가 (예: 모멘텀)</span>
+          <button class="prompt-card__copy" type="button" data-copy>복사</button>
+        </div>
+        <pre class="prompt-card__body" data-no-nav>trader.py에 "자동매매" 켜기/끄기 버튼을 추가해줘. 켜져 있는 동안 5초마다: 선택 종목의 최근 30초 수익률이 +0.5% 이상이면 10주 매수, -0.5% 이하이고 보유 중이면 전량 매도해줘. 주문 1초 1회 제한은 지키고, 매매할 때마다 로그를 화면에 남겨줘.</pre>
+      </div>
+      <p class="slide__note">수동 트레이더 vs 자동 전략 — 같은 리더보드에서 붙습니다. 어떤 전략이 이길지는 <strong>장세가 결정</strong>합니다.</p>
+    </div>
+  </section>
+
+  <!-- 14 · 빌드 + 리더보드 타임 -->
+  <section class="slide is-standard">
+    <div class="slide__eyebrow">FINALE · 빌드 + 경쟁</div>
+    <h2 class="slide__title">trader<span class="os-win">.exe</span><span class="os-mac">.app</span>로 묶고 — <span class="accent">리더보드 타임</span></h2>
+    <div class="slide__body">
+      <div class="two-col">
+        <div>
+          <div class="content-card content-card--compact">
+            <h3 class="content-card__title">마무리 2가지</h3>
+            <ul class="content-card__list">
+              <li>덱 1과 똑같이 — "trader.py를 PyInstaller로 <span class="os-win">.exe</span><span class="os-mac">.app</span>로 만들어줘"</li>
+              <li>남은 시간 자유 매매 — <strong>수익률 상위 3명</strong> 호명</li>
+              <li>마감 후: 무엇이 먹혔는지 한 줄 공유 (전략? 감? 몰빵의 반성?)</li>
+            </ul>
+          </div>
+        </div>
+        <div>
+          <div class="content-card content-card--compact">
+            <h3 class="content-card__title">오늘 배운 진짜 기술</h3>
+            <ul class="content-card__list">
+              <li>API 스펙을 읽고 — 그대로 통신하는 앱을 만들었다</li>
+              <li>키 인증 · 폴링 · POST 주문 · 에러(401/429) 대응</li>
+              <li>세상의 모든 API가 이 패턴입니다 — 다음 덱에서 진짜로 확인</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <p class="slide__note">주식이 아니라 <strong>통신을 배운 것</strong> — 시세 대신 날씨든 채팅이든, 스펙만 있으면 같은 방법으로 만듭니다.</p>
+    </div>
+  </section>
+
+  <!-- 15 · Wrap -->
+  <section class="slide is-feature">
+    <div class="feature-head">
+      <div class="slide__eyebrow">WRAP · 트레이딩 앱 끝</div>
+      <h2 class="feature-head__title">내 프로그램이 — <span class="accent">세상과 대화</span>했다</h2>
+    </div>
+    <div class="feature-body">
+      <div class="feature-text">
+        <p class="statement__caption">로컬에서만 돌던 앱이 서버와 통신하며 전원이 같은 시장에서 경쟁했습니다. API 키·폴링·주문·레이트리밋 — 실무 API 통신의 뼈대를 가상 시장에서 안전하게 겪었습니다.</p>
+        <div class="statement__points">
+          <div class="statement__point"><span class="statement__point-num">GET</span><span>시세·히스토리·계좌 — 묻는 통신</span></div>
+          <div class="statement__point"><span class="statement__point-num">POST</span><span>매수·매도 주문 — 쏘는 통신</span></div>
+          <div class="statement__point"><span class="statement__point-num">키</span><span>X-API-Key — 내 신분증이자 계좌</span></div>
+        </div>
+      </div>
+      <div class="feature-visual">
+        <svg viewBox="0 0 460 320" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <rect x="0" y="0" width="460" height="320" rx="16" fill="#fff5ec"/>
+          <rect x="40" y="90" width="140" height="100" rx="12" fill="#fff" stroke="#cc5a14" stroke-width="2.5"/>
+          <text x="110" y="130" font-family="ui-sans-serif, system-ui" font-size="12" fill="#cc5a14" font-weight="700" text-anchor="middle">내 트레이딩 앱</text>
+          <text x="110" y="152" font-family="ui-monospace, monospace" font-size="10" fill="#797067" text-anchor="middle">trader<tspan class="os-win">.exe</tspan><tspan class="os-mac">.app</tspan></text>
+          <g font-family="ui-monospace, monospace" font-size="10" fill="#cc5a14">
+            <text x="230" y="110" text-anchor="middle">GET /price →</text>
+            <text x="230" y="140" text-anchor="middle">← 시세 JSON</text>
+            <text x="230" y="170" text-anchor="middle">POST /order →</text>
+            <text x="230" y="200" text-anchor="middle">← 체결 결과</text>
+          </g>
+          <rect x="280" y="90" width="140" height="100" rx="12" fill="#fe6e00"/>
+          <text x="350" y="130" font-family="ui-sans-serif, system-ui" font-size="12" fill="#fff" font-weight="700" text-anchor="middle">가상 시장 서버</text>
+          <text x="350" y="152" font-family="ui-sans-serif, system-ui" font-size="10" fill="rgba(255,255,255,0.85)" text-anchor="middle">전원이 같은 시장</text>
+          <text x="230" y="250" font-family="ui-sans-serif, system-ui" font-size="13" fill="#797067" text-anchor="middle">스펙만 있으면 — 어떤 서버와도 대화한다</text>
+          <text x="230" y="288" font-family="ui-sans-serif, system-ui" font-size="15" fill="#cc5a14" font-weight="700" text-anchor="middle">API — 프로그램의 언어</text>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <div class="deck-progress"><div class="deck-progress__bar"></div></div>
+</main>
+<script src="../../scripts/deck.js"></script>
+</body>
+</html>

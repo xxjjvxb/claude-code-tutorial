@@ -1,0 +1,341 @@
+<!doctype html>
+<!-- © 2026 이일규 (Ilkyu Lee). All rights reserved. 본 강의자료는 저작권법으로 보호되는 저작물입니다. 무단 복제·배포·재사용을 금합니다. -->
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="author" content="이일규">
+  <meta name="copyright" content="© 2026 이일규 · 본 강의자료는 저작권법으로 보호되는 저작물입니다. 무단 복제·배포 금지.">
+  <script defer src="../../scripts/protect.js"></script>
+  <title>7장 · 3. 코인 시세 차트 — 진짜 공개 API</title>
+  <link rel="stylesheet" href="../../styles/tokens.css">
+  <link rel="stylesheet" href="../../styles/deck.css">
+  <link rel="stylesheet" href="../../styles/_os-toggle.css">
+  <link rel="stylesheet" href="../../styles/_practice.css">
+  <script defer src="../../scripts/os-toggle.js"></script>
+  <script defer src="../../scripts/prompt-copy.js"></script>
+  <script defer src="../../scripts/slide-modify.js"></script>
+  <script defer src="../../scripts/feedback.js"></script>
+  <script defer src="../../scripts/analytics.js"></script>
+  <style>
+    .api-table { width: 100%; border-collapse: collapse; font-size: 0.8rem; }
+    .api-table th, .api-table td { text-align: left; padding: 0.42rem 0.55rem; border-bottom: 1.5px solid var(--color-outline); }
+    .api-table th { font-size: 0.66rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--color-on-surface-muted); }
+    .api-table code { font-size: 0.74rem; }
+    .api-method { font-family: var(--font-mono); font-weight: 700; font-size: 0.7rem; color: var(--color-primary-strong); }
+  </style>
+</head>
+<body>
+
+<main class="deck">
+
+  <header class="deck-chrome">
+    <span class="deck-chrome__brand">바이브코딩 · CLAUDE CODE</span>
+    <span class="deck-chrome__divider">·</span>
+    <span class="deck-chrome__day">7장 · 3 코인 시세 차트</span>
+    <span class="deck-chrome__spacer"></span>
+    <span class="deck-chrome__counter">— / —</span>
+  </header>
+
+  <!-- 1 · Section cover -->
+  <section class="slide is-section is-standard">
+    <div class="section-eyebrow">7장 · REAL DATA</div>
+    <h2 class="section-title">연습장을 벗어나 — <span class="accent">진짜 데이터</span>로</h2>
+    <p class="section-caption">덱 2의 시장은 강의용 가상 서버였습니다. 이번엔 업비트가 실제로 운영하는 공개 API에 접속해, 지금 이 순간의 진짜 코인 시세를 내 프로그램으로 가져옵니다 — 코인을 클릭해 고르면 한 차트에 겹쳐 보이는 시세 뷰어.</p>
+    <div class="section-meta">
+      <div class="section-meta__item"><span class="section-meta__num">0</span><span>키 필요 없음 — 공개 API</span></div>
+      <div class="section-meta__item"><span class="section-meta__num">1</span><span>차트에 여러 코인 겹쳐 보기</span></div>
+    </div>
+  </section>
+
+  <!-- 2 · 업비트 공개 API -->
+  <section class="slide is-standard">
+    <div class="slide__eyebrow">SPEC · 업비트 공개 API</div>
+    <h2 class="slide__title">키도 가입도 없이 — <span class="accent">그냥 요청하면 준다</span></h2>
+    <div class="slide__body">
+      <div class="content-card content-card--compact">
+        <p class="content-card__body">업비트(국내 최대 코인 거래소)는 시세 조회 API를 <strong>무료·무인증</strong>으로 공개합니다. Base URL <code>https://api.upbit.com/v1</code></p>
+        <table class="api-table">
+          <thead><tr><th>메서드</th><th>경로</th><th>설명</th></tr></thead>
+          <tbody>
+            <tr><td class="api-method">GET</td><td><code>/market/all</code></td><td>거래 가능한 전체 코인 목록 (KRW-BTC, KRW-ETH, …)</td></tr>
+            <tr><td class="api-method">GET</td><td><code>/ticker?markets=KRW-BTC,KRW-ETH</code></td><td>여러 코인의 현재가를 한 번에</td></tr>
+            <tr><td class="api-method">GET</td><td><code>/candles/minutes/1?market=KRW-BTC&amp;count=60</code></td><td>1분봉 60개 — 최근 1시간 가격 흐름</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="slide__note">덱 2와 <strong>완전히 같은 패턴</strong>(GET + JSON) — 키 헤더만 없을 뿐. 초당 요청 제한이 있으니 갱신은 몇 초에 한 번이면 충분합니다.</p>
+    </div>
+  </section>
+
+  <!-- 3 · 만들 것 -->
+  <section class="slide is-statement">
+    <div class="statement-grid">
+      <div class="statement-text">
+        <div class="slide__eyebrow">PROJECT · 만들 것</div>
+        <h2 class="statement__lead">코인을 클릭하면 — <span class="accent">한 차트에 겹친다</span>.</h2>
+        <p class="statement__caption">왼쪽에 코인 목록(비트코인·이더리움·리플·도지…), 체크한 코인들의 최근 1시간 흐름이 오른쪽 한 차트에 색깔별로 겹쳐 그려집니다. 어떤 코인이 오늘 제일 뜨거웠는지 — 한눈에.</p>
+        <div class="statement__points">
+          <div class="statement__point"><span class="statement__point-num">선택</span><span>코인 목록 체크박스 — 클릭하면 차트에 추가/제거</span></div>
+          <div class="statement__point"><span class="statement__point-num">차트</span><span>선택한 코인들이 색깔별 라인으로 한 차트에</span></div>
+          <div class="statement__point"><span class="statement__point-num">갱신</span><span>5초마다 현재가 반영 — 살아 있는 차트</span></div>
+        </div>
+      </div>
+      <div class="statement-visual">
+        <svg viewBox="0 0 460 320" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <rect x="0" y="0" width="460" height="320" rx="16" fill="#fff5ec"/>
+          <rect x="30" y="40" width="120" height="240" rx="10" fill="#fff" stroke="#cc5a14" stroke-width="2"/>
+          <g font-family="ui-sans-serif, system-ui" font-size="10" fill="#3d372f">
+            <rect x="44" y="60" width="11" height="11" rx="3" fill="#fe6e00"/><text x="62" y="70">BTC</text>
+            <rect x="44" y="88" width="11" height="11" rx="3" fill="#60a5fa"/><text x="62" y="98">ETH</text>
+            <rect x="44" y="116" width="11" height="11" rx="3" fill="#facc15"/><text x="62" y="126">XRP</text>
+            <rect x="44" y="144" width="11" height="11" rx="3" fill="#fff" stroke="#cc5a14" stroke-width="1.5"/><text x="62" y="154" fill="#a39a8a">DOGE</text>
+            <rect x="44" y="172" width="11" height="11" rx="3" fill="#fff" stroke="#cc5a14" stroke-width="1.5"/><text x="62" y="182" fill="#a39a8a">SOL</text>
+          </g>
+          <text x="90" y="262" font-family="ui-sans-serif, system-ui" font-size="9" fill="#797067" text-anchor="middle">클릭해서 선택</text>
+          <rect x="170" y="40" width="260" height="240" rx="10" fill="#fff" stroke="#cc5a14" stroke-width="2"/>
+          <polyline points="190,200 220,190 250,196 280,170 310,160 340,140 370,148 400,120" fill="none" stroke="#fe6e00" stroke-width="3" stroke-linecap="round"/>
+          <polyline points="190,210 220,214 250,200 280,206 310,190 340,196 370,180 400,186" fill="none" stroke="#60a5fa" stroke-width="3" stroke-linecap="round"/>
+          <polyline points="190,220 220,230 250,236 280,224 310,240 340,230 370,244 400,236" fill="none" stroke="#facc15" stroke-width="3" stroke-linecap="round"/>
+          <text x="300" y="70" font-family="ui-sans-serif, system-ui" font-size="10" fill="#797067" text-anchor="middle">최근 1시간 — 코인별 흐름</text>
+          <text x="230" y="304" font-family="ui-sans-serif, system-ui" font-size="12" fill="#cc5a14" font-weight="700" text-anchor="middle">coins<tspan class="os-win">.exe</tspan><tspan class="os-mac">.app</tspan> — 내 시세 상황판</text>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4 · 왜 %인가 -->
+  <section class="slide is-statement">
+    <div class="statement-grid">
+      <div class="statement-text">
+        <div class="slide__eyebrow">INSIGHT · 정규화</div>
+        <h2 class="statement__lead">1억짜리와 700원짜리를 — <span class="accent">한 차트에</span>?</h2>
+        <p class="statement__caption">비트코인은 1억 원대, 리플은 수백 원대 — 가격 그대로 그리면 리플은 바닥에 눌린 직선이 됩니다. 그래서 "1시간 전 대비 몇 % 변했나"로 바꿔 그립니다 — 그래야 흐름을 공평하게 비교할 수 있습니다.</p>
+        <div class="statement__points">
+          <div class="statement__point"><span class="statement__point-num">문제</span><span>가격 단위가 수십만 배 차이 — 같은 축 불가</span></div>
+          <div class="statement__point"><span class="statement__point-num">해법</span><span>시작점을 0%로 — 변화율(%)로 그리기</span></div>
+          <div class="statement__point"><span class="statement__point-num">덤</span><span>덱 2 리더보드 수익률 곡선과 같은 원리</span></div>
+        </div>
+      </div>
+      <div class="statement-visual">
+        <svg viewBox="0 0 460 320" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <rect x="0" y="0" width="460" height="320" rx="16" fill="#fff5ec"/>
+          <text x="120" y="40" font-family="ui-sans-serif, system-ui" font-size="11" fill="#fb2c36" font-weight="700" text-anchor="middle">× 가격 그대로</text>
+          <rect x="30" y="52" width="180" height="110" rx="8" fill="#fff" stroke="#e5ddd2" stroke-width="1.5"/>
+          <polyline points="42,70 80,76 120,66 160,72 198,62" fill="none" stroke="#fe6e00" stroke-width="2.5"/>
+          <line x1="42" y1="152" x2="198" y2="152" stroke="#facc15" stroke-width="2.5"/>
+          <text x="120" y="146" font-family="ui-sans-serif, system-ui" font-size="9" fill="#797067" text-anchor="middle">리플 — 눌린 직선 (안 보임)</text>
+          <text x="340" y="40" font-family="ui-sans-serif, system-ui" font-size="11" fill="#016630" font-weight="700" text-anchor="middle">○ 변화율(%)로</text>
+          <rect x="250" y="52" width="180" height="110" rx="8" fill="#fff" stroke="#016630" stroke-width="1.5"/>
+          <line x1="262" y1="107" x2="418" y2="107" stroke="#e5ddd2" stroke-width="1" stroke-dasharray="3 3"/>
+          <polyline points="262,107 300,98 340,104 380,88 418,80" fill="none" stroke="#fe6e00" stroke-width="2.5"/>
+          <polyline points="262,107 300,112 340,100 380,118 418,96" fill="none" stroke="#facc15" stroke-width="2.5"/>
+          <text x="340" y="146" font-family="ui-sans-serif, system-ui" font-size="9" fill="#797067" text-anchor="middle">둘 다 보인다 — 0% 기준</text>
+          <text x="230" y="210" font-family="ui-monospace, monospace" font-size="12" fill="#3d372f" text-anchor="middle">변화율 = (지금 가격 ÷ 1시간 전 가격 − 1) × 100</text>
+          <text x="230" y="256" font-family="ui-sans-serif, system-ui" font-size="13" fill="#cc5a14" font-weight="700" text-anchor="middle">비교하고 싶으면 — 단위를 맞춰라</text>
+          <text x="230" y="284" font-family="ui-sans-serif, system-ui" font-size="11" fill="#797067" text-anchor="middle">데이터 시각화의 기본기</text>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5 · 프롬프트 -->
+  <section class="slide is-standard">
+    <div class="slide__eyebrow">PROMPT · 3문장 + 스펙</div>
+    <h2 class="slide__title">스펙을 주고 — <span class="accent">3문장</span>으로 부탁한다</h2>
+    <div class="slide__body">
+      <div class="prompt-card">
+        <div class="prompt-card__head">
+          <span class="prompt-card__label">프롬프트 — 코인 차트 (폴더: <span class="os-win">c:\lecture\coins</span><span class="os-mac">~/lecture/coins</span>)</span>
+          <button class="prompt-card__copy" type="button" data-copy>복사</button>
+        </div>
+        <pre class="prompt-card__body" data-no-nav>코인 시세 차트 앱을 coins.py로 만들어줘. 왼쪽에 코인 목록(BTC·ETH·XRP·DOGE·SOL 등 주요 10개)을 체크박스로 두고, 체크한 코인들의 최근 1시간 가격 흐름을 오른쪽 한 차트에 색깔별 라인으로 겹쳐 그려줘. 가격 차이가 크니까 1시간 전 대비 변화율(%)로 정규화해서 그리고, 5초마다 갱신해줘.
+
+데이터는 업비트 공개 API를 써줘 (키 불필요): 1분봉은 GET https://api.upbit.com/v1/candles/minutes/1?market=KRW-BTC&count=60, 현재가는 GET https://api.upbit.com/v1/ticker?markets=KRW-BTC,KRW-ETH 형태야. PySide6로 만들고, 통신 중 창이 얼지 않게, 외부 차트 라이브러리 없이 그려줘.
+
+나는 처음이니까 설명하며 진행해줘.</pre>
+      </div>
+      <p class="slide__note">뼈대는 이 장 내내 같습니다 — <strong>무엇을 / 스펙·제약 / 내 수준</strong>. 이번엔 스펙이 "진짜 회사의 공개 문서"라는 것만 다릅니다.</p>
+    </div>
+  </section>
+
+  <!-- 6 · RESULT -->
+  <section class="slide is-standard">
+    <div class="slide__eyebrow">RESULT · 완성된 모습</div>
+    <h2 class="slide__title">지금 이 순간의 — <span class="accent">진짜 시장</span>이 내 창에</h2>
+    <div class="slide__body">
+      <div class="two-col">
+        <figure class="photo-slot photo-slot--landscape" data-img="vc-ch07-coins-run.png">
+          <img class="photo-slot__img" src="../../imgs/vc-ch07-coins-run.png" alt="코인 차트 앱 — 여러 코인이 한 차트에">
+          <figcaption class="photo-slot__ph">
+            <span class="photo-slot__icon">◧</span>
+            <span class="photo-slot__label">coins.py — 코인 겹쳐 보기</span>
+            <span class="photo-slot__hint">체크한 코인만 차트에 · % 정규화</span>
+          </figcaption>
+        </figure>
+        <div>
+          <div class="content-card content-card--compact">
+            <h3 class="content-card__title">확인 포인트</h3>
+            <ul class="content-card__list">
+              <li>휴대폰 업비트 앱과 <strong>가격이 같은가</strong> — 진짜 데이터라는 증거</li>
+              <li>체크/해제하면 라인이 바로 생기고 사라지는가</li>
+              <li>제일 많이 오른 코인이 맨 위 라인 — 오늘의 주인공은?</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <p class="slide__note">덱 2와 코드 구조가 거의 같다는 걸 눈치챘다면 — 정확합니다. <strong>API가 바뀌어도 패턴은 하나</strong>.</p>
+    </div>
+  </section>
+
+  <!-- 7 · 다듬기 -->
+  <section class="slide is-standard">
+    <div class="slide__eyebrow">POLISH · 한 줄씩</div>
+    <h2 class="slide__title">내 상황판으로 — <span class="accent">다듬기</span></h2>
+    <div class="slide__body">
+      <div class="grid-3">
+        <div class="diff-card">
+          <div class="diff-card__rank">기간</div>
+          <h3 class="diff-card__title">"하루치도 보고 싶어"</h3>
+          <p class="diff-card__body">1시간/6시간/24시간 버튼 — 분봉 대신 시간봉으로.</p>
+        </div>
+        <div class="diff-card">
+          <div class="diff-card__rank">정보</div>
+          <h3 class="diff-card__title">"현재가·등락률 표시"</h3>
+          <p class="diff-card__body">목록 옆에 현재가와 24시간 등락률을 색깔로.</p>
+        </div>
+        <div class="diff-card">
+          <div class="diff-card__rank">알림</div>
+          <h3 class="diff-card__title">"±3% 넘으면 알려줘"</h3>
+          <p class="diff-card__body">급등락 시 창 깜빡임/소리 — 진짜 상황판처럼.</p>
+        </div>
+      </div>
+      <p class="slide__note">다 됐으면 덱 1과 똑같이 — <strong>coins<span class="os-win">.exe</span><span class="os-mac">.app</span>로 묶어</strong> 바탕화면에. 아침마다 더블클릭하는 내 도구가 됩니다.</p>
+    </div>
+  </section>
+
+  <!-- 8 · API를 안 주는 세계 -->
+  <section class="slide is-standard">
+    <div class="slide__eyebrow">REALITY · API가 없는 곳</div>
+    <h2 class="slide__title">그런데 쇼핑몰은 — <span class="accent">왜 API를 안 줄까</span></h2>
+    <div class="slide__body">
+      <div class="grid-3">
+        <div class="content-card content-card--compact">
+          <h3 class="content-card__title">데이터가 곧 자산</h3>
+          <p class="content-card__body">상품 가격·재고·리뷰는 쇼핑몰의 경쟁력 그 자체 — 경쟁사가 긁어가면 최저가 전쟁에서 밀립니다. 내줄 이유가 없습니다.</p>
+        </div>
+        <div class="content-card content-card--compact">
+          <h3 class="content-card__title">어뷰징 걱정</h3>
+          <p class="content-card__body">공개 창구를 열면 봇이 초당 수천 번 두드립니다 — 서버비는 늘고, 사재기·매크로 같은 악용도 함께.</p>
+        </div>
+        <div class="content-card content-card--compact">
+          <h3 class="content-card__title">사람에게만 보여준다</h3>
+          <p class="content-card__body">그래서 "브라우저로 들어온 사람"에게만 화면을 줍니다. 업비트 시세처럼 <strong>공개가 이득인 데이터</strong>만 API로 나옵니다.</p>
+        </div>
+      </div>
+      <p class="slide__note">세상의 데이터는 둘로 나뉩니다 — <strong>API를 주는 곳</strong>(업비트·공공데이터·날씨)과 <strong>안 주는 곳</strong>(쇼핑몰·SNS·대부분의 사이트). 안 주는 곳은 어떻게 할까요?</p>
+    </div>
+  </section>
+
+  <!-- 9 · 그럴 땐 Playwright -->
+  <section class="slide is-standard">
+    <div class="slide__eyebrow">BRIDGE · 6장의 그 도구</div>
+    <h2 class="slide__title">API가 없으면 — <span class="accent">사람처럼 들어간다</span></h2>
+    <div class="slide__body">
+      <div class="bg-compare">
+        <div class="bg-compare__side bg-compare__side--good">
+          <div class="bg-compare__label">API가 있는 곳 (오늘)</div>
+          <div class="bg-compare__quote">
+            <div>정식 창구에 요청 — JSON으로 깔끔하게</div>
+            <div>빠르고 안정적 · 규칙만 지키면 됨</div>
+            <div>업비트 시세 · 날씨 · 공공데이터</div>
+          </div>
+          <p class="bg-compare__note">있으면 무조건 API 먼저.</p>
+        </div>
+        <div class="bg-compare__side bg-compare__side--soft">
+          <div class="bg-compare__label">API가 없는 곳 → 6장 Playwright</div>
+          <div class="bg-compare__quote">
+            <div>진짜 브라우저를 열어</div>
+            <div><strong>사람이 보고 클릭하듯</strong> 페이지를 읽는다</div>
+            <div>6장에서 이미 해봤다 — 크롤링</div>
+          </div>
+          <p class="bg-compare__note">화면에 보이면 — 긁을 수 있다.</p>
+        </div>
+      </div>
+      <p class="slide__note"><strong>도전 과제</strong>: 관심 상품 페이지를 Playwright로 열어 가격만 뽑아 내 앱에 표시하는 "가격 추적기" — 6장 크롤링 + 오늘 배운 데스크톱을 합치면 됩니다. Claude에게 "6장에서 한 크롤링을 이 앱에 붙여줘"라고 부탁해 보세요.</p>
+    </div>
+  </section>
+
+  <!-- 10 · SHARE -->
+  <section class="slide is-statement">
+    <div class="statement-grid">
+      <div class="statement-text">
+        <div class="slide__eyebrow">SHARE TIME · 결과물 공유</div>
+        <h2 class="statement__lead">1인 1분 — <span class="accent">내 상황판</span> 자랑</h2>
+        <p class="statement__caption">20초 화면 시연(코인 체크하며 라인 넣고 빼기) · 30초 내가 다듬은 것 · 10초 오늘의 발견(제일 많이 오른 코인?). 완성도보다 직접 시도한 것이 평가 기준.</p>
+        <div class="statement__points">
+          <div class="statement__point"><span class="statement__point-num">화면</span><span>코인 겹쳐 보기 시연 — 실시간으로</span></div>
+          <div class="statement__point"><span class="statement__point-num">한 줄</span><span>내가 추가한 기능 · 막혔던 곳</span></div>
+          <div class="statement__point"><span class="statement__point-num">사용량</span><span>Orca 좌하단 — 오늘 쓴 만큼 확인</span></div>
+        </div>
+      </div>
+      <div class="statement-visual">
+        <svg viewBox="0 0 460 320" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <rect x="0" y="0" width="460" height="320" rx="16" fill="#fff5ec"/>
+          <text x="230" y="80" font-family="ui-sans-serif, system-ui" font-size="14" fill="#797067" letter-spacing="0.1em" font-weight="700" text-anchor="middle">오늘 만든 프로그램 3개</text>
+          <g font-family="ui-monospace, monospace" font-size="12" font-weight="700" text-anchor="middle">
+            <rect x="55" y="120" width="110" height="60" rx="10" fill="#fff" stroke="#cc5a14" stroke-width="2"/>
+            <text x="110" y="155" fill="#cc5a14">todo</text>
+            <rect x="175" y="120" width="110" height="60" rx="10" fill="#fff" stroke="#cc5a14" stroke-width="2"/>
+            <text x="230" y="155" fill="#cc5a14">trader</text>
+            <rect x="295" y="120" width="110" height="60" rx="10" fill="#fe6e00"/>
+            <text x="350" y="155" fill="#fff">coins</text>
+          </g>
+          <text x="230" y="230" font-family="ui-sans-serif, system-ui" font-size="13" fill="#797067" text-anchor="middle">로컬 → 시뮬 API → 진짜 API</text>
+          <text x="230" y="268" font-family="ui-sans-serif, system-ui" font-size="15" fill="#cc5a14" font-weight="700" text-anchor="middle">전부 더블클릭으로 열린다</text>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- 11 · Wrap · 7장 끝 -->
+  <section class="slide is-feature">
+    <div class="feature-head">
+      <div class="slide__eyebrow">WRAP · 7장 끝</div>
+      <h2 class="feature-head__title">내 PC의 프로그램이 — <span class="accent">세상의 데이터</span>를 쓴다</h2>
+    </div>
+    <div class="feature-body">
+      <div class="feature-text">
+        <p class="statement__caption">투두(로컬)에서 시작해 가상 시장(연습 API)을 거쳐 업비트(진짜 API)까지 — 그리고 API가 없는 곳은 Playwright로 들어가면 된다는 것까지. 데스크톱 프로그램과 데이터 세계의 지도가 손에 들어왔습니다.</p>
+        <div class="statement__points">
+          <div class="statement__point"><span class="statement__point-num">기본기</span><span>PySide 창 + PyInstaller 묶기 — 프로그램 3개</span></div>
+          <div class="statement__point"><span class="statement__point-num">통신</span><span>API 스펙 읽고 — GET·POST·키·레이트리밋</span></div>
+          <div class="statement__point"><span class="statement__point-num">지도</span><span>API 있으면 API · 없으면 Playwright(6장)</span></div>
+        </div>
+      </div>
+      <div class="feature-visual">
+        <svg viewBox="0 0 460 320" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <rect x="0" y="0" width="460" height="320" rx="16" fill="#fff5ec"/>
+          <text x="230" y="46" font-family="ui-sans-serif, system-ui" font-size="13" fill="#797067" font-weight="700" text-anchor="middle">데이터를 얻는 두 갈래</text>
+          <rect x="60" y="80" width="160" height="120" rx="12" fill="#fe6e00"/>
+          <text x="140" y="115" font-family="ui-sans-serif, system-ui" font-size="13" fill="#fff" font-weight="700" text-anchor="middle">API가 있다</text>
+          <text x="140" y="140" font-family="ui-monospace, monospace" font-size="10" fill="rgba(255,255,255,0.85)" text-anchor="middle">GET → JSON</text>
+          <text x="140" y="162" font-family="ui-sans-serif, system-ui" font-size="10" fill="rgba(255,255,255,0.85)" text-anchor="middle">업비트 · 날씨 · 공공데이터</text>
+          <text x="140" y="184" font-family="ui-sans-serif, system-ui" font-size="10" fill="rgba(255,255,255,0.85)" text-anchor="middle">빠르고 안정적</text>
+          <rect x="240" y="80" width="160" height="120" rx="12" fill="#fff" stroke="#cc5a14" stroke-width="2.5"/>
+          <text x="320" y="115" font-family="ui-sans-serif, system-ui" font-size="13" fill="#cc5a14" font-weight="700" text-anchor="middle">API가 없다</text>
+          <text x="320" y="140" font-family="ui-monospace, monospace" font-size="10" fill="#797067" text-anchor="middle">Playwright (6장)</text>
+          <text x="320" y="162" font-family="ui-sans-serif, system-ui" font-size="10" fill="#797067" text-anchor="middle">쇼핑몰 · 대부분의 사이트</text>
+          <text x="320" y="184" font-family="ui-sans-serif, system-ui" font-size="10" fill="#797067" text-anchor="middle">사람처럼 보고 긁는다</text>
+          <text x="230" y="250" font-family="ui-sans-serif, system-ui" font-size="13" fill="#797067" text-anchor="middle">먼저 API를 찾고 — 없으면 브라우저로</text>
+          <text x="230" y="288" font-family="ui-sans-serif, system-ui" font-size="15" fill="#cc5a14" font-weight="700" text-anchor="middle">화면에 보이면 — 내 프로그램에 담을 수 있다</text>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <div class="deck-progress"><div class="deck-progress__bar"></div></div>
+</main>
+<script src="../../scripts/deck.js"></script>
+</body>
+</html>
