@@ -303,40 +303,44 @@
     <div class="slide__eyebrow">STEP 05 (3/3) · 홈베이스 + 테마</div>
     <h2 class="slide__title">Orca에 <span class="accent">my-intro 폴더</span> 추가</h2>
     <div class="slide__body">
-      <div class="two-col">
+      <div class="content-card content-card--compact">
+        <h3 class="content-card__title">3가지로 끝</h3>
+        <ol class="content-card__list content-card__list--ol">
+          <li><strong>Orca 실행</strong> → 왼쪽 Projects 오른쪽의 버튼 3개 중 <strong>두 번째(폴더+ 모양)</strong> 클릭 → <strong>새 폴더 <code><span class="os-win">c:\lecture\my-intro</span><span class="os-mac">~/lecture/my-intro</span></code></strong> 만들어 선택 (lecture 폴더가 없으면 같이 생성)</li>
+          <li>오른쪽에 <strong>터미널이 바로 보입니다</strong>. 이 화면이 <strong>과정 내내 홈베이스</strong></li>
+          <li><strong><span class="os-win">Ctrl + ,</span><span class="os-mac">⌘ + ,</span></strong>(설정) → <strong>"다크" 검색</strong> → 다크 테마로 세팅</li>
+        </ol>
+      </div>
+      <div class="grid-3" style="margin-top:0.7rem;">
         <div>
-          <div class="content-card content-card--compact">
-            <h3 class="content-card__title">3가지로 끝</h3>
-            <ol class="content-card__list content-card__list--ol">
-              <li><strong>Orca 실행</strong> → 왼쪽 Projects 오른쪽의 버튼 3개 중 <strong>두 번째(폴더+ 모양)</strong> 클릭 → <strong>새 폴더 <code><span class="os-win">c:\lecture\my-intro</span><span class="os-mac">~/lecture/my-intro</span></code></strong> 만들어 선택 (lecture 폴더가 없으면 같이 생성)</li>
-              <li>오른쪽에 <strong>터미널이 바로 보입니다</strong>. 이 화면이 <strong>과정 내내 홈베이스</strong></li>
-              <li><strong><span class="os-win">Ctrl + ,</span><span class="os-mac">⌘ + ,</span></strong>(설정) → <strong>"다크" 검색</strong> → 다크 테마로 세팅</li>
-            </ol>
-          </div>
+          <figure class="photo-slot photo-slot--landscape" data-img="vc-ch01-setup-orca-add-project.png">
+            <img class="photo-slot__img" src="../../imgs/vc-ch01-setup-orca-add-project.png" alt="Orca Projects 옆 폴더+ 버튼">
+            <figcaption class="photo-slot__ph">
+              <span class="photo-slot__icon">◧</span>
+              <span class="photo-slot__label">① 프로젝트 추가 버튼</span>
+            </figcaption>
+          </figure>
+          <p class="photo-slot__hint" style="text-align:center;margin:0.3rem 0 0;">① 해당 버튼을 클릭하여 프로젝트 추가</p>
         </div>
         <div>
-          <svg class="os-win is-block" viewBox="0 0 460 280" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" style="width:100%;height:auto;border-radius:12px;box-shadow:0 12px 32px rgba(0,0,0,0.18)">
-            <rect x="0" y="0" width="460" height="280" rx="12" fill="#1e1e1e"/>
-            <rect x="0" y="0" width="120" height="280" fill="#252526"/>
-            <text x="14" y="30" font-family="ui-monospace, monospace" font-size="10" fill="rgba(255,255,255,0.45)">Projects  ＋</text>
-            <text x="14" y="58" font-family="ui-monospace, monospace" font-size="11" fill="#fe6e00">● my-intro</text>
-            <text x="22" y="78" font-family="ui-monospace, monospace" font-size="10" fill="rgba(255,255,255,0.5)">main</text>
-            <rect x="120" y="0" width="340" height="280" fill="#0d0d0d"/>
-            <text x="136" y="30" font-family="ui-monospace, monospace" font-size="10" fill="rgba(255,255,255,0.4)">TERMINAL — PowerShell · my-intro</text>
-            <text x="136" y="64" font-family="ui-monospace, monospace" font-size="11" fill="#fe6e00">PS&gt;</text>
-            <rect x="164" y="53" width="8" height="13" fill="white"><animate attributeName="opacity" values="1;0;1" dur="1.1s" repeatCount="indefinite"/></rect>
-          </svg>
-          <svg class="os-mac is-block" viewBox="0 0 460 280" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" style="width:100%;height:auto;border-radius:12px;box-shadow:0 12px 32px rgba(0,0,0,0.18)">
-            <rect x="0" y="0" width="460" height="280" rx="12" fill="#1e1e1e"/>
-            <rect x="0" y="0" width="120" height="280" fill="#252526"/>
-            <text x="14" y="30" font-family="ui-monospace, monospace" font-size="10" fill="rgba(255,255,255,0.45)">Projects  ＋</text>
-            <text x="14" y="58" font-family="ui-monospace, monospace" font-size="11" fill="#fe6e00">● my-intro</text>
-            <text x="22" y="78" font-family="ui-monospace, monospace" font-size="10" fill="rgba(255,255,255,0.5)">main</text>
-            <rect x="120" y="0" width="340" height="280" fill="#0d0d0d"/>
-            <text x="136" y="30" font-family="ui-monospace, monospace" font-size="10" fill="rgba(255,255,255,0.4)">TERMINAL — zsh · my-intro</text>
-            <text x="136" y="64" font-family="ui-monospace, monospace" font-size="11" fill="#fe6e00">$</text>
-            <rect x="152" y="53" width="8" height="13" fill="white"><animate attributeName="opacity" values="1;0;1" dur="1.1s" repeatCount="indefinite"/></rect>
-          </svg>
+          <figure class="photo-slot photo-slot--landscape" data-img="vc-ch01-setup-orca-browse-folder.png">
+            <img class="photo-slot__img" src="../../imgs/vc-ch01-setup-orca-browse-folder.png" alt="프로젝트 추가 — 폴더 찾아보기">
+            <figcaption class="photo-slot__ph">
+              <span class="photo-slot__icon">◧</span>
+              <span class="photo-slot__label">② 폴더 찾아보기</span>
+            </figcaption>
+          </figure>
+          <p class="photo-slot__hint" style="text-align:center;margin:0.3rem 0 0;">② 폴더 찾아보기</p>
+        </div>
+        <div>
+          <figure class="photo-slot photo-slot--landscape" data-img="vc-ch01-setup-orca-open-folder.png">
+            <img class="photo-slot__img" src="../../imgs/vc-ch01-setup-orca-open-folder.png" alt="폴더로 열기 확인">
+            <figcaption class="photo-slot__ph">
+              <span class="photo-slot__icon">◧</span>
+              <span class="photo-slot__label">③ 폴더 열기</span>
+            </figcaption>
+          </figure>
+          <p class="photo-slot__hint" style="text-align:center;margin:0.3rem 0 0;">③ 폴더로 열기</p>
         </div>
       </div>
       <p class="slide__note">이후 슬라이드의 <strong>모든 명령은 이 내장 터미널에</strong> 입력합니다 — 독립 <span class="os-win">PowerShell</span><span class="os-mac">터미널</span>을 따로 열 필요 없어요. 편집기 + 터미널 + AI가 한 화면.</p>
