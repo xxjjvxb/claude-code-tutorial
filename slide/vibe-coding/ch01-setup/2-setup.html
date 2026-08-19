@@ -426,30 +426,126 @@
     </div>
   </section>
 
-  <!-- 10.5 · 첫 로그인 화면 -->
+  <!-- 10.5 · 첫 로그인 1/3 -->
   <section class="slide is-standard">
-    <div class="slide__eyebrow">STEP 08 (첫 로그인) · 브라우저 인증</div>
-    <h2 class="slide__title">처음 <code>claude</code> 실행 → <span class="accent">브라우저 로그인</span> 한 번</h2>
+    <div class="slide__eyebrow">STEP 08 (첫 로그인 1/3) · 테마 · 로그인 선택</div>
+    <h2 class="slide__title">처음 <code>claude</code> 실행 — <span class="accent">화면 따라 엔터</span></h2>
     <div class="slide__body">
-      <div class="two-col">
-        <figure class="photo-slot photo-slot--landscape" data-img="vc-ch01-setup-login-terminal.png">
-          <img class="photo-slot__img" src="../../imgs/vc-ch01-setup-login-terminal.png" alt="claude 첫 실행 시 로그인 안내 터미널 화면">
-          <figcaption class="photo-slot__ph">
-            <span class="photo-slot__icon">◧</span>
-            <span class="photo-slot__label">① Orca 내장 터미널 — 로그인 안내</span>
-            <span class="photo-slot__hint">브라우저가 자동으로 열림 · 안 열리면 표시된 URL 복사</span>
-          </figcaption>
-        </figure>
-        <figure class="photo-slot photo-slot--landscape" data-img="vc-ch01-setup-login-browser.png">
-          <img class="photo-slot__img" src="../../imgs/vc-ch01-setup-login-browser.png" alt="브라우저 로그인 페이지">
-          <figcaption class="photo-slot__ph">
-            <span class="photo-slot__icon">◧</span>
-            <span class="photo-slot__label">② 브라우저 — 본인 Claude 계정으로 로그인</span>
-            <span class="photo-slot__hint">로그인 → 승인 → 터미널로 자동 복귀</span>
-          </figcaption>
-        </figure>
+      <div class="grid-3">
+        <div>
+          <figure class="photo-slot photo-slot--landscape" data-img="vc-ch01-setup-claude-theme.png">
+            <img class="photo-slot__img" src="../../imgs/vc-ch01-setup-claude-theme.png" alt="Claude Code 글씨 테마 선택 화면">
+            <figcaption class="photo-slot__ph">
+              <span class="photo-slot__icon">◧</span>
+              <span class="photo-slot__label">① 글씨 테마 선택</span>
+            </figcaption>
+          </figure>
+          <p class="photo-slot__hint" style="text-align:center;margin:0.3rem 0 0;">① 글씨 테마 선택 → 엔터</p>
+        </div>
+        <div>
+          <figure class="photo-slot photo-slot--landscape" data-img="vc-ch01-setup-claude-login-method.png">
+            <img class="photo-slot__img" src="../../imgs/vc-ch01-setup-claude-login-method.png" alt="로그인 방법 선택 — 1번 Claude 계정">
+            <figcaption class="photo-slot__ph">
+              <span class="photo-slot__icon">◧</span>
+              <span class="photo-slot__label">② 로그인 방법 — 1번</span>
+            </figcaption>
+          </figure>
+          <p class="photo-slot__hint" style="text-align:center;margin:0.3rem 0 0;">② 1번(Claude 계정) → 엔터</p>
+        </div>
+        <div>
+          <figure class="photo-slot photo-slot--landscape" data-img="vc-ch01-setup-claude-login-web.png">
+            <img class="photo-slot__img" src="../../imgs/vc-ch01-setup-claude-login-web.png" alt="브라우저 Claude.ai 로그인 화면">
+            <figcaption class="photo-slot__ph">
+              <span class="photo-slot__icon">◧</span>
+              <span class="photo-slot__label">③ 브라우저 로그인</span>
+            </figcaption>
+          </figure>
+          <p class="photo-slot__hint" style="text-align:center;margin:0.3rem 0 0;">③ 브라우저 — Google로 로그인</p>
+        </div>
+      </div>
+      <p class="slide__note">테마는 아무거나 OK — 나중에 <code>/theme</code>로 언제든 변경. 로그인 방법은 <strong>1번 Claude 계정</strong>(구독)입니다.</p>
+    </div>
+  </section>
+
+  <!-- 10.6 · 첫 로그인 2/3 -->
+  <section class="slide is-standard">
+    <div class="slide__eyebrow">STEP 08 (첫 로그인 2/3) · 승인 · 복귀</div>
+    <h2 class="slide__title">브라우저에서 <span class="accent">승인</span> → 터미널로 복귀</h2>
+    <div class="slide__body">
+      <div class="grid-3">
+        <div>
+          <figure class="photo-slot photo-slot--landscape" data-img="vc-ch01-setup-claude-login-approve.png">
+            <img class="photo-slot__img" src="../../imgs/vc-ch01-setup-claude-login-approve.png" alt="Claude Code 연결 승인 화면">
+            <figcaption class="photo-slot__ph">
+              <span class="photo-slot__icon">◧</span>
+              <span class="photo-slot__label">④ 승인 클릭</span>
+            </figcaption>
+          </figure>
+          <p class="photo-slot__hint" style="text-align:center;margin:0.3rem 0 0;">④ 승인 클릭 → Orca로 복귀</p>
+        </div>
+        <div>
+          <figure class="photo-slot photo-slot--landscape" data-img="vc-ch01-setup-claude-login-success.png">
+            <img class="photo-slot__img" src="../../imgs/vc-ch01-setup-claude-login-success.png" alt="Login successful 화면">
+            <figcaption class="photo-slot__ph">
+              <span class="photo-slot__icon">◧</span>
+              <span class="photo-slot__label">⑤ 로그인 성공</span>
+            </figcaption>
+          </figure>
+          <p class="photo-slot__hint" style="text-align:center;margin:0.3rem 0 0;">⑤ 이 화면이 나오면 → 엔터</p>
+        </div>
+        <div>
+          <figure class="photo-slot photo-slot--landscape" data-img="vc-ch01-setup-claude-security-notes.png">
+            <img class="photo-slot__img" src="../../imgs/vc-ch01-setup-claude-security-notes.png" alt="Security notes 화면">
+            <figcaption class="photo-slot__ph">
+              <span class="photo-slot__icon">◧</span>
+              <span class="photo-slot__label">⑥ 보안 안내</span>
+            </figcaption>
+          </figure>
+          <p class="photo-slot__hint" style="text-align:center;margin:0.3rem 0 0;">⑥ 보안 안내 읽고 → 엔터</p>
+        </div>
       </div>
       <p class="slide__note">브라우저가 안 열리면 터미널에 표시되는 <strong>URL을 직접 복사</strong>해 붙여넣으세요. 로그인은 <strong>최초 1회</strong>만 — 이후엔 <code>claude</code> 입력만으로 바로 시작됩니다.</p>
+    </div>
+  </section>
+
+  <!-- 10.7 · 첫 로그인 3/3 -->
+  <section class="slide is-standard">
+    <div class="slide__eyebrow">STEP 08 (첫 로그인 3/3) · 폴더 허용 · 첫 명령</div>
+    <h2 class="slide__title">폴더 허용 → <span class="accent">첫 명령</span>까지 하면 끝</h2>
+    <div class="slide__body">
+      <div class="grid-3">
+        <div>
+          <figure class="photo-slot photo-slot--landscape" data-img="vc-ch01-setup-claude-trust-folder.png">
+            <img class="photo-slot__img" src="../../imgs/vc-ch01-setup-claude-trust-folder.png" alt="폴더 신뢰 확인 화면 — Yes, I trust this folder">
+            <figcaption class="photo-slot__ph">
+              <span class="photo-slot__icon">◧</span>
+              <span class="photo-slot__label">⑦ 폴더 사용 허용</span>
+            </figcaption>
+          </figure>
+          <p class="photo-slot__hint" style="text-align:center;margin:0.3rem 0 0;">⑦ 폴더 사용 허용 → 엔터</p>
+        </div>
+        <div>
+          <figure class="photo-slot photo-slot--landscape" data-img="vc-ch01-setup-claude-first-command.png">
+            <img class="photo-slot__img" src="../../imgs/vc-ch01-setup-claude-first-command.png" alt="첫 명령 — 앞으로 한글로 말해라 입력">
+            <figcaption class="photo-slot__ph">
+              <span class="photo-slot__icon">◧</span>
+              <span class="photo-slot__label">⑧ 첫 명령 입력</span>
+            </figcaption>
+          </figure>
+          <p class="photo-slot__hint" style="text-align:center;margin:0.3rem 0 0;">⑧ "앞으로 한글로 말해라." 입력</p>
+        </div>
+        <div>
+          <figure class="photo-slot photo-slot--landscape" data-img="vc-ch01-setup-claude-setup-done.png">
+            <img class="photo-slot__img" src="../../imgs/vc-ch01-setup-claude-setup-done.png" alt="한글로 답변하겠다는 응답 — 설정 완료">
+            <figcaption class="photo-slot__ph">
+              <span class="photo-slot__icon">◧</span>
+              <span class="photo-slot__label">⑨ 설정 완료</span>
+            </figcaption>
+          </figure>
+          <p class="photo-slot__hint" style="text-align:center;margin:0.3rem 0 0;">⑨ 한글로 답하면 — 설정 완료!</p>
+        </div>
+      </div>
+      <p class="slide__note">폴더 허용은 "이 폴더를 Claude가 읽어도 되나" 확인 — <strong>우리 실습 폴더는 Yes</strong>. 첫 명령으로 한국어 규칙까지 걸어두면 셋업 끝입니다.</p>
     </div>
   </section>
 
