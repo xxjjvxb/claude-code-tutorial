@@ -135,6 +135,20 @@ begin
 end
 $$;
 
+-- ---------- 내 체결 내역 ----------
+create or replace function public.stock_my_trades(p_key uuid, p_limit int default 100)
+returns table (symbol text, side text, qty int, price numeric, fee numeric, t timestamptz)
+language sql stable security definer set search_path = public as $$
+  select tr.symbol, tr.side, tr.qty, tr.price,
+         case when tr.side = 'buy' then round(tr.price * tr.qty * 0.0002, 2) else 0 end as fee,
+         tr.t
+  from public.stock_trades tr
+  where tr.key = p_key
+    and (select c.enabled from public.stock_config c where c.id = 1)
+  order by tr.t desc
+  limit least(greatest(coalesce(p_limit, 100), 1), 400)
+$$;
+
 -- ---------- ③ 시장 초기화 — safeupdate(WHERE 필수) 대응 ----------
 create or replace function public.stock_reset()
 returns text
@@ -155,6 +169,8 @@ $$;
 revoke all on function public.stock_sim_on() from public;
 revoke all on function public.stock_set_enabled(boolean) from public;
 revoke all on function public.stock_order(uuid, text, text, int) from public;
+revoke all on function public.stock_my_trades(uuid, int) from public;
 grant execute on function public.stock_sim_on() to anon, authenticated;
 grant execute on function public.stock_set_enabled(boolean) to authenticated;
 grant execute on function public.stock_order(uuid, text, text, int) to anon, authenticated;
+grant execute on function public.stock_my_trades(uuid, int) to anon, authenticated;

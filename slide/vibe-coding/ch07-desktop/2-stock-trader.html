@@ -153,7 +153,8 @@
             <tr><td class="api-method">GET</td><td><code>/price</code></td><td>3종목 현재가·거래량</td><td><code>quotes</code> — 종목·가격·거래량 ×3</td></tr>
             <tr><td class="api-method">GET</td><td><code>/history?symbol=A&amp;seconds=600</code></td><td>최근 N초 시세 (최대 3600)</td><td><code>series</code> — 시각·가격·거래량 목록</td></tr>
             <tr><td class="api-method">POST</td><td><code>/order</code></td><td>시장가 주문 — 본문 <code>{"symbol":"A","side":"buy","qty":10}</code></td><td>체결 수량·체결가·수수료·잔고</td></tr>
-            <tr><td class="api-method">GET</td><td><code>/portfolio</code></td><td>내 현금·보유·수익률·체결 내역</td><td><code>cash</code>·<code>pnl_pct</code>·<code>trades</code></td></tr>
+            <tr><td class="api-method">GET</td><td><code>/portfolio</code></td><td>내 현금·보유·수익률·최근 체결</td><td><code>cash</code>·<code>pnl_pct</code>·<code>trades</code></td></tr>
+            <tr><td class="api-method">GET</td><td><code>/mytrades</code></td><td>내 체결 내역 (최신순 최대 400)</td><td><code>rows</code> — 종목·매수/매도·수량·가격·수수료</td></tr>
             <tr><td class="api-method">GET</td><td><code>/leaderboard</code></td><td>수익률 순위</td><td><code>rows</code> — 이름·평가액·수익률</td></tr>
           </tbody>
         </table>

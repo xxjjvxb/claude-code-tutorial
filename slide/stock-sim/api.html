@@ -208,6 +208,27 @@
   </div>
 
   <div class="ep">
+    <div class="ep__head"><span class="method method--get">GET</span><span class="path">/mytrades?limit=100</span></div>
+    <p class="ep__desc">내 체결 내역 — 최신순, <code>limit</code> 1~400 (기본 100). 간단한 용도면 /portfolio의 trades(최근 20건)로 충분합니다.</p>
+    <div class="io">
+      <div>
+        <div class="io__label io__label--req">샘플 요청</div>
+        <pre class="code code--req"><span class="m">GET</span> …/api/stock/mytrades?limit=100
+<span class="h">X-API-Key:</span> 내키</pre>
+      </div>
+      <div>
+        <div class="io__label io__label--res">샘플 응답</div>
+        <pre class="code code--res json">{
+  "rows": [
+    {"symbol": "A", "side": "buy", "qty": 10,
+     "price": 10234.5, "fee": 20.47, "t": "2026-08-20T02:35:26+00:00"}
+  ]
+}</pre>
+      </div>
+    </div>
+  </div>
+
+  <div class="ep">
     <div class="ep__head"><span class="method method--get">GET</span><span class="path">/leaderboard</span></div>
     <p class="ep__desc">수익률 순위 — 강의 화면의 <a href="board.html">라이브 보드</a>와 같은 데이터.</p>
     <div class="io">

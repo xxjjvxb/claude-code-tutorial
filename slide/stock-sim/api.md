@@ -111,6 +111,16 @@ X-API-Key: 내키
 
 - `value` = 현금 + 보유 주식 평가액 · `pnl_pct` = 수익률(%) · `trades` = 내 최근 체결 20건 (최신순)
 
+### GET /mytrades?limit=100 — 내 체결 내역
+
+- `limit`: 1~400 (기본 100). 최신순. 간단한 용도면 `/portfolio`의 `trades`(최근 20건)로도 충분합니다.
+
+응답:
+
+```json
+{"rows": [{"symbol": "A", "side": "buy", "qty": 10, "price": 10234.5, "fee": 20.47, "t": "2026-08-20T02:35:26+00:00"}]}
+```
+
 ### GET /leaderboard — 수익률 순위
 
 응답:
