@@ -93,7 +93,7 @@
     let prevPrice = {};
     async function ticker() {
       try {
-        const { quotes } = await j('/api/stock/price');
+        const { quotes } = await j('/api/stock/price?_=' + Date.now()); // 캐시 우회 — 0.5초 생동감
         $('ticker').innerHTML = quotes.map(q => {
           const cls = prevPrice[q.symbol] == null ? 'flat' : q.price > prevPrice[q.symbol] ? 'up' : q.price < prevPrice[q.symbol] ? 'down' : 'flat';
           prevPrice[q.symbol] = q.price;
@@ -117,14 +117,20 @@
       const vHi = Math.max(...vols, 1);
       const t0 = new Date(series[0].t).getTime(), t1 = new Date(series[series.length - 1].t).getTime();
       const X = t => ((t - t0) / Math.max(1, t1 - t0)) * (W - 60 * devicePixelRatio) + 4;
-      const Y = p => (1 - (p - lo) / (hi - lo)) * (H * 0.72) + 4;
-      // 거래량 바 (하단 22%)
-      ctx.fillStyle = 'rgba(255,255,255,0.10)';
+      const Y = p => (1 - (p - lo) / (hi - lo)) * (H * 0.66) + 4;
+      // 거래량 서브차트 (하단 26%) — 종목색 반투명 · 급증(상위 30%)은 진하게 · 구분선
+      const volTop = H * 0.72;
+      const rgba = (hex, a) => { const n = parseInt(hex.slice(1), 16); return `rgba(${(n >> 16) & 255},${(n >> 8) & 255},${n & 255},${a})`; };
+      ctx.strokeStyle = 'rgba(255,255,255,0.10)'; ctx.lineWidth = devicePixelRatio;
+      ctx.beginPath(); ctx.moveTo(0, volTop); ctx.lineTo(W - 60 * devicePixelRatio, volTop); ctx.stroke();
       const bw = Math.max(1, (W - 64 * devicePixelRatio) / series.length - 1);
       series.forEach((p, i) => {
-        const vh = (vols[i] / vHi) * (H * 0.2);
+        const vh = Math.max(devicePixelRatio, (vols[i] / vHi) * (H * 0.26));
+        ctx.fillStyle = vols[i] >= vHi * 0.7 ? rgba(color, 0.9) : rgba(color, 0.35);
         ctx.fillRect(X(new Date(p.t).getTime()), H - vh - 2, bw, vh);
       });
+      ctx.fillStyle = '#797067'; ctx.font = `${10 * devicePixelRatio}px ui-monospace, monospace`; ctx.textAlign = 'right';
+      ctx.fillText('VOL ' + fmt(vHi, 0), W - 4, volTop + 12 * devicePixelRatio);
       // 가격 라인
       ctx.beginPath(); ctx.strokeStyle = color; ctx.lineWidth = 2 * devicePixelRatio;
       series.forEach((p, i) => { const x = X(new Date(p.t).getTime()), y = Y(+p.price); i ? ctx.lineTo(x, y) : ctx.moveTo(x, y); });
@@ -142,7 +148,7 @@
       // 우측 라벨
       ctx.fillStyle = '#b0a79c'; ctx.font = `${11 * devicePixelRatio}px ui-monospace, monospace`; ctx.textAlign = 'right';
       ctx.fillText(fmt(hi, 0), W - 4, 12 * devicePixelRatio);
-      ctx.fillText(fmt(lo, 0), W - 4, H * 0.72);
+      ctx.fillText(fmt(lo, 0), W - 4, H * 0.66 + 8);
       ctx.fillStyle = color; ctx.font = `bold ${12 * devicePixelRatio}px ui-monospace, monospace`;
       ctx.fillText(fmt(prices[prices.length - 1], 1), W - 4, Y(prices[prices.length - 1]) - 6);
     }
@@ -255,10 +261,10 @@
 
     // ---------- 루프 ----------
     ticker(); charts(); board().then(pnl);
-    setInterval(ticker, 1000);
-    setInterval(charts, 2000);
-    setInterval(board, 3000);
-    setInterval(pnl, 10000);
+    setInterval(ticker, 500);
+    setInterval(charts, 1000);
+    setInterval(board, 2000);
+    setInterval(pnl, 5000);
     addEventListener('resize', () => { charts(); pnl(); });
   </script>
 </body>
