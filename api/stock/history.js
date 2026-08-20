@@ -19,7 +19,9 @@ export default async function handler(request) {
     status: r.ok ? 200 : 502,
     headers: {
       'Content-Type': 'application/json; charset=utf-8',
-      'Cache-Control': 'public, s-maxage=1, stale-while-revalidate=2',
+      'Cache-Control': seconds >= 1800
+        ? 'public, s-maxage=5, stale-while-revalidate=10'   // 큰 윈도(수익률 곡선용)는 무거워서 길게
+        : 'public, s-maxage=1, stale-while-revalidate=2',
     },
   });
 }
