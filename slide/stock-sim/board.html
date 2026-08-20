@@ -36,6 +36,10 @@
     th { color: #797067; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.06em; }
     td.num, th.num { text-align: right; font-family: ui-monospace, Consolas, monospace; }
     .rank { color: #797067; font-family: ui-monospace, Consolas, monospace; }
+    #lb tr { cursor: pointer; }
+    #lb tr.sel td { background: #2c231a; }
+    #feed-clear { appearance: none; cursor: pointer; border: 1px solid #4a4139; background: transparent; color: #b0a79c;
+                  border-radius: 6px; padding: 0.05rem 0.45rem; font-size: 0.68rem; margin-left: 0.3rem; }
     .scroll { overflow-y: auto; min-height: 0; flex: 1; }
     .feed { list-style: none; padding: 0; font-size: 0.82rem; font-family: ui-monospace, Consolas, monospace; }
     .feed li { padding: 0.24rem 0.2rem; border-bottom: 1px solid #2a251f; display: flex; gap: 0.5rem; }
@@ -72,7 +76,7 @@
           <div class="scroll"><table><thead><tr><th>#</th><th>이름</th><th class="num">평가액</th><th class="num">수익률</th></tr></thead><tbody id="lb"></tbody></table></div>
         </div>
         <div class="panel">
-          <div class="panel__head"><span class="big">체결</span></div>
+          <div class="panel__head"><span class="big">체결</span><span id="feed-scope"></span></div>
           <div class="scroll"><ul class="feed" id="feed"></ul></div>
         </div>
       </div>
@@ -169,22 +173,41 @@
     }
 
     // ---------- 리더보드 · 체결 피드 ----------
-    let namesFromBoard = [];
+    // 피드는 익명(이름 없음) — 관리자 세션에만 이름 표시. 리더보드에서 사람을 클릭하면 그 사람의 체결만 필터.
+    let namesFromBoard = [], lbCache = [], selName = null, isAdmin = false;
     async function board() {
       try {
         const [{ rows: lb }, { rows: tr }] = await Promise.all([j('/api/stock/leaderboard'), j('/api/stock/trades?seconds=3600')]);
         tradesCache = tr || [];
-        namesFromBoard = (lb || []).map(r => r.name);
-        $('lb').innerHTML = (lb || []).map((r, i) =>
-          `<tr><td class="rank">${i + 1}</td><td>${esc(r.name)}</td><td class="num">${fmt(r.value)}</td>` +
-          `<td class="num ${r.pnl_pct >= 0 ? 'up' : 'down'}">${r.pnl_pct >= 0 ? '+' : ''}${fmt(r.pnl_pct, 2)}%</td></tr>`).join('') || '<tr><td colspan="4" style="color:#6b6157">아직 참여자가 없습니다</td></tr>';
-        $('feed').innerHTML = (tr || []).slice(0, 60).map(x => {
-          const tm = new Date(x.t);
-          return `<li><span class="t">${String(tm.getHours()).padStart(2, '0')}:${String(tm.getMinutes()).padStart(2, '0')}:${String(tm.getSeconds()).padStart(2, '0')}</span>` +
-            `<span>${esc(x.name)}</span><span class="${x.side}">${x.side === 'buy' ? '매수' : '매도'} ${x.symbol}×${x.qty}</span><span class="t">@${fmt(x.price, 1)}</span></li>`;
-        }).join('');
+        lbCache = lb || [];
+        namesFromBoard = lbCache.map(r => r.name);
+        render();
       } catch (e) {}
     }
+    function render() {
+      $('lb').innerHTML = lbCache.map((r, i) =>
+        `<tr data-i="${i}" class="${selName === r.name ? 'sel' : ''}"><td class="rank">${i + 1}</td><td>${esc(r.name)}</td><td class="num">${fmt(r.value)}</td>` +
+        `<td class="num ${r.pnl_pct >= 0 ? 'up' : 'down'}">${r.pnl_pct >= 0 ? '+' : ''}${fmt(r.pnl_pct, 2)}%</td></tr>`).join('') || '<tr><td colspan="4" style="color:#6b6157">아직 참여자가 없습니다</td></tr>';
+      const rows = selName ? tradesCache.filter(x => x.name === selName) : tradesCache;
+      $('feed-scope').innerHTML = selName
+        ? `${esc(selName)}<button id="feed-clear" type="button">✕ 전체</button>`
+        : (isAdmin ? '전체 · 관리자(이름 표시)' : '전체 · 익명 — 이름은 리더보드 클릭');
+      $('feed').innerHTML = rows.slice(0, 60).map(x => {
+        const tm = new Date(x.t);
+        const who = (isAdmin && !selName) ? `<span>${esc(x.name)}</span>` : '';
+        return `<li><span class="t">${String(tm.getHours()).padStart(2, '0')}:${String(tm.getMinutes()).padStart(2, '0')}:${String(tm.getSeconds()).padStart(2, '0')}</span>` +
+          `${who}<span class="${x.side}">${x.side === 'buy' ? '매수' : '매도'} ${x.symbol}×${x.qty}</span><span class="t">@${fmt(x.price, 1)}</span></li>`;
+      }).join('') || '<li><span class="t">체결 없음</span></li>';
+      const fc = document.getElementById('feed-clear');
+      if (fc) fc.onclick = () => { selName = null; render(); };
+    }
+    $('lb').addEventListener('click', (e) => {
+      const row = e.target.closest('tr[data-i]');
+      if (!row) return;
+      const name = lbCache[+row.dataset.i]?.name;
+      selName = selName === name ? null : name;
+      render();
+    });
     function esc(s) { return String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c])); }
 
     // ---------- 수익률 곡선 ----------
@@ -251,6 +274,8 @@
       const { data: { session } } = await sb.auth.getSession();
       if (session && session.user.email && session.user.email.toLowerCase() === ADMIN_EMAIL.toLowerCase()) {
         $('btn-reset').style.display = 'inline-flex';
+        isAdmin = true;
+        render();
       }
     })();
     $('btn-reset').addEventListener('click', async () => {
