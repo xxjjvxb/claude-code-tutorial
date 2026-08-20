@@ -186,8 +186,9 @@
     async function board() {
       if (!simOn) return;
       try {
-        const [{ rows: lb }, { rows: tr }] = await Promise.all([j('/api/stock/leaderboard'), j('/api/stock/trades?seconds=3600')]);
-        tradesCache = tr || [];
+        // 공개 API의 체결 히스토리는 익명 — 보드는 이름이 필요(수익률 곡선·클릭 필터)해서 RPC 직접 호출
+        const [{ rows: lb }, trRes] = await Promise.all([j('/api/stock/leaderboard'), sb.rpc('stock_trades_feed', { p_seconds: 3600 })]);
+        tradesCache = trRes.data || [];
         lbCache = lb || [];
         namesFromBoard = lbCache.map(r => r.name);
         render();

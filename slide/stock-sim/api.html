@@ -251,7 +251,7 @@
 
   <div class="ep">
     <div class="ep__head"><span class="method method--get">GET</span><span class="path">/trades?seconds=3600</span></div>
-    <p class="ep__desc">전체 참여자 최근 체결 (최대 400건, 최신순) — 시장 분위기 읽기용.</p>
+    <p class="ep__desc">시장 체결 히스토리 (익명) — 시장 전체의 체결 기록, 누가 거래했는지는 비공개. <code>seconds</code> 10~86400 (기본 3600), 최대 400건 최신순.</p>
     <div class="io">
       <div>
         <div class="io__label io__label--req">샘플 요청</div>
@@ -262,8 +262,8 @@
         <div class="io__label io__label--res">샘플 응답</div>
         <pre class="code code--res json">{
   "rows": [
-    {"name": "김서연", "symbol": "A", "side": "buy",
-     "qty": 10, "price": 10234.5, "t": "2026-08-20T02:35:26+00:00"}
+    {"symbol": "A", "side": "buy", "qty": 10,
+     "price": 10234.5, "t": "2026-08-20T02:35:26+00:00"}
   ]
 }</pre>
       </div>

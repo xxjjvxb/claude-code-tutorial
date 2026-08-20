@@ -1,4 +1,5 @@
-// GET /api/stock/trades?seconds=3600 — 최근 체결 내역 (대시보드 피드·마커용, 최대 400건).
+// GET /api/stock/trades?seconds=3600 — 시장 체결 히스토리 (익명, 최대 400건 최신순).
+// 누가 거래했는지는 공개하지 않는다 — 이름은 응답에서 제거.
 import { SUPABASE_URL, SUPABASE_ANON_KEY } from '../../auth-config.js';
 export const config = { runtime: 'edge' };
 
@@ -11,7 +12,8 @@ export default async function handler(request) {
     body: JSON.stringify({ p_seconds: seconds }),
   });
   const data = await r.json();
-  return new Response(JSON.stringify({ rows: data }), {
+  const rows = Array.isArray(data) ? data.map(({ name, ...rest }) => rest) : data;
+  return new Response(JSON.stringify({ rows }), {
     status: r.ok ? 200 : 502,
     headers: {
       'Content-Type': 'application/json; charset=utf-8',
