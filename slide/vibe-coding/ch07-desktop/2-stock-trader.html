@@ -149,19 +149,19 @@
     <h2 class="slide__title">이 표가 — <span class="accent">내 앱의 설계도</span>입니다</h2>
     <div class="slide__body">
       <div class="content-card content-card--compact">
-        <p class="content-card__body">Base URL <code>https://vibecoding-cc.vercel.app/api/stock</code> · 모든 요청에 헤더 <code>X-API-Key: 내키</code></p>
+        <p class="content-card__body">Base URL <code>https://vibecoding-cc.vercel.app/api/stock</code> · 모든 요청에 헤더 <code>X-API-Key: 내키</code> · 전체 명세서 <a href="../../stock-sim/api.md" download><code>api.md</code> 내려받기</a></p>
         <table class="api-table">
           <thead><tr><th>메서드</th><th>경로</th><th>설명</th><th>응답(요약)</th></tr></thead>
           <tbody>
-            <tr><td class="api-method">GET</td><td><code>/price</code></td><td>3종목 현재가·거래량</td><td><code>{"quotes":[{"symbol":"A","price":10234.5,…}]}</code></td></tr>
-            <tr><td class="api-method">GET</td><td><code>/history?symbol=A&amp;seconds=600</code></td><td>최근 N초 시세 (최대 3600)</td><td><code>{"series":[{"t":…,"price":…,"volume":…}]}</code></td></tr>
-            <tr><td class="api-method">POST</td><td><code>/order</code></td><td>시장가 주문 — 본문 <code>{"symbol":"A","side":"buy","qty":10}</code></td><td><code>{"filled":10,"exec_price":…,"cash":…}</code></td></tr>
-            <tr><td class="api-method">GET</td><td><code>/portfolio</code></td><td>내 현금·보유·수익률·체결 내역</td><td><code>{"cash":…,"pnl_pct":…,"trades":[…]}</code></td></tr>
-            <tr><td class="api-method">GET</td><td><code>/leaderboard</code></td><td>수익률 순위</td><td><code>{"rows":[{"name":…,"pnl_pct":…}]}</code></td></tr>
+            <tr><td class="api-method">GET</td><td><code>/price</code></td><td>3종목 현재가·거래량</td><td><code>quotes</code> — 종목·가격·거래량 ×3</td></tr>
+            <tr><td class="api-method">GET</td><td><code>/history?symbol=A&amp;seconds=600</code></td><td>최근 N초 시세 (최대 3600)</td><td><code>series</code> — 시각·가격·거래량 목록</td></tr>
+            <tr><td class="api-method">POST</td><td><code>/order</code></td><td>시장가 주문 — 본문 <code>{"symbol":"A","side":"buy","qty":10}</code></td><td>체결 수량·체결가·슬리피지·잔고</td></tr>
+            <tr><td class="api-method">GET</td><td><code>/portfolio</code></td><td>내 현금·보유·수익률·체결 내역</td><td><code>cash</code>·<code>pnl_pct</code>·<code>trades</code></td></tr>
+            <tr><td class="api-method">GET</td><td><code>/leaderboard</code></td><td>수익률 순위</td><td><code>rows</code> — 이름·평가액·수익률</td></tr>
           </tbody>
         </table>
       </div>
-      <p class="slide__note"><strong>규칙</strong>: 시세 조회는 1초에 한 번 정도(그보다 빨라도 서버가 같은 값), <strong>주문은 키당 1초 1회</strong> — 넘기면 <code>429</code> 에러. 이 슬라이드를 Claude에게 그대로 보여주면 앱이 나옵니다.</p>
+      <p class="slide__note"><strong>규칙</strong>: 시세 조회는 1초에 한 번 정도(그보다 빨라도 서버가 같은 값), <strong>주문은 키당 1초 1회</strong> — 넘기면 <code>429</code> 에러. 표는 훑어만 두세요 — <strong>api.md를 내려받아 프로젝트 폴더에</strong> 넣고, Claude에게 <code>@api.md</code>로 보여주며 만듭니다.</p>
     </div>
   </section>
 
@@ -211,22 +211,22 @@
               <li>3종목 현재가를 큰 글씨로 표시</li>
               <li>오르면 빨강↑ · 내리면 파랑↓ (한국식)</li>
             </ul>
-            <p class="content-card__body">폴더는 <code><span class="os-win">c:\lecture\trader</span><span class="os-mac">~/lecture/trader</span></code> — 새로 만들어 시작합니다.</p>
+            <p class="content-card__body">폴더는 <code><span class="os-win">c:\lecture\trader</span><span class="os-mac">~/lecture/trader</span></code> — 새로 만들고, 내려받은 <code>api.md</code>를 이 폴더에 넣어둡니다.</p>
           </div>
         </div>
         <div>
           <div class="prompt-card">
             <div class="prompt-card__head">
-              <span class="prompt-card__label">프롬프트 · v1 (API 스펙 포함)</span>
+              <span class="prompt-card__label">프롬프트 · v1 (@api.md 참조)</span>
               <button class="prompt-card__copy" type="button" data-copy>복사</button>
             </div>
-            <pre class="prompt-card__body" data-no-nav>주식 시세 뷰어를 trader.py로 만들어줘. 1초마다 https://vibecoding-cc.vercel.app/api/stock/price 를 GET으로 호출하면(헤더 X-API-Key: <span class="ph">[내키]</span>) {"quotes":[{"symbol":"A","price":...,"volume":...},...]} 형태로 3종목이 와. 종목별 현재가를 큰 글씨로 보여주고, 직전보다 오르면 빨강, 내리면 파랑으로 표시해줘.
+            <pre class="prompt-card__body" data-no-nav>@api.md 명세서를 읽고, 주식 시세 뷰어를 trader.py로 만들어줘. 1초마다 GET /price 로 3종목 현재가를 받아 큰 글씨로 보여주고, 직전보다 오르면 빨강, 내리면 파랑으로 표시해줘. 내 API 키: <span class="ph">[내키]</span>
 
 PySide6로 만들고, 통신 중에 창이 얼지 않게 해줘. 나는 처음이니까 설명하며 진행해줘.</pre>
           </div>
         </div>
       </div>
-      <p class="slide__note"><span class="ph">[내키]</span> 자리에 방금 발급받은 키를 붙여넣으세요. 숫자가 1초마다 바뀌기 시작하면 — <strong>내 앱이 서버와 대화하는 중</strong>입니다.</p>
+      <p class="slide__note"><code>@api.md</code>는 3장에서 배운 파일 멘션 — Claude가 명세서를 통째로 읽고 정확한 스펙으로 만듭니다. <span class="ph">[내키]</span> 자리에 방금 발급받은 키를 붙여넣으세요. 숫자가 1초마다 바뀌기 시작하면 — <strong>내 앱이 서버와 대화하는 중</strong>입니다.</p>
     </div>
   </section>
 
@@ -281,7 +281,7 @@ PySide6로 만들고, 통신 중에 창이 얼지 않게 해줘. 나는 처음�
               <span class="prompt-card__label">프롬프트 · v2</span>
               <button class="prompt-card__copy" type="button" data-copy>복사</button>
             </div>
-            <pre class="prompt-card__body" data-no-nav>trader.py에 차트를 추가해줘. 종목 버튼(A/B/C)을 누르면 https://vibecoding-cc.vercel.app/api/stock/history?symbol=A&seconds=300 (헤더 동일)에서 최근 5분 시세를 받아 라인 차트로 그려줘. 3초마다 갱신하고, 외부 차트 라이브러리 없이 PySide 기본 기능으로 그려줘.</pre>
+            <pre class="prompt-card__body" data-no-nav>trader.py에 차트를 추가해줘. 종목 버튼(A/B/C)을 누르면 @api.md 의 /history 로 최근 5분(seconds=300) 시세를 받아 라인 차트로 그려줘. 3초마다 갱신하고, 외부 차트 라이브러리 없이 PySide 기본 기능으로 그려줘.</pre>
           </div>
         </div>
       </div>
@@ -311,7 +311,7 @@ PySide6로 만들고, 통신 중에 창이 얼지 않게 해줘. 나는 처음�
               <span class="prompt-card__label">프롬프트 · v3</span>
               <button class="prompt-card__copy" type="button" data-copy>복사</button>
             </div>
-            <pre class="prompt-card__body" data-no-nav>trader.py에 매매 기능을 추가해줘. 수량 입력칸과 매수/매도 버튼을 만들고, 누르면 https://vibecoding-cc.vercel.app/api/stock/order 에 POST로 {"symbol":"선택 종목","side":"buy 또는 sell","qty":수량}을 보내줘(헤더 X-API-Key 동일). 응답의 체결가와 슬리피지를 표시하고, 5초마다 /portfolio를 불러 내 현금·보유 수량·수익률도 보여줘. 주문은 1초에 1회 제한이 있으니 버튼 연타를 막아줘.</pre>
+            <pre class="prompt-card__body" data-no-nav>trader.py에 매매 기능을 추가해줘. 수량 입력칸과 매수/매도 버튼을 만들고, 누르면 @api.md 의 /order 로 주문을 보내줘. 응답의 체결가와 슬리피지를 표시하고, 5초마다 /portfolio 를 불러 내 현금·보유 수량·수익률도 보여줘. 주문은 1초에 1회 제한이 있으니 버튼 연타를 막아줘.</pre>
           </div>
         </div>
       </div>
