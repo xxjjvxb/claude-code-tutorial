@@ -89,7 +89,7 @@
             <h3 class="content-card__title">규칙</h3>
             <ul class="content-card__list">
               <li>종목 <strong>A · B · C</strong> — 1초마다 시세 변동 (현실 하루 장세를 몇 분에)</li>
-              <li>시작 자금 <strong>가상 100만원</strong> · 수수료 없음 · 공매도 없음</li>
+              <li>시작 자금 <strong>가상 100만원</strong> · 수수료 0.02% · 공매도 없음</li>
               <li><strong>여러분의 매수·매도가 가격을 밀고 당깁니다</strong> — 큰 주문일수록 크게</li>
               <li>강의 화면에 실시간 차트·리더보드·체결이 계속 표시</li>
             </ul>
@@ -110,34 +110,31 @@
     </div>
   </section>
 
-  <!-- 4 · 슬리피지 예고 -->
+  <!-- 4 · 수수료 규칙 -->
   <section class="slide is-statement">
     <div class="statement-grid">
       <div class="statement-text">
-        <div class="slide__eyebrow">RULE · 슬리피지</div>
-        <h2 class="statement__lead">많이 살수록 — <span class="accent">비싸게 사진다</span>.</h2>
-        <p class="statement__caption">주문 수량이 클수록 체결가가 나에게 불리해집니다(수량 × 0.05%, 최대 5%). 그리고 큰 주문은 시장 가격 자체를 밀어올리거나 끌어내립니다 — 진짜 시장의 "슬리피지"를 흉내낸 규칙.</p>
+        <div class="slide__eyebrow">RULE · 수수료</div>
+        <h2 class="statement__lead">공짜 매매는 — <span class="accent">없습니다</span>.</h2>
+        <p class="statement__caption">진짜 증권사처럼, 주문이 체결될 때마다 체결 금액의 0.02%가 수수료로 나갑니다. 작아 보여도 — 사고팔기를 반복하면 차곡차곡 쌓입니다.</p>
         <div class="statement__points">
-          <div class="statement__point"><span class="statement__point-num">체결</span><span>매수는 현재가보다 조금 비싸게 · 매도는 조금 싸게</span></div>
-          <div class="statement__point"><span class="statement__point-num">임팩트</span><span>내 주문이 가격을 움직임 — 몇 분에 걸쳐 원위치</span></div>
-          <div class="statement__point"><span class="statement__point-num">교훈</span><span>몰빵 한 방보다 — 나눠서 사고파는 쪽이 유리</span></div>
+          <div class="statement__point"><span class="statement__point-num">수수료</span><span>주문마다 체결 금액의 0.02% — 매수·매도 동일</span></div>
+          <div class="statement__point"><span class="statement__point-num">왕복</span><span>한 번 사고팔면 0.04% — 100번 왕복이면 −4%</span></div>
+          <div class="statement__point"><span class="statement__point-num">교훈</span><span>전략의 수익이 수수료보다 커야 남는다</span></div>
         </div>
       </div>
       <div class="statement-visual">
         <svg viewBox="0 0 460 320" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <rect x="0" y="0" width="460" height="320" rx="16" fill="#fff5ec"/>
-          <text x="230" y="46" font-family="ui-sans-serif, system-ui" font-size="13" fill="#797067" font-weight="700" text-anchor="middle">100주 몰빵 vs 10주씩 10번</text>
-          <rect x="50" y="80" width="170" height="130" rx="10" fill="#fff" stroke="#fb2c36" stroke-width="2"/>
-          <text x="135" y="110" font-family="ui-sans-serif, system-ui" font-size="12" fill="#fb2c36" font-weight="700" text-anchor="middle">한 번에 100주</text>
-          <text x="135" y="140" font-family="ui-monospace, monospace" font-size="11" fill="#797067" text-anchor="middle">슬리피지 5%</text>
-          <text x="135" y="164" font-family="ui-monospace, monospace" font-size="11" fill="#797067" text-anchor="middle">10,000원 → 10,500원에</text>
-          <text x="135" y="192" font-family="ui-sans-serif, system-ui" font-size="11" fill="#fb2c36" text-anchor="middle" font-weight="700">사자마자 −5%</text>
-          <rect x="240" y="80" width="170" height="130" rx="10" fill="#fff" stroke="#016630" stroke-width="2"/>
-          <text x="325" y="110" font-family="ui-sans-serif, system-ui" font-size="12" fill="#016630" font-weight="700" text-anchor="middle">10주씩 나눠서</text>
-          <text x="325" y="140" font-family="ui-monospace, monospace" font-size="11" fill="#797067" text-anchor="middle">슬리피지 0.5%씩</text>
-          <text x="325" y="164" font-family="ui-monospace, monospace" font-size="11" fill="#797067" text-anchor="middle">거의 시장가 그대로</text>
-          <text x="325" y="192" font-family="ui-sans-serif, system-ui" font-size="11" fill="#016630" text-anchor="middle" font-weight="700">천천히, 그러나 싸게</text>
-          <text x="230" y="262" font-family="ui-sans-serif, system-ui" font-size="14" fill="#cc5a14" font-weight="700" text-anchor="middle">수업 중에 직접 실험해 봅니다</text>
+          <rect x="0" y="0" width="460" height="320" rx="14" fill="rgba(0,0,0,0.92)"/>
+          <text x="14" y="20" font-family="ui-monospace, monospace" font-size="11" fill="rgba(255,255,255,0.5)">수수료 계산기</text>
+          <text x="20" y="60" fill="white" font-family="ui-monospace, monospace" font-size="12">100만원어치 매수     수수료 200원</text>
+          <text x="20" y="88" fill="white" font-family="ui-monospace, monospace" font-size="12">바로 되팔기          수수료 200원</text>
+          <line x1="20" y1="110" x2="440" y2="110" stroke="rgba(255,255,255,0.15)"/>
+          <text x="20" y="140" fill="rgba(255,255,255,0.7)" font-family="ui-monospace, monospace" font-size="11">→ 가격이 그대로면 왕복마다 −400원</text>
+          <text x="20" y="164" fill="#f87171" font-family="ui-monospace, monospace" font-size="11">→ 하루 100번 왕복 = −40,000원 (−4%)</text>
+          <line x1="20" y1="188" x2="440" y2="188" stroke="rgba(255,255,255,0.15)"/>
+          <text x="20" y="220" fill="#4ade80" font-family="ui-monospace, monospace" font-size="12">교훈: 난사보다 — 근거 있는 매매</text>
+          <text x="20" y="284" fill="rgba(255,255,255,0.5)" font-family="ui-monospace, monospace" font-size="11"># 자동매매 전략 짤 때도 수수료를 계산에 넣으세요</text>
         </svg>
       </div>
     </div>
@@ -155,7 +152,7 @@
           <tbody>
             <tr><td class="api-method">GET</td><td><code>/price</code></td><td>3종목 현재가·거래량</td><td><code>quotes</code> — 종목·가격·거래량 ×3</td></tr>
             <tr><td class="api-method">GET</td><td><code>/history?symbol=A&amp;seconds=600</code></td><td>최근 N초 시세 (최대 3600)</td><td><code>series</code> — 시각·가격·거래량 목록</td></tr>
-            <tr><td class="api-method">POST</td><td><code>/order</code></td><td>시장가 주문 — 본문 <code>{"symbol":"A","side":"buy","qty":10}</code></td><td>체결 수량·체결가·슬리피지·잔고</td></tr>
+            <tr><td class="api-method">POST</td><td><code>/order</code></td><td>시장가 주문 — 본문 <code>{"symbol":"A","side":"buy","qty":10}</code></td><td>체결 수량·체결가·수수료·잔고</td></tr>
             <tr><td class="api-method">GET</td><td><code>/portfolio</code></td><td>내 현금·보유·수익률·체결 내역</td><td><code>cash</code>·<code>pnl_pct</code>·<code>trades</code></td></tr>
             <tr><td class="api-method">GET</td><td><code>/leaderboard</code></td><td>수익률 순위</td><td><code>rows</code> — 이름·평가액·수익률</td></tr>
           </tbody>
@@ -301,7 +298,7 @@ PySide6로 만들고, 통신 중에 창이 얼지 않게 해줘. 나는 처음�
             <ul class="content-card__list">
               <li>수량 입력 + <strong>매수/매도 버튼</strong> → <code>POST /order</code></li>
               <li><code>GET /portfolio</code> — 내 현금·보유·수익률 표시</li>
-              <li>체결 결과(체결가·슬리피지)를 화면에</li>
+              <li>체결 결과(체결가·수수료)를 화면에</li>
             </ul>
           </div>
         </div>
@@ -311,7 +308,7 @@ PySide6로 만들고, 통신 중에 창이 얼지 않게 해줘. 나는 처음�
               <span class="prompt-card__label">프롬프트 · v3</span>
               <button class="prompt-card__copy" type="button" data-copy>복사</button>
             </div>
-            <pre class="prompt-card__body" data-no-nav>trader.py에 매매 기능을 추가해줘. 수량 입력칸과 매수/매도 버튼을 만들고, 누르면 @api.md 의 /order 로 주문을 보내줘. 응답의 체결가와 슬리피지를 표시하고, 5초마다 /portfolio 를 불러 내 현금·보유 수량·수익률도 보여줘. 주문은 1초에 1회 제한이 있으니 버튼 연타를 막아줘.</pre>
+            <pre class="prompt-card__body" data-no-nav>trader.py에 매매 기능을 추가해줘. 수량 입력칸과 매수/매도 버튼을 만들고, 누르면 @api.md 의 /order 로 주문을 보내줘. 응답의 체결가와 수수료를 표시하고, 5초마다 /portfolio 를 불러 내 현금·보유 수량·수익률도 보여줘. 주문은 1초에 1회 제한이 있으니 버튼 연타를 막아줘.</pre>
           </div>
         </div>
       </div>
@@ -346,32 +343,32 @@ PySide6로 만들고, 통신 중에 창이 얼지 않게 해줘. 나는 처음�
     </div>
   </section>
 
-  <!-- 12 · 슬리피지 체험 -->
+  <!-- 12 · 시장 관찰 -->
   <section class="slide is-statement">
     <div class="statement-grid">
       <div class="statement-text">
-        <div class="slide__eyebrow">EXPERIMENT · 몰빵 실험</div>
-        <h2 class="statement__lead">일부러 — <span class="accent">몰빵해 보세요</span>.</h2>
-        <p class="statement__caption">전 재산으로 한 종목을 최대 수량 매수 → 체결가를 보세요. 시장가보다 한참 비싸게 사졌고, 그 순간 차트가 튀어오르며 — 다른 사람들이 여러분 덕에 비싸게 사게 됩니다. 그리고 바로 팔면? 이번엔 싸게 팔립니다.</p>
+        <div class="slide__eyebrow">EXPERIMENT · 시장 관찰</div>
+        <h2 class="statement__lead">시장의 규칙은 — <span class="accent">직접 찾아내세요</span>.</h2>
+        <p class="statement__caption">이 시장의 작동 원리를 일부러 다 알려드리지 않습니다. 이것저것 실험해 보고, 강의 화면 차트를 관찰하고, 남보다 먼저 패턴을 찾는 것 — 그게 여러분의 전략이 됩니다.</p>
         <div class="statement__points">
-          <div class="statement__point"><span class="statement__point-num">관찰 1</span><span>체결가와 시장가의 차이 — 슬리피지 %</span></div>
-          <div class="statement__point"><span class="statement__point-num">관찰 2</span><span>강의 화면 차트가 내 주문에 출렁이는 순간</span></div>
-          <div class="statement__point"><span class="statement__point-num">결론</span><span>사고팔기만 반복하면 — 수수료 없어도 녹는다</span></div>
+          <div class="statement__point"><span class="statement__point-num">실험</span><span>크게도 사보고, 나눠서도 사보고 — 차트를 지켜보기</span></div>
+          <div class="statement__point"><span class="statement__point-num">관찰</span><span>내 주문 직후, 그리고 몇 분 뒤 — 가격이 어떻게 되나</span></div>
+          <div class="statement__point"><span class="statement__point-num">무기</span><span>발견한 패턴은 문서에 없다 — 나만 아는 우위</span></div>
         </div>
       </div>
       <div class="statement-visual">
         <svg viewBox="0 0 460 320" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
           <rect x="0" y="0" width="460" height="320" rx="14" fill="rgba(0,0,0,0.92)"/>
-          <text x="14" y="20" font-family="ui-monospace, monospace" font-size="11" fill="rgba(255,255,255,0.5)">체결 결과</text>
-          <text x="20" y="60" fill="white" font-family="ui-monospace, monospace" font-size="12">시장가         10,000원</text>
-          <text x="20" y="88" fill="#f87171" font-family="ui-monospace, monospace" font-size="12">체결가(97주)   10,485원  (+4.85%)</text>
-          <line x1="20" y1="110" x2="440" y2="110" stroke="rgba(255,255,255,0.15)"/>
-          <text x="20" y="140" fill="rgba(255,255,255,0.7)" font-family="ui-monospace, monospace" font-size="11">→ 사자마자 평가손 −4.85%</text>
-          <text x="20" y="164" fill="rgba(255,255,255,0.7)" font-family="ui-monospace, monospace" font-size="11">→ 차트가 위로 출렁 (내 임팩트)</text>
-          <text x="20" y="188" fill="rgba(255,255,255,0.7)" font-family="ui-monospace, monospace" font-size="11">→ 바로 팔면 또 싸게 팔림</text>
-          <line x1="20" y1="212" x2="440" y2="212" stroke="rgba(255,255,255,0.15)"/>
-          <text x="20" y="244" fill="#4ade80" font-family="ui-monospace, monospace" font-size="12">교훈: 나눠서, 천천히, 신호를 보고</text>
-          <text x="20" y="284" fill="rgba(255,255,255,0.5)" font-family="ui-monospace, monospace" font-size="11"># 진짜 시장도 똑같이 움직입니다</text>
+          <text x="14" y="20" font-family="ui-monospace, monospace" font-size="11" fill="rgba(255,255,255,0.5)">관찰 일지</text>
+          <text x="20" y="60" fill="white" font-family="ui-monospace, monospace" font-size="12">Q. 내가 크게 사면 — 무슨 일이?</text>
+          <text x="20" y="88" fill="white" font-family="ui-monospace, monospace" font-size="12">Q. 잠시 기다리면 — 가격은?</text>
+          <text x="20" y="116" fill="white" font-family="ui-monospace, monospace" font-size="12">Q. 남들이 따라 사면 — 그 다음은?</text>
+          <line x1="20" y1="140" x2="440" y2="140" stroke="rgba(255,255,255,0.15)"/>
+          <text x="20" y="172" fill="rgba(255,255,255,0.7)" font-family="ui-monospace, monospace" font-size="11">→ 답은 API 문서에 없습니다</text>
+          <text x="20" y="196" fill="rgba(255,255,255,0.7)" font-family="ui-monospace, monospace" font-size="11">→ 직접 돈을 태워 확인한 사람만 압니다</text>
+          <line x1="20" y1="220" x2="440" y2="220" stroke="rgba(255,255,255,0.15)"/>
+          <text x="20" y="252" fill="#4ade80" font-family="ui-monospace, monospace" font-size="12">발견 = 전략 = 리더보드 상위권</text>
+          <text x="20" y="290" fill="rgba(255,255,255,0.5)" font-family="ui-monospace, monospace" font-size="11"># 진짜 시장의 퀀트들도 이렇게 일합니다</text>
         </svg>
       </div>
     </div>

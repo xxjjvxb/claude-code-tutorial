@@ -1,15 +1,14 @@
--- 주식 시뮬 업데이트 1 — 시뮬 ON/OFF 스위치 (Supabase SQL Editor에 붙여넣어 실행)
--- OFF면: 조회 RPC는 빈 결과(비용 ~0), 주문은 거부. 관리자만 토글 가능.
+-- 주식 시뮬 업데이트 1 (통합) — Supabase SQL Editor에 전체를 붙여넣어 한 번 실행하세요. 재실행해도 안전.
+-- ① 시뮬 ON/OFF 스위치  ② 슬리피지 폐지 → 수수료 0.02%  ③ 시장 초기화 safeupdate 오류 수정
 
+-- ---------- ① ON/OFF ----------
 alter table public.stock_config add column if not exists enabled boolean not null default true;
 
--- 현재 상태 조회 (누구나)
 create or replace function public.stock_sim_on()
 returns boolean language sql stable security definer set search_path = public as $$
   select enabled from public.stock_config where id = 1
 $$;
 
--- 토글 (관리자 전용)
 create or replace function public.stock_set_enabled(p_on boolean)
 returns text language plpgsql volatile security definer set search_path = public as $$
 begin
@@ -21,7 +20,7 @@ begin
 end
 $$;
 
--- 조회 RPC — OFF면 빈 결과
+-- ---------- 조회 RPC — OFF면 빈 결과 (비용 ~0) ----------
 create or replace function public.stock_quote()
 returns table (symbol text, price numeric, volume int)
 language sql stable security definer set search_path = public as $$
@@ -79,13 +78,16 @@ language sql stable security definer set search_path = public as $$
   limit 400
 $$;
 
--- 주문 — OFF면 거부 (기존 함수 앞부분에 검사만 추가)
-create or replace function public.stock_order(p_key uuid, p_symbol text, p_side text, p_qty int)
-returns table (filled int, exec_price numeric, slippage_pct numeric, cash numeric, pos_a int, pos_b int, pos_c int)
+-- ---------- ② 주문 — 슬리피지 없음 · 수수료 0.02% ----------
+-- 반환 형태가 바뀌므로(slippage_pct → fee) drop 후 재생성
+drop function if exists public.stock_order(uuid, text, text, int);
+
+create function public.stock_order(p_key uuid, p_symbol text, p_side text, p_qty int)
+returns table (filled int, exec_price numeric, fee numeric, cash numeric, pos_a int, pos_b int, pos_c int)
 language plpgsql volatile security definer set search_path = public as $$
 declare
   k public.stock_keys%rowtype;
-  mid numeric; slip numeric; exec numeric; total numeric; pos int;
+  exec numeric; v_fee numeric; total numeric; pos int;
 begin
   if not (select enabled from public.stock_config where id = 1) then
     raise exception 'sim is off';
@@ -101,19 +103,18 @@ begin
     raise exception 'rate limit: 1 order per second';
   end if;
 
-  mid  := public.stock_price_at(p_symbol, now());
-  slip := least(0.0005 * p_qty, 0.05);
-  exec := round(mid * (1 + case when p_side = 'buy' then slip else -slip end), 2);
+  exec  := public.stock_price_at(p_symbol, now());
+  v_fee := round(exec * p_qty * 0.0002, 2);   -- 수수료 0.02%
   total := exec * p_qty;
 
   pos := case p_symbol when 'A' then k.pos_a when 'B' then k.pos_b else k.pos_c end;
 
   if p_side = 'buy' then
-    if k.cash < total then raise exception 'not enough cash (need %, have %)', round(total), round(k.cash); end if;
-    k.cash := k.cash - total; pos := pos + p_qty;
+    if k.cash < total + v_fee then raise exception 'not enough cash (need %, have %)', round(total + v_fee), round(k.cash); end if;
+    k.cash := k.cash - total - v_fee; pos := pos + p_qty;
   else
     if pos < p_qty then raise exception 'not enough position (have %)', pos; end if;
-    k.cash := k.cash + total; pos := pos - p_qty;
+    k.cash := k.cash + total - v_fee; pos := pos - p_qty;
   end if;
 
   update public.stock_keys set
@@ -126,7 +127,7 @@ begin
   insert into public.stock_trades (key, name, symbol, side, qty, price) values (p_key, k.name, p_symbol, p_side, p_qty, exec);
   insert into public.stock_impacts (symbol, side, qty) values (p_symbol, case when p_side = 'buy' then 1 else -1 end, p_qty);
 
-  return query select p_qty, exec, round(slip * 100, 2),
+  return query select p_qty, exec, v_fee,
     round(k.cash, 0),
     case when p_symbol = 'A' then pos else k.pos_a end,
     case when p_symbol = 'B' then pos else k.pos_b end,
@@ -134,8 +135,26 @@ begin
 end
 $$;
 
--- 권한
+-- ---------- ③ 시장 초기화 — safeupdate(WHERE 필수) 대응 ----------
+create or replace function public.stock_reset()
+returns text
+language plpgsql volatile security definer set search_path = public as $$
+begin
+  if lower(coalesce(auth.jwt() ->> 'email', '')) <> 'xxjjvxb@gmail.com' then
+    raise exception 'admin only';
+  end if;
+  delete from public.stock_trades where true;
+  delete from public.stock_impacts where true;
+  update public.stock_keys set cash = 1000000, pos_a = 0, pos_b = 0, pos_c = 0 where true;
+  update public.stock_config set seed = md5(random()::text), epoch = now() where id = 1;
+  return 'reset ok';
+end
+$$;
+
+-- ---------- 권한 ----------
 revoke all on function public.stock_sim_on() from public;
 revoke all on function public.stock_set_enabled(boolean) from public;
+revoke all on function public.stock_order(uuid, text, text, int) from public;
 grant execute on function public.stock_sim_on() to anon, authenticated;
 grant execute on function public.stock_set_enabled(boolean) to authenticated;
+grant execute on function public.stock_order(uuid, text, text, int) to anon, authenticated;
