@@ -149,7 +149,7 @@
     <h2 class="slide__title">이 표가 — <span class="accent">내 앱의 설계도</span>입니다</h2>
     <div class="slide__body">
       <div class="content-card content-card--compact">
-        <p class="content-card__body">Base URL <code>https://vibecoding-cc.vercel.app/api/stock</code> · 모든 요청에 헤더 <code>X-API-Key: 내키</code> · 전체 명세서 <a href="../../stock-sim/api.md" download><code>api.md</code> 내려받기</a></p>
+        <p class="content-card__body">Base URL <code>https://vibecoding-cc.vercel.app/api/stock</code> · 모든 요청에 헤더 <code>X-API-Key: 내키</code> — <a href="../../stock-sim/key.html" target="_blank" rel="noopener" data-no-nav style="color: var(--color-primary-strong); text-decoration: underline;">키 발급</a> · <a href="../../stock-sim/api.html" target="_blank" rel="noopener" data-no-nav style="color: var(--color-primary-strong); text-decoration: underline;">API 문서</a> ·<a href="../../stock-sim/board.html" target="_blank" rel="noopener" data-no-nav style="color: var(--color-primary-strong); text-decoration: underline;">라이브 보드</a></p>
         <table class="api-table">
           <thead><tr><th>메서드</th><th>경로</th><th>설명</th><th>응답(요약)</th></tr></thead>
           <tbody>
@@ -161,7 +161,7 @@
           </tbody>
         </table>
       </div>
-      <p class="slide__note"><strong>규칙</strong>: 시세 조회는 1초에 한 번 정도(그보다 빨라도 서버가 같은 값), <strong>주문은 키당 1초 1회</strong> — 넘기면 <code>429</code> 에러. 표는 훑어만 두세요 — <strong>api.md를 내려받아 프로젝트 폴더에</strong> 넣고, Claude에게 <code>@api.md</code>로 보여주며 만듭니다.</p>
+      <p class="slide__note"><strong>규칙</strong>: 시세 조회는 1초에 한 번 정도(그보다 빨라도 서버가 같은 값), <strong>주문은 키당 1초 1회</strong> — 넘기면 <code>429</code> 에러. 표는 훑어만 두세요 — API 문서에서 <strong>api.md를 내려받아 프로젝트 폴더에</strong> 넣고, Claude에게 <code>@api.md</code>로 보여주며 만듭니다.</p>
     </div>
   </section>
 
@@ -175,7 +175,7 @@
           <div class="content-card content-card--compact">
             <h3 class="content-card__title">발급 = 내 계좌 개설</h3>
             <ul class="content-card__list">
-              <li>강의자료 사이트의 <code>/slide/stock-sim/key.html</code> 접속</li>
+              <li>강의자료 사이트의 <a href="../../stock-sim/key.html" target="_blank" rel="noopener" data-no-nav style="color: var(--color-primary-strong); text-decoration: underline;"><code>/slide/stock-sim/key.html</code></a> 접속</li>
               <li><strong>"API 키 발급 / 보기"</strong> 클릭 → 키 복사</li>
               <li>키 발급과 동시에 <strong>가상 100만원</strong> 지급 — 이름은 열람 신청 이름 그대로</li>
               <li>키는 비밀번호처럼 — <strong>공유 금지</strong> (남이 내 계좌로 몰빵할 수 있음)</li>
@@ -426,7 +426,7 @@ PySide6로 만들고, 통신 중에 창이 얼지 않게 해줘. 나는 처음�
             <h3 class="content-card__title">마무리 2가지</h3>
             <ul class="content-card__list">
               <li>덱 1과 똑같이 — "trader.py를 PyInstaller로 <span class="os-win">.exe</span><span class="os-mac">.app</span>로 만들어줘"</li>
-              <li>남은 시간 자유 매매 — <strong>수익률 상위 3명</strong> 호명</li>
+              <li>남은 시간 자유 매매 — <strong>수익률 상위 3명</strong> 호명 (<a href="../../stock-sim/board.html" target="_blank" rel="noopener" data-no-nav style="color: var(--color-primary-strong); text-decoration: underline;">라이브 보드</a>)</li>
               <li>마감 후: 무엇이 먹혔는지 한 줄 공유 (전략? 감? 몰빵의 반성?)</li>
             </ul>
           </div>

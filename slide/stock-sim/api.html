@@ -1,0 +1,277 @@
+<!doctype html>
+<!-- © 2026 이일규 (Ilkyu Lee). All rights reserved. -->
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>주식 시뮬 — API 문서</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; }
+    body { font-family: "Pretendard", "Malgun Gothic", system-ui, sans-serif; background: #faf7f2; color: #262220;
+           padding: 2rem 1.2rem 4rem; word-break: keep-all; line-height: 1.6; }
+    .wrap { max-width: 62rem; margin: 0 auto; }
+    .brand { font-size: 0.72rem; letter-spacing: 0.16em; text-transform: uppercase; font-weight: 700; color: #cc5a14; }
+    h1 { font-size: 1.6rem; margin: 0.3rem 0 0.2rem; }
+    p.lead { color: #797067; font-size: 0.9rem; margin-bottom: 1rem; }
+    .top { display: flex; flex-wrap: wrap; gap: 0.6rem; align-items: center; margin-bottom: 1.6rem; }
+    .chip { background: #fff; border: 1.5px solid #e5ddd2; border-radius: 999px; padding: 0.35rem 0.9rem; font-size: 0.82rem; }
+    .chip code { font-family: ui-monospace, Consolas, monospace; font-size: 0.8rem; color: #cc5a14; }
+    .dl { display: inline-flex; align-items: center; gap: 0.4rem; background: #fe6e00; color: #fff; font-weight: 700;
+          border-radius: 10px; padding: 0.5rem 1rem; text-decoration: none; font-size: 0.86rem; }
+    .dl:hover { filter: brightness(1.05); }
+    .dl small { font-weight: 500; opacity: 0.85; }
+
+    h2.sec { font-size: 1.05rem; margin: 2rem 0 0.7rem; padding-left: 0.7rem; border-left: 4px solid #fe6e00; }
+
+    .rules { display: grid; grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr)); gap: 0.6rem; }
+    .rule { background: #fff; border: 1.5px solid #e5ddd2; border-radius: 12px; padding: 0.7rem 0.9rem; font-size: 0.84rem; }
+    .rule strong { color: #cc5a14; display: block; margin-bottom: 0.15rem; }
+
+    .ep { background: #fff; border: 1.5px solid #e5ddd2; border-radius: 14px; padding: 1rem 1.1rem 1.1rem; margin-bottom: 1rem; }
+    .ep__head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.6rem; margin-bottom: 0.2rem; }
+    .method { font-family: ui-monospace, Consolas, monospace; font-weight: 800; font-size: 0.78rem; border-radius: 6px; padding: 0.15rem 0.55rem; }
+    .method--get { background: #ecfdf5; color: #047857; border: 1.5px solid #a7f3d0; }
+    .method--post { background: #fff7ed; color: #c2410c; border: 1.5px solid #fed7aa; }
+    .path { font-family: ui-monospace, Consolas, monospace; font-weight: 700; font-size: 0.98rem; }
+    .ep__desc { color: #797067; font-size: 0.85rem; margin-bottom: 0.7rem; }
+    .io { display: grid; grid-template-columns: 1fr 1fr; gap: 0.7rem; }
+    @media (max-width: 46rem) { .io { grid-template-columns: 1fr; } }
+    .io__label { font-size: 0.72rem; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 0.3rem; }
+    .io__label--req { color: #b45309; }
+    .io__label--res { color: #047857; }
+    pre.code { border-radius: 10px; padding: 0.75rem 0.9rem; font-family: ui-monospace, Consolas, monospace;
+               font-size: 0.8rem; line-height: 1.55; overflow-x: auto; white-space: pre; }
+    pre.code--req { background: #fff7ed; border: 1.5px solid #fed7aa; color: #431407; }
+    pre.code--res { background: #262220; color: #e7e0d6; }
+    .code--res .k { color: #ffb86b; } .code--res .s { color: #7cfc98; } .code--res .n { color: #8ec9ff; } .code--res .b { color: #f0a5c0; }
+    .code--req .m { color: #c2410c; font-weight: 800; } .code--req .h { color: #92400e; }
+    table.params { width: 100%; border-collapse: collapse; font-size: 0.82rem; margin: 0.4rem 0 0.7rem; }
+    .params th, .params td { text-align: left; padding: 0.3rem 0.5rem; border-bottom: 1px solid #efe9df; }
+    .params th { color: #797067; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.05em; }
+    .params code { font-family: ui-monospace, Consolas, monospace; font-size: 0.78rem; color: #cc5a14; }
+    .errbox { margin-top: 0.7rem; }
+    .errbox summary { cursor: pointer; font-size: 0.82rem; font-weight: 700; color: #991b1b; }
+    .errbox table { margin-top: 0.4rem; }
+    .note { background: #f3ede4; border-radius: 10px; padding: 0.8rem 1rem; font-size: 0.84rem; margin-top: 0.5rem; }
+    .foot { color: #797067; font-size: 0.78rem; margin-top: 2.2rem; }
+    a { color: #cc5a14; }
+  </style>
+</head>
+<body>
+<div class="wrap">
+  <div class="brand">실습으로 배우는 바이브코딩 · 주식 시뮬</div>
+  <h1>가상 시장 API 문서</h1>
+  <p class="lead">7장 데스크톱 실습 — 내 트레이딩 앱이 대화할 시장 서버의 전체 명세입니다.</p>
+
+  <div class="top">
+    <span class="chip">Base URL <code>https://vibecoding-cc.vercel.app/api/stock</code></span>
+    <span class="chip">인증 헤더 <code>X-API-Key: 내키</code> (<a href="key.html">키 발급</a>)</span>
+    <a class="dl" href="api.md" download>⬇ Claude용 api.md 내려받기 <small>— 프로젝트 폴더에 넣고 @api.md</small></a>
+  </div>
+
+  <h2 class="sec">시장 규칙</h2>
+  <div class="rules">
+    <div class="rule"><strong>종목 · 자금</strong>A(1만원대) · B(2.5만원대) · C(500원대) — 시작 자금 1,000,000원</div>
+    <div class="rule"><strong>제한</strong>수수료 없음 · 공매도 없음(보유량만 매도) · 잔고 초과 매수 불가</div>
+    <div class="rule"><strong>속도</strong>시세는 초 단위 갱신 — 조회 1초 1회면 충분 · <b>주문은 키당 1초 1회</b>(초과 시 429)</div>
+    <div class="rule"><strong>슬리피지</strong>체결가 = 현재가 × (1 ± min(0.05% × 수량, 5%)) — 매수는 비싸게, 매도는 싸게</div>
+    <div class="rule"><strong>임팩트</strong>내 주문이 시장 가격을 실제로 움직이고 몇 분에 걸쳐 원위치</div>
+    <div class="rule"><strong>새 라운드</strong>매일 05:00 전원 잔고 100만 초기화 + 새 시세 — 키는 그대로 사용</div>
+  </div>
+
+  <h2 class="sec">엔드포인트</h2>
+
+  <div class="ep">
+    <div class="ep__head"><span class="method method--get">GET</span><span class="path">/price</span></div>
+    <p class="ep__desc">3종목 현재가·거래량 — 1초마다 폴링하는 앱의 심장.</p>
+    <div class="io">
+      <div>
+        <div class="io__label io__label--req">샘플 요청</div>
+        <pre class="code code--req"><span class="m">GET</span> https://vibecoding-cc.vercel.app/api/stock/price
+<span class="h">X-API-Key:</span> 내키</pre>
+      </div>
+      <div>
+        <div class="io__label io__label--res">샘플 응답</div>
+        <pre class="code code--res json">{
+  "t": 1787159288,
+  "quotes": [
+    {"symbol": "A", "price": 10234.5, "volume": 57},
+    {"symbol": "B", "price": 25453.2, "volume": 43},
+    {"symbol": "C", "price": 501.8, "volume": 66}
+  ]
+}</pre>
+      </div>
+    </div>
+  </div>
+
+  <div class="ep">
+    <div class="ep__head"><span class="method method--get">GET</span><span class="path">/history?symbol=A&amp;seconds=600</span></div>
+    <p class="ep__desc">최근 N초 시세 — 차트 그리기용. 길게 요청하면 포인트가 자동 압축됩니다.</p>
+    <table class="params">
+      <thead><tr><th>파라미터</th><th>값</th><th>설명</th></tr></thead>
+      <tbody>
+        <tr><td><code>symbol</code></td><td>A / B / C</td><td>종목 (필수)</td></tr>
+        <tr><td><code>seconds</code></td><td>10 ~ 3600</td><td>과거 몇 초까지 (기본 600)</td></tr>
+      </tbody>
+    </table>
+    <div class="io">
+      <div>
+        <div class="io__label io__label--req">샘플 요청</div>
+        <pre class="code code--req"><span class="m">GET</span> …/api/stock/history?symbol=A&amp;seconds=300
+<span class="h">X-API-Key:</span> 내키</pre>
+      </div>
+      <div>
+        <div class="io__label io__label--res">샘플 응답</div>
+        <pre class="code code--res json">{
+  "symbol": "A",
+  "series": [
+    {"t": "2026-08-20T02:00:00+00:00", "price": 10201.1, "volume": 52},
+    {"t": "2026-08-20T02:00:01+00:00", "price": 10203.4, "volume": 48}
+  ]
+}</pre>
+      </div>
+    </div>
+  </div>
+
+  <div class="ep">
+    <div class="ep__head"><span class="method method--post">POST</span><span class="path">/order</span></div>
+    <p class="ep__desc">시장가 주문 — 응답에 체결 결과와 갱신된 계좌가 함께 옵니다. <b>키당 1초 1회.</b></p>
+    <table class="params">
+      <thead><tr><th>본문 필드</th><th>값</th><th>설명</th></tr></thead>
+      <tbody>
+        <tr><td><code>symbol</code></td><td>A / B / C</td><td>종목</td></tr>
+        <tr><td><code>side</code></td><td>buy / sell</td><td>매수 / 매도</td></tr>
+        <tr><td><code>qty</code></td><td>1 ~ 10000</td><td>수량 — 클수록 슬리피지 불리</td></tr>
+      </tbody>
+    </table>
+    <div class="io">
+      <div>
+        <div class="io__label io__label--req">샘플 요청</div>
+        <pre class="code code--req"><span class="m">POST</span> …/api/stock/order
+<span class="h">X-API-Key:</span> 내키
+<span class="h">Content-Type:</span> application/json
+
+{"symbol": "A", "side": "buy", "qty": 10}</pre>
+      </div>
+      <div>
+        <div class="io__label io__label--res">샘플 응답 — 체결 성공</div>
+        <pre class="code code--res json">{
+  "filled": 10,
+  "exec_price": 10259.1,
+  "slippage_pct": 0.5,
+  "cash": 897409,
+  "pos_a": 10,
+  "pos_b": 0,
+  "pos_c": 0
+}</pre>
+      </div>
+    </div>
+    <details class="errbox">
+      <summary>실패 응답 4가지 — 앱이 대비해야 할 것</summary>
+      <table class="params">
+        <thead><tr><th>상태</th><th>응답</th><th>언제</th></tr></thead>
+        <tbody>
+          <tr><td><code>429</code></td><td><code>{"error":"rate limit: 1 order per second"}</code></td><td>1초에 2번 주문</td></tr>
+          <tr><td><code>400</code></td><td><code>{"error":"not enough cash (need 102591, have 50000)"}</code></td><td>잔고 부족</td></tr>
+          <tr><td><code>400</code></td><td><code>{"error":"not enough position (have 3)"}</code></td><td>보유보다 많이 매도</td></tr>
+          <tr><td><code>401</code></td><td><code>{"error":"invalid api key"}</code></td><td>키 오류</td></tr>
+        </tbody>
+      </table>
+    </details>
+  </div>
+
+  <div class="ep">
+    <div class="ep__head"><span class="method method--get">GET</span><span class="path">/portfolio</span></div>
+    <p class="ep__desc">내 계좌 — 현금·보유·평가액·수익률·최근 체결 20건(최신순).</p>
+    <div class="io">
+      <div>
+        <div class="io__label io__label--req">샘플 요청</div>
+        <pre class="code code--req"><span class="m">GET</span> …/api/stock/portfolio
+<span class="h">X-API-Key:</span> 내키</pre>
+      </div>
+      <div>
+        <div class="io__label io__label--res">샘플 응답</div>
+        <pre class="code code--res json">{
+  "name": "김서연",
+  "cash": 897409,
+  "pos_a": 10, "pos_b": 0, "pos_c": 0,
+  "value": 1000139,
+  "pnl_pct": 0.01,
+  "trades": [
+    {"t": "2026-08-20T02:35:26+00:00", "symbol": "A",
+     "side": "buy", "qty": 10, "price": 10259.1}
+  ]
+}</pre>
+      </div>
+    </div>
+    <p class="ep__desc" style="margin: 0.5rem 0 0;"><code>value</code> = 현금 + 보유 평가액 · <code>pnl_pct</code> = 수익률(%)</p>
+  </div>
+
+  <div class="ep">
+    <div class="ep__head"><span class="method method--get">GET</span><span class="path">/leaderboard</span></div>
+    <p class="ep__desc">수익률 순위 — 강의 화면의 <a href="board.html">라이브 보드</a>와 같은 데이터.</p>
+    <div class="io">
+      <div>
+        <div class="io__label io__label--req">샘플 요청</div>
+        <pre class="code code--req"><span class="m">GET</span> …/api/stock/leaderboard
+<span class="h">X-API-Key:</span> 내키</pre>
+      </div>
+      <div>
+        <div class="io__label io__label--res">샘플 응답</div>
+        <pre class="code code--res json">{
+  "rows": [
+    {"name": "김서연", "value": 1042805, "pnl_pct": 4.28},
+    {"name": "박지훈", "value": 1035838, "pnl_pct": 3.58}
+  ]
+}</pre>
+      </div>
+    </div>
+  </div>
+
+  <div class="ep">
+    <div class="ep__head"><span class="method method--get">GET</span><span class="path">/trades?seconds=3600</span></div>
+    <p class="ep__desc">전체 참여자 최근 체결 (최대 400건, 최신순) — 시장 분위기 읽기용.</p>
+    <div class="io">
+      <div>
+        <div class="io__label io__label--req">샘플 요청</div>
+        <pre class="code code--req"><span class="m">GET</span> …/api/stock/trades?seconds=3600
+<span class="h">X-API-Key:</span> 내키</pre>
+      </div>
+      <div>
+        <div class="io__label io__label--res">샘플 응답</div>
+        <pre class="code code--res json">{
+  "rows": [
+    {"name": "김서연", "symbol": "A", "side": "buy",
+     "qty": 10, "price": 10259.1, "t": "2026-08-20T02:35:26+00:00"}
+  ]
+}</pre>
+      </div>
+    </div>
+  </div>
+
+  <h2 class="sec">앱 만들 때 팁</h2>
+  <div class="note">
+    시세 폴링 1초 · 차트 갱신 2~3초 · 계좌 갱신 5초면 충분합니다. 통신은 백그라운드 스레드에서 — GUI가 얼지 않게.
+    주문 버튼엔 앱에서도 연타 방지(1초 1회)를 걸어두면 429를 안 봅니다.
+  </div>
+
+  <p class="foot">이 문서와 같은 내용의 <a href="api.md" download>api.md</a>를 프로젝트 폴더에 넣고 Claude에게 <code>@api.md</code>로 보여주면 — 앱이 나옵니다.</p>
+</div>
+
+<script>
+  // 응답 JSON 색상 — 키·문자열·숫자·불리언
+  document.querySelectorAll('pre.json').forEach((el) => {
+    const esc = el.textContent.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+    el.innerHTML = esc.replace(
+      /("(?:[^"\\]|\\.)*")(\s*:)|("(?:[^"\\]|\\.)*")|(-?\d+\.?\d*)|\b(true|false|null)\b/g,
+      (m, key, colon, str, num, bool) => {
+        if (key) return '<span class="k">' + key + '</span>' + colon;
+        if (str) return '<span class="s">' + str + '</span>';
+        if (num) return '<span class="n">' + num + '</span>';
+        return '<span class="b">' + bool + '</span>';
+      }
+    );
+  });
+</script>
+</body>
+</html>
