@@ -20,8 +20,8 @@ export default async function handler(request) {
     headers: {
       'Content-Type': 'application/json; charset=utf-8',
       'Cache-Control': seconds >= 1800
-        ? 'public, s-maxage=5, stale-while-revalidate=10'   // 큰 윈도(수익률 곡선용)는 무거워서 길게
-        : 'public, s-maxage=1, stale-while-revalidate=2',
+        ? 'public, s-maxage=10, stale-while-revalidate=20'   // 큰 윈도(수익률 곡선용)는 무거워서 길게
+        : 'public, s-maxage=3, stale-while-revalidate=6',
     },
   });
 }

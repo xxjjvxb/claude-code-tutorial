@@ -167,14 +167,14 @@
     async function charts() {
       if (!simOn) return;
       try {
-        const rs = await Promise.all(SYMS.map(s => j('/api/stock/history?symbol=' + s + '&seconds=900')));
+        const rs = await Promise.all(SYMS.map(s => j('/api/stock/history?symbol=' + s + '&seconds=600')));
         rs.forEach(({ symbol, series }) => {
           const tr = tradesCache.filter(t => t.symbol === symbol);
           drawPrice($('ch-' + symbol), series, tr, SYM_COLOR[symbol]);
           if (series.length) {
             const first = +series[0].price, last = +series[series.length - 1].price;
             const chg = ((last - first) / first) * 100;
-            $('ph-' + symbol).innerHTML = `<span class="${chg >= 0 ? 'up' : 'down'}">${chg >= 0 ? '+' : ''}${chg.toFixed(2)}% (15분)</span>`;
+            $('ph-' + symbol).innerHTML = `<span class="${chg >= 0 ? 'up' : 'down'}">${chg >= 0 ? '+' : ''}${chg.toFixed(2)}% (10분)</span>`;
           }
         });
       } catch (e) {}
@@ -308,9 +308,9 @@
     // ---------- 루프 ----------
     ticker(); charts(); board().then(pnl);
     setInterval(ticker, 500);
-    setInterval(charts, 1000);
+    setInterval(charts, 3000);
     setInterval(board, 2000);
-    setInterval(pnl, 10000);
+    setInterval(pnl, 30000);
     addEventListener('resize', () => { charts(); pnl(); });
   </script>
 </body>

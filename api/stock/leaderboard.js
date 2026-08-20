@@ -13,7 +13,7 @@ export default async function handler() {
     status: r.ok ? 200 : 502,
     headers: {
       'Content-Type': 'application/json; charset=utf-8',
-      'Cache-Control': 'public, s-maxage=3, stale-while-revalidate=3',
+      'Cache-Control': 'public, s-maxage=5, stale-while-revalidate=5',
     },
   });
 }
