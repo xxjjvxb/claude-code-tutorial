@@ -1,5 +1,5 @@
 -- 주식 시뮬 업데이트 1 (통합) — Supabase SQL Editor에 전체를 붙여넣어 한 번 실행하세요. 재실행해도 안전.
--- ① 시뮬 ON/OFF 스위치  ② 슬리피지 폐지 → 수수료 0.02%  ③ 시장 초기화 safeupdate 오류 수정
+-- ① 시뮬 ON/OFF 스위치  ② 슬리피지 폐지 → 매수 수수료 0.02% (매도 무료)  ③ 시장 초기화 safeupdate 오류 수정
 
 -- ---------- ① ON/OFF ----------
 alter table public.stock_config add column if not exists enabled boolean not null default true;
@@ -104,7 +104,7 @@ begin
   end if;
 
   exec  := public.stock_price_at(p_symbol, now());
-  v_fee := round(exec * p_qty * 0.0002, 2);   -- 수수료 0.02%
+  v_fee := case when p_side = 'buy' then round(exec * p_qty * 0.0002, 2) else 0 end;   -- 수수료: 매수만 0.02%
   total := exec * p_qty;
 
   pos := case p_symbol when 'A' then k.pos_a when 'B' then k.pos_b else k.pos_c end;
@@ -114,7 +114,7 @@ begin
     k.cash := k.cash - total - v_fee; pos := pos + p_qty;
   else
     if pos < p_qty then raise exception 'not enough position (have %)', pos; end if;
-    k.cash := k.cash + total - v_fee; pos := pos - p_qty;
+    k.cash := k.cash + total; pos := pos - p_qty;
   end if;
 
   update public.stock_keys set

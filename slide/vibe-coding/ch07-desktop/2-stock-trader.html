@@ -89,7 +89,7 @@
             <h3 class="content-card__title">규칙</h3>
             <ul class="content-card__list">
               <li>종목 <strong>A · B · C</strong> — 1초마다 시세 변동 (현실 하루 장세를 몇 분에)</li>
-              <li>시작 자금 <strong>가상 100만원</strong> · 수수료 0.02% · 공매도 없음</li>
+              <li>시작 자금 <strong>가상 100만원</strong> · 매수 수수료 0.02% · 공매도 없음</li>
               <li><strong>여러분의 매수·매도가 가격을 밀고 당깁니다</strong> — 큰 주문일수록 크게</li>
               <li>강의 화면에 실시간 차트·리더보드·체결이 계속 표시</li>
             </ul>
@@ -116,10 +116,10 @@
       <div class="statement-text">
         <div class="slide__eyebrow">RULE · 수수료</div>
         <h2 class="statement__lead">공짜 매매는 — <span class="accent">없습니다</span>.</h2>
-        <p class="statement__caption">진짜 증권사처럼, 주문이 체결될 때마다 체결 금액의 0.02%가 수수료로 나갑니다. 작아 보여도 — 사고팔기를 반복하면 차곡차곡 쌓입니다.</p>
+        <p class="statement__caption">진짜 증권사처럼, 매수가 체결될 때마다 체결 금액의 0.02%가 수수료로 나갑니다. 작아 보여도 — 사고팔기를 반복하면 차곡차곡 쌓입니다.</p>
         <div class="statement__points">
-          <div class="statement__point"><span class="statement__point-num">수수료</span><span>주문마다 체결 금액의 0.02% — 매수·매도 동일</span></div>
-          <div class="statement__point"><span class="statement__point-num">왕복</span><span>한 번 사고팔면 0.04% — 100번 왕복이면 −4%</span></div>
+          <div class="statement__point"><span class="statement__point-num">수수료</span><span>매수만 체결 금액의 0.02% — 매도는 무료</span></div>
+          <div class="statement__point"><span class="statement__point-num">왕복</span><span>한 번 사고팔면 0.02% — 200번 왕복이면 −4%</span></div>
           <div class="statement__point"><span class="statement__point-num">교훈</span><span>전략의 수익이 수수료보다 커야 남는다</span></div>
         </div>
       </div>
@@ -128,10 +128,10 @@
           <rect x="0" y="0" width="460" height="320" rx="14" fill="rgba(0,0,0,0.92)"/>
           <text x="14" y="20" font-family="ui-monospace, monospace" font-size="11" fill="rgba(255,255,255,0.5)">수수료 계산기</text>
           <text x="20" y="60" fill="white" font-family="ui-monospace, monospace" font-size="12">100만원어치 매수     수수료 200원</text>
-          <text x="20" y="88" fill="white" font-family="ui-monospace, monospace" font-size="12">바로 되팔기          수수료 200원</text>
+          <text x="20" y="88" fill="white" font-family="ui-monospace, monospace" font-size="12">바로 되팔기          수수료 0원</text>
           <line x1="20" y1="110" x2="440" y2="110" stroke="rgba(255,255,255,0.15)"/>
-          <text x="20" y="140" fill="rgba(255,255,255,0.7)" font-family="ui-monospace, monospace" font-size="11">→ 가격이 그대로면 왕복마다 −400원</text>
-          <text x="20" y="164" fill="#f87171" font-family="ui-monospace, monospace" font-size="11">→ 하루 100번 왕복 = −40,000원 (−4%)</text>
+          <text x="20" y="140" fill="rgba(255,255,255,0.7)" font-family="ui-monospace, monospace" font-size="11">→ 가격이 그대로면 왕복마다 −200원</text>
+          <text x="20" y="164" fill="#f87171" font-family="ui-monospace, monospace" font-size="11">→ 하루 200번 왕복 = −40,000원 (−4%)</text>
           <line x1="20" y1="188" x2="440" y2="188" stroke="rgba(255,255,255,0.15)"/>
           <text x="20" y="220" fill="#4ade80" font-family="ui-monospace, monospace" font-size="12">교훈: 난사보다 — 근거 있는 매매</text>
           <text x="20" y="284" fill="rgba(255,255,255,0.5)" font-family="ui-monospace, monospace" font-size="11"># 자동매매 전략 짤 때도 수수료를 계산에 넣으세요</text>
