@@ -20,7 +20,8 @@
     .up { color: #4ade80; } .down { color: #f87171; } .flat { color: #f3ede4; }
     .spacer { flex: 1; }
     .reset { display: none; appearance: none; cursor: pointer; border: 1.5px solid #7f1d1d; background: #2a1212; color: #fca5a5;
-             border-radius: 8px; padding: 0.4rem 0.9rem; font-weight: 700; font-size: 0.78rem; }
+             border-radius: 7px; padding: 0.2rem 0.6rem; font-weight: 700; font-size: 0.7rem; margin-left: 0.3rem; }
+    #btn-power { margin-left: auto; border-color: #14532d; background: #122a17; color: #86efac; }
     main { flex: 1; display: grid; grid-template-columns: 11fr 9fr; gap: 0.7rem; min-height: 0; }
     .col { display: flex; flex-direction: column; gap: 0.7rem; min-height: 0; }
     .panel { background: #1d1915; border: 1.5px solid #322b24; border-radius: 12px; padding: 0.55rem 0.7rem;
@@ -55,7 +56,6 @@
     <div class="title">📈 주식 시뮬 <span class="accent">LIVE</span></div>
     <div class="ticker" id="ticker"></div>
     <div class="spacer"></div>
-    <button class="reset" id="btn-reset">라운드 리셋</button>
   </header>
 
   <main>
@@ -72,7 +72,7 @@
       </div>
       <div class="bottom" style="flex: 4;">
         <div class="panel">
-          <div class="panel__head"><span class="big">리더보드</span></div>
+          <div class="panel__head"><span class="big">리더보드</span><button class="reset" id="btn-power">시뮬 끄기</button><button class="reset" id="btn-reset">시장 초기화</button></div>
           <div class="scroll"><table><thead><tr><th>#</th><th>이름</th><th class="num">평가액</th><th class="num">수익률</th></tr></thead><tbody id="lb"></tbody></table></div>
         </div>
         <div class="panel">
@@ -93,11 +93,18 @@
 
     async function j(url) { const r = await fetch(url); if (!r.ok) throw new Error(url); return r.json(); }
 
-    // ---------- 티커 ----------
-    let prevPrice = {};
+    // ---------- 티커 (+ 시뮬 ON/OFF 감지 — OFF면 조회 RPC가 빈 결과) ----------
+    let prevPrice = {}, simOn = true, tickSkip = 0;
     async function ticker() {
+      if (!simOn && tickSkip++ % 20 !== 0) return;   // OFF면 10초에 한 번만 재확인
       try {
         const { quotes } = await j('/api/stock/price?_=' + Date.now()); // 캐시 우회 — 0.5초 생동감
+        const on = Array.isArray(quotes) && quotes.length > 0;
+        if (on !== simOn) { simOn = on; syncPower(); }
+        if (!simOn) {
+          $('ticker').innerHTML = '<span class="tk" style="color:#f87171;font-weight:800">⏸ 시뮬 OFF — 서버 휴식 중</span>';
+          return;
+        }
         $('ticker').innerHTML = quotes.map(q => {
           const cls = prevPrice[q.symbol] == null ? 'flat' : q.price > prevPrice[q.symbol] ? 'up' : q.price < prevPrice[q.symbol] ? 'down' : 'flat';
           prevPrice[q.symbol] = q.price;
@@ -158,6 +165,7 @@
     }
 
     async function charts() {
+      if (!simOn) return;
       try {
         const rs = await Promise.all(SYMS.map(s => j('/api/stock/history?symbol=' + s + '&seconds=900')));
         rs.forEach(({ symbol, series }) => {
@@ -176,6 +184,7 @@
     // 피드는 익명(이름 없음) — 관리자 세션에만 이름 표시. 리더보드에서 사람을 클릭하면 그 사람의 체결만 필터.
     let namesFromBoard = [], lbCache = [], selName = null, isAdmin = false;
     async function board() {
+      if (!simOn) return;
       try {
         const [{ rows: lb }, { rows: tr }] = await Promise.all([j('/api/stock/leaderboard'), j('/api/stock/trades?seconds=3600')]);
         tradesCache = tr || [];
@@ -216,6 +225,7 @@
       return `hsl(${h} 75% 62%)`;
     }
     async function pnl() {
+      if (!simOn) return;
       try {
         const hs = await Promise.all(SYMS.map(s => j('/api/stock/history?symbol=' + s + '&seconds=3600')));
         const grid = hs[0].series.map(p => new Date(p.t).getTime());
@@ -274,14 +284,24 @@
       const { data: { session } } = await sb.auth.getSession();
       if (session && session.user.email && session.user.email.toLowerCase() === ADMIN_EMAIL.toLowerCase()) {
         $('btn-reset').style.display = 'inline-flex';
+        $('btn-power').style.display = 'inline-flex';
         isAdmin = true;
         render();
       }
     })();
+    function syncPower() { $('btn-power').textContent = simOn ? '시뮬 끄기' : '시뮬 켜기'; }
     $('btn-reset').addEventListener('click', async () => {
-      if (!confirm('라운드를 리셋할까요? 전원 잔고 초기화 + 새 시세 시드')) return;
+      if (!confirm('시장을 초기화할까요?\n· 전원 잔고 1,000,000원 · 포지션 0\n· 체결 내역 전체 삭제 · 새 시세 시작')) return;
       const { error } = await sb.rpc('stock_reset');
-      alert(error ? '리셋 실패: ' + error.message : '리셋 완료 — 새 라운드 시작!');
+      alert(error ? '초기화 실패: ' + error.message : '시장 초기화 완료 — 새 라운드 시작!');
+    });
+    $('btn-power').addEventListener('click', async () => {
+      const next = !simOn;
+      if (!confirm(next ? '시뮬을 켤까요?' : '시뮬을 끌까요? 모든 조회·주문이 멈추고 서버가 쉽니다.')) return;
+      const { error } = await sb.rpc('stock_set_enabled', { p_on: next });
+      if (error) { alert('전환 실패: ' + error.message); return; }
+      simOn = next; tickSkip = 0; syncPower();
+      if (simOn) { charts(); board().then(pnl); }
     });
 
     // ---------- 루프 ----------
