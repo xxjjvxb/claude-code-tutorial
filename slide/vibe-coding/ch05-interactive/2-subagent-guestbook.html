@@ -37,7 +37,7 @@
     <p class="section-caption">2장에서 배포한 내 홈페이지가 오늘 "살아있는 페이지"가 됩니다. 일을 나눠 맡는 도우미(서브에이전트)를 익히고 — 덱 1의 Supabase와 구글 로그인(원리는 4장 덱 2에서 이미)을 더해, 다른 사람이 로그인해 글을 남기는 방명록을 직접 배포합니다.</p>
     <div class="section-meta">
       <div class="section-meta__item"><span class="section-meta__num">4</span><span>쓰는 도구 (GitHub·Supabase·구글·Vercel)</span></div>
-      <div class="section-meta__item"><span class="section-meta__num">3</span><span>도우미 에이전트</span></div>
+      <div class="section-meta__item"><span class="section-meta__num">2</span><span>도우미 에이전트</span></div>
       <div class="section-meta__item"><span class="section-meta__num">4</span><span>확장 기능</span></div>
     </div>
   </section>
@@ -51,7 +51,7 @@
         <div>
           <div class="content-card content-card--compact">
             <h3 class="content-card__title">왜 + 무엇</h3>
-            <p class="content-card__body">방명록 하나에도 화면·데이터·로그인이 섞입니다. 한 대화에 다 시키면 맥락이 엉키죠 — 역할을 떼어 도우미에게 맡깁니다.</p>
+            <p class="content-card__body">방명록 하나에도 디자인과 기능(데이터·로그인)이 섞입니다. 한 대화에 다 시키면 맥락이 엉키죠 — 역할을 떼어 도우미에게 맡깁니다.</p>
             <ul class="content-card__list">
               <li><code>.claude/agents/</code>의 <strong>.md 파일 하나</strong> = 도우미 하나</li>
               <li>역할·규칙·쓸 모델을 사람 말로 적음</li>
@@ -63,9 +63,9 @@
           <div class="code-block">
             <div class="code-block__header">
               <span class="code-block__dot" style="background:#fb2c36"></span><span class="code-block__dot" style="background:#edb200"></span><span class="code-block__dot" style="background:#00c758"></span>
-              <span class="code-block__title">.claude/agents/ui-helper.md</span>
+              <span class="code-block__title">.claude/agents/designer.md</span>
             </div>
-            <div class="code-block__body"><span class="code-block__line"><span class="code-block__cmt">--- name: ui-helper</span></span><span class="code-block__line"><span class="code-block__cmt">--- model: sonnet</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__cmd">너는 화면 담당이다. 단순하고</span></span><span class="code-block__line"><span class="code-block__cmd">깔끔한 방명록 화면을 만든다.</span></span><span class="code-block__line"><span class="code-block__cmd">기능은 적게, 보기 쉽게.</span></span></div>
+            <div class="code-block__body"><span class="code-block__line"><span class="code-block__cmt">--- name: designer</span></span><span class="code-block__line"><span class="code-block__cmt">--- model: sonnet</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__cmd">너는 디자이너다. 단순하고</span></span><span class="code-block__line"><span class="code-block__cmd">깔끔한 방명록 화면을 만든다.</span></span><span class="code-block__line"><span class="code-block__cmd">기능은 적게, 보기 쉽게.</span></span></div>
           </div>
         </div>
       </div>
@@ -84,7 +84,7 @@
           <h3 class="compare-side__title">Claude가 알아서 부른다</h3>
           <ul class="compare-side__list">
             <li>요청 내용이 어떤 도우미와 맞으면 — 알아서 위임</li>
-            <li>"방명록 화면 만들어줘" → 화면 도우미가 호출</li>
+            <li>"방명록 화면 만들어줘" → 디자이너가 호출</li>
             <li>도우미 설명을 잘 적어둘수록 정확</li>
           </ul>
         </div>
@@ -92,7 +92,7 @@
           <div class="compare-side__label">@멘션 — 명시 호출</div>
           <h3 class="compare-side__title">내가 직접 지목한다</h3>
           <ul class="compare-side__list">
-            <li><code>@ui-helper 방명록 입력칸 만들어줘</code></li>
+            <li><code>@designer 방명록 입력칸 만들어줘</code></li>
             <li>어떤 도우미에게 맡길지 확실할 때</li>
             <li>3장에서 배운 <code>@</code> 문법 그대로</li>
           </ul>
@@ -110,18 +110,18 @@
       <div class="step-list">
         <div class="step-list__item">
           <div class="step-list__num">1</div>
-          <div class="step-list__content"><p class="step-list__title">Claude에게 부탁 <span class="step-list__desc" style="display:inline">— "ui-helper라는 서브에이전트를 만들어줘. 역할은 아래와 같아." + 역할 설명(describe) 붙여넣기</span></p></div>
+          <div class="step-list__content"><p class="step-list__title">Claude에게 부탁 <span class="step-list__desc" style="display:inline">— "designer라는 서브에이전트를 만들어줘. 역할은 아래와 같아." + 역할 설명(describe) 붙여넣기</span></p></div>
         </div>
         <div class="step-list__item">
           <div class="step-list__num">2</div>
-          <div class="step-list__content"><p class="step-list__title">파일 확인 <span class="step-list__desc" style="display:inline">— <code>.claude/agents/ui-helper.md</code>가 생겼는지, 역할 설명이 그대로 들어갔는지</span></p></div>
+          <div class="step-list__content"><p class="step-list__title">파일 확인 <span class="step-list__desc" style="display:inline">— <code>.claude/agents/designer.md</code>가 생겼는지, 역할 설명이 그대로 들어갔는지</span></p></div>
         </div>
         <div class="step-list__item">
           <div class="step-list__num">3</div>
-          <div class="step-list__content"><p class="step-list__title"><code>@</code>로 확인 <span class="step-list__desc" style="display:inline">— 입력창에 @를 치면 뜨는 목록에 ui-helper가 보이면 등록 완료. 파일 저장 후 몇 초 안에 자동 반영(재시작 불필요)</span></p></div>
+          <div class="step-list__content"><p class="step-list__title"><code>@</code>로 확인 <span class="step-list__desc" style="display:inline">— 입력창에 @를 치면 뜨는 목록에 designer가 보이면 등록 완료. 파일 저장 후 몇 초 안에 자동 반영(재시작 불필요)</span></p></div>
         </div>
       </div>
-      <p class="slide__note">핵심은 <strong>역할 설명(describe)</strong> — 도우미별 설명문은 뒤 세 장에서 그대로 복사해 쓰고, 도구 권한은 바로 다음 장에서 봅니다. 모델 지정은 잘 모르겠으면 <strong>Sonnet</strong> — 우리 도우미 셋도 전부 Sonnet이면 충분합니다.</p>
+      <p class="slide__note">핵심은 <strong>역할 설명(describe)</strong> — 도우미별 설명문은 뒤 두 장에서 그대로 복사해 쓰고, 도구 권한은 바로 다음 장에서 봅니다. 모델 지정은 잘 모르겠으면 <strong>Sonnet</strong> — 우리 도우미 둘 다 Sonnet이면 충분합니다.</p>
     </div>
   </section>
 
@@ -135,9 +135,9 @@
           <div class="code-block">
             <div class="code-block__header">
               <span class="code-block__dot" style="background:#fb2c36"></span><span class="code-block__dot" style="background:#edb200"></span><span class="code-block__dot" style="background:#00c758"></span>
-              <span class="code-block__title">.claude/agents/ui-helper.md</span>
+              <span class="code-block__title">.claude/agents/designer.md</span>
             </div>
-            <div class="code-block__body"><span class="code-block__line"><span class="code-block__cmd">---</span></span><span class="code-block__line"><span class="code-block__cmd">name: ui-helper</span></span><span class="code-block__line"><span class="code-block__cmd">description: 화면(HTML·CSS) 담당 도우미</span></span><span class="code-block__line"><span class="code-block__cmt"># tools: 줄이 없으면 → 모든 도구 사용</span></span><span class="code-block__line"><span class="code-block__cmd">---</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__out">(아래에 역할 설명 본문)</span></span></div>
+            <div class="code-block__body"><span class="code-block__line"><span class="code-block__cmd">---</span></span><span class="code-block__line"><span class="code-block__cmd">name: designer</span></span><span class="code-block__line"><span class="code-block__cmd">description: 화면·디자인 담당 도우미</span></span><span class="code-block__line"><span class="code-block__cmt"># tools: 줄이 없으면 → 모든 도구 사용</span></span><span class="code-block__line"><span class="code-block__cmd">---</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__out">(아래에 역할 설명 본문)</span></span></div>
           </div>
         </div>
         <div>
@@ -145,7 +145,7 @@
             <h3 class="content-card__title">어떻게 대응할까</h3>
             <p class="content-card__body">도우미가 쓸 도구는 .md 파일 머리(frontmatter)의 <code>tools:</code> 줄로 정합니다.</p>
             <ul class="content-card__list">
-              <li>방명록 도우미는 화면을 만들고(편집)·실행하고·읽어야 함</li>
+              <li>디자이너는 화면을 만들고(편집)·실행하고·읽어야 함</li>
               <li>그러니 <strong><code>tools:</code> 줄 없이(=전체 허용)</strong> 두면 막힘없이 일함</li>
               <li>익숙해지면 — <code>tools: Read, Edit</code>처럼 필요한 것만 좁히기</li>
             </ul>
@@ -157,10 +157,10 @@
     </div>
   </section>
 
-  <!-- 12 · 도우미 ① ui-helper -->
+  <!-- 12 · 도우미 ① designer -->
   <section class="slide is-standard">
-    <div class="slide__eyebrow">AGENT ① · 화면 담당</div>
-    <h2 class="slide__title">도우미 ① — 화면 담당 <span class="accent">ui-helper</span></h2>
+    <div class="slide__eyebrow">AGENT ① · 디자이너</div>
+    <h2 class="slide__title">도우미 ① — 디자이너 <span class="accent">designer</span></h2>
     <div class="slide__body">
       <div class="two-col">
         <div>
@@ -177,13 +177,13 @@
         <div>
           <div class="prompt-card">
             <div class="prompt-card__head">
-              <span class="prompt-card__label">ui-helper · describe</span>
+              <span class="prompt-card__label">designer · describe</span>
               <button class="prompt-card__copy" type="button" data-copy>복사</button>
             </div>
             <pre class="prompt-card__body" data-no-nav>너는 내 홈페이지 방명록의 화면만 담당한다.
 글 입력칸과 남겨진 글 목록(작성자 이름·시각 표시)을 만든다.
 내 홈페이지 분위기에 맞게, 폰에서도 보기 좋게(반응형).
-데이터 저장·로그인은 다른 도우미 몫 — 건드리지 않는다.</pre>
+데이터 저장·로그인은 개발자 몫 — 건드리지 않는다.</pre>
           </div>
         </div>
       </div>
@@ -191,71 +191,37 @@
     </div>
   </section>
 
-  <!-- 13 · 도우미 ② data-helper -->
+  <!-- 13 · 도우미 ② developer -->
   <section class="slide is-standard">
-    <div class="slide__eyebrow">AGENT ② · 데이터 담당</div>
-    <h2 class="slide__title">도우미 ② — 데이터 담당 <span class="accent">data-helper</span></h2>
+    <div class="slide__eyebrow">AGENT ② · 개발자</div>
+    <h2 class="slide__title">도우미 ② — 개발자 <span class="accent">developer</span></h2>
     <div class="slide__body">
       <div class="two-col">
         <div>
           <div class="content-card content-card--compact">
             <h3 class="content-card__title">이 도우미는</h3>
-            <p class="content-card__body">방명록 글을 <strong>Supabase에 저장</strong>하는 일을 맡습니다.</p>
+            <p class="content-card__body">화면 뒤의 <strong>기능</strong>을 맡습니다 — 글을 Supabase에 저장하고, 구글 로그인을 붙입니다.</p>
             <ul class="content-card__list">
               <li>모델 — Sonnet</li>
-              <li>맡는 것 — Supabase 연결 · 글 저장·조회 (새 글이 위로)</li>
-              <li>안 맡는 것 — 화면 디자인 · 로그인</li>
+              <li>맡는 것 — Supabase 저장·조회(새 글이 위로) · 구글 로그인</li>
+              <li>안 맡는 것 — 화면 디자인</li>
             </ul>
           </div>
         </div>
         <div>
           <div class="prompt-card">
             <div class="prompt-card__head">
-              <span class="prompt-card__label">data-helper · describe</span>
+              <span class="prompt-card__label">developer · describe</span>
               <button class="prompt-card__copy" type="button" data-copy>복사</button>
             </div>
-            <pre class="prompt-card__body" data-no-nav>너는 방명록의 데이터 저장을 담당한다.
-Supabase에 방명록 글을 저장하고 불러온다.
-글은 모두가 볼 수 있고, 새 글이 맨 위에 오게 정렬한다.
-Supabase 키는 환경변수로 — 코드에 직접 적지 않는다.</pre>
-          </div>
-        </div>
-      </div>
-      <p class="slide__note">데이터 도우미는 — "어디에(Supabase), 무엇을(방명록 글), 어떻게(키는 환경변수)"를 분명히. 화면 이야기는 빼고 데이터에만 집중하게.</p>
-    </div>
-  </section>
-
-  <!-- 14 · 도우미 ③ login-helper -->
-  <section class="slide is-standard">
-    <div class="slide__eyebrow">AGENT ③ · 로그인 담당</div>
-    <h2 class="slide__title">도우미 ③ — 로그인 담당 <span class="accent">login-helper</span></h2>
-    <div class="slide__body">
-      <div class="two-col">
-        <div>
-          <div class="content-card content-card--compact">
-            <h3 class="content-card__title">이 도우미는</h3>
-            <p class="content-card__body"><strong>구글 로그인</strong>을 붙여 — 글에 <strong>누가 썼는지</strong>가 남게 합니다.</p>
-            <ul class="content-card__list">
-              <li>모델 — Sonnet</li>
-              <li>맡는 것 — 구글 로그인 버튼 · 글쓰기는 로그인한 사람만</li>
-              <li>안 맡는 것 — 화면 디자인 · 데이터 저장</li>
-            </ul>
-          </div>
-        </div>
-        <div>
-          <div class="prompt-card">
-            <div class="prompt-card__head">
-              <span class="prompt-card__label">login-helper · describe</span>
-              <button class="prompt-card__copy" type="button" data-copy>복사</button>
-            </div>
-            <pre class="prompt-card__body" data-no-nav>너는 방명록의 구글 로그인을 담당한다.
+            <pre class="prompt-card__body" data-no-nav>너는 방명록의 데이터와 로그인을 담당한다.
+Supabase에 글을 저장하고 불러온다 — 새 글이 맨 위로.
 글 읽기는 누구나, 글쓰기는 구글 로그인한 사람만 되게 한다.
-로그인한 사람의 이름이 글에 자동으로 붙게 한다.
-로그인은 Supabase 기능을 쓴다.</pre>
+로그인한 사람 이름이 글에 붙게 하고, 키는 환경변수로 둔다.</pre>
           </div>
         </div>
       </div>
-      <p class="slide__note">로그인이 방명록의 핵심인 이유 — <strong>"누가 남겼는지"가 곧 기능</strong>이기 때문. 이번엔 로그인 처리를 <strong>Supabase에 맡기므로</strong>, 구글 클라이언트 ID·시크릿 발급 → Supabase(Authentication → Providers → Google) 등록까지 Claude에게 부탁하면 차례로 안내해 줍니다. OAuth가 실제로 어떻게 도는지는 4장 덱 2에서 이미 봤습니다.</p>
+      <p class="slide__note">개발자에게는 — "어디에(Supabase), 무엇을(글·로그인), 어떻게(키는 환경변수)"를 분명히. 로그인 처리는 <strong>Supabase에 맡기므로</strong> 구글 클라이언트 ID·시크릿 발급 → Supabase(Authentication → Providers → Google) 등록까지 Claude가 차례로 안내해 줍니다. OAuth 원리는 4장 덱 2에서 이미 봤습니다.</p>
     </div>
   </section>
 
@@ -268,7 +234,7 @@ Supabase 키는 환경변수로 — 코드에 직접 적지 않는다.</pre>
         <div>
           <div class="content-card content-card--compact">
             <h3 class="content-card__title">왜 먼저</h3>
-            <p class="content-card__body">글을 저장하려면 — Supabase에 <strong>방명록 글을 담을 표</strong>가 있어야 합니다. 데이터 도우미가 이 표에 넣고 꺼냅니다.</p>
+            <p class="content-card__body">글을 저장하려면 — Supabase에 <strong>방명록 글을 담을 표</strong>가 있어야 합니다. 개발자가 이 표에 넣고 꺼냅니다.</p>
             <ul class="content-card__list">
               <li>표에 담을 것 — 글 내용 · 작성자 이름 · 작성 시각</li>
               <li>SQL을 직접 몰라도 됨 — Claude가 만들어 줌</li>
@@ -289,20 +255,20 @@ Supabase 키는 환경변수로 — 코드에 직접 적지 않는다.</pre>
           </div>
         </div>
       </div>
-      <p class="slide__note">Supabase <strong>SQL Editor</strong>에서 이 표를 만들어 두면 — 데이터 도우미가 곧바로 글을 저장·조회할 수 있습니다. 덱 1에서 본 "읽기는 넓게, 쓰기는 좁게" 권한 규칙이 여기서 처음 실전이 됩니다.</p>
+      <p class="slide__note">Supabase <strong>SQL Editor</strong>에서 이 표를 만들어 두면 — 개발자가 곧바로 글을 저장·조회할 수 있습니다. 덱 1에서 본 "읽기는 넓게, 쓰기는 좁게" 권한 규칙이 여기서 처음 실전이 됩니다.</p>
     </div>
   </section>
 
   <!-- 15 · 협업 지휘 프롬프트 -->
   <section class="slide is-standard">
     <div class="slide__eyebrow">PROMPT · 협업 지휘</div>
-    <h2 class="slide__title">도우미 셋에게 — <span class="accent">이 프롬프트 하나</span>로 맡긴다</h2>
+    <h2 class="slide__title">도우미 둘에게 — <span class="accent">이 프롬프트 하나</span>로 맡긴다</h2>
     <div class="slide__body">
       <div class="two-col">
         <div>
           <div class="content-card content-card--compact">
             <h3 class="content-card__title">감독에게 — 통째로 맡긴다</h3>
-            <p class="content-card__body"><code>@</code>로 도우미를 하나씩 부를 수도 있지만 — 프로젝트 전체는 메인 Claude에게 통째로 맡기는 게 편합니다. 메인 Claude가 <strong>감독</strong>이 되어 — 목표·규칙을 읽고, 무엇을 동시에·무엇을 차례로 할지 판단해 셋에게 나눠 줍니다.</p>
+            <p class="content-card__body"><code>@</code>로 도우미를 하나씩 부를 수도 있지만 — 프로젝트 전체는 메인 Claude에게 통째로 맡기는 게 편합니다. 메인 Claude가 <strong>감독</strong>이 되어 — 목표·규칙을 읽고, 무엇을 동시에·무엇을 차례로 할지 판단해 둘에게 나눠 줍니다.</p>
             <ul class="content-card__list">
               <li>한 프롬프트 = <strong>목표 · 진행 방식 · 규칙</strong></li>
               <li>순서를 일일이 지정하지 말고 — 감독에게 맡긴다</li>
@@ -316,7 +282,7 @@ Supabase 키는 환경변수로 — 코드에 직접 적지 않는다.</pre>
               <span class="prompt-card__label">프롬프트 · 감독에게 통째로</span>
               <button class="prompt-card__copy" type="button" data-copy>복사</button>
             </div>
-            <pre class="prompt-card__body" data-no-nav>ui-helper · data-helper · login-helper 세 도우미와 내 홈페이지에 "방명록"을 만들어줘.
+            <pre class="prompt-card__body" data-no-nav>designer · developer 두 도우미와 내 홈페이지에 "방명록"을 만들어줘.
 네가 감독이 되어 일을 나눠 맡겨줘.
 
 [목표] 누구나 글을 읽고 — 구글 로그인한 사람은 이름과 함께 글을 남기는 방명록
@@ -379,7 +345,7 @@ Supabase 키는 환경변수로 — 코드에 직접 적지 않는다.</pre>
         <div class="diff-card"><div class="diff-card__rank">통신</div><h3 class="diff-card__title">주고받기</h3><p class="diff-card__body">도우미끼리 이름을 불러 메시지를 — 한 번 결과만이 아니라 대화.</p></div>
         <div class="diff-card"><div class="diff-card__rank">작업목록</div><h3 class="diff-card__title">함께 나눠</h3><p class="diff-card__body">여러 도우미가 할 일 목록을 공유하며 — 분담하고 조율.</p></div>
       </div>
-      <p class="slide__note">이번에 만들 방명록도 도우미 셋 = <strong>작은 멀티에이전트</strong>. 일이 커질수록 — 한 명보다 팀이 빛납니다. (지금은 "이런 게 있다"까지)</p>
+      <p class="slide__note">이번에 만들 방명록도 도우미 둘 = <strong>작은 멀티에이전트</strong>. 일이 커질수록 — 한 명보다 팀이 빛납니다. (지금은 "이런 게 있다"까지)</p>
     </div>
   </section>
 
@@ -388,7 +354,7 @@ Supabase 키는 환경변수로 — 코드에 직접 적지 않는다.</pre>
     <div class="statement-grid">
       <div class="statement-text">
         <div class="slide__eyebrow">PROJECT · 이번에 만들 것</div>
-        <h2 class="statement__lead">도우미 셋으로 — <span class="accent">내 홈페이지 방명록</span></h2>
+        <h2 class="statement__lead">도우미 둘로 — <span class="accent">내 홈페이지 방명록</span></h2>
         <p class="statement__caption">다른 사람이 내 홈페이지에 와서 로그인하고 글을 남기면 — 새로고침해도, 내일 봐도 남아 있습니다. 2장의 GitHub·Vercel 홈페이지에, 덱 1의 Supabase와 구글 로그인을 더해 각자 완성합니다.</p>
         <div class="statement__points">
           <div class="statement__point"><span class="statement__point-num">GitHub</span><span>내 홈페이지 코드 저장소</span></div>
@@ -422,48 +388,42 @@ Supabase 키는 환경변수로 — 코드에 직접 적지 않는다.</pre>
   <!-- 19 · 만드는 흐름 -->
   <section class="slide is-standard">
     <div class="slide__eyebrow">FLOW · 만드는 흐름</div>
-    <h2 class="slide__title">준비 → <span class="accent">셋이 동시에</span> → 합쳐 배포</h2>
+    <h2 class="slide__title">준비 → <span class="accent">둘이 동시에</span> → 합쳐 배포</h2>
     <div class="slide__body">
       <svg viewBox="0 0 720 372" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" style="display:block;margin:0 auto;width:100%;max-width:740px;height:auto;">
         <rect x="14" y="96" width="692" height="156" rx="12" fill="none" stroke="#cc5a14" stroke-width="1.5" stroke-dasharray="6 4"/>
         <g stroke="#cc5a14" stroke-width="2">
-          <line x1="360" y1="80" x2="125" y2="128"/>
-          <line x1="360" y1="80" x2="360" y2="128"/>
-          <line x1="360" y1="80" x2="595" y2="128"/>
-          <line x1="125" y1="238" x2="360" y2="300"/>
-          <line x1="360" y1="238" x2="360" y2="300"/>
-          <line x1="595" y1="238" x2="360" y2="300"/>
+          <line x1="360" y1="80" x2="195" y2="128"/>
+          <line x1="360" y1="80" x2="525" y2="128"/>
+          <line x1="195" y1="238" x2="360" y2="300"/>
+          <line x1="525" y1="238" x2="360" y2="300"/>
         </g>
         <rect x="258" y="22" width="204" height="58" rx="12" fill="#fe6e00"/>
         <text x="360" y="46" font-family="ui-sans-serif, system-ui" font-size="13" font-weight="700" fill="#fff" text-anchor="middle">준비</text>
-        <text x="360" y="66" font-family="ui-monospace, monospace" font-size="10" fill="rgba(255,255,255,0.85)" text-anchor="middle">도우미 셋 만들기 — .claude/agents/</text>
-        <text x="360" y="116" font-family="ui-sans-serif, system-ui" font-size="12" font-weight="700" fill="#cc5a14" text-anchor="middle">셋이 동시에 — 병렬로</text>
+        <text x="360" y="66" font-family="ui-monospace, monospace" font-size="10" fill="rgba(255,255,255,0.85)" text-anchor="middle">도우미 둘 만들기 — .claude/agents/</text>
+        <text x="360" y="116" font-family="ui-sans-serif, system-ui" font-size="12" font-weight="700" fill="#cc5a14" text-anchor="middle">둘이 동시에 — 병렬로</text>
         <g font-family="ui-sans-serif, system-ui" text-anchor="middle">
-          <rect x="22" y="128" width="206" height="110" rx="10" fill="#fff" stroke="#cc5a14" stroke-width="2"/>
-          <text x="125" y="164" font-size="13" font-weight="700" fill="#cc5a14">화면 도우미</text>
-          <text x="125" y="188" font-size="10.5" fill="#797067">방명록 입력칸 · 글 목록</text>
-          <text x="125" y="216" font-family="ui-monospace, monospace" font-size="10" fill="#cc5a14">@ui-helper</text>
-          <rect x="257" y="128" width="206" height="110" rx="10" fill="#fff" stroke="#cc5a14" stroke-width="2"/>
-          <text x="360" y="164" font-size="13" font-weight="700" fill="#cc5a14">데이터 도우미</text>
-          <text x="360" y="188" font-size="10.5" fill="#797067">Supabase 저장 · 조회</text>
-          <text x="360" y="216" font-family="ui-monospace, monospace" font-size="10" fill="#cc5a14">@data-helper</text>
-          <rect x="492" y="128" width="206" height="110" rx="10" fill="#fff" stroke="#cc5a14" stroke-width="2"/>
-          <text x="595" y="164" font-size="13" font-weight="700" fill="#cc5a14">로그인 도우미</text>
-          <text x="595" y="188" font-size="10.5" fill="#797067">구글 로그인 — 이름 표시</text>
-          <text x="595" y="216" font-family="ui-monospace, monospace" font-size="10" fill="#cc5a14">@login-helper</text>
+          <rect x="52" y="128" width="286" height="110" rx="10" fill="#fff" stroke="#cc5a14" stroke-width="2"/>
+          <text x="195" y="164" font-size="13" font-weight="700" fill="#cc5a14">디자이너</text>
+          <text x="195" y="188" font-size="10.5" fill="#797067">방명록 입력칸 · 글 목록 · 반응형</text>
+          <text x="195" y="216" font-family="ui-monospace, monospace" font-size="10" fill="#cc5a14">@designer</text>
+          <rect x="382" y="128" width="286" height="110" rx="10" fill="#fff" stroke="#cc5a14" stroke-width="2"/>
+          <text x="525" y="164" font-size="13" font-weight="700" fill="#cc5a14">개발자</text>
+          <text x="525" y="188" font-size="10.5" fill="#797067">Supabase 저장·조회 · 구글 로그인</text>
+          <text x="525" y="216" font-family="ui-monospace, monospace" font-size="10" fill="#cc5a14">@developer</text>
         </g>
         <rect x="258" y="300" width="204" height="58" rx="12" fill="#fff" stroke="#fe6e00" stroke-width="2.5"/>
         <text x="360" y="324" font-family="ui-sans-serif, system-ui" font-size="13" font-weight="700" fill="#cc5a14" text-anchor="middle">배포</text>
         <text x="360" y="344" font-family="ui-sans-serif, system-ui" font-size="10" fill="#797067" text-anchor="middle">GitHub → Vercel</text>
       </svg>
-      <p class="slide__note">화면·데이터·로그인은 서로 크게 안 엮인 부분 — 감독이 셋을 <strong>동시에(병렬)</strong> 진행시킵니다. 다 되면 GitHub에 올려 Vercel로 배포 — 합치는 단계만 맨 끝에. (GitHub·Supabase·구글·Vercel 네 도구가 한 페이지에)</p>
+      <p class="slide__note">디자인과 기능은 서로 크게 안 엮인 부분 — 감독이 둘을 <strong>동시에(병렬)</strong> 진행시킵니다. 다 되면 GitHub에 올려 Vercel로 배포 — 합치는 단계만 맨 끝에. (GitHub·Supabase·구글·Vercel 네 도구가 한 페이지에)</p>
     </div>
   </section>
 
   <!-- 19b · 완성 화면 -->
   <section class="slide is-standard">
     <div class="slide__eyebrow">RESULT · 완성한 방명록</div>
-    <h2 class="slide__title">도우미 셋이 만든 — <span class="accent">살아있는 내 홈페이지</span></h2>
+    <h2 class="slide__title">도우미 둘이 만든 — <span class="accent">살아있는 내 홈페이지</span></h2>
     <div class="slide__body">
       <div class="two-col">
         <figure class="photo-slot photo-slot--landscape" data-img="vc-ch05-guestbook.png">
@@ -482,7 +442,7 @@ Supabase 키는 환경변수로 — 코드에 직접 적지 않는다.</pre>
               <li>다른 사람 글이 목록에 차곡차곡</li>
               <li>Vercel 주소로 — 폰에서도 잘 보임</li>
             </ul>
-            <p class="content-card__body">화면·데이터·로그인을 <strong>도우미 셋이 나눠</strong> 만든 결과입니다.</p>
+            <p class="content-card__body">디자인과 기능을 <strong>도우미 둘이 나눠</strong> 만든 결과입니다.</p>
           </div>
         </div>
       </div>
@@ -508,20 +468,20 @@ Supabase 키는 환경변수로 — 코드에 직접 적지 않는다.</pre>
   <!-- 21 · 실습 진행 -->
   <section class="slide is-standard">
     <div class="slide__eyebrow">실습 · 진행</div>
-    <h2 class="slide__title">도우미 셋과 — <span class="accent">방명록 한 바퀴</span></h2>
+    <h2 class="slide__title">도우미 둘과 — <span class="accent">방명록 한 바퀴</span></h2>
     <div class="slide__body">
       <div class="step-list step-list--compact">
         <div class="step-list__item">
           <div class="step-list__num">1</div>
-          <div class="step-list__content"><p class="step-list__title">내 홈페이지 폴더에서 도우미 3개 만들기 <span class="step-list__desc" style="display:inline">— 2장에서 만든 홈페이지 폴더(c:\lecture\my-intro)에서 Claude에게 부탁해 화면·데이터·로그인 담당 생성</span></p></div>
+          <div class="step-list__content"><p class="step-list__title">내 홈페이지 폴더에서 도우미 2개 만들기 <span class="step-list__desc" style="display:inline">— 2장에서 만든 홈페이지 폴더(c:\lecture\my-intro)에서 Claude에게 부탁해 디자이너·개발자 생성</span></p></div>
         </div>
         <div class="step-list__item">
           <div class="step-list__num">2</div>
-          <div class="step-list__content"><p class="step-list__title">표 만들고 — 화면부터 <span class="step-list__desc" style="display:inline">— Supabase에 방명록 표 생성 → @화면 도우미로 입력칸·글 목록이 보이게</span></p></div>
+          <div class="step-list__content"><p class="step-list__title">표 만들고 — 화면부터 <span class="step-list__desc" style="display:inline">— Supabase에 방명록 표 생성 → @designer로 입력칸·글 목록이 보이게</span></p></div>
         </div>
         <div class="step-list__item">
           <div class="step-list__num">3</div>
-          <div class="step-list__content"><p class="step-list__title">저장·로그인 연결 <span class="step-list__desc" style="display:inline">— @데이터·@로그인 도우미 + Supabase (글 저장 + 구글 로그인·이름 표시)</span></p></div>
+          <div class="step-list__content"><p class="step-list__title">저장·로그인 연결 <span class="step-list__desc" style="display:inline">— @developer + Supabase (글 저장 + 구글 로그인·이름 표시)</span></p></div>
         </div>
         <div class="step-list__item">
           <div class="step-list__num">4</div>
@@ -547,7 +507,7 @@ Supabase 키는 환경변수로 — 코드에 직접 적지 않는다.</pre>
         <p class="statement__caption">데이터를 담는 법(덱 1 데이터베이스)과 나눠 맡기는 법(서브에이전트)을 익혀 — 다른 사람의 흔적이 남는 진짜 상호작용 페이지를 완성했습니다. GitHub·Supabase·구글 로그인·Vercel이 전부 한 페이지에서 돌았습니다.</p>
         <div class="statement__points">
           <div class="statement__point"><span class="statement__point-num">데이터</span><span>글이 남는다 — Supabase에 저장</span></div>
-          <div class="statement__point"><span class="statement__point-num">도우미</span><span>역할을 셋으로 나눠 — 작은 멀티에이전트</span></div>
+          <div class="statement__point"><span class="statement__point-num">도우미</span><span>디자이너·개발자 둘로 나눠 — 작은 멀티에이전트</span></div>
         </div>
       </div>
       <div class="feature-visual">
@@ -555,19 +515,16 @@ Supabase 키는 환경변수로 — 코드에 직접 적지 않는다.</pre>
           <rect x="0" y="0" width="460" height="320" rx="16" fill="#fff5ec"/>
           <rect x="170" y="50" width="120" height="44" rx="10" fill="#fe6e00"/>
           <text x="230" y="78" font-family="ui-sans-serif, system-ui" font-size="12" fill="#fff" font-weight="700" text-anchor="middle">나 (감독)</text>
-          <line x1="230" y1="94" x2="110" y2="142" stroke="#cc5a14" stroke-width="2"/>
-          <line x1="230" y1="94" x2="230" y2="142" stroke="#cc5a14" stroke-width="2"/>
-          <line x1="230" y1="94" x2="350" y2="142" stroke="#cc5a14" stroke-width="2"/>
+          <line x1="230" y1="94" x2="150" y2="142" stroke="#cc5a14" stroke-width="2"/>
+          <line x1="230" y1="94" x2="310" y2="142" stroke="#cc5a14" stroke-width="2"/>
           <g font-family="ui-sans-serif, system-ui" font-size="10" font-weight="700" fill="#cc5a14" text-anchor="middle">
-            <rect x="64" y="142" width="92" height="42" rx="9" fill="white" stroke="#cc5a14" stroke-width="2"/>
-            <text x="110" y="168">화면</text>
-            <rect x="184" y="142" width="92" height="42" rx="9" fill="white" stroke="#cc5a14" stroke-width="2"/>
-            <text x="230" y="168">데이터</text>
-            <rect x="304" y="142" width="92" height="42" rx="9" fill="white" stroke="#cc5a14" stroke-width="2"/>
-            <text x="350" y="168">로그인</text>
+            <rect x="88" y="142" width="124" height="42" rx="9" fill="white" stroke="#cc5a14" stroke-width="2"/>
+            <text x="150" y="168">디자이너</text>
+            <rect x="248" y="142" width="124" height="42" rx="9" fill="white" stroke="#cc5a14" stroke-width="2"/>
+            <text x="310" y="168">개발자</text>
           </g>
           <g stroke="#cc5a14" stroke-width="2">
-            <line x1="110" y1="184" x2="200" y2="214"/><line x1="230" y1="184" x2="230" y2="214"/><line x1="350" y1="184" x2="260" y2="214"/>
+            <line x1="150" y1="184" x2="200" y2="214"/><line x1="310" y1="184" x2="260" y2="214"/>
           </g>
           <rect x="160" y="214" width="140" height="42" rx="9" fill="#fff" stroke="#fe6e00" stroke-width="2.5"/>
           <text x="230" y="240" font-family="ui-sans-serif, system-ui" font-size="12" fill="#cc5a14" font-weight="700" text-anchor="middle">홈페이지 + 방명록</text>
