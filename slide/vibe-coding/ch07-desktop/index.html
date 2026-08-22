@@ -18,7 +18,7 @@
     .day-header__title { font-size: 1.5rem; font-weight: 700; line-height: 1.1; letter-spacing: -0.025em; margin: 0.05rem 0 0.2rem 0; color: var(--color-on-surface); }
     .day-header__caption { font-size: 0.68rem; line-height: 1.45; color: var(--color-on-surface-muted); margin: 0; max-width: 42rem; }
 
-    .block-grid { display: grid; grid-template-columns: 1fr; grid-auto-rows: 1fr; gap: 0.6rem; flex: 1; min-height: 0; }
+    .block-grid { display: grid; grid-template-columns: repeat(2, 1fr); grid-auto-rows: 1fr; gap: 0.6rem; flex: 1; min-height: 0; }
     .block-card { background: var(--color-surface-elevated); border: 2px solid var(--color-outline-strong); border-radius: var(--rounded-md); padding: 0.85rem 0.95rem; text-decoration: none; color: var(--color-on-surface); display: flex; flex-direction: column; gap: 0.3rem; transition: transform var(--motion-fast) var(--easing-standard), border-color var(--motion-fast), box-shadow var(--motion-fast); min-height: 0; overflow: hidden; }
     .block-card:hover { transform: translateY(-2px); border-color: var(--color-primary); box-shadow: var(--shadow-raised); }
     .block-card__time { font-family: var(--font-mono); font-size: 0.62rem; color: var(--color-primary-strong); font-weight: 700; letter-spacing: 0.06em; }
@@ -40,7 +40,7 @@
   <header class="day-header">
     <div class="day-header__brand">실습으로 배우는 바이브코딩 with 클로드코드 · 7장</div>
     <h1 class="day-header__title">7장 — 윈도우/맥 프로그램 개발</h1>
-    <p class="day-header__caption">브라우저 밖으로 — 내 PC에서 더블클릭으로 도는 진짜 실행 파일(<span class="os-win">.exe</span><span class="os-mac">.app</span>) 3개를 만듭니다. 로컬(투두) → 연습 API(주식 시뮬) → 진짜 API(업비트)로 점점 세상과 연결. 도구: Python · PySide6 · PyInstaller · API.</p>
+    <p class="day-header__caption">브라우저 밖으로 — 내 PC에서 더블클릭으로 도는 진짜 실행 파일(<span class="os-win">.exe</span><span class="os-mac">.app</span>) 3개를 만듭니다. 로컬(투두) → 연습 API(주식 시뮬) → 진짜 API(업비트)로 점점 세상과 연결하고, 마지막엔 API가 아예 없는 곳을 브라우저 크롤링으로 긁어옵니다. 도구: Python · PySide6 · PyInstaller · API · Playwright.</p>
   </header>
 
   <div class="block-grid">
@@ -59,8 +59,14 @@
     <a class="block-card" href="3-coin-chart.html">
       <div class="block-card__time">DECK 3</div>
       <h2 class="block-card__title">코인 시세 차트 — 진짜 공개 API</h2>
-      <p class="block-card__desc">업비트 공개 API(무인증)로 진짜 코인 시세를 — 코인을 클릭해 고르면 한 차트에 %로 겹쳐 보이는 상황판. 쇼핑몰은 왜 API를 안 주는지, 그럴 땐 6장 Playwright로 사람처럼 들어간다는 것까지.</p>
+      <p class="block-card__desc">업비트 공개 API(무인증)로 진짜 코인 시세를 — 코인을 클릭해 고르면 한 차트에 %로 겹쳐 보이는 상황판. 쇼핑몰은 왜 API를 안 주는지, 그럴 땐 Playwright로 사람처럼 들어간다는 것까지 — 바로 다음 덱으로.</p>
       <div class="block-card__count">11 슬라이드 →</div>
+    </a>
+    <a class="block-card" href="4-crawling.html">
+      <div class="block-card__time">DECK 4</div>
+      <h2 class="block-card__title">브라우저 크롤링 — API가 없을 때</h2>
+      <p class="block-card__desc">API를 안 주는 사이트는 사람처럼 들어가면 된다 — Playwright 브라우저 MCP로 Claude가 진짜 웹을 돌아다닙니다. 먼저 다 같이 이 강의 사이트를 크롤링해 복습 치트시트를 만들고, 그다음 각자 가격·뉴스·후기 등 관심 소재로 한 번 더.</p>
+      <div class="block-card__count">10 슬라이드 →</div>
     </a>
   </div>
 </main>
