@@ -154,6 +154,11 @@
 }
 .photo-slot.has-img .photo-slot__ph { display: none; }
 
+/* --captioned — 사진이 들어와도 라벨·힌트를 사진 아래에 함께 보여준다 */
+.photo-slot--captioned.has-img .photo-slot__ph { display: flex; padding-top: 0.35rem; }
+.photo-slot--captioned.has-img .photo-slot__icon { display: none; }
+.photo-slot--captioned.has-img .photo-slot__img { max-height: 8.5rem; }
+
 /* ---- modify-mode (?mode=modify) ---- */
 body.modify-mode .photo-slot[data-img] { cursor: copy; outline: 2px solid transparent; }
 body.modify-mode .photo-slot[data-img]:hover { border-color: var(--color-primary); }
