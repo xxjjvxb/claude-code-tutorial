@@ -1,0 +1,473 @@
+<!doctype html>
+<!-- © 2026 이일규 (Ilkyu Lee). All rights reserved. 본 강의자료는 저작권법으로 보호되는 저작물입니다. 무단 복제·배포·재사용을 금합니다. -->
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="author" content="이일규">
+  <meta name="copyright" content="© 2026 이일규 · 본 강의자료는 저작권법으로 보호되는 저작물입니다. 무단 복제·배포 금지.">
+  <script defer src="../../scripts/protect.js"></script>
+  <title>치트시트 1 · 설치한 도구들</title>
+  <link rel="stylesheet" href="../../styles/tokens.css">
+  <link rel="stylesheet" href="../../styles/deck.css">
+  <link rel="stylesheet" href="../../styles/_os-toggle.css">
+  <link rel="stylesheet" href="../../styles/_practice.css">
+  <script defer src="../../scripts/os-toggle.js"></script>
+  <script defer src="../../scripts/prompt-copy.js"></script>
+  <script defer src="../../scripts/slide-modify.js"></script>
+  <script defer src="../../scripts/feedback.js"></script>
+  <script defer src="../../scripts/analytics.js"></script>
+  <style>
+    /* 치트시트 전용 카드 — 카탈로그는 상세까지 그대로 노출하고,
+       한 화면에 다 담아야 하는 배선도에서만 호버(터치는 탭) 툴팁으로 보여준다. */
+    .tk-card {
+      position: relative;
+      border: 1px solid var(--color-outline);
+      border-radius: var(--rounded-md);
+      background: #fff;
+      padding: 0.42rem 0.58rem;
+      text-align: left;
+      outline: none;
+      transition: border-color .15s ease, box-shadow .15s ease, background .15s ease;
+    }
+    .tk-card:hover, .tk-card:focus-within {
+      border-color: var(--color-primary);
+      background: var(--color-surface-soft);
+      box-shadow: var(--shadow-subtle);
+    }
+    .tk-card__name { font-size: 0.78rem; font-weight: 700; line-height: 1.25; color: var(--color-on-surface); }
+    .tk-card__name em {
+      font-style: normal; margin-left: 0.25rem;
+      font-family: var(--font-mono); font-size: 0.63rem; font-weight: 700;
+      color: var(--color-primary-strong);
+    }
+    .tk-card__one { margin-top: 0.08rem; font-size: 0.66rem; line-height: 1.35; color: var(--color-on-surface-muted); }
+    /* 자리가 있는 곳(카탈로그)은 상세를 그냥 다 보여준다 */
+    .tk-card__more {
+      margin-top: 0.3rem; padding-top: 0.28rem;
+      border-top: 1px solid var(--color-outline);
+      font-size: 0.66rem; line-height: 1.45; color: var(--color-on-surface);
+    }
+    /* 배선도는 카드가 15개라 상세를 다 펼칠 수 없다. 카드 위에 겹쳐 뜨면 다른 카드를
+       가리므로 — 하단에 자리를 미리 비워두고 거기에만 설명이 바뀌어 나오게 한다. */
+    .tk-mapwrap { position: relative; padding-bottom: 3.1rem; }
+    .tk-zone .tk-card, .tk-band .tk-card { position: static; }
+    .tk-hint {
+      position: absolute; left: 0; right: 0; bottom: 0;
+      display: flex; align-items: center; min-height: 2.6rem;
+      padding: 0.45rem 0.7rem;
+      border: 1px dashed var(--color-outline-strong); border-radius: var(--rounded-md);
+      background: var(--color-surface-soft);
+      font-size: 0.68rem; color: var(--color-on-surface-muted);
+    }
+    .tk-zone .tk-card__more, .tk-band .tk-card__more {
+      position: absolute; left: 0; right: 0; bottom: 0; z-index: 8;
+      display: flex; align-items: center; min-height: 2.6rem;
+      margin-top: 0; padding: 0.45rem 0.7rem;
+      border: 1px solid var(--color-primary); border-radius: var(--rounded-md);
+      background: #fff; box-shadow: var(--shadow-subtle);
+      opacity: 0; visibility: hidden;
+      transition: opacity .12s ease, visibility .12s;
+    }
+    .tk-zone .tk-card:hover .tk-card__more, .tk-zone .tk-card:focus-within .tk-card__more,
+    .tk-band .tk-card:hover .tk-card__more, .tk-band .tk-card:focus-within .tk-card__more {
+      opacity: 1; visibility: visible;
+    }
+    .tk-card__more strong { color: var(--color-primary-strong); }
+    .tk-zone .tk-card__more strong, .tk-band .tk-card__more strong { margin-left: 0.3rem; }
+
+    /* 카탈로그 그리드 — 6장이면 3열 2행 */
+    .tk-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.5rem; align-items: start; }
+
+    /* 전체 배선도 */
+    .tk-map { display: grid; grid-template-columns: 1fr auto 1fr auto 1fr; gap: 0.35rem; align-items: stretch; }
+    .tk-zone {
+      display: flex; flex-direction: column; gap: 0.3rem;
+      border: 1px dashed var(--color-outline-strong);
+      border-radius: var(--rounded-md);
+      background: var(--color-surface-soft);
+      padding: 0.42rem;
+    }
+    .tk-zone__label {
+      font-family: var(--font-mono); font-size: 0.56rem; font-weight: 700;
+      letter-spacing: 0.05em; color: var(--color-primary-strong);
+    }
+    .tk-arrow {
+      align-self: center; text-align: center;
+      font-family: var(--font-mono); font-size: 0.58rem; line-height: 1.3;
+      color: var(--color-primary); font-weight: 700;
+    }
+    .tk-arrow span { display: block; font-size: 1.05rem; }
+    .tk-band {
+      margin-top: 0.4rem;
+      display: grid; grid-template-columns: auto 1fr 1fr; gap: 0.45rem; align-items: center;
+      border: 1px dashed var(--color-outline-strong); border-radius: var(--rounded-md);
+      background: #fff; padding: 0.42rem 0.5rem;
+    }
+    .tk-band__label {
+      font-family: var(--font-mono); font-size: 0.56rem; font-weight: 700;
+      letter-spacing: 0.05em; color: var(--color-primary-strong); white-space: nowrap;
+    }
+    .tk-human {
+      margin-top: 0.4rem; padding-left: 0.55rem;
+      border-left: 3px solid var(--color-primary);
+      font-size: 0.7rem; line-height: 1.4; color: var(--color-on-surface);
+    }
+  </style>
+</head>
+<body>
+
+<main class="deck">
+
+  <header class="deck-chrome">
+  <span class="deck-chrome__brand">바이브코딩 · CLAUDE CODE</span>
+  <span class="deck-chrome__divider">·</span>
+  <span class="deck-chrome__day">치트시트 1 · 설치한 도구들</span>
+  <span class="deck-chrome__spacer"></span>
+  <span class="deck-chrome__counter">— / —</span>
+</header>
+
+  <!-- 1 · Deck intro -->
+  <section class="slide is-section is-standard">
+    <div class="section-eyebrow">치트시트 1 · INSTALLED TOOLS</div>
+    <h2 class="section-title">설치한 도구들 — <span class="accent">무엇이 무엇과 이어지는가</span></h2>
+    <p class="section-caption">과정 내내 도구를 하나씩 늘려 왔습니다. 여기서는 그것들을 한 화면에 펼쳐 놓고, 각각 무슨 역할이고 서로 어떻게 이어지는지를 봅니다. 새 컴퓨터에서 다시 시작할 때 무엇부터 깔아야 하는지도 여기서 확인하면 됩니다.</p>
+    <div class="section-meta">
+      <div class="section-meta__item"><span class="section-meta__num">3</span><span>흐름 — 배포 · 데이터 · 알림</span></div>
+      <div class="section-meta__item"><span class="section-meta__num">4</span><span>영역 — 내 컴퓨터 · 설정 · 클라우드 · 바깥세상</span></div>
+      <div class="section-meta__item"><span class="section-meta__num">∞</span><span>순서대로 볼 필요 없음 — 필요할 때 꺼내 보기</span></div>
+    </div>
+  </section>
+
+  <!-- 2 · 세 가지 흐름 -->
+  <section class="slide is-standard">
+    <div class="slide__eyebrow">FLOW · 세 갈래</div>
+    <h2 class="slide__title">결국 <span class="accent">세 가지 흐름</span>이 전부입니다</h2>
+    <div class="slide__body">
+      <svg viewBox="0 0 720 372" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" style="display:block;margin:0 auto;width:100%;max-width:1080px;height:auto;">
+        <g font-family="ui-sans-serif, system-ui" text-anchor="middle">
+          <!-- 1. 배포 -->
+          <text x="16" y="20" font-family="ui-monospace, monospace" font-size="10.5" font-weight="700" fill="#cc5a14" text-anchor="start">① 배포 — 내가 만든 것이 세상에 나가는 길</text>
+          <rect x="16" y="30" width="140" height="46" rx="10" fill="#ffe0c2" stroke="#cc5a14" stroke-width="2"/>
+          <text x="86" y="50" font-size="12" font-weight="700" fill="#423d38">내 컴퓨터</text>
+          <text x="86" y="66" font-size="9.5" fill="#797067">Orca · Claude Code</text>
+          <line x1="160" y1="53" x2="196" y2="53" stroke="#cc5a14" stroke-width="2"/>
+          <text x="178" y="45" font-family="ui-monospace, monospace" font-size="9" fill="#797067">push</text>
+          <rect x="200" y="30" width="130" height="46" rx="10" fill="#fff" stroke="#cc5a14" stroke-width="2"/>
+          <text x="265" y="50" font-size="12" font-weight="700" fill="#423d38">GitHub</text>
+          <text x="265" y="66" font-size="9.5" fill="#797067">코드 창고</text>
+          <line x1="334" y1="53" x2="370" y2="53" stroke="#cc5a14" stroke-width="2"/>
+          <text x="352" y="45" font-family="ui-monospace, monospace" font-size="9" fill="#797067">자동</text>
+          <rect x="374" y="30" width="130" height="46" rx="10" fill="#fff" stroke="#cc5a14" stroke-width="2"/>
+          <text x="439" y="50" font-size="12" font-weight="700" fill="#423d38">Vercel</text>
+          <text x="439" y="66" font-size="9.5" fill="#797067">주소를 만든다</text>
+          <line x1="508" y1="53" x2="544" y2="53" stroke="#cc5a14" stroke-width="2"/>
+          <rect x="548" y="30" width="156" height="46" rx="10" fill="#dcfce7" stroke="#016630" stroke-width="2"/>
+          <text x="626" y="50" font-size="12" font-weight="700" fill="#016630">누구나 방문</text>
+          <text x="626" y="66" font-size="9.5" fill="#016630">링크 하나로</text>
+
+          <!-- 2. 데이터 -->
+          <text x="16" y="128" font-family="ui-monospace, monospace" font-size="10.5" font-weight="700" fill="#cc5a14" text-anchor="start">② 데이터 — 방문자가 남긴 것이 쌓이는 길</text>
+          <rect x="16" y="138" width="140" height="46" rx="10" fill="#fff" stroke="#cc5a14" stroke-width="2"/>
+          <text x="86" y="158" font-size="12" font-weight="700" fill="#423d38">방문자 브라우저</text>
+          <text x="86" y="174" font-size="9.5" fill="#797067">글을 남긴다</text>
+          <line x1="160" y1="161" x2="196" y2="161" stroke="#cc5a14" stroke-width="2"/>
+          <rect x="200" y="138" width="150" height="46" rx="10" fill="#ffe0c2" stroke="#cc5a14" stroke-width="2"/>
+          <text x="275" y="158" font-size="12" font-weight="700" fill="#423d38">내 사이트</text>
+          <text x="275" y="174" font-size="9.5" fill="#797067">Vercel에 올라간 것</text>
+          <line x1="354" y1="161" x2="390" y2="161" stroke="#cc5a14" stroke-width="2"/>
+          <rect x="394" y="138" width="150" height="46" rx="10" fill="#fff" stroke="#cc5a14" stroke-width="2"/>
+          <text x="469" y="158" font-size="12" font-weight="700" fill="#423d38">Supabase</text>
+          <text x="469" y="174" font-size="9.5" fill="#797067">표에 저장 · 규칙으로 보호</text>
+          <text x="568" y="155" font-size="10" fill="#797067" text-anchor="start">누구인지는</text>
+          <text x="568" y="170" font-size="10" font-weight="700" fill="#cc5a14" text-anchor="start">구글 로그인이 확인</text>
+
+          <!-- 3. 알림 -->
+          <text x="16" y="236" font-family="ui-monospace, monospace" font-size="10.5" font-weight="700" fill="#cc5a14" text-anchor="start">③ 알림 — 무슨 일이 생겼는지 내가 아는 길</text>
+          <rect x="16" y="246" width="180" height="40" rx="10" fill="#fff" stroke="#cc5a14" stroke-width="2"/>
+          <text x="106" y="271" font-size="11.5" font-weight="700" fill="#423d38">내 컴퓨터의 훅 (3장)</text>
+          <rect x="16" y="294" width="180" height="40" rx="10" fill="#fff" stroke="#cc5a14" stroke-width="2"/>
+          <text x="106" y="319" font-size="11.5" font-weight="700" fill="#423d38">배포된 사이트 (5장)</text>
+          <line x1="200" y1="266" x2="240" y2="286" stroke="#cc5a14" stroke-width="2"/>
+          <line x1="200" y1="314" x2="240" y2="294" stroke="#cc5a14" stroke-width="2"/>
+          <rect x="244" y="270" width="150" height="40" rx="10" fill="#ffe0c2" stroke="#cc5a14" stroke-width="2"/>
+          <text x="319" y="295" font-size="11.5" font-weight="700" fill="#423d38">텔레그램 봇</text>
+          <line x1="398" y1="290" x2="434" y2="290" stroke="#cc5a14" stroke-width="2"/>
+          <rect x="438" y="270" width="130" height="40" rx="10" fill="#dcfce7" stroke="#016630" stroke-width="2"/>
+          <text x="503" y="295" font-size="11.5" font-weight="700" fill="#016630">내 휴대폰</text>
+          <text x="588" y="288" font-size="10" fill="#797067" text-anchor="start">보내는 쪽은 둘,</text>
+          <text x="588" y="303" font-size="10" fill="#797067" text-anchor="start">받는 방은 하나</text>
+        </g>
+      </svg>
+      <p class="slide__note">앞으로 무엇을 만들든 이 세 흐름의 <strong>조합</strong>입니다 — 내보내고, 쌓고, 알린다.</p>
+    </div>
+  </section>
+
+  <!-- 3 · 전체 배선도 -->
+  <section class="slide is-standard">
+    <div class="slide__eyebrow">MAP · 한 화면에</div>
+    <h2 class="slide__title">전부 어디에 있고 — <span class="accent">무엇과 이어지는가</span></h2>
+    <div class="slide__body">
+      <div class="tk-mapwrap">
+        <div class="tk-map">
+          <div class="tk-zone">
+            <div class="tk-zone__label">① 내 컴퓨터</div>
+            <div class="tk-card" tabindex="0">
+              <div class="tk-card__name">Orca + Claude Code</div>
+              <div class="tk-card__one">작업실과 일하는 사람</div>
+              <div class="tk-card__more">Orca는 편집기와 터미널이 한 화면인 작업실, Claude Code는 그 안에서 내 파일을 읽고 고치는 에이전트. <strong>1장</strong></div>
+            </div>
+            <div class="tk-card" tabindex="0">
+              <div class="tk-card__name">.claude/ 설정</div>
+              <div class="tk-card__one">Claude를 길들이는 파일들</div>
+              <div class="tk-card__more">CLAUDE.md(규칙) · commands(내 명령어) · agents(도우미) · settings.json(훅). <strong>3·5장</strong></div>
+            </div>
+            <div class="tk-card" tabindex="0">
+              <div class="tk-card__name">Git<em>+ gh</em></div>
+              <div class="tk-card__one">되돌리기 · 올리기</div>
+              <div class="tk-card__more">Git은 내 컴퓨터 안의 시간여행 장치, gh는 GitHub에 올리는 명령 도구. <strong>1·2장</strong></div>
+            </div>
+            <div class="tk-card" tabindex="0">
+              <div class="tk-card__name">Python · Node.js</div>
+              <div class="tk-card__one">프로그램이 도는 바닥</div>
+              <div class="tk-card__more">Python은 3장 미션과 7장 실행파일의 바닥, Node.js는 미리보기 서버와 MCP가 올라타는 바닥. <strong>3·4장</strong></div>
+            </div>
+          </div>
+
+          <div class="tk-arrow"><span>→</span>git push</div>
+
+          <div class="tk-zone">
+            <div class="tk-zone__label">② 빌려 쓰는 클라우드</div>
+            <div class="tk-card" tabindex="0">
+              <div class="tk-card__name">GitHub</div>
+              <div class="tk-card__one">코드가 사는 창고</div>
+              <div class="tk-card__more">내 컴퓨터의 커밋을 push하면 여기 쌓입니다. Vercel이 여기서 코드를 가져갑니다. <strong>2장</strong></div>
+            </div>
+            <div class="tk-card" tabindex="0">
+              <div class="tk-card__name">Vercel</div>
+              <div class="tk-card__one">주소를 만들어 주는 곳</div>
+              <div class="tk-card__more">GitHub와 한 번 연결해두면 push할 때마다 자동 재배포. 토큰 같은 환경변수도 여기에 넣습니다. <strong>2장</strong></div>
+            </div>
+            <div class="tk-card" tabindex="0">
+              <div class="tk-card__name">Supabase</div>
+              <div class="tk-card__one">데이터가 남는 곳</div>
+              <div class="tk-card__more">표에 글이 쌓이고, 누가 쓸 수 있는지 규칙도 여기서 막습니다. 로그인 연결도 담당. <strong>5장</strong></div>
+            </div>
+            <div class="tk-card" tabindex="0">
+              <div class="tk-card__name">구글 로그인</div>
+              <div class="tk-card__one">누구인지 확인해 주는 곳</div>
+              <div class="tk-card__more">비밀번호는 구글이 확인하고, 내 서비스는 확인됨만 받습니다. <strong>4장</strong></div>
+            </div>
+            <div class="tk-card" tabindex="0">
+              <div class="tk-card__name">텔레그램 봇</div>
+              <div class="tk-card__one">알림이 지나가는 곳</div>
+              <div class="tk-card__more">보내는 쪽이 둘입니다 — 내 컴퓨터의 훅(3장), 그리고 배포된 사이트(5장). 받는 채팅방은 같습니다.</div>
+            </div>
+          </div>
+
+          <div class="tk-arrow"><span>→</span>주소 하나</div>
+
+          <div class="tk-zone">
+            <div class="tk-zone__label">③ 세상에 나온 것</div>
+            <div class="tk-card" tabindex="0">
+              <div class="tk-card__name">내 홈페이지</div>
+              <div class="tk-card__one">방명록 · 블로그 · /admin</div>
+              <div class="tk-card__more">2장에서 배포하고 4·5장에서 계속 얹었습니다. 링크 하나로 누구나 방문.</div>
+            </div>
+            <div class="tk-card" tabindex="0">
+              <div class="tk-card__name">실행 파일</div>
+              <div class="tk-card__one">.exe / .app</div>
+              <div class="tk-card__more">투두·트레이더·코인차트 — 파이썬 없는 PC에서도 더블클릭으로 도는 프로그램. <strong>7장</strong></div>
+            </div>
+            <div class="tk-card" tabindex="0">
+              <div class="tk-card__name">문서 · PPT</div>
+              <div class="tk-card__one">docx · xlsx · pdf · pptx</div>
+              <div class="tk-card__more">코드 한 줄 없이 문서 스킬로. DESIGN.md를 입히면 전부 같은 톤이 됩니다. <strong>6장</strong></div>
+            </div>
+            <div class="tk-card" tabindex="0">
+              <div class="tk-card__name">내 휴대폰</div>
+              <div class="tk-card__one">알림이 도착하는 화면</div>
+              <div class="tk-card__more">작업이 끝났을 때, 그리고 사이트에 새 글이 달렸을 때. <strong>3·5장</strong></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="tk-band">
+          <div class="tk-band__label">④ 바깥세상 데이터</div>
+          <div class="tk-card" tabindex="0">
+            <div class="tk-card__name">공개 API가 있다</div>
+            <div class="tk-card__one">주소로 요청 → JSON으로 받기</div>
+            <div class="tk-card__more">날씨·업비트 시세·강의 가상 시장처럼 데이터를 정식으로 내주는 곳. 먼저 이걸 찾습니다. <strong>4·7장</strong></div>
+          </div>
+          <div class="tk-card" tabindex="0">
+            <div class="tk-card__name">API가 없다</div>
+            <div class="tk-card__one">Playwright로 사람처럼 긁기</div>
+            <div class="tk-card__more">쇼핑몰처럼 API를 안 주는 곳은 브라우저를 열어 보고 읽습니다. 이용 규칙은 지키면서. <strong>7장</strong></div>
+          </div>
+        </div>
+
+        <p class="tk-human"><strong>그리고 나 —</strong> 계획을 검토하고, 권한을 승인하고, 결과를 확인합니다. 이 자리만은 위임하지 않습니다.</p>
+        <div class="tk-hint">카드에 마우스를 올리면 — 여기에 설명이 나옵니다.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4 · 내 컴퓨터 -->
+  <section class="slide is-standard">
+    <div class="slide__eyebrow">ZONE ① · 내 컴퓨터</div>
+    <h2 class="slide__title">내 작업대에 <span class="accent">설치한 것들</span></h2>
+    <div class="slide__body">
+      <div class="tk-grid">
+        <div class="tk-card">
+          <div class="tk-card__name">Orca<em>1장</em></div>
+          <div class="tk-card__one">편집기 + 터미널이 한 화면인 작업실</div>
+          <div class="tk-card__more">AI 에이전트용 작업 환경. 폴더를 홈베이스로 등록해두고 거기서 Claude를 띄웁니다. 좌하단에 사용량이 늘 보입니다. 무료.</div>
+        </div>
+        <div class="tk-card">
+          <div class="tk-card__name">Claude Code<em>1장</em></div>
+          <div class="tk-card__one">터미널에 사는 코딩 에이전트</div>
+          <div class="tk-card__more">내 폴더의 파일을 직접 읽고·쓰고·실행합니다. 채팅창에 코드를 복사해 오는 방식과 다른 지점이 바로 이것.</div>
+        </div>
+        <div class="tk-card">
+          <div class="tk-card__name">터미널<em>1장</em></div>
+          <div class="tk-card__one">글자로 컴퓨터에 말 거는 창</div>
+          <div class="tk-card__more">윈도우는 PowerShell, 맥은 zsh. Orca 안에 내장돼 있습니다. 읽기용 명령 몇 개만 알면 충분합니다.</div>
+        </div>
+        <div class="tk-card">
+          <div class="tk-card__name">Git<em>1·2장</em></div>
+          <div class="tk-card__one">코드의 시간여행 장치</div>
+          <div class="tk-card__more">AI가 파일을 고치는 시대의 안전벨트. 커밋해두면 언제든 그 시점으로 되돌아갑니다. 자주 커밋할수록 안전.</div>
+        </div>
+        <div class="tk-card">
+          <div class="tk-card__name">gh<em>1·2장</em></div>
+          <div class="tk-card__one">GitHub를 다루는 명령 도구</div>
+          <div class="tk-card__more">저장소 만들기·올리기를 Claude가 대신 실행합니다. 한 번 로그인해두면 그다음부터는 신경 쓸 일이 없습니다.</div>
+        </div>
+        <div class="tk-card">
+          <div class="tk-card__name">Python · Node.js<em>3·4장</em></div>
+          <div class="tk-card__one">프로그램이 올라타는 바닥</div>
+          <div class="tk-card__more">Python은 3장 미니미션과 7장 실행파일의 바닥, Node.js는 로컬 미리보기 서버와 6장 MCP가 도는 바닥입니다.</div>
+        </div>
+      </div>
+      <p class="slide__note">이 여섯 개가 <strong>1장 셋업의 전부</strong>입니다. 새 컴퓨터에서 다시 시작해야 한다면 이 순서로 깔면 됩니다.</p>
+    </div>
+  </section>
+
+  <!-- 5 · Claude를 길들이는 것 -->
+  <section class="slide is-standard">
+    <div class="slide__eyebrow">ZONE ② · .claude/ 폴더</div>
+    <h2 class="slide__title">Claude를 <span class="accent">내 방식대로</span> 만드는 파일들</h2>
+    <div class="slide__body">
+      <div class="tk-grid">
+        <div class="tk-card">
+          <div class="tk-card__name">CLAUDE.md<em>3장</em></div>
+          <div class="tk-card__one">매번 자동으로 읽히는 규칙집</div>
+          <div class="tk-card__more">"한국어로 답해줘", "커밋 메시지는 이렇게" 같은 반복 지시를 적어둡니다. 세션마다 다시 말할 필요가 없어집니다.</div>
+        </div>
+        <div class="tk-card">
+          <div class="tk-card__name">커스텀 슬래시<em>3장</em></div>
+          <div class="tk-card__one">자주 하는 부탁을 한 단어로</div>
+          <div class="tk-card__more"><code>.claude/commands/</code>에 md 파일 하나 = 명령어 하나. 3장에서 만든 <code>/asdf</code>가 그 예입니다.</div>
+        </div>
+        <div class="tk-card">
+          <div class="tk-card__name">Hooks<em>3장</em></div>
+          <div class="tk-card__one">어떤 일이 생기면 자동 실행</div>
+          <div class="tk-card__more"><code>settings.json</code>에 적습니다. 응답이 끝나면(Stop) 텔레그램으로 알림 보내기가 대표적. 이벤트 6종이 있습니다.</div>
+        </div>
+        <div class="tk-card">
+          <div class="tk-card__name">서브에이전트<em>5장</em></div>
+          <div class="tk-card__one">파일 하나 = 도우미 하나</div>
+          <div class="tk-card__more"><code>.claude/agents/</code>에 역할을 적어두면 그 역할로 일합니다. 5장의 designer·developer. 한 번 만들면 계속 재사용.</div>
+        </div>
+        <div class="tk-card">
+          <div class="tk-card__name">MCP<em>6장</em></div>
+          <div class="tk-card__one">담장 밖 프로그램으로 뻗는 통로</div>
+          <div class="tk-card__more">Claude는 기본적으로 열어둔 폴더 안만 봅니다. MCP를 꽂으면 브라우저·다른 폴더·외부 서비스에 닿습니다.</div>
+        </div>
+        <div class="tk-card">
+          <div class="tk-card__name">Skill · Plugin<em>6장</em></div>
+          <div class="tk-card__one">가져다 쓰는 능력 묶음</div>
+          <div class="tk-card__more">Plugin이 가장 큰 단위 — 그 안에 MCP와 Skill이 들어 있습니다. 문서 스킬을 설치하면 워드·엑셀·PPT를 만들 수 있게 됩니다.</div>
+        </div>
+      </div>
+      <p class="slide__note">서브에이전트는 <strong>사람</strong>, MCP는 <strong>도구</strong> — 도우미가 도구를 들고 일하는 그림으로 기억하면 헷갈리지 않습니다.</p>
+    </div>
+  </section>
+
+  <!-- 6 · 빌려 쓰는 클라우드 -->
+  <section class="slide is-standard">
+    <div class="slide__eyebrow">ZONE ③ · 남의 서버</div>
+    <h2 class="slide__title">직접 차리지 않고 — <span class="accent">빌려 쓰는 것들</span></h2>
+    <div class="slide__body">
+      <div class="tk-grid">
+        <div class="tk-card">
+          <div class="tk-card__name">GitHub<em>2장</em></div>
+          <div class="tk-card__one">코드를 클라우드에 두는 창고</div>
+          <div class="tk-card__more">Git은 내 컴퓨터 안, GitHub는 인터넷 위 — 둘은 다릅니다. Private으로 두면 나만 봅니다. 무료.</div>
+        </div>
+        <div class="tk-card">
+          <div class="tk-card__name">Vercel<em>2장</em></div>
+          <div class="tk-card__one">서버 운영을 통째로 대신</div>
+          <div class="tk-card__more">GitHub 저장소를 한 번 Import하면 이후 push마다 자동 재배포. 개인 프로젝트는 무료(Hobby).</div>
+        </div>
+        <div class="tk-card">
+          <div class="tk-card__name">Supabase<em>5장</em></div>
+          <div class="tk-card__one">데이터베이스 + 로그인이 한 묶음</div>
+          <div class="tk-card__more">백엔드 서버를 따로 만들지 않고 앱이 바로 데이터에 연결됩니다. 표 만들기는 SQL Editor에서. 무료 티어.</div>
+        </div>
+        <div class="tk-card">
+          <div class="tk-card__name">구글 OAuth<em>4장</em></div>
+          <div class="tk-card__one">비밀번호를 내가 안 받는 로그인</div>
+          <div class="tk-card__more">Google Cloud Console에서 클라이언트 ID·시크릿을 받고, 배포 주소를 승인된 리디렉트 URI에 넣어야 합니다.</div>
+        </div>
+        <div class="tk-card">
+          <div class="tk-card__name">텔레그램 봇<em>3장</em></div>
+          <div class="tk-card__one">알림을 배달해 주는 통로</div>
+          <div class="tk-card__more">BotFather에게 <code>/newbot</code> → 토큰. 그 토큰과 chat_id만 있으면 무엇이든 내 폰으로 메시지를 보낼 수 있습니다.</div>
+        </div>
+        <div class="tk-card">
+          <div class="tk-card__name">환경변수<em>4·5장</em></div>
+          <div class="tk-card__one">비밀값을 코드 밖에 두는 자리</div>
+          <div class="tk-card__more">토큰·키를 코드에 적으면 GitHub에 그대로 올라갑니다. 내 컴퓨터의 <code>.env</code>와 <strong>Vercel 대시보드 양쪽</strong>에 넣어야 배포본도 동작합니다.</div>
+        </div>
+      </div>
+      <p class="slide__note">"내 컴퓨터에선 되는데 배포하면 안 돼요"의 <strong>절반은 환경변수</strong>, 나머지 절반은 승인된 주소 목록입니다.</p>
+    </div>
+  </section>
+
+  <!-- 7 · 데이터를 얻는 두 갈래 -->
+  <section class="slide is-standard">
+    <div class="slide__eyebrow">ZONE ④ · 바깥세상</div>
+    <h2 class="slide__title">데이터를 얻는 <span class="accent">두 갈래</span></h2>
+    <div class="slide__body">
+      <div class="bg-compare">
+        <div class="bg-compare__side bg-compare__side--good">
+          <div class="bg-compare__label">① API가 있다 — 먼저 이걸 찾는다</div>
+          <div class="bg-compare__quote">
+            <div>주소로 요청하면 <strong>JSON</strong>으로 준다</div>
+            <div>빠르고, 안 깨지고, 규칙이 명확</div>
+            <div>날씨 · 업비트 시세 · 공공데이터</div>
+            <div>가입·키가 필요한 곳도 있다</div>
+          </div>
+          <p class="bg-compare__note">4장 웹페이지 · 7장 내 프로그램이 이걸 씀.</p>
+        </div>
+        <div class="bg-compare__side bg-compare__side--soft">
+          <div class="bg-compare__label">② API가 없다 — 그때 크롤링</div>
+          <div class="bg-compare__quote">
+            <div><strong>Playwright</strong>로 브라우저를 연다</div>
+            <div>사람처럼 보고 읽어서 가져온다</div>
+            <div>쇼핑몰 등 대부분의 사이트</div>
+            <div>화면이 바뀌면 같이 고쳐야 한다</div>
+          </div>
+          <p class="bg-compare__note">7장 덱 4에서 실제로 해 봤습니다.</p>
+        </div>
+      </div>
+      <p class="slide__note">순서가 중요합니다 — <strong>API를 먼저 찾고, 없을 때 브라우저로</strong>. 그리고 어느 쪽이든 그 사이트의 이용 규칙은 지킵니다.</p>
+    </div>
+  </section>
+
+  <div class="deck-progress"><div class="deck-progress__bar"></div></div>
+</main>
+<script src="../../scripts/deck.js"></script>
+</body>
+</html>
