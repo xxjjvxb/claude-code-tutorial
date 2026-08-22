@@ -1,0 +1,378 @@
+<!doctype html>
+<!-- © 2026 이일규 (Ilkyu Lee). All rights reserved. 본 강의자료는 저작권법으로 보호되는 저작물입니다. 무단 복제·배포·재사용을 금합니다. -->
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="author" content="이일규">
+  <meta name="copyright" content="© 2026 이일규 · 본 강의자료는 저작권법으로 보호되는 저작물입니다. 무단 복제·배포 금지.">
+  <script defer src="../../scripts/protect.js"></script>
+  <title>5장 · 3. 블로그 + 관리자 + 알림</title>
+  <link rel="stylesheet" href="../../styles/tokens.css">
+  <link rel="stylesheet" href="../../styles/deck.css">
+  <link rel="stylesheet" href="../../styles/_os-toggle.css">
+  <link rel="stylesheet" href="../../styles/_practice.css">
+  <script defer src="../../scripts/os-toggle.js"></script>
+  <script defer src="../../scripts/prompt-copy.js"></script>
+  <script defer src="../../scripts/slide-modify.js"></script>
+  <script defer src="../../scripts/feedback.js"></script>
+  <script defer src="../../scripts/analytics.js"></script>
+</head>
+<body>
+
+<main class="deck">
+
+  <header class="deck-chrome">
+  <span class="deck-chrome__brand">바이브코딩 · CLAUDE CODE</span>
+  <span class="deck-chrome__divider">·</span>
+  <span class="deck-chrome__day">5장 · 3 블로그·관리자·알림</span>
+  <span class="deck-chrome__spacer"></span>
+  <span class="deck-chrome__counter">— / —</span>
+</header>
+
+  <!-- 1 · Deck intro -->
+  <section class="slide is-section is-standard">
+    <div class="section-eyebrow">5장 · BLOG &amp; ADMIN &amp; ALERT</div>
+    <h2 class="section-title">방명록 다음 — <span class="accent">발행하고, 관리하고, 알림받기</span></h2>
+    <p class="section-caption">덱 2에서 다른 사람이 글을 남기는 페이지를 만들었습니다. 이번엔 내가 글을 발행하는 블로그, 나만 들어가는 관리자 화면, 그리고 새 글이 올라오면 휴대폰으로 오는 알림까지 — 사이트가 "운영"되기 시작하는 최소 구성을 갖춥니다.</p>
+    <div class="section-meta">
+      <div class="section-meta__item"><span class="section-meta__num">3</span><span>오늘 붙일 것 (블로그·관리자·알림)</span></div>
+      <div class="section-meta__item"><span class="section-meta__num">2</span><span>덱 2의 도우미 그대로 재사용</span></div>
+      <div class="section-meta__item"><span class="section-meta__num">1</span><span>3장에서 만든 텔레그램 봇 재사용</span></div>
+    </div>
+  </section>
+
+  <!-- 2 · 왜 이걸 하나 -->
+  <section class="slide is-statement">
+    <div class="statement-grid">
+      <div class="statement-text">
+        <div class="slide__eyebrow">WHY · 운영되는 사이트</div>
+        <h2 class="statement__lead">방문자가 쓰는 페이지에서 — <span class="accent">내가 운영하는 사이트</span>로.</h2>
+        <p class="statement__caption">방명록은 남이 글을 남기고 가는 곳입니다. 여기에 세 가지를 더하면 성격이 완전히 달라집니다 — 내가 발행하는 글, 나만 여는 관리 화면, 그리고 무슨 일이 생기면 바로 오는 알림.</p>
+        <div class="statement__points">
+          <div class="statement__point"><span class="statement__point-num">블로그</span><span>내가 쓴 글이 목록으로 쌓인다</span></div>
+          <div class="statement__point"><span class="statement__point-num">관리자</span><span>남의 글을 내리고, 내 글을 발행한다</span></div>
+          <div class="statement__point"><span class="statement__point-num">알림</span><span>새 글이 올라오면 휴대폰으로</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3 · 방명록 vs 블로그 -->
+  <section class="slide is-standard">
+    <div class="slide__eyebrow">CONCEPT · 둘은 다르다</div>
+    <h2 class="slide__title">방명록과 블로그 — <span class="accent">누가 쓰느냐</span>가 다르다</h2>
+    <div class="slide__body">
+      <div class="bg-compare">
+        <div class="bg-compare__side bg-compare__side--soft">
+          <div class="bg-compare__label">방명록 · 덱 2에서 완성</div>
+          <div class="bg-compare__quote">
+            <div>로그인한 <strong>누구나</strong> 쓴다</div>
+            <div>짧은 한마디 — 제목이 없다</div>
+            <div>남긴 순서대로 쌓인다</div>
+          </div>
+          <p class="bg-compare__note">손님이 남기고 가는 자리.</p>
+        </div>
+        <div class="bg-compare__side bg-compare__side--good">
+          <div class="bg-compare__label">블로그 · 오늘 추가</div>
+          <div class="bg-compare__quote">
+            <div><strong>나만</strong> 쓴다</div>
+            <div>제목 + 본문 — 길게 쓴다</div>
+            <div>공개 / 비공개 상태가 있다</div>
+          </div>
+          <p class="bg-compare__note">내가 발행하는 자리.</p>
+        </div>
+      </div>
+      <p class="slide__note">그래서 <strong>표(테이블)를 따로 만듭니다</strong> — 성격이 다르면 필요한 칸도 다릅니다. 방명록엔 제목이 필요 없고, 블로그엔 "아직 공개 안 함"이 필요하죠.</p>
+    </div>
+  </section>
+
+  <!-- 4 · 블로그 표 만들기 -->
+  <section class="slide is-standard">
+    <div class="slide__eyebrow">STEP 1 · 표</div>
+    <h2 class="slide__title">블로그 글을 담을 <span class="accent">표</span> 만들기</h2>
+    <div class="slide__body">
+      <div class="prompt-card">
+        <div class="prompt-card__head">
+          <span class="prompt-card__label">프롬프트 · 블로그 표</span>
+          <button class="prompt-card__copy" type="button" data-copy>복사</button>
+        </div>
+        <pre class="prompt-card__body" data-no-nav>Supabase에 블로그 글을 담을 표를 하나 만들어줘.
+제목·본문·작성시각, 그리고 공개/비공개 상태가 필요해.
+읽기는 공개된 글만 누구나 볼 수 있고,
+쓰기·수정·삭제는 내 계정만 되게 데이터베이스 규칙으로 막아줘.
+내 계정 이메일은 <span class="ph">&lt;내 구글 이메일&gt;</span> 이야.</pre>
+      </div>
+      <p class="slide__note">방명록 표는 그대로 둡니다 — <strong>새 표를 하나 더</strong> 만드는 거예요. "읽기는 누구나, 쓰기는 나만"이 이 표의 핵심 규칙입니다.</p>
+    </div>
+  </section>
+
+  <!-- 5 · 블로그 화면 -->
+  <section class="slide is-standard">
+    <div class="slide__eyebrow">STEP 2 · 화면</div>
+    <h2 class="slide__title">도우미 둘에게 <span class="accent">블로그 화면</span> 맡기기</h2>
+    <div class="slide__body">
+      <div class="two-col">
+        <div>
+          <div class="prompt-card">
+            <div class="prompt-card__head">
+              <span class="prompt-card__label">@designer 에게</span>
+              <button class="prompt-card__copy" type="button" data-copy>복사</button>
+            </div>
+            <pre class="prompt-card__body" data-no-nav>블로그 화면을 만들어줘.
+글 목록(제목·날짜)과 글 하나를 펼쳐 보는 화면.
+내 홈페이지 분위기 그대로, 폰에서도 읽기 좋게.
+저장·권한은 개발자 몫 — 건드리지 않는다.</pre>
+          </div>
+        </div>
+        <div>
+          <div class="prompt-card">
+            <div class="prompt-card__head">
+              <span class="prompt-card__label">@developer 에게</span>
+              <button class="prompt-card__copy" type="button" data-copy>복사</button>
+            </div>
+            <pre class="prompt-card__body" data-no-nav>블로그 글을 Supabase에 저장하고 불러온다.
+공개된 글만 목록에 보이게 하고, 최신 글이 위로.
+글쓰기·수정은 내 계정으로 로그인했을 때만.
+키는 환경변수로 둔다.</pre>
+          </div>
+        </div>
+      </div>
+      <p class="slide__note">덱 2에서 만든 <code>designer</code>·<code>developer</code>를 <strong>그대로 씁니다</strong> — 도우미는 한 번 만들면 계속 재사용합니다. 새로 만들 필요 없습니다.</p>
+    </div>
+  </section>
+
+  <!-- 6 · 관리자 페이지란 -->
+  <section class="slide is-standard">
+    <div class="slide__eyebrow">ADMIN · 나만의 문</div>
+    <h2 class="slide__title">관리자 페이지 — <span class="accent">나만 들어가는 화면</span></h2>
+    <div class="slide__body">
+      <div class="two-col">
+        <div>
+          <div class="content-card content-card--compact">
+            <h3 class="content-card__title">무엇을 하나</h3>
+            <ul class="content-card__list">
+              <li>방명록에 달린 <strong>이상한 글 내리기</strong></li>
+              <li>블로그 글 <strong>발행 / 비공개</strong> 전환</li>
+              <li>지금까지 쌓인 글을 한눈에 보기</li>
+            </ul>
+          </div>
+        </div>
+        <div>
+          <div class="content-card content-card--compact">
+            <h3 class="content-card__title">왜 따로 두나</h3>
+            <ul class="content-card__list">
+              <li>손님 화면에 섞이면 <strong>실수로 눌립니다</strong></li>
+              <li>주소를 따로 — <code>/admin</code></li>
+              <li>로그인한 <strong>내 계정만</strong> 통과</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <p class="slide__note">관리자 페이지는 거창한 게 아닙니다 — <strong>목록 + 삭제 버튼 + 발행 버튼</strong>이면 충분합니다. 처음부터 크게 만들지 마세요.</p>
+    </div>
+  </section>
+
+  <!-- 7 · 숨기는 것과 막는 것 -->
+  <section class="slide is-standard">
+    <div class="slide__eyebrow">PRINCIPLE · 오늘의 핵심</div>
+    <h2 class="slide__title">버튼을 <span class="accent">숨기는 것</span>과 <span class="accent">막는 것</span>은 다르다</h2>
+    <div class="slide__body">
+      <div class="two-col">
+        <div>
+          <div class="content-card content-card--compact">
+            <h3 class="content-card__title">화면에서 숨기면</h3>
+            <ul class="content-card__list">
+              <li>관리자 버튼이 <strong>안 보일 뿐</strong></li>
+              <li>주소를 직접 치면 들어와집니다</li>
+              <li>잠근 게 아니라 <strong>가린 것</strong></li>
+            </ul>
+          </div>
+        </div>
+        <div>
+          <div class="content-card content-card--compact">
+            <h3 class="content-card__title">데이터베이스에서 막으면</h3>
+            <ul class="content-card__list">
+              <li>Supabase가 <strong>"이 사람 아니면 거절"</strong></li>
+              <li>화면을 어떻게 조작해도 통과 못 함</li>
+              <li>이게 <strong>진짜 잠금</strong></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <p class="slide__note">그래서 Claude에게 "화면에서 안 보이게"가 아니라 — <strong style="color:var(--color-danger)">"내 계정만 쓸 수 있게 데이터베이스 규칙으로 막아줘"</strong>라고 말합니다. 이 한 문장 차이가 진짜 잠금과 흉내의 차이입니다.</p>
+    </div>
+  </section>
+
+  <!-- 8 · 관리자 페이지 만들기 -->
+  <section class="slide is-standard">
+    <div class="slide__eyebrow">STEP 3 · 관리자</div>
+    <h2 class="slide__title"><span class="accent">/admin</span> 화면 붙이기</h2>
+    <div class="slide__body">
+      <div class="prompt-card">
+        <div class="prompt-card__head">
+          <span class="prompt-card__label">프롬프트 · 관리자 페이지</span>
+          <button class="prompt-card__copy" type="button" data-copy>복사</button>
+        </div>
+        <pre class="prompt-card__body" data-no-nav>/admin 주소에 관리자 페이지를 만들어줘.
+내 계정(<span class="ph">&lt;내 구글 이메일&gt;</span>)으로 로그인했을 때만 열리게 하고,
+다른 사람이 주소를 직접 쳐도 못 들어가게
+데이터베이스 규칙으로도 막아줘.
+방명록 글 삭제, 블로그 글 발행/비공개 전환이 되면 돼.</pre>
+      </div>
+      <p class="slide__note">로그인 자체는 <strong>4장에서 붙인 구글 로그인을 그대로</strong> 씁니다 — 새로 만들 게 없습니다. "누가 들어왔는지"는 이미 알고 있으니, "그게 나인지"만 확인하면 됩니다.</p>
+    </div>
+  </section>
+
+  <!-- 9 · 알림 · 3장 봇 재사용 -->
+  <section class="slide is-standard">
+    <div class="slide__eyebrow">ALERT · 3장 봇 재사용</div>
+    <h2 class="slide__title">새 글이 올라오면 — <span class="accent">휴대폰으로</span></h2>
+    <div class="slide__body">
+      <div class="two-col">
+        <div>
+          <div class="content-card content-card--compact">
+            <h3 class="content-card__title">3장과 뭐가 다른가</h3>
+            <ul class="content-card__list">
+              <li>3장 Stop 훅 — <strong>내 컴퓨터의 Claude</strong>가 보냄</li>
+              <li>이번엔 — <strong>배포된 사이트</strong>가 보냄</li>
+              <li>보내는 쪽만 다르고 받는 곳은 같은 채팅방</li>
+            </ul>
+          </div>
+        </div>
+        <div>
+          <div class="content-card content-card--compact">
+            <h3 class="content-card__title">그때 만든 것 그대로</h3>
+            <ul class="content-card__list">
+              <li>봇 — 3장에서 BotFather로 만든 것</li>
+              <li><strong>토큰</strong>과 <strong>chat_id</strong> — 그때 받은 값</li>
+              <li>새로 만들 필요 없습니다</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <p class="slide__note">3장에서 만든 봇을 버리지 마세요 — <strong>여기서 다시 씁니다</strong>. 토큰과 chat_id를 메모해 둔 곳을 지금 열어 두세요.</p>
+    </div>
+  </section>
+
+  <!-- 10 · 알림 붙이기 -->
+  <section class="slide is-standard">
+    <div class="slide__eyebrow">STEP 4 · 알림</div>
+    <h2 class="slide__title">방명록에 글이 달리면 <span class="accent">알림 보내기</span></h2>
+    <div class="slide__body">
+      <div class="prompt-card">
+        <div class="prompt-card__head">
+          <span class="prompt-card__label">프롬프트 · 텔레그램 알림</span>
+          <button class="prompt-card__copy" type="button" data-copy>복사</button>
+        </div>
+        <pre class="prompt-card__body" data-no-nav>방명록에 새 글이 등록되면 텔레그램으로 알림이 오게 해줘.
+글쓴이 이름과 글 앞부분이 보이면 좋겠어.
+봇 토큰과 chat_id는 코드에 직접 쓰지 말고 환경변수로 두고,
+배포된 사이트에서도 오도록 Vercel에 같은 환경변수를
+넣는 방법까지 알려줘.</pre>
+      </div>
+      <div class="caveat-grid--compact is-block" style="margin-top:0.55rem">
+        <div class="caveat-card">
+          <div class="caveat-card__label">토큰은 코드에 적지 않습니다</div>
+          <p class="caveat-card__body">코드에 적으면 GitHub에 그대로 올라갑니다 — 공개 저장소면 남이 내 봇을 조종할 수 있습니다. <strong>환경변수로 두고, Vercel 대시보드에도 같은 값을 넣어야</strong> 배포된 사이트에서 알림이 옵니다.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 11 · 안 될 때 -->
+  <section class="slide is-standard">
+    <div class="slide__eyebrow">TROUBLE · 막히면</div>
+    <h2 class="slide__title">안 될 때 — <span class="accent">이 네 가지</span>부터</h2>
+    <div class="slide__body">
+      <div class="step-list step-list--compact">
+        <div class="step-list__item">
+          <div class="step-list__num">1</div>
+          <div class="step-list__content">
+            <p class="step-list__title"><strong>알림이 안 온다</strong> → Vercel 환경변수에 토큰·chat_id를 넣었는지. 내 컴퓨터에만 있으면 배포된 사이트는 모릅니다</p>
+          </div>
+        </div>
+        <div class="step-list__item">
+          <div class="step-list__num">2</div>
+          <div class="step-list__content">
+            <p class="step-list__title"><strong>/admin에 아무나 들어와진다</strong> → 화면만 숨긴 상태. "데이터베이스 규칙으로 막아줘"라고 다시 요청</p>
+          </div>
+        </div>
+        <div class="step-list__item">
+          <div class="step-list__num">3</div>
+          <div class="step-list__content">
+            <p class="step-list__title"><strong>블로그 글이 목록에 없다</strong> → 아직 "공개" 상태가 아닌 글. /admin에서 발행으로 바꾸면 나타납니다</p>
+          </div>
+        </div>
+        <div class="step-list__item">
+          <div class="step-list__num">4</div>
+          <div class="step-list__content">
+            <p class="step-list__title"><strong>내 컴퓨터에선 되는데 배포하면 안 된다</strong> → 환경변수, 그리고 구글 로그인 허용 주소(4장)에 배포 주소가 들어갔는지</p>
+          </div>
+        </div>
+      </div>
+      <p class="slide__note">막히면 <strong>증상 그대로</strong> Claude에게 말하세요 — "배포한 사이트에서만 알림이 안 와요"처럼. 어디를 봐야 하는지 알려줍니다.</p>
+    </div>
+  </section>
+
+  <!-- 12 · 체크포인트 -->
+  <section class="slide is-standard">
+    <div class="slide__eyebrow">CHECKPOINT · 여기까지</div>
+    <h2 class="slide__title">이 셋이 되면 — <span class="accent">덱 3 완성</span></h2>
+    <div class="slide__body">
+      <div class="bg-compare">
+        <div class="bg-compare__side bg-compare__side--good">
+          <div class="bg-compare__label">✓ 방금 완성</div>
+          <div class="bg-compare__quote">
+            <div>내 글이 쌓이는 블로그</div>
+            <div>나만 들어가는 <code>/admin</code></div>
+            <div>새 글 → 휴대폰 알림</div>
+          </div>
+          <p class="bg-compare__note">운영되는 사이트의 최소 구성.</p>
+        </div>
+        <div class="bg-compare__side bg-compare__side--soft">
+          <div class="bg-compare__label">→ 이렇게 확인</div>
+          <div class="bg-compare__quote">
+            <div>로그아웃하고 <code>/admin</code> 열기</div>
+            <div>→ <strong>막혀야</strong> 정상</div>
+            <div>다른 브라우저로 방명록에 글 남기기</div>
+            <div>→ <strong>알림이 와야</strong> 정상</div>
+          </div>
+          <p class="bg-compare__note">"남의 입장"에서 확인하는 게 핵심.</p>
+        </div>
+      </div>
+      <p class="slide__note">내 계정으로 로그인한 채로는 <strong>무엇이든 다 됩니다</strong> — 그래서 확인은 반드시 로그아웃 상태나 다른 브라우저에서.</p>
+    </div>
+  </section>
+
+  <!-- 13 · Wrap -->
+  <section class="slide is-standard">
+    <div class="slide__eyebrow">WRAP · 5장 끝</div>
+    <h2 class="slide__title">혼자 만든 페이지가 — <span class="accent">운영되는 사이트</span>로</h2>
+    <div class="slide__body">
+      <div class="grid-3">
+        <div class="diff-card">
+          <div class="diff-card__rank">덱 1</div>
+          <h3 class="diff-card__title">데이터베이스</h3>
+          <p class="diff-card__body">껐다 켜도 남는 자리 — 데이터를 담는 창고와 Supabase.</p>
+        </div>
+        <div class="diff-card">
+          <div class="diff-card__rank">덱 2</div>
+          <h3 class="diff-card__title">방명록 · 도우미 둘</h3>
+          <p class="diff-card__body">디자이너·개발자에게 나눠 맡겨 — 손님이 글을 남기는 페이지.</p>
+        </div>
+        <div class="diff-card">
+          <div class="diff-card__rank">덱 3</div>
+          <h3 class="diff-card__title">블로그 · 관리자 · 알림</h3>
+          <p class="diff-card__body">내가 발행하고, 내가 관리하고, 무슨 일이 생기면 알림이 옵니다.</p>
+        </div>
+      </div>
+      <p class="slide__note">여기까지가 <strong>서비스의 기본 골격</strong>입니다 — 보여주기 · 남기기 · 관리하기 · 알기. 8장 미니 프로젝트에서 이 구성을 본인 주제로 다시 만듭니다.</p>
+    </div>
+  </section>
+
+  <div class="deck-progress"><div class="deck-progress__bar"></div></div>
+</main>
+<script src="../../scripts/deck.js"></script>
+</body>
+</html>
