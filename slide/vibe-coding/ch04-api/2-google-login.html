@@ -7,7 +7,7 @@
   <meta name="author" content="이일규">
   <meta name="copyright" content="© 2026 이일규 · 본 강의자료는 저작권법으로 보호되는 저작물입니다. 무단 복제·배포 금지.">
   <script defer src="../../scripts/protect.js"></script>
-  <title>5장 · 3. 구글 로그인</title>
+  <title>4장 · 2. 구글 로그인</title>
   <link rel="stylesheet" href="../../styles/tokens.css">
   <link rel="stylesheet" href="../../styles/deck.css">
   <link rel="stylesheet" href="../../styles/_os-toggle.css">
@@ -25,16 +25,16 @@
   <header class="deck-chrome">
   <span class="deck-chrome__brand">바이브코딩 · CLAUDE CODE</span>
   <span class="deck-chrome__divider">·</span>
-  <span class="deck-chrome__day">5장 · 3 구글 로그인</span>
+  <span class="deck-chrome__day">4장 · 2 구글 로그인</span>
   <span class="deck-chrome__spacer"></span>
   <span class="deck-chrome__counter">— / —</span>
 </header>
 
   <!-- 1 · Chapter intro -->
   <section class="slide is-section is-standard">
-    <div class="section-eyebrow">5장 · GOOGLE LOGIN</div>
+    <div class="section-eyebrow">4장 · GOOGLE LOGIN</div>
     <h2 class="section-title">내 서비스에 <span class="accent">구글 로그인</span>을 붙인다</h2>
-    <p class="section-caption">4장에서 만든 공개 API 데이터 페이지를 — 이제 "로그인한 사람만" 쓰는 진짜 서비스로. 단계별 매뉴얼 없이, 단 3개의 문장과 Claude와의 대화만으로 구글 OAuth 로그인을 붙이고 Vercel에 배포합니다.</p>
+    <p class="section-caption">덱 1에서 만든 공개 API 데이터 페이지를 — 이제 "로그인한 사람만" 쓰는 진짜 서비스로. 단계별 매뉴얼 없이, 단 3개의 문장과 Claude와의 대화만으로 구글 OAuth 로그인을 붙이고 Vercel에 배포합니다.</p>
     <div class="section-meta">
       <div class="section-meta__item"><span class="section-meta__num">3</span><span>시작 문장</span></div>
       <div class="section-meta__item"><span class="section-meta__num">1</span><span>구글 로그인</span></div>
@@ -42,16 +42,16 @@
     </div>
   </section>
 
-  <!-- 2 · 4장으로 돌아가기 -->
+  <!-- 2 · 덱 1로 돌아가기 -->
   <section class="slide is-statement">
     <div class="statement-grid statement-grid--visual-wide">
       <div class="statement-text">
-        <div class="slide__eyebrow">RECALL · 4장의 그 페이지</div>
-        <h2 class="statement__lead">4장에서 만든 데이터 페이지 — 지금은 <span class="accent">누구나</span> 본다.</h2>
-        <p class="statement__caption">공개 API 데이터를 가져와 보여주던 그 페이지. 링크만 알면 누구든 들어옵니다. 이번 장에서는 여기에 문을 답니다 — "로그인한 사람만".</p>
+        <div class="slide__eyebrow">RECALL · 덱 1의 그 페이지</div>
+        <h2 class="statement__lead">덱 1에서 만든 데이터 페이지 — 지금은 <span class="accent">누구나</span> 본다.</h2>
+        <p class="statement__caption">공개 API 데이터를 가져와 보여주던 그 페이지. 링크만 알면 누구든 들어옵니다. 이번 덱에서는 여기에 문을 답니다 — "로그인한 사람만".</p>
         <div class="statement__points">
           <div class="statement__point"><span class="statement__point-num">지금</span><span>링크 = 아무나 접근 가능</span></div>
-          <div class="statement__point"><span class="statement__point-num">이번 장</span><span>로그인해야 입장</span></div>
+          <div class="statement__point"><span class="statement__point-num">이번 덱</span><span>로그인해야 입장</span></div>
           <div class="statement__point"><span class="statement__point-num">도구</span><span>구글 OAuth — "구글로 로그인" 버튼</span></div>
         </div>
       </div>
@@ -113,7 +113,7 @@
       <div class="statement-text">
         <div class="slide__eyebrow">REAL · 강의자료가 없었다</div>
         <h2 class="statement__lead">이 챕터엔 <span class="accent">단계별 매뉴얼</span>이 없습니다 — 일부러.</h2>
-        <p class="statement__caption">실제 강의에서도 슬라이드 없이 진행했습니다. 강사가 던진 건 단 3개의 문장. 나머지는 전부 Claude와 대화하며 풀었습니다 — 그게 이번 장에서 배울 진짜 기술입니다.</p>
+        <p class="statement__caption">실제 강의에서도 슬라이드 없이 진행했습니다. 강사가 던진 건 단 3개의 문장. 나머지는 전부 Claude와 대화하며 풀었습니다 — 그게 이번 덱에서 배울 진짜 기술입니다.</p>
         <div class="statement__points">
           <div class="statement__point"><span class="statement__point-num">매뉴얼</span><span>없음 — 외울 절차가 아니다</span></div>
           <div class="statement__point"><span class="statement__point-num">3문장</span><span>목표·제약·내 수준을 담은 시작점</span></div>
@@ -352,7 +352,7 @@
           <h3 class="compare-side__title">로그인 창만 보여야 한다</h3>
           <ul class="compare-side__list">
             <li>"구글로 로그인" 버튼 하나만 화면에</li>
-            <li>4장 데이터 페이지는 안 보임</li>
+            <li>덱 1 데이터 페이지는 안 보임</li>
             <li>주소를 직접 쳐도 — 막혀야 함</li>
           </ul>
         </div>
@@ -361,7 +361,7 @@
           <h3 class="compare-side__title">서비스 전체가 열린다</h3>
           <ul class="compare-side__list">
             <li>구글 로그인 통과 → 페이지 진입</li>
-            <li>4장에서 만든 화면 그대로 사용</li>
+            <li>덱 1에서 만든 화면 그대로 사용</li>
             <li>로그아웃하면 — 다시 로그인 창으로</li>
           </ul>
         </div>
@@ -422,7 +422,7 @@
           <figcaption class="photo-slot__ph">
             <span class="photo-slot__icon">◧</span>
             <span class="photo-slot__label">로그인 성공 화면</span>
-            <span class="photo-slot__hint">구글 로그인 통과 → 4장 데이터 페이지가 열림</span>
+            <span class="photo-slot__hint">구글 로그인 통과 → 덱 1 데이터 페이지가 열림</span>
           </figcaption>
         </figure>
       </div>
@@ -464,12 +464,12 @@
   <!-- 14 · 실습 진행 -->
   <section class="slide is-standard">
     <div class="slide__eyebrow">실습 · 진행</div>
-    <h2 class="slide__title">4장 폴더에서 — <span class="accent">로그인 한 바퀴</span></h2>
+    <h2 class="slide__title">덱 1 폴더에서 — <span class="accent">로그인 한 바퀴</span></h2>
     <div class="slide__body">
       <div class="step-list step-list--compact">
         <div class="step-list__item">
           <div class="step-list__num">1</div>
-          <div class="step-list__content"><p class="step-list__title">4장 작업 폴더 열기 <span class="step-list__desc" style="display:inline">— API 페이지를 만든 그 폴더에서 claude 실행</span></p></div>
+          <div class="step-list__content"><p class="step-list__title">덱 1 작업 폴더 열기 <span class="step-list__desc" style="display:inline">— API 페이지를 만든 그 폴더에서 claude 실행</span></p></div>
         </div>
         <div class="step-list__item">
           <div class="step-list__num">2</div>
@@ -492,7 +492,7 @@
           <div class="step-list__content"><p class="step-list__title">배포 링크 채팅방 공유 <span class="step-list__desc" style="display:inline">— 옆 사람 계정으로 로그인 테스트</span></p></div>
         </div>
       </div>
-      <p class="slide__note">한 번에 안 되는 게 정상입니다 — 막히면 에러를 그대로 Claude에게, 그래도 안 되면 오른쪽 질문 버튼에. 덱 2(방명록)에서 <strong>Supabase에 맡겼던 로그인</strong> — 그 속에서 돌던 과정이 바로 이것입니다.</p>
+      <p class="slide__note">한 번에 안 되는 게 정상입니다 — 막히면 에러를 그대로 Claude에게, 그래도 안 되면 오른쪽 질문 버튼에. 5장 방명록에서는 이 로그인을 <strong>Supabase에 맡깁니다</strong> — 그때 속에서 도는 과정이 바로 이것입니다.</p>
     </div>
   </section>
 
@@ -500,7 +500,7 @@
   <section class="slide is-statement">
     <div class="statement-grid">
       <div class="statement-text">
-        <div class="slide__eyebrow">PATTERN · 이번 장에서 진짜 배운 것</div>
+        <div class="slide__eyebrow">PATTERN · 이번 덱에서 진짜 배운 것</div>
         <h2 class="statement__lead">매뉴얼이 없어도 — <span class="accent">3문장이면</span> 시작할 수 있다.</h2>
         <p class="statement__caption">외울 건 OAuth 설정 절차가 아닙니다. "처음 해보는 일도, 목표·제약·내 수준 3문장으로 Claude와 대화하며 끝낸다" — 이 방식이 과정 내내, 그리고 과정이 끝난 뒤에도 쓰는 기술입니다.</p>
         <div class="statement__points">
@@ -528,15 +528,15 @@
     </div>
   </section>
 
-  <!-- 16 · Wrap · 덱 3 끝 -->
+  <!-- 16 · Wrap · 덱 2 끝 -->
   <section class="slide is-feature">
     <div class="feature-head">
-      <div class="slide__eyebrow">WRAP · 5장 덱 3 끝</div>
+      <div class="slide__eyebrow">WRAP · 4장 덱 2 끝</div>
       <h2 class="feature-head__title">구글 로그인 — <span class="accent">내 페이지가 진짜 서비스가 됐다</span></h2>
     </div>
     <div class="feature-body">
       <div class="feature-text">
-        <p class="statement__caption">4장에서 만든 데이터 페이지에 문을 달았습니다 — 3문장으로 시작하고, 막히면 대화로 풀고, 구글 OAuth를 붙여 Vercel 배포까지.</p>
+        <p class="statement__caption">덱 1에서 만든 데이터 페이지에 문을 달았습니다 — 3문장으로 시작하고, 막히면 대화로 풀고, 구글 OAuth를 붙여 Vercel 배포까지.</p>
         <div class="statement__points">
           <div class="statement__point"><span class="statement__point-num">로그인</span><span>구글 OAuth — 로그인한 사람만 입장</span></div>
           <div class="statement__point"><span class="statement__point-num">패턴</span><span>3문장 — 목표 · 제약 · 내 수준</span></div>
@@ -545,7 +545,7 @@
       <div class="feature-visual">
         <svg viewBox="0 0 460 320" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
           <rect x="0" y="0" width="460" height="320" rx="16" fill="#fff5ec"/>
-          <text x="230" y="46" font-family="ui-sans-serif, system-ui" font-size="13" fill="#797067" letter-spacing="0.08em" font-weight="700" text-anchor="middle">5장 덱 3 — 로그인 한 바퀴</text>
+          <text x="230" y="46" font-family="ui-sans-serif, system-ui" font-size="13" fill="#797067" letter-spacing="0.08em" font-weight="700" text-anchor="middle">4장 덱 2 — 로그인 한 바퀴</text>
           <g font-family="ui-sans-serif, system-ui" font-size="11" font-weight="700">
             <rect x="46" y="74" width="118" height="48" rx="8" fill="white" stroke="#cc5a14" stroke-width="2"/>
             <text x="105" y="103" fill="#423d38" text-anchor="middle">3문장</text>

@@ -65,7 +65,7 @@
         <div class="diff-card">
           <div class="diff-card__rank">04</div>
           <h3 class="diff-card__title">컨텍스트 관리</h3>
-          <p class="diff-card__body">/clear · /compact · /resume · --continue 네 도구로 세션 다루기.</p>
+          <p class="diff-card__body">/clear · /compact · /resume 세 도구로 세션 다루기.</p>
         </div>
       </div>
       <p class="slide__note">실습에서 <strong>매 미션 끝 Orca 좌하단 확인 의무</strong>화. 비용 감각은 손에 익혀야 진짜.</p>
@@ -433,43 +433,44 @@
     </div>
   </section>
 
-  <!-- 15 · /resume vs --continue -->
+  <!-- 15 · /resume -->
   <section class="slide is-standard">
-    <div class="slide__eyebrow">CONTEXT TOOLS · /resume vs --continue</div>
-    <h2 class="slide__title">세션 종료 후 <span class="accent">이어가기</span> 두 가지</h2>
+    <div class="slide__eyebrow">CONTEXT TOOLS · /resume</div>
+    <h2 class="slide__title">세션 종료 후 — <span class="accent">/resume</span>으로 이어가기</h2>
     <div class="slide__body">
-      <div class="compare-2">
-        <div class="compare-side compare-side--soft">
-          <div class="compare-side__label">/resume · 세션 안에서 선택</div>
-          <h3 class="compare-side__title">claude를 이미 켰을 때</h3>
-          <ul class="compare-side__list">
-            <li>같은 폴더에서 <code>claude</code> 실행</li>
-            <li>세션 안에서 <code>/resume</code> 입력</li>
-            <li>이전 세션 목록 → 선택해서 복원</li>
-            <li>여러 세션 중 선택 가능</li>
-          </ul>
+      <div class="two-col">
+        <div>
+          <div class="content-card content-card--compact">
+            <h3 class="content-card__title">껐다 켜도 대화는 남아 있다</h3>
+            <p class="content-card__body">claude를 껐어도 이전 대화는 그대로 저장돼 있습니다. 다시 켜서 <code>/resume</code>만 치면 됩니다:</p>
+            <ul class="content-card__list">
+              <li>작업하던 <strong>같은 폴더</strong>에서 <code>claude</code> 실행</li>
+              <li>세션 안에서 <code>/resume</code> 입력</li>
+              <li>이전 세션 목록 → 골라서 복원</li>
+              <li>여러 세션 중 원하는 것만 이어가기</li>
+            </ul>
+          </div>
         </div>
-        <div class="compare-side compare-side--accent">
-          <div class="compare-side__label">--continue · 셸 옵션으로 바로</div>
-          <h3 class="compare-side__title">claude 실행 시 즉시 복귀</h3>
-          <ul class="compare-side__list">
-            <li><span class="os-win">PowerShell</span><span class="os-mac">터미널</span>에서 <code>claude --continue</code></li>
-            <li>직전 세션 자동 복원 — 가장 빠름</li>
-            <li>가장 흔한 사용 — 끄고 다시 켰을 때</li>
-            <li>여러 세션 중 선택은 X (직전만)</li>
-          </ul>
+        <div>
+          <div class="code-block">
+            <div class="code-block__header">
+              <span class="code-block__dot" style="background:#fb2c36"></span><span class="code-block__dot" style="background:#edb200"></span><span class="code-block__dot" style="background:#00c758"></span>
+              <span class="code-block__title">claude · 세션 복원</span>
+            </div>
+            <div class="code-block__body"><span class="code-block__line"><span class="code-block__prompt">&gt;</span> <span class="code-block__cmd">/resume</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__out">  1. 홈페이지 소개 문구 다듬기 · 2시간 전</span></span><span class="code-block__line"><span class="code-block__out">  2. 프로필 사진 넣기 · 어제</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__hi">  ↑↓ 로 고르고 Enter → 그 자리 그대로</span></span></div>
+          </div>
         </div>
       </div>
-      <p class="slide__note">하루 종일 작업하다 노트북 잠겼을 때 — <code>claude --continue</code> 한 줄로 어제 멈춘 자리 그대로.</p>
+      <p class="slide__note">하루 종일 작업하다 노트북이 잠겼을 때 — 다시 켜고 <code>/resume</code> 한 번이면 어제 멈춘 자리 그대로.</p>
     </div>
   </section>
 
-  <!-- 16 · 컨텍스트 4 도구 한눈에 -->
+  <!-- 16 · 컨텍스트 3 도구 한눈에 -->
   <section class="slide is-standard">
-    <div class="slide__eyebrow">RECAP · 컨텍스트 4 도구</div>
+    <div class="slide__eyebrow">RECAP · 컨텍스트 3 도구</div>
     <h2 class="slide__title">상황별 <span class="accent">선택 가이드</span></h2>
     <div class="slide__body">
-      <div class="grid-4">
+      <div class="grid-3">
         <div class="promise-card">
           <div class="promise-card__num">/clear</div>
           <h3 class="promise-card__title">주제 바뀜</h3>
@@ -482,16 +483,11 @@
         </div>
         <div class="promise-card">
           <div class="promise-card__num">/resume</div>
-          <h3 class="promise-card__title">세션 선택 복원</h3>
-          <p class="promise-card__body">claude 켜놓고 여러 이전 세션 중 골라서 복원.</p>
-        </div>
-        <div class="promise-card">
-          <div class="promise-card__num">--continue</div>
-          <h3 class="promise-card__title">직전 이어가기</h3>
-          <p class="promise-card__body">claude 실행 옵션. 직전 세션 즉시 복원 — 가장 흔함.</p>
+          <h3 class="promise-card__title">껐다 켠 뒤 이어가기</h3>
+          <p class="promise-card__body">claude 다시 켜고 이전 세션 중 골라서 복원.</p>
         </div>
       </div>
-      <p class="slide__note">처음엔 <strong>/clear와 --continue 두 개만</strong> 손에 익히면 충분 — /compact, /resume은 필요할 때 추가.</p>
+      <p class="slide__note">처음엔 <strong>/clear와 /resume 두 개만</strong> 손에 익히면 충분 — /compact는 필요할 때 추가.</p>
     </div>
   </section>
 
