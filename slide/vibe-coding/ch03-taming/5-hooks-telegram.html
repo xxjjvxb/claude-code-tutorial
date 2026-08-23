@@ -378,7 +378,7 @@
           <span class="prompt-card__label">Claude에게 그대로 붙여넣기</span>
           <button class="prompt-card__copy" type="button" data-copy>복사</button>
         </div>
-        <pre class="prompt-card__body" data-no-nav>.claude/settings.json에 Stop 훅을 추가해줘.
+        <pre class="prompt-card__body" data-no-nav>전역 설정(~/.claude/settings.json)에 Stop 훅을 추가해줘.
 Claude 응답이 끝날 때마다 텔레그램으로 "Claude Done" 메시지가 오게.
 
 봇 토큰: <span class="ph">&lt;TOKEN&gt;</span>
@@ -393,7 +393,7 @@ chat_id: <span class="ph">&lt;CHAT_ID&gt;</span>
           <p class="caveat-card__body">알림이 <code>???</code>처럼 깨져서 오면 — Claude에게 <strong>"텔레그램 알림 한글이 깨져요, 고쳐줘"</strong> 한 줄이면 인코딩까지 잡아 줍니다.</p>
         </div>
       </div>
-      <p class="slide__note">복사해서 Claude에게 붙여넣고 — <code>&lt;TOKEN&gt;</code>·<code>&lt;CHAT_ID&gt;</code>만 <strong>본인 값</strong>으로 교체하세요(부등호 &lt; &gt;까지 통째로). <strong>파일을 직접 열 필요 없습니다</strong> — Claude가 <code>settings.json</code>을 만들고, 권한을 물으면 허용하면 끝.</p>
+      <p class="slide__note">복사해서 Claude에게 붙여넣고 — <code>&lt;TOKEN&gt;</code>·<code>&lt;CHAT_ID&gt;</code>만 <strong>본인 값</strong>으로 교체하세요(부등호 &lt; &gt;까지 통째로). <strong>파일을 직접 열 필요 없습니다</strong> — Claude가 <code>전역 settings.json</code>을 만들고, 권한을 물으면 허용하면 끝. <strong>전역</strong>이라 어느 폴더에서 켜든 알림이 옵니다.</p>
     </div>
   </section>
 
@@ -456,7 +456,7 @@ chat_id: <span class="ph">&lt;CHAT_ID&gt;</span>
           <div class="bg-compare__quote">
             <div>Claude 응답 끝 → 휴대폰 알림</div>
             <div>본인 텔레그램 봇 1개 보유</div>
-            <div>.claude/settings.json에 Stop 훅</div>
+            <div>전역 settings.json에 Stop 훅</div>
           </div>
           <p class="bg-compare__note">Claude → 텔레그램 · 한 방향.</p>
         </div>
@@ -486,7 +486,7 @@ chat_id: <span class="ph">&lt;CHAT_ID&gt;</span>
             <ol class="content-card__list content-card__list--ol">
               <li><span>휴대폰 브라우저로 <a href="https://www.onorca.dev" target="_blank" rel="noopener"><strong>onorca.dev ↗</strong></a> 접속 → 모바일 앱 설치 버튼</span></li>
               <li><span><strong>iOS</strong>는 사이트의 App Store·TestFlight 버튼으로, <strong>Android</strong>는 APK 파일을 내려받아 설치 — "출처 불명 앱" 경고가 뜨면 허용</span></li>
-              <li><span>앱 실행 → <strong>Pair Desktop</strong> → 안내대로 데스크톱 Orca와 연결</span></li>
+              <li><span>앱 실행 → <strong>데스크톱과 같은 계정으로 로그인</strong>(필수) → <strong>Pair Desktop</strong>으로 연결</span></li>
               <li><span>끝 — PC에서 돌던 Claude 세션이 폰 화면에 그대로, 명령도 폰에서 바로</span></li>
             </ol>
           </div>

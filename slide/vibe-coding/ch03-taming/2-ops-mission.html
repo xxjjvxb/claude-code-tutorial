@@ -545,7 +545,7 @@
     <div class="slide__body">
       <div class="setup-grid">
         <div class="setup-step"><div class="setup-step__num">셋업</div><h3 class="setup-step__title">Python 설치</h3><p class="setup-step__desc"><span class="os-win">Microsoft Store</span><span class="os-mac">Homebrew · python.org</span>에서 설치 — 미션 진입 전</p></div>
-        <div class="setup-step"><div class="setup-step__num">미션 1</div><h3 class="setup-step__title">가위바위보 CLI</h3><p class="setup-step__desc">뼈대 → 입력 → 기록 — 3단계 분할</p></div>
+        <div class="setup-step"><div class="setup-step__num">미션 1</div><h3 class="setup-step__title">가위바위보 CLI</h3><p class="setup-step__desc">계획모드 → 뼈대 → 입력 → 기록</p></div>
         <div class="setup-step"><div class="setup-step__num">미션 2</div><h3 class="setup-step__title">단위 변환기</h3><p class="setup-step__desc">cm↔inch · kg↔lb · 본인 명세</p></div>
         <div class="setup-step"><div class="setup-step__num">보너스</div><h3 class="setup-step__title">먼저 끝낸 사람</h3><p class="setup-step__desc">통계+그래프 또는 GUI</p></div>
         <div class="setup-step"><div class="setup-step__num">결과물 공유</div><h3 class="setup-step__title">공유 (선택)</h3><p class="setup-step__desc">원하는 분만 1분 — 또는 📤 제출 버튼으로</p></div>
@@ -584,7 +584,7 @@
               <span class="code-block__dot" style="background:#fb2c36"></span><span class="code-block__dot" style="background:#edb200"></span><span class="code-block__dot" style="background:#00c758"></span>
               <span class="code-block__title"><span class="os-win">PowerShell</span><span class="os-mac">Terminal (zsh)</span> — 검증</span>
             </div>
-            <div class="code-block__body"><span class="code-block__line"><span class="code-block__prompt" data-auto-os></span> <span class="code-block__cmd"><span class="os-win">python</span><span class="os-mac">python3</span> --version</span></span><span class="code-block__line"><span class="code-block__hi">  Python 3.x.x</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__cmt"># 버전이 출력되면 OK</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__cmt"># 안 잡히면: 새 <span class="os-win">PowerShell</span><span class="os-mac">터미널</span> 창 열기</span></span></div>
+            <div class="code-block__body"><span class="code-block__line"><span class="code-block__prompt" data-auto-os></span> <span class="code-block__cmd"><span class="os-win">python</span><span class="os-mac">python3</span> --version</span></span><span class="code-block__line"><span class="code-block__hi">  Python 3.x.x</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__cmt"># 버전이 출력되면 OK</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__cmt"># 안 되면 <span class="os-win">python3</span><span class="os-mac">python</span> 으로도 쳐보기</span></span><span class="code-block__line"><span class="code-block__prompt" data-auto-os></span> <span class="code-block__cmd"><span class="os-win">python3</span><span class="os-mac">python</span> --version</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__cmt"># 둘 다 안 잡히면: 새 <span class="os-win">PowerShell</span><span class="os-mac">터미널</span> 창 열기</span></span></div>
           </div>
         </div>
       </div>
@@ -595,28 +595,28 @@
   <!-- 22 · 미션 1 개요 -->
   <section class="slide is-standard">
     <div class="slide__eyebrow">MISSION 1 · 가위바위보 CLI</div>
-    <h2 class="slide__title">왜 <span class="accent">3단계로 쪼개는가</span></h2>
+    <h2 class="slide__title">시키기 전에 <span class="accent">계획모드</span> 한 번</h2>
     <div class="slide__body">
       <div class="bg-compare">
         <div class="bg-compare__side bg-compare__side--bad">
-          <div class="bg-compare__label">× 한 번에 시키기</div>
+          <div class="bg-compare__label">× 계획 없이 바로 실행</div>
           <div class="bg-compare__quote">
             <div>"가위바위보 CLI 만들어줘 · 5판 기록 + 통계도"</div>
             <div>...</div>
-            <div>토큰 30K · 코드 200줄 통째로</div>
+            <div>합의 없이 코드 200줄 통째로</div>
             <div>어디 잘못됐는지 검증 어려움</div>
           </div>
-          <p class="bg-compare__note">큰 prompt = 검증 불가 + 디버깅 막힘.</p>
+          <p class="bg-compare__note">계획 없는 큰 prompt = 검증 불가 + 디버깅 막힘.</p>
         </div>
         <div class="bg-compare__side bg-compare__side--good">
-          <div class="bg-compare__label">✓ 3단계로 — 이번 미션의 방식</div>
+          <div class="bg-compare__label">✓ 계획모드로 — 이번 미션의 방식</div>
           <div class="bg-compare__quote">
-            <div>1) 뼈대만 — 15분 + 검증 + commit</div>
-            <div>2) 사용자 입력 추가 — 15분 + 검증</div>
-            <div>3) 기록 5판 추가 — 15분 + 검증</div>
-            <div>각 단계 끝마다 동작 확인 가능</div>
+            <div>"가위바위보 CLI 만들고 싶어."</div>
+            <div>"입력은 화살표 키로 하면 좋겠고"</div>
+            <div>"5판 싸우고 마지막에 승률 보여줘."</div>
+            <div>"파이썬으로 만들어줘." → 계획 검토 → 승인</div>
           </div>
-          <p class="bg-compare__note">단계마다 git commit — <strong>망쳐도 직전 단계로</strong> 복귀 가능.</p>
+          <p class="bg-compare__note">원하는 걸 다 말하되 <strong>Shift+Tab 두 번</strong> — 계획이 단계로 쪼개져 나옵니다.</p>
         </div>
       </div>
     </div>
@@ -634,9 +634,9 @@
               <span class="prompt-card__label">시키는 말 · 뼈대</span>
               <button class="prompt-card__copy" type="button" data-copy>복사</button>
             </div>
-            <pre class="prompt-card__body" data-no-nav>가위바위보 게임을 Python으로 만들어줘.
-먼저 뼈대만: 컴퓨터가 랜덤으로 내고 결과를 출력.
-한 판만 (사용자 입력은 다음 단계에).
+            <pre class="prompt-card__body" data-no-nav>계획 승인했으면 1단계만 먼저 해줘.
+뼈대만: 컴퓨터가 랜덤으로 내고 결과를 출력.
+한 판만 (화살표 입력은 다음 단계에).
 game.py 한 파일로.</pre>
           </div>
         </div>
@@ -646,7 +646,7 @@ game.py 한 파일로.</pre>
               <span class="code-block__dot" style="background:#fb2c36"></span><span class="code-block__dot" style="background:#edb200"></span><span class="code-block__dot" style="background:#00c758"></span>
               <span class="code-block__title"><span class="os-win">PowerShell</span><span class="os-mac">Terminal (zsh)</span> — 검증</span>
             </div>
-            <div class="code-block__body"><span class="code-block__line"><span class="code-block__prompt" data-auto-os></span> <span class="code-block__cmd">python game.py</span></span><span class="code-block__line"><span class="code-block__out">  컴퓨터: 바위</span></span><span class="code-block__line"><span class="code-block__out">  결과: (테스트용 출력)</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__cmt"># 동작하면 → 커밋</span></span><span class="code-block__line"><span class="code-block__prompt" data-auto-os></span> <span class="code-block__cmd">git add .</span></span><span class="code-block__line"><span class="code-block__prompt" data-auto-os></span> <span class="code-block__cmd">git commit -m "<span class="code-block__hi">가위바위보 뼈대</span>"</span></span></div>
+            <div class="code-block__body"><span class="code-block__line"><span class="code-block__prompt" data-auto-os></span> <span class="code-block__cmd"><span class="os-win">python</span><span class="os-mac">python3</span> game.py</span></span><span class="code-block__line"><span class="code-block__out">  컴퓨터: 바위</span></span><span class="code-block__line"><span class="code-block__out">  결과: (테스트용 출력)</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__cmt"># 동작하면 → 커밋</span></span><span class="code-block__line"><span class="code-block__prompt" data-auto-os></span> <span class="code-block__cmd">git add .</span></span><span class="code-block__line"><span class="code-block__prompt" data-auto-os></span> <span class="code-block__cmd">git commit -m "<span class="code-block__hi">가위바위보 뼈대</span>"</span></span></div>
           </div>
         </div>
       </div>
@@ -667,7 +667,7 @@ game.py 한 파일로.</pre>
               <button class="prompt-card__copy" type="button" data-copy>복사</button>
             </div>
             <pre class="prompt-card__body" data-no-nav>@game.py 에 사용자 입력을 추가해줘.
-가위/바위/보 중 하나를 입력받고, 이상한 입력이면 다시 묻기.
+화살표 키로 가위/바위/보를 고르고 Enter로 확정.
 승/무/패 메시지는 한국어로.</pre>
           </div>
         </div>
@@ -677,11 +677,11 @@ game.py 한 파일로.</pre>
               <span class="code-block__dot" style="background:#fb2c36"></span><span class="code-block__dot" style="background:#edb200"></span><span class="code-block__dot" style="background:#00c758"></span>
               <span class="code-block__title">실행 — 한 판</span>
             </div>
-            <div class="code-block__body"><span class="code-block__line"><span class="code-block__prompt" data-auto-os></span> <span class="code-block__cmd">python game.py</span></span><span class="code-block__line"><span class="code-block__out">  가위/바위/보 중 하나 입력: <span class="code-block__hi">바위</span></span><span class="code-block__line"><span class="code-block__out">  컴퓨터: 가위</span></span><span class="code-block__line"><span class="code-block__out">  결과: 이김 🎉</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__cmt"># 정상 동작 → 커밋</span></span><span class="code-block__line"><span class="code-block__prompt" data-auto-os></span> <span class="code-block__cmd">git commit -am "사용자 입력 추가"</span></span></div>
+            <div class="code-block__body"><span class="code-block__line"><span class="code-block__prompt" data-auto-os></span> <span class="code-block__cmd"><span class="os-win">python</span><span class="os-mac">python3</span> game.py</span></span><span class="code-block__line"><span class="code-block__out">  ← ↑ → 로 선택 · Enter: <span class="code-block__hi">바위</span></span><span class="code-block__line"><span class="code-block__out">  컴퓨터: 가위</span></span><span class="code-block__line"><span class="code-block__out">  결과: 이김 🎉</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__cmt"># 정상 동작 → 커밋</span></span><span class="code-block__line"><span class="code-block__prompt" data-auto-os></span> <span class="code-block__cmd">git commit -am "사용자 입력 추가"</span></span></div>
           </div>
         </div>
       </div>
-      <p class="slide__note"><code>@game.py</code> 멘션을 쓰면 Claude가 <strong>현재 코드를 보고</strong> 추가합니다 — 처음부터 다시 짜는 게 아님.</p>
+      <p class="slide__note"><code>@game.py</code> 멘션을 쓰면 Claude가 <strong>현재 코드를 보고</strong> 추가합니다 — 처음부터 다시 짜는 게 아님. 화살표 입력에 패키지 설치가 필요하면 계획서에 나옵니다.</p>
     </div>
   </section>
 
@@ -698,7 +698,7 @@ game.py 한 파일로.</pre>
               <button class="prompt-card__copy" type="button" data-copy>복사</button>
             </div>
             <pre class="prompt-card__body" data-no-nav>@game.py 를 5판 반복하도록 바꿔줘.
-각 판 결과를 list에 저장하고, 끝나면 승/무/패 횟수를 출력.
+각 판 결과를 list에 저장하고, 끝나면 승/무/패 횟수와 승률을 출력.
 5판이 끝나면 "한 번 더?" 재시작 옵션도.</pre>
           </div>
         </div>
@@ -708,7 +708,7 @@ game.py 한 파일로.</pre>
               <span class="code-block__dot" style="background:#fb2c36"></span><span class="code-block__dot" style="background:#edb200"></span><span class="code-block__dot" style="background:#00c758"></span>
               <span class="code-block__title">실행 — 5판 + 통계</span>
             </div>
-            <div class="code-block__body"><span class="code-block__line"><span class="code-block__cmt"># [1/5] [2/5] ... [5/5] 진행</span></span><span class="code-block__line"><span class="code-block__out">  ─── 결과 ───</span></span><span class="code-block__line"><span class="code-block__out">  승: 2 · 무: 1 · 패: 2</span></span><span class="code-block__line"><span class="code-block__out">  더 하시겠어요? (y/n): n</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__prompt" data-auto-os></span> <span class="code-block__cmd">git commit -am "<span class="code-block__hi">5판 + 통계 추가</span>"</span></span><span class="code-block__line"><span class="code-block__cmt"># Orca 좌하단에서 사용량 확인</span></span></div>
+            <div class="code-block__body"><span class="code-block__line"><span class="code-block__cmt"># [1/5] [2/5] ... [5/5] 진행</span></span><span class="code-block__line"><span class="code-block__out">  ─── 결과 ───</span></span><span class="code-block__line"><span class="code-block__out">  승: 2 · 무: 1 · 패: 2 · 승률 40%</span></span><span class="code-block__line"><span class="code-block__out">  더 하시겠어요? (y/n): n</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__prompt" data-auto-os></span> <span class="code-block__cmd">git commit -am "<span class="code-block__hi">5판 + 통계 추가</span>"</span></span><span class="code-block__line"><span class="code-block__cmt"># Orca 좌하단에서 사용량 확인</span></span></div>
           </div>
         </div>
       </div>
