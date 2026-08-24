@@ -379,21 +379,22 @@
           <button class="prompt-card__copy" type="button" data-copy>복사</button>
         </div>
         <pre class="prompt-card__body" data-no-nav>전역 설정(~/.claude/settings.json)에 Stop 훅을 추가해줘.
-Claude 응답이 끝날 때마다 텔레그램으로 "Claude Done" 메시지가 오게.
-
+Claude 응답이 끝날 때마다 텔레그램으로 "Claude Done"이 오게.
 봇 토큰: <span class="ph">&lt;TOKEN&gt;</span>
 chat_id: <span class="ph">&lt;CHAT_ID&gt;</span>
-
-내 컴퓨터 환경에 맞는 방식으로 넣고, 알림이 깨지지 않게 해줘.
-다 되면 어떻게 확인하는지도 알려줘.</pre>
+내 환경에 맞는 방식으로, 알림 안 깨지게. 확인 방법도 알려줘.</pre>
       </div>
-      <div class="caveat-grid--compact os-win is-block" style="margin-top:0.55rem">
+      <div class="caveat-grid caveat-grid--compact" style="margin-top:0.55rem">
         <div class="caveat-card">
-          <div class="caveat-card__label">WINDOWS · 한글 알림이 깨질 때</div>
-          <p class="caveat-card__body">알림이 <code>???</code>처럼 깨져서 오면 — Claude에게 <strong>"텔레그램 알림 한글이 깨져요, 고쳐줘"</strong> 한 줄이면 인코딩까지 잡아 줍니다.</p>
+          <div class="caveat-card__label">전역 설정이 뭐예요?</div>
+          <p class="caveat-card__body">설정을 <strong>프로젝트 폴더</strong>에 두면 그 폴더에서만 켜집니다. <strong>전역</strong>(<code>~/.claude/</code>)에 두면 <strong>어느 폴더에서 Claude를 켜든</strong> 적용돼요 — 알림은 늘 받고 싶으니 전역으로.</p>
+        </div>
+        <div class="caveat-card">
+          <div class="caveat-card__label">붙여넣고 고칠 때 — Ctrl+G</div>
+          <p class="caveat-card__body">여러 줄을 그대로 붙여넣으면 한 줄로 붙어 고치기 불편합니다. <strong>Ctrl+G</strong>를 누르면 편집하기 쉬운 상태가 됩니다 — 토큰·chat_id를 여기서 바꿔 넣으세요.</p>
         </div>
       </div>
-      <p class="slide__note">복사해서 Claude에게 붙여넣고 — <code>&lt;TOKEN&gt;</code>·<code>&lt;CHAT_ID&gt;</code>만 <strong>본인 값</strong>으로 교체하세요(부등호 &lt; &gt;까지 통째로). <strong>파일을 직접 열 필요 없습니다</strong> — Claude가 <code>전역 settings.json</code>을 만들고, 권한을 물으면 허용하면 끝. <strong>전역</strong>이라 어느 폴더에서 켜든 알림이 옵니다.</p>
+      <p class="slide__note"><code>&lt;TOKEN&gt;</code>·<code>&lt;CHAT_ID&gt;</code>만 <strong>본인 값</strong>으로 교체하세요(부등호 &lt; &gt;까지 통째로). 파일을 직접 열 필요는 없습니다 — Claude가 만들고, 권한을 물으면 허용하면 끝. <span class="os-win">알림이 <code>???</code>로 깨지면 "한글이 깨져요, 고쳐줘" 한 줄이면 잡힙니다.</span></p>
     </div>
   </section>
 
