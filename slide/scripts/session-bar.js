@@ -8,13 +8,14 @@
   'use strict';
 
   var CSS = [
-    '.sbar{display:inline-flex;align-items:center;gap:0.45rem;font-family:"Pretendard","Malgun Gothic",system-ui,sans-serif;font-size:0.7rem;font-weight:700;line-height:1;padding:0.28rem 0.3rem 0.28rem 0.65rem;border-radius:999px;background:rgba(38,34,32,0.92);color:#fff;border:1px solid rgba(255,255,255,0.18);white-space:nowrap;word-break:keep-all}',
+    '.sbar{display:inline-flex;align-items:center;gap:0.45rem;flex:0 1 auto;min-width:0;font-family:"Pretendard","Malgun Gothic",system-ui,sans-serif;font-size:0.7rem;font-weight:700;line-height:1;padding:0.28rem 0.3rem 0.28rem 0.65rem;border-radius:999px;background:rgba(38,34,32,0.92);color:#fff;border:1px solid rgba(255,255,255,0.18);white-space:nowrap;word-break:keep-all}',
     '.sbar--warn{background:#b45309;border-color:rgba(255,255,255,0.28)}',
     '.sbar--bad{background:#991b1b;border-color:rgba(255,255,255,0.28)}',
     '.sbar-dot{width:0.5rem;height:0.5rem;border-radius:50%;background:#4ade80;flex:none}',
     '.sbar--warn .sbar-dot{background:#fbbf24}',
     '.sbar--bad .sbar-dot{background:#fca5a5}',
-    '.sbar-txt{opacity:0.95;overflow:hidden;text-overflow:ellipsis;max-width:16rem}',
+    '.sbar-txt{opacity:0.95;overflow:hidden;text-overflow:ellipsis;flex:0 1 auto;min-width:0;max-width:11rem}',
+    '.sbar-dot,.sbar-btn{flex:none}',
     '.sbar-btn{appearance:none;cursor:pointer;border:none;border-radius:999px;background:rgba(255,255,255,0.16);color:#fff;font:inherit;font-size:0.66rem;font-weight:800;padding:0.3rem 0.6rem}',
     '.sbar-btn:hover{background:rgba(255,255,255,0.3)}',
     '.sbar-btn[disabled]{opacity:0.5;cursor:default}',
@@ -74,6 +75,8 @@
       spacer.style.alignItems = 'center';
       spacer.style.justifyContent = 'flex-end';
       spacer.style.paddingRight = '0.9rem';
+      spacer.style.minWidth = '0';       // 좁을 때 칩이 먼저 줄어들도록 — 브랜드·카운터 줄바꿈 방지
+      spacer.style.overflow = 'hidden';
       spacer.appendChild(bar);
     } else {
       bar.classList.add('sbar-fix');
@@ -101,7 +104,7 @@
         var p = jwtPayload(tk);
         var name = ((p && p.email) || '').split('@')[0] || '로그인됨';
         var min = Math.floor(left / 60);
-        txt.textContent = name + ' · 세션 ' + (min >= 1 ? min + '분' : '1분 미만');
+        txt.textContent = name + ' · ' + (min >= 1 ? min + '분' : '곧 만료');
         btn.textContent = '연장';
         mode = 'extend';
         if (left < 600) bar.classList.add('sbar--warn');
