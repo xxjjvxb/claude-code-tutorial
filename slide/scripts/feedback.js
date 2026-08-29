@@ -58,6 +58,12 @@
     '.fbq-fix{font-size:0.72rem;line-height:1.45;color:#166534;background:#f0fdf4;border-radius:6px;padding:0.35rem 0.5rem;margin-bottom:0.45rem;white-space:pre-wrap}',
     '.fbq-re{appearance:none;cursor:pointer;border:1.5px solid #fca5a5;background:#fff;color:#b91c1c;border-radius:6px;font-size:0.7rem;font-weight:700;padding:0.28rem 0.6rem}',
     '.fbq-ok{appearance:none;cursor:pointer;border:none;background:#166534;color:#fff;border-radius:6px;font-size:0.7rem;font-weight:700;padding:0.3rem 0.65rem}',
+    '.fbq-share{appearance:none;cursor:pointer;border:1.5px solid #bbf7d0;background:#f0fdf4;color:#166534;border-radius:6px;font-size:0.7rem;font-weight:700;padding:0.28rem 0.6rem}',
+    '.fbq-unshare{appearance:none;cursor:pointer;border:1.5px solid #e5ddd2;background:#fff;color:#797067;border-radius:6px;font-size:0.7rem;font-weight:700;padding:0.28rem 0.6rem}',
+    '.fbq-sec--shared{display:flex;align-items:center;gap:0.3rem}',
+    '.fbq-sec--shared .sp{flex:1}',
+    '.fbq-alloff{appearance:none;cursor:pointer;border:1.5px solid #fecaca;background:#fff;color:#991b1b;border-radius:6px;font-size:0.66rem;font-weight:700;padding:0.22rem 0.5rem}',
+    '.fbq-worklink{display:inline-block;font-size:0.76rem;font-weight:700;color:#1d4ed8;text-decoration:underline;margin-bottom:0.35rem;word-break:break-all}',
     '@media print{.fb-root,.fbq-tab,.fbq-panel{display:none}}',
     '@media print{.fb-root{display:none}}'
   ].join('\n');
@@ -203,9 +209,12 @@
       var seen = {};        // id → true (한 번이라도 표시한 항목)
       var items = [];       // 현재 미처리 질문·제출
       var reviews = [];     // 대응 완료(fixed) — 검수 대기 신고
+      var shared = [];      // 공유 중 제출물 (submission-share-update.sql 실행 전엔 빈 목록)
+      var sharedOk = false; // shared 컬럼 마이그레이션 여부
       var open = false;
       var firstLoad = true;
       function total() { return items.length + reviews.length; }
+      function allCount() { return total() + shared.length; }
 
       var tab = document.createElement('button');
       tab.type = 'button';
@@ -233,7 +242,7 @@
       function setOpen(v) {
         open = v;
         qp.hidden = !v;
-        tab.hidden = v || total() === 0;
+        tab.hidden = v || allCount() === 0;
       }
       tab.addEventListener('click', function () { setOpen(true); render(); });
       qp.querySelector('.fbq-close').addEventListener('click', function () { setOpen(false); });
@@ -242,7 +251,7 @@
         var list = qp.querySelector('.fbq-list');
         tab.querySelector('.n').textContent = total();
         list.innerHTML = '';
-        if (!total()) {
+        if (!allCount()) {
           list.innerHTML = '<div class="fbq-empty">미처리 질문·제출·검수가 없습니다 🎉</div>';
           return;
         }
@@ -262,6 +271,7 @@
                 ? '<button type="button" class="fbq-go" data-go="' + r.slide_no + '">슬라이드 ' + r.slide_no + '로</button>'
                 : '<a class="fbq-go" target="_blank" rel="noopener" href="' + esc(r.deck_path + '#slide=' + r.slide_no) + '">' + esc(loc) + ' ↗</a>')
               : '') +
+            (r.type === 'submission' && sharedOk ? '<button type="button" class="fbq-share" data-share="' + r.id + '">📤 공유</button>' : '') +
             '<button type="button" class="fbq-done" data-done="' + r.id + '">✓ 해소</button></div>';
           list.appendChild(el);
         });
@@ -290,6 +300,25 @@
             list.appendChild(el);
           });
         }
+        // ---- 공유 중 제출물 (가장 뒤 — 신규 제출이 위에 오도록) ----
+        if (shared.length) {
+          var sec2 = document.createElement('div');
+          sec2.className = 'fbq-sec fbq-sec--shared';
+          sec2.innerHTML = '<span>📤 공유 중 ' + shared.length + '건 — 수강생에게 보임</span><span class="sp"></span>' +
+            '<button type="button" class="fbq-alloff">모두 내리기</button>';
+          list.appendChild(sec2);
+          shared.forEach(function (r) {
+            var el = document.createElement('div');
+            el.className = 'fbq-item';
+            var when = new Date(r.created_at).toLocaleTimeString('ko-KR', { hour: '2-digit', minute: '2-digit' });
+            el.innerHTML =
+              '<div class="fbq-meta"><span class="fbq-ty fbq-ty-submission">📤 공유중</span>' +
+              '<span>' + esc(r.email) + '</span><span>' + when + '</span></div>' +
+              '<div class="fbq-content">' + esc(r.content) + '</div>' +
+              '<div class="fbq-row"><button type="button" class="fbq-unshare" data-unshare="' + r.id + '">내리기</button></div>';
+            list.appendChild(el);
+          });
+        }
       }
 
       qp.addEventListener('click', function (e) {
@@ -300,8 +329,35 @@
         var ok = e.target.closest('[data-ok]');
         if (ok) { reviewDone(parseInt(ok.getAttribute('data-ok'), 10)); return; }
         var re = e.target.closest('[data-re]');
-        if (re) reReport(parseInt(re.getAttribute('data-re'), 10));
+        if (re) { reReport(parseInt(re.getAttribute('data-re'), 10)); return; }
+        var sh = e.target.closest('[data-share]');
+        if (sh) { patchShare('id=eq.' + parseInt(sh.getAttribute('data-share'), 10), { shared: true, status: 'resolved', resolved_at: new Date().toISOString() }); return; }
+        var un = e.target.closest('[data-unshare]');
+        if (un) { patchShare('id=eq.' + parseInt(un.getAttribute('data-unshare'), 10), { shared: false }); return; }
+        if (e.target.closest('.fbq-alloff')) {
+          if (window.confirm('공유 중인 제출물 ' + shared.length + '건을 모두 내릴까요?'))
+            patchShare('type=eq.submission&shared=eq.true', { shared: false });
+        }
       });
+
+      /* ---- 제출물 공유: shared 켜면 수강생에게 보이고, 내리면 사라짐 ---- */
+      function patchShare(qs, body) {
+        var tk = getCookieToken();
+        if (!tk) return;
+        fetch(cfg.SUPABASE_URL + '/rest/v1/feedback?' + qs, {
+          method: 'PATCH',
+          headers: {
+            'Content-Type': 'application/json',
+            apikey: cfg.SUPABASE_ANON_KEY,
+            Authorization: 'Bearer ' + tk,
+            Prefer: 'return=minimal'
+          },
+          body: JSON.stringify(body)
+        }).then(function (res) {
+          if (!res.ok) { alert('처리 실패 (HTTP ' + res.status + ') — supabase/submission-share-update.sql 실행 여부를 확인하세요.'); return; }
+          poll();
+        });
+      }
 
       function resolve(id) {
         var tk = getCookieToken();
@@ -319,8 +375,8 @@
           if (!res.ok) return;
           items = items.filter(function (r) { return r.id !== id; });
           render();
-          if (!total() && open) setTimeout(function () { setOpen(false); }, 600);
-          tab.hidden = open || total() === 0;
+          if (!allCount() && open) setTimeout(function () { setOpen(false); }, 600);
+          tab.hidden = open || allCount() === 0;
         });
       }
 
@@ -341,8 +397,8 @@
           if (!res.ok) { alert('처리 실패 (HTTP ' + res.status + ') — supabase/feedback-review-update.sql 실행 여부를 확인하세요.'); return; }
           reviews = reviews.filter(function (r) { return r.id !== id; });
           render();
-          if (!total() && open) setTimeout(function () { setOpen(false); }, 600);
-          tab.hidden = open || total() === 0;
+          if (!allCount() && open) setTimeout(function () { setOpen(false); }, 600);
+          tab.hidden = open || allCount() === 0;
         });
       }
       function reviewDone(id) {
@@ -364,9 +420,14 @@
         // 검수 대기(fixed) — 마이그레이션 전엔 fix_note 컬럼이 없어 실패 → 조용히 빈 목록
         var q2 = fetch(cfg.SUPABASE_URL + '/rest/v1/feedback?status=eq.fixed&select=id,deck_path,slide_no,page_title,content,fix_note,created_at&order=created_at.asc&limit=50', { headers: H })
           .then(function (res) { return res.ok ? res.json() : null; }).catch(function () { return null; });
-        Promise.all([q1, q2]).then(function (rs) {
+        // 공유 중 제출물 — 마이그레이션 전엔 shared 컬럼이 없어 실패 → 공유 UI 숨김
+        var q3 = fetch(cfg.SUPABASE_URL + '/rest/v1/feedback?type=eq.submission&shared=eq.true&select=id,email,content,deck_path,page_title,created_at&order=created_at.desc&limit=50', { headers: H })
+          .then(function (res) { return res.ok ? res.json() : null; }).catch(function () { return null; });
+        Promise.all([q1, q2, q3]).then(function (rs) {
           var rows = rs[0];
           reviews = rs[1] || [];
+          sharedOk = rs[2] !== null;
+          shared = rs[2] || [];
           if (rows) {
             var hasNew = false;
             rows.forEach(function (r) {
@@ -381,10 +442,103 @@
               tab.classList.remove('pulse'); void tab.offsetWidth; tab.classList.add('pulse');
             }
           }
-          tab.hidden = open || total() === 0;
+          tab.hidden = open || allCount() === 0;
           tab.querySelector('.n').textContent = total();
           if (open) render();
         }).catch(function () { /* 네트워크 오류 — 다음 폴링에서 재시도 */ });
+      }
+
+      poll();
+      setInterval(poll, POLL_MS);
+    })();
+
+    /* ================= 수강생 · 공유된 작품 =================
+       관리자가 공유(shared)로 켠 제출물을 우측 탭으로 보여준다.
+       30초 폴링 — 공유된 작품이 없으면 탭 자체가 보이지 않는다. */
+    (function () {
+      var tk0 = getCookieToken();
+      var p0 = tk0 && jwtPayload(tk0);
+      if (!p0 || !p0.sub) return;
+      if (p0.email && p0.email.toLowerCase() === cfg.ADMIN_EMAIL.toLowerCase()) return; // 관리자는 자체 패널에서 봄
+
+      var POLL_MS = 30000;
+      var works = [];
+      var open = false;
+      var lastCount = 0;
+
+      var tab = document.createElement('button');
+      tab.type = 'button';
+      tab.className = 'fbq-tab';
+      tab.setAttribute('data-no-nav', '');
+      tab.innerHTML = '작품 <span class="n">0</span>';
+      tab.hidden = true;
+      document.body.appendChild(tab);
+
+      var wp = document.createElement('div');
+      wp.className = 'fbq-panel';
+      wp.setAttribute('data-no-nav', '');
+      wp.hidden = true;
+      wp.innerHTML =
+        '<div class="fbq-head">📤 공유된 작품<span class="sp"></span>' +
+        '<button type="button" class="fbq-close">접기</button></div>' +
+        '<div class="fbq-list"></div>';
+      document.body.appendChild(wp);
+      ['keydown', 'keyup', 'keypress'].forEach(function (ev) {
+        wp.addEventListener(ev, function (e) { e.stopPropagation(); });
+      });
+
+      var esc = function (s) { return (s || '').replace(/&/g, '&amp;').replace(/</g, '&lt;'); };
+
+      function setOpen(v) {
+        open = v;
+        wp.hidden = !v;
+        tab.hidden = v || works.length === 0;
+      }
+      tab.addEventListener('click', function () { setOpen(true); render(); });
+      wp.querySelector('.fbq-close').addEventListener('click', function () { setOpen(false); });
+
+      function render() {
+        var list = wp.querySelector('.fbq-list');
+        tab.querySelector('.n').textContent = works.length;
+        list.innerHTML = '';
+        if (!works.length) {
+          list.innerHTML = '<div class="fbq-empty">아직 공유된 작품이 없습니다.</div>';
+          return;
+        }
+        works.forEach(function (r) {
+          var el = document.createElement('div');
+          el.className = 'fbq-item';
+          var when = new Date(r.created_at).toLocaleTimeString('ko-KR', { hour: '2-digit', minute: '2-digit' });
+          var m = /^링크:\s*(\S+)\s*\n?([\s\S]*)$/.exec(r.content || '');
+          var url = m && /^https?:\/\//.test(m[1]) ? m[1] : null;
+          var intro = m ? m[2].trim() : (r.content || '');
+          el.innerHTML =
+            '<div class="fbq-meta"><span class="fbq-ty fbq-ty-submission">📤 작품</span><span>' + when + '</span></div>' +
+            (url ? '<a class="fbq-worklink" href="' + esc(url) + '" target="_blank" rel="noopener">' + esc(url) + ' ↗</a>' : '') +
+            (intro ? '<div class="fbq-content">' + esc(intro) + '</div>' : '');
+          list.appendChild(el);
+        });
+      }
+
+      function poll() {
+        if (document.visibilityState === 'hidden') return;
+        var tk = getCookieToken();
+        if (!tk) return;
+        fetch(cfg.SUPABASE_URL + '/rest/v1/feedback?type=eq.submission&shared=eq.true&select=id,content,created_at&order=created_at.desc&limit=50', {
+          headers: { apikey: cfg.SUPABASE_ANON_KEY, Authorization: 'Bearer ' + tk }
+        }).then(function (res) { return res.ok ? res.json() : null; })
+          .then(function (rows) {
+            if (!rows) return; // 마이그레이션 전이거나 권한 없음 — 표시하지 않음
+            works = rows;
+            if (works.length > lastCount && !open && lastCount > 0) {
+              tab.classList.remove('pulse'); void tab.offsetWidth; tab.classList.add('pulse');
+            }
+            lastCount = works.length;
+            tab.hidden = open || works.length === 0;
+            tab.querySelector('.n').textContent = works.length;
+            if (open) render();
+            if (open && !works.length) setTimeout(function () { setOpen(false); }, 600); // 모두 내리기 반영
+          }).catch(function () { /* 다음 폴링에서 재시도 */ });
       }
 
       poll();

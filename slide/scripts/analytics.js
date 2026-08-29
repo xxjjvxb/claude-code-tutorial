@@ -3,6 +3,12 @@
    슬라이드 이동(#slide=N 해시 변경)도 page_view로 집계. */
 (function () {
   'use strict';
+  // 전역 세션 상태 바 — 모든 페이지가 analytics.js를 로드하므로 여기서 함께 주입
+  var sbar = document.createElement('script');
+  sbar.defer = true;
+  sbar.src = '/slide/scripts/session-bar.js';
+  document.head.appendChild(sbar);
+
   import('/auth-config.js').then(function (cfg) {
     var id = cfg.GA_MEASUREMENT_ID;
     if (!id) return;
