@@ -17,6 +17,11 @@
   <script defer src="../../scripts/slide-modify.js"></script>
   <script defer src="../../scripts/feedback.js"></script>
   <script defer src="../../scripts/analytics.js"></script>
+  <style>
+    .sample-table { width: 100%; border-collapse: collapse; font-size: 0.76rem; }
+    .sample-table th, .sample-table td { text-align: left; padding: 0.34rem 0.45rem; border-bottom: 1.5px solid var(--color-outline); }
+    .sample-table th { font-family: var(--font-mono); font-size: 0.66rem; letter-spacing: 0.04em; color: var(--color-on-surface-muted); }
+  </style>
 </head>
 <body>
 
@@ -118,7 +123,40 @@
     </div>
   </section>
 
-  <!-- 5 · Supabase -->
+  <!-- 5 · 데이터 샘플 — SQL vs NoSQL -->
+  <section class="slide is-standard">
+    <div class="slide__eyebrow">SAMPLE · 같은 방명록 글</div>
+    <h2 class="slide__title">담기는 모양은 — <span class="accent">이렇게 다릅니다</span></h2>
+    <div class="slide__body">
+      <div class="two-col">
+        <div>
+          <div class="content-card content-card--compact">
+            <h3 class="content-card__title">SQL — 표에 한 줄씩</h3>
+            <table class="sample-table">
+              <thead><tr><th>id</th><th>name</th><th>message</th></tr></thead>
+              <tbody>
+                <tr><td>1</td><td>지민</td><td>잘 보고 갑니다</td></tr>
+                <tr><td>2</td><td>현우</td><td>반가워요</td></tr>
+              </tbody>
+            </table>
+            <p class="content-card__body">열(칸)을 먼저 정해두고 — 모든 줄이 <strong>같은 칸</strong>을 채웁니다.</p>
+          </div>
+        </div>
+        <div>
+          <div class="content-card content-card--compact">
+            <h3 class="content-card__title">NoSQL — 문서 하나씩</h3>
+            <div class="code-block code-block--inline-xs">
+              <div class="code-block__body"><span class="code-block__line"><span class="code-block__out">{ </span><span class="code-block__hi">"name"</span><span class="code-block__out">: "지민",</span></span><span class="code-block__line"><span class="code-block__out">&nbsp;&nbsp;</span><span class="code-block__hi">"message"</span><span class="code-block__out">: "잘 보고 갑니다" }</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__out">{ </span><span class="code-block__hi">"name"</span><span class="code-block__out">: "현우",</span></span><span class="code-block__line"><span class="code-block__out">&nbsp;&nbsp;</span><span class="code-block__hi">"message"</span><span class="code-block__out">: "반가워요",</span></span><span class="code-block__line"><span class="code-block__out">&nbsp;&nbsp;</span><span class="code-block__hi">"emoji"</span><span class="code-block__out">: "👋" }</span></span></div>
+            </div>
+            <p class="content-card__body">칸이 정해져 있지 않아 — 두 번째 글에만 <code>emoji</code>가 더 붙어도 됩니다.</p>
+          </div>
+        </div>
+      </div>
+      <p class="slide__note">담는 <strong>모양</strong>만 다를 뿐 — 들어 있는 건 똑같은 방명록 글입니다. 우리는 표가 눈에 보이는 <strong>SQL</strong>로 갑니다.</p>
+    </div>
+  </section>
+
+  <!-- 6 · Supabase -->
   <section class="slide is-standard">
     <div class="slide__eyebrow">CHOICE · 오늘의 데이터베이스</div>
     <h2 class="slide__title">우리의 선택 — <span class="accent">Supabase</span></h2>
