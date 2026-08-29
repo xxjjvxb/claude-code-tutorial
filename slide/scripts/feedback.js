@@ -82,6 +82,17 @@
     var m = /slide=(\d+)/.exec(location.hash);
     return m ? parseInt(m[1], 10) : null;
   }
+  /* 제출물 내용 → HTML — "링크: <주소>" 줄은 항상 클릭 가능한 링크로 (스킴 없으면 https:// 보정) */
+  function subHtml(content) {
+    var esc = function (s) { return (s || '').replace(/&/g, '&amp;').replace(/</g, '&lt;'); };
+    var m = /^링크:\s*(\S+)\s*\n?([\s\S]*)$/.exec(content || '');
+    if (!m) return '<div class="fbq-content">' + esc(content) + '</div>';
+    var url = m[1];
+    var href = /^https?:\/\//i.test(url) ? url : 'https://' + url;
+    var intro = m[2].trim();
+    return '<a class="fbq-worklink" href="' + esc(href) + '" target="_blank" rel="noopener">' + esc(url) + ' ↗</a>' +
+      (intro ? '<div class="fbq-content">' + esc(intro) + '</div>' : '');
+  }
 
   import('/auth-config.js').then(function (cfg) {
     if (!cfg.GATE_ENABLED) return;
@@ -264,7 +275,7 @@
           el.innerHTML =
             '<div class="fbq-meta"><span class="fbq-ty fbq-ty-' + r.type + '">' + (r.type === 'report' ? '🚨 신고' : (r.type === 'submission' ? '📤 제출' : '💬 질문')) + '</span>' +
             '<span>' + esc(r.email) + '</span><span>' + when + '</span></div>' +
-            '<div class="fbq-content">' + esc(r.content) + '</div>' +
+            (r.type === 'submission' ? subHtml(r.content) : '<div class="fbq-content">' + esc(r.content) + '</div>') +
             '<div class="fbq-row">' +
             (r.slide_no
               ? (here
@@ -314,7 +325,7 @@
             el.innerHTML =
               '<div class="fbq-meta"><span class="fbq-ty fbq-ty-submission">📤 공유중</span>' +
               '<span>' + esc(r.email) + '</span><span>' + when + '</span></div>' +
-              '<div class="fbq-content">' + esc(r.content) + '</div>' +
+              subHtml(r.content) +
               '<div class="fbq-row"><button type="button" class="fbq-unshare" data-unshare="' + r.id + '">내리기</button></div>';
             list.appendChild(el);
           });
@@ -509,13 +520,9 @@
           var el = document.createElement('div');
           el.className = 'fbq-item';
           var when = new Date(r.created_at).toLocaleTimeString('ko-KR', { hour: '2-digit', minute: '2-digit' });
-          var m = /^링크:\s*(\S+)\s*\n?([\s\S]*)$/.exec(r.content || '');
-          var url = m && /^https?:\/\//.test(m[1]) ? m[1] : null;
-          var intro = m ? m[2].trim() : (r.content || '');
           el.innerHTML =
             '<div class="fbq-meta"><span class="fbq-ty fbq-ty-submission">📤 작품</span><span>' + when + '</span></div>' +
-            (url ? '<a class="fbq-worklink" href="' + esc(url) + '" target="_blank" rel="noopener">' + esc(url) + ' ↗</a>' : '') +
-            (intro ? '<div class="fbq-content">' + esc(intro) + '</div>' : '');
+            subHtml(r.content);
           list.appendChild(el);
         });
       }
