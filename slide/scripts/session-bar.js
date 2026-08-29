@@ -18,6 +18,7 @@
     '.sbar-btn{appearance:none;cursor:pointer;border:none;border-radius:999px;background:rgba(255,255,255,0.16);color:#fff;font:inherit;font-size:0.66rem;font-weight:800;padding:0.3rem 0.6rem}',
     '.sbar-btn:hover{background:rgba(255,255,255,0.3)}',
     '.sbar-btn[disabled]{opacity:0.5;cursor:default}',
+    '.sbar-btn--out{background:rgba(255,255,255,0.07);color:rgba(255,255,255,0.75)}',
     '.sbar-fix{position:fixed;top:0.6rem;right:0.7rem;z-index:920;box-shadow:0 6px 18px rgba(0,0,0,0.18)}',
     '@media print{.sbar{display:none}}'
   ].join('\n');
@@ -65,7 +66,7 @@
     var bar = document.createElement('div');
     bar.className = 'sbar';
     bar.setAttribute('data-no-nav', '');
-    bar.innerHTML = '<span class="sbar-dot"></span><span class="sbar-txt"></span><button type="button" class="sbar-btn"></button>';
+    bar.innerHTML = '<span class="sbar-dot"></span><span class="sbar-txt"></span><button type="button" class="sbar-btn"></button><button type="button" class="sbar-btn sbar-btn--out" hidden>로그아웃</button>';
 
     var spacer = document.querySelector('.deck-chrome__spacer');
     if (spacer) {
@@ -81,6 +82,7 @@
 
     var txt = bar.querySelector('.sbar-txt');
     var btn = bar.querySelector('.sbar-btn');
+    var btnOut = bar.querySelector('.sbar-btn--out');
     var mode = null; // 'extend' | 'login'
 
     function remainSec() {
@@ -93,6 +95,7 @@
     function render() {
       var left = remainSec();
       bar.classList.remove('sbar--warn', 'sbar--bad');
+      btnOut.hidden = !(left > 0 || (lsSession() && lsSession().refresh_token));
       if (left > 0) {
         var tk = getCookieToken();
         var p = jwtPayload(tk);
@@ -146,6 +149,21 @@
       e.stopPropagation();
       if (mode === 'login') location.href = loginUrl();
       else extend();
+    });
+
+    btnOut.addEventListener('click', function (e) {
+      e.stopPropagation();
+      var tk = getCookieToken();
+      if (tk) {
+        // 서버 세션 무효화 — 실패해도 로컬 정리는 그대로 진행
+        fetch(cfg.SUPABASE_URL + '/auth/v1/logout', {
+          method: 'POST',
+          headers: { apikey: cfg.SUPABASE_ANON_KEY, Authorization: 'Bearer ' + tk }
+        }).catch(function () {});
+      }
+      document.cookie = 'sb-access-token=; Path=/; Max-Age=0; SameSite=Lax';
+      try { localStorage.removeItem(LS_KEY); } catch (err) { /* 무시 */ }
+      location.href = '/login.html';
     });
 
     render();
