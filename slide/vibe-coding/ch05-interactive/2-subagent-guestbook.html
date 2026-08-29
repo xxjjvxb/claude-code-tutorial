@@ -177,17 +177,19 @@
         <div>
           <div class="prompt-card">
             <div class="prompt-card__head">
-              <span class="prompt-card__label">designer · describe</span>
+              <span class="prompt-card__label">designer · 생성 프롬프트</span>
               <button class="prompt-card__copy" type="button" data-copy>복사</button>
             </div>
-            <pre class="prompt-card__body" data-no-nav>너는 내 홈페이지 방명록의 화면만 담당한다.
+            <pre class="prompt-card__body" data-no-nav>designer 라는 서브에이전트를 만들어줘. 역할은 아래와 같아.
+
+너는 내 홈페이지 방명록의 화면만 담당한다.
 글 입력칸과 남겨진 글 목록(작성자 이름·시각 표시)을 만든다.
 내 홈페이지 분위기에 맞게, 폰에서도 보기 좋게(반응형).
 데이터 저장·로그인은 개발자 몫 — 건드리지 않는다.</pre>
           </div>
         </div>
       </div>
-      <p class="slide__note">describe는 사람 말로 — 위 문장을 그대로 적으면 됩니다. <strong>맡는 것과 안 맡는 것</strong>을 분명히 적을수록 도우미가 정확해집니다.</p>
+      <p class="slide__note">맨 윗줄 <strong>"서브에이전트를 만들어줘"</strong>를 빼면 안 됩니다 — 역할 설명만 치면 메인 Claude가 그 역할을 자기가 뒤집어씁니다. <strong>맡는 것과 안 맡는 것</strong>을 분명히 적을수록 도우미가 정확해집니다.</p>
     </div>
   </section>
 
@@ -211,10 +213,12 @@
         <div>
           <div class="prompt-card">
             <div class="prompt-card__head">
-              <span class="prompt-card__label">developer · describe</span>
+              <span class="prompt-card__label">developer · 생성 프롬프트</span>
               <button class="prompt-card__copy" type="button" data-copy>복사</button>
             </div>
-            <pre class="prompt-card__body" data-no-nav>너는 방명록의 데이터와 로그인을 담당한다.
+            <pre class="prompt-card__body" data-no-nav>developer 라는 서브에이전트를 만들어줘. 역할은 아래와 같아.
+
+너는 방명록의 데이터와 로그인을 담당한다.
 Supabase에 글을 저장하고 불러온다 — 새 글이 맨 위로.
 글 읽기는 누구나, 글쓰기는 구글 로그인한 사람만 되게 한다.
 로그인한 사람 이름이 글에 붙게 하고, 키는 환경변수로 둔다.</pre>

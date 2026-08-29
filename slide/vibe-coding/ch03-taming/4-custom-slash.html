@@ -148,7 +148,46 @@
     </div>
   </section>
 
-  <!-- 5 · 슬래시에 뭘 적나 -->
+  <!-- 5 · 부르는 법 -->
+  <section class="slide is-standard">
+    <div class="slide__eyebrow">CALL · 만들었으면 바로 써보기</div>
+    <h2 class="slide__title">호출은 — <span class="accent">/ 치면 자동완성</span></h2>
+    <div class="slide__body">
+      <div class="two-col">
+        <div>
+          <div class="content-card content-card--compact">
+            <h3 class="content-card__title">쓰는 법</h3>
+            <ol class="content-card__list content-card__list--ol">
+              <li><code>/</code> 를 치면 — 만든 명령이 목록에 뜸</li>
+              <li><code>/asdf</code> 선택 — 적어둔 부탁이 그대로 실행</li>
+              <li>Claude가 길게 답한 직후에 치면 가장 유용</li>
+            </ol>
+            <p class="content-card__body">기본 슬래시(/model·/init)와 같은 자리에 나란히.</p>
+          </div>
+        </div>
+        <div>
+          <div class="code-block">
+            <div class="code-block__header">
+              <span class="code-block__dot" style="background:#fb2c36"></span><span class="code-block__dot" style="background:#edb200"></span><span class="code-block__dot" style="background:#00c758"></span>
+              <span class="code-block__title">claude · 슬래시 호출</span>
+            </div>
+            <div class="code-block__body"><span class="code-block__line"><span class="code-block__prompt">&gt;</span> <span class="code-block__cmd">/asdf</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__out">  1. 로그인 화면을 새로 만들었음</span></span><span class="code-block__line"><span class="code-block__out">  2. 아직 구글 연결은 안 됨</span></span><span class="code-block__line"><span class="code-block__out">  3. 브라우저에서 한 번 열어보세요</span></span></div>
+          </div>
+          <div class="content-card content-card--compact">
+            <h3 class="content-card__title">목록에 안 뜨면 — 껐다 켜기</h3>
+            <ol class="content-card__list content-card__list--ol">
+              <li>끄기 — <code>/exit</code> (또는 <code>Ctrl</code>+<code>C</code> 두 번)</li>
+              <li>켜기 — 같은 폴더에서 다시 <code>claude</code></li>
+              <li>잇기 — <code>/resume</code> → 아까 대화 골라 계속</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+      <p class="slide__note">파일을 만들면 <code>/</code> 목록에 자동으로 나타납니다 — 따로 등록할 필요 없음. 그래도 안 보이면 껐다 켜세요. <code>/resume</code>으로 들어가면 하던 대화가 그대로 이어집니다.</p>
+    </div>
+  </section>
+
+  <!-- 6 · 슬래시에 뭘 적나 -->
   <section class="slide is-standard">
     <div class="slide__eyebrow">INSIDE · 안에 적는 것</div>
     <h2 class="slide__title">파일 안에는 — <span class="accent">평소 치던 부탁</span> 그대로</h2>
@@ -174,7 +213,7 @@
     </div>
   </section>
 
-  <!-- 6 · 좋은 후보 6 -->
+  <!-- 7 · 좋은 후보 6 -->
   <section class="slide is-standard">
     <div class="slide__eyebrow">CANDIDATES · 쓸모 있는 후보 6</div>
     <h2 class="slide__title">비개발자가 만들면 좋은 — <span class="accent">슬래시 6가지</span></h2>
@@ -188,37 +227,6 @@
         <div class="content-card content-card--compact"><h3 class="content-card__title">/save</h3><p class="content-card__body">지금까지 한 일을 깔끔하게 저장(커밋).</p></div>
       </div>
       <p class="slide__note">정답은 없습니다 — <strong>"내가 이번 주에 3번 이상 친 부탁"</strong>이 가장 좋은 후보. <code>/asdf</code>는 이어지는 실습에서 함께 만들어 봅니다.</p>
-    </div>
-  </section>
-
-  <!-- 7 · 부르는 법 -->
-  <section class="slide is-standard">
-    <div class="slide__eyebrow">CALL · 부르는 법</div>
-    <h2 class="slide__title">호출은 — <span class="accent">/ 치면 자동완성</span></h2>
-    <div class="slide__body">
-      <div class="two-col">
-        <div>
-          <div class="content-card content-card--compact">
-            <h3 class="content-card__title">쓰는 법</h3>
-            <ol class="content-card__list content-card__list--ol">
-              <li><code>/</code> 를 치면 — 만든 명령이 목록에 뜸</li>
-              <li><code>/asdf</code> 선택 — 적어둔 부탁이 그대로 실행</li>
-              <li>Claude가 길게 답한 직후에 치면 가장 유용</li>
-            </ol>
-            <p class="content-card__body">기본 슬래시(/model·/init)와 같은 자리에 나란히.</p>
-          </div>
-        </div>
-        <div>
-          <div class="code-block">
-            <div class="code-block__header">
-              <span class="code-block__dot" style="background:#fb2c36"></span><span class="code-block__dot" style="background:#edb200"></span><span class="code-block__dot" style="background:#00c758"></span>
-              <span class="code-block__title">claude · 슬래시 호출</span>
-            </div>
-            <div class="code-block__body"><span class="code-block__line"><span class="code-block__prompt">&gt;</span> <span class="code-block__cmd">/asdf</span></span><span class="code-block__line code-block__line--blank"></span><span class="code-block__line"><span class="code-block__out">  1. 로그인 화면을 새로 만들었음</span></span><span class="code-block__line"><span class="code-block__out">  2. 아직 구글 연결은 안 됨</span></span><span class="code-block__line"><span class="code-block__out">  3. 브라우저에서 한 번 열어보세요</span></span></div>
-          </div>
-        </div>
-      </div>
-      <p class="slide__note">파일을 만들면 — 다음부터 <code>/</code> 목록에 자동으로 나타납니다. 따로 등록할 필요 없음.</p>
     </div>
   </section>
 
