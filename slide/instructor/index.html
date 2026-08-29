@@ -18,7 +18,7 @@
     .inst-eyebrow { font-family: var(--font-mono); font-size: 0.62rem; letter-spacing: 0.08em; text-transform: uppercase; font-weight: 700; color: var(--color-primary-strong); }
     .inst-name { font-size: 1.5rem; font-weight: 700; line-height: 1.15; letter-spacing: -0.025em; margin: 0; }
     .inst-name small { font-size: 0.75rem; font-weight: 600; color: var(--color-on-surface-muted); letter-spacing: 0; }
-    .inst-photo { width: 100%; max-width: 13rem; border-radius: 14px; border: 2px solid var(--color-outline-strong); align-self: center; }
+    .inst-photo { width: 100%; max-width: 8.2rem; border-radius: 14px; border: 2px solid var(--color-outline-strong); align-self: center; }
     .inst-desc { font-size: 0.78rem; line-height: 1.6; color: var(--color-on-surface); margin: 0; }
     .inst-desc--muted { color: var(--color-on-surface-muted); font-size: 0.74rem; }
     .inst-tags { display: flex; flex-wrap: wrap; gap: 0.3rem; }
@@ -26,11 +26,11 @@
     .inst-mail { color: var(--color-primary-strong); font-weight: 700; text-decoration: none; }
     .inst-mail:hover { text-decoration: underline; }
     .cvl { display: flex; flex-direction: column; margin: 0; padding: 0; list-style: none; }
-    .cvl li { display: flex; gap: 0.8rem; align-items: baseline; padding: 0.4rem 0; border-bottom: 1px dashed var(--color-outline); }
+    .cvl li { display: flex; gap: 0.7rem; align-items: baseline; padding: 0.38rem 0; border-bottom: 1px dashed var(--color-outline); }
     .cvl li:last-child { border-bottom: 0; }
-    .cvl-when { font-family: var(--font-mono); font-size: 0.64rem; font-weight: 700; color: var(--color-primary-strong); flex-shrink: 0; min-width: 4.8rem; }
-    .cvl-what { font-size: 0.78rem; line-height: 1.5; color: var(--color-on-surface); min-width: 0; }
-    .cvl-what small { display: block; font-size: 0.68rem; color: var(--color-on-surface-muted); margin-top: 0.08rem; }
+    .cvl-when { font-family: var(--font-mono); font-size: 0.64rem; font-weight: 700; color: var(--color-primary-strong); flex-shrink: 0; min-width: 4.2rem; }
+    .cvl-what { font-size: 0.76rem; line-height: 1.5; color: var(--color-on-surface); min-width: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .cvl-what .sub { color: var(--color-on-surface-muted); }
     .inst-list { margin: 0; padding: 0 0 0 1.1rem; list-style: disc; }
     .inst-list li { font-size: 0.76rem; line-height: 1.6; color: var(--color-on-surface); padding: 0.1rem 0; }
     .inst-list li::marker { color: var(--color-primary-strong); }
@@ -67,9 +67,9 @@
       </div>
 
       <div class="inst-card">
-        <div class="inst-eyebrow">EDUCATION &amp; AWARDS · 학력 · 수상</div>
+        <div class="inst-eyebrow">EDUCATION · 학력 · 수상</div>
         <ul class="inst-list">
-          <li>서울대학교 컴퓨터공학 석사 — 최적화·금융공학 연구실</li>
+          <li>서울대학교 컴퓨터공학 석사</li>
           <li>한양대학교 전자공학 학사</li>
           <li>KOI · ACM-ICPC · Meta Hacker Cup 입상</li>
         </ul>
@@ -78,28 +78,24 @@
 
     <!-- 오른쪽 — 강의 이력 · 경력 -->
     <div class="inst-col">
-      <div class="inst-card inst-card--accent" style="flex: 1;">
+      <div class="inst-card inst-card--accent">
         <div class="inst-eyebrow">TEACHING · 강의 이력</div>
         <ul class="cvl">
           <li>
             <span class="cvl-when">'26-05</span>
-            <span class="cvl-what"><strong>KAIST 국방 AI·SW 프로젝트 과정</strong> — AI 기본교육 5일 (국방부 사업)
-              <small>장교·부사관·군무원 12명 · 최종 산출물 9종 전원 군 실무 주제로 완성</small></span>
+            <span class="cvl-what"><strong>KAIST 국방 AI·SW 프로젝트 과정</strong> — AI 기본교육 5일 <span class="sub">· 군 실무자 12명</span></span>
           </li>
           <li>
             <span class="cvl-when">'26-06</span>
-            <span class="cvl-what"><strong>KAIST 정책·제도 수립 과정</strong> — Claude 활용 1일 과정 (국방부 사업)
-              <small>영관급 장교·상급 부사관·군무원 대상 — 대상에 맞춰 도구부터 재구성</small></span>
+            <span class="cvl-what"><strong>KAIST 정책·제도 수립 과정</strong> — Claude 활용 1일 <span class="sub">· 영관급 장교·군무원</span></span>
           </li>
           <li>
             <span class="cvl-when">'26-07~08</span>
-            <span class="cvl-what"><strong>㈜더웨이유</strong> — 기업 인하우스 4회 과정 (16시간)
-              <small>대표·행정·매니저 등 비개발자 8명 · 외부 API 연동 실습까지 완주</small></span>
+            <span class="cvl-what"><strong>기업 인하우스 과정</strong> — 4회 16시간 <span class="sub">· 비개발자 8명 · API 실습 완주</span></span>
           </li>
           <li>
             <span class="cvl-when">'26-08</span>
-            <span class="cvl-what"><strong>비개발자 일요 강의 시리즈</strong> — 3회 × 5시간
-              <small>의료·법률·건축·마케팅 등 11개 직군 13명 · 바로 이 강의자료로 진행</small></span>
+            <span class="cvl-what"><strong>비개발자 일요 강의 시리즈</strong> — 3회 × 5시간 <span class="sub">· 11개 직군 13명</span></span>
           </li>
         </ul>
       </div>
@@ -109,18 +105,15 @@
         <ul class="cvl">
           <li>
             <span class="cvl-when">'22–현재</span>
-            <span class="cvl-what"><strong>Alpha RPA</strong> CEO
-              <small>금융 데이터 AI 모델링 · 로보어드바이저 · 급여아웃소싱 솔루션 등 금융 시스템 자동화 프로젝트 다수 수행</small></span>
+            <span class="cvl-what"><strong>Alpha RPA</strong> CEO <span class="sub">— 금융 데이터 AI 모델링 · 금융 시스템 자동화</span></span>
           </li>
           <li>
             <span class="cvl-when">'20–'21</span>
-            <span class="cvl-what"><strong>BrainSoft</strong> AI Researcher
-              <small>한국어 음성 인식 — ESPNET 대규모 학습 · 인식 API 서버 구축</small></span>
+            <span class="cvl-what"><strong>BrainSoft</strong> AI Researcher <span class="sub">— 한국어 음성 인식 (ESPNET)</span></span>
           </li>
           <li>
             <span class="cvl-when">'18–'20</span>
-            <span class="cvl-what"><strong>AIRI 인공지능연구원</strong> AI Researcher
-              <small>컴퓨터 비전 · 멀티모달 아바타 · 금융 추천 시스템</small></span>
+            <span class="cvl-what"><strong>AIRI 인공지능연구원</strong> AI Researcher <span class="sub">— 비전 · 멀티모달 · 금융 추천</span></span>
           </li>
         </ul>
       </div>
