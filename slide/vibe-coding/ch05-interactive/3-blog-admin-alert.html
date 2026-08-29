@@ -103,6 +103,12 @@
 쓰기·수정·삭제는 내 계정만 되게 데이터베이스 규칙으로 막아줘.
 내 계정 이메일은 <span class="ph">&lt;내 구글 이메일&gt;</span> 이야.</pre>
       </div>
+      <div class="caveat-grid--compact" style="margin-top:0.55rem">
+        <div class="caveat-card">
+          <div class="caveat-card__label">붙여넣고 고칠 때 — Ctrl+G</div>
+          <p class="caveat-card__body">여러 줄을 붙여넣으면 <code>[Pasted text …]</code> 한 덩어리로 접힙니다. <strong>Ctrl+G</strong>를 누르면 펼쳐져서 고칠 수 있어요 — <code>&lt;내 구글 이메일&gt;</code>을 여기서 본인 주소로 바꿔 넣으세요.</p>
+        </div>
+      </div>
       <p class="slide__note">방명록 표는 그대로 둡니다 — <strong>새 표를 하나 더</strong> 만드는 거예요. "읽기는 누구나, 쓰기는 나만"이 이 표의 핵심 규칙입니다.</p>
     </div>
   </section>
@@ -112,33 +118,23 @@
     <div class="slide__eyebrow">STEP 2 · 화면</div>
     <h2 class="slide__title">도우미 둘에게 <span class="accent">블로그 화면</span> 맡기기</h2>
     <div class="slide__body">
-      <div class="two-col">
-        <div>
-          <div class="prompt-card">
-            <div class="prompt-card__head">
-              <span class="prompt-card__label">@designer 에게</span>
-              <button class="prompt-card__copy" type="button" data-copy>복사</button>
-            </div>
-            <pre class="prompt-card__body" data-no-nav>블로그 화면을 만들어줘.
-글 목록(제목·날짜)과 글 하나를 펼쳐 보는 화면.
-내 홈페이지 분위기 그대로, 폰에서도 읽기 좋게.
-저장·권한은 개발자 몫 — 건드리지 않는다.</pre>
-          </div>
+      <div class="prompt-card">
+        <div class="prompt-card__head">
+          <span class="prompt-card__label">프롬프트 · 감독에게 통째로</span>
+          <button class="prompt-card__copy" type="button" data-copy>복사</button>
         </div>
-        <div>
-          <div class="prompt-card">
-            <div class="prompt-card__head">
-              <span class="prompt-card__label">@developer 에게</span>
-              <button class="prompt-card__copy" type="button" data-copy>복사</button>
-            </div>
-            <pre class="prompt-card__body" data-no-nav>블로그 글을 Supabase에 저장하고 불러온다.
-공개된 글만 목록에 보이게 하고, 최신 글이 위로.
-글쓰기·수정은 내 계정으로 로그인했을 때만.
-키는 환경변수로 둔다.</pre>
-          </div>
-        </div>
+        <pre class="prompt-card__body" data-no-nav>designer · developer 두 도우미와 블로그 화면을 만들어줘.
+네가 감독이 되어 일을 나눠 맡겨줘.
+
+[목표] 글 목록(제목·날짜)과 글 하나를 펼쳐 보는 화면
+[진행] 순서는 네가 정해 — 동시에 되는 건 병렬로
+[규칙]
+· 화면은 내 홈페이지 분위기 그대로, 폰에서도 읽기 좋게
+· 저장·불러오기는 Supabase — 공개된 글만, 최신 글이 위로
+· 글쓰기·수정은 내 계정으로 로그인했을 때만
+· 키는 환경변수로 — 코드에 직접 쓰지 마</pre>
       </div>
-      <p class="slide__note">덱 2에서 만든 <code>designer</code>·<code>developer</code>를 <strong>그대로 씁니다</strong> — 도우미는 한 번 만들면 계속 재사용합니다. 새로 만들 필요 없습니다.</p>
+      <p class="slide__note">덱 2에서 만든 <code>designer</code>·<code>developer</code>를 <strong>그대로 씁니다</strong> — 새로 만들 필요 없습니다. 하나씩 시키고 싶으면 <code>@designer 글 목록 화면 만들어줘</code>처럼 <strong>@로 지목</strong>하면 됩니다.</p>
     </div>
   </section>
 
@@ -214,11 +210,17 @@
           <span class="prompt-card__label">프롬프트 · 관리자 페이지</span>
           <button class="prompt-card__copy" type="button" data-copy>복사</button>
         </div>
-        <pre class="prompt-card__body" data-no-nav>/admin 주소에 관리자 페이지를 만들어줘.
+        <pre class="prompt-card__body" data-no-nav>내 사이트에 /admin 주소로 관리자 페이지를 만들어줘.
 내 계정(<span class="ph">&lt;내 구글 이메일&gt;</span>)으로 로그인했을 때만 열리게 하고,
 다른 사람이 주소를 직접 쳐도 못 들어가게
 데이터베이스 규칙으로도 막아줘.
 방명록 글 삭제, 블로그 글 발행/비공개 전환이 되면 돼.</pre>
+      </div>
+      <div class="caveat-grid--compact" style="margin-top:0.55rem">
+        <div class="caveat-card">
+          <div class="caveat-card__label">붙여넣고 고칠 때 — Ctrl+G</div>
+          <p class="caveat-card__body">여기도 마찬가지 — 붙여넣으면 <code>[Pasted text …]</code>로 접힙니다. <strong>Ctrl+G</strong>로 펼쳐서 <code>&lt;내 구글 이메일&gt;</code>을 본인 주소로 바꿔 넣으세요.</p>
+        </div>
       </div>
       <p class="slide__note">로그인 자체는 <strong>4장에서 붙인 구글 로그인을 그대로</strong> 씁니다 — 새로 만들 게 없습니다. "누가 들어왔는지"는 이미 알고 있으니, "그게 나인지"만 확인하면 됩니다.</p>
     </div>
@@ -335,13 +337,13 @@
           <div class="bg-compare__quote">
             <div>로그아웃하고 <code>/admin</code> 열기</div>
             <div>→ <strong>막혀야</strong> 정상</div>
-            <div>다른 브라우저로 방명록에 글 남기기</div>
+            <div>시크릿 창으로 방명록에 글 남기기</div>
             <div>→ <strong>알림이 와야</strong> 정상</div>
           </div>
           <p class="bg-compare__note">"남의 입장"에서 확인하는 게 핵심.</p>
         </div>
       </div>
-      <p class="slide__note">내 계정으로 로그인한 채로는 <strong>무엇이든 다 됩니다</strong> — 그래서 확인은 반드시 로그아웃 상태나 다른 브라우저에서.</p>
+      <p class="slide__note">내 계정으로 로그인한 채로는 <strong>무엇이든 다 됩니다</strong> — 확인은 <strong>시크릿 창</strong>에서(<span class="os-win">Ctrl+Shift+N</span><span class="os-mac">⌘+Shift+N</span>). 옆 사람 방명록에 서로 글을 남겨 보면 더 확실합니다.</p>
     </div>
   </section>
 
