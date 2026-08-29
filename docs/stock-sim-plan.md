@@ -51,7 +51,7 @@ PySide 트레이딩 앱  ──HTTP──▶  Vercel API Routes (/api/stock/*)
 
 ## 4. API 스펙 (v1 초안)
 
-인증: 모든 요청 헤더 `X-API-Key: <발급 키>` · Base URL `https://vibecoding-cc.vercel.app/api/stock`
+인증: 모든 요청 헤더 `X-API-Key: <발급 키>` · Base URL `https://vibe.219.co.kr/api/stock`
 
 | 메서드 | 경로 | 설명 | 응답 예시 |
 |---|---|---|---|

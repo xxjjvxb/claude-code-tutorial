@@ -2,7 +2,7 @@
 
 바이브코딩 7장 실습용 가상 주식 시장. 이 문서를 통째로 Claude에게 붙여넣으면 트레이딩 앱을 만들 수 있습니다.
 
-- **Base URL**: `https://vibecoding-cc.vercel.app/api/stock`
+- **Base URL**: `https://vibe.219.co.kr/api/stock`
 - **인증**: 모든 요청 헤더에 `X-API-Key: 내키` — 키 발급은 강의자료 사이트 `/slide/stock-sim/key.html`
 - **응답 형식**: JSON. 실패 시 `{"error":"이유"}` + 4xx 상태코드.
 
@@ -19,7 +19,7 @@
 ### GET /price — 3종목 현재가·거래량
 
 ```
-GET https://vibecoding-cc.vercel.app/api/stock/price
+GET https://vibe.219.co.kr/api/stock/price
 X-API-Key: 내키
 ```
 
@@ -56,7 +56,7 @@ X-API-Key: 내키
 ### POST /order — 시장가 주문
 
 ```
-POST https://vibecoding-cc.vercel.app/api/stock/order
+POST https://vibe.219.co.kr/api/stock/order
 X-API-Key: 내키
 Content-Type: application/json
 
@@ -90,7 +90,7 @@ Content-Type: application/json
 ### GET /portfolio — 내 계좌
 
 ```
-GET https://vibecoding-cc.vercel.app/api/stock/portfolio
+GET https://vibe.219.co.kr/api/stock/portfolio
 X-API-Key: 내키
 ```
 

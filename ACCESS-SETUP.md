@@ -15,8 +15,8 @@
    - 승인된 리디렉션 URI: `https://<프로젝트ref>.supabase.co/auth/v1/callback`
 2. Supabase → **Authentication → Sign In / Providers → Google**: 발급받은 클라이언트 ID·시크릿 입력, Enable
 3. Supabase → **Authentication → URL Configuration**:
-   - Site URL: `https://vibecoding-cc.vercel.app`
-   - Redirect URLs에 추가: `https://vibecoding-cc.vercel.app/*`
+   - Site URL: `https://vibe.219.co.kr`
+   - Redirect URLs에 추가: `https://vibe.219.co.kr/*`
 
 ## 3. 테이블 + 권한 (SQL)
 
@@ -30,7 +30,7 @@ Supabase → **SQL Editor** → `supabase/access-setup.sql` 내용 붙여넣고 
 
 ## 5. 동작 확인
 
-1. `https://vibecoding-cc.vercel.app` 접속 → 덱 열 때 로그인 페이지로 이동하는지
+1. `https://vibe.219.co.kr` 접속 → 덱 열 때 로그인 페이지로 이동하는지
 2. 관리자 계정으로 구글 로그인 → 자동 통과(승인 불필요) → `/admin.html` 접속 확인
 3. 다른 구글 계정으로 로그인 → "열람 신청" → admin에서 승인 → 새로고침 후 입장 확인
 

@@ -1,5 +1,13 @@
 {
   "crons": [
     { "path": "/api/keepalive", "schedule": "0 3 * * *" }
+  ],
+  "redirects": [
+    {
+      "source": "/:path((?!api/).*)",
+      "has": [{ "type": "host", "value": "vibecoding-cc.vercel.app" }],
+      "destination": "https://vibe.219.co.kr/:path",
+      "permanent": true
+    }
   ]
 }
