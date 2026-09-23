@@ -174,5 +174,19 @@
     document.addEventListener('visibilitychange', function () {
       if (document.visibilityState === 'visible') render();
     });
+
+    // 접속 기록 — 페이지 로드마다 1회 (관리자 명단의 최종 접속·진도 표시용).
+    // user-activity-setup.sql 실행 전에는 404 — 조용히 무시.
+    if (remainSec() > 0) {
+      fetch(cfg.SUPABASE_URL + '/rest/v1/rpc/touch_activity', {
+        method: 'POST',
+        headers: {
+          apikey: cfg.SUPABASE_ANON_KEY,
+          Authorization: 'Bearer ' + getCookieToken(),
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ p_path: location.pathname, p_title: document.title })
+      }).catch(function () {});
+    }
   }).catch(function () { /* 설정 없음 — 미표시 */ });
 })();
