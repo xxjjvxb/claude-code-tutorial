@@ -44,6 +44,10 @@
     a.loc:hover { text-decoration: underline; }
     .notice { background: #fff; border: 2px solid #e5ddd2; border-radius: 12px; padding: 1.2rem; font-size: 0.9rem; }
     .hidden { display: none; }
+    .sub-h { font-size: 0.95rem; font-weight: 700; margin: 1.2rem 0 0.5rem; }
+    .sub-h:first-child { margin-top: 0; }
+    .pbar { height: 0.55rem; background: #f0e9df; border-radius: 999px; overflow: hidden; min-width: 9rem; }
+    .pbar > i { display: block; height: 100%; background: #fe6e00; }
   </style>
 </head>
 <body>
@@ -57,6 +61,7 @@
       <div class="tabs">
         <button class="tab on" id="tab-access">열람 신청</button>
         <button class="tab" id="tab-feedback">질문 · 신고</button>
+        <button class="tab" id="tab-progress">진도</button>
         <span class="spacer"></span>
         <button id="btn-reload">새로고침</button>
         <button id="btn-signout">로그아웃</button>
@@ -88,6 +93,15 @@
           <tbody id="rows-feedback"></tbody>
         </table>
         <p class="muted" style="margin-top:0.6rem">위치를 누르면 해당 슬라이드가 새 탭으로 열립니다 — 검토 후 "처리 완료"로 정리하세요.</p>
+      </section>
+
+      <section id="sec-progress" class="hidden">
+        <div class="bar">
+          <span class="chip">승인 수강생 <b id="p-students">0</b></span>
+          <span class="chip">도달한 덱 <b id="p-decks">0</b></span>
+        </div>
+        <div id="prog-body"><div class="notice">불러오는 중…</div></div>
+        <p class="muted" style="margin-top:0.6rem">접속 기록이 쌓이기 시작한 시점 이후의 데이터입니다 — 그 전에 본 페이지는 잡히지 않습니다. 부록·치트시트는 표에는 보이지만 최종 도달 계산에서는 뺍니다.</p>
       </section>
     </div>
   </div>
@@ -273,16 +287,133 @@
       loadFeedback();
     }
 
+    // ---------- 진도 ----------
+    let structureCache = null;
+
+    async function fetchStructure() {
+      // 메인 목차 → 챕터 폴더·제목, 각 챕터 목차 → 덱 파일·제목 (코스 순서 그대로)
+      const parse = (html) => new DOMParser().parseFromString(html, 'text/html');
+      const main = parse(await (await fetch('/slide/vibe-coding/index.html')).text());
+      const chapters = [];
+      main.querySelectorAll('a.day-card').forEach((a) => {
+        const folder = (a.getAttribute('href') || '').split('/')[0];
+        if (!folder) return;
+        const title = ((a.querySelector('.day-card__title') || {}).textContent || folder).trim();
+        chapters.push({ folder, title, decks: [] });
+      });
+      await Promise.all(chapters.map(async (ch) => {
+        const doc = parse(await (await fetch('/slide/vibe-coding/' + ch.folder + '/index.html')).text());
+        doc.querySelectorAll('a.block-card').forEach((a) => {
+          const file = a.getAttribute('href');
+          if (!file || !/\.html$/.test(file)) return;
+          const title = ((a.querySelector('.block-card__title') || {}).textContent || file).trim();
+          ch.decks.push({ file, title, path: '/slide/vibe-coding/' + ch.folder + '/' + file });
+        });
+      }));
+      return chapters;
+    }
+
+    async function loadProgress() {
+      $('prog-body').innerHTML = '<div class="notice">불러오는 중…</div>';
+      try {
+        const [visRes, chapters] = await Promise.all([
+          sb.from('page_visits').select('*'),
+          structureCache ? Promise.resolve(structureCache) : fetchStructure()
+        ]);
+        structureCache = chapters;
+        if (visRes.error) {
+          $('prog-body').innerHTML = '<div class="notice">page_visits 조회 실패 — supabase/page-visits-update.sql 실행이 필요합니다. (' + esc(visRes.error.message) + ')</div>';
+          return;
+        }
+        if (!accessRows.length) await loadAccess();
+        renderProgress(chapters, visRes.data || []);
+      } catch (e) {
+        $('prog-body').innerHTML = '<div class="notice">불러오기 실패 — ' + esc(e.message) + '</div>';
+      }
+    }
+
+    function renderProgress(chapters, visits) {
+      const approved = accessRows.filter((r) => r.status === 'approved');
+      const studentIds = new Set(approved.map((r) => r.user_id));
+      $('p-students').textContent = approved.length;
+
+      // 코스 순서의 덱 목록 (부록·치트시트는 main=false)
+      const deckList = [];
+      chapters.forEach((ch, ci) => {
+        const chNum = /^ch0?(\d+)/.exec(ch.folder);
+        ch.decks.forEach((d) => {
+          deckList.push({
+            order: ci * 100 + deckList.length,
+            main: !!chNum,
+            chLabel: chNum ? chNum[1] + '장' : (ch.folder === 'appendix' ? '부록' : '치트시트'),
+            deckTitle: d.title,
+            path: d.path
+          });
+        });
+      });
+      const deckByPath = {};
+      for (const d of deckList) deckByPath[d.path] = d;
+
+      // 수강생(승인자) 방문만 집계
+      const byPath = {}, byUser = {};
+      for (const v of visits) {
+        if (!studentIds.has(v.user_id)) continue;
+        (byPath[v.path] = byPath[v.path] || []).push(v);
+        (byUser[v.user_id] = byUser[v.user_id] || []).push(v);
+      }
+      $('p-decks').textContent = deckList.filter((d) => (byPath[d.path] || []).length).length + ' / ' + deckList.length;
+
+      // ① 덱별 도달 인원 — 0인 덱도 코스 순서대로 전부 표시
+      let html = '<div class="sub-h">덱별 도달 인원 — 코스 순서</div><table><thead><tr><th>챕터</th><th>덱</th><th>도달</th><th></th><th>조회</th></tr></thead><tbody>';
+      for (const d of deckList) {
+        const vs = byPath[d.path] || [];
+        const views = vs.reduce((s, v) => s + v.views, 0);
+        const pct = approved.length ? Math.round(vs.length / approved.length * 100) : 0;
+        html += '<tr' + (vs.length ? '' : ' class="dim"') + '><td class="muted">' + d.chLabel + '</td>' +
+          '<td>' + esc(d.deckTitle) + '</td>' +
+          '<td><b>' + vs.length + '</b><span class="muted">/' + approved.length + '</span></td>' +
+          '<td><div class="pbar"><i style="width:' + pct + '%"></i></div></td>' +
+          '<td class="muted">' + views + '뷰</td></tr>';
+      }
+      html += '</tbody></table>';
+
+      // ② 수강생별 최종 도달 (본편 챕터만, 진도 순 정렬)
+      const rows = approved.map((r) => {
+        const vs = (byUser[r.user_id] || [])
+          .map((v) => ({ v, d: deckByPath[v.path] }))
+          .filter((x) => x.d && x.d.main);
+        let far = null;
+        for (const x of vs) if (!far || x.d.order > far.d.order) far = x;
+        return { r, far, deckCount: vs.length };
+      }).sort((a, b) => (b.far ? b.far.d.order : -1) - (a.far ? a.far.d.order : -1));
+
+      html += '<div class="sub-h">수강생별 최종 도달</div><table><thead><tr><th>수강생</th><th>최종 도달</th><th>마지막 본 시각</th><th>본 덱 수</th></tr></thead><tbody>';
+      for (const { r, far, deckCount } of rows) {
+        html += '<tr' + (far ? '' : ' class="dim"') + '><td>' + esc(r.name || r.email) +
+          (r.name ? '<div class="muted">' + esc(r.email) + '</div>' : '') + '</td>' +
+          (far
+            ? '<td><b>' + far.d.chLabel + '</b> · <a class="loc" href="' + esc(far.v.path) + '" target="_blank" rel="noopener">' + esc(far.d.deckTitle) + ' ↗</a></td><td class="muted">' + fmt(far.v.last_seen_at) + '</td>'
+            : '<td class="muted">기록 없음</td><td class="muted">—</td>') +
+          '<td>' + deckCount + '<span class="muted">/' + deckList.filter((d) => d.main).length + '</span></td></tr>';
+      }
+      html += '</tbody></table>';
+      $('prog-body').innerHTML = html;
+    }
+
     // ---------- 탭 · 공통 ----------
     function switchTab(which) {
-      $('tab-access').classList.toggle('on', which === 'access');
-      $('tab-feedback').classList.toggle('on', which === 'feedback');
-      $('sec-access').classList.toggle('hidden', which !== 'access');
-      $('sec-feedback').classList.toggle('hidden', which !== 'feedback');
+      for (const t of ['access', 'feedback', 'progress']) {
+        $('tab-' + t).classList.toggle('on', which === t);
+        $('sec-' + t).classList.toggle('hidden', which !== t);
+      }
     }
     $('tab-access').addEventListener('click', () => switchTab('access'));
     $('tab-feedback').addEventListener('click', () => switchTab('feedback'));
-    $('btn-reload').addEventListener('click', () => { loadAccess(); loadFeedback(); });
+    $('tab-progress').addEventListener('click', () => { switchTab('progress'); loadProgress(); });
+    $('btn-reload').addEventListener('click', () => {
+      loadAccess(); loadFeedback();
+      if (!$('sec-progress').classList.contains('hidden')) loadProgress();
+    });
     $('btn-signout').addEventListener('click', async () => { await sb.auth.signOut(); location.reload(); });
 
     if (await guard()) { loadAccess(); loadFeedback(); }
