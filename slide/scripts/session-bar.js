@@ -87,6 +87,7 @@
     var btn = bar.querySelector('.sbar-btn');
     var btnOut = bar.querySelector('.sbar-btn--out');
     var mode = null; // 'extend' | 'login'
+    var expTimer = null; // 만료되는 정확한 시각에 즉시 표시를 바꾸기 위한 타이머
 
     function remainSec() {
       var tk = getCookieToken();
@@ -99,6 +100,8 @@
       var left = remainSec();
       bar.classList.remove('sbar--warn', 'sbar--bad');
       btnOut.hidden = !(left > 0 || (lsSession() && lsSession().refresh_token));
+      if (expTimer) { clearTimeout(expTimer); expTimer = null; }
+      if (left > 0) expTimer = setTimeout(render, left * 1000 + 500);
       if (left > 0) {
         var tk = getCookieToken();
         var p = jwtPayload(tk);

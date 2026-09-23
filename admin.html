@@ -363,8 +363,47 @@
       }
       $('p-decks').textContent = deckList.filter((d) => (byPath[d.path] || []).length).length + ' / ' + deckList.length;
 
+      // ⓪ 퍼널 — 신청 → 승인 → 접속 → 최근 7일 (접속 기록은 수집 시작 시점 이후)
+      const now = Date.now();
+      const seenUsers = approved.filter((r) => actMap[r.user_id]);
+      const weekUsers = approved.filter((r) => actMap[r.user_id] && now - new Date(actMap[r.user_id].last_seen_at).getTime() < 7 * 86400e3);
+      const funnel = [
+        { label: '열람 신청', n: accessRows.length },
+        { label: '승인', n: approved.length },
+        { label: '접속 기록 있음', n: seenUsers.length },
+        { label: '최근 7일 접속', n: weekUsers.length }
+      ];
+      let html = '<div class="sub-h">퍼널 — 신청부터 최근 접속까지</div><table><thead><tr><th>단계</th><th>인원</th><th></th><th>전 단계 대비</th></tr></thead><tbody>';
+      funnel.forEach((f, i) => {
+        const base = funnel[0].n || 1;
+        const prev = i === 0 ? f.n : funnel[i - 1].n;
+        const conv = i === 0 ? '—' : (prev ? Math.round(f.n / prev * 100) + '%' : '—');
+        html += '<tr><td>' + f.label + '</td><td><b>' + f.n + '</b></td>' +
+          '<td><div class="pbar"><i style="width:' + Math.round(f.n / base * 100) + '%"></i></div></td>' +
+          '<td class="muted">' + conv + '</td></tr>';
+      });
+      html += '</tbody></table>';
+
+      // ⓪-2 잠수 — 승인됐는데 7일 이상 미접속(또는 기록 없음)
+      const dormant = approved.map((r) => {
+        const a = actMap[r.user_id];
+        return { r, days: a ? Math.floor((now - new Date(a.last_seen_at).getTime()) / 86400e3) : null };
+      }).filter((x) => x.days === null || x.days >= 7)
+        .sort((a, b) => (b.days === null ? 1e9 : b.days) - (a.days === null ? 1e9 : a.days));
+      html += '<div class="sub-h">잠수 — 승인 후 7일 이상 미접속 (' + dormant.length + '명)</div>';
+      if (dormant.length) {
+        html += '<table><thead><tr><th>수강생</th><th>마지막 접속</th></tr></thead><tbody>';
+        for (const { r, days } of dormant) {
+          html += '<tr class="dim"><td>' + esc(r.name || r.email) + (r.name ? '<div class="muted">' + esc(r.email) + '</div>' : '') + '</td>' +
+            '<td class="muted">' + (days === null ? '기록 없음 (수집 시작 후 미접속)' : days + '일 전') + '</td></tr>';
+        }
+        html += '</tbody></table>';
+      } else {
+        html += '<p class="muted">없음 — 전원 최근 7일 내 접속 🎉</p>';
+      }
+
       // ① 덱별 도달 인원 — 0인 덱도 코스 순서대로 전부 표시
-      let html = '<div class="sub-h">덱별 도달 인원 — 코스 순서</div><table><thead><tr><th>챕터</th><th>덱</th><th>도달</th><th></th><th>조회</th></tr></thead><tbody>';
+      html += '<div class="sub-h">덱별 도달 인원 — 코스 순서</div><table><thead><tr><th>챕터</th><th>덱</th><th>도달</th><th></th><th>조회</th></tr></thead><tbody>';
       for (const d of deckList) {
         const vs = byPath[d.path] || [];
         const views = vs.reduce((s, v) => s + v.views, 0);
