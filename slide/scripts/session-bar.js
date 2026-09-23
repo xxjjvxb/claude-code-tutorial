@@ -87,7 +87,8 @@
     var btn = bar.querySelector('.sbar-btn');
     var btnOut = bar.querySelector('.sbar-btn--out');
     var mode = null; // 'extend' | 'login'
-    var expTimer = null; // 만료되는 정확한 시각에 즉시 표시를 바꾸기 위한 타이머
+    var expTimer = null;  // 만료되는 정확한 시각에 즉시 반응하기 위한 타이머
+    var autoTried = false; // 만료 시 자동 연장은 1회만 시도 (실패하면 자동 로그아웃)
 
     function remainSec() {
       var tk = getCookieToken();
@@ -103,6 +104,7 @@
       if (expTimer) { clearTimeout(expTimer); expTimer = null; }
       if (left > 0) expTimer = setTimeout(render, left * 1000 + 500);
       if (left > 0) {
+        autoTried = false;
         var tk = getCookieToken();
         var p = jwtPayload(tk);
         var name = ((p && p.email) || '').split('@')[0] || '로그인됨';
@@ -112,10 +114,12 @@
         mode = 'extend';
         if (left < 600) bar.classList.add('sbar--warn');
       } else if (lsSession() && lsSession().refresh_token) {
-        bar.classList.add('sbar--bad');
-        txt.textContent = '세션 만료';
+        // 만료 — 조용히 자동 연장 시도, 실패하면 extend()가 자동 로그아웃 처리
+        bar.classList.add('sbar--warn');
+        txt.textContent = '세션 자동 연장 중…';
         btn.textContent = '연장';
         mode = 'extend';
+        if (!autoTried) { autoTried = true; extend(true); }
       } else {
         bar.classList.add('sbar--bad');
         txt.textContent = '로그인 안 됨 · 강의자료 열람 불가';
@@ -124,7 +128,7 @@
       }
     }
 
-    function extend() {
+    function extend(isAuto) {
       var sess = lsSession();
       var rt = sess && sess.refresh_token;
       if (!rt) { location.href = loginUrl(); return; }
@@ -143,11 +147,14 @@
         btn.disabled = false;
         render();
         var keep = txt.textContent;
-        txt.textContent = '✓ 연장됐습니다';
+        txt.textContent = isAuto ? '✓ 세션 자동 연장됨' : '✓ 연장됐습니다';
         setTimeout(function () { txt.textContent = keep; }, 1500);
       }).catch(function () {
+        // 리프레시 토큰까지 만료 — 자동 로그아웃: 로컬 세션 정리 후 로그인 페이지로
         btn.disabled = false;
-        location.href = loginUrl(); // 리프레시 토큰까지 만료 — 다시 로그인
+        document.cookie = 'sb-access-token=; Path=/; Max-Age=0; SameSite=Lax';
+        try { localStorage.removeItem(LS_KEY); } catch (e) { /* 무시 */ }
+        location.href = loginUrl();
       });
     }
 
